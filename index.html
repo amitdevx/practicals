@@ -463,6 +463,11 @@
 
         // Load file content from GitHub
         async function loadFileContent(path) {
+            // Validate path to prevent path traversal attacks
+            if (!path || path.includes('..') || path.startsWith('/')) {
+                throw new Error('Invalid file path');
+            }
+            
             const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${encodeURIComponent(path)}`;
             const response = await fetch(url);
             
@@ -501,6 +506,12 @@
         // Download current file
         downloadBtn.addEventListener('click', () => {
             if (!currentFile) return;
+
+            // Validate path to prevent security issues
+            if (!currentFile.path || currentFile.path.includes('..') || currentFile.path.startsWith('/')) {
+                console.error('Invalid file path');
+                return;
+            }
 
             const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${encodeURIComponent(currentFile.path)}`;
             const a = document.createElement('a');
