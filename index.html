@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practicals Documentation - amitdevx/practicals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar Styles */
+        #sidebar {
+            width: 300px;
+            background-color: #fff;
+            border-right: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        #sidebar-header {
+            padding: 20px;
+            background-color: #2c3e50;
+            color: white;
+            border-bottom: 1px solid #34495e;
+        }
+
+        #sidebar-header h1 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        #sidebar-header p {
+            font-size: 12px;
+            color: #bdc3c7;
+        }
+
+        #file-tree {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        .folder-item {
+            margin: 5px 0;
+        }
+
+        .folder-header {
+            padding: 8px 10px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+
+        .folder-header:hover {
+            background-color: #d5dbdb;
+        }
+
+        .folder-icon {
+            margin-right: 8px;
+            font-size: 14px;
+        }
+
+        .folder-contents {
+            display: none;
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        .folder-contents.expanded {
+            display: block;
+        }
+
+        .file-item {
+            padding: 6px 10px;
+            margin: 2px 0;
+            cursor: pointer;
+            border-radius: 3px;
+            font-size: 14px;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .file-item:hover {
+            background-color: #e8f4f8;
+        }
+
+        .file-item.active {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .file-icon {
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+        }
+
+        /* Main Content Styles */
+        #main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        #content-header {
+            padding: 20px;
+            background-color: #34495e;
+            color: white;
+            border-bottom: 1px solid #2c3e50;
+            display: none;
+        }
+
+        #content-header.visible {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #file-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        #download-btn {
+            padding: 8px 16px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        #download-btn:hover {
+            background-color: #229954;
+        }
+
+        #content-area {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #welcome-message {
+            text-align: center;
+            color: #7f8c8d;
+            max-width: 600px;
+        }
+
+        #welcome-message h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        #welcome-message p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        #code-display {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        #code-display.visible {
+            display: block;
+        }
+
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 16px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Scrollbar Styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div id="sidebar-header">
+            <h1>📚 Practicals Documentation</h1>
+            <p>amitdevx/practicals</p>
+        </div>
+        <div id="file-tree">
+            <div class="loading">Loading repository structure...</div>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div id="main-content">
+        <div id="content-header">
+            <span id="file-title"></span>
+            <button id="download-btn">📥 Download File</button>
+        </div>
+        <div id="content-area">
+            <div id="welcome-message">
+                <h2>Welcome to Practicals Repository</h2>
+                <p>This is a custom documentation viewer for the <strong>amitdevx/practicals</strong> repository.</p>
+                <p>Select a folder from the sidebar to explore, then click on any file to view its contents.</p>
+                <p>You can download individual files for reference using the download button.</p>
+                <p><strong>Available Subjects:</strong></p>
+                <ul style="list-style: none; margin-top: 10px;">
+                    <li>📘 Advance Python Programming</li>
+                    <li>📐 Computational Geometry</li>
+                    <li>💾 Data Structure II</li>
+                    <li>🗄️ Database Management System-II</li>
+                </ul>
+            </div>
+            <div id="code-display"></div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const GITHUB_API_BASE = 'https://api.github.com';
+        const REPO_OWNER = 'amitdevx';
+        const REPO_NAME = 'practicals';
+        const BRANCH = 'main';
+
+        // State
+        let currentFile = null;
+        let fileTree = {};
+
+        // DOM Elements
+        const fileTreeElement = document.getElementById('file-tree');
+        const contentHeader = document.getElementById('content-header');
+        const fileTitle = document.getElementById('file-title');
+        const downloadBtn = document.getElementById('download-btn');
+        const contentArea = document.getElementById('content-area');
+        const welcomeMessage = document.getElementById('welcome-message');
+        const codeDisplay = document.getElementById('code-display');
+
+        // Initialize
+        async function init() {
+            try {
+                await loadRepositoryStructure();
+            } catch (error) {
+                fileTreeElement.innerHTML = `<div class="error-message">Failed to load repository structure. Please check your internet connection.</div>`;
+                console.error('Initialization error:', error);
+            }
+        }
+
+        // Load repository structure
+        async function loadRepositoryStructure() {
+            try {
+                const response = await fetch(`${GITHUB_API_BASE}/repos/${REPO_OWNER}/${REPO_NAME}/git/trees/${BRANCH}?recursive=1`);
+                
+                if (!response.ok) {
+                    throw new Error(`GitHub API error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                buildFileTree(data.tree);
+                renderFileTree();
+            } catch (error) {
+                throw error;
+            }
+        }
+
+        // Build file tree structure
+        function buildFileTree(items) {
+            fileTree = {};
+
+            items.forEach(item => {
+                const pathParts = item.path.split('/');
+                
+                // Only include items we care about
+                if (item.type === 'tree' && pathParts.length === 1) {
+                    // Top-level folder
+                    fileTree[item.path] = {
+                        type: 'folder',
+                        name: item.path,
+                        path: item.path,
+                        files: []
+                    };
+                } else if (item.type === 'blob' && pathParts.length > 1) {
+                    // File inside a folder
+                    const folderName = pathParts[0];
+                    
+                    if (fileTree[folderName]) {
+                        fileTree[folderName].files.push({
+                            type: 'file',
+                            name: pathParts[pathParts.length - 1],
+                            path: item.path,
+                            size: item.size
+                        });
+                    }
+                }
+            });
+        }
+
+        // Render file tree in sidebar
+        function renderFileTree() {
+            const folders = Object.values(fileTree);
+            
+            if (folders.length === 0) {
+                fileTreeElement.innerHTML = '<div class="loading">No folders found</div>';
+                return;
+            }
+
+            fileTreeElement.innerHTML = '';
+
+            folders.forEach(folder => {
+                const folderElement = createFolderElement(folder);
+                fileTreeElement.appendChild(folderElement);
+            });
+        }
+
+        // Create folder element
+        function createFolderElement(folder) {
+            const folderDiv = document.createElement('div');
+            folderDiv.className = 'folder-item';
+
+            const folderHeader = document.createElement('div');
+            folderHeader.className = 'folder-header';
+            folderHeader.innerHTML = `<span class="folder-icon">📁</span><span>${folder.name}</span>`;
+            
+            const folderContents = document.createElement('div');
+            folderContents.className = 'folder-contents';
+
+            if (folder.files.length === 0) {
+                folderContents.innerHTML = '<div style="padding: 5px; color: #999; font-size: 12px;">No files</div>';
+            } else {
+                folder.files.forEach(file => {
+                    const fileElement = createFileElement(file);
+                    folderContents.appendChild(fileElement);
+                });
+            }
+
+            folderHeader.addEventListener('click', () => {
+                folderContents.classList.toggle('expanded');
+                const icon = folderHeader.querySelector('.folder-icon');
+                icon.textContent = folderContents.classList.contains('expanded') ? '📂' : '📁';
+            });
+
+            folderDiv.appendChild(folderHeader);
+            folderDiv.appendChild(folderContents);
+
+            return folderDiv;
+        }
+
+        // Create file element
+        function createFileElement(file) {
+            const fileDiv = document.createElement('div');
+            fileDiv.className = 'file-item';
+            
+            const icon = getFileIcon(file.name);
+            fileDiv.innerHTML = `<span class="file-icon">${icon}</span><span>${file.name}</span>`;
+            
+            fileDiv.addEventListener('click', () => {
+                selectFile(file, fileDiv);
+            });
+
+            return fileDiv;
+        }
+
+        // Get file icon based on extension
+        function getFileIcon(filename) {
+            const ext = filename.split('.').pop().toLowerCase();
+            const iconMap = {
+                'c': '📄',
+                'py': '🐍',
+                'ipynb': '📓',
+                'pdf': '📕',
+                'csv': '📊',
+                'txt': '📝'
+            };
+            return iconMap[ext] || '📄';
+        }
+
+        // Select and display file
+        async function selectFile(file, fileElement) {
+            // Update active state
+            document.querySelectorAll('.file-item').forEach(el => el.classList.remove('active'));
+            fileElement.classList.add('active');
+
+            currentFile = file;
+            
+            // Update header
+            fileTitle.textContent = file.name;
+            contentHeader.classList.add('visible');
+
+            // Show loading state
+            welcomeMessage.style.display = 'none';
+            codeDisplay.style.display = 'block';
+            codeDisplay.classList.add('visible');
+            codeDisplay.innerHTML = '<div class="loading">Loading file content...</div>';
+
+            try {
+                const content = await loadFileContent(file.path);
+                displayFileContent(file, content);
+            } catch (error) {
+                codeDisplay.innerHTML = `<div class="error-message">Failed to load file content: ${error.message}</div>`;
+            }
+        }
+
+        // Load file content from GitHub
+        async function loadFileContent(path) {
+            const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${encodeURIComponent(path)}`;
+            const response = await fetch(url);
+            
+            if (!response.ok) {
+                throw new Error(`Failed to fetch file: ${response.status}`);
+            }
+
+            const content = await response.text();
+            return content;
+        }
+
+        // Display file content
+        function displayFileContent(file, content) {
+            const ext = file.name.split('.').pop().toLowerCase();
+
+            // For binary files like PDFs, show download message
+            if (ext === 'pdf') {
+                codeDisplay.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #555;">
+                        <div style="font-size: 48px; margin-bottom: 20px;">📕</div>
+                        <h3>${file.name}</h3>
+                        <p style="margin: 20px 0; color: #777;">This is a PDF file. Click the download button to view it.</p>
+                    </div>
+                `;
+            } else {
+                // Display text content
+                const pre = document.createElement('pre');
+                const code = document.createElement('code');
+                code.textContent = content;
+                pre.appendChild(code);
+                codeDisplay.innerHTML = '';
+                codeDisplay.appendChild(pre);
+            }
+        }
+
+        // Download current file
+        downloadBtn.addEventListener('click', () => {
+            if (!currentFile) return;
+
+            const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${encodeURIComponent(currentFile.path)}`;
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = currentFile.name;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+
+        // Start the application
+        init();
+    </script>
+</body>
+</html>
