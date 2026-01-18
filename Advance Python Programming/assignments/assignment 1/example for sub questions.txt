@@ -1,0 +1,10 @@
+example for sub-questions: 
+a) Check its shape
+print("\na) Shape of DataFrame:")
+print(df_sales.shape)
+
+b) Add a new column total_amount = price * quantity
+df_sales['total_amount'] = df_sales['price'] * df_sales['quantity']
+
+print("\nb) DataFrame with Total Amount")
+print(df_sales)

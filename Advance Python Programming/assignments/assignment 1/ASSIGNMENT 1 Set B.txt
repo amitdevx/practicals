@@ -1,0 +1,209 @@
+
+---
+
+# ASSIGNMENT 1
+
+## SET B
+
+### (As it is in Workbook)
+
+---
+
+1. Consider a following record in DataFrame IPL.
+
+Player | Team | Category | BidPrice | Runs
+Hardik Pandya | Mumbai Indians | Batsman | 13 | 1000
+K L Rahul | Kings Eleven | Batsman | 12 | 2400
+Andre Russel | Kolkata Knight Riders | Batsman | 7 | 900
+Jasprit Bumrah | Mumbai Indians | Bowler | 10 | 200
+Virat Kohli | RCB | Batsman | 17 | 3600
+Rohit Sharma | Mumbai Indians | Batsman | 15 | 3700
+
+Create above DataFrame in python write python code for following:
+
+a) Retrieve first 2 rows
+b) Retrieve last 3 rows
+c) Add null values in DataFrame
+d) Find most expensive player
+e) Print total players per team
+f) Find average runs of each player
+g) Drop rows with missing data
+
+---
+
+2. Create a following DataFrame named as “data”. Write the python code for the following commands.
+
+Company | Count | Price
+Pencil Apsara | 15 | 250
+Pencil Natraj | 20 | 200
+Pen Cello | 25 | 600
+Pen Parkar | 35 | 900
+Eraser Apsara | 20 | 300
+
+a) Find all rows with the label “Pencil”. Extract all columns
+b) Change the Eraser count as 25 instead of 20
+c) List only the columns Company and Price
+d) List only rows with labels ‘Pencil’ and ‘Pen’
+e) Delete column Count from the above DataFrame
+
+---
+
+3. Write a python program to join the two DataFrames with matching records from both sides where available.
+
+student_data1
+Id | Name | Marks
+S2 | Ryder Storey | 210
+S3 | Bryce Jensen | 190
+S4 | Ed Bernal | 222
+S5 | Kwame Morin | 199
+S5 | Kwame Morin | 199
+
+student_data2
+Id | Name | Marks
+S4 | Scarlette Fisher | 201
+S5 | Carla Williamson | 200
+S6 | Dante Morse | 198
+S7 | Kaiser William | 219
+S8 | Madeeha Preston | 201
+
+---
+
+# CODES (Corrected)
+
+---
+
+## Q1) IPL DataFrame Operations
+
+```
+import pandas as pd
+import numpy as np
+
+data = {
+    'player': ['Hardik Pandya', 'K L Rahul', 'Andre Russel',
+               'Jasprit Bumrah', 'Virat Kohli', 'Rohit Sharma'],
+    'team': ['Mumbai Indians', 'Kings Eleven', 'Kolkata Knight Riders',
+             'Mumbai Indians', 'RCB', 'Mumbai Indians'],
+    'category': ['Batsman', 'Batsman', 'Batsman',
+                 'Bowler', 'Batsman', 'Batsman'],
+    'bidprice': [13, 12, 7, 10, 17, 15],
+    'runs': [1000, 2400, 900, 200, 3600, 3700]
+}
+
+IPL = pd.DataFrame(data)
+
+print("Original DataFrame")
+print(IPL)
+
+# a) First 2 rows
+print("\nFirst 2 rows")
+print(IPL.head(2))
+
+# b) Last 3 rows
+print("\nLast 3 rows")
+print(IPL.tail(3))
+
+# c) Add null values
+IPL.loc[2, 'runs'] = np.nan
+IPL.loc[4, 'bidprice'] = np.nan
+
+print("\nAfter adding null values")
+print(IPL)
+
+# d) Most expensive player
+print("\nMost expensive player")
+print(IPL.loc[IPL['bidprice'].idxmax()])
+
+# e) Total players per team
+print("\nTotal players per team")
+print(IPL['team'].value_counts())
+
+# f) Average runs of each player
+print("\nAverage runs of each player")
+print(IPL.groupby('player')['runs'].mean())
+
+# g) Drop rows with missing data
+IPL_clean = IPL.dropna()
+
+print("\nAfter dropping missing values")
+print(IPL_clean)
+```
+
+---
+
+## Q2) DataFrame “data”
+
+```
+import pandas as pd
+
+data = pd.DataFrame(
+    {
+        'company': ['Apsara', 'Natraj', 'Cello', 'Parkar', 'Apsara'],
+        'count': [15, 20, 25, 35, 20],
+        'price': [250, 200, 600, 900, 300]
+    },
+    index=['Pencil', 'Pencil', 'Pen', 'Pen', 'Eraser']
+)
+
+print("Original DataFrame")
+print(data)
+
+# a) Rows with label Pencil
+print("\nRows with label Pencil")
+print(data.loc['Pencil'])
+
+# b) Change eraser count to 25
+data.loc['Eraser', 'count'] = 25
+
+print("\nAfter changing eraser count")
+print(data)
+
+# c) Company and Price columns
+print("\nCompany and Price columns")
+print(data[['company', 'price']])
+
+# d) Rows with Pencil and Pen
+print("\nRows with Pencil and Pen")
+print(data.loc[['Pencil', 'Pen']])
+
+# e) Delete Count column
+data_new = data.drop(columns=['count'])
+
+print("\nAfter deleting Count column")
+print(data_new)
+```
+
+---
+
+## Q3) Join Two DataFrames
+
+```
+import pandas as pd
+
+student_data1 = pd.DataFrame({
+    'Id': ['S2', 'S3', 'S4', 'S5', 'S5'],
+    'Name': ['Ryder Storey', 'Bryce Jensen', 'Ed Bernal',
+             'Kwame Morin', 'Kwame Morin'],
+    'Marks': [210, 190, 222, 199, 199]
+})
+
+student_data2 = pd.DataFrame({
+    'Id': ['S4', 'S5', 'S6', 'S7', 'S8'],
+    'Name': ['Scarlette Fisher', 'Carla Williamson',
+             'Dante Morse', 'Kaiser William', 'Madeeha Preston'],
+    'Marks': [201, 200, 198, 219, 201]
+})
+
+print("Student Data 1")
+print(student_data1)
+
+print("\nStudent Data 2")
+print(student_data2)
+
+result = pd.merge(student_data1, student_data2, on='Id', how='inner')
+
+print("\nMatching records from both DataFrames")
+print(result)
+```
+
+---
+

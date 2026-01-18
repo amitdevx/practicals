@@ -1,0 +1,165 @@
+
+# ASSIGNMENT 1
+
+## SET A
+
+###
+
+---
+
+1. Create a dictionary that stores the mobile names list as value for ‘Mobiles’ key and their price list as value for ‘Price’ key. Create DataFrame from this dictionary.
+
+2. Create a data.csv file containing employee name, designation, salary of an employee. Display the file as DataFrame.
+
+3. Write a python program to calculate sum, mean, median, mode, Standard deviation of following values:
+   CA : [87, 89, 98, 94, 78, 77]
+
+4. Write a python program to fill missing values (NaN) in a DataFrame using fillna() with mean value and detect duplicates using duplicated() method.
+
+5. Create a DataFrame from a dictionary and display the first 5 rows.
+
+6. Load sales.csv file into a DataFrame
+   a) check its shape
+   b) Add a new column total_amount = price * quantity.
+   c) Select only the columns: customer_name, product, quantity, price.
+   d) Filter rows where the region is "North".
+
+---
+
+# CODES (Corrected)
+
+---
+
+### Q1) Dictionary to DataFrame
+
+```
+import pandas as pd
+
+data = {
+    'Mobiles': ['Samsung', 'iPhone', 'OnePlus', 'Redmi'],
+    'Price': [20000, 70000, 40000, 15000]
+}
+
+df = pd.DataFrame(data)
+print(df)
+```
+
+---
+
+### Q2) Read CSV file as DataFrame
+
+```
+import pandas as pd
+
+df = pd.read_csv('data.csv')
+print(df)
+```
+
+Example data.csv file:
+
+```
+Name,Designation,Salary
+Amit,Manager,45000
+Ravi,Clerk,20000
+Neha,HR,38000
+```
+
+---
+
+### Q3) Sum, Mean, Median, Mode, Standard Deviation
+
+```
+import numpy as np
+
+CA = np.array([87, 89, 98, 94, 78, 77])
+
+total = np.sum(CA)
+mean = np.mean(CA)
+median = np.median(CA)
+
+values, counts = np.unique(CA, return_counts=True)
+mode = values[counts == counts.max()]
+
+std_dev = np.std(CA, ddof=1)
+
+print("Sum =", total)
+print("Mean =", mean)
+print("Median =", median)
+print("Mode =", mode)
+print("Standard Deviation =", std_dev)
+```
+
+---
+
+### Q4) Fill NaN and Detect Duplicates
+
+```
+import pandas as pd
+import numpy as np
+
+data = {
+    'Marks': [85, 90, np.nan, 75, 90, np.nan],
+    'Age': [20, 21, 22, np.nan, 21, 22]
+}
+
+df = pd.DataFrame(data)
+
+print("Original DataFrame")
+print(df)
+
+df_fill = df.fillna(df.mean())
+
+print("\nDataFrame after filling NaN with mean")
+print(df_fill)
+
+duplicates = df_fill.duplicated()
+
+print("\nDuplicate Rows")
+print(duplicates)
+```
+
+---
+
+### Q5) Display First 5 Rows
+
+```
+import pandas as pd
+
+data = {
+    'Name': ['Amit', 'Neha', 'Rahul', 'Priya', 'Kiran', 'Sneha', 'Om'],
+    'Age': [20, 21, 22, 23, 24, 25, 26],
+    'Marks': [85, 89, 78, 88, 92, 80, 95]
+}
+
+df = pd.DataFrame(data)
+
+print(df.head())
+```
+
+---
+
+### Q6) Sales CSV Operations
+
+```
+import pandas as pd
+
+df = pd.read_csv("sales.csv")
+
+print("Shape of DataFrame:", df.shape)
+
+df['total_amount'] = df['price'] * df['quantity']
+
+print("\nDataFrame with Total Amount")
+print(df)
+
+selected_columns = df[['customer_name', 'product', 'quantity', 'price']]
+print("\nSelected Columns")
+print(selected_columns)
+
+north_region = df[df['region'] == "North"]
+print("\nRows where Region is North")
+print(north_region)
+```
+
+---
+
