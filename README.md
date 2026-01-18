@@ -1,6 +1,6 @@
 # Practicals Repository
 
-This repository contains various practical assignments for the sppu university and projects across different topics covered during academic studies. Below is an overview of the folders available:
+This repository contains various practical assignments for the sppu university (currently for sybsc sem 4 only) and projects across different topics covered during academic studies. Below is an overview of the folders available:
 
 ## Folders
 
