@@ -23,5 +23,5 @@ University: Savitribai Phule Pune University (SPPU) | Course: B.Sc. Computer Sci
 ## Disclaimer
 
 <h2>
-This repository is not officially related to Savitribai Phule Pune University. All materials are shared by students only for learning and reference purposes. Students should understand the work before submitting it.
+This repository is not officially related to Savitribai Phule Pune University. All materials are shared by students only for learning and reference purposes. Students should understand the work before submitting it. ~ Amitdevx
 </h2>
