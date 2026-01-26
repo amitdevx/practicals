@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Manager</title>
+</head>
+<body>
+    <h1>Product Manager</h1>
+    
+    <form method="POST" action="/add">
+        Name: <input type="text" name="name" required>
+        Price: <input type="number" name="price" required>
+        Quantity: <input type="number" name="qty" required>
+        <button type="submit">Add</button>
+    </form>
+    
+    <h2>All Products</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Action</th>
+        </tr>
+        {% for p in products %}
+        <tr>
+            <td>{{ p[0] }}</td>
+            <td>{{ p[1] }}</td>
+            <td>{{ p[2] }}</td>
+            <td>{{ p[3] }}</td>
+            <td><a href="/delete/{{ p[0] }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

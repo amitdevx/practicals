@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Attendance</title>
+</head>
+<body>
+    <h1>Employee Attendance</h1>
+    
+    <form method="POST">
+        Name: <input type="text" name="name" required>
+        Status: 
+        <select name="status" required>
+            <option value="Present">Present</option>
+            <option value="Absent">Absent</option>
+        </select>
+        <button type="submit">Add</button>
+    </form>
+    
+    <h2>Attendance Records</h2>
+    <p><b>Total Present:</b> {{ present }} | <b>Total Absent:</b> {{ absent }}</p>
+    
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Status</th>
+        </tr>
+        {% for r in records %}
+        <tr>
+            <td>{{ r[0] }}</td>
+            <td>{{ r[1] }}</td>
+            <td>{{ r[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

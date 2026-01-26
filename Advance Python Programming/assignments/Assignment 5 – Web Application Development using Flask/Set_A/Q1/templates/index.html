@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Info</title>
+    <style>
+        body { font-family: Arial; text-align: center; }
+        img { width: 400px; margin: 20px; }
+        ul { list-style: none; }
+    </style>
+</head>
+<body>
+    <h1>MIT College of Engineering</h1>
+    
+    <img src="{{ url_for('static', filename='college.jpg') }}" alt="College Image">
+    
+    <h2>Courses Available</h2>
+    <ul>
+        <li>Computer Engineering</li>
+        <li>Information Technology</li>
+        <li>Electronics Engineering</li>
+        <li>Mechanical Engineering</li>
+        <li>Civil Engineering</li>
+    </ul>
+</body>
+</html>
