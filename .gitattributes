@@ -1,0 +1,36 @@
+# .gitattributes file for proper GitHub language detection
+
+# Exclude PDFs from language statistics (documentation)
+*.pdf linguist-documentation
+
+# Exclude git hook samples from statistics
+*.sample linguist-vendored
+
+# Mark checkpoint files as generated (not to be counted)
+*-checkpoint.ipynb linguist-generated
+.ipynb_checkpoints/* linguist-generated
+
+# Mark HTML templates as documentation (Flask templates)
+templates/*.html linguist-documentation
+*.html linguist-documentation
+
+# Mark text files as documentation
+*.txt linguist-documentation
+
+# Mark CSV files as data (not code)
+*.csv linguist-detectable=false
+
+# Ensure Jupyter Notebooks are detected as Python
+*.ipynb linguist-language=Jupyter-Notebook
+
+# Ensure Python files are properly detected
+*.py linguist-language=Python
+
+# Ensure C files are properly detected
+*.c linguist-language=C
+
+# Mark SQL files as detectable
+*.sql linguist-language=SQL
+
+# Exclude coming_soon.txt placeholder files
+coming_soon.txt linguist-documentation
