@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 20px; line-height: 1.6; }
+        h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #34495e; border-bottom: 2px solid #95a5a6; padding-bottom: 8px; margin-top: 30px; }
+        h3 { color: #7f8c8d; margin-top: 25px; }
+        h4 { color: #95a5a6; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; border-left: 4px solid #3498db; }
+        pre code { background: none; padding: 0; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #3498db; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        blockquote { border-left: 4px solid #3498db; padding-left: 15px; color: #555; margin: 20px 0; }
+        hr { border: none; border-top: 2px solid #eee; margin: 30px 0; }
+        ul, ol { margin: 15px 0; padding-left: 30px; }
+        li { margin: 8px 0; }
+    </style>
+</head>
+<body>
+<h1>Assignment 3 - Set C: Theoretical Questions and Answers</h1>
+<br>
+<h2>Graph Theory - Data Structures and Representations</h2>
+<br>
+<hr>
+<br>
+<h2>Question 1</h2>
+<br>
+<p><strong>Which data structure is used to implement Depth First Search?</strong></p>
+<br>
+<h3>Answer</h3>
+<br>
+<p><strong>Stack</strong> data structure is used to implement Depth First Search (DFS).</p>
+<br>
+<h3>Explanation</h3>
+<br>
+<p>DFS can be implemented in two ways:</p>
+<p>1. <strong>Recursive approach</strong> - Uses implicit call stack</p>
+<p>2. <strong>Iterative approach</strong> - Uses explicit stack data structure</p>
+<br>
+<h4>Why Stack?</h4>
+<br>
+<li>Stack follows Last-In-First-Out (LIFO) principle</li>
+<li>DFS explores as deep as possible along each branch before backtracking</li>
+<li>When a vertex is visited, its adjacent unvisited vertices are pushed onto stack</li>
+<li>We process the most recently discovered vertex first (LIFO behavior)</li>
+<br>
+<h4>Recursive DFS (Using Implicit Stack)</h4>
+<br>
+<pre><code>
+void DFS(int vertex, int visited[]) {
+    visited[vertex] = 1;
+    printf("%d ", vertex);
+    
+    for each adjacent vertex v of vertex {
+        if (!visited[v]) {
+            DFS(v, visited);  // Recursive call uses call stack
+        }
+    }
+}
+</code></pre>
+<br>
+<h4>Iterative DFS (Using Explicit Stack)</h4>
+<br>
+<pre><code>
+void DFS(int start) {
+    Stack s;
+    int visited[MAX] = {0};
+    
+    push(&s, start);
+    
+    while (!isEmpty(&s)) {
+        int vertex = pop(&s);
+        
+        if (!visited[vertex]) {
+            visited[vertex] = 1;
+            printf("%d ", vertex);
+            
+            for each adjacent vertex v of vertex {
+                if (!visited[v]) {
+                    push(&s, v);
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<br>
+<h4>Example</h4>
+<br>
+<pre><code>
+Graph:  0 -- 1
+        |    |
+        2 -- 3
+
+DFS from 0: 0 → 2 → 3 → 1
+</code></pre>
+<br>
+<p><strong>Stack Operations:</strong></p>
+<pre><code>
+Initial: [0]
+Pop 0, push 2,1 → [2, 1]
+Pop 2, push 3 → [3, 1]
+Pop 3 → [1]
+Pop 1 → []
+</code></pre>
+<br>
+<p><strong>Time Complexity:</strong> O(V + E) where V = vertices, E = edges  </p>
+<p><strong>Space Complexity:</strong> O(V) for stack</p>
+<br>
+<hr>
+<br>
+<h2>Question 2</h2>
+<br>
+<p><strong>Where is the new node appended in Breadth-first search of OPEN list?</strong></p>
+<br>
+<h3>Answer</h3>
+<br>
+<p>In Breadth-First Search (BFS), new nodes are appended at the <strong>REAR (end)</strong> of the OPEN list.</p>
+<br>
+<h3>Explanation</h3>
+<br>
+<p>The OPEN list in BFS is implemented as a <strong>Queue</strong>, which follows FIFO (First-In-First-Out) principle.</p>
+<br>
+<h4>Queue Operations in BFS</h4>
+<br>
+<p>1. <strong>ENQUEUE (Insert at rear):</strong> Add newly discovered nodes</p>
+<p>2. <strong>DEQUEUE (Remove from front):</strong> Process nodes in order of discovery</p>
+<br>
+<h4>BFS Algorithm with OPEN List</h4>
+<br>
+<p>1. Start with source vertex in OPEN list</p>
+<p>2. While OPEN list is not empty:</p>
+<li>Remove vertex from FRONT of OPEN list</li>
+<li>Process/visit this vertex</li>
+<li>Add all unvisited adjacent vertices to REAR of OPEN list</li>
+<br>
+<h4>Why Rear?</h4>
+<br>
+<li>Ensures level-by-level traversal</li>
+<li>Nodes discovered first are processed first</li>
+<li>Maintains the breadth-first property</li>
+<li>All nodes at level L are processed before level L+1</li>
+<br>
+<h4>Example</h4>
+<br>
+<pre><code>
+Graph:      0
+           /|\
+          1 2 3
+         /
+        4
+
+BFS from 0:
+</code></pre>
+<br>
+<p><strong>Step-by-step:</strong></p>
+<pre><code>
+Step 1: OPEN = [0]
+Step 2: Remove 0 from front, add 1,2,3 to rear → OPEN = [1,2,3]
+Step 3: Remove 1 from front, add 4 to rear → OPEN = [2,3,4]
+Step 4: Remove 2 from front → OPEN = [3,4]
+Step 5: Remove 3 from front → OPEN = [4]
+Step 6: Remove 4 from front → OPEN = []
+
+BFS Order: 0 1 2 3 4
+</code></pre>
+<br>
+<h3>Summary</h3>
+<br>
+<li><strong>New nodes:</strong> Added at REAR (enqueue)</li>
+<li><strong>Processed nodes:</strong> Removed from FRONT (dequeue)</li>
+<li><strong>Data Structure:</strong> Queue</li>
+<li><strong>Property:</strong> FIFO ensures level-order traversal</li>
+<br>
+<hr>
+<br>
+<h2>Question 3</h2>
+<br>
+<p><strong>What is a complete graph?</strong></p>
+<br>
+<h3>Answer</h3>
+<br>
+<p>A <strong>Complete Graph</strong> is a graph in which every pair of distinct vertices is connected by a unique edge.</p>
+<br>
+<h3>Definition</h3>
+<br>
+<p>A complete graph with n vertices has exactly <strong>n(n-1)/2</strong> edges (for undirected graph) and <strong>n(n-1)</strong> edges (for directed graph).</p>
+<br>
+<p><strong>Notation:</strong> Kₙ (where n = number of vertices)</p>
+<br>
+<h3>Properties</h3>
+<br>
+<p>1. Every vertex is connected to every other vertex</p>
+<p>2. Maximum number of edges possible for n vertices</p>
+<p>3. Degree of each vertex = n-1</p>
+<p>4. It is a regular graph</p>
+<p>5. It is always connected</p>
+<p>6. Diameter = 1 (shortest path between any two vertices is 1)</p>
+<br>
+<h3>Examples</h3>
+<br>
+<h4>K₃ (Complete graph with 3 vertices)</h4>
+<br>
+<pre><code>
+    0
+   / \
+  1---2
+</code></pre>
+<br>
+<p><strong>Edges:</strong> (0,1), (0,2), (1,2)  </p>
+<p><strong>Total edges</strong> = 3(3-1)/2 = 3</p>
+<br>
+<h4>K₄ (Complete graph with 4 vertices)</h4>
+<br>
+<pre><code>
+    0---1
+    |\ /|
+    | X |
+    |/ \|
+    3---2
+</code></pre>
+<br>
+<p><strong>Edges:</strong> (0,1), (0,2), (0,3), (1,2), (1,3), (2,3)  </p>
+<p><strong>Total edges</strong> = 4(4-1)/2 = 6</p>
+<br>
+<h4>K₅ (Complete graph with 5 vertices)</h4>
+<br>
+<p><strong>Total edges</strong> = 5(5-1)/2 = 10</p>
+<br>
+<h3>Formula for Edges</h3>
+<br>
+<li><strong>Undirected:</strong> E = n(n-1)/2</li>
+<li><strong>Directed:</strong> E = n(n-1)</li>
+<br>
+<p>Where:</p>
+<li>n = number of vertices</li>
+<li>E = number of edges</li>
+<br>
+<h3>Applications</h3>
+<br>
+<p>1. Network topology where every node communicates with every other node</p>
+<p>2. Modeling fully connected systems</p>
+<p>3. Clique problems in graph theory</p>
+<p>4. Tournament scheduling</p>
+<p>5. Social networks (everyone knows everyone)</p>
+<br>
+<h3>Key Difference</h3>
+<br>
+<li><strong>Complete Graph:</strong> ALL possible edges exist</li>
+<li><strong>Connected Graph:</strong> At least one path exists between any two vertices (may not have all edges)</li>
+<br>
+<hr>
+<br>
+<h2>Question 4</h2>
+<br>
+<p><strong>Which data structure is used to implement adjacency list method?</strong></p>
+<br>
+<h3>Answer</h3>
+<br>
+<p><strong>Linked List</strong> data structure is used to implement the adjacency list method.</p>
+<br>
+<h3>Structure</h3>
+<br>
+<p>An adjacency list consists of:</p>
+<p>1. An array of pointers/heads (size = number of vertices)</p>
+<p>2. Each array element points to a linked list of adjacent vertices</p>
+<br>
+<h3>Implementation</h3>
+<br>
+<pre><code>
+typedef struct Node {
+    int vertex;           // Destination vertex
+    struct Node* next;    // Pointer to next adjacent vertex
+} Node;
+
+// Array of linked list heads
+Node* adjacencyList[MAX_VERTICES];
+</code></pre>
+<br>
+<h3>Why Linked List?</h3>
+<br>
+<p>1. <strong>Dynamic size</strong> - Can add edges without knowing total count beforehand</p>
+<p>2. <strong>Space efficient</strong> - Only stores existing edges</p>
+<p>3. <strong>Easy insertion/deletion</strong> of edges</p>
+<p>4. <strong>Efficient traversal</strong> of neighbors</p>
+<br>
+<h3>Structure Example</h3>
+<br>
+<pre><code>
+Graph:    0 -- 1
+          |    |
+          2 -- 3
+
+Adjacency List:
+0: [1] -> [2] -> NULL
+1: [0] -> [3] -> NULL
+2: [0] -> [3] -> NULL
+3: [1] -> [2] -> NULL
+</code></pre>
+<br>
+<h3>Memory Representation</h3>
+<br>
+<table>
+<tr><th>Index</th><th>Linked List</th></tr>
+<tr><th>0</th><th>→ [1] → [2] → NULL</th></tr>
+<tr><th>1</th><th>→ [0] → [3] → NULL</th></tr>
+<tr><th>2</th><th>→ [0] → [3] → NULL</th></tr>
+<tr><th>3</th><th>→ [1] → [2] → NULL</th></tr>
+</table>
+<br>
+<h3>Operations</h3>
+<br>
+<table>
+<tr><th>Operation</th><th>Time Complexity</th></tr>
+<tr><th>Add Edge</th><th>O(1)</th></tr>
+<tr><th>Check Edge</th><th>O(degree)</th></tr>
+<tr><th>Remove Edge</th><th>O(degree)</th></tr>
+<tr><th>Space</th><th>O(V + E)</th></tr>
+</table>
+<br>
+<p>Where V = vertices, E = edges</p>
+<br>
+<h3>Advantages</h3>
+<br>
+<li>Space efficient for sparse graphs</li>
+<li>Fast to iterate over neighbors</li>
+<li>Easy to add/remove edges</li>
+<li>Supports weighted graphs (add weight field to node)</li>
+<br>
+<h3>Variations</h3>
+<br>
+<p>1. Singly Linked List (most common)</p>
+<p>2. Doubly Linked List (for easy deletion)</p>
+<p>3. Sorted Linked List (for ordered traversal)</p>
+<p>4. Array of vectors/lists (in C++)</p>
+<br>
+<h3>Comparison with Adjacency Matrix</h3>
+<br>
+<table>
+<tr><th>Aspect</th><th>Adjacency List</th><th>Adjacency Matrix</th></tr>
+<tr><th>Space Complexity</th><th>O(V + E)</th><th>O(V²)</th></tr>
+<tr><th>Edge Check Time</th><th>O(degree)</th><th>O(1)</th></tr>
+<tr><th>Best for</th><th>Sparse graphs</th><th>Dense graphs</th></tr>
+</table>
+<br>
+<p><strong>Best for:</strong> Sparse graphs where E << V²</p>
+<br>
+<hr>
+<br>
+<h2>Question 5</h2>
+<br>
+<p><strong>Compare adjacency matrix and adjacency list.</strong></p>
+<br>
+<h3>Answer</h3>
+<br>
+<h2>Adjacency Matrix vs Adjacency List</h2>
+<br>
+<h3>1. Representation</h3>
+<br>
+<p><strong>Adjacency Matrix:</strong></p>
+<li>2D array of size V × V</li>
+<li>Matrix[i][j] = 1 if edge exists from i to j, else 0</li>
+<li>For weighted graphs: Matrix[i][j] = weight</li>
+<br>
+<p><strong>Adjacency List:</strong></p>
+<li>Array of linked lists of size V</li>
+<li>Each index contains list of adjacent vertices</li>
+<li>For weighted graphs: Store (vertex, weight) in nodes</li>
+<br>
+<h3>2. Space Complexity</h3>
+<br>
+<table>
+<tr><th>Method</th><th>Space</th><th>Best for</th></tr>
+<tr><th>Adjacency Matrix</th><th>O(V²)</th><th>Dense graphs</th></tr>
+<tr><th>Adjacency List</th><th>O(V + E)</th><th>Sparse graphs</th></tr>
+</table>
+<br>
+<h3>3. Time Complexity</h3>
+<br>
+<table>
+<tr><th>Operation</th><th>Adjacency Matrix</th><th>Adjacency List</th></tr>
+<tr><th>Add Edge</th><th>O(1)</th><th>O(1)</th></tr>
+<tr><th>Remove Edge</th><th>O(1)</th><th>O(degree)</th></tr>
+<tr><th>Check Edge (i,j)</th><th>O(1)</th><th>O(degree)</th></tr>
+<tr><th>Get All Neighbors</th><th>O(V)</th><th>O(degree)</th></tr>
+</table>
+<br>
+<h3>4. Advantages</h3>
+<br>
+<h4>Adjacency Matrix ✓</h4>
+<li>Edge lookup is O(1)</li>
+<li>Simple to implement</li>
+<li>Easy to check if edge exists</li>
+<li>Good for dense graphs (E ≈ V²)</li>
+<li>Better for adjacency queries</li>
+<li>Can represent multi-graphs easily</li>
+<br>
+<h4>Adjacency List ✓</h4>
+<li>Space efficient for sparse graphs</li>
+<li>Fast to iterate over neighbors</li>
+<li>Easy to add edges dynamically</li>
+<li>Good for most graph algorithms (BFS, DFS)</li>
+<li>Less memory for sparse graphs</li>
+<li>Faster neighbor traversal</li>
+<br>
+<h3>5. Disadvantages</h3>
+<br>
+<h4>Adjacency Matrix ✗</h4>
+<li>Wastes space for sparse graphs</li>
+<li>Takes O(V²) space even with few edges</li>
+<li>Traversing all neighbors takes O(V) time</li>
+<br>
+<h4>Adjacency List ✗</h4>
+<li>Edge lookup takes O(degree) time</li>
+<li>More complex implementation</li>
+<li>Extra space for pointers</li>
+<br>
+<h3>6. When to Use</h3>
+<br>
+<p><strong>Use Adjacency Matrix when:</strong></p>
+<li>Graph is dense (E ≈ V²)</li>
+<li>Need frequent edge existence queries</li>
+<li>Need quick access to any edge</li>
+<li>Working with small graphs</li>
+<br>
+<p><strong>Use Adjacency List when:</strong></p>
+<li>Graph is sparse (E << V²)</li>
+<li>Need to frequently traverse neighbors</li>
+<li>Memory is a concern</li>
+<li>Graph size is large</li>
+<li>Most real-world graphs (social networks, roads, etc.)</li>
+<br>
+<h3>7. Example Comparison</h3>
+<br>
+<p><strong>Graph:</strong> 0-1, 1-2 (3 vertices, 2 edges)</p>
+<br>
+<p><strong>Adjacency Matrix:</strong></p>
+<pre><code>
+  0 1 2
+0[0 1 0]
+1[1 0 1]
+2[0 1 0]
+</code></pre>
+<p>Space: 9 units</p>
+<br>
+<p><strong>Adjacency List:</strong></p>
+<pre><code>
+0: [1]
+1: [0, 2]
+2: [1]
+</code></pre>
+<p>Space: 4 units (nodes)</p>
+<br>
+<h3>Conclusion</h3>
+<br>
+<li><strong>Adjacency List</strong> is preferred for most applications due to space efficiency</li>
+<li><strong>Adjacency Matrix</strong> is useful when graph is dense or edge queries are frequent</li>
+<br>
+<hr>
+<br>
+
+</body>
+</html>

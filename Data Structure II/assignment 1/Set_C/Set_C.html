@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 20px; line-height: 1.6; }
+        h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #34495e; border-bottom: 2px solid #95a5a6; padding-bottom: 8px; margin-top: 30px; }
+        h3 { color: #7f8c8d; margin-top: 25px; }
+        h4 { color: #95a5a6; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; border-left: 4px solid #3498db; }
+        pre code { background: none; padding: 0; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #3498db; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        blockquote { border-left: 4px solid #3498db; padding-left: 15px; color: #555; margin: 20px 0; }
+        hr { border: none; border-top: 2px solid #eee; margin: 30px 0; }
+        ul, ol { margin: 15px 0; padding-left: 30px; }
+        li { margin: 8px 0; }
+    </style>
+</head>
+<body>
+<h1>Assignment 1 - Set C: Theoretical Questions and Answers</h1>
+<br>
+<h2>Binary Search Tree - Advanced Operations</h2>
+<br>
+<hr>
+<br>
+<h2>Question 1</h2>
+<br>
+<p><strong>Write a C program which uses Binary search tree library and implements following two functions:</strong></p>
+<br>
+<p>a) <code>int sumodd(T)</code> – returns sum of all odd numbers from BST  </p>
+<p>b) <code>int sumeven(T)</code> – returns sum of all even numbers from BST  </p>
+<p>c) <code>mirror(T)</code> – converts given tree into its mirror image.</p>
+<br>
+<h3>Answer</h3>
+<br>
+<h4>a) Sum of Odd Numbers Function</h4>
+<br>
+<pre><code>
+int sumodd(Node *root) {
+    if (root == NULL) {
+        return 0;
+    }
+    int sum = (root->data % 2 != 0) ? root->data : 0;
+    return sum + sumodd(root->left) + sumodd(root->right);
+}
+</code></pre>
+<br>
+<p>This function recursively traverses the tree and adds up all odd numbers.</p>
+<br>
+<h4>b) Sum of Even Numbers Function</h4>
+<br>
+<pre><code>
+int sumeven(Node *root) {
+    if (root == NULL) {
+        return 0;
+    }
+    int sum = (root->data % 2 == 0) ? root->data : 0;
+    return sum + sumeven(root->left) + sumeven(root->right);
+}
+</code></pre>
+<br>
+<p>This function recursively traverses the tree and adds up all even numbers.</p>
+<br>
+<h4>c) Mirror Function</h4>
+<br>
+<pre><code>
+void mirror(Node *root) {
+    if (root == NULL) {
+        return;
+    }
+    Node *temp = root->left;
+    root->left = root->right;
+    root->right = temp;
+    mirror(root->left);
+    mirror(root->right);
+}
+</code></pre>
+<br>
+<p>This function converts the tree into its mirror image by swapping left and right subtrees recursively.</p>
+<br>
+<h4>Example</h4>
+<br>
+<pre><code>
+Original Tree:      Mirror Tree:
+      5                  5
+     / \                / \
+    3   7              7   3
+   / \   \            /   / \
+  2   4   8          8   4   2
+</code></pre>
+<br>
+<hr>
+<br>
+<h2>Question 2</h2>
+<br>
+<p><strong>Write a function to delete an element from BST.</strong></p>
+<br>
+<h3>Answer</h3>
+<br>
+<pre><code>
+Node* findMin(Node *root) {
+    while (root->left != NULL) {
+        root = root->left;
+    }
+    return root;
+}
+
+Node* deleteNode(Node *root, int key) {
+    if (root == NULL) {
+        return NULL;
+    }
+    
+    if (key < root->data) {
+        root->left = deleteNode(root->left, key);
+    } else if (key > root->data) {
+        root->right = deleteNode(root->right, key);
+    } else {
+        // Node with only one child or no child
+        if (root->left == NULL) {
+            Node *temp = root->right;
+            free(root);
+            return temp;
+        } else if (root->right == NULL) {
+            Node *temp = root->left;
+            free(root);
+            return temp;
+        }
+        
+        // Node with two children
+        Node *temp = findMin(root->right);
+        root->data = temp->data;
+        root->right = deleteNode(root->right, temp->data);
+    }
+    return root;
+}
+</code></pre>
+<br>
+<h3>Explanation</h3>
+<br>
+<p>The deletion algorithm handles three cases:</p>
+<br>
+<p>1. <strong>Node with no children (Leaf node):</strong>  </p>
+<p>   Simply remove the node and return NULL.</p>
+<br>
+<p>2. <strong>Node with one child:</strong>  </p>
+<p>   Remove the node and replace it with its child.</p>
+<br>
+<p>3. <strong>Node with two children:</strong>  </p>
+<p>   Find the inorder successor (smallest node in right subtree), copy its value to the current node, and delete the successor.</p>
+<br>
+<p><strong>Time Complexity:</strong> O(h) where h is the height of the tree  </p>
+<p><strong>Space Complexity:</strong> O(h) due to recursion stack</p>
+<br>
+<hr>
+<br>
+<h2>Question 3</h2>
+<br>
+<p><strong>What modifications are required in search function to count the number of comparisons required?</strong></p>
+<br>
+<h3>Answer</h3>
+<br>
+<p>To count the number of comparisons in the search function, we need to add a counter variable that increments with each comparison made during the search operation.</p>
+<br>
+<h4>Modified Search Function</h4>
+<br>
+<pre><code>
+int searchWithCount(Node *root, int key, int *comparisons) {
+    if (root == NULL) {
+        return 0;  // Element not found
+    }
+    
+    (*comparisons)++;  // Increment comparison count
+    
+    if (root->data == key) {
+        return 1;  // Element found
+    }
+    
+    (*comparisons)++;  // Increment for the next comparison
+    
+    if (key < root->data) {
+        return searchWithCount(root->left, key, comparisons);
+    } else {
+        return searchWithCount(root->right, key, comparisons);
+    }
+}
+</code></pre>
+<br>
+<h4>Usage Example</h4>
+<br>
+<pre><code>
+int main() {
+    Node *root = NULL;
+    int comparisons = 0;
+    int key = 10;
+    
+    // Build tree
+    root = insert(root, 50);
+    root = insert(root, 30);
+    root = insert(root, 70);
+    root = insert(root, 20);
+    root = insert(root, 40);
+    
+    // Search with comparison count
+    if (searchWithCount(root, key, &comparisons)) {
+        printf("Element %d found after %d comparisons\n", key, comparisons);
+    } else {
+        printf("Element %d not found after %d comparisons\n", key, comparisons);
+    }
+    
+    return 0;
+}
+</code></pre>
+<br>
+<h3>Key Modifications</h3>
+<br>
+<p>1. Added a pointer parameter <code>comparisons</code> to track the count</p>
+<p>2. Increment the counter before each comparison operation</p>
+<p>3. Pass the counter by reference using pointer</p>
+<p>4. Return the counter value to display number of comparisons</p>
+<br>
+<h3>Analysis</h3>
+<br>
+<li><strong>Best Case:</strong> O(1) - Element at root (1 comparison)</li>
+<li><strong>Average Case:</strong> O(log n) - Balanced tree</li>
+<li><strong>Worst Case:</strong> O(n) - Skewed tree (all nodes in one direction)</li>
+<br>
+<hr>
+<br>
+
+</body>
+</html>

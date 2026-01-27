@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 20px; line-height: 1.6; }
+        h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #34495e; border-bottom: 2px solid #95a5a6; padding-bottom: 8px; margin-top: 30px; }
+        h3 { color: #7f8c8d; margin-top: 25px; }
+        h4 { color: #95a5a6; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; border-left: 4px solid #3498db; }
+        pre code { background: none; padding: 0; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #3498db; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        blockquote { border-left: 4px solid #3498db; padding-left: 15px; color: #555; margin: 20px 0; }
+        hr { border: none; border-top: 2px solid #eee; margin: 30px 0; }
+        ul, ol { margin: 15px 0; padding-left: 30px; }
+        li { margin: 8px 0; }
+    </style>
+</head>
+<body>
+<h1>Assignment 2 - Set C: Theoretical Questions and Answers</h1>
+<br>
+<h2>Advanced BST Operations and Analysis</h2>
+<br>
+<hr>
+<br>
+<h2>Question 1</h2>
+<br>
+<p><strong>Which data structure is required to display nodes of Binary Search Tree depth wise?</strong></p>
+<br>
+<h3>Answer</h3>
+<br>
+<p><strong>Queue</strong> data structure is required to display nodes of Binary Search Tree depth-wise.</p>
+<br>
+<h3>Explanation</h3>
+<br>
+<p>To display nodes level by level (depth-wise) in a Binary Search Tree, we use the Breadth-First Search (BFS) or Level Order Traversal algorithm, which requires a Queue.</p>
+<br>
+<h4>Why Queue?</h4>
+<br>
+<li>Queue follows First-In-First-Out (FIFO) principle</li>
+<li>It helps process nodes level by level from left to right</li>
+<li>When we visit a node, we enqueue its children (left then right)</li>
+<li>This ensures that all nodes at level L are processed before nodes at level L+1</li>
+<br>
+<h4>Algorithm</h4>
+<br>
+<p>1. Start with root node and enqueue it</p>
+<p>2. While queue is not empty:</p>
+<li>Dequeue a node</li>
+<li>Print/process the node</li>
+<li>Enqueue its left child (if exists)</li>
+<li>Enqueue its right child (if exists)</li>
+<br>
+<h4>Example</h4>
+<br>
+<pre><code>
+Tree:       5
+           / \
+          3   7
+         /   / \
+        2   6   8
+
+Level Order (using Queue): 5 3 7 2 6 8
+</code></pre>
+<br>
+<h4>Queue Operations</h4>
+<br>
+<pre><code>
+Initial: [5]
+Step 1: Dequeue 5, print 5, enqueue 3,7 → [3,7]
+Step 2: Dequeue 3, print 3, enqueue 2 → [7,2]
+Step 3: Dequeue 7, print 7, enqueue 6,8 → [2,6,8]
+Step 4: Dequeue 2, print 2 → [6,8]
+Step 5: Dequeue 6, print 6 → [8]
+Step 6: Dequeue 8, print 8 → []
+</code></pre>
+<br>
+<hr>
+<br>
+<h2>Question 2</h2>
+<br>
+<p><strong>Write a C program to display nodes of Binary Search Tree depth wise.</strong></p>
+<br>
+<h3>Answer</h3>
+<br>
+<pre><code>
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Node {
+    int data;
+    struct Node *left, *right;
+} Node;
+
+typedef struct QueueNode {
+    Node *treeNode;
+    struct QueueNode *next;
+} QueueNode;
+
+typedef struct Queue {
+    QueueNode *front, *rear;
+} Queue;
+
+Queue* createQueue() {
+    Queue *q = (Queue*)malloc(sizeof(Queue));
+    q->front = q->rear = NULL;
+    return q;
+}
+
+void enqueue(Queue *q, Node *node) {
+    QueueNode *temp = (QueueNode*)malloc(sizeof(QueueNode));
+    temp->treeNode = node;
+    temp->next = NULL;
+    
+    if (q->rear == NULL) {
+        q->front = q->rear = temp;
+        return;
+    }
+    q->rear->next = temp;
+    q->rear = temp;
+}
+
+Node* dequeue(Queue *q) {
+    if (q->front == NULL) return NULL;
+    
+    QueueNode *temp = q->front;
+    Node *node = temp->treeNode;
+    q->front = q->front->next;
+    
+    if (q->front == NULL) q->rear = NULL;
+    
+    free(temp);
+    return node;
+}
+
+int isEmpty(Queue *q) {
+    return q->front == NULL;
+}
+
+void levelOrderTraversal(Node *root) {
+    if (root == NULL) return;
+    
+    Queue *q = createQueue();
+    enqueue(q, root);
+    
+    printf("Level Order Traversal (Depth-wise): ");
+    
+    while (!isEmpty(q)) {
+        Node *current = dequeue(q);
+        printf("%d ", current->data);
+        
+        if (current->left != NULL) enqueue(q, current->left);
+        if (current->right != NULL) enqueue(q, current->right);
+    }
+    printf("\n");
+}
+</code></pre>
+<br>
+<hr>
+<br>
+<h2>Question 3</h2>
+<br>
+<p><strong>Write a C program to compare two binary search trees (node wise comparison).</strong></p>
+<br>
+<h3>Answer</h3>
+<br>
+<pre><code>
+int compareNodeWise(Node *tree1, Node *tree2) {
+    // Both trees are empty
+    if (tree1 == NULL && tree2 == NULL) {
+        return 1;
+    }
+    
+    // One tree is empty, other is not
+    if (tree1 == NULL || tree2 == NULL) {
+        return 0;
+    }
+    
+    // Compare current node data
+    if (tree1->data != tree2->data) {
+        return 0;
+    }
+    
+    // Recursively compare left and right subtrees
+    return compareNodeWise(tree1->left, tree2->left) && 
+           compareNodeWise(tree1->right, tree2->right);
+}
+</code></pre>
+<br>
+<h3>Explanation</h3>
+<br>
+<p>This function performs a node-wise comparison of two binary search trees by:</p>
+<br>
+<p>1. <strong>Base Cases:</strong></p>
+<li>Both nodes are NULL → trees are equal (return 1)</li>
+<li>One node is NULL, other is not → trees are not equal (return 0)</li>
+<br>
+<p>2. <strong>Recursive Case:</strong></p>
+<li>Compare data of current nodes</li>
+<li>If data doesn't match → return 0</li>
+<li>If data matches → recursively compare left and right subtrees</li>
+<li>Return 1 only if both subtrees are also equal</li>
+<br>
+<p><strong>Time Complexity:</strong> O(n) where n is number of nodes  </p>
+<p><strong>Space Complexity:</strong> O(h) where h is height (recursion stack)</p>
+<br>
+<h4>Example</h4>
+<br>
+<pre><code>
+Tree 1:    5          Tree 2:    5
+          / \                   / \
+         3   7                 3   7
+        
+compareNodeWise(Tree1, Tree2) returns 1 (Equal)
+
+Tree 1:    5          Tree 2:    5
+          / \                   / \
+         3   7                 3   8
+        
+compareNodeWise(Tree1, Tree2) returns 0 (Not Equal)
+</code></pre>
+<br>
+<hr>
+<br>
+<h2>Question 4</h2>
+<br>
+<p><strong>How to implement mirror() and copy() functions without recursion?</strong></p>
+<br>
+<h3>Answer</h3>
+<br>
+<h4>1. Mirror Function Without Recursion</h4>
+<br>
+<pre><code>
+void mirrorIterative(Node *root) {
+    if (root == NULL) return;
+    
+    Queue *q = createQueue();
+    enqueue(q, root);
+    
+    while (!isEmpty(q)) {
+        Node *current = dequeue(q);
+        
+        // Swap left and right children
+        Node *temp = current->left;
+        current->left = current->right;
+        current->right = temp;
+        
+        // Enqueue children for processing
+        if (current->left != NULL) enqueue(q, current->left);
+        if (current->right != NULL) enqueue(q, current->right);
+    }
+}
+</code></pre>
+<br>
+<p><strong>Approach:</strong></p>
+<li>Uses Queue for level-order traversal</li>
+<li>At each node, swap left and right children</li>
+<li>Continue until all nodes are processed</li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(w) where w is maximum width of tree</li>
+<br>
+<h4>2. Copy Function Without Recursion</h4>
+<br>
+<pre><code>
+Node* copyIterative(Node *root) {
+    if (root == NULL) return NULL;
+    
+    Node *newRoot = createNode(root->data);
+    Queue *q1 = createQueue();  // For original tree
+    Queue *q2 = createQueue();  // For new tree
+    
+    enqueue(q1, root);
+    enqueue(q2, newRoot);
+    
+    while (!isEmpty(q1)) {
+        Node *current1 = dequeue(q1);
+        Node *current2 = dequeue(q2);
+        
+        // Copy left child
+        if (current1->left != NULL) {
+            current2->left = createNode(current1->left->data);
+            enqueue(q1, current1->left);
+            enqueue(q2, current2->left);
+        }
+        
+        // Copy right child
+        if (current1->right != NULL) {
+            current2->right = createNode(current1->right->data);
+            enqueue(q1, current1->right);
+            enqueue(q2, current2->right);
+        }
+    }
+    
+    return newRoot;
+}
+</code></pre>
+<br>
+<p><strong>Approach:</strong></p>
+<li>Uses two parallel queues for original and new tree</li>
+<li>Process nodes level by level</li>
+<li>Create new nodes and link them appropriately</li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(w) where w is maximum width</li>
+<br>
+<h3>Key Difference from Recursion</h3>
+<br>
+<li><strong>Recursion:</strong> Uses call stack (implicit)</li>
+<li><strong>Iterative:</strong> Uses queue (explicit)</li>
+<li>Both have same time complexity but iterative avoids stack overflow for deep trees</li>
+<br>
+<hr>
+<br>
+<h2>Question 5</h2>
+<br>
+<p><strong>How to convert singly linked list to binary search tree?</strong></p>
+<br>
+<h3>Answer</h3>
+<br>
+<h4>Method 1: Simple Approach (O(n))</h4>
+<br>
+<pre><code>
+Node* sortedListToBST(int arr[], int start, int end) {
+    if (start > end) return NULL;
+    
+    int mid = (start + end) / 2;
+    Node *root = createNode(arr[mid]);
+    
+    root->left = sortedListToBST(arr, start, mid - 1);
+    root->right = sortedListToBST(arr, mid + 1, end);
+    
+    return root;
+}
+
+Node* linkedListToBST(LinkedListNode *head) {
+    // Step 1: Count nodes in linked list
+    int count = 0;
+    LinkedListNode *temp = head;
+    while (temp != NULL) {
+        count++;
+        temp = temp->next;
+    }
+    
+    // Step 2: Copy linked list data to array
+    int arr[count];
+    temp = head;
+    for (int i = 0; i < count; i++) {
+        arr[i] = temp->data;
+        temp = temp->next;
+    }
+    
+    // Step 3: Build BST from sorted array
+    return sortedListToBST(arr, 0, count - 1);
+}
+</code></pre>
+<br>
+<p><strong>Time Complexity:</strong> O(n)  </p>
+<p><strong>Space Complexity:</strong> O(n) for array</p>
+<br>
+<h4>Method 2: Optimized In-place Approach (O(n))</h4>
+<br>
+<pre><code>
+Node* listToBSTUtil(LinkedListNode **head, int n) {
+    if (n <= 0) return NULL;
+    
+    // Recursively construct left subtree
+    Node *left = listToBSTUtil(head, n / 2);
+    
+    // Create root node with current linked list node
+    Node *root = createNode((*head)->data);
+    root->left = left;
+    
+    // Move to next linked list node
+    *head = (*head)->next;
+    
+    // Recursively construct right subtree
+    root->right = listToBSTUtil(head, n - n / 2 - 1);
+    
+    return root;
+}
+
+Node* linkedListToBSTOptimized(LinkedListNode *head) {
+    int count = 0;
+    LinkedListNode *temp = head;
+    
+    // Count nodes
+    while (temp != NULL) {
+        count++;
+        temp = temp->next;
+    }
+    
+    return listToBSTUtil(&head, count);
+}
+</code></pre>
+<br>
+<p><strong>Time Complexity:</strong> O(n)  </p>
+<p><strong>Space Complexity:</strong> O(log n) for recursion stack</p>
+<br>
+<h3>Algorithm (Method 2)</h3>
+<br>
+<p>1. Count total nodes in linked list</p>
+<p>2. Use middle element as root (simulated by recursion)</p>
+<p>3. Recursively build left subtree with first half</p>
+<p>4. Create root with current list node</p>
+<p>5. Recursively build right subtree with remaining nodes</p>
+<br>
+<h4>Example</h4>
+<br>
+<pre><code>
+Linked List: 1 -> 2 -> 3 -> 4 -> 5
+
+Resulting BST:
+        3
+       / \
+      1   4
+       \   \
+        2   5
+</code></pre>
+<br>
+<p>This creates a balanced BST from a sorted linked list.</p>
+<br>
+<p><strong>Note:</strong> If linked list is unsorted, first sort it or insert elements one by one into BST.</p>
+<br>
+<hr>
+<br>
+
+</body>
+</html>

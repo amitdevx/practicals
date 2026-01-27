@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 20px; line-height: 1.6; }
+        h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #34495e; border-bottom: 2px solid #95a5a6; padding-bottom: 8px; margin-top: 30px; }
+        h3 { color: #7f8c8d; margin-top: 25px; }
+        h4 { color: #95a5a6; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; border-left: 4px solid #3498db; }
+        pre code { background: none; padding: 0; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #3498db; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        blockquote { border-left: 4px solid #3498db; padding-left: 15px; color: #555; margin: 20px 0; }
+        hr { border: none; border-top: 2px solid #eee; margin: 30px 0; }
+        ul, ol { margin: 15px 0; padding-left: 30px; }
+        li { margin: 8px 0; }
+    </style>
+</head>
+<body>
+<h1>Assignment 5 - Set C: Theoretical Questions and Answers</h1>
+<br>
+<h2>Hashing - Time Complexity and Collision Resolution</h2>
+<br>
+<hr>
+<br>
+<h2>Question 1</h2>
+<br>
+<p><strong>Calculate the time complexity of hash table with Linear Probing.</strong></p>
+<br>
+<h3>Answer</h3>
+<br>
+<p>The time complexity of hash table operations with linear probing depends on the <strong>load factor (α)</strong>.</p>
+<br>
+<pre><code>
+Load Factor (α) = n/m
+where:
+  n = number of elements in the hash table
+  m = size of the hash table
+</code></pre>
+<br>
+<hr>
+<br>
+<h2>1. Best Case (No Collisions)</h2>
+<br>
+<p><strong>Insert:</strong> O(1)</p>
+<li>Hash function computation: O(1)</li>
+<li>Direct insertion at computed index</li>
+<li>No probing needed</li>
+<br>
+<p><strong>Search:</strong> O(1)</p>
+<li>Hash function computation: O(1)</li>
+<li>Element found at first location</li>
+<br>
+<p><strong>Delete:</strong> O(1)</p>
+<li>Search the element: O(1)</li>
+<li>Mark as deleted: O(1)</li>
+<br>
+<hr>
+<br>
+<h2>2. Average Case</h2>
+<br>
+<p>For a load factor <strong>α < 1:</strong></p>
+<br>
+<table>
+<tr><th>Operation</th><th>Time Complexity</th></tr>
+</table>
+<br>
+<p><strong>Explanation:</strong></p>
+<li>Expected number of probes = 1 / (1 - α)</li>
+<li>As table fills up, more collisions occur</li>
+<li>Performance degrades with higher load factor</li>
+<br>
+<hr>
+<br>
+<h2>3. Worst Case (All Collisions)</h2>
+<br>
+<p><strong>Insert:</strong> O(n)</p>
+<li>All elements hash to same cluster</li>
+<li>Must probe through entire cluster</li>
+<br>
+<p><strong>Search:</strong> O(n)</p>
+<li>Element at end of long probe sequence</li>
+<li>Must check all positions</li>
+<br>
+<p><strong>Delete:</strong> O(n)</p>
+<li>Must search through entire table</li>
+<br>
+<hr>
+<br>
+<h2>4. Analysis by Load Factor</h2>
+<br>
+<table>
+<tr><th>Load Factor (α)</th><th>Avg Probes (Insert/Search)</th></tr>
+<tr><th>0.25</th><th>~1.33</th></tr>
+<tr><th>0.50</th><th>~2.00</th></tr>
+<tr><th>0.75</th><th>~4.00</th></tr>
+<tr><th>0.90</th><th>~10.00</th></tr>
+<tr><th>0.99</th><th>~100.00</th></tr>
+</table>
+<br>
+<h3>Formulas for Average Probes</h3>
+<br>
+<p><strong>Successful Search:</strong></p>
+<pre><code>
+Average Probes = (1/2) × (1 + 1/(1-α))
+</code></pre>
+<br>
+<p><strong>Unsuccessful Search:</strong></p>
+<pre><code>
+Average Probes = (1/2) × (1 + 1/(1-α)²)
+</code></pre>
+<br>
+<hr>
+<br>
+<h2>5. Primary Clustering Problem</h2>
+<br>
+<p>Linear probing suffers from <strong>primary clustering</strong>:</p>
+<li>Consecutive occupied slots form clusters</li>
+<li>Clusters grow longer as table fills</li>
+<li>New insertions more likely to collide with clusters</li>
+<li>Performance degrades with higher load factors</li>
+<br>
+<h3>Example of Clustering</h3>
+<br>
+<pre><code>
+Table: [12, 13, 14, EMPTY, EMPTY, 15, 16, 17, EMPTY, EMPTY]
+       ↑-----cluster-----↑            ↑---cluster---↑
+</code></pre>
+<br>
+<hr>
+<br>
+<h2>6. Practical Time Complexity</h2>
+<br>
+<h3>Recommended Load Factor: α ≤ 0.5</h3>
+<br>
+<li>Maintains near O(1) performance</li>
+<li>Insert/Search/Delete: <strong>O(1) average case</strong></li>
+<li>Wastes 50% space for better performance</li>
+<br>
+<h3>High Load Factor (α > 0.8)</h3>
+<br>
+<li>Severe performance degradation</li>
+<li>Operations approach <strong>O(n)</strong></li>
+<li>Not recommended in practice</li>
+<br>
+<hr>
+<br>
+<h2>7. Comparison with Other Methods</h2>
+<br>
+<table>
+<tr><th>Method</th><th>Best</th><th>Average</th><th>Worst</th></tr>
+<tr><th>Separate Chaining</th><th>O(1)</th><th>O(1 + α)</th><th>O(n)</th></tr>
+</table>
+<br>
+<hr>
+<br>
+<h2>8. Space Complexity</h2>
+<br>
+<p><strong>Space:</strong> O(m) where m is table size</p>
+<li>Fixed size array</li>
+<li>No additional pointers (unlike chaining)</li>
+<li>Memory efficient</li>
+<br>
+<hr>
+<br>
+<h2>Time Complexity Summary</h2>
+<br>
+<table>
+<tr><th>Scenario</th><th>Time Complexity</th></tr>
+<tr><th>Best Case</th><th>O(1)</th></tr>
+<tr><th>Average Case</th><th>O(1) when α<0.5</th></tr>
+<tr><th>Worst Case</th><th>O(n)</th></tr>
+</table>
+<br>
+<h3>For Practical Use</h3>
+<br>
+<li>Keep load factor below <strong>0.5-0.7</strong></li>
+<li>Resize table when load factor exceeds threshold</li>
+<li>Use good hash function to minimize collisions</li>
+<br>
+<p><strong>Performance degrades significantly as table fills up due to primary clustering.</strong></p>
+<br>
+<hr>
+<br>
+<h2>Question 2</h2>
+<br>
+<p><strong>The keys 12, 18, 13, 2, 3, 23, 5 and 15 are inserted into an initially empty hash table of length 10 using open addressing with hash function h(k) = k mod 10 and linear probing. What is the resultant hash table?</strong></p>
+<br>
+<h3>Answer</h3>
+<br>
+<p><strong>Given:</strong></p>
+<li>Hash Function: <code>h(k) = k mod 10</code></li>
+<li>Table Size: 10 (indices 0-9)</li>
+<li>Collision Resolution: Linear Probing</li>
+<br>
+<p><strong>Initial Table:</strong></p>
+<pre><code>
+Index: 0  1  2  3  4  5  6  7  8  9
+Value: -  -  -  -  -  -  -  -  -  -
+</code></pre>
+<br>
+<hr>
+<br>
+<h2>Step-by-Step Insertion</h2>
+<br>
+<h3>1. Insert 12</h3>
+<br>
+<pre><code>
+h(12) = 12 mod 10 = 2
+Index 2 is empty → Insert at index 2
+
+Table: -  -  12  -  -  -  -  -  -  -
+       0  1   2  3  4  5  6  7  8  9
+</code></pre>
+<br>
+<h3>2. Insert 18</h3>
+<br>
+<pre><code>
+h(18) = 18 mod 10 = 8
+Index 8 is empty → Insert at index 8
+
+Table: -  -  12  -  -  -  -  -  18  -
+       0  1   2  3  4  5  6  7   8  9
+</code></pre>
+<br>
+<h3>3. Insert 13</h3>
+<br>
+<pre><code>
+h(13) = 13 mod 10 = 3
+Index 3 is empty → Insert at index 3
+
+Table: -  -  12  13  -  -  -  -  18  -
+       0  1   2   3  4  5  6  7   8  9
+</code></pre>
+<br>
+<h3>4. Insert 2</h3>
+<br>
+<pre><code>
+h(2) = 2 mod 10 = 2
+Index 2 is occupied (collision!)
+Linear probe: Try index 3 → occupied
+Linear probe: Try index 4 → empty → Insert at index 4
+
+Table: -  -  12  13  2  -  -  -  18  -
+       0  1   2   3  4  5  6  7   8  9
+</code></pre>
+<br>
+<h3>5. Insert 3</h3>
+<br>
+<pre><code>
+h(3) = 3 mod 10 = 3
+Index 3 is occupied (collision!)
+Linear probe: Try index 4 → occupied
+Linear probe: Try index 5 → empty → Insert at index 5
+
+Table: -  -  12  13  2  3  -  -  18  -
+       0  1   2   3  4  5  6  7   8  9
+</code></pre>
+<br>
+<h3>6. Insert 23</h3>
+<br>
+<pre><code>
+h(23) = 23 mod 10 = 3
+Index 3 is occupied (collision!)
+Linear probe: Try index 4 → occupied
+Linear probe: Try index 5 → occupied
+Linear probe: Try index 6 → empty → Insert at index 6
+
+Table: -  -  12  13  2  3  23  -  18  -
+       0  1   2   3  4  5   6  7   8  9
+</code></pre>
+<br>
+<h3>7. Insert 5</h3>
+<br>
+<pre><code>
+h(5) = 5 mod 10 = 5
+Index 5 is occupied (collision!)
+Linear probe: Try index 6 → occupied
+Linear probe: Try index 7 → empty → Insert at index 7
+
+Table: -  -  12  13  2  3  23  5  18  -
+       0  1   2   3  4  5   6  7   8  9
+</code></pre>
+<br>
+<h3>8. Insert 15</h3>
+<br>
+<pre><code>
+h(15) = 15 mod 10 = 5
+Index 5 is occupied (collision!)
+Linear probe: Try index 6 → occupied
+Linear probe: Try index 7 → occupied
+Linear probe: Try index 8 → occupied
+Linear probe: Try index 9 → empty → Insert at index 9
+
+Table: -  -  12  13  2  3  23  5  18  15
+       0  1   2   3  4  5   6  7   8   9
+</code></pre>
+<br>
+<hr>
+<br>
+<h2>Final Hash Table</h2>
+<br>
+<pre><code>
+┌───────┬─────┬──────────────────┐
+│ Index │ Key │ Number of Probes │
+├───────┼─────┼──────────────────┤
+│   0   │  -  │        -         │
+│   1   │  -  │        -         │
+│   2   │ 12  │  1 (no collision)│
+│   3   │ 13  │  1 (no collision)│
+│   4   │  2  │  3 (at 2, 3, 4)  │
+│   5   │  3  │  3 (at 3, 4, 5)  │
+│   6   │ 23  │  4 (at 3,4,5,6)  │
+│   7   │  5  │  3 (at 5, 6, 7)  │
+│   8   │ 18  │  1 (no collision)│
+│   9   │ 15  │  5 (at 5,6,7,8,9)│
+└───────┴─────┴──────────────────┘
+</code></pre>
+<br>
+<hr>
+<br>
+<h2>Final Result</h2>
+<br>
+<p><strong>Position:</strong> <code>[0]  [1]  [2]  [3]  [4]  [5]  [6]  [7]  [8]  [9]</code>  </p>
+<p><strong>Value:</strong>    <code> -    -   12   13    2    3   23    5   18   15</code></p>
+<br>
+<hr>
+<br>
+<h2>Analysis</h2>
+<br>
+<p><strong>Total Collisions:</strong> 7  </p>
+<p><strong>Load Factor:</strong> 8/10 = 0.8 (80% full)  </p>
+<p><strong>Average Probes:</strong> (1+1+3+3+4+3+1+5) / 8 = <strong>2.625</strong></p>
+<br>
+<h3>Observations</h3>
+<br>
+<p>1. <strong>Primary clustering</strong> visible at indices 2-7</p>
+<p>2. <strong>High load factor</strong> leads to more collisions</p>
+<p>3. Key <strong>15</strong> required <strong>5 probes</strong> (worst case in this example)</p>
+<p>4. Keys <strong>12, 13, 18</strong> had no collisions (lucky hash values)</p>
+<br>
+<hr>
+<br>
+<h2>Question 3</h2>
+<br>
+<p><strong>Which data structure is appropriate for simple chaining? Why?</strong></p>
+<br>
+<h3>Answer</h3>
+<br>
+<p><strong>Linked List</strong> is the most appropriate data structure for simple chaining (separate chaining).</p>
+<br>
+<hr>
+<br>
+<h2>Reasons Why Linked List is Best</h2>
+<br>
+<h3>1. Dynamic Size</h3>
+<br>
+<p><strong>Advantage:</strong></p>
+<li>Can grow/shrink dynamically as elements are inserted/deleted</li>
+<li>No need to know collision chain length in advance</li>
+<li>No fixed size limitations</li>
+<br>
+<p><strong>Example:</strong></p>
+<pre><code>
+hash[5]: 15 → 25 → 35 → 45 → NULL
+Can keep adding elements to chain without worrying about space
+</code></pre>
+<br>
+<p><strong>Alternative (Array):</strong> Would need to pre-allocate fixed size, wasting space or risking overflow.</p>
+<br>
+<hr>
+<br>
+<h3>2. Efficient Insertion</h3>
+<br>
+<p><strong>Time Complexity:</strong> O(1)</p>
+<li>Insert new node at beginning of chain</li>
+<li>Only requires updating pointers</li>
+<li>No shifting of elements needed</li>
+<br>
+<p><strong>Code:</strong></p>
+<pre><code>
+newNode->next = hashTable[index];
+hashTable[index] = newNode;
+</code></pre>
+<br>
+<p><strong>Alternative (Array):</strong> O(n) to shift elements or find empty slot</p>
+<br>
+<hr>
+<br>
+<h3>3. Efficient Deletion</h3>
+<br>
+<p><strong>Time Complexity:</strong> O(1) after finding element</p>
+<li>Simply update pointers to bypass deleted node</li>
+<li>No gaps or reorganization needed</li>
+<br>
+<p><strong>Code:</strong></p>
+<pre><code>
+prev->next = current->next;
+free(current);
+</code></pre>
+<br>
+<p><strong>Alternative (Array):</strong> O(n) to shift elements and fill gap</p>
+<br>
+<hr>
+<br>
+<h3>4. Memory Efficiency</h3>
+<br>
+<p><strong>Advantage:</strong></p>
+<li>Uses exactly the memory needed</li>
+<li>No wasted space for empty slots</li>
+<li>Grows only when necessary</li>
+<br>
+<p><strong>Memory Usage:</strong></p>
+<li>Per node: key + next pointer</li>
+<li>Only allocates for actual elements, not potential maximum</li>
+<br>
+<p><strong>Alternative (Array):</strong> Must pre-allocate maximum possible size</p>
+<br>
+<hr>
+<br>
+<h3>5. No Overflow Issues</h3>
+<br>
+<p><strong>Advantage:</strong></p>
+<li>Chains can grow indefinitely (within system memory)</li>
+<li>No "chain full" scenario</li>
+<li>Handles heavy collisions gracefully</li>
+<br>
+<p><strong>Example:</strong></p>
+<p>Even if 100 keys hash to same index, linked list can accommodate all</p>
+<br>
+<p><strong>Alternative (Array):</strong> Fixed size, will overflow</p>
+<br>
+<hr>
+<br>
+<h3>6. Easy Traversal</h3>
+<br>
+<p><strong>Advantage:</strong></p>
+<li>Simple sequential traversal with next pointer</li>
+<li>Can easily iterate through all elements in chain</li>
+<br>
+<p><strong>Code:</strong></p>
+<pre><code>
+while (temp != NULL) {
+    process(temp->key);
+    temp = temp->next;
+}
+</code></pre>
+<br>
+<hr>
+<br>
+<h3>7. Flexibility</h3>
+<br>
+<p><strong>Advantage:</strong></p>
+<li>Can store additional information (like frequency, timestamps)</li>
+<li>Can implement sorted chains for faster search</li>
+<li>Can use doubly linked list for faster deletion</li>
+<br>
+<p><strong>Enhanced Node:</strong></p>
+<pre><code>
+struct Node {
+    int key;
+    int value;
+    int frequency;
+    struct Node *next;
+};
+</code></pre>
+<br>
+<hr>
+<br>
+<h2>Comparison with Other Data Structures</h2>
+<br>
+<table>
+<tr><th>Data Structure</th><th>Advantages</th><th>Disadvantages</th></tr>
+<tr><th>**Linked List**</th><th>Dynamic, O(1) insert,</th><th>O(n) search,</th></tr>
+<tr><th>**(BEST CHOICE)**</th><th>no overflow, memory efficient</th><th>pointer overhead</th></tr>
+<tr><th>Array</th><th>Cache friendly, random access</th><th>Fixed size, overflow</th></tr>
+<tr><th>BST</th><th>O(log n) search</th><th>Complex, may skew</th></tr>
+<tr><th>Dynamic Array</th><th>Resizable</th><th>Costly resize</th></tr>
+</table>
+<br>
+<hr>
+<br>
+<h2>Implementation</h2>
+<br>
+<pre><code>
+typedef struct Node {
+    int key;
+    struct Node* next;
+} Node;
+
+Node* hashTable[TABLE_SIZE];
+
+// Insert at beginning (O(1))
+void insert(int key) {
+    int index = hash(key);
+    Node* newNode = createNode(key);
+    newNode->next = hashTable[index];
+    hashTable[index] = newNode;
+}
+
+// Search in chain (O(chain length))
+int search(int key) {
+    int index = hash(key);
+    Node* temp = hashTable[index];
+    while (temp != NULL) {
+        if (temp->key == key) return 1;
+        temp = temp->next;
+    }
+    return 0;
+}
+</code></pre>
+<br>
+<hr>
+<br>
+<h2>Practical Considerations</h2>
+<br>
+<h3>1. Cache Performance</h3>
+<li>Arrays are better for cache locality</li>
+<li>But linked lists acceptable for moderate chain lengths</li>
+<br>
+<h3>2. Load Factor</h3>
+<li>Keep <strong>α = n/m < 1</strong> for good performance</li>
+<li>Average chain length = α</li>
+<li>With α < 1, search time ≈ <strong>O(1 + α)</strong></li>
+<br>
+<h3>3. Hybrid Approach</h3>
+<li>Use array initially for small chains</li>
+<li>Convert to linked list when chain grows</li>
+<li>Best of both worlds</li>
+<br>
+<hr>
+<br>
+<h2>Conclusion</h2>
+<br>
+<p>Linked List is the standard and most appropriate choice for separate chaining because:</p>
+<br>
+<li>✓ <strong>Dynamic size</strong> (no overflow)</li>
+<li>✓ <strong>O(1) insertion</strong></li>
+<li>✓ <strong>Memory efficient</strong></li>
+<li>✓ <strong>Simple implementation</strong></li>
+<li>✓ <strong>Flexible and extensible</strong></li>
+<li>✓ <strong>Handles collisions gracefully</strong></li>
+<br>
+<p>The slight pointer overhead and cache performance cost are outweighed by the flexibility and simplicity it provides. This is why virtually all implementations of hash tables with chaining use linked lists.</p>
+<br>
+<hr>
+<br>
+
+</body>
+</html>
