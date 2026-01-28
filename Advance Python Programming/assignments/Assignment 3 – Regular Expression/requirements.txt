@@ -1,0 +1,2 @@
+# Assignment 3 – Regular Expression Dependencies
+jupyter>=1.0.0

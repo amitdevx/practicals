@@ -1,0 +1,4 @@
+# Assignment 5 – Web Application Development using Flask Dependencies
+Flask>=2.3.0
+psycopg2-binary>=2.9.0
+Werkzeug>=2.3.0

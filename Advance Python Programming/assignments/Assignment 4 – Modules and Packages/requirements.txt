@@ -1,0 +1,2 @@
+# Assignment 4 – Modules and Packages Dependencies
+jupyter>=1.0.0

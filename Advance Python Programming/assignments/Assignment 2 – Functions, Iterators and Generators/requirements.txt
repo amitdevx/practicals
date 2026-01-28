@@ -1,0 +1,2 @@
+# Assignment 2 – Functions, Iterators and Generators Dependencies
+jupyter>=1.0.0
