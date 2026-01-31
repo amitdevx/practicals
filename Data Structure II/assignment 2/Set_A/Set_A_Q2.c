@@ -5,24 +5,28 @@
  */
 
 #include <stdio.h>
-#include "../btree.h"
+#include "../../common/btree.h"
 
-int findMin(Node *root) {
+int findMin(Node *root, int *found) {
+    *found = 0;
     if (root == NULL) {
         printf("Tree is empty!\n");
-        return -1;
+        return 0;
     }
+    *found = 1;
     while (root->left != NULL) {
         root = root->left;
     }
     return root->data;
 }
 
-int findMax(Node *root) {
+int findMax(Node *root, int *found) {
+    *found = 0;
     if (root == NULL) {
         printf("Tree is empty!\n");
-        return -1;
+        return 0;
     }
+    *found = 1;
     while (root->right != NULL) {
         root = root->right;
     }
@@ -46,8 +50,12 @@ int main() {
     inorder(root);
     printf("\n");
 
-    printf("\nMinimum value in BST: %d\n", findMin(root));
-    printf("Maximum value in BST: %d\n", findMax(root));
+    int found;
+    int minVal = findMin(root, &found);
+    if (found) printf("\nMinimum value in BST: %d\n", minVal);
+    
+    int maxVal = findMax(root, &found);
+    if (found) printf("Maximum value in BST: %d\n", maxVal);
 
     return 0;
 }

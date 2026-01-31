@@ -20,6 +20,9 @@ int divisionMethod(int key) {
 }
 
 int midSquareMethod(int key) {
+    if (key == 0) {
+        return 0;
+    }
     long long squared = (long long)key * key;
     int numDigits = 0;
     long long temp = squared;

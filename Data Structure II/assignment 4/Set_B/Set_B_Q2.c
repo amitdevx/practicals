@@ -6,7 +6,6 @@
  */
 
 #include <stdio.h>
-#include <limits.h>
 
 #define MAX 20
 #define INF 99999

@@ -9,7 +9,7 @@
  */
 
 #include <stdio.h>
-#include "../btree.h"
+#include "../../common/btree.h"
 
 Node* copy(Node *root) {
     if (root == NULL) {

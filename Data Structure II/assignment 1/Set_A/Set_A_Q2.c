@@ -8,7 +8,7 @@
  */
 
 #include <stdio.h>
-#include "../btree.h"
+#include "../../common/btree.h"
 
 int main() {
     Node *root = NULL;

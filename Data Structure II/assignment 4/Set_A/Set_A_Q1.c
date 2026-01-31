@@ -59,16 +59,24 @@ void topologicalSort(Node* adj[], int vertices) {
     printf("\n");
 }
 
+void freeAdjList(Node* adj[], int vertices) {
+    for (int i = 0; i < vertices; i++) {
+        Node* temp = adj[i];
+        while (temp != NULL) {
+            Node* toFree = temp;
+            temp = temp->next;
+            free(toFree);
+        }
+    }
+}
+
 int main() {
     int vertices, edges, src, dest;
     
     printf("Enter number of vertices: ");
     scanf("%d", &vertices);
     
-    Node* adj[vertices];
-    for (int i = 0; i < vertices; i++) {
-        adj[i] = NULL;
-    }
+    Node** adj = (Node**)calloc(vertices, sizeof(Node*));
     
     printf("Enter number of edges: ");
     scanf("%d", &edges);
@@ -80,6 +88,9 @@ int main() {
     }
     
     topologicalSort(adj, vertices);
+    
+    freeAdjList(adj, vertices);
+    free(adj);
     
     return 0;
 }

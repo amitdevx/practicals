@@ -40,12 +40,8 @@ void displayAdjList(Node* adj[], int vertices) {
 }
 
 void calculateDegrees(Node* adj[], int vertices, int directed) {
-    int outdegree[vertices], indegree[vertices];
-    
-    for (int i = 0; i < vertices; i++) {
-        outdegree[i] = 0;
-        indegree[i] = 0;
-    }
+    int *outdegree = (int*)calloc(vertices, sizeof(int));
+    int *indegree = (int*)calloc(vertices, sizeof(int));
     
     for (int i = 0; i < vertices; i++) {
         Node* temp = adj[i];
@@ -68,6 +64,20 @@ void calculateDegrees(Node* adj[], int vertices, int directed) {
             printf("  %d    |           |          |      %d\n", i, outdegree[i]);
         }
     }
+    
+    free(outdegree);
+    free(indegree);
+}
+
+void freeAdjList(Node* adj[], int vertices) {
+    for (int i = 0; i < vertices; i++) {
+        Node* temp = adj[i];
+        while (temp != NULL) {
+            Node* toFree = temp;
+            temp = temp->next;
+            free(toFree);
+        }
+    }
 }
 
 int main() {
@@ -76,10 +86,7 @@ int main() {
     printf("Enter number of vertices: ");
     scanf("%d", &vertices);
     
-    Node* adj[vertices];
-    for (int i = 0; i < vertices; i++) {
-        adj[i] = NULL;
-    }
+    Node** adj = (Node**)calloc(vertices, sizeof(Node*));
     
     printf("Is graph directed? (1=Yes, 0=No): ");
     scanf("%d", &directed);
@@ -98,6 +105,9 @@ int main() {
     
     displayAdjList(adj, vertices);
     calculateDegrees(adj, vertices, directed);
+    
+    freeAdjList(adj, vertices);
+    free(adj);
     
     return 0;
 }

@@ -12,7 +12,7 @@
 #define INF INT_MAX
 
 int minDistance(int dist[], int visited[], int vertices) {
-    int min = INF, min_index;
+    int min = INF, min_index = 0;
     
     for (int v = 0; v < vertices; v++) {
         if (visited[v] == 0 && dist[v] <= min) {

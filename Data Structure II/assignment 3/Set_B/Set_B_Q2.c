@@ -66,16 +66,24 @@ void BFS(Node* adj[], int vertices, int start) {
     printf("\n");
 }
 
+void freeAdjList(Node* adj[], int vertices) {
+    for (int i = 0; i < vertices; i++) {
+        Node* temp = adj[i];
+        while (temp != NULL) {
+            Node* toFree = temp;
+            temp = temp->next;
+            free(toFree);
+        }
+    }
+}
+
 int main() {
     int vertices, edges, src, dest, start;
     
     printf("Enter number of vertices: ");
     scanf("%d", &vertices);
     
-    Node* adj[vertices];
-    for (int i = 0; i < vertices; i++) {
-        adj[i] = NULL;
-    }
+    Node** adj = (Node**)calloc(vertices, sizeof(Node*));
     
     printf("Enter number of edges: ");
     scanf("%d", &edges);
@@ -96,6 +104,9 @@ int main() {
     printf("\n");
     
     BFS(adj, vertices, start);
+    
+    freeAdjList(adj, vertices);
+    free(adj);
     
     return 0;
 }

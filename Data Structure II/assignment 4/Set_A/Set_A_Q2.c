@@ -11,7 +11,7 @@
 #define INF INT_MAX
 
 int minKey(int key[], int mstSet[], int vertices) {
-    int min = INF, min_index;
+    int min = INF, min_index = 0;
     
     for (int v = 0; v < vertices; v++) {
         if (mstSet[v] == 0 && key[v] < min) {
