@@ -1,0 +1,135 @@
+Assignment 5: Triggers.
+A trigger defines a function which occurs before or after, an action on a table. A trigger is implemented
+through PL/pgSQL, C or any other functional language that PostgreSQL can use to define a function.
+A trigger is a PL/pgSQL block that is associated with a table, stored in a database and executed in
+response to a specific data manipulation event. Triggers can be executed or fired in response to the
+following events.
+a. A row is inserted into table
+b. A row in a table is updated.
+c. A row in a table is deleted.
+Syntax for defining a database trigger
+Create Trigger trigger–name
+{Before | After} {event [ or event …]} ON table–name for
+each { Row | statement}
+execute procedure function name (arguments);
+A trigger procedure is created with the CREATE FUNCTION command, declaring it as a
+function with no arguments and a return type of trigger.
+Special variables created automatically, on call to a trigger function, are as follows :
+Variable Name
+Purpose and contents
+NEW
+Holds the new database row for INSERT/UPDATE operations in
+row-level triggers
+OLD
+Holds the old database row for UPDATE/DELETE operations in
+row-level triggers
+TG_NAME
+Contains the name of the trigger actually fired.
+TG_WHEN
+Specifies the trigger timing. Contains a string of BEFORE or
+AFTER,
+TG_LEVEL
+Specifies the trigger type. Contains a string of either ROW or
+STATEMENT
+TG_OP
+Specifies the trigger operation. Contains a string of INSERT,
+UPDATE, or DELETE.
+TG_RELID
+Contains the object ID of the table that caused trigger invocation.
+TG_TABLE_NAME
+Contains the name of the table that caused the trigger invocation.
+TG_TABLE_SCHEMA Contains the name of the schema of the table that
+caused trigger invocation
+TG_NARGS
+Number of arguments given to the trigger procedure
+TG_ARGV[ ]
+Contains the arguments for the trigger statement.
+Example 1
+This trigger ensures that any time a row is inserted or updated in the table, the current user name
+and time are stamped into the row. And it checks that an employee's name is given and that the
+44salary is a positive value.
+CREATE TABLE employee (ename text, esalary integer, last_date timestamp, last_usertext );
+CREATE FUNCTION emp_timestamp() RETURNS trigger AS ‘
+BEGIN
+-- Check that empname and salary are given IF
+NEW.ename IS NULL THEN
+RAISE EXCEPTION 'empname cannot be null'; END IF;
+IF NEW.esalary IS NULL THEN
+RAISE EXCEPTION '% cannot have null salary', NEW.ename; END IF;
+IF NEW.esalary< 0 THEN
+RAISE EXCEPTION '% cannot have a negative salary', NEW.ename; END IF;
+-- Remember who changed the payroll when
+NEW.last_date := current_timestamp; NEW.last_user :=
+current_user;
+RETURN NEW;
+END;
+‘ LANGUAGE ‘plpgsql’;
+CREATE TRIGGER emp_stamp BEFORE INSERT OR UPDATE ON employee FOR
+EACH ROW EXECUTE PROCEDURE emp_stamp();
+NOTE: Solve any three sets from the Following:
+SET A
+Movie – Actor Database
+Consider the following database
+Movie (m_name varchar (25), release_year integer, budget money)
+Actor (a_name varchar(30), role varchar(30), charges money, a_address varchar(30) ) Movie
+and Actor are related with many to many relationship.
+Create the above database in PostGreSQL and insert sufficient records.
+a. Write a trigger which will be executed whenever an actor is deleted from the actor table,
+display appropriate message.
+b. Write a trigger which will be executed whenever a movie is deleted from the movie table,
+display appropriate message.
+c. Write a trigger which will be executed whenever insertion is made to the movie table. If
+the budget is less than 1,00,000 do not allow the insertion. Give appropriate message.
+45SET B
+Doctor – Hospital Database
+Consider the following database
+Doctor (d_no int, d_name varchar(30), specialization varchar(35), charges int)
+Hospital (h_no int, h_name varchar(20), city varchar(10))
+Doctor and Hospital are related with many to one relationship.
+Create the above database in PostGreSQL and insert sufficient records.
+a. Write a trigger before insert/update on Doctor table. Raise exception if charges are <0.
+b. Write a trigger that restricts insertion of charges value greater than 400.
+SET C
+Student – Subject database
+Consider the following database :
+Student (rollno integer, name varchar(30),city varchar(50),class varchar(10))
+Subject(Scode varchar(10),subject name varchar(20))
+Student and subject are related with M-M relationship with attributes marks_scored.
+Create the above database in PostGreSQL and insert sufficient records
+a. Write a trigger before insert/update the marks_scored. Raise exception if Marks are
+negative.
+b. Write a trigger which is executed when insertion is made in the student-subject table. If
+marks_scored is less than 0, give appropriate message and do not allow the insertion.
+c. Write a trigger which will prevent deleting students from ‘Mumbai’ city.
+SET D
+Customer – Account database
+Consider the following database
+Customer (cno integer, cname varchar(20), city varchar(20))
+Account (a_no int, a_type varchar(10), opening_date date, balance money) Customer
+and Account are related with one to many relationship
+Create the above database in PostGreSQL and insert sufficient records.
+a. Write a trigger which is executed whenever update is made to the account table. If the
+balance becomes less than 1000, print an error message that balance cannot be less than
+1000.
+b. Write a trigger before deleting an account record from Account table. Raise a notice and
+display the message “Account record is being deleted.”
+c. Write a trigger before inserting an account record in Account table and raise exception if
+balance is <500.
+SET E
+Project-Employee Database
+Consider the following Entities and their Relationships for Project-Employee
+database.
+46Project (pno integer, pname char (30), ptype char (20), duration integer)
+Employee (eno integer, ename char (20), qualification char (15), joining_date date)
+Relationship between Project and Employee is many to many with descriptive
+attribute start_date date, no_of_hours_worked integer.
+Constraints: Primary Key, pname should not be null.
+Create trigger for the following:
+a. Write a trigger before inserting into an employee table to check current
+date should be always greater than joining date. Display appropriate
+message.
+b. Write a trigger before inserting into a project table to check duration
+should be always greater than zero. Display appropriate message.
+c. Write a trigger before deleting an employee record from employee table.
+Raise a notice and display the message “Employee record is being
+deleted”.

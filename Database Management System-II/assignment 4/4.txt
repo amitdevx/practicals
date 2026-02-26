@@ -1,0 +1,109 @@
+Assignment 4: Handling errors and Exceptions
+The RAISE statements raise errors and exceptions during a PL/pgSQL function execution. A Raise
+statement is also given the level of error it should raise and the string error message it should send to
+postgreSQL. The string can also be embedded with variables and expressions, that one needs to list
+along with the error message. The percent (%) sign is used as the place holder for the variables that are
+inserted into the string.
+The syntax of the RAISE statement is as follows:
+RAISE level ‘’message string ‘’ [, identifier [….]];
+The three possible values for the RAISE statement’s level are as follows:
+Value
+Explanation
+DEBUG
+Debug level statements send the specified text as a debug message
+to the PostgreSQL log.
+NOTICE
+Notice level statements send the specified text as a Notice;
+EXCEPTION
+Exception level statements send the specified text as an ERROR.
+The exception level also causes the current transaction to be aborted.
+Practice examples:
+Example 1
+In this example, the first raise statement gives a debug level message. The second and third raise
+statements send a notice to the user. The fourth raise statement displays an error and throws an
+exception, causing the function to end and the transaction to be aborted.
+Create function raise_demo( ) returns integer as ‘
+Declare
+Int_var integer: =1;
+Begin
+-- raise a debug level message
+Raise debug ‘’the raise demo function began’’; Int_var :=
+int_var+1;
+--raise a notice stating the change in value of variable
+Raise notice ‘’ variable int_var‘s value is now % .’’,int_var;
+--raise an exception
+Raise exception ‘’variable % changed. Transaction aborted.’’,int_var;
+Return 1;
+End;
+‘language ‘plpgsql’;
+41NOTE: Solve any three sets from the Following:
+SET A
+Project-Employee database
+Consider the following database:
+Project (pno int, pname char (30), ptype char (20), duration int)
+Employee (empno int, ename char (20), joining_date date)
+The relationship between Project and Employee is many to many with descriptive attribute start_date.
+Create the above database in PostGreSQL and insert sufficient records.
+a. Write a stored function to accept project name as input and print the names of employees
+working on the project. Also print the total number of employees working on that project.
+Raise an exception for an invalid project name.
+b. Write a stored function to accept empno as an input parameter from the user and count the
+number of projects of a given employee. Raise an exception if the employee number is
+invalid.
+SET B
+Person – Area database
+Person (pno int, name varchar (20), birthdate date, income money) Area
+(aid int, aname varchar (20), area_type varchar (5))
+The person and area related to many to one relationship. The attribute ‘area_type’ can have values
+either ‘urban’ or ‘rural’.
+Create the above database in PostGreSQL and insert sufficient records.
+a. Write a stored function that accepts the area name as an input parameter from the user
+and displays the details of persons living in that area. Raise an exception if area name is
+invalid.
+SET C
+Wholesaler – Product database
+Consider the following entities and their relationships.
+Wholesaler (w_no, w_name, address, city)
+Product (product_no, product_name, rate)
+Relation between Wholesaler and Product is Many to Many with quantity as descriptive
+attribute.
+Create the above database in PostGreSQL and insert sufficient records.
+a. Write a function to accept quantity from user. Quantity must be within range 50-200. If user enters
+the quantity out of range, then raise a user defined exception “quantity_out_of _range” otherwise
+enter the record in table.
+b. Write a function which accept rate from user. If user enters rate less than or equal to zero then
+raise an user defined exception “Invalid_Rate_Value” otherwise display message “Correct Input”.
+c. Write a function to accept product name as parameter. If entered product name is not valid then
+raise an user defined exception”Invalid_Product_Name” otherwise display product details of
+Specified product.
+42SET D
+Student Teacher Database
+Student (sno integer, s_name char(30), s_class char(10), s_addr Char(50))
+Teacher (tno integer, t_name char (20), qualification char (15), experience integer)
+The relationship is as follows:
+Student-Teacher: Many to Many with descriptive attribute Subject.
+a. Write a stored function to count the number of the teachers teaching to a student named “
+”. (Accept student name as input parameter). Raise an exception if student name does not
+exist.
+b. Write a stored function to count the number of the students who are studying subject named
+“ ” (Accept subject name as input parameter). Display error message if subject name is
+not valid.
+c. Write a stored function to display teacher details who have qualification as “ ” (Accept
+teacher’s qualification as input parameter). Raise an exception for invalid qualification.
+SET E
+Railway Reservation System Database
+TRAIN: (train_no int, train_name varchar(20), depart_time time , arrival_time time, source_stn
+varchar (20),dest_stn varchar (20), no_of_res_bogies int ,bogie_capacity int)
+PASSENGER : (passenger_id int, passenger_name varchar(20), address varchar(30), age int ,gender
+char)
+Relationships:
+Train _Passenger: Many to Many relationship named ticket with descriptive attributes as follows
+TICKET: ( train_no int, passenger_id int, ticket_no int ,bogie_no int, no_of_berths int ,tdate date ,
+ticket_amt decimal(7,2),status char)
+Constraints: The status of a berth can be 'W' (waiting) or 'C' (confirmed).
+a. Write a stored function to print the details of train wise confirmed bookings on date
+“ ” (Accept date as input parameter).Raise an error in case of invalid date.
+b. Write a stored function to accept date and passenger name and display no of berths reserved
+and ticket amount paid by him. Raise exception if passenger name is invalid.
+c. Write a stored function to display the ticket details of a train. (Accept train name as input
+parameter).Raise an exception in case of invalid train name.

@@ -1,0 +1,72 @@
+Assignment 1: Stored Procedure
+A subprogram is a program unit/module that performs a particular task. These subprograms are
+combined to form larger programs. This is basically called the 'Modular design'. A subprogram can be
+invoked by another subprogram or program which is called the calling program.
+A subprogram can be created at the schema level, Inside a package, Inside a PL/SQL block.
+At the schema level, subprogram is a standalone subprogram. It is created with the CREATE
+PROCEDURE or the CREATE FUNCTION statement. It is stored in the database and can be deleted
+with the DROP PROCEDURE or DROP FUNCTION statement.
+A subprogram created inside a package is a packaged subprogram. It is stored in the database and can
+be deleted only when the package is deleted with the DROP PACKAGE statement. We will discuss
+packages in the chapter 'PL/SQL - Packages'.
+PL/SQL subprograms are named PL/SQL blocks that can be invoked with a set of parameters. PL/SQL
+provides two kinds of subprograms −
+ Functions − These subprograms return a single value; mainly used to compute and return
+a value.
+ Stored Procedure − These subprograms do not return a value directly; mainly used to
+perform an action.
+Each PL/SQL subprogram has a name, and may also have a parameter list.
+Sr.No.
+1
+Parts & Description
+Declarative Part
+It is an optional part. However, the declarative part for a subprogram does not
+start with the DECLARE keyword. It contains declarations of types, cursors,
+constants, variables, exceptions, and nested subprograms. These items are local
+to the subprogram and cease to exist when the subprogram completes execution.
+2
+Executable Part
+This is a mandatory part and contains statements that perform the designated
+action.
+3
+Exception-handling
+This is again an optional part. It contains the code that handles run-time
+errors.
+30CREATE [OR REPLACE] PROCEDURE procedure_name(parameter_list) LANGUAGE
+language_name
+AS $$
+stored_procedure_body;
+$$;
+Create Procedure Syntax
+Example 1:
+CREATE OR REPLACE FUNCTION sum_n_product3(IN x int,IN y int, OUT sum int, OUT prod int) AS $$ BEGIN
+IF x < 2 THEN
+RAISE WARNING 'information message %', now(); RAISE
+NOTICE 'information message %', now(); RAISE INFO
+'information message %', now();
+END IF;
+sum := x + y; prod
+:= x * y; END;
+$$ LANGUAGE plpgsql
+Solve the Following:
+SET A
+a. Write a procedure to display addition, subtraction and multiplication of three numbers.
+b. Write a procedure to display division of two numbers use raise to display error messages.
+c.Create table Department (dno, dname, empname, city ).
+i) Write a procedure to insert values in Department table.
+ii) Write a procedure to display all employees working in ‘Pune’ city.
+SET B
+A) Consider the following relationship
+Route(route_no, source, destination, no_of_station) Bus
+(bus_no, capacity, depot_name)
+Relationship between Route and Bus is one-to-many
+a. Write a procedure which display all bus details for a given route.
+b. Write a procedure to update source of route no 101
+31B) Consider the following relationship
+Patient (p_no, p_name, p_addr) Doctor
+(d_no, d_name, d_addr, city)
+Relationship between Patient and Doctor is many-to-many with descriptive attribute disease and
+no_of_visits.
+a. Write a procedure which display patient detail who has visited more than 3 times to the
+given doctor for ‘Diabetes’.
+b. Write a procedure which displays total number of visits of Dr.Kumar.
