@@ -17,13 +17,13 @@ DROP TABLE IF EXISTS movie CASCADE;
 CREATE TABLE movie (
     m_name       VARCHAR(25) PRIMARY KEY,
     release_year INTEGER,
-    budget       NUMERIC(12,2)
+    budget       MONEY
 );
 
 CREATE TABLE actor (
     a_name    VARCHAR(30) PRIMARY KEY,
     role      VARCHAR(30),
-    charges   NUMERIC(12,2),
+    charges   MONEY,
     a_address VARCHAR(30)
 );
 
@@ -48,7 +48,7 @@ DROP FUNCTION IF EXISTS fn_movie_budget_check();
 CREATE OR REPLACE FUNCTION fn_movie_budget_check()
 RETURNS TRIGGER AS $$
 BEGIN
-    IF NEW.budget < 100000 THEN
+    IF NEW.budget < 100000::MONEY THEN
         RAISE EXCEPTION 'Insertion denied: Budget (%) for movie "%" is less than 1,00,000. Minimum budget required is 1,00,000.', NEW.budget, NEW.m_name;
     END IF;
     RAISE NOTICE 'Movie "%" inserted successfully with budget %.', NEW.m_name, NEW.budget;
