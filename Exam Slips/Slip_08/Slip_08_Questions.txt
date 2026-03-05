@@ -1,0 +1,46 @@
+SLIP 8
+==================================================
+
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-253-MJ-P (Lab Course based on CS-251 MJ-T & CS-252-MJ-T)
+Duration: 3 Hours
+
+Maximum Marks: 35
+
+Section I: Data Structures-II
+
+[15 Marks]
+
+Q1) Write a program to sort n randomly generated elements using Heapsort method.
+OR
+
+Q1) Write a C program that accepts the vertices and edges of a graph and stores it as an adjacency
+matrix. Display the adjacency matrix.
+Section II: Database Management Systems II
+
+[15 Marks]
+
+Consider the following Entities and their Relationships
+TRAIN: (train_no int, train_name varchar(20), depart_time time , arrival_time time,
+source_stn varchar (20),dest_stn varchar (20), no_of_res_bogies int ,bogie_capacity int)
+PASSENGER : (passenger_id int, passenger_name varchar(20), address varchar(30),
+age int ,gender char)
+Relationships:
+Train _Passenger: M-M relationship named ticket with descriptive attributes as follows
+TICKET: ( train_no int, passenger_id int, ticket_no int ,bogie_no int, no_of_berths int
+,tdate date , ticket_amt decimal(7,2),status char)
+Constraints:The status of a berth can be 'W' (waiting) or 'C' (confirmed).
+Q2) Using above Database Solve the following
+
+[10 Marks]
+
+1. Write a stored function to display the ticket details of a train. (Accept train name as
+input parameter). Raise an exception in case of invalid train name.
+OR
+1.Write a trigger after insert on passenger to display message “Age above 5 will be charged
+full fare” if age of passenger is more than 5.
+2. Write a procedure to display addition of two numbers.
+Q 3) Viva
+
+[5 marks]
+[5 marks]

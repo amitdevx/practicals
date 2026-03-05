@@ -1,0 +1,42 @@
+SLIP 16
+==================================================
+
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-253-MJ-P (Lab Course based on CS-251 MJ-T & CS-252-MJ-T)
+Duration: 3 Hours
+
+Maximum Marks: 35
+
+Section I: Data Structures-II
+
+[15 Marks]
+
+Q1) Write a program to sort n randomly generated elements using Heapsort method.
+OR
+Q1) Write a C program for the implementation of Dijkstra’s shortest path algorithm for finding shortest
+path from a given source vertex using adjacency cost matrix.
+Section II: Database Management Systems II
+
+[15 Marks]
+
+Consider the following Student –Subject database
+Student(rollno integer, name varchar(30), address varchar(50), class varchar(10))
+Subject(scode varchar(10), subject_name varchar(20))
+Student-Subject are related with M-M relationship with attributes marks_scored.
+Q2) Using above Database Solve the following
+
+[10 Marks]
+
+1) Define a trigger before deleting a student record from the student table. Raise a
+notice and display the message “student record is being deleted”.
+OR
+
+1) Write a stored function using cursors, to calculate total marks of each student and
+display it.
+2) Write a procedure to check the number is positive and negative.
+
+Q 3) Viva
+
+[5 marks]
+
+[5 marks]

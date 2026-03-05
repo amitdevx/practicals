@@ -1,0 +1,40 @@
+SLIP 24
+==================================================
+
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-253-MJ-P (Lab Course based on CS-251 MJ-T & CS-252-MJ-T)
+Duration: 3 Hours
+
+Maximum Marks: 35
+
+Section I: Data Structures-II
+
+[15 Marks]
+
+Q1) Write a C program for the implementation of Floyd Warshall’s algorithm for finding all pairs
+shortest path using adjacency cost matrix.
+OR
+Q1) Write a C program to maintain a phonebook using Binary Search Tree by name where each node
+contains contact name and phone number.
+Section II: Database Management Systems II
+Consider the following Department-employee database.
+
+[15 Marks]
+
+Department (dno integer, dname varchar(20),city varchar(20))
+Employee (eno integer, ename varchar(20), salary money)
+Department and Employee are related with a one to many relationship
+Q2) Using above Database Solve the following
+[10 Marks]
+1) Write a function to accept department name as input and display employee name along
+with salary of that department.
+OR
+1) Write a trigger after insert on an employee record. Display appropriate message when the
+record is inserted.
+2) Write a stored procedure to display first 20 even numbers.
+
+Q 3) Viva
+
+[5 marks]
+
+[5 marks]
