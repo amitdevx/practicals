@@ -1,0 +1,26 @@
+SLIP 3 - SECTION II: DATABASE MANAGEMENT SYSTEMS II
+============================================================
+
+Section II: Database Management Systems-II
+
+[15 Marks]
+
+Consider the following Entities and their Relationship.
+Student (s_no integer, s_name char (20), address char (25), class char (10))
+Teacher (t_no integer,t_name char (10), qualification char (10),experience integer)
+Relationship between Student and Teacher is Many to Many with descriptive attribute subject
+and marks_scored.
+Constraints: Primary Key,s_name,t_name should not be null,marks_scored> 0
+Q2) Using above Database Solve the following
+[10 Marks]
+1) Write a cursor which will accept student number from the user and display student name along
+with teacher name who taught ‘RDBMS’ subject.
+OR
+1) Write a trigger before insert the record of student. If student number is less than or equal to zero
+give message “Invalid Number”.
+2) Write a procedure to find minimum and maximum from two numbers.
+[5 marks]
+
+Q 3) Viva
+
+[5 marks]

@@ -1,0 +1,25 @@
+SLIP 26 - SECTION II: DATABASE MANAGEMENT SYSTEMS II
+============================================================
+
+Section II: Database Management Systems II
+[15 Marks]
+Consider the following database :
+Item (itemno integer, Itemname varchar(20), quantity integer)
+Supplier(supplierno integer ,Supplier name varchar(20),city varchar(20))
+Item and supplier are related with many to many relationship. Rate is descriptive attribute.
+Q2) Using above Database Solve the following
+
+[10 Marks]
+
+1) Write a stored function using cursors, to accept Item name from the user and display the
+Rate and Supplier Name for that Item.
+OR
+2) Write a trigger before update on rate field. If the difference in the old rate and new rate is
+more than Rs 2000, raise an exception and display the corresponding message.
+3) Write a procedure to display subtraction of three numbers.
+
+Q 3) Viva
+
+[5 marks]
+
+[5 marks]

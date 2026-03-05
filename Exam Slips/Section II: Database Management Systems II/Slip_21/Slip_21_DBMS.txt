@@ -1,0 +1,25 @@
+SLIP 21 - SECTION II: DATABASE MANAGEMENT SYSTEMS II
+============================================================
+
+Section II: Database Management Systems II
+[15 Marks]
+Consider the following database
+Doctor(d_no int, d_name varchar(30), specialization varchar(35), phone_no int, charges int)
+a.
+b.
+c.
+
+Hospital(h_no int, h_name varchar(20), city varchar(10))
+Doctor and Hospital are related with many to one relationship.
+Q2) Using above Database Solve the following
+[10 Marks]
+1) Write a function which will accept the name of the hospital and calculate the average charges
+of doctors visiting that hospital.
+OR
+1) Write a trigger before insert/update on Doctor. Raise exception if charges are <0.
+2) Write a procedure to find sum and average of first n numbers using conditional
+loop(while).
+[5 marks]
+Q 3) Viva
+
+[5 marks]

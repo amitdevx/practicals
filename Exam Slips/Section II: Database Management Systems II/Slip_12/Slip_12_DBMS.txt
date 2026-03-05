@@ -1,0 +1,27 @@
+SLIP 12 - SECTION II: DATABASE MANAGEMENT SYSTEMS II
+============================================================
+
+Section II: Database Management Systems II
+[15 Marks]
+Consider the following Project-Employee database maintained by a company which stores
+the details of the projects assigned to the employees.
+Following are the tables:
+PROJECT (pno integer, p_name char (30), ptype char(20),duration integer)
+EMPLOYEE (eno integer, e_name char (20), qualification char (15), joindate date)
+The relationships are as follows:
+PROJECT-EMPLOYEE:M-M Relationship, with descriptive attributes as start_date (date),
+no_of_hours_worked (integer).
+Q2) Using above Database Solve the following
+
+[10 Marks]
+
+1. Write a trigger before inserting into a project table to check duration should be always
+greater than zero. Display appropriate message.
+OR
+1. Write a stored function to accept project name as input and print the names of
+employees working on the project. Raise an exception for an invalid project name.
+2. Write a procedure to count odd numbers from given range (m to n) (for). [5 marks]
+
+Q 3) Viva
+
+[5 marks]

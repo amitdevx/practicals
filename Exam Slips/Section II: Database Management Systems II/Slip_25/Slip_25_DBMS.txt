@@ -1,0 +1,25 @@
+SLIP 25 - SECTION II: DATABASE MANAGEMENT SYSTEMS II
+============================================================
+
+Section II: Database Management Systems-II
+Consider the following database
+Customer (cno integer, cname varchar(20), city varchar(20))
+
+[15 Marks]
+
+Account (a_no int, a_type varchar(10), opening_date date, balance money)
+Customer and Account are related with one to many relationship
+Q2) Using above Database Solve the following
+[10 Marks]
+1. Write a function using cursor which accepts city name as input and prints the details of all
+customers in that city.
+OR
+1. Write a trigger which does not allow deletion of accounts of
+type.
+2.Write a procedure to display all customers from ‘Pune’ city.
+
+Q 3) Viva
+
+[5 marks]
+
+[5 marks]

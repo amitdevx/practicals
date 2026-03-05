@@ -1,0 +1,27 @@
+SLIP 9 - SECTION II: DATABASE MANAGEMENT SYSTEMS II
+============================================================
+
+Section II: Database Management Systems-II
+
+[15 Marks]
+
+Consider the following database maintained by a school about students and competitions.
+STUDENT (sreg_no int , name char(30), class char(10))
+COMPETITION (c_no int , name char(20), C_type char(15))
+The relationship is as follows:
+STUDENT-COMPETITION: M-M with described attributes rank, year and prize(int).
+Q2) Using above Database Solve the following
+
+[10 Marks]
+
+1. Define a trigger before updating a competition table. Raise a notice and display
+message “competition record is being updated”.
+OR
+1. Write a function using cursor which accepts a name of student and returns the total no of
+prizes won by that student in the year 2020.
+2. Write a procedure to display division of two numbers use raise to display divided by zero
+exception messages.
+[5 marks]
+Q 3) Viva
+
+[5 marks]

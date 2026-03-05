@@ -1,0 +1,24 @@
+SLIP 20 - SECTION II: DATABASE MANAGEMENT SYSTEMS II
+============================================================
+
+Section II: Database Management Systems II
+Consider the following Department-employee database.
+
+[15 Marks]
+
+Department (dno integer, dname varchar(20),city varchar(20))
+Employee (eno integer, ename varchar(20), salary money)
+Department and Employee are related with a one to many relationships.
+Q2) Using above Database Solve the following
+[10 Marks]
+1) Write a function to accept department name and display the maximum salary of an employee
+in that department.
+OR
+1) Write a trigger before insert/update on an employee record. Raise exception if salary <0.
+2) Write a procedure to display multiplication of two numbers.
+
+Q 3) Viva
+
+[5 marks]
+
+[5 marks]

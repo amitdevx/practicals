@@ -1,0 +1,22 @@
+SLIP 23 - SECTION II: DATABASE MANAGEMENT SYSTEMS II
+============================================================
+
+Section II: Database Management Systems II
+Consider the following database
+Car (c_no int, owner varchar(20), model varchr(10), color varchar(10)
+
+[15 Marks]
+
+Driver (driver_no int, driver_name varchar(20), license_no int, d_age int, salary float)
+Car and Driver are related with many to many relationship
+Q2) Using above Database Solve the following
+[10 Marks]
+1) Write a cursor which accepts the driver name and prints the details of all cars that this
+driver has driven, if the driver name is invalid, print an appropriate message.
+OR
+1) Write a trigger before insert/update on Driver. Raise exception if driver age is < 21.
+2) Write a procedure to find sum of first 100 numbers (using unconditional loop).
+[5 marks]
+Q 3) Viva
+
+[5 marks]

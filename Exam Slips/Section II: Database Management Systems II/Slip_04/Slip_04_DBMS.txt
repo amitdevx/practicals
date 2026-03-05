@@ -1,0 +1,31 @@
+SLIP 4 - SECTION II: DATABASE MANAGEMENT SYSTEMS II
+============================================================
+
+Section II: Database Management Systems-II
+
+[15 Marks]
+
+Consider the following Entities and their Relationships .
+Movies (m_name varchar (25), release_year integer, budget money)
+Actor (a_name char (30), role char (30), charges money, a_address varchar(30))
+Producer (producer_id integer, name char (30), p_address varchar (30))
+The relationships are as follows:
+Each actor has acted in one or more movies. Each producer has produced many movies
+and each movie can be produced by more than one producers. Each movie has one or
+more actors acting in it, in different roles.
+Q2) Using above Database Solve the following
+
+[10 Marks]
+
+1) Write a cursor to pass actor name as input parameter and return total number of movies in
+which given actor is acting.
+OR
+1) Write a trigger before inserting into movie table to check budget. Budget should be
+minimum 50 lakh. Display appropriate message.
+2) Write a procedure to check the number is positive, negative or zero.
+
+Q 3) Viva
+
+[5 marks]
+
+[5 marks]

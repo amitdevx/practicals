@@ -1,0 +1,25 @@
+SLIP 27 - SECTION II: DATABASE MANAGEMENT SYSTEMS II
+============================================================
+
+Section II: Database Management Systems II
+[15 Marks]
+Consider the following database :
+Student (rollno integer, name varchar(30),class varchar(10))
+Subject(Scode varchar(10),subject name varchar(20))
+Student and subject are related with M-M relationship with attributes marks_scored.
+Q2) Using above Database Solve the following
+
+[10 Marks]
+
+1. Write a stored function using cursors, to accept class from the user and display the details of the
+students of that class.
+OR
+1. Write a trigger before insert/update the marks_scored. Raise exception if Marks are
+negative.
+2. Write a procedure to display all even numbers from 1 to 50.
+
+Q 3) Viva
+
+[5 marks]
+
+[5 marks]

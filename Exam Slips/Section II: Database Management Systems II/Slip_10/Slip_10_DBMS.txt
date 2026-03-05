@@ -1,0 +1,28 @@
+SLIP 10 - SECTION II: DATABASE MANAGEMENT SYSTEMS II
+============================================================
+
+Section II: Database Management Systems II
+
+[15 Marks]
+
+Consider the following Entities and their Relationships
+Book(b_no int, b_name varchar (20), pub_name varchar (10), b_price float)
+Author (a_no int, a_name varchar (20), qualification varchar (15), address varchar (15))
+Relationship between Book and Author is many to many.
+Constraints: Primary Key,pub_name should not be null.
+Q2) Using above Database Solve the following
+
+[10 Marks]
+
+1. Write a stored function to display the book details written by author . (Accept Author name
+as input parameter). Raise an exception in case of invalid author name.
+OR
+1. Write a trigger after insert on book to display message “prize is so high” if book price is
+more than 1000.
+2. Write a procedure to display all even numbers from 1 to 50.
+
+Q 3) Viva
+
+[5 marks]
+
+[5 marks]
