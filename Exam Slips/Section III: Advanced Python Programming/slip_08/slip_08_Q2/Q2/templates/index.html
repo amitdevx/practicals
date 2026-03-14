@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Info</title>
+    <style>
+        h1 { text-align: center; color: darkblue; }
+        .college-img { display: block; margin: 0 auto; width: 300px; }
+        ul { list-style-type: none; padding: 0; text-align: center; }
+        li { padding: 5px; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <h1>Fergusson College (Autonomous), Pune</h1>
+    
+    <!-- Assuming an image exists, or using a placeholder -->
+    <img src="https://via.placeholder.com/300x200?text=College+Image" alt="College Image" class="college-img">
+    
+    <h2>Available Courses:</h2>
+    <ul>
+        {% for course in courses %}
+        <li>{{ course }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
