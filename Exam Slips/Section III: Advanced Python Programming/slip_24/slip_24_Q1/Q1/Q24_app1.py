@@ -4,13 +4,14 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    books = [
-        {'title': 'The Great Gatsby', 'author': 'F. Scott Fitzgerald'},
-        {'title': 'To Kill a Mockingbird', 'author': 'Harper Lee'},
-        {'title': '1984', 'author': 'George Orwell'},
-        {'title': 'Pride and Prejudice', 'author': 'Jane Austen'}
+    courses = [
+        "B.Sc. Computer Science",
+        "B.Sc. Information Technology",
+        "M.Sc. Data Science",
+        "B.A. Economics",
+        "B.Com. Accounting & Finance"
     ]
-    return render_template('index.html', books=books)
+    return render_template('index.html', courses=courses)
 
 if __name__ == "__main__":
     app.run(debug=True)

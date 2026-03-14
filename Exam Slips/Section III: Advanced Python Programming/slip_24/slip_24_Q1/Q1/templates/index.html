@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Library</title>
+    <title>College Information</title>
     <style>
-        table { width: 50%; border-collapse: collapse; margin: 20px auto; }
-        th, td { border: 1px solid black; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        .quote { font-weight: bold; color: blue; text-align: center; margin-top: 20px; }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        h1 { text-align: center; color: #2c3e50; }
+        .courses { padding: 20px; max-width: 600px; margin: 0 auto; }
+        ul { font-size: 18px; line-height: 2; }
+        img { display: block; margin: 20px auto; max-width: 400px; }
     </style>
 </head>
 <body>
-    <h1 style="text-align: center;">My Library</h1>
-    
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Author</th>
-        </tr>
-        {% for book in books %}
-        <tr>
-            <td>{{ book.title }}</td>
-            <td>{{ book.author }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    
-    <div class="quote">"A room without books is like a body without a soul."</div>
+    <h1>Savitribai Phule Pune University</h1>
+
+    <div class="courses">
+        <h2>Available Courses:</h2>
+        <ul>
+            {% for course in courses %}
+            <li>{{ course }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <img src="https://via.placeholder.com/400x200?text=College+Image" alt="College Image">
 </body>
 </html>
