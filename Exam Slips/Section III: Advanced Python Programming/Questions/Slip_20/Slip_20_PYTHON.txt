@@ -1,33 +1,92 @@
 Savitribai Phule Pune University
-                          S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
-                                       Lab Course CS-271-VSC-P
-                                    Advanced Python Programming
-Duration: 3 Hours                                                              Maximum Marks:35
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
 
+Maximum Marks:35
 
-Q1. Create a DataFrame from a dictionary {Subject_Name : Marks} and display the first 5 rows and
-    last 5 rows of DataFrame.
-                                                                                               [10 Marks]
+Q1. Write a python program to accept a string, Count total number of vowels, consonants and special
+symbols from it.
+[10 Marks]
 
+Q2. Write a Python program to accept a file name and a byte position as input. If file exist open a file in
+read mode and move the file pointer to the given byte position, prints the content of the file from
+that position till end of file otherwise give appropriate message.
+[20 Marks]
+OR
 
-Q2. Write a Python program that accepts a filename from the user, opens the file in read mode and
-    display the contents of files. The program should compute and display the total number of
-    characters (including spaces), words, and lines present in the file. If file does not exist give
-    appropriate message.
+Q2. Create a Pandas DataFrame using the following student data with columns and perform the
+following tasks:
+school
+S1
+S2
+S3
+S4
+S5
+S6
 
-                                                                                               [20 Marks]
+class
+S001
+S002
+S003
+S004
+S005
+S006
 
-                                                     OR
+name
+Asha
+Fransis
+Charlie
+David
+Shyam
+Eashel
 
+date_of_birth
+15/05/2002
+17/05/2002
+16/02/1999
+25/09/1998
+11/05/2002
+15/09/1997
 
-Q2. Create a package banking with modules account.py and loan.py.
-    a) account.py should contain function open_account(name) that accepts a user’s name and prints a
-    message confirming account creation.
-    b) loan.py should contain function apply_loan(amount) that accepts a loan amount and prints a confirmation
-    message with the amount.
-    Write a python program to import modules from banking package and demonstrate both functions.
+age
+12
+12
+13
+14
+12
+16
 
+height
+173
+192
+186
+167
+151
+159
 
+weight
+35
+32
+33
+30
+31
+32
 
+address
+Street1
+Street2
+Street3
+Street4
+Street5
+Street6
 
-Q3. Viva                                                                                       [5 Marks]
+a) Split the DataFrame into groups based on the school column using the GroupBy operation.
+b) Check and display the type of the GroupBy object created.
+c) Calculate the mean, minimum, and maximum values of the age column for each school group.
+d) Count the number of students whose weight is greater than 32.
+
+Q3. Viva
+
+[5 Marks]

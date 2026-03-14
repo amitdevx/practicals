@@ -7,4 +7,4 @@ Q3 (Viva) Marks: 5
 Total Marks: 35
 Exam Duration: 3 hours
 Difficulty: Intermediate/Advanced
-Topics: Flask, Regular Expressions, JSON, XML/HTML, Image Processing, File Handling, Exception Handling
+Topics: Pandas, File Handling, Packages, Functions

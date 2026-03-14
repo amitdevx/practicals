@@ -1,33 +1,119 @@
 Savitribai Phule Pune University
-                         S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
-                                      Lab Course CS-271-VSC-P
-                                   Advanced Python Programming
-Duration: 3 Hours                                                           Maximum Marks:35
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
 
+Maximum Marks:35
 
-Q1. Write a Python program that defines a function productInfo() which accepts a product name and its
-    price. The function should display the product name only if its price is less than Rs.100. If no price
-    is provided, the function should assume the default price to be Rs.100.
-                                                                                            [10 Marks]
+Q1. Write a Python program that accepts value of m and n. Divides m by n and handles a
+ZeroDivisionError if the user tries to divide by zero.
+[10 Marks]
 
+Q2. Write a python program for following a) Create DataFrames Student 1, Student 2 and display contents
+b) Merge two DataFrames in third frame .
+c) Display contents of third DataFrame.
+Student 1
 
-Q2. Write a Python program that:
-    a) Retrieves current local time and UTC time.
-    b) Prints the current time using ctime() and gmtime().
-    c) Accepts a date-time string input in the format DD-MM-YYYY HH:MM:SS.
-    d) Parses the string using strptime() and formats it back using strftime() and display it in two custom
-        formats.
-                                                                                            [20 Marks]
-                                                   OR
+Student 2
+ID
 
+City
 
-Q2. Write a Python program that accepts a string from the user and performs the following tasks:
-   a) Split the string into individual words.
-   b) Identify and display all words that do not contain any vowels (a, e, i, o, u), ignore case while
-       checking for vowels.
-   c) Sort and display these words in alphabetical order.
-   d) Display the total count of such words.
+Marks
 
+0
 
+S2
 
-Q3. Viva                                                                                    [5 Marks]
+Pune
+
+97
+
+23
+
+1
+
+S4
+
+Nashik
+
+78
+
+Om
+
+20
+
+2
+
+S5
+
+Mumbai
+
+86
+
+S4
+
+Raj
+
+21
+
+3
+
+S6
+
+Delhi
+
+66
+
+S5
+
+Kanika
+
+20
+
+4
+
+S7
+
+Nanded
+
+54
+
+ID
+
+Name
+
+Age
+
+0
+
+S1
+
+Anita
+
+18
+
+1
+
+S2
+
+Sakshi
+
+2
+
+S3
+
+3
+4
+
+[20 Marks]
+
+OR
+
+Q2. Write a Python program to create a class that acts as an iterator and generates the factorial series up
+to n (1! + 2! + 3! + … + n!). (Accept input from the user)
+
+Q3. Viva
+
+[5 Marks]

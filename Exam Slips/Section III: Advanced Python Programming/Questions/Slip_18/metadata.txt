@@ -7,4 +7,4 @@ Q3 (Viva) Marks: 5
 Total Marks: 35
 Exam Duration: 3 hours
 Difficulty: Intermediate/Advanced
-Topics: Classes, File Handling
+Topics: File Handling, Packages, Functions, Modules

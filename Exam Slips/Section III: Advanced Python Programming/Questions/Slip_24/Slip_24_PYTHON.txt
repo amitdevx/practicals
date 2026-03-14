@@ -1,28 +1,27 @@
 Savitribai Phule Pune University
-                           S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
-                                         Lab Course CS-271-VSC-P
-                                      Advanced Python Programming
-Duration: 3 Hours                                                             Maximum Marks:35
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
 
+Maximum Marks:35
 
-Q1. Write a Python program to shuffle a deck of card. Display the cards obtained by a user in 5
-    attempts.
-                                                                                              [10 Marks]
+Q1. Write a python program to extract number from a given string and display extracted number.
+[10 Marks]
+Q2. Write a Python program that calculates the pass or fail status of multiple students.
+a) Define a function check_pass_fail(marks) to return "Pass" if marks ≥ 40, otherwise "Fail".
+b) Accept number of students and their marks.
+c) Display each student’s result.
+d) Print the total count of students who passed and failed.
+[20 Marks]
 
+OR
 
-Q2. Create a package finance_tools with modules interest.py and currency.py
-     a) interest.py should contain function cal_interest(amount, year) that accepts amount, year . Calculates
-        and returns simple interest using a fixed rate (for example, 5%).
-     b) currency.py should contain function converet(amount) that accepts amount in INR and converts it into
-        USD. (consider conversion rate 0.012)
-    Write a python program to import modules from finance_tools package and demonstrate both
-    functions.
-                                                                                              [20 Marks]
-                                                        OR
-Q2. Write a python program to check weather given url is valid or not?
-    (for Ex: https://www.yahoo.com)
+Q2. Create a Web Page using Flask which contains following information about your college.
+a) College Name as a heading in center of web page.
+b) Display all the courses available in your college.
+c) Image of your College.
 
+Q3. Viva
 
-
-
-Q3. Viva                                                                                      [5 Marks]
+[5 Marks]
