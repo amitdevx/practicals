@@ -1,0 +1,23 @@
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a Python program that accepts value of m and n. Divides m by n and handles a
+ZeroDivisionError if the user tries to divide by zero.
+[10 Marks]
+Q2. Write a python program to create a module containing factorial function, power dictionary and list
+of vowels. Save this as variables.py. Import variables module to print the factorial of n, print the
+power of n, and second alphabet from the vowels list. (Accept n from user)
+[20 Marks]
+OR
+
+Q2. Write a python program to accept a file name from user. If file exist display contents of file and
+number of characters, words and lines in a file, otherwise display appropriate message.
+
+Q3. Viva
+
+[5 Marks]

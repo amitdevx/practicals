@@ -1,0 +1,10 @@
+Subject: Advanced Python Programming
+Course Code: CS-271-VSC-P
+Slip Number: 3
+Q1 Marks: 10
+Q2 Marks: 20
+Q3 (Viva) Marks: 5
+Total Marks: 35
+Exam Duration: 3 hours
+Difficulty: Intermediate/Advanced
+Topics: Matplotlib, JSON, File Handling, Modules, Exception Handling, String Operations

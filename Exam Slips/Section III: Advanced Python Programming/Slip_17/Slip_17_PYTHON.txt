@@ -1,0 +1,29 @@
+Savitribai Phule Pune University
+                         S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+                                      Lab Course CS-271-VSC-P
+                                   Advanced Python Programming
+Duration: 3 Hours                                                            Maximum Marks:35
+
+
+Q1. Write a Python program to list all files and folders in the current directory using os.listdir().
+                                                                                              [10 Marks]
+
+
+Q2. Write a Python program to validate mobile number based on following criteria
+      a) The first digit should contain numbers between 6 to 9.
+      b) The rest 9 digit can contain any number between 0 to 9.
+      c) The mobile number can have 11 digits also by including 0 at the starting.
+      d) The mobile number can be of 12 digits also by including 91 at the starting
+                                                                                            [20 Marks]
+
+
+                                                   OR
+
+Q2. Build a package education with a sub package courses, containing modules science.py and
+    arts.py. Each module should have a function get_subjects(). Write a python program to display all
+    subjects.
+
+
+
+
+Q3. Viva                                                                                    [5 Marks]

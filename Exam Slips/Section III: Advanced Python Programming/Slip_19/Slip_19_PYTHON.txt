@@ -1,0 +1,36 @@
+Savitribai Phule Pune University
+                            S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+                                        Lab Course CS-271-VSC-P
+                                      Advanced Python Programming
+Duration: 3 Hours                                                              Maximum Marks:35
+
+
+Q1. Write a python program to accept a string, Count total number of vowels, consonants and special
+    symbols from it.
+                                                                                             [10 Marks]
+
+
+Q2. Write a Python program to accept a file name and a byte position as input. If file exist open a file in
+    read mode and move the file pointer to the given byte position, prints the content of the file from
+    that position till end of file otherwise give appropriate message.
+                                                                                            [20 Marks]
+                                                      OR
+
+
+Q2. Create a Pandas DataFrame using the following student data with columns and perform the
+    following tasks:
+           school   class    name     date_of_birth    age   height   weight    address
+           S1       S001    Asha      15/05/2002       12    173      35        Street1
+           S2       S002    Fransis   17/05/2002       12    192      32        Street2
+           S3       S003    Charlie   16/02/1999       13    186      33        Street3
+           S4       S004    David     25/09/1998       14    167      30        Street4
+           S5       S005    Shyam     11/05/2002       12    151      31        Street5
+           S6       S006    Eashel    15/09/1997       16    159      32        Street6
+
+     a) Split the DataFrame into groups based on the school column using the GroupBy operation.
+     b) Check and display the type of the GroupBy object created.
+     c) Calculate the mean, minimum, and maximum values of the age column for each school group.
+     d) Count the number of students whose weight is greater than 32.
+
+
+Q3. Viva                                                                                    [5 Marks]

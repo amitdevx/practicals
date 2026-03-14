@@ -1,0 +1,120 @@
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a python program to accepts a value of n and create a generator that yields even numbers up
+to n.
+[10 Marks]
+
+Q2. Write a python program for following a) Create DataFrames Student 1, Student 2 and display contents
+b) Join the two DataFrames in third frame with matching records from both sides.
+c) Display Third DataFrame.
+Student 1
+
+Student 2
+ID
+
+City
+
+Marks
+
+0
+
+S2
+
+Pune
+
+97
+
+23
+
+1
+
+S4
+
+Nashik
+
+78
+
+Om
+
+20
+
+2
+
+S5
+
+Mumbai
+
+86
+
+S4
+
+Raj
+
+21
+
+3
+
+S6
+
+Delhi
+
+66
+
+S5
+
+Kanika
+
+20
+
+4
+
+S7
+
+Nanded
+
+54
+
+ID
+
+Name
+
+Age
+
+0
+
+S1
+
+Anita
+
+18
+
+1
+
+S2
+
+Sakshi
+
+2
+
+S3
+
+3
+4
+
+[20 Marks]
+OR
+
+Q2. Write a python program using user define function to accept a number and perform the following
+task:
+a) Check number is Armstrong or not.
+b) Calculate and display sum of digits till single digit [e.g. - 558 = 18 = 9]
+
+Q3. Viva
+
+[5 Marks]

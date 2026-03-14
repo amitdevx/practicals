@@ -1,0 +1,30 @@
+Savitribai Phule Pune University
+                          S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+                                       Lab Course CS-271-VSC-P
+                                    Advanced Python Programming
+Duration: 3 Hours                                                             Maximum Marks:35
+
+
+Q1. Write a Python program that generates a random radius and computes the circumference of a circle
+    using the math module. (Use 3.14 as the value of π)
+                                                                                              [10 Marks]
+
+
+Q2. Write a python program to check the validity of a password given by the user. The password should
+    satisfy the following criteria:
+           a) Contain at least 1 letter between a and z
+           b) Contain at least 1 number between 0 and 9
+           c) Contain at least 1 character from $, #, @
+           d) Minimum length of password: 6
+           e) Maximum length of password: 12
+                                                                                              [20 Marks]
+
+                                                    OR
+
+
+Q2. Write a python program to list all files in a current directory. Display total count of .py files and
+    content of any one .py files.
+
+
+
+Q3. Viva                                                                                      [5 Marks]

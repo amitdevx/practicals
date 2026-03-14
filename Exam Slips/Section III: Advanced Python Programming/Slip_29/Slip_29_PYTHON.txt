@@ -1,0 +1,28 @@
+Savitribai Phule Pune University
+                         S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+                                      Lab Course CS-271-VSC-P
+                                   Advanced Python Programming
+Duration: 3 Hours                                                           Maximum Marks:35
+
+
+Q1. Write a program to replace all occurrences of ‘a’ with * in a String. (Ex. Samidha then output is
+    S*midh*).                                                                              [10 Marks]
+
+
+Q2. Write a Python program that calculates the pass or fail status of multiple students.
+        a) Define a function check_pass_fail(marks) to return "Pass" if marks ≥ 40, otherwise "Fail".
+        b) Accept number of students and their marks.
+        c) Display each student’s result.
+        d) Print the total count of students who passed and failed.
+                                                                                           [20 Marks]
+
+                                                   OR
+Q2. Write a Python program that:
+       a) Retrieves current local time and UTC time.
+       b) Prints the current time using ctime() and gmtime().
+       c) Accepts a date-time string input in the format DD-MM-YYYY HH:MM:SS.
+       d) Parses the string using strptime() and formats it back using strftime() and display it in two
+           custom formats.
+
+
+Q3. Viva                                                                                   [5 Marks]

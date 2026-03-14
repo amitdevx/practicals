@@ -1,0 +1,84 @@
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a python program to accept a string, Count total number of vowels, consonants and special
+symbols from it.
+[10 Marks]
+Q2. Consider a following record in DataFrame IPL.
+Player
+Hardik Pandya
+
+Team
+Mumbai Indians
+
+Category
+Batsman
+
+BidPrice
+13
+
+Runs
+1000
+
+K L Rahul
+Andre Russel
+
+Kings Eleven
+Kolkata Knight Riders
+
+Batsman
+Batsman
+
+12
+null
+
+2400
+900
+
+Jasprit Bumrah
+
+Mumbai Indians
+
+Bowler
+
+10
+
+200
+
+Virat Kohli
+Rohit Sharma
+
+RCB
+Mumbai Indians
+
+Batsman
+Batsman
+
+17
+null
+
+3600
+3700
+
+Create above DataFrame in python and write python code for following
+a) Retrieve first 2 rows
+b) Retrieve last 3 rows
+c) Check null values present in DataFrame.
+d) Replace null value with mean of that column.
+e) Find most expensive player.
+f) Print total players per team.
+[20 Marks]
+OR
+
+Q2. Write a Python program to demonstrate a user-defined exception that checks whether the entered
+marks are between 0 and 100. Display an appropriate message for invalid input and out-of-range
+values. Also display Grade of marks.
+
+Q3. Viva
+
+[5 Marks]

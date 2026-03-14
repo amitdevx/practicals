@@ -1,0 +1,37 @@
+Savitribai Phule Pune University
+                           S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+                                        Lab Course CS-271-VSC-P
+                                     Advanced Python Programming
+ Duration: 3 Hours                                                               Maximum Marks:35
+
+
+ Q1. Write a Python program that accepts value of m and n. Divides m by n and handles a
+     ZeroDivisionError if the user tries to divide by zero.
+                                                                                                [10 Marks]
+
+
+ Q2. Write a python program for following -
+      a) Create DataFrames Student 1, Student 2 and display contents
+      b) Merge two DataFrames in third frame .
+      c) Display contents of third DataFrame.
+                        Student 1                                       Student 2
+
+                   ID      Name          Age                     ID       City         Marks
+             0      S1     Anita            18               0     S2     Pune             97
+             1      S2     Sakshi           23               1     S4     Nashik           78
+             2      S3     Om               20               2     S5     Mumbai           86
+             3      S4     Raj              21               3     S6     Delhi            66
+             4      S5     Kanika           20               4     S7     Nanded           54
+
+                                                                                                [20 Marks]
+
+
+                                                     OR
+
+
+Q2. Write a Python program to create a class that acts as an iterator and generates the factorial series up
+    to n (1! + 2! + 3! + … + n!). (Accept input from the user)
+
+
+
+ Q3. Viva                                                                                       [5 Marks]

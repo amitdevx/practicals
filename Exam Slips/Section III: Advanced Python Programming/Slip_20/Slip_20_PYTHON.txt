@@ -1,0 +1,33 @@
+Savitribai Phule Pune University
+                          S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+                                       Lab Course CS-271-VSC-P
+                                    Advanced Python Programming
+Duration: 3 Hours                                                              Maximum Marks:35
+
+
+Q1. Create a DataFrame from a dictionary {Subject_Name : Marks} and display the first 5 rows and
+    last 5 rows of DataFrame.
+                                                                                               [10 Marks]
+
+
+Q2. Write a Python program that accepts a filename from the user, opens the file in read mode and
+    display the contents of files. The program should compute and display the total number of
+    characters (including spaces), words, and lines present in the file. If file does not exist give
+    appropriate message.
+
+                                                                                               [20 Marks]
+
+                                                     OR
+
+
+Q2. Create a package banking with modules account.py and loan.py.
+    a) account.py should contain function open_account(name) that accepts a user’s name and prints a
+    message confirming account creation.
+    b) loan.py should contain function apply_loan(amount) that accepts a loan amount and prints a confirmation
+    message with the amount.
+    Write a python program to import modules from banking package and demonstrate both functions.
+
+
+
+
+Q3. Viva                                                                                       [5 Marks]

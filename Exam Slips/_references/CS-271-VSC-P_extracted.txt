@@ -1,0 +1,1539 @@
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write Python code to create a dictionary containing mobile names and their prices. Create
+DataFrame from this dictionary. Display the contents of DataFrame.
+[10 Marks]
+Q2. Create a package vehicle with a sub package types, sub package type contains modules cars and
+bikes. Each module should have a function available_models() returning a list of models. Write a
+python program to display all available models of cars and bikes.
+[20 Marks]
+OR
+
+Q2. Write a python program to list all files in a current directory. Display total count of .py files and
+content of any one .py files.
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 1
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a python program to accept a string, Count total number of vowels, consonants and special
+symbols from it.
+[10 Marks]
+Q2. Consider a following record in DataFrame IPL.
+Player
+Hardik Pandya
+
+Team
+Mumbai Indians
+
+Category
+Batsman
+
+BidPrice
+13
+
+Runs
+1000
+
+K L Rahul
+Andre Russel
+
+Kings Eleven
+Kolkata Knight Riders
+
+Batsman
+Batsman
+
+12
+null
+
+2400
+900
+
+Jasprit Bumrah
+
+Mumbai Indians
+
+Bowler
+
+10
+
+200
+
+Virat Kohli
+Rohit Sharma
+
+RCB
+Mumbai Indians
+
+Batsman
+Batsman
+
+17
+null
+
+3600
+3700
+
+Create above DataFrame in python and write python code for following
+a) Retrieve first 2 rows
+b) Retrieve last 3 rows
+c) Check null values present in DataFrame.
+d) Replace null value with mean of that column.
+e) Find most expensive player.
+f) Print total players per team.
+[20 Marks]
+OR
+
+Q2. Write a Python program to demonstrate a user-defined exception that checks whether the entered
+marks are between 0 and 100. Display an appropriate message for invalid input and out-of-range
+values. Also display Grade of marks.
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 2
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a Python program that accepts value of m and n. Divides m by n and handles a
+ZeroDivisionError if the user tries to divide by zero.
+[10 Marks]
+Q2. Write a python program to create a module containing factorial function, power dictionary and list
+of vowels. Save this as variables.py. Import variables module to print the factorial of n, print the
+power of n, and second alphabet from the vowels list. (Accept n from user)
+[20 Marks]
+OR
+
+Q2. Write a python program to accept a file name from user. If file exist display contents of file and
+number of characters, words and lines in a file, otherwise display appropriate message.
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 3
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a Python program to create a list of elements. Shuffle the elements of a given list and display
+the list. [Hint: Use random.shuffle()]
+[10 Marks]
+Q2. Create a following DataFrame named as “data”. Write the python code for the following
+commands.
+Company
+
+Count
+
+Price
+
+Pencil
+
+Apsara
+
+15
+
+250
+
+Pencil
+
+Natraj
+
+20
+
+200
+
+Pen
+
+Cello
+
+25
+
+600
+
+Pen
+
+Parkar
+
+35
+
+900
+
+Eraser
+
+Apsara
+
+20
+
+300
+
+a) Find all rows with the label “Pencil”. Extract all columns
+b) Change the Eraser count as 25 instead of 20.
+c) List only the columns Company and Price.
+d) List only rows with labels ‘Pencil’ and ‘Pen’
+e) Rename Column Count as Quantity and display DataFrame.
+[20 Marks]
+OR
+
+Q2. Write a python program for following
+a) Create a file which stores the first name, middle name and last name of your 5 friends
+b) Display contents of file
+c) Append other 5 friend’s names
+d) Display modified file contents
+
+Q3. Viva
+
+[5 Marks]
+Slip 4
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a python program to accept a string, find all words that do not contain vowels.
+[10 Marks]
+Q2. Create a package banking with modules account.py and loan.py.
+a) account.py should contain function open_account(name) that accepts a user’s name and prints a message
+confirming account creation
+b) loan.py should contain function apply_loan(amount) that accepts a loan amount and prints a confirmation
+message with the amount
+Write a python program to import modules from banking package and demonstrate both functions.
+[20 Marks]
+OR
+
+Q2. Write a python program to create a list of prime numbers between m and n using List
+comprehension. (Accept the value of m and n from user, m should be less than n)
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 5
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a Python program that prompts the user to input two numbers and raises a TypeError
+exception if the inputs are not numerical.
+[10 Marks]
+
+Q2. Create a following DataFrame named as “data”. Write the python code for the following
+Company
+
+Count
+
+Price
+
+Pencil
+
+Apsara
+
+15
+
+250
+
+Pencil
+
+Natraj
+
+20
+
+200
+
+Pen
+
+Cello
+
+25
+
+600
+
+Pen
+
+Parkar
+
+35
+
+900
+
+Eraser
+
+Apsara
+
+20
+
+300
+
+a) Find all rows with the label “Pencil”. Extract all columns
+b) Change the count of Eraser as 25 instead of 20.
+c) List only the columns Company and Price.
+d) List only rows with labels ‘Pencil’ and ‘Pen’
+e) Delete column Count from the above DataFrame and display DataFrame..
+[20 Marks]
+OR
+Q2. Create a Web Page using Flask which contains following information about your Personal Portfolio
+Page
+a) Show your name as a centered heading.
+b) List your Qualification details.
+c) Add your special skill in scrolling.
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 6
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a python program to accept a string, extract all words that start with a capital letter and
+remove all special characters from a string. Display modified string. (Accept input from user)
+[10 Marks]
+
+Q2. Create a Web Page using Flask which contains following information about your Library Book List
+a) Show the library name as a heading.
+b) Display all available books in a table with title and author.
+c) Add quote about reading in bold and blue color.
+[20 Marks]
+
+OR
+Q2. Write a python program to accept file name. If file exist copy contents of one file into another file
+and display contents of new file along with total number of lines, words and characters otherwise
+give appropriate message.
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 7
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a python program to accepts value of radius from user and calculate the area of a circle using
+function. (Use 3.14 as the value of π).
+[10 Marks]
+
+Q2. Write a python program to create a list, string and tuple in python. Apply random module to display
+unique multiple random elements from above created sequence type.
+[20 Marks]
+
+OR
+Q2. Create a Web Page using Flask which contains following information about your college.
+a) College Name as a heading in center of web page.
+b) Display all the courses available in your college.
+c) Image of your College.
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 8
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a python program to accepts a value of n and create a generator that yields even numbers up
+to n.
+[10 Marks]
+
+Q2. Write a python program for following a) Create DataFrames Student 1, Student 2 and display contents
+b) Join the two DataFrames in third frame with matching records from both sides.
+c) Display Third DataFrame.
+Student 1
+
+Student 2
+ID
+
+City
+
+Marks
+
+0
+
+S2
+
+Pune
+
+97
+
+23
+
+1
+
+S4
+
+Nashik
+
+78
+
+Om
+
+20
+
+2
+
+S5
+
+Mumbai
+
+86
+
+S4
+
+Raj
+
+21
+
+3
+
+S6
+
+Delhi
+
+66
+
+S5
+
+Kanika
+
+20
+
+4
+
+S7
+
+Nanded
+
+54
+
+ID
+
+Name
+
+Age
+
+0
+
+S1
+
+Anita
+
+18
+
+1
+
+S2
+
+Sakshi
+
+2
+
+S3
+
+3
+4
+
+[20 Marks]
+OR
+
+Q2. Write a python program using user define function to accept a number and perform the following
+task:
+a) Check number is Armstrong or not.
+b) Calculate and display sum of digits till single digit [e.g. - 558 = 18 = 9]
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 9
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a python program to create a DataFrame from list of 10 integer values. Display contents of
+DataFrame and calculate sum, mean, median, mode, Standard deviation of DataFrame.
+[10 Marks]
+Q2. Create a package finance_tools with modules interest.py and currency.py
+a) interest.py should contain function cal_interest(amount, year) that accepts amount, year . Calculates
+and returns simple interest using a fixed rate (for example, 5%).
+b) currency.py should contain function converet(amount) that accepts amount in INR and converts it into
+USD. (consider conversion rate 0.012)
+Write a python program to import modules from finance_tools package and demonstrate both
+functions.
+[20 Marks]
+OR
+
+Q2. Write a Python program to create a class that acts as an iterator and generates the factorial series up
+to n (1! + 2! + 3! + … + n!). (Accept input from the user)
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 10
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a python code to a create a list of 10 integer numbers. Display square of all elements of list.
+(Use a lambda function with map())
+[10 Marks]
+
+Q2. Create a Flask application that allows users to add and view tasks. The application should have:
+a) A form to add a task (task_name).
+b) Store tasks in a PostgreSQL database.
+c) Display all tasks below the form.
+[20 Marks]
+OR
+
+Q2. Write a Python program that accepts a string from the user and performs the following tasks:
+a) Split the string into individual words.
+b) Identify and display all words that do not contain any vowels (a, e, i, o, u), ignore case while
+checking for vowels.
+c) Sort and display these words in alphabetical order.
+d) Display the total count of such words.
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 11
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Create a data.csv file containing employee name, designation, salary of an employee. Write a
+python program to create a DataFrame using data.csv and display the contents of DataFrame with
+statistical information of dataframe.
+[10 Marks]
+
+Q2. Write a Python program that:
+a) Retrieves current local time and UTC time.
+b) Prints the current time using ctime() and gmtime().
+c) Accepts a date-time string input in the format DD-MM-YYYY HH:MM:SS.
+d) Parses the string using strptime() and formats it back using strftime() and display it in two
+custom formats.
+[20 Marks]
+OR
+
+Q2. Write a python program to create a list, string and tuple in python. Apply random module to display
+unique multiple random elements from above created sequence type.
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 12
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1.Write a Python program to get the current time and demonstrate the following functions from the
+time module:
+a) Convert the current time in seconds to a readable string
+b) Converts time in seconds to a struct_time in UTC
+[10 Marks]
+Q2. Write a Python program that prompts the user to enter a text file name. If the file exists, open it in
+read mode, display its contents line by line, and show the current file pointer position after each
+line using ftell(). Then move the file pointer back to the beginning using seek() and display the file
+content again. If the file does not exist, display an appropriate error message.
+[20 Marks]
+OR
+Q2. Write a python program for following a) Create DataFrames Student 1, Student 2 and display contents
+b) Join the two DataFrames in third frame with matching records from both sides.
+c) Display Content of Third DataFrame.
+Student 1
+
+Student 2
+ID
+
+City
+
+Marks
+
+0
+
+S2
+
+Pune
+
+97
+
+23
+
+1
+
+S4
+
+Nashik
+
+78
+
+Om
+
+20
+
+2
+
+S5
+
+Mumbai
+
+86
+
+S4
+
+Raj
+
+21
+
+3
+
+S6
+
+Delhi
+
+66
+
+S5
+
+Kanika
+
+20
+
+4
+
+S7
+
+Nanded
+
+54
+
+ID
+
+Name
+
+Age
+
+0
+
+S1
+
+Anita
+
+18
+
+1
+
+S2
+
+Sakshi
+
+2
+
+S3
+
+3
+4
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 13
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a python program to accept a string and substring from user. Check if a particular substring is
+present at the beginning of the given string, give appropriate message. (Use RE module)
+[10 Marks]
+
+Q2. Write a Python program to accept a file name and a byte position as input. If file exist open a file in
+read mode and move the file pointer to the given byte position, prints the content of the file from
+that position till end of file otherwise give appropriate message.
+[20 Marks]
+OR
+Q2. Write a python program to create a module containing factorial function, power dictionary and list
+of vowels. Save this as variables.py. Import variables module to print the factorial of n, print the
+power of n, and second alphabet from the vowels list. (Accept n from user)
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 14
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a Python program to get the current time and demonstrate the following functions from the
+time module:
+a) Converts time in seconds to a struct_time in UTC
+b) Converts a struct_time object into a formatted string.
+[10 Marks]
+
+Q2. Create a Web Page using Flask which contains following information about your Library Book List
+a) Show the library name as a heading.
+b) Display all available books in a table with title and author.
+c) Add quote about reading in bold and blue color.
+[20 Marks]
+OR
+Q2. Write a python program to check weather given url is valid or not? (for Ex:
+https://www.yahoo.com)
+
+Q3 Viva
+
+[5 Marks]
+
+Slip 15
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a Python program using regular expressions to validate whether a given string matches the
+pattern of three-letter words such as bit, but, bat, hit, hut, hat.
+[10 Marks]
+
+Q2. Consider a following record in DataFrame IPL
+Player
+Hardik Pandya
+
+Team
+Mumbai Indians
+
+Category
+Batsman
+
+BidPrice
+13
+
+Runs
+1000
+
+K L Rahul
+Andre Russel
+
+Kings Eleven
+Kolkata Knight Riders
+
+Batsman
+Batsman
+
+12
+7
+
+2400
+900
+
+Jasprit Bumrah
+
+Mumbai Indians
+
+Bowler
+
+10
+
+200
+
+Virat Kohli
+Rohit Sharma
+
+RCB
+Mumbai Indians
+
+Batsman
+Batsman
+
+17
+15
+
+3600
+3700
+
+Create above DataFrame in python and write python code for following
+a) Retrieve first 2 rows
+b) Retrieve last 3 rows
+c) Add null values in DataFrame.
+d) Find most expensive player.
+e) Print total players per team.
+[20 Marks]
+OR
+Q2. Create a package vehicle with a sub package types, sub package type contains modules cars and
+bikes. Each module should have a function available_models() returning a list of models. Write a
+python program to display all available models of cars and bikes.
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 16
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a Python program to accept a string and replace all occurrences of a spaces with a colon and
+comma with dot. Display modified string.
+[10 Marks]
+
+Q2. Write a python program to create a list, string and tuple in python. Apply random module
+to display unique multiple random elements from above created sequence type.
+[20 Marks]
+
+OR
+
+Q2. Write a python program using user define function to accept a number and perform the following
+task:
+a) Check number is Armstrong or not.
+b) Calculate and display sum of digits till single digit [e.g. - 558 = 18 = 9]
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 17
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a Python program to list all files and folders in the current directory using os.listdir().
+[10 Marks]
+
+Q2. Write a Python program to validate mobile number based on following criteria
+a) The first digit should contain numbers between 6 to 9.
+b) The rest 9 digit can contain any number between 0 to 9.
+c) The mobile number can have 11 digits also by including 0 at the starting.
+d) The mobile number can be of 12 digits also by including 91 at the starting
+[20 Marks]
+OR
+Q2. Build a package education with a sub package courses, containing modules science.py and
+arts.py. Each module should have a function get_subjects(). Write a python program to display all
+subjects.
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 18
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a Python program to shuffle a deck of card. Display the cards obtained by a user in 5
+attempts.
+[10 Marks]
+Q2. Write a python program to display all entries in a current directory and identify each as file or
+folder. [Use getcwd() function to retrieve current directory]
+[20 Marks]
+OR
+Q2. Consider a following record in DataFrame IPL
+Player
+Team
+Hardik Pandya Mumbai Indians
+
+Category
+Batsman
+
+BidPrice
+null
+
+Runs
+1000
+
+K L Rahul
+Andre Russel
+
+Batsman
+Batsman
+
+12
+7
+
+2400
+900
+
+Jasprit Bumrah Mumbai Indians
+
+Bowler
+
+10
+
+null
+
+Virat Kohli
+Rohit Sharma
+
+Batsman
+Batsman
+
+null
+15
+
+3600
+3700
+
+Kings Eleven
+Kolkata Knight Riders
+
+RCB
+Mumbai Indians
+
+Create above DataFrame in python and write python code for following
+a) Retrieve first 2 rows
+b) Retrieve last 3 rows
+c) Check null values in DataFrame.
+d) Replace null values with mean of that column.
+e) Find most expensive player.
+f) Print total players per team.
+Q3. Viva
+
+[5 Marks]
+
+Slip 19
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a python program to accept a string, Count total number of vowels, consonants and special
+symbols from it.
+[10 Marks]
+
+Q2. Write a Python program to accept a file name and a byte position as input. If file exist open a file in
+read mode and move the file pointer to the given byte position, prints the content of the file from
+that position till end of file otherwise give appropriate message.
+[20 Marks]
+OR
+
+Q2. Create a Pandas DataFrame using the following student data with columns and perform the
+following tasks:
+school
+S1
+S2
+S3
+S4
+S5
+S6
+
+class
+S001
+S002
+S003
+S004
+S005
+S006
+
+name
+Asha
+Fransis
+Charlie
+David
+Shyam
+Eashel
+
+date_of_birth
+15/05/2002
+17/05/2002
+16/02/1999
+25/09/1998
+11/05/2002
+15/09/1997
+
+age
+12
+12
+13
+14
+12
+16
+
+height
+173
+192
+186
+167
+151
+159
+
+weight
+35
+32
+33
+30
+31
+32
+
+address
+Street1
+Street2
+Street3
+Street4
+Street5
+Street6
+
+a) Split the DataFrame into groups based on the school column using the GroupBy operation.
+b) Check and display the type of the GroupBy object created.
+c) Calculate the mean, minimum, and maximum values of the age column for each school group.
+d) Count the number of students whose weight is greater than 32.
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 20
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Create a DataFrame from a dictionary {Subject_Name : Marks} and display the first 5 rows and
+last 5 rows of DataFrame.
+[10 Marks]
+
+Q2. Write a Python program that accepts a filename from the user, opens the file in read mode and
+display the contents of files. The program should compute and display the total number of
+characters (including spaces), words, and lines present in the file. If file does not exist give
+appropriate message.
+[20 Marks]
+OR
+
+Q2. Create a package banking with modules account.py and loan.py.
+a) account.py should contain function open_account(name) that accepts a user’s name and prints a
+message confirming account creation.
+b) loan.py should contain function apply_loan(amount) that accepts a loan amount and prints a confirmation
+message with the amount.
+Write a python program to import modules from banking package and demonstrate both functions.
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 21
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a Python program that accepts value of m and n. Divides m by n and handles a
+ZeroDivisionError if the user tries to divide by zero.
+[10 Marks]
+
+Q2. Write a python program for following a) Create DataFrames Student 1, Student 2 and display contents
+b) Merge two DataFrames in third frame .
+c) Display contents of third DataFrame.
+Student 1
+
+Student 2
+ID
+
+City
+
+Marks
+
+0
+
+S2
+
+Pune
+
+97
+
+23
+
+1
+
+S4
+
+Nashik
+
+78
+
+Om
+
+20
+
+2
+
+S5
+
+Mumbai
+
+86
+
+S4
+
+Raj
+
+21
+
+3
+
+S6
+
+Delhi
+
+66
+
+S5
+
+Kanika
+
+20
+
+4
+
+S7
+
+Nanded
+
+54
+
+ID
+
+Name
+
+Age
+
+0
+
+S1
+
+Anita
+
+18
+
+1
+
+S2
+
+Sakshi
+
+2
+
+S3
+
+3
+4
+
+[20 Marks]
+
+OR
+
+Q2. Write a Python program to create a class that acts as an iterator and generates the factorial series up
+to n (1! + 2! + 3! + … + n!). (Accept input from the user)
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 22
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a Python program that defines a function productInfo() which accepts a product name and its
+price. The function should display the product name only if its price is less than Rs.100. If no price
+is provided, the function should assume the default price to be Rs.100.
+[10 Marks]
+
+Q2. Write a Python program that:
+a) Retrieves current local time and UTC time.
+b) Prints the current time using ctime() and gmtime().
+c) Accepts a date-time string input in the format DD-MM-YYYY HH:MM:SS.
+d) Parses the string using strptime() and formats it back using strftime() and display it in two custom
+formats.
+[20 Marks]
+OR
+
+Q2. Write a Python program that accepts a string from the user and performs the following tasks:
+a) Split the string into individual words.
+b) Identify and display all words that do not contain any vowels (a, e, i, o, u), ignore case while
+checking for vowels.
+c) Sort and display these words in alphabetical order.
+d) Display the total count of such words.
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 23
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a python program to extract number from a given string and display extracted number.
+[10 Marks]
+Q2. Write a Python program that calculates the pass or fail status of multiple students.
+a) Define a function check_pass_fail(marks) to return "Pass" if marks ≥ 40, otherwise "Fail".
+b) Accept number of students and their marks.
+c) Display each student’s result.
+d) Print the total count of students who passed and failed.
+[20 Marks]
+
+OR
+
+Q2. Create a Web Page using Flask which contains following information about your college.
+a) College Name as a heading in center of web page.
+b) Display all the courses available in your college.
+c) Image of your College.
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 24
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a Python program to shuffle a deck of card. Display the cards obtained by a user in 5
+attempts.
+[10 Marks]
+
+Q2. Create a package finance_tools with modules interest.py and currency.py
+a) interest.py should contain function cal_interest(amount, year) that accepts amount, year . Calculates
+and returns simple interest using a fixed rate (for example, 5%).
+b) currency.py should contain function converet(amount) that accepts amount in INR and converts it into
+USD. (consider conversion rate 0.012)
+Write a python program to import modules from finance_tools package and demonstrate both
+functions.
+[20 Marks]
+OR
+Q2. Write a python program to check weather given url is valid or not?
+(for Ex: https://www.yahoo.com)
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 25
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a python program to remove all whitespaces from a given string. Display modified string.
+[10 Marks]
+
+Q2. Create a package vehicle with a sub package types, sub package type contains modules cars and
+bikes. Each module should have a function available_models() returning a list of models. Write a
+python program to display all available models of cars and bikes.
+[20 Marks]
+OR
+
+Q2. Create a following DataFrame named as “data”. Write the python code for the following
+commands.
+Company
+
+Count
+
+Price
+
+Pencil
+
+Apsara
+
+15
+
+250
+
+Pencil
+
+Natraj
+
+20
+
+200
+
+Pen
+
+Cello
+
+25
+
+600
+
+Pen
+
+Parkar
+
+35
+
+900
+
+Eraser
+
+Apsara
+
+20
+
+300
+
+a) Find all rows with the label “Pencil”. Extract all columns
+b) Change the Eraser count as 25 instead of 20.
+c) List only the columns Company and Price.
+d) List only rows with labels ‘Pencil’ and ‘Pen’
+e) Add a new column named Colour to the DataFrame and display DataFrame..
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 26
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a Python program that generates a random radius and computes the circumference of a circle
+using the math module. (Use 3.14 as the value of π)
+[10 Marks]
+
+Q2. Write a python program to check the validity of a password given by the user. The password should
+satisfy the following criteria:
+a) Contain at least 1 letter between a and z
+b) Contain at least 1 number between 0 and 9
+c) Contain at least 1 character from $, #, @
+d) Minimum length of password: 6
+e) Maximum length of password: 12
+[20 Marks]
+OR
+Q2. Write a python program to list all files in a current directory. Display total count of .py files and
+content of any one .py files.
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 27
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a Python program using regular expressions to validate whether a given string matches the
+pattern of three-letter words such as cat, cot, cut, mat, met, mud.
+[10 Marks]
+
+Q2. Build a package education with a sub package courses, containing modules science.py and
+
+arts.py. Each module should have a function get_subjects(). Write a python program to display all
+subjects.
+[20 Marks]
+OR
+
+Q2. Write a python program to display all entries in a current directory and identify each as file or
+folder. [Use getcwd() function to retrieve current directory]
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 28
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a python program to create a DataFrame using Iris.csv file. Display the contents of
+DataFrame and statistical information of DataFrame.
+[10 Marks]
+
+Q2. Write a Python program that accepts text file name and a string. If file exist, then appends string to
+its content and display the contents of the file otherwise gives appropriate message.
+[20 Marks]
+OR
+
+Q2. Write a Python program to validate mobile number based on following criteria
+a) The first digit should contain numbers between 6 to 9.
+b) The rest 9 digit can contain any number between 0 to 9.
+c) The mobile number can have 11 digits also by including 0 at the starting.
+d) The mobile number can be of 12 digits also by including 91 at the starting
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 29
+
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a program to replace all occurrences of ‘a’ with * in a String. (Ex. Samidha then output is
+S*midh*).
+
+[10 Marks]
+
+Q2. Write a Python program that calculates the pass or fail status of multiple students.
+a) Define a function check_pass_fail(marks) to return "Pass" if marks ≥ 40, otherwise "Fail".
+b) Accept number of students and their marks.
+c) Display each student’s result.
+d) Print the total count of students who passed and failed.
+[20 Marks]
+OR
+Q2. Write a Python program that:
+a) Retrieves current local time and UTC time.
+b) Prints the current time using ctime() and gmtime().
+c) Accepts a date-time string input in the format DD-MM-YYYY HH:MM:SS.
+d) Parses the string using strptime() and formats it back using strftime() and display it in two
+custom formats.
+
+Q3. Viva
+
+[5 Marks]
+
+Slip 30
+
+

@@ -1,0 +1,25 @@
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a python program to accepts value of radius from user and calculate the area of a circle using
+function. (Use 3.14 as the value of π).
+[10 Marks]
+
+Q2. Write a python program to create a list, string and tuple in python. Apply random module to display
+unique multiple random elements from above created sequence type.
+[20 Marks]
+
+OR
+Q2. Create a Web Page using Flask which contains following information about your college.
+a) College Name as a heading in center of web page.
+b) Display all the courses available in your college.
+c) Image of your College.
+
+Q3. Viva
+
+[5 Marks]

@@ -1,0 +1,26 @@
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a Python program to get the current time and demonstrate the following functions from the
+time module:
+a) Converts time in seconds to a struct_time in UTC
+b) Converts a struct_time object into a formatted string.
+[10 Marks]
+
+Q2. Create a Web Page using Flask which contains following information about your Library Book List
+a) Show the library name as a heading.
+b) Display all available books in a table with title and author.
+c) Add quote about reading in bold and blue color.
+[20 Marks]
+OR
+Q2. Write a python program to check weather given url is valid or not? (for Ex:
+https://www.yahoo.com)
+
+Q3 Viva
+
+[5 Marks]

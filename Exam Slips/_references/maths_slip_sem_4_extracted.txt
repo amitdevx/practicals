@@ -1,0 +1,1372 @@
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292 MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:-1
+Time: 3 hours
+
+Maximum Marks: 35
+
+Q.1. Attempt any four of the following.
+
+[ 5×4= 20 Marks ]
+
+1.
+
+Represent the following information using a bar graph (in brown colour ) ,
+Subject
+
+Mathematics
+
+English
+
+Biology
+
+Physics
+
+Chemistry
+
+Marks
+
+68
+
+45
+
+79
+
+56
+
+70
+
+2.
+
+Plot the graph of y = x3 +10 x – 5 , for x  [–10, 10] in red colour with dashed lines.
+
+3.
+
+Draw surface plot for the function f(x, y) = x2 + y2 when –10 x, y 10,
+with pink colour.
+
+4. Using sympy declare points P(7,2) , Q(1,8). Find the distance between them. Declare the line
+passing through them. Find the slope and equation of the line passing through points P and Q.
+5. Using sympy declare  ABC where A (2 , 2), B(4, 2), C( 3, 6) ,for this triangle find its centroid
+and also translate  ABC in x direction by 2 units.
+
+Q.2. Attempt any one of the following.
+
+[ 10 ×1= 10 Marks ]
+
+1. Write a python program to plot the polygon with vertices at P(4 , 3),Q(6, 3),R(6, 5), and
+S(4, 5). Plot its reflections through, 1) x-axis, 2) y-axis . Also plot x axis and y axis in
+black colours . All figures must be in different colours .Use labels and legend .
+2. Write a python program to generate and plot 100 points on circle x2+y2 = 25 using iterative
+formulae.
+Q.3 Viva Voce
+
+[5 Marks]
+
+–––––––––––––––
+
+* –––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292 MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:-2
+Time: 3 hours
+
+Maximum Marks: 35
+
+Q.1. Attempt any four of the following.
+
+[ 5×4= 20 Marks ]
+
+1. Represent the following information using a Pie chart with percentage.
+Sport
+
+Cricket
+
+Football
+
+Badminton
+
+Hockey
+
+Other
+
+Number of
+
+34
+
+50
+
+24
+
+10
+
+82
+
+students
+2.
+
+Plot the graph of 𝑦 = 𝑥 2 + 5, for x  [–5, 5] in green colour with dashed lines.
+
+3.
+
+Draw Wireframes plot for the function f(x, y) = (x2 – y2) when –20 x, y 20,
+with brown colour.
+
+4. Using sympy declare point P(–4,5), apply each of the given transformation on point P.
+a) Scaling in x co-ordinate by 2 unit, b) reflection through the line y = x, c) translation in y
+direction by factor 7 units.
+5. Using sympy declare  ABC where A (3 , 0), B(0, 4), C(–3, 0) , for this triangle find its area,
+perimeter and all angles.
+
+Q.2. Attempt any one of the following.
+
+[ 10 ×1= 10 Marks ]
+
+1. Write a python program to plot the polygon with vertices A(1, 1), B(–5, 1), C(–5, – 4) and
+D(1, – 4). On this polygon apply 1) rotation about origin through angle 900 , 2) shearing in
+x-direction proportional to y by factor 3.
+Plot transformed polygons also. All figures must be in different colours. Use legend.
+2. Write a python program to generate and plot 100 points on circle x2+y2 = 49 using iterative
+formulae.
+Q.3 Viva Voce
+
+[5 Marks]
+
+–––––––––––––––
+
+* –––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:-3
+Time: 3 hours
+
+Maximum Marks: 35
+
+Q.1. Attempt any four of the following.
+1.
+
+[ 5×4= 20 Marks ]
+
+Represent the following information using a horizontal bar graph (in brown color ) ,
+Subject
+
+Mathematics
+
+English
+
+Biology
+
+Physics
+
+Chemistry
+
+Marks
+
+45
+
+35
+
+85
+
+50
+
+60
+
+2.
+
+Plot the graph of 𝑦 = 𝑥 3 − 3𝑥 + 2, for x  [–5, 5] in maroon colour with arrow lines.
+
+3.
+
+Draw surface plot for the function 𝑓(𝑥, 𝑦) = √𝑥 2 + 𝑦 2 when –20 x, y 20,
+with red colour.
+
+4. Using sympy declare points L(–5,0) , M(4,0) and N(9,0). Determine whether the points L, M
+and N are collinear. Declare the line passing through the point L and N, find the slope and
+equation of the line passing through points L and N.
+5. Using sympy declare regular polygon with center at origin, radius 2 and number of sides 5. Find
+its area, perimeter, centroid and also translate it in y direction by 4 units.
+
+Q.2. Attempt any one of the following.
+
+[ 10 ×1= 10 Marks ]
+
+1. Write a python program to plot the polygon with vertices at points A(0,0), B(1, 0), C(1, 1)
+and D (0 , 1), find the transformed polygon by applying combined transformations using
+sequence a) reflections thorugh x-axis,
+
+b) rotation about origin through angle 450
+
+and
+
+c) uniform scaling by factor -3 units. Both the figures must be in different colours.
+2. Write a python program to generate and plot 50 points on parabola 𝑦 2 = 12𝑥 , in the where
+0 ≤ 𝑥 ≤ 20 using iterative formulae.
+Q.3 Viva Voce
+
+[5 Marks]
+
+–––––––––––––––
+
+* –––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:-4
+Time: 3 hours
+Q.1. Attempt any four of the following.
+1.
+
+Maximum Marks: 35
+[ 5×4= 20 Marks ]
+
+Write python program to generate and plot graph of function 𝑓(𝑥) = 𝑥 3 for 𝑥 ∈ [−5,5 ]
+and 𝑔(𝑥) = 𝑒 𝑥 for 𝑥 ∈ [1,10] in one graph window using 2 ×1 subplots.
+
+2.
+
+Plot the graph of 𝑦 = 2𝑥 + 5, for x  [1, 20] in sky blue color with dashed lines.
+
+3.
+
+Draw Wireframes plot for the function f(x, y) = cos (x2+y2) when 0 x, y 2π,
+with brown colour.
+
+4. Using sympy declare the unit square. Find its area, perimeter and centroid.
+5. Using sympy declare 3D Point P(2 , –1 , 3) and rotate about z-axis through angle 900 ,
+
+Q.2. Attempt any one of the following.
+
+[ 10 ×1= 10 Marks ]
+
+1. Write a python program to plot the  ABC with vertices A(–2 , 7), B(–5 , –1)
+
+and C(4, 3)
+
+On this polygon apply 1) shearing in x-direction proportional to y by factor 3 and y-direction
+proportional to x by factor 4, 2) reflection through x-axis, 3) translation in y direction by
+factor 7 units. Plot original and transformed figures in different colour .
+2. Write a python program to generate and plot 75 points on circle x2 + y2 = 64 using iterative
+formulae.
+Q.3 Viva Voce
+
+[5 Marks]
+
+–––––––––––––––
+
+* –––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292 MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:-5
+Time: 3 hours
+
+Maximum Marks: 35
+
+Q.1. Attempt any four of the following.
+1.
+
+[ 5×4= 20 Marks ]
+
+Represent the following information using a bar graph (All bars with different colours ) ,
+Year
+
+2016
+
+2017
+
+2018
+
+2019
+
+2020
+
+Sale of Newspaper
+
+45
+
+50
+
+60
+
+55
+
+70
+
+2.
+
+Plot the graph of y = x2 +2 x + 5 , for x  [–20, 20] in red colour with dashed lines.
+
+3.
+
+Draw surface plot for the function 𝑓(𝑥, 𝑦) = √𝑥 2 − 𝑦 2 when –30 x, y 30,
+with brown colour.
+
+4. Using sympy declare line AB passing through points A(2, –4), B(2,8) and line PQ passing
+through point P(5,4), Q(–8,3). Find point of intersection of lines AB and PQ, also equations of
+Lines AB and PQ, and distance between point A and line PQ.
+5. Using sympy declare triangle OAB where O (0, 0), A(7, –2), B( 3, 6) , for this triangle find the
+scaling in x and y co-ordinates by factors 3 and –7 respectively and also find its reflection
+through the line y = x.
+
+Q.2. Attempt any one of the following.
+
+[ 10 ×1= 10 Marks ]
+
+1. Write a python program to plot the 3d line segment with vertices at A(1, 2, 3), B(4 , 5 , 6).
+Find and plot a) reflection of AB through XY-plane, b) shearing of AB in y co-ordinate
+proportional to z co-ordinate by factor 4.
+2. Write a python program to generate and plot 50 points on the parabola with equation y2 = 8x
+where 0 ≤ 𝑥 ≤ 30 using iterative formulae.
+Q.3 Viva Voce
+
+[5 Marks]
+
+–––––––––––––––
+
+* –––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:-6
+Time: 3 hours
+Q.1. Attempt any four of the following.
+1.
+
+Maximum Marks: 35
+[ 5×4= 20 Marks ]
+
+Write python program to plot function 𝑓(𝑥) = 𝑥 2 for 𝑥 ∈ [−10,10] and 𝑔(𝑥) = 𝑒 2𝑥+4
+for 𝑥 ∈ [1,20] in one graph window by using 1 × 2 subplots.
+
+2.
+
+Plot the graph of 𝑦 = 𝑥 2 + 5, for x  [–10,10] in red color using point marker arrow.
+
+3.
+
+Draw Wireframes plot for the function f(x, y) = sin(x2+y2) when 0 x, y 2π,
+with brown colour.
+
+4. Using sympy declare the regular polygon with center at origin, radius 4 and number of sides 5.
+Find its area and also find its scaling in x and y directions by factors 3 and 2 respectively.
+5. Using sympy declare polygon ABCD with vertices A(2, 2), B(6, 2), C(6, 6) and D(2, 6). Find
+its area, perimeter and all angles.
+
+Q.2. Attempt any one of the following.
+
+[ 10 ×1= 10 Marks ]
+
+1. Write a python program to plot the  ABC with vertices A(1, 6), B(0 , 8) and C(5 , 3). Find
+and its 1) shearing in x-direction proportional to y by factor 5, 2) reflection through y-axis ,
+3) translation x and y direction by factor 1 and 4 units respectively. And plot all transformed
+figures in different colours.
+2. Write a Python program to generate and plot 75 points on circle x2+y2 = 36 using iterative
+formulae.
+Q.3 Viva Voce
+
+[5 Marks]
+
+–––––––––––––––
+
+* –––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:- 7
+Time: 3 hours
+
+Maximum Marks: 35
+
+Q.1. Attempt any four of the following.
+1.
+
+[ 5×4= 20 Marks ]
+
+Represent the following information using a Pie chart. Use explode function for separate the
+sectors.
+Items
+
+Food
+
+Education
+
+Rent
+
+Travelling
+
+Others
+
+Expenses (in
+
+20
+
+40
+
+30
+
+10
+
+15
+
+Thousand Rs.)
+2.
+
+Plot the graph of 𝑦 = 𝑒 𝑥 , for x  [0, 10] in any color and dotted pattern .
+2
+
+2
+
+3. Draw Surface plot for the function f(x, y) = 𝑒 (x +y ) when –2𝜋 x, y 2𝜋, with red
+colour.
+4. Using sympy declare line segment passing through points P(4, –5) and Q(–7,6). Apply each of
+the given transformation on segment PQ. a) reflection through the line y = –x,
+b) Translation in x and y direction by factor 2 units and -3 units respectively.
+5. Using sympy declare polygon with vertices A (4 , 3), B(–4, 3), C(– 4, –3) and D(4, –3) ,for this
+polygon find its area, perimeter, centroid and all angles.
+
+Q.2. Attempt any one of the following.
+
+[ 10 ×1= 10 Marks ]
+
+1. Write a python program to plot the Pyramid OABC with the vertices O(0, 0, 0), A(1, 1, 0),
+B(0, 1, 0) and C(0, 0, 1). Find and plot its
+
+1) rotation about x-axis through angle 900 ,
+
+2) reflection through YZ-plane .
+2. Write a Python program to generate and plot 50 points on parabola with equation y2 = 20x,
+where 0 ≤ 𝑥 ≤ 40 using iterative formulae.
+Q.3 Viva Voce
+
+[5 Marks]
+
+–––––––––––––––
+
+* –––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:- 8
+Time: 3 hours
+
+Maximum Marks: 35
+
+Q.1. Attempt any four of the following.
+1.
+
+[ 5×4= 20 Marks ]
+
+Represent the following information using a bar graph .
+City
+
+Satara
+
+Dhule
+
+Nashik
+
+Nagpur
+
+Pune
+
+Temperature in ℃
+
+20
+
+32
+
+25
+
+40
+
+30
+
+2.
+
+Plot the graph of 𝑦 = cos(𝑥) + sin (𝑥), for x  [–𝜋, 𝜋] in maroon colour with dashed lines.
+
+3.
+
+Draw Wireframe plot for the function 𝑓(𝑥, 𝑦) = sin (√𝑥 2 + 𝑦 2 ) when 0 x, y 2𝜋,
+with brown colour.
+
+4. Using sympy declare points L(2, 6) , M(–2, 9) and N(–3, –5). Determine whether the points L,
+M and N are collinear, find distance between L and M, distance between N and M and distance
+between L and N and slope of line passing through Point L and M.
+5. Using sympy declare regular polygon with center at origin, radius 6 and number of sides 6. Find
+its area, perimeter and translate this regular polygon in x direction by 8 units.
+
+Q.2. Attempt any one of the following.
+
+[ 10 ×1= 10 Marks ]
+
+1. Write a python program to plot the polygon with vertices A(–2 , 5), B(–2, 9) , C(3 , 5) and
+D(4, 2) . Apply following transformations on polygon ABCD and plot the transformed
+polygons also, a) translation in x and y direction by factor 2 and –5 respectively, b) rotation
+about origin through angle 600 and c) shearing in x direction by factor 5 units.
+2. Write a python program to generate and plot 100 points on circle 𝑥 2 + 𝑦 2 = 81 using
+iterative formulae.
+Q.3 Viva Voce
+
+[5 Marks]
+
+–––––––––––––––
+
+* –––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:- 9
+Time: 3 hours
+
+Q.1. Attempt any four of the following.
+1.
+
+Maximum Marks: 35
+
+[ 5×4= 20 Marks ]
+
+Write python program to plot the graph of function 𝑓(𝑥) = 𝑠𝑖𝑛 (x 2 ) for 𝑥 ∈ [−10,10] and
+𝑔(𝑥) = cos (x 2 ) for 𝑥 ∈ [0, 𝜋] in one graph window 2 × 1 subplots.
+
+2.
+
+Plot the graph of 𝑦 = 𝑥 2 + 𝑒 2𝑥+5 , for x  [–10,10] in red color with dashed dotted line.
+
+3.
+
+Draw Surface plot for the function f(x, y) = 𝑥 3 + 𝑦 3 , when –20 x, y 20,
+with pink colour.
+
+4. Using sympy declare unit square at origin and find its area, perimeter, centroid and all angles.
+5. Using sympy declare 3D line segment passing through A(2 , 3, 5) and B(– 4, 7,9). And reflect
+through XZ-plane.
+
+Q.2. Attempt any one of the following.
+
+[ 10 ×1= 10 Marks ]
+
+1. Write a python program to plot the polygon ABCD with vertices A(4, 4), B(–4, 4), C(–4, –4)
+and D(4 , –4). Apply the following sequence of combined transformations on it
+1) shearing in y-direction by factor –3, 2) reflection through x-axis, 3) translation x and y
+direction by factors 5 and 8 respectively. And plot transformed polygon in different colours.
+2. Write a python program to generate and plot 75 points on parabola y2 = 36x
+where 0 ≤ 𝑥 ≤ 30 using iterative formulae.
+Q.3 Viva Voce
+
+[5 Marks]
+
+–––––––––––––––
+
+* –––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:-10
+Time: 3 hours
+
+Maximum Marks: 35
+
+Q.1. Attempt any four of the following.
+1.
+
+[5×4= 20 Marks ]
+
+Represent the following information using a horizontal bar graph (in blue color ) ,
+Year
+
+2020
+
+2021
+
+2022
+
+2023
+
+2024
+
+Number of Matches
+
+50
+
+40
+
+30
+
+67
+
+45
+
+2.
+
+Plot the graph of y = x2 –5 , for x  [–10, 20] in red colour with lines using arrow marker.
+
+3.
+
+Draw Wireframe plot for the function 𝑓(𝑥, 𝑦) = 𝑐𝑜𝑠 √𝑥 2 − 𝑦 2 when 0 x, y 2𝜋,
+with green colour.
+
+4. Using sympy declare a regular polygon with center at origin, radius 5 and number of sides 4.
+Find its area, perimeter, vertices and all angles.
+5. Using sympy declare 3D line with vertices at A(2, 0, 5), B(1, 5 , 8). And Rotate about Y-axis
+through an angle π.
+
+Q.2. Attempt any one of the following.
+
+[ 10 ×1= 10 Marks ]
+
+1. Write a python program to plot the triangle OAB where O (0, 0), A(8, –9), B( 7, 4) ,for this
+triangle find a) scaling in x and y co-ordinate by factor 5 and–6 respectively, b) reflection
+through x axis and c) rotation about origin through angle 600 . And plot all transformed
+figures in different colours.
+2. Write a python program to generate and plot100 points on circle 𝑥 2 + 𝑦 2 = 144 using
+iterative formulae.
+Q.3 Viva Voce
+
+[5 Marks]
+
+–––––––––––––––
+
+* –––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:-11
+Time: 3 hours
+
+Maximum Marks: 35
+
+Q.1. Attempt any four of the following.
+
+[ 5×4= 20 Marks ]
+
+1. Draw the Histograph with given data in brown colour,which will give us the number of
+students obtaining the marks between 20– 40 ,40– 60 , 60 – 80 and 80–100
+Marks of students: 71,29,35,21,66, 32, 24,27,38,44,51,42,49,86,94,46,57,47,41,50,46.
+𝜋
+
+2.
+
+Plot the graph of 𝑦 = 𝑥 2 + cos (2𝑥 + 5), for x  [0, 2 ] in red colour with arrow lines.
+
+3.
+
+Draw Surface plot for the function 𝑓(𝑥, 𝑦) = 𝑆𝑖𝑛 √𝑥 2 + 𝑦 2 when 0 x, y 2𝜋,
+with brown colour.
+
+4.
+
+Using sympy generate the lines with equations 3 x+ 5y =4 and x – 5y =8. Find point of
+intersection of these two lines and angle between these two lines.
+
+5.
+
+Using sympy declare polygon with vertices O(0, 0), A(5, 0), C(5, 2) and D(0, 2). Determine
+whether point (5,1) is inside the polygon. Also find the translation of polygon in x and y
+direction by factor 3 and 3 units respectively.
+
+Q.2. Attempt any one of the following.
+
+[ 10 ×1= 10 Marks ]
+
+1. Write a python program to generate and plot the  ABC, where A(10, 5), B(–7, 4) and
+C(8, –3). Find and plot the transformed triangle by applying combined transformations of
+sequence a) reflection through y-axis, b) rotation about origin through angle 900 and c)
+uniform scaling by factor 7 units.
+2. Write a Python program to generate and plot 50 points on parabola 𝑦 2 = 40𝑥 for 0 ≤ 𝑥 ≤ 50
+using iterative formulae.
+Q.3 Viva Voce
+
+[5 Marks]
+
+–––––––––––––––
+
+* –––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292 MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:- 12
+Time: 3 hours
+
+Maximum Marks: 35
+
+Q.1. Attempt any four of the following.
+1.
+
+[ 5×4 = 20 Marks ]
+
+Represent the following information using a Pie Chart
+Subject
+
+Mathematics
+
+English
+
+Biology
+
+Physics
+
+Chemistry
+
+Marks
+
+84
+
+48
+
+60
+
+35
+
+72
+
+Plot the graph of y = cos (2x) , for x  [–π, π] in red colour with dashed lines.
+Draw wireframe plot for the function f (x, y) = sin (x2 +y2) when –10  x, y  10,
+with brown colour.
+
+2.
+3.
+
+4. Using sympy declare points P ( 0, 0 ) , Q (1 , 1 ), R (– 7 ,5) . Find the distance of points Q and
+R from P. Also find midpoint of line segment QR.
+5. Using sympy declare polygon ABCD where A (1 , 1), B (–1, 1 ), C ( –1, –1 ) and D ( 1 , –1) ,
+𝜋
+Find angles of polygon ABCD at each vertices. Also find its rotation about origin by radians.
+3
+
+Q.2. Attempt any one of the following.
+
+[10 ×1= 10 Marks ]
+
+1. Write a python program to plot the Triangle with vertices at P (1 , 3), Q (3 , 3), R(4 , 5) and its
+reflections through, 1) line y = x 2) line y = – x . All the figures must be in different colours.
+2. Write a python program to generate and plot 50 points on circle x2 +y2 = 16 using iterative
+formulae.
+Q.3
+
+Viva Voce
+
+[5 Marks]
+
+–––––––––––––––
+
+* –––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292 MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:- 13
+Time: 3 hours
+
+Maximum Marks: 35
+
+Q.1. Attempt any four of the following.
+1.
+
+[ 5×4 = 20 Marks ]
+
+Represent the following information using a Pie Chart showing percentage.
+Subject
+
+Mathematics
+
+English
+
+Biology
+
+Physics
+
+Chemistry
+
+Marks
+
+85
+
+15
+
+50
+
+67
+
+77
+
+2.
+
+Plot the graph of y = cos ( x2) , for x  [ -π, π] in red colour with dashed lines.
+
+3.
+
+Draw wireframe plot for the function f (x, y) = (x2 – y2) when –10  x, y  10,
+with brown colour.
+
+4. Using sympy declare points P ( 0, 0 ) , Q (1 , 1 ), R (–1 ,1) , S (–1, –1 ), T ( 1 , –1 ) , Rotate the
+polygon about origin through π radians also find centroid of polygon.
+5. Using sympy declare the Triangle with vertices at A[1 3], B[3 3], C[4
+
+5] . Find angles of
+
+ ABC at each vertices , also find its area and perimeter.
+
+Q.2. Attempt any one of the following.
+1.
+
+[ 10 ×1= 10 Marks ]
+
+Write a python program to plot the Polygon ABCD where A (0 , 3), B (–3, 3 ), C ( –3, 0 ) and
+D ( 0 ,0). Find and plot, 1) reflection of ABCD through line y = x , 2) Uniform Scaling of
+ABCD by facor 4. All the figures must be in different colours.
+
+2. Write a Python program to generate and plot 50 points on circle x2 +y2 = 25 using iterative
+formulae.
+Q.3
+
+Viva Voce
+
+[5 Marks]
+
+–––––––––––––––
+
+*
+
+–––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292 MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:- 14
+Time: 3 hours
+
+Maximum Marks: 35
+
+Q.1. Attempt any four of the following.
+
+[ 5×4 = 20 Marks ]
+
+1. Represent the following information using a bar graph (in brown color ) ,
+Subject
+
+Mathematics
+
+English
+
+Biology
+
+Physics
+
+Chemistry
+
+Marks
+
+68
+
+45
+
+79
+
+56
+
+70
+
+2. Plot the graph of y = log(x) , for x  (0 , 10] in red colour with dashed lines.
+Draw surface plot for the function f(x, y) = (x3 +y3 ) when –10  x, y  10,
+with green colour.
+
+3.
+
+4. Using sympy declare points P (7,2) , Q (1,8). Find the distance between them. Declare the line
+passing through them. Find the slope and equation of the line passing through points P and Q.
+5. Using sympy declare  ABC where A (2 , 2), B (4, 2), C ( 3, 6) ,for this triangle find its centroid
+and also translate  ABC in x direction by 2 units.
+
+Q.2. Attempt any one of the following.
+1.
+
+[ 10 ×1= 10 Marks ]
+
+Write a python program to plot the polygon with vertices at (1, 3), (2, 4), (4 , 2) and ( 3,1)
+Plot its rotation about ,origin through angles 1)
+
+𝜋
+2
+
+radians and 2) π radians .
+
+Also plot x and y axis in black colours.
+2. Write a Python program to generate and plot 50 points on parabola y2 = 4x with 4 ≤ 𝑥 ≤ 16
+using iterative formulae.
+Q.3
+
+Viva Voce
+
+[5 Marks]
+
+–––––––––––––––
+
+* –––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292 MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:- 15
+Time: 3 hours
+
+Maximum Marks: 35
+
+Q.1. Attempt any four of the following.
+
+[ 5×4 = 20 Marks ]
+
+1. This is information of students participating in various games, represent it by a horizontal Bar
+graph.
+Game
+Number of students
+
+Cricket
+
+Football
+
+125
+
+59
+
+Hockey
+
+Chess
+
+Tennis
+
+28
+
+19
+
+36
+
+2. Plot the graph of f(x) = sin(x) +cos(x) , for x  [–3 π, 3 π] in dashed dotted pattern.
+3. Plot 3D surface plot for the function f(x, y) = x4 – y2 for –5  x, y  5, in black .
+4. Using sympy declare the points P(7, 3), Q(7,−5) and R(7,1), check whether these points are
+collinear. Declare the segment passing the points P and Q, find the midpoint of segment PQ.
+5. Using sympy declare  ABC where A (2 , 2), B(4, 2), C( 3, 6) ,for this triangle find its centroid
+and also translate ABC in x direction by 2 units.
+
+Q.2. Attempt any one of the following.
+1.
+
+[ 10 ×1= 10 Marks ]
+
+Write a python program to perform each of the following transformations on the point
+(5, −8). Plot the point and its following transformations using different colors and markers.
+a) Refection through Y−axis,
+
+b) Scaling in x−coordinate by factor 4.
+𝜋
+c) Rotation about origin through an angle .
+2
+2. Write python program to generate and plot 50 points on parabola y2 = 20 x , using iterative
+formulae for 0  y  30.
+
+Q.3. Viva Voce.
+
+–––––––––––––––
+
+[5 Marks ]
+
+* –––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292 MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:- 16
+Time: 3 hours
+
+Maximum Marks: 35
+
+Q.1. Attempt any four of the following.
+
+[ 5×4 = 20 Marks ]
+
+1. Show the following information by pie graph. Use labels and display percentage.
+Name of the Fruit
+
+Mango
+
+Grapes
+
+Banana
+
+Other
+
+Number of students who like it
+
+65
+
+30
+
+5
+
+20
+
+2. Plot straight line joining the points [ 2 4 ] and [ 3
+
+6 ] in green colour.
+
+3. Draw 3D wireframe plot of the function f(x,y) = – x3 – y 3 in Brown color for, x, y  [–15, 15]
+4. Using sympy declare quadrilateral ABCD with vertices A (6,2) , B (4,8), C(12,9) and
+
+D(5,3).
+
+Find the area and perimeter of ABCD.
+5. Using sympy declare  PQR where P (1 , 1), Q(5, 1), R( 5, 5) ,for this triangle find its area,
+circumcircle, Is it right angled triangle ? Scale  PQR in x and y directions by factors 2 and 4
+respectively .
+
+Q.2. Attempt any one of the following.
+1.
+
+[ 10 ×1= 10 Marks ]
+
+Write a python program to plot the polygon with vertices at points (1, 2) , (4 2), (4 4) and
+(2,5). Plot shearing of this polygon shearing in x and y direction by 3 and -2 units
+respectively. Also plot x axis and y axis in black colours.
+
+2. Write a python program to generate and plot 80 points on parabola y2 = 16 x using iterative
+formulae for 0  x  80,
+
+.
+
+Q.3. Viva Voce .
+
+–––––––––––––––
+
+[5 Marks ]
+
+* –––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292 MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:- 17
+Time: 3 hours
+
+Maximum Marks: 35
+
+Q.1. Attempt any four of the following.
+1.
+
+[ 5×4 = 20 Marks ]
+
+Represent the following information using a pie chart , by using explode function to separate
+sectors.
+Subject
+
+Computer
+
+Mathematics
+
+Electronics
+
+Statistics
+
+English
+
+Marks
+
+60
+
+80
+
+65
+
+55
+
+70
+
+2. Plot the graph of f(x) = sin(3 x + 1) , for x  [–5 π, 5 π] in red colour and dotted pattern.
+3. Draw surface plot for the function f(x, y) = – ( x2 +y2 ) for x, y  [–10, 20].
+4. Using sympy find the point of intersection of two lines L1 and L2, given by the equations
+x + y = 2 and 3x+2y =1. Also find their slopes.
+5. Using sympy declare a regular polygon with 6 sides and radius 1 centered at (1, 2) and find its
+area perimeter and centroid.
+
+Q.2. Attempt any one of the following.
+
+[ 10 ×1= 10 Marks ]
+
+1. Using python program find the combined transformation of the line segment joining
+the
+
+points P[5,−2] and Q[3, 2] for the following sequence of transformations:-
+
+(a) Rotation about origin through an angle π. (b) Scaling in X−coordinate by 4 units.
+(c) Reflection through the line y = x. Also plot original and transformed line segments.
+2. Write python program to generate and plot100 points on circle x2 +y2 = 49 using iterative
+formulae.
+
+Q.3. Viva Voce .
+
+–––––––––––––––
+
+[5 Marks ]
+
+*
+
+–––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292 MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:- 18
+Time: 3 hours
+
+Maximum Marks: 35
+
+Q.1. Attempt any four of the following.
+
+[ 5×4 = 20 Marks ]
+
+1. The age of 25 persons who donated blood in camp arranged for the age group 20 to 45 yrs is
+given below. Plot the histograph in Maroon colour which will give us the number of donors in
+the age groups 20-25,25-30,30-35 ,35-40 and 40-45
+Ages are: 21, 29, 35, 21, 41, 36, 32, 24, 43,27,38,34,31,22,39,26,34,26,44,37,37,31,30,22,39.
+2.
+
+Plot the graph of y = 2x2 + 6 x+ 10 , for – 7  x  10.
+
+3. Draw surface plot for the function f(x, y) = (–x2 –y2) for x, y  [–15, 10], in Green
+colour.
+4. Using sympy declare two lines L1 and L2 given by the equations x + y =2 and 3x+2y =1. Find
+the point of intersection of lines L1 and L2.
+
+Also find the angle between these two lines.
+
+5. Using sympy declare polygon P with vertices A(1 , 3), B( 3, 5), C(5 , 4), D ( 4, 2), Determine
+𝜋
+whether it is convex polygon? Rotate polygon P about point (2,3) by angle .
+3
+
+Q.2. Attempt any one of the following.
+
+[ 10 ×1= 10 Marks ]
+
+1. Write a python program to generate and plot the  PQR with vertices at P (1,
+
+2), Q(4 2),
+
+R(4, 5). And also plot its uniform scaling by factor 0.5 and uniform scaling by factor 4.
+All three figures must be in different colours.
+2. Write python program to generate and plot 60 on the circle with equation x2 +y2 = 100 using
+iterative formulae.
+
+Q.3. Viva Voce .
+
+–––––––––––––––
+
+[5 Marks ]
+
+* –––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292 MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-IV)
+Slip No.:-19
+Time: 3 hours
+
+Maximum Marks: 35
+
+Q.1. Attempt any four of the following.
+1.
+
+[ 5×4 = 20 Marks ]
+
+Represent the following information using pie chart with detached sectors .
+Wild Animals Grazing Animals
+150
+
+Birds
+
+400
+
+225
+
+Water Animals
+
+Reptiles
+
+175
+
+50
+
+𝜋
+2. Plot 50 points on the curve y= tan( x ) in [0, ] in green colour.
+2
+
+3. Plot Surface plot for the function f(x, y) = –x3 – y3, where x, y  [1, 10].
+4. Using sympy find the angle between the line segment AB joining the points A[7,2], B[3,−4]
+and the line having equation 2x − y = 1 .
+5. Using sympy declare polygon ABCD with vertices A(3, 3), B(3, 6), C( 8, 6) and D(7, 2) ,for
+this polygon determine whether point (4,4) inside . And scale ABCD in x and y directions
+by factors 4 and 3 respectively.
+
+Q.2. Attempt any one of the following.
+1.
+
+[ 10 ×1= 10 Marks ]
+
+Write a python program to find the transformation of the line segment joining the points
+A(1,−2) and B(3,5) for the following sequence of transformations:
+(I) Rotation about origin through an angle π.
+
+(II) Scaling in X− coordinate by 7 units.
+
+(III) Uniform scaling by factor 4. Plot original and transformed line segment.
+2.Write python program to generate and plot 50 points on parabola y2 = 28 x , using iterative
+formulae for 0  x  100.
+
+–––––––––––––––
+
+*
+
+–––––––––––––––
+
+Savitribai Phule Pune University, Pune
+S.Y.B.Sc. (Computer Science)
+Mathematics Practical Examination
+MTC-292 MN-P: Practical on Mathematics for Computer Science-II
+(NEP 2024 Pattern) (Semester-I )
+Slip No.:- 20
+Time: 3 hours
+
+Maximum Marks: 35
+
+Q.1. Attempt any four of the following.
+
+[ 5×4 = 20 Marks ]
+
+1. Draw a pie chart for the given data with radius 0.7 , show percentage :
+Subject
+
+History
+
+Number of students
+
+Geography
+
+168
+
+90
+
+English
+
+Sociology
+
+Psychology
+
+195
+
+95
+
+46
+
+2. Plot the graph of x2 + 5x in [5, 10] with dotted pattern.
+3. Using sympy declare points A (1 ,1) , B( 1, 6), C (6 ,1) , D( 6, 6) and plot quadrilateral
+ABCD in
+
+black color.
+
+4. Using sympy declare quadrilateral ABCD where A (1 ,1), B(1, 4), C( 4, 1) and D(4, 4),
+and find shearing of ABCD in x and y directions by 3 and 7 units respectively
+5. If the line segment joining the points A[−3, 5] and B[3, 3] is transformed to the line segment
+𝟏
+A’B’ by the transformation matrix [T] =[
+𝟒
+
+𝟑
+],then using sympy find the midpoint of the
+𝟏
+
+transformed line.
+
+Q.2. Attempt any one of the following.
+1.
+
+[ 10 ×1= 10 Marks ]
+
+Write a python program to plot the triangle with vertices at (4,4) , (2, 4) ,( 4, 2) .
+𝜋
+Apply the transformations a) its rotation about the origin by radians, b) uniform scaling
+2
+
+by factor 3. Plot original and transformed figures in different colours
+
+Also plot x and y
+
+axes in one colour.
+2.
+
+Write Python program to generate and plot 100 points on parabola y2 = 32 x ,
+
+iterative formulae for 0  x  100.
+
+Q.3. Viva Voce .
+
+–––––––––––––––
+
+[5 Marks ]
+
+* –––––––––––––––
+
+using
+
+

@@ -1,0 +1,25 @@
+Savitribai Phule Pune University
+                          S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+                                      Lab Course CS-271-VSC-P
+                                   Advanced Python Programming
+Duration: 3 Hours                                                            Maximum Marks:35
+
+
+Q1. Write a Python program using regular expressions to validate whether a given string matches the
+    pattern of three-letter words such as cat, cot, cut, mat, met, mud.
+                                                                                            [10 Marks]
+
+
+Q2. Build a package education with a sub package courses, containing modules science.py and
+
+    arts.py. Each module should have a function get_subjects(). Write a python program to display all
+    subjects.
+                                                                                            [20 Marks]
+                                                   OR
+
+
+Q2. Write a python program to display all entries in a current directory and identify each as file or
+    folder. [Use getcwd() function to retrieve current directory]
+
+
+Q3. Viva                                                                                    [5 Marks]

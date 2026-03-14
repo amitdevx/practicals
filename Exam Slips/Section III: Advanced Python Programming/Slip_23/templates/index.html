@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library</title>
+    <style>
+        table { width: 50%; border-collapse: collapse; margin: 20px auto; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .quote { font-weight: bold; color: blue; text-align: center; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">My Library</h1>
+    
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <div class="quote">"A room without books is like a body without a soul."</div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+Subject: Advanced Python Programming
+Course Code: CS-271-VSC-P
+Slip Number: 6
+Q1 Marks: 10
+Q2 Marks: 20
+Q3 (Viva) Marks: 5
+Total Marks: 35
+Exam Duration: 3 hours
+Difficulty: Intermediate/Advanced
+Topics: Pandas, Flask, REST API, File Handling, Exception Handling

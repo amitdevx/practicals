@@ -1,0 +1,75 @@
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a Python program that prompts the user to input two numbers and raises a TypeError
+exception if the inputs are not numerical.
+[10 Marks]
+
+Q2. Create a following DataFrame named as “data”. Write the python code for the following
+Company
+
+Count
+
+Price
+
+Pencil
+
+Apsara
+
+15
+
+250
+
+Pencil
+
+Natraj
+
+20
+
+200
+
+Pen
+
+Cello
+
+25
+
+600
+
+Pen
+
+Parkar
+
+35
+
+900
+
+Eraser
+
+Apsara
+
+20
+
+300
+
+a) Find all rows with the label “Pencil”. Extract all columns
+b) Change the count of Eraser as 25 instead of 20.
+c) List only the columns Company and Price.
+d) List only rows with labels ‘Pencil’ and ‘Pen’
+e) Delete column Count from the above DataFrame and display DataFrame..
+[20 Marks]
+OR
+Q2. Create a Web Page using Flask which contains following information about your Personal Portfolio
+Page
+a) Show your name as a centered heading.
+b) List your Qualification details.
+c) Add your special skill in scrolling.
+
+Q3. Viva
+
+[5 Marks]

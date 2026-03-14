@@ -1,0 +1,28 @@
+Savitribai Phule Pune University
+                         S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+                                       Lab Course CS-271-VSC-P
+                                   Advanced Python Programming
+Duration: 3 Hours                                                           Maximum Marks:35
+
+
+Q1. Write a python program to extract number from a given string and display extracted number.
+                                                                                        [10 Marks]
+Q2. Write a Python program that calculates the pass or fail status of multiple students.
+   a) Define a function check_pass_fail(marks) to return "Pass" if marks ≥ 40, otherwise "Fail".
+   b) Accept number of students and their marks.
+   c) Display each student’s result.
+   d) Print the total count of students who passed and failed.
+                                                                                           [20 Marks]
+
+
+                                                   OR
+
+
+Q2. Create a Web Page using Flask which contains following information about your college.
+    a) College Name as a heading in center of web page.
+    b) Display all the courses available in your college.
+    c) Image of your College.
+
+
+
+Q3. Viva                                                                                   [5 Marks]

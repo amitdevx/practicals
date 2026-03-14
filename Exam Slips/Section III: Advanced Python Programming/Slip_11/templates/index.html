@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        input[type="text"] { padding: 5px; width: 200px; }
+        input[type="submit"] { padding: 5px 10px; }
+        ul { list-style-type: none; padding: 0; }
+        li { background: #f9f9f9; margin: 5px 0; padding: 10px; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <h1>Task Manager</h1>
+    
+    <form action="/add" method="post">
+        <input type="text" name="task_name" placeholder="Enter new task" required>
+        <input type="submit" value="Add Task">
+    </form>
+    
+    <h2>Tasks:</h2>
+    <ul>
+        {% for task in tasks %}
+        <li>{{ task[1] }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,29 @@
+Savitribai Phule Pune University
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
+
+Maximum Marks:35
+
+Q1. Write a python code to a create a list of 10 integer numbers. Display square of all elements of list.
+(Use a lambda function with map())
+[10 Marks]
+
+Q2. Create a Flask application that allows users to add and view tasks. The application should have:
+a) A form to add a task (task_name).
+b) Store tasks in a PostgreSQL database.
+c) Display all tasks below the form.
+[20 Marks]
+OR
+
+Q2. Write a Python program that accepts a string from the user and performs the following tasks:
+a) Split the string into individual words.
+b) Identify and display all words that do not contain any vowels (a, e, i, o, u), ignore case while
+checking for vowels.
+c) Sort and display these words in alphabetical order.
+d) Display the total count of such words.
+
+Q3. Viva
+
+[5 Marks]
