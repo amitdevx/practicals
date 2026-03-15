@@ -16,12 +16,12 @@
 
 3. **[Section III: Advanced Python Programming](./Section%20III:%20Advanced%20Python%20Programming/)**
    - 30 exam slips on practical Python applications
-   - Format: Python scripts with markdown explanations
+   - Format: Jupyter Notebook solutions with Flask project folders
    - Topics: Pandas, Matplotlib, Flask, Data Processing
 
 4. **[Section IV: Mathematics for Computer Science-II](./Section%20IV:%20Mathematics%20for%20Computer%20Science-II/)**
-   - 30 exam slips on computational geometry
-   - Format: Python scripts with visualizations
+   - 20 exam slips on computational geometry
+   - Format: Jupyter Notebook solutions with visualizations
    - Topics: Geometric algorithms, Transformations, Visualization
 
 ---
@@ -48,20 +48,18 @@ Exam Slips/
 │   └── Slip_30/
 │
 ├── Section III: Advanced Python Programming/
-│   ├── Slip_01/
-│   ├── Slip_02/
-│   ├── ... (Slips 03-29)
-│   └── Slip_30/
+│   ├── Slip_01_PYTHON_Solution.ipynb  (through Slip_30)
+│   ├── Questions/
+│   │   ├── Slip_01/ ... Slip_30/      (Question text + metadata)
+│   ├── slip_06/ ... slip_24/          (Flask project folders)
+│   └── vehicle/                       (Python package)
 │
 ├── Section IV: Mathematics for Computer Science-II/
-│   ├── Slip_01/
-│   ├── Slip_02/
-│   ├── ... (Slips 03-29)
-│   └── Slip_30/
+│   └── Slip_01 ... Slip_20_MATHS_Solution.ipynb
 │
-├── _references/             ← Supplementary materials
+├── _references/             ← Reference PDFs and extracted text
 │
-└── PDF Question Papers:
+└── PDF Question Papers (in _references/):
     ├── SYBSc(CS) Slips CS-253 MJP DS II and DBMS II 2025 Sem IV.pdf
     ├── SYBSc(CS) Slips CS-271-VSC-P Adv. Python Prog 25-26.pdf
     └── maths slip sem 4.pdf
@@ -69,55 +67,53 @@ Exam Slips/
 
 ---
 
-## File Organization Within Each Slip
+## File Organization Within Each Section
 
-### Example: Section I - Data Structures-II
+### Section I - Data Structures-II
 
-Inside `Slip_01/` you'll find:
-- **Slip_01_DS.txt** - Question statement
-- **Slip_01_Q1_OptionA.c** - Implementation Option A
-- **Slip_01_Q1_OptionB.c** - Implementation Option B
-- **Slip_01_DS_SOLUTION.txt** - Text solution explanation
-- **Slip_01_DS_SOLUTION.md** - Markdown solution with code comments
-- **Slip_01_DS_SOLUTION.pdf** - PDF version of solution
-- **metadata.txt** - Slip metadata
-- **btree.h** - Header files (if needed)
+Inside each `Slip_XX/` you'll find:
+- **Slip_XX_Q1_OptionA.c** - Implementation Option A
+- **Slip_XX_Q1_OptionB.c** - Implementation Option B
+- **Slip_XX_DS_SOLUTION.md** - Markdown solution with code comments
+- **Slip_XX_DS_SOLUTION.pdf** - PDF version of solution
+- **btree.h** - Header files (if needed for tree-based problems)
 
-### Example: Section II - Database Management Systems-II
+### Section II - Database Management Systems-II
 
-Inside `Slip_01/` you'll find:
-- **Slip_01_DBMS.txt** - SQL/PL-pgSQL problem statement
-- **Slip_01_DBMS_Solution.sql** - SQL solution script
-- **Slip_01_DBMS_SOLUTION.txt** - Text explanation
-- **Slip_01_DBMS_SOLUTION.md** - Markdown solution with explanations
-- **Slip_01_DBMS_SOLUTION.pdf** - PDF version of solution
-- **metadata.txt** - Slip metadata
+Inside each `Slip_XX/` you'll find:
+- **Slip_XX_DBMS_Solution.sql** - SQL solution script
+- **Slip_XX_DBMS_SOLUTION.md** - Markdown solution with explanations
+- **Slip_XX_DBMS_SOLUTION.pdf** - PDF version of solution
 
-### Example: Section III - Advanced Python Programming
+### Section III - Advanced Python Programming
 
-Inside `Slip_01/` you'll find:
-- **Slip_01_PYTHON.txt** - Problem statement
-- **Slip_01_PYTHON_Solution.py** - Python solution script
-- **Slip_01_PYTHON_SOLUTION.md** - Markdown explanation and code walkthrough
-- **metadata.txt** - Slip metadata
+At the section root level:
+- **Slip_XX_PYTHON_Solution.ipynb** - Jupyter Notebook solutions (30 files)
 
-### Example: Section IV - Mathematics for Computer Science-II
+In `Questions/Slip_XX/`:
+- **Slip_XX_PYTHON.txt** - Problem statement
+- **metadata.txt** - Slip metadata (topics, marks, difficulty)
 
-Inside `Slip_01/` you'll find:
-- **Slip_01_MATHS.txt** - Mathematical problem statement
-- **Slip_01_MATHS_Solution.py** - Python solution with visualization
-- **Slip_01_MATHS_SOLUTION.md** - Detailed mathematical explanation
-- **metadata.txt** - Slip metadata
+Flask project folders (`slip_06/`, `slip_07/`, `slip_08/`, `slip_11/`, `slip_15/`, `slip_24/`):
+- **slip_XX_Q1/Q1/** - Flask app for practice/Q1
+- **slip_XX_Q2/Q2/** - Flask app for Q2/Q2 OR
+- Each contains `QXX_appN.py` and `templates/index.html`
+
+### Section IV - Mathematics for Computer Science-II
+
+At the section root level:
+- **Slip_XX_MATHS_Solution.ipynb** - Jupyter Notebook solutions (20 files)
+- Notebooks contain mathematical solutions with SymPy and Matplotlib visualizations
 
 ---
 
 ## How to Access Specific Slips
 
 ### By Subject Section
-- **Data Structures**: Open `Section I: Data Structures-II/` and navigate to Slip_01 through Slip_30
-- **Databases**: Open `Section II: Database Management Systems II/` and navigate to Slip_01 through Slip_30
-- **Python**: Open `Section III: Advanced Python Programming/` and navigate to Slip_01 through Slip_30
-- **Mathematics**: Open `Section IV: Mathematics for Computer Science-II/` and navigate to Slip_01 through Slip_30
+- **Data Structures**: Open `Section I: Data Structures-II/` and navigate to `Slip_01/` through `Slip_30/`
+- **Databases**: Open `Section II: Database Management Systems II/` and navigate to `Slip_01/` through `Slip_30/`
+- **Python**: Open `Section III: Advanced Python Programming/` and open `Slip_XX_PYTHON_Solution.ipynb`
+- **Mathematics**: Open `Section IV: Mathematics for Computer Science-II/` and open `Slip_XX_MATHS_Solution.ipynb`
 
 ### By Topic
 1. Refer to **TOPICS_INDEX.md** to find which slips cover your topic of interest
@@ -126,30 +122,33 @@ Inside `Slip_01/` you'll find:
 
 ### By Difficulty
 - Generally, slips are organized in increasing order of difficulty within each section
-- Start with Slip_01 and progress sequentially through Slip_30
+- Start with Slip_01 and progress sequentially
 
 ---
 
 ## File Access Patterns
 
-### For Quick Question Review
+### For Question Review (Section III)
 ```
-./Section [I-IV]/Slip_XX/Slip_XX_[SUBJECT].txt
+./Section III: Advanced Python Programming/Questions/Slip_XX/Slip_XX_PYTHON.txt
 ```
 
-### For Solution Code/Scripts
+### For Solution Notebooks
 ```
-./Section [I-IV]/Slip_XX/Slip_XX_[SUBJECT]_Solution.[c|sql|py]
+./Section III: Advanced Python Programming/Slip_XX_PYTHON_Solution.ipynb
+./Section IV: Mathematics for Computer Science-II/Slip_XX_MATHS_Solution.ipynb
+```
+
+### For Solution Code/Scripts (Sections I & II)
+```
+./Section I: Data Structures-II/Slip_XX/Slip_XX_Q1_OptionA.c
+./Section II: Database Management Systems II/Slip_XX/Slip_XX_DBMS_Solution.sql
 ```
 
 ### For Detailed Explanations
 ```
-./Section [I-IV]/Slip_XX/Slip_XX_[SUBJECT]_SOLUTION.md
-```
-
-### For Visual Solutions (PDF)
-```
-./Section [I-IV]/Slip_XX/Slip_XX_[SUBJECT]_SOLUTION.pdf
+./Section I: Data Structures-II/Slip_XX/Slip_XX_DS_SOLUTION.md
+./Section II: Database Management Systems II/Slip_XX/Slip_XX_DBMS_SOLUTION.md
 ```
 
 ---
@@ -161,11 +160,6 @@ Inside `Slip_01/` you'll find:
 ls -d "Section I: Data Structures-II"/Slip_*
 ```
 
-### View a specific question
-```bash
-cat "Section I: Data Structures-II/Slip_05/Slip_05_DS.txt"
-```
-
 ### Compile and run a C solution
 ```bash
 cd "Section I: Data Structures-II/Slip_05/"
@@ -173,9 +167,9 @@ gcc -o solution Slip_05_Q1_OptionA.c
 ./solution
 ```
 
-### Run a Python solution
+### Open a Python solution notebook
 ```bash
-python "Section III: Advanced Python Programming/Slip_01/Slip_01_PYTHON_Solution.py"
+jupyter notebook "Section III: Advanced Python Programming/Slip_01_PYTHON_Solution.ipynb"
 ```
 
 ### Execute SQL solution
@@ -184,26 +178,32 @@ python "Section III: Advanced Python Programming/Slip_01/Slip_01_PYTHON_Solution
 psql -f "Section II: Database Management Systems II/Slip_01/Slip_01_DBMS_Solution.sql"
 ```
 
+### Run a Flask app
+```bash
+cd "Section III: Advanced Python Programming/slip_06/slip_06_Q2/Q2/"
+python Q06_app2.py
+```
+
 ---
 
 ## Statistics Overview
 
-| Section | Folder Name | Slips | File Type | Count |
+| Section | Folder Name | Slips | File Type | Approx. Count |
 |---------|-------------|-------|-----------|-------|
-| I | Data Structures-II | 30 | .c, .txt, .md, .pdf | ~180 files |
-| II | Database Management Systems II | 30 | .sql, .txt, .md, .pdf | ~150 files |
-| III | Advanced Python Programming | 30 | .py, .txt, .md | ~90 files |
-| IV | Mathematics for Computer Science-II | 30 | .py, .txt, .md | ~90 files |
-| **TOTAL** | | **120** | **Mixed** | **~510 files** |
+| I | Data Structures-II | 30 | .c, .md, .pdf, .h | ~135 files |
+| II | Database Management Systems II | 30 | .sql, .md, .pdf | ~90 files |
+| III | Advanced Python Programming | 30 | .ipynb, .txt, .py, .html | ~120 files |
+| IV | Mathematics for Computer Science-II | 20 | .ipynb | ~20 files |
+| **TOTAL** | | **110** | **Mixed** | **~365 files** |
 
 ---
 
 ## Reference Materials
 
 Access supplementary materials in the **_references/** folder:
-- Library headers and utilities
-- Common algorithms and data structures
-- Documentation for frameworks and libraries
+- Official exam question papers (PDF)
+- Extracted plain-text versions of question papers
+- Topic index and completion reports
 
 ---
 
@@ -226,7 +226,7 @@ Access supplementary materials in the **_references/** folder:
 
 ---
 
-**Total Exam Slips**: 120  
+**Total Exam Slips**: 110  
 **Total Sections**: 4  
-**File Formats**: C, SQL, Python, Markdown, PDF  
+**File Formats**: C, SQL, Jupyter Notebooks, Flask, Markdown, PDF  
 **Last Updated**: Semester 4, 2025

@@ -1,30 +1,74 @@
 Savitribai Phule Pune University
-                          S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
-                                       Lab Course CS-271-VSC-P
-                                    Advanced Python Programming
-Duration: 3 Hours                                                             Maximum Marks:35
+S.Y.B.Sc.(C.S.) NEP – 2020 Practical Examination
+Lab Course CS-271-VSC-P
+Advanced Python Programming
+Duration: 3 Hours
 
+Maximum Marks:35
 
-Q1. Write a Python program that generates a random radius and computes the circumference of a circle
-    using the math module. (Use 3.14 as the value of π)
-                                                                                              [10 Marks]
+Q1. Write a python program to remove all whitespaces from a given string. Display modified string.
+[10 Marks]
 
+Q2. Create a package vehicle with a sub package types, sub package type contains modules cars and
+bikes. Each module should have a function available_models() returning a list of models. Write a
+python program to display all available models of cars and bikes.
+[20 Marks]
+OR
 
-Q2. Write a python program to check the validity of a password given by the user. The password should
-    satisfy the following criteria:
-           a) Contain at least 1 letter between a and z
-           b) Contain at least 1 number between 0 and 9
-           c) Contain at least 1 character from $, #, @
-           d) Minimum length of password: 6
-           e) Maximum length of password: 12
-                                                                                              [20 Marks]
+Q2. Create a following DataFrame named as “data”. Write the python code for the following
+commands.
+Company
 
-                                                    OR
+Count
 
+Price
 
-Q2. Write a python program to list all files in a current directory. Display total count of .py files and
-    content of any one .py files.
+Pencil
 
+Apsara
 
+15
 
-Q3. Viva                                                                                      [5 Marks]
+250
+
+Pencil
+
+Natraj
+
+20
+
+200
+
+Pen
+
+Cello
+
+25
+
+600
+
+Pen
+
+Parkar
+
+35
+
+900
+
+Eraser
+
+Apsara
+
+20
+
+300
+
+a) Find all rows with the label “Pencil”. Extract all columns
+b) Change the Eraser count as 25 instead of 20.
+c) List only the columns Company and Price.
+d) List only rows with labels ‘Pencil’ and ‘Pen’
+e) Add a new column named Colour to the DataFrame and display DataFrame..
+
+Q3. Viva
+
+[5 Marks]

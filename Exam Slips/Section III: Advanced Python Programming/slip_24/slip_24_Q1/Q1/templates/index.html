@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Information</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        h1 { text-align: center; color: #2c3e50; }
+        .courses { padding: 20px; max-width: 600px; margin: 0 auto; }
+        ul { font-size: 18px; line-height: 2; }
+        img { display: block; margin: 20px auto; max-width: 400px; }
+    </style>
+</head>
+<body>
+    <h1>Savitribai Phule Pune University</h1>
+
+    <div class="courses">
+        <h2>Available Courses:</h2>
+        <ul>
+            {% for course in courses %}
+            <li>{{ course }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <img src="https://via.placeholder.com/400x200?text=College+Image" alt="College Image">
+</body>
+</html>

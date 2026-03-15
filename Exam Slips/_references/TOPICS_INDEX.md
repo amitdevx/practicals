@@ -35,27 +35,35 @@
 
 ## Section III: Advanced Python Programming
 
-### Data Manipulation with Pandas
-- **Slip_01 - Slip_08**: DataFrame operations (creation, indexing, selection, filtering)
-- **Slip_09 - Slip_12**: Data cleaning and transformation (missing values, type conversion)
-- **Slip_13 - Slip_15**: Aggregation and grouping (groupby, pivot tables, reshaping)
+### Core Python & Functions
+- **Slip_01, Slip_04, Slip_23**: Dictionary, list operations, function definitions
+- **Slip_02, Slip_05, Slip_07, Slip_14, Slip_17, Slip_20**: String operations and text processing
+- **Slip_03, Slip_06, Slip_22**: Exception handling (ZeroDivisionError, TypeError)
 
-### Data Visualization with Matplotlib
-- **Slip_16 - Slip_20**: Basic plots (line, scatter, bar, histogram, pie charts)
-- **Slip_21 - Slip_24**: Advanced visualization (subplots, custom styling, annotations)
-- **Slip_25**: Multi-dimensional visualization and heatmaps
+### Data Manipulation with Pandas
+- **Slip_01, Slip_10, Slip_12, Slip_16, Slip_19, Slip_21, Slip_22, Slip_26, Slip_29**: DataFrame operations (creation, indexing, filtering, merging, CSV)
 
 ### Web Framework - Flask
-- **Slip_26 - Slip_28**: Flask basics (routes, templates, static files)
-- **Slip_29 - Slip_30**: Flask applications (forms, databases, RESTful APIs)
+- **Slip_06**: Personal Portfolio web page
+- **Slip_07**: Library Book List web page
+- **Slip_08**: Student Information web page
+- **Slip_11**: Task Manager web page
+- **Slip_15**: Library web page
+- **Slip_24**: College Information web page
+- Flask project folders available in `slip_06/`, `slip_07/`, `slip_08/`, `slip_11/`, `slip_15/`, `slip_24/`
 
-### File Operations & Libraries
-- **Slip_02, Slip_06, Slip_11**: File I/O operations (reading, writing CSV/JSON)
-- **Slip_04, Slip_10, Slip_23**: NumPy and mathematical computations
+### Packages & Modules
+- **Slip_01, Slip_25, Slip_26, Slip_28**: Package creation (vehicle, finance_tools, education)
+- **Slip_09**: Generators and iterators
+- **Slip_16, Slip_17, Slip_18, Slip_27**: Random module, file handling, regex
+
+### Date/Time & File Operations
+- **Slip_13, Slip_15, Slip_23, Slip_30**: Time module functions (ctime, gmtime, strftime)
+- **Slip_18, Slip_19, Slip_20, Slip_21, Slip_27, Slip_29**: File and directory operations
 
 ---
 
-## Section IV: Mathematics for Computer Science-II
+## Section IV: Mathematics for Computer Science-II (20 Slips)
 
 ### Computational Geometry - Basics
 - **Slip_01 - Slip_05**: Point operations and coordinate systems
@@ -63,9 +71,7 @@
 - **Slip_11 - Slip_15**: Polygon operations and properties (area, perimeter, containment)
 
 ### Advanced Geometry Algorithms
-- **Slip_16 - Slip_20**: Convex hull algorithms (Graham scan, Jarvis march)
-- **Slip_21 - Slip_25**: Intersection problems (segment intersection, polygon overlap)
-- **Slip_26 - Slip_30**: Advanced geometric transformations and computational methods
+- **Slip_16 - Slip_20**: Convex hull algorithms and advanced geometric transformations
 
 ### Data Visualization & Geometric Plots
 - **Multiple Slips**: Each slip includes matplotlib visualizations showing:
@@ -94,14 +100,14 @@
 - **Triggers**: DBMS II (Slip_21-30)
 
 ### Python Libraries
-- **Pandas**: Python (Slip_01-15)
-- **Matplotlib**: Python (Slip_16-25)
-- **Flask**: Python (Slip_26-30)
+- **Pandas**: Python (Slip_01, Slip_10, Slip_12, Slip_16, Slip_19, Slip_21, Slip_22, Slip_26, Slip_29)
+- **Flask**: Python (Slip_06, Slip_07, Slip_08, Slip_11, Slip_15, Slip_24)
+- **Regular Expressions**: Python (Slip_16, Slip_28)
 
 ### Geometry Topics
-- **Basic Geometry**: Maths (Slip_01-15)
-- **Advanced Geometry**: Maths (Slip_16-25)
-- **Computational Techniques**: Maths (Slip_26-30)
+- **Basic Geometry**: Maths (Slip_01-10)
+- **Polygon Operations**: Maths (Slip_11-15)
+- **Advanced Geometry**: Maths (Slip_16-20)
 
 ---
 
