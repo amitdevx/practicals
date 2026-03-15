@@ -1,2 +1,0 @@
-Python makes byte navigation simple.
-Track positions easily!

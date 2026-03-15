@@ -1,3 +1,0 @@
-Sem IV Advanced Python practicals.
-Focus on pandas, flask, and regex modules.
-Practice every day.
