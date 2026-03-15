@@ -1,2 +1,2 @@
 def available_models():
-    return ['Sedan', 'SUV', 'Hatchback']
+    return ['Sedan', 'SUV', 'Hatchback', 'Coupe']

@@ -1,0 +1,2 @@
+Python makes file handling approachable.
+Let us explore byte offsets!

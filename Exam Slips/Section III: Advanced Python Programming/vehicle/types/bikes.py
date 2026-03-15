@@ -1,2 +1,2 @@
 def available_models():
-    return ['Sports', 'Cruiser', 'Street']
+    return ['Sport', 'Cruiser', 'Touring', 'Scooter']
