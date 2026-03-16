@@ -359,31 +359,24 @@
     }
     function setStatus(t) { $status.textContent = t; }
 
-    function fileIcon(name) {
-        var e = ext(name);
-        var map = {
-            c:'C', h:'H', py:'Py', sql:'SQL', ipynb:'NB', md:'MD',
-            pdf:'PDF', txt:'TXT', csv:'CSV', html:'<>', css:'{}', js:'JS', json:'{}'
-        };
-        return map[e] || '·';
-    }
-    function fileIconColor(name) {
-        var e = ext(name);
-        var map = {
-            c:'#519aba', h:'#519aba', py:'#3572a5', sql:'#e38c00',
-            ipynb:'#f57c00', md:'#519aba', pdf:'#e34c26', csv:'#4caf50',
-            html:'#e44d26', css:'#563d7c', js:'#f7df1e', json:'#f7df1e',
-            txt:'#888'
-        };
-        return map[e] || '#888';
-    }
+    var FILE_TYPES = {
+        c:{icon:'C',color:'#519aba'}, h:{icon:'H',color:'#519aba'},
+        py:{icon:'Py',color:'#3572a5'}, sql:{icon:'SQL',color:'#e38c00'},
+        ipynb:{icon:'NB',color:'#f57c00'}, md:{icon:'MD',color:'#519aba'},
+        pdf:{icon:'PDF',color:'#e34c26'}, csv:{icon:'CSV',color:'#4caf50'},
+        html:{icon:'<>',color:'#e44d26'}, css:{icon:'{}',color:'#563d7c'},
+        js:{icon:'JS',color:'#f7df1e'}, json:{icon:'{}',color:'#f7df1e'},
+        txt:{icon:'TXT',color:'#888'}
+    };
+    function fileIcon(name) { var t = FILE_TYPES[ext(name)]; return t ? t.icon : '\u00b7'; }
+    function fileIconColor(name) { var t = FILE_TYPES[ext(name)]; return t ? t.color : '#888'; }
 
     /* ── Load tree from GitHub API ── */
     async function loadTree() {
         setStatus('Loading repository tree\u2026');
         var resp = await fetch(API_BASE + '/git/trees/' + BRANCH + '?recursive=1');
         if (!resp.ok) {
-            var msg = resp.status === 403 ? 'GitHub API rate limit exceeded. Try again later or open in a new tab.'
+            var msg = resp.status === 403 ? 'GitHub API rate limit exceeded. Please wait a few minutes and try again.'
                 : 'GitHub API error: ' + resp.status;
             throw new Error(msg);
         }
@@ -627,7 +620,8 @@
                 h += '<pre>' + escapeHtml(Array.isArray(d['text/plain']) ? d['text/plain'].join('') : d['text/plain']) + '</pre>';
             }
         } else if (out.output_type === 'error') {
-            var tb = (out.traceback || []).join('\n').replace(/\x1B\[[0-9;]*[a-zA-Z]/g, '');
+            var ANSI_ESCAPE = /\x1B\[[0-9;]*[a-zA-Z]/g;
+            var tb = (out.traceback || []).join('\n').replace(ANSI_ESCAPE, '');
             h += '<pre class="nb-error">' + escapeHtml(tb) + '</pre>';
         }
         return h;
@@ -687,7 +681,9 @@
 
     function typeset() {
         if (window.MathJax && MathJax.typesetPromise) {
-            MathJax.typesetPromise([$viewer]).catch(function () {});
+            MathJax.typesetPromise([$viewer]).catch(function (err) {
+                console.warn('MathJax typeset failed:', err);
+            });
         }
     }
 
