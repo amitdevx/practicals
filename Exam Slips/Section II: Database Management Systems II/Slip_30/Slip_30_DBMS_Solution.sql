@@ -1,16 +1,35 @@
+-- ============================================================
+-- Slip 30: Student-Teacher Database
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
 /*
-SLIP 30 - SECTION II: DATABASE MANAGEMENT SYSTEMS II
+DATABASE SCHEMA: Student-Teacher Database
 
-Student(roll_no int PK, sname varchar(20), sclass char(10))
-Teacher(t_no int PK, tname char(20), experience int)
-student_teacher(roll_no, t_no, subject varchar(20)) M:M
+Tables:
+  Student (Roll_No int, Sname varchar(20), Sclass char(10))
+  Teacher (T_No int, Tname char(20), Experience int)
 
-Q2.1A: Function to count teachers with experience > 10.
-Q2.1B: Trigger before insert on student - if roll_no <= 0 display "Invalid Roll Number".
-Q2.2: Procedure to find sum and average of first n numbers using while loop.
+Relationship:
+  Student and Teacher are related with many to many relationship.
+  Descriptive attribute: Subject
+
+Junction Table:
+  student_teacher (roll_no, t_no, subject varchar(20)) - M:M relationship
 */
 
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_30_db;
+CREATE DATABASE slip_30_db;
+\c slip_30_db
+
+-- ============================================================
 -- Table Creation
+-- ============================================================
+
 DROP TABLE IF EXISTS student_teacher CASCADE;
 DROP TABLE IF EXISTS Student CASCADE;
 DROP TABLE IF EXISTS Teacher CASCADE;
@@ -34,7 +53,10 @@ CREATE TABLE student_teacher (
     PRIMARY KEY (roll_no, t_no)
 );
 
+-- ============================================================
 -- Sample Data
+-- ============================================================
+
 INSERT INTO Student VALUES (1, 'Amit', 'SY');
 INSERT INTO Student VALUES (2, 'Sneha', 'TY');
 INSERT INTO Student VALUES (3, 'Rahul', 'SY');
@@ -52,7 +74,10 @@ INSERT INTO student_teacher VALUES (2, 103, 'OS');
 INSERT INTO student_teacher VALUES (3, 101, 'Data Structures');
 INSERT INTO student_teacher VALUES (4, 104, 'Maths');
 
--- Q2.1A: Function to count teachers with experience > 10
+-- ============================================================
+-- Q2.1 Option A: Write a stored function to count the number of teachers
+-- having experience > 10 years. [10 Marks]
+-- ============================================================
 CREATE OR REPLACE FUNCTION count_experienced_teachers()
 RETURNS INT AS $$
 DECLARE
@@ -64,7 +89,13 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Q2.1B: Trigger before insert on student - if roll_no <= 0 raise exception
+-- Execute: SELECT count_experienced_teachers();  -- Should return 3 (Sharma: 15, Desai: 12, Kulkarni: 20)
+
+-- ============================================================
+-- Q2.1 Option B (OR): Write a trigger before insert the record of the student
+-- in the Student table. If the Roll_No is less than or equal to zero then
+-- the trigger gets fired and displays the message "Invalid Roll Number". [10 Marks]
+-- ============================================================
 CREATE OR REPLACE FUNCTION trg_check_rollno()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -79,7 +110,14 @@ CREATE OR REPLACE TRIGGER trg_student_rollno
 BEFORE INSERT ON Student
 FOR EACH ROW EXECUTE FUNCTION trg_check_rollno();
 
--- Q2.2: Procedure sum and average of first n numbers using while loop
+-- Execute: INSERT INTO Student VALUES (0, 'Test', 'SY');   -- Should fail (roll_no = 0)
+-- Execute: INSERT INTO Student VALUES (-1, 'Test', 'SY');  -- Should fail (roll_no < 0)
+-- Execute: INSERT INTO Student VALUES (10, 'New Student', 'SY');  -- Should succeed
+
+-- ============================================================
+-- Q2.2: Write a procedure to find sum and average of first n numbers
+-- using conditional loop(while). [5 Marks]
+-- ============================================================
 CREATE OR REPLACE PROCEDURE sum_avg_n(p_n INT)
 LANGUAGE plpgsql AS $$
 DECLARE
@@ -97,12 +135,5 @@ BEGIN
 END;
 $$;
 
--- Test Calls
-SELECT count_experienced_teachers();
-
--- Test trigger (this should raise exception)
--- INSERT INTO Student VALUES (0, 'Invalid', 'SY');
--- INSERT INTO Student VALUES (-1, 'Invalid', 'TY');
-
-CALL sum_avg_n(10);
-CALL sum_avg_n(50);
+-- Execute: CALL sum_avg_n(10);  -- Should display sum = 55, average = 5.5
+-- Execute: CALL sum_avg_n(50);  -- Should display sum = 1275, average = 25.5

@@ -1,7 +1,31 @@
+-- ============================================================
 -- Slip 04: Movies-Actor-Producer Database
--- Q2.1 OptionA: Cursor - accept actor name, return total movies
--- Q2.1 OptionB: Trigger before insert on movies, budget min 5000000
--- Q2.2: Procedure to check positive, negative or zero
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
+/*
+Consider the following Entities and their Relationships for Movies-Actor-Producer database.
+
+Movies (m_name varchar(25), release_year integer, budget money)
+Actor (a_name char(30), role char(30), charges money, a_address varchar(30))
+Producer (producer_id integer, name char(30), p_address varchar(30))
+
+Relationships:
+- Each actor has acted in one or more movies (Actor to Movies: M-M)
+- Each producer has produced many movies and each movie can be produced by more than one
+  producers (Producer to Movies: M-M)
+- Each movie has one or more actors acting in it, in different roles
+
+Constraints: Primary Key constraints on all entity tables.
+*/
+
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_04_db;
+CREATE DATABASE slip_04_db;
+\c slip_04_db
 
 -- ============================================================
 -- Table Creation
@@ -68,7 +92,9 @@ INSERT INTO movie_producer VALUES ('3 Idiots', 2);
 INSERT INTO movie_producer VALUES ('PK', 1);
 
 -- ============================================================
--- Q2.1 Option A: Cursor - accept actor name, return total movies
+-- Q2.1 Option A: Write a cursor to pass actor name as input
+-- parameter and return total number of movies in which given
+-- actor is acting. [10 Marks]
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION count_actor_movies(p_aname CHAR)
@@ -97,10 +123,14 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: SELECT count_actor_movies('Aamir Khan');
+-- Execute: SELECT count_actor_movies('Aamir Khan');     -- 3 movies
+-- Execute: SELECT count_actor_movies('Kareena Kapoor'); -- 1 movie
+-- Execute: SELECT count_actor_movies('Unknown');        -- Should raise exception
 
 -- ============================================================
--- Q2.1 Option B: Trigger before insert on movies, budget min 5000000
+-- Q2.1 Option B (OR): Write a trigger before inserting into
+-- movie table to check budget. Budget should be minimum 50
+-- lakh. Display appropriate message. [10 Marks]
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION check_movie_budget()
@@ -118,10 +148,12 @@ BEFORE INSERT ON Movies
 FOR EACH ROW
 EXECUTE FUNCTION check_movie_budget();
 
--- Test: INSERT INTO Movies VALUES ('LowBudget', 2024, 100000);
+-- Execute: INSERT INTO Movies VALUES ('LowBudget', 2024, 1000000);  -- Should fail (< 50 lakh)
+-- Execute: INSERT INTO Movies VALUES ('HighBudget', 2024, 10000000); -- Should succeed
 
 -- ============================================================
--- Q2.2: Procedure to check positive, negative or zero
+-- Q2.2: Write a procedure to check the number is positive,
+-- negative or zero. [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE PROCEDURE check_number(n NUMERIC)
@@ -137,6 +169,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: CALL check_number(15);
--- Test: CALL check_number(-7);
--- Test: CALL check_number(0);
+-- Execute: CALL check_number(10);   -- Positive
+-- Execute: CALL check_number(-5);   -- Negative
+-- Execute: CALL check_number(0);    -- Zero
+

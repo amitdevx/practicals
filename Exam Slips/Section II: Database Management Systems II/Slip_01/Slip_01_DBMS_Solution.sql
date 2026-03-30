@@ -1,7 +1,27 @@
+-- ============================================================
 -- Slip 01: Project-Employee Database
--- Q2.1 OptionA: Function to accept eno, count projects
--- Q2.1 OptionB: Trigger before insert on project checking duration > 0
--- Q2.2: Procedure for add, sub, mul of 3 numbers
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
+/*
+Consider the following Entities and their Relationships for Project-Employee database.
+
+Project (pno integer, pname char(30), ptype char(20), duration integer)
+Employee (eno integer, ename char(20), qualification char(15), joining_date date)
+
+The Relationship between Project and Employee is Many-to-Many (M-M) with descriptive attributes
+start_date date, no_of_hours_worked integer.
+
+Constraints: Primary Key, duration should be greater than zero, pname should not be null.
+*/
+
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_01_db;
+CREATE DATABASE slip_01_db;
+\c slip_01_db
 
 -- ============================================================
 -- Table Creation
@@ -51,7 +71,9 @@ INSERT INTO project_employee VALUES (3, 102, '2019-04-01', 300);
 INSERT INTO project_employee VALUES (1, 103, '2021-02-01', 100);
 
 -- ============================================================
--- Q2.1 Option A: Function to accept eno, count projects
+-- Q2.1 Option A: Write a stored function to accept eno as input
+-- parameter and count number of projects on which that employee
+-- is working. [10 Marks]
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION count_projects(p_eno INT)
@@ -73,10 +95,14 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: SELECT count_projects(101);
+-- Execute: SELECT count_projects(101);  -- Employee 101 (Amit) is on 2 projects
+-- Execute: SELECT count_projects(102);  -- Employee 102 (Neha) is on 1 project
+-- Execute: SELECT count_projects(999);  -- Non-existent employee
 
 -- ============================================================
--- Q2.1 Option B: Trigger before insert on project checking duration > 0
+-- Q2.1 Option B (OR): Write a trigger before inserting into a
+-- project table to check duration should be always greater than
+-- zero. Display appropriate message. [10 Marks]
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION check_project_duration()
@@ -94,10 +120,13 @@ BEFORE INSERT ON Project
 FOR EACH ROW
 EXECUTE FUNCTION check_project_duration();
 
--- Test: INSERT INTO Project VALUES (99, 'Bad', 'Test', -1);
+-- Execute: INSERT INTO Project VALUES (99, 'Invalid', 'Test', -1);  -- Should fail (duration <= 0)
+-- Execute: INSERT INTO Project VALUES (99, 'Invalid', 'Test', 0);   -- Should fail (duration <= 0)
+-- Execute: INSERT INTO Project VALUES (99, 'Valid', 'Test', 5);     -- Should succeed
 
 -- ============================================================
--- Q2.2: Procedure for add, sub, mul of 3 numbers
+-- Q2.2: Write a procedure to display addition, subtraction and
+-- multiplication of three numbers. [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE PROCEDURE arithmetic_operations(a NUMERIC, b NUMERIC, c NUMERIC)
@@ -117,4 +146,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: CALL arithmetic_operations(10, 5, 3);
+-- Execute: CALL arithmetic_operations(10, 5, 3);
+-- Execute: CALL arithmetic_operations(100, 20, 5);
+

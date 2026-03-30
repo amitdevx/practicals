@@ -1,14 +1,40 @@
+-- ============================================================
+-- Slip 15: Person-Area Database
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
 /*
-  SLIP 15
-  Schema: Person(pnumber int PK, pname varchar(20), birthdate date, income numeric),
-          Area(aname varchar(20) PK, area_type varchar(5) CHECK IN('urban','rural')),
-          Person-Area M:1 (Person.aname FK -> Area)
-  Q2.1A: Cursor to update income of urban persons by 10%.
-  Q2.1B: Trigger before insert on person - if pnumber negative give "Invalid Number".
-  Q2.2:  Procedure display odd numbers 1 to 100.
+DATABASE SCHEMA: Person-Area Database
+
+Tables:
+  1. Person (pnumber, pname, birthdate, income)
+     - pnumber: INTEGER, Primary Key
+     - pname: VARCHAR(20), Person name
+     - birthdate: DATE, Date of birth
+     - income: MONEY/NUMERIC, Person's income
+     - aname: VARCHAR(20), Foreign Key -> Area(aname)
+
+  2. Area (aname, area_type)
+     - aname: VARCHAR(20), Primary Key - Area name
+     - area_type: VARCHAR(5), Type of area
+
+Relationship: Person-Area: M-1 (Many persons to one area)
+
+Constraint: The attribute 'area_type' can have values either 'urban' or 'rural'.
 */
 
--- Schema
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_15_db;
+CREATE DATABASE slip_15_db;
+\c slip_15_db
+
+-- ============================================================
+-- Table Creation
+-- ============================================================
+
 DROP TABLE IF EXISTS Person CASCADE;
 DROP TABLE IF EXISTS Area CASCADE;
 
@@ -25,7 +51,10 @@ CREATE TABLE Person (
     aname VARCHAR(20) REFERENCES Area(aname) ON DELETE SET NULL
 );
 
+-- ============================================================
 -- Sample Data
+-- ============================================================
+
 INSERT INTO Area VALUES ('Koregaon', 'urban'), ('Hadapsar', 'urban'), ('Velhe', 'rural'), ('Mulshi', 'rural');
 INSERT INTO Person VALUES
     (1, 'Amit', '1995-05-10', 50000, 'Koregaon'),
@@ -34,7 +63,10 @@ INSERT INTO Person VALUES
     (4, 'Priya', '2000-12-01', 40000, 'Mulshi'),
     (5, 'Suresh', '1990-07-30', 45000, 'Koregaon');
 
--- Q2.1 Option A: Cursor to update income of urban persons by 10%
+-- ============================================================
+-- Q2.1 Option A: Write a cursor to update the income of all people living in 'Urban' area by 10%. [10 Marks]
+-- ============================================================
+
 CREATE OR REPLACE FUNCTION update_urban_income()
 RETURNS VOID AS $$
 DECLARE
@@ -56,7 +88,13 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Q2.1 Option B: Trigger before insert on person - pnumber negative = invalid
+-- Execute: SELECT update_urban_income();
+-- Execute: SELECT * FROM Person WHERE aname IN (SELECT aname FROM Area WHERE area_type = 'urban');
+
+-- ============================================================
+-- Q2.1 Option B (OR): Write a trigger before insert the record of person if the pnumber is negative give the message "Invalid Number". [10 Marks]
+-- ============================================================
+
 CREATE OR REPLACE FUNCTION fn_check_pnumber()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -73,7 +111,13 @@ CREATE TRIGGER trg_check_pnumber
     FOR EACH ROW
     EXECUTE FUNCTION fn_check_pnumber();
 
--- Q2.2: Procedure display odd numbers 1 to 100
+-- Execute: INSERT INTO Person VALUES (-1, 'Test', '2000-01-01', 30000, 'Koregaon');  -- Should fail
+-- Execute: INSERT INTO Person VALUES (6, 'Kavita', '2000-01-01', 30000, 'Koregaon');  -- Should succeed
+
+-- ============================================================
+-- Q2.2: Write a procedure to display all odd numbers from 1 to 100. [5 Marks]
+-- ============================================================
+
 CREATE OR REPLACE PROCEDURE sp_odd_1_to_100()
 LANGUAGE plpgsql AS $$
 DECLARE
@@ -89,7 +133,4 @@ BEGIN
 END;
 $$;
 
--- Test Calls
-SELECT update_urban_income();
--- This should fail: INSERT INTO Person VALUES (-1, 'Test', '2000-01-01', 10000, 'Koregaon');
-CALL sp_odd_1_to_100();
+-- Execute: CALL sp_odd_1_to_100();

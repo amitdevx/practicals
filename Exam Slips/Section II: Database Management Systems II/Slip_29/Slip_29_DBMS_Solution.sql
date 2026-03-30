@@ -1,16 +1,35 @@
+-- ============================================================
+-- Slip 29: Person-Area Database
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
 /*
-SLIP 29 - SECTION II: DATABASE MANAGEMENT SYSTEMS II
+DATABASE SCHEMA: Person-Area Database
 
-Person(pno int PK, pname varchar(20), birthdate date, income numeric)
-Area(aid int PK, aname varchar(20), area_type varchar(5) CHECK IN ('urban','rural'))
-Person and Area are related with many to one relationship (p.aid FK).
+Tables:
+  Person (pno int, pname varchar(20), birthdate date, income money)
+  Area (aid int, aname varchar(20), area_type varchar(5))
 
-Q2.1A: Cursor to display persons in urban area.
-Q2.1B: Trigger before delete on person - display "person record is being deleted".
-Q2.2: Procedure for subtraction of three numbers.
+Relationship:
+  Person and Area are related with many to one relationship.
+  The attribute 'area_type' can have values either 'urban' or 'rural'.
+
+Foreign Key:
+  Person.aid references Area.aid - Many persons can live in one area
 */
 
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_29_db;
+CREATE DATABASE slip_29_db;
+\c slip_29_db
+
+-- ============================================================
 -- Table Creation
+-- ============================================================
+
 DROP TABLE IF EXISTS Person CASCADE;
 DROP TABLE IF EXISTS Area CASCADE;
 
@@ -28,7 +47,10 @@ CREATE TABLE Person (
     aid INT REFERENCES Area(aid)
 );
 
+-- ============================================================
 -- Sample Data
+-- ============================================================
+
 INSERT INTO Area VALUES (1, 'Kothrud', 'urban');
 INSERT INTO Area VALUES (2, 'Baramati', 'rural');
 INSERT INTO Area VALUES (3, 'Deccan', 'urban');
@@ -40,7 +62,10 @@ INSERT INTO Person VALUES (3, 'Rahul', '1992-12-10', 60000, 3);
 INSERT INTO Person VALUES (4, 'Priya', '2000-03-25', 28000, 4);
 INSERT INTO Person VALUES (5, 'Kiran', '1996-07-30', 45000, 1);
 
--- Q2.1A: Cursor to display persons in urban area
+-- ============================================================
+-- Q2.1 Option A: Write a cursor to display the names of persons
+-- living in urban area. [10 Marks]
+-- ============================================================
 CREATE OR REPLACE FUNCTION display_urban_persons()
 RETURNS VOID AS $$
 DECLARE
@@ -67,7 +92,13 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Q2.1B: Trigger before delete on person - display message
+-- Execute: SELECT display_urban_persons();  -- Should display Amit (Kothrud), Rahul (Deccan), Kiran (Kothrud)
+
+-- ============================================================
+-- Q2.1 Option B (OR): Write a trigger before deleting a person's record
+-- from the person's table. Raise a notice and display the message
+-- "person record is being deleted". [10 Marks]
+-- ============================================================
 CREATE OR REPLACE FUNCTION trg_before_delete_person()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -80,7 +111,11 @@ CREATE OR REPLACE TRIGGER trg_person_delete
 BEFORE DELETE ON Person
 FOR EACH ROW EXECUTE FUNCTION trg_before_delete_person();
 
--- Q2.2: Procedure for subtraction of three numbers
+-- Execute: DELETE FROM Person WHERE pno = 4;  -- Should display "Person record is being deleted: Priya (pno: 4)"
+
+-- ============================================================
+-- Q2.2: Write a procedure to display subtraction of three numbers. [5 Marks]
+-- ============================================================
 CREATE OR REPLACE PROCEDURE subtract_three(p_a NUMERIC, p_b NUMERIC, p_c NUMERIC)
 LANGUAGE plpgsql AS $$
 DECLARE
@@ -91,11 +126,5 @@ BEGIN
 END;
 $$;
 
--- Test Calls
-SELECT display_urban_persons();
-
--- Test trigger
--- DELETE FROM Person WHERE pno = 1;
-
-CALL subtract_three(100, 30, 20);
-CALL subtract_three(50, 10, 5);
+-- Execute: CALL subtract_three(100, 30, 20);  -- Should display 100 - 30 - 20 = 50
+-- Execute: CALL subtract_three(50, 10, 5);    -- Should display 50 - 10 - 5 = 35

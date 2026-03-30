@@ -1,16 +1,35 @@
+-- ============================================================
+-- Slip 26: Item-Supplier Database
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
 /*
-SLIP 26 - SECTION II: DATABASE MANAGEMENT SYSTEMS II
+DATABASE SCHEMA: Item-Supplier Database
 
-Item(itemno int PK, itemname varchar(20), quantity int)
-Supplier(supplierno int PK, supplier_name varchar(20), city varchar(20))
-item_supplier(itemno, supplierno, rate numeric) M:M
+Tables:
+  Item (itemno integer, Itemname varchar(20), quantity integer)
+  Supplier (supplierno integer, Supplier_name varchar(20), city varchar(20))
 
-Q2.1A: Cursor function accept item name, display rate and supplier name.
-Q2.1B: Trigger before update on rate - if difference > 2000 raise exception.
-Q2.2: Procedure for subtraction of three numbers.
+Relationship:
+  Item and Supplier are related with many to many relationship.
+  Descriptive attribute: Rate
+
+Junction Table:
+  item_supplier (itemno, supplierno, rate numeric) - M:M relationship
 */
 
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_26_db;
+CREATE DATABASE slip_26_db;
+\c slip_26_db
+
+-- ============================================================
 -- Table Creation
+-- ============================================================
+
 DROP TABLE IF EXISTS item_supplier CASCADE;
 DROP TABLE IF EXISTS Item CASCADE;
 DROP TABLE IF EXISTS Supplier CASCADE;
@@ -34,7 +53,10 @@ CREATE TABLE item_supplier (
     PRIMARY KEY (itemno, supplierno)
 );
 
+-- ============================================================
 -- Sample Data
+-- ============================================================
+
 INSERT INTO Item VALUES (1, 'Keyboard', 100);
 INSERT INTO Item VALUES (2, 'Mouse', 200);
 INSERT INTO Item VALUES (3, 'Monitor', 50);
@@ -49,7 +71,10 @@ INSERT INTO item_supplier VALUES (2, 101, 300);
 INSERT INTO item_supplier VALUES (3, 103, 12000);
 INSERT INTO item_supplier VALUES (2, 103, 350);
 
--- Q2.1A: Cursor function accept item name, display rate and supplier name
+-- ============================================================
+-- Q2.1 Option A: Write a stored function using cursors, to accept Item name
+-- from the user and display the Rate and Supplier Name for that Item. [10 Marks]
+-- ============================================================
 CREATE OR REPLACE FUNCTION get_suppliers_for_item(p_iname VARCHAR)
 RETURNS VOID AS $$
 DECLARE
@@ -77,7 +102,15 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Q2.1B: Trigger before update on rate - if difference > 2000 raise exception
+-- Execute: SELECT get_suppliers_for_item('Keyboard');  -- Should display TechSupply (500) and CompWorld (550)
+-- Execute: SELECT get_suppliers_for_item('Mouse');     -- Should display TechSupply (300) and DigiMart (350)
+-- Execute: SELECT get_suppliers_for_item('Unknown');   -- Should display "No suppliers found"
+
+-- ============================================================
+-- Q2.1 Option B (OR): Write a trigger before update on rate field.
+-- If the difference in the old rate and new rate is more than Rs 2000,
+-- raise an exception and display the corresponding message. [10 Marks]
+-- ============================================================
 CREATE OR REPLACE FUNCTION trg_check_rate_diff()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -93,7 +126,12 @@ CREATE OR REPLACE TRIGGER trg_rate_update
 BEFORE UPDATE ON item_supplier
 FOR EACH ROW EXECUTE FUNCTION trg_check_rate_diff();
 
--- Q2.2: Procedure for subtraction of three numbers
+-- Execute: UPDATE item_supplier SET rate = 3000 WHERE itemno = 1 AND supplierno = 101;  -- Should fail (diff = 2500 > 2000)
+-- Execute: UPDATE item_supplier SET rate = 600 WHERE itemno = 1 AND supplierno = 101;   -- Should succeed (diff = 100 < 2000)
+
+-- ============================================================
+-- Q2.2: Write a procedure to display subtraction of three numbers. [5 Marks]
+-- ============================================================
 CREATE OR REPLACE PROCEDURE subtract_three(p_a NUMERIC, p_b NUMERIC, p_c NUMERIC)
 LANGUAGE plpgsql AS $$
 DECLARE
@@ -104,12 +142,5 @@ BEGIN
 END;
 $$;
 
--- Test Calls
-SELECT get_suppliers_for_item('Keyboard');
-SELECT get_suppliers_for_item('Mouse');
-
--- Test trigger (this should raise exception)
--- UPDATE item_supplier SET rate = 6000 WHERE itemno = 1 AND supplierno = 101;
-
-CALL subtract_three(100, 30, 20);
-CALL subtract_three(50, 10, 5);
+-- Execute: CALL subtract_three(100, 30, 20);  -- Should display 100 - 30 - 20 = 50
+-- Execute: CALL subtract_three(50, 10, 5);    -- Should display 50 - 10 - 5 = 35

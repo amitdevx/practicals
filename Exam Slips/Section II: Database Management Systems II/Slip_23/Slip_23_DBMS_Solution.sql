@@ -1,16 +1,38 @@
+-- ============================================================
+-- Slip 23: Car-Driver Database
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
 /*
-SLIP 23 - SECTION II: DATABASE MANAGEMENT SYSTEMS II
+DATABASE SCHEMA: Car-Driver Database
 
-Car(c_no int PK, owner varchar(20), model varchar(10), color varchar(10))
-Driver(driver_no int PK, driver_name varchar(20), license_no int, d_age int, salary float)
-car_driver(c_no, driver_no) M:M
+Tables:
+  Car(c_no int, owner varchar(20), model varchar(10), color varchar(10))
+  Driver(driver_no int, driver_name varchar(20), license_no int, 
+         d_age int, salary float)
 
-Q2.1A: Cursor accept driver name, print car details. Handle invalid driver name.
-Q2.1B: Trigger before insert/update on driver - if age < 21 raise exception.
-Q2.2: Procedure sum of first 100 numbers using unconditional loop (LOOP).
+Relationship:
+  Car and Driver are related with many to many relationship.
+  (Junction table: car_driver with c_no, driver_no as composite PK)
+
+Constraints:
+  - c_no is Primary Key in Car
+  - driver_no is Primary Key in Driver
+  - (c_no, driver_no) is composite Primary Key in car_driver
 */
 
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_23_db;
+CREATE DATABASE slip_23_db;
+\c slip_23_db
+
+-- ============================================================
 -- Table Creation
+-- ============================================================
+
 DROP TABLE IF EXISTS car_driver CASCADE;
 DROP TABLE IF EXISTS Car CASCADE;
 DROP TABLE IF EXISTS Driver CASCADE;
@@ -36,7 +58,10 @@ CREATE TABLE car_driver (
     PRIMARY KEY (c_no, driver_no)
 );
 
+-- ============================================================
 -- Sample Data
+-- ============================================================
+
 INSERT INTO Car VALUES (1, 'Amit', 'Swift', 'Red');
 INSERT INTO Car VALUES (2, 'Sneha', 'i20', 'White');
 INSERT INTO Car VALUES (3, 'Rahul', 'Verna', 'Black');
@@ -50,7 +75,11 @@ INSERT INTO car_driver VALUES (2, 101);
 INSERT INTO car_driver VALUES (3, 102);
 INSERT INTO car_driver VALUES (1, 103);
 
--- Q2.1A: Cursor accept driver name, print car details
+-- ============================================================
+-- Q2.1 Option A: Write a cursor which accepts the driver name and prints
+-- the details of all cars that this driver has driven, if the driver name
+-- is invalid, print an appropriate message. [10 Marks]
+-- ============================================================
 CREATE OR REPLACE FUNCTION get_cars_by_driver(p_dname VARCHAR)
 RETURNS VOID AS $$
 DECLARE
@@ -79,7 +108,14 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Q2.1B: Trigger before insert/update on driver - age < 21 raise exception
+-- Execute: SELECT get_cars_by_driver('Raju');   -- Should show cars 1 and 2 (Swift, i20)
+-- Execute: SELECT get_cars_by_driver('Sunil');  -- Should show car 3 (Verna)
+-- Execute: SELECT get_cars_by_driver('Unknown'); -- Should raise exception
+
+-- ============================================================
+-- Q2.1 Option B (OR): Write a trigger before insert/update on Driver.
+-- Raise exception if driver age is < 21. [10 Marks]
+-- ============================================================
 CREATE OR REPLACE FUNCTION trg_check_driver_age()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -94,7 +130,13 @@ CREATE OR REPLACE TRIGGER trg_driver_age
 BEFORE INSERT OR UPDATE ON Driver
 FOR EACH ROW EXECUTE FUNCTION trg_check_driver_age();
 
--- Q2.2: Procedure sum of first 100 numbers using unconditional loop
+-- Execute: INSERT INTO Driver VALUES (110, 'Young Driver', 55010, 18, 15000);  -- Should fail (age < 21)
+-- Execute: INSERT INTO Driver VALUES (110, 'New Driver', 55010, 25, 20000);    -- Should succeed
+
+-- ============================================================
+-- Q2.2: Write a procedure to find sum of first 100 numbers
+-- (using unconditional loop). [5 Marks]
+-- ============================================================
 CREATE OR REPLACE PROCEDURE sum_first_100()
 LANGUAGE plpgsql AS $$
 DECLARE
@@ -110,11 +152,4 @@ BEGIN
 END;
 $$;
 
--- Test Calls
-SELECT get_cars_by_driver('Raju');
-SELECT get_cars_by_driver('Sunil');
-
--- Test trigger (this should raise exception)
--- INSERT INTO Driver VALUES (104, 'Young', 55004, 18, 15000);
-
-CALL sum_first_100();
+-- Execute: CALL sum_first_100();  -- Should display sum = 5050

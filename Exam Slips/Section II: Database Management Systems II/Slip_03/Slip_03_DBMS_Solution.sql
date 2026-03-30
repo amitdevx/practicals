@@ -1,7 +1,27 @@
+-- ============================================================
 -- Slip 03: Student-Teacher Database
--- Q2.1 OptionA: Cursor - accept student number, display student name + teacher name who taught 'RDBMS'
--- Q2.1 OptionB: Trigger before insert on student - if s_no<=0 give "Invalid Number"
--- Q2.2: Procedure min and max from two numbers
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
+/*
+Consider the following Entities and their Relationships for Student-Teacher database.
+
+Student (s_no integer, s_name char(20), address char(25), class char(10))
+Teacher (t_no integer, t_name char(10), qualification char(10), experience integer)
+
+The Relationship between Student and Teacher is Many-to-Many (M-M) with descriptive attributes
+subject and marks_scored.
+
+Constraints: Primary Key, s_name, t_name should not be null, marks_scored > 0
+*/
+
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_03_db;
+CREATE DATABASE slip_03_db;
+\c slip_03_db
 
 -- ============================================================
 -- Table Creation
@@ -51,7 +71,9 @@ INSERT INTO student_teacher VALUES (3, 103, 'DSA', 90);
 INSERT INTO student_teacher VALUES (1, 103, 'DSA', 78);
 
 -- ============================================================
--- Q2.1 Option A: Cursor - accept student number, display student + teacher for 'RDBMS'
+-- Q2.1 Option A: Write a cursor which will accept student number
+-- from the user and display student name along with teacher name
+-- who taught 'RDBMS' subject. [10 Marks]
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION get_rdbms_teacher(p_sno INT)
@@ -81,10 +103,14 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: SELECT get_rdbms_teacher(1);
+-- Execute: SELECT get_rdbms_teacher(1);  -- Amit taught by Dr. Patil
+-- Execute: SELECT get_rdbms_teacher(2);  -- Neha taught by Prof. Shah
+-- Execute: SELECT get_rdbms_teacher(3);  -- Rahul has no RDBMS record
 
 -- ============================================================
--- Q2.1 Option B: Trigger before insert on student - if s_no<=0 give "Invalid Number"
+-- Q2.1 Option B (OR): Write a trigger before insert the record
+-- of student. If student number is less than or equal to zero
+-- give message "Invalid Number". [10 Marks]
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION check_student_sno()
@@ -102,10 +128,13 @@ BEFORE INSERT ON Student
 FOR EACH ROW
 EXECUTE FUNCTION check_student_sno();
 
--- Test: INSERT INTO Student VALUES (-1, 'Test', 'Test', 'SY');
+-- Execute: INSERT INTO Student VALUES (-1, 'Invalid', 'Delhi', 'FY');  -- Should fail
+-- Execute: INSERT INTO Student VALUES (0, 'Zero', 'Delhi', 'FY');      -- Should fail
+-- Execute: INSERT INTO Student VALUES (10, 'Valid', 'Delhi', 'FY');    -- Should succeed
 
 -- ============================================================
--- Q2.2: Procedure min and max from two numbers
+-- Q2.2: Write a procedure to find minimum and maximum from two
+-- numbers. [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE PROCEDURE find_min_max(a NUMERIC, b NUMERIC)
@@ -121,4 +150,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: CALL find_min_max(10, 25);
+-- Execute: CALL find_min_max(10, 5);   -- Max = 10, Min = 5
+-- Execute: CALL find_min_max(3, 7);    -- Max = 7, Min = 3
+-- Execute: CALL find_min_max(5, 5);    -- Both equal
+

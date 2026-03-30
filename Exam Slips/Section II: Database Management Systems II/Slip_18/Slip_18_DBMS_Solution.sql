@@ -1,14 +1,31 @@
+-- ============================================================
+-- Slip 18: Item-Supplier Database
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
 /*
-  SLIP 18
-  Schema: Item(itemno int PK, itemname varchar(20)),
-          Supplier(supplier_no int PK, supplier_name varchar(20), city varchar(20)),
-          item_supplier(itemno, supplier_no, rate numeric, quantity int) M:M
-  Q2.1A: Cursor display items with rate>500.
-  Q2.1B: Trigger before insert/update on rate - if rate<50 raise exception.
-  Q2.2:  Procedure max of three numbers.
+DATABASE SCHEMA: Item-Supplier Database
+
+Tables:
+  Item(itemno integer, itemname varchar(20))
+  Supplier(supplier_no integer, supplier_name varchar(20), city varchar(20))
+  
+Relationship: Item-Supplier: M-M with rate(money) and quantity(integer) as
+descriptive attributes.
 */
 
--- Schema
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_18_db;
+CREATE DATABASE slip_18_db;
+\c slip_18_db
+
+-- ============================================================
+-- Table Creation
+-- ============================================================
+
 DROP TABLE IF EXISTS item_supplier CASCADE;
 DROP TABLE IF EXISTS Item CASCADE;
 DROP TABLE IF EXISTS Supplier CASCADE;
@@ -32,7 +49,10 @@ CREATE TABLE item_supplier (
     PRIMARY KEY (itemno, supplier_no)
 );
 
+-- ============================================================
 -- Sample Data
+-- ============================================================
+
 INSERT INTO Item VALUES (1, 'Keyboard'), (2, 'Mouse'), (3, 'Monitor'), (4, 'Printer');
 INSERT INTO Supplier VALUES (101, 'TechSupply', 'Pune'), (102, 'CompWorld', 'Mumbai'), (103, 'DigiMart', 'Delhi');
 INSERT INTO item_supplier VALUES
@@ -41,7 +61,10 @@ INSERT INTO item_supplier VALUES
     (3, 101, 8000, 30), (3, 102, 7500, 50),
     (4, 103, 12000, 20);
 
--- Q2.1 Option A: Cursor display items with rate>500
+-- ============================================================
+-- Q2.1 Option A: Write a cursor to display the names of items whose rate is more than 500. [10 Marks]
+-- ============================================================
+
 CREATE OR REPLACE FUNCTION display_items_rate_gt_500()
 RETURNS VOID AS $$
 DECLARE
@@ -65,7 +88,12 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Q2.1 Option B: Trigger before insert/update on item_supplier - rate<50 raise exception
+-- Execute: SELECT display_items_rate_gt_500();
+
+-- ============================================================
+-- Q2.1 Option B (OR): Write a trigger before insert or update on rate field. If the rate is less than 50 then raise the appropriate exception. [10 Marks]
+-- ============================================================
+
 CREATE OR REPLACE FUNCTION fn_check_rate()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -82,7 +110,13 @@ CREATE TRIGGER trg_check_rate
     FOR EACH ROW
     EXECUTE FUNCTION fn_check_rate();
 
--- Q2.2: Procedure max of three numbers
+-- Execute: INSERT INTO item_supplier VALUES (4, 101, 30, 50);  -- Should fail (rate < 50)
+-- Execute: INSERT INTO item_supplier VALUES (4, 101, 100, 50);  -- Should succeed
+
+-- ============================================================
+-- Q2.2: Write a procedure to find the maximum number from three numbers. [5 Marks]
+-- ============================================================
+
 CREATE OR REPLACE PROCEDURE sp_max_of_three(p_a NUMERIC, p_b NUMERIC, p_c NUMERIC)
 LANGUAGE plpgsql AS $$
 DECLARE
@@ -99,8 +133,4 @@ BEGIN
 END;
 $$;
 
--- Test Calls
-SELECT display_items_rate_gt_500();
--- This should fail: INSERT INTO item_supplier VALUES (2, 102, 30, 100);
-CALL sp_max_of_three(10, 25, 18);
-CALL sp_max_of_three(100, 50, 75);
+-- Execute: CALL sp_max_of_three(10, 25, 15);

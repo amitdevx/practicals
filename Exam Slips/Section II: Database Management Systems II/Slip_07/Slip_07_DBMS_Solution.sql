@@ -1,7 +1,31 @@
+-- ============================================================
 -- Slip 07: Branch-Customer-Loan Database
--- Q2.1 OptionA: Cursor function to count customers of branch (accept branch name)
--- Q2.1 OptionB: Trigger before insert customer - if cno<=0 give message
--- Q2.2: Procedure sum of first 20 numbers using unconditional loop
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
+/*
+Consider the following Entities and their Relationships:
+
+Branch (br_id integer, br_name char(30), br_city char(10))
+Customer (cno integer, c_name char(20), caddr char(35), city char(20))
+Loan_application (lno integer, l_amt_required money, l_amt_approved money, l_date date)
+
+Relationship:
+- Ternary relationship between Branch, Customer and Loan_application.
+- Ternary (br_id integer, cno integer, lno integer)
+
+Constraints:
+- Primary Key for each entity
+- l_amt_required should be greater than zero
+*/
+
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_07_db;
+CREATE DATABASE slip_07_db;
+\c slip_07_db
 
 -- ============================================================
 -- Table Creation
@@ -62,7 +86,9 @@ INSERT INTO Ternary VALUES (2, 102, 1003);
 INSERT INTO Ternary VALUES (2, 104, 1003);
 
 -- ============================================================
--- Q2.1 Option A: Cursor function to count customers of branch
+-- Q2.1 Option A: Write a stored function using cursor to count
+-- the number of customers of particular branch. Accept branch
+-- name as input parameter. [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION count_branch_customers(p_brname CHAR)
@@ -91,10 +117,14 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: SELECT count_branch_customers('Pune Main');
+-- Execute: SELECT count_branch_customers('Pune Main');     -- 2 customers (Amit, Rahul)
+-- Execute: SELECT count_branch_customers('Mumbai Central');-- 2 customers (Neha, Priya)
+-- Execute: SELECT count_branch_customers('Unknown');       -- 0 customers
 
 -- ============================================================
--- Q2.1 Option B: Trigger before insert customer - if cno<=0 give message
+-- Q2.1 Option B (OR): Write a trigger before insert record of
+-- customer. If the customer number is less than or equal to
+-- zero, then give the appropriate message. [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION check_customer_cno()
@@ -112,10 +142,13 @@ BEFORE INSERT ON Customer
 FOR EACH ROW
 EXECUTE FUNCTION check_customer_cno();
 
--- Test: INSERT INTO Customer VALUES (-1, 'Test', 'Test', 'Test');
+-- Execute: INSERT INTO Customer VALUES (-1, 'Invalid', 'Test', 'Test'); -- Should fail
+-- Execute: INSERT INTO Customer VALUES (0, 'Zero', 'Test', 'Test');     -- Should fail
+-- Execute: INSERT INTO Customer VALUES (200, 'Valid', 'Test', 'Test');  -- Should succeed
 
 -- ============================================================
--- Q2.2: Procedure sum of first 20 numbers using unconditional loop
+-- Q2.2: Write a procedure to find sum of first 20 numbers
+-- (using unconditional loop). [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE PROCEDURE sum_first_20()
@@ -134,4 +167,5 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: CALL sum_first_20();
+-- Execute: CALL sum_first_20();  -- Result: 210 (1+2+3+...+20)
+

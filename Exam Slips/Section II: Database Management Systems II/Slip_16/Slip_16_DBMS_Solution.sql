@@ -1,14 +1,30 @@
+-- ============================================================
+-- Slip 16: Student-Subject Database
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
 /*
-  SLIP 16
-  Schema: Student(rollno int PK, name varchar(30), address varchar(50), class varchar(10)),
-          Subject(scode varchar(10) PK, subject_name varchar(20)),
-          student_subject(rollno, scode, marks_scored int) M:M
-  Q2.1A: Trigger before delete on student - "student record is being deleted".
-  Q2.1B: Cursor function calc total marks.
-  Q2.2:  Procedure check positive/negative.
+DATABASE SCHEMA: Student-Subject Database
+
+Tables:
+  Student(rollno integer, name varchar(30), address varchar(50), class varchar(10))
+  Subject(scode varchar(10), subject_name varchar(20))
+  
+Relationship: Student-Subject M-M with attributes marks_scored.
 */
 
--- Schema
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_16_db;
+CREATE DATABASE slip_16_db;
+\c slip_16_db
+
+-- ============================================================
+-- Table Creation
+-- ============================================================
+
 DROP TABLE IF EXISTS student_subject CASCADE;
 DROP TABLE IF EXISTS Student CASCADE;
 DROP TABLE IF EXISTS Subject CASCADE;
@@ -32,7 +48,10 @@ CREATE TABLE student_subject (
     PRIMARY KEY (rollno, scode)
 );
 
+-- ============================================================
 -- Sample Data
+-- ============================================================
+
 INSERT INTO Student VALUES (1, 'Amit', 'Pune', 'SY'), (2, 'Neha', 'Mumbai', 'TY'), (3, 'Raj', 'Nashik', 'SY');
 INSERT INTO Subject VALUES ('CS101', 'DBMS'), ('CS102', 'DS'), ('CS103', 'OS');
 INSERT INTO student_subject VALUES
@@ -40,7 +59,10 @@ INSERT INTO student_subject VALUES
     (2, 'CS101', 72), (2, 'CS102', 88),
     (3, 'CS101', 65), (3, 'CS103', 70);
 
--- Q2.1 Option A: Trigger before delete on student
+-- ============================================================
+-- Q2.1 Option A: Define a trigger before deleting a student record from the student table. Raise a notice and display the message "student record is being deleted". [10 Marks]
+-- ============================================================
+
 CREATE OR REPLACE FUNCTION fn_before_delete_student()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -55,7 +77,12 @@ CREATE TRIGGER trg_before_delete_student
     FOR EACH ROW
     EXECUTE FUNCTION fn_before_delete_student();
 
--- Q2.1 Option B: Cursor function calc total marks per student
+-- Execute: DELETE FROM Student WHERE rollno = 3;  -- Should show notice before deleting
+
+-- ============================================================
+-- Q2.1 Option B (OR): Write a stored function using cursors, to calculate total marks of each student and display it. [10 Marks]
+-- ============================================================
+
 CREATE OR REPLACE FUNCTION calc_total_marks()
 RETURNS VOID AS $$
 DECLARE
@@ -77,7 +104,12 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Q2.2: Procedure check positive/negative
+-- Execute: SELECT calc_total_marks();
+
+-- ============================================================
+-- Q2.2: Write a procedure to check the number is positive and negative. [5 Marks]
+-- ============================================================
+
 CREATE OR REPLACE PROCEDURE sp_check_sign(p_num NUMERIC)
 LANGUAGE plpgsql AS $$
 BEGIN
@@ -91,9 +123,6 @@ BEGIN
 END;
 $$;
 
--- Test Calls
-DELETE FROM Student WHERE rollno = 3;
-SELECT calc_total_marks();
-CALL sp_check_sign(25);
-CALL sp_check_sign(-10);
-CALL sp_check_sign(0);
+-- Execute: CALL sp_check_sign(25);
+-- Execute: CALL sp_check_sign(-10);
+-- Execute: CALL sp_check_sign(0);

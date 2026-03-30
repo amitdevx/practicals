@@ -1,7 +1,29 @@
+-- ============================================================
 -- Slip 10: Book-Author Database
--- Q2.1 OptionA: Function to display book details by author, raise exception if invalid
--- Q2.1 OptionB: Trigger after insert on book - if price>1000 display "prize is so high"
--- Q2.2: Procedure display even numbers 1 to 50
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
+/*
+Consider the following Entities and their Relationships:
+
+Book (b_no int, b_name varchar(20), pub_name varchar(10), b_price float)
+Author (a_no int, a_name varchar(20), qualification varchar(15), address varchar(15))
+
+Relationship:
+- M-M between Book and Author
+
+Constraints:
+- Primary Key for each entity
+- pub_name should not be null
+*/
+
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_10_db;
+CREATE DATABASE slip_10_db;
+\c slip_10_db
 
 -- ============================================================
 -- Table Creation
@@ -50,7 +72,10 @@ INSERT INTO book_author VALUES (3, 103);
 INSERT INTO book_author VALUES (4, 101);
 
 -- ============================================================
--- Q2.1 Option A: Function to display book details by author
+-- Q2.1 Option A: Write a stored function to display the book
+-- details written by author. Accept Author name as input
+-- parameter. Raise an exception in case of invalid author
+-- name. [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION get_books_by_author(p_aname VARCHAR)
@@ -85,18 +110,21 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: SELECT get_books_by_author('Navathe');
--- Test: SELECT get_books_by_author('Unknown');
+-- Execute: SELECT get_books_by_author('Navathe');   -- DBMS Concepts, Algorithms
+-- Execute: SELECT get_books_by_author('Lipschutz'); -- Data Structures
+-- Execute: SELECT get_books_by_author('Unknown');   -- Should raise exception
 
 -- ============================================================
--- Q2.1 Option B: Trigger after insert on book - if price > 1000
+-- Q2.1 Option B (OR): Write a trigger after insert on book to
+-- display message "price is so high" if book price is more
+-- than 1000. [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION check_book_price()
 RETURNS TRIGGER AS $$
 BEGIN
     IF NEW.b_price > 1000 THEN
-        RAISE NOTICE 'prize is so high';
+        RAISE NOTICE 'price is so high';
     END IF;
     RETURN NEW;
 END;
@@ -107,10 +135,12 @@ AFTER INSERT ON Book
 FOR EACH ROW
 EXECUTE FUNCTION check_book_price();
 
--- Test: INSERT INTO Book VALUES (5, 'Networking', 'TMH', 1500);
+-- Execute: INSERT INTO Book VALUES (10, 'Expensive', 'TMH', 1500);  -- Shows "price is so high"
+-- Execute: INSERT INTO Book VALUES (11, 'Cheap', 'Pearson', 500);   -- No message (price <= 1000)
 
 -- ============================================================
--- Q2.2: Procedure display even numbers 1 to 50
+-- Q2.2: Write a procedure to display all even numbers from 1
+-- to 50. [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE PROCEDURE display_even_1_to_50()
@@ -126,4 +156,5 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: CALL display_even_1_to_50();
+-- Execute: CALL display_even_1_to_50();  -- Displays 2, 4, 6, 8, ... 50
+

@@ -1,16 +1,38 @@
+-- ============================================================
+-- Slip 21: Doctor-Hospital Database
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
 /*
-SLIP 21 - SECTION II: DATABASE MANAGEMENT SYSTEMS II
+DATABASE SCHEMA: Doctor-Hospital Database
 
-Doctor(d_no int PK, d_name varchar(30), specialization varchar(35), phone_no int, charges int)
-Hospital(h_no int PK, h_name varchar(20), city varchar(10))
-Doctor and Hospital are related with many to one relationship (d.h_no FK).
+Tables:
+  Doctor(d_no int, d_name varchar(30), specialization varchar(35), 
+         phone_no int, charges int)
+  Hospital(h_no int, h_name varchar(20), city varchar(10))
 
-Q2.1A: Function accept hospital name, calculate average charges of doctors visiting that hospital.
-Q2.1B: Trigger before insert/update on Doctor - if charges < 0 raise exception.
-Q2.2: Procedure to find sum and average of first n numbers using while loop.
+Relationship:
+  Doctor and Hospital are related with many to one relationship.
+  (Many doctors can visit one hospital; h_no is FK in Doctor table)
+
+Constraints:
+  - d_no is Primary Key in Doctor
+  - h_no is Primary Key in Hospital
+  - h_no in Doctor references Hospital(h_no)
 */
 
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_21_db;
+CREATE DATABASE slip_21_db;
+\c slip_21_db
+
+-- ============================================================
 -- Table Creation
+-- ============================================================
+
 DROP TABLE IF EXISTS Doctor CASCADE;
 DROP TABLE IF EXISTS Hospital CASCADE;
 
@@ -29,7 +51,10 @@ CREATE TABLE Doctor (
     h_no INT REFERENCES Hospital(h_no)
 );
 
+-- ============================================================
 -- Sample Data
+-- ============================================================
+
 INSERT INTO Hospital VALUES (1, 'City Hospital', 'Pune');
 INSERT INTO Hospital VALUES (2, 'Global Hospital', 'Mumbai');
 INSERT INTO Hospital VALUES (3, 'Ruby Hospital', 'Pune');
@@ -40,7 +65,10 @@ INSERT INTO Doctor VALUES (3, 'Dr. Desai', 'Orthopedics', 9876545, 600, 2);
 INSERT INTO Doctor VALUES (4, 'Dr. Joshi', 'Dermatology', 9876546, 400, 2);
 INSERT INTO Doctor VALUES (5, 'Dr. Kulkarni', 'ENT', 9876547, 800, 3);
 
--- Q2.1A: Function to calculate average charges for a given hospital name
+-- ============================================================
+-- Q2.1 Option A: Write a function which will accept the name of the hospital
+-- and calculate the average charges of doctors visiting that hospital. [10 Marks]
+-- ============================================================
 CREATE OR REPLACE FUNCTION avg_charges_by_hospital(p_hname VARCHAR)
 RETURNS NUMERIC AS $$
 DECLARE
@@ -60,7 +88,13 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Q2.1B: Trigger before insert/update on Doctor - charges < 0 raise exception
+-- Execute: SELECT avg_charges_by_hospital('City Hospital');
+-- Execute: SELECT avg_charges_by_hospital('Global Hospital');
+
+-- ============================================================
+-- Q2.1 Option B (OR): Write a trigger before insert/update on Doctor.
+-- Raise exception if charges are < 0. [10 Marks]
+-- ============================================================
 CREATE OR REPLACE FUNCTION trg_check_charges()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -75,7 +109,13 @@ CREATE OR REPLACE TRIGGER trg_doctor_charges
 BEFORE INSERT OR UPDATE ON Doctor
 FOR EACH ROW EXECUTE FUNCTION trg_check_charges();
 
--- Q2.2: Procedure sum and average of first n numbers using while loop
+-- Execute: INSERT INTO Doctor VALUES (10, 'Dr. Test', 'General', 9876550, -100, 1);  -- Should fail (negative charges)
+-- Execute: INSERT INTO Doctor VALUES (10, 'Dr. Test', 'General', 9876550, 450, 1);   -- Should succeed
+
+-- ============================================================
+-- Q2.2: Write a procedure to find sum and average of first n numbers
+-- using conditional loop (while). [5 Marks]
+-- ============================================================
 CREATE OR REPLACE PROCEDURE sum_avg_n(p_n INT)
 LANGUAGE plpgsql AS $$
 DECLARE
@@ -93,12 +133,5 @@ BEGIN
 END;
 $$;
 
--- Test Calls
-SELECT avg_charges_by_hospital('City Hospital');
-SELECT avg_charges_by_hospital('Global Hospital');
-
--- Test trigger (this should raise exception)
--- INSERT INTO Doctor VALUES (6, 'Dr. Test', 'General', 9999999, -100, 1);
-
-CALL sum_avg_n(10);
-CALL sum_avg_n(50);
+-- Execute: CALL sum_avg_n(10);
+-- Execute: CALL sum_avg_n(50);

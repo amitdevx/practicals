@@ -1,16 +1,35 @@
+-- ============================================================
+-- Slip 27: Student-Subject Database
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
 /*
-SLIP 27 - SECTION II: DATABASE MANAGEMENT SYSTEMS II
+DATABASE SCHEMA: Student-Subject Database
 
-Student(rollno int PK, name varchar(30), class varchar(10))
-Subject(scode varchar(10) PK, subject_name varchar(20))
-student_subject(rollno, scode, marks_scored int) M:M
+Tables:
+  Student (rollno integer, name varchar(30), class varchar(10))
+  Subject (Scode varchar(10), subject_name varchar(20))
 
-Q2.1A: Cursor function accept class, display students of that class.
-Q2.1B: Trigger before insert/update on marks_scored - if negative raise exception.
-Q2.2: Procedure to display even numbers from 1 to 50.
+Relationship:
+  Student and Subject are related with M-M relationship.
+  Descriptive attribute: marks_scored
+
+Junction Table:
+  student_subject (rollno, scode, marks_scored int) - M:M relationship
 */
 
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_27_db;
+CREATE DATABASE slip_27_db;
+\c slip_27_db
+
+-- ============================================================
 -- Table Creation
+-- ============================================================
+
 DROP TABLE IF EXISTS student_subject CASCADE;
 DROP TABLE IF EXISTS Student CASCADE;
 DROP TABLE IF EXISTS Subject CASCADE;
@@ -33,7 +52,10 @@ CREATE TABLE student_subject (
     PRIMARY KEY (rollno, scode)
 );
 
+-- ============================================================
 -- Sample Data
+-- ============================================================
+
 INSERT INTO Student VALUES (1, 'Amit', 'SY');
 INSERT INTO Student VALUES (2, 'Sneha', 'TY');
 INSERT INTO Student VALUES (3, 'Rahul', 'SY');
@@ -50,7 +72,10 @@ INSERT INTO student_subject VALUES (2, 'CS101', 90);
 INSERT INTO student_subject VALUES (3, 'CS103', 72);
 INSERT INTO student_subject VALUES (4, 'CS102', 88);
 
--- Q2.1A: Cursor function accept class, display students of that class
+-- ============================================================
+-- Q2.1 Option A: Write a stored function using cursors, to accept class
+-- from the user and display the details of the students of that class. [10 Marks]
+-- ============================================================
 CREATE OR REPLACE FUNCTION get_students_by_class(p_class VARCHAR)
 RETURNS VOID AS $$
 DECLARE
@@ -74,7 +99,14 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Q2.1B: Trigger before insert/update on marks_scored - negative raise exception
+-- Execute: SELECT get_students_by_class('SY');  -- Should display Amit and Rahul
+-- Execute: SELECT get_students_by_class('TY');  -- Should display Sneha and Priya
+-- Execute: SELECT get_students_by_class('PG');  -- Should display "No students found"
+
+-- ============================================================
+-- Q2.1 Option B (OR): Write a trigger before insert/update the marks_scored.
+-- Raise exception if Marks are negative. [10 Marks]
+-- ============================================================
 CREATE OR REPLACE FUNCTION trg_check_marks()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -89,7 +121,12 @@ CREATE OR REPLACE TRIGGER trg_marks_check
 BEFORE INSERT OR UPDATE ON student_subject
 FOR EACH ROW EXECUTE FUNCTION trg_check_marks();
 
--- Q2.2: Procedure to display even numbers from 1 to 50
+-- Execute: INSERT INTO student_subject VALUES (5, 'CS101', -10);  -- Should fail (negative marks)
+-- Execute: INSERT INTO student_subject VALUES (5, 'CS101', 75);   -- Should succeed
+
+-- ============================================================
+-- Q2.2: Write a procedure to display all even numbers from 1 to 50. [5 Marks]
+-- ============================================================
 CREATE OR REPLACE PROCEDURE display_even_1_to_50()
 LANGUAGE plpgsql AS $$
 DECLARE
@@ -102,11 +139,4 @@ BEGIN
 END;
 $$;
 
--- Test Calls
-SELECT get_students_by_class('SY');
-SELECT get_students_by_class('TY');
-
--- Test trigger (this should raise exception)
--- INSERT INTO student_subject VALUES (5, 'CS101', -10);
-
-CALL display_even_1_to_50();
+-- Execute: CALL display_even_1_to_50();  -- Should display 2, 4, 6, ... 50

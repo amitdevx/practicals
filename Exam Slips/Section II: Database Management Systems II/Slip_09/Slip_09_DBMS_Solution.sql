@@ -1,7 +1,28 @@
--- Slip 09: Student-Competition Database (with prize)
--- Q2.1 OptionA: Trigger before update on competition - raise notice "competition record is being updated"
--- Q2.1 OptionB: Function with cursor - accept student name, return total prizes in 2020
--- Q2.2: Procedure division of two numbers with div by zero exception
+-- ============================================================
+-- Slip 09: Student-Competition Database
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
+/*
+Consider the following Entities and their Relationships:
+
+STUDENT (sreg_no int, name char(30), class char(10))
+COMPETITION (c_no int, name char(20), c_type char(15))
+
+Relationship:
+- STUDENT-COMPETITION: M-M with described attributes:
+  - rank
+  - year
+  - prize (int)
+*/
+
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_09_db;
+CREATE DATABASE slip_09_db;
+\c slip_09_db
 
 -- ============================================================
 -- Table Creation
@@ -51,7 +72,9 @@ INSERT INTO student_competition VALUES (3, 101, 3, 2021, 1000);
 INSERT INTO student_competition VALUES (2, 101, 2, 2021, 2000);
 
 -- ============================================================
--- Q2.1 Option A: Trigger before update on competition
+-- Q2.1 Option A: Define a trigger before updating a competition
+-- table. Raise a notice and display message "competition record
+-- is being updated". [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION notify_competition_update()
@@ -67,10 +90,13 @@ BEFORE UPDATE ON COMPETITION
 FOR EACH ROW
 EXECUTE FUNCTION notify_competition_update();
 
--- Test: UPDATE COMPETITION SET name = 'Football' WHERE c_no = 101;
+-- Execute: UPDATE COMPETITION SET name = 'Cricket Tournament' WHERE c_no = 101;
+-- This will display: "competition record is being updated"
 
 -- ============================================================
--- Q2.1 Option B: Function with cursor - accept student name, total prizes in 2020
+-- Q2.1 Option B (OR): Write a function using cursor which
+-- accepts a name of student and returns the total no of prizes
+-- won by that student in the year 2020. [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION total_prizes_2020(p_name CHAR)
@@ -104,10 +130,14 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: SELECT total_prizes_2020('Amit');
+-- Execute: SELECT total_prizes_2020('Amit');   -- 8000 (5000 + 3000)
+-- Execute: SELECT total_prizes_2020('Neha');   -- 4000 (Chess)
+-- Execute: SELECT total_prizes_2020('Rahul');  -- 0 (no prizes in 2020)
 
 -- ============================================================
--- Q2.2: Procedure division of two numbers with div by zero exception
+-- Q2.2: Write a procedure to display division of two numbers
+-- use raise to display divided by zero exception messages.
+-- [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE PROCEDURE divide_numbers(a NUMERIC, b NUMERIC)
@@ -124,5 +154,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: CALL divide_numbers(20, 4);
--- Test: CALL divide_numbers(10, 0);
+-- Execute: CALL divide_numbers(20, 4);  -- Result: 5
+-- Execute: CALL divide_numbers(10, 0);  -- Should raise division by zero exception
+

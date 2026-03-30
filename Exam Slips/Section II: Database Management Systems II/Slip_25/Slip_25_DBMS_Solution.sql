@@ -1,15 +1,37 @@
+-- ============================================================
+-- Slip 25: Customer-Account Database
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
 /*
-SLIP 25 - SECTION II: DATABASE MANAGEMENT SYSTEMS II
+DATABASE SCHEMA: Customer-Account Database
 
-Customer(cno int PK, cname varchar(20), city varchar(20))
-Account(a_no int PK, a_type varchar(10), opening_date date, balance numeric, cno FK) 1:M
+Tables:
+  Customer(cno integer, cname varchar(20), city varchar(20))
+  Account(a_no int, a_type varchar(10), opening_date date, balance money)
 
-Q2.1A: Cursor function accept city name, print customer details.
-Q2.1B: Trigger to prevent deletion of 'Savings' type accounts.
-Q2.2: Procedure to display customers from 'Pune'.
+Relationship:
+  Customer and Account are related with one to many relationship.
+  (One customer can have many accounts; cno is FK in Account table)
+
+Constraints:
+  - cno is Primary Key in Customer
+  - a_no is Primary Key in Account
+  - cno in Account references Customer(cno)
 */
 
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_25_db;
+CREATE DATABASE slip_25_db;
+\c slip_25_db
+
+-- ============================================================
 -- Table Creation
+-- ============================================================
+
 DROP TABLE IF EXISTS Account CASCADE;
 DROP TABLE IF EXISTS Customer CASCADE;
 
@@ -27,7 +49,10 @@ CREATE TABLE Account (
     cno INT REFERENCES Customer(cno)
 );
 
+-- ============================================================
 -- Sample Data
+-- ============================================================
+
 INSERT INTO Customer VALUES (1, 'Amit', 'Pune');
 INSERT INTO Customer VALUES (2, 'Sneha', 'Mumbai');
 INSERT INTO Customer VALUES (3, 'Rahul', 'Pune');
@@ -39,7 +64,10 @@ INSERT INTO Account VALUES (103, 'Savings', '2022-06-10', 30000, 3);
 INSERT INTO Account VALUES (104, 'Current', '2023-09-01', 90000, 4);
 INSERT INTO Account VALUES (105, 'Savings', '2024-01-05', 45000, 1);
 
--- Q2.1A: Cursor function accept city name, print customer details
+-- ============================================================
+-- Q2.1 Option A: Write a function using cursor which accepts city name
+-- as input and prints the details of all customers in that city. [10 Marks]
+-- ============================================================
 CREATE OR REPLACE FUNCTION get_customers_by_city(p_city VARCHAR)
 RETURNS VOID AS $$
 DECLARE
@@ -63,7 +91,14 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Q2.1B: Trigger to prevent deletion of 'Savings' type accounts
+-- Execute: SELECT get_customers_by_city('Pune');    -- Should display Amit and Rahul
+-- Execute: SELECT get_customers_by_city('Mumbai');  -- Should display Sneha
+-- Execute: SELECT get_customers_by_city('Chennai'); -- Should display "No customers found"
+
+-- ============================================================
+-- Q2.1 Option B (OR): Write a trigger which does not allow deletion
+-- of accounts of 'savings' type. [10 Marks]
+-- ============================================================
 CREATE OR REPLACE FUNCTION trg_prevent_savings_delete()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -78,7 +113,12 @@ CREATE OR REPLACE TRIGGER trg_no_delete_savings
 BEFORE DELETE ON Account
 FOR EACH ROW EXECUTE FUNCTION trg_prevent_savings_delete();
 
--- Q2.2: Procedure to display customers from 'Pune'
+-- Execute: DELETE FROM Account WHERE a_no = 101;  -- Should fail (a_no 101 is Savings type)
+-- Execute: DELETE FROM Account WHERE a_no = 102;  -- Should succeed (a_no 102 is Current type)
+
+-- ============================================================
+-- Q2.2: Write a procedure to display all customers from 'Pune' city. [5 Marks]
+-- ============================================================
 CREATE OR REPLACE PROCEDURE display_pune_customers()
 LANGUAGE plpgsql AS $$
 DECLARE
@@ -90,14 +130,4 @@ BEGIN
 END;
 $$;
 
--- Test Calls
-SELECT get_customers_by_city('Pune');
-SELECT get_customers_by_city('Mumbai');
-
--- Test trigger (this should raise exception)
--- DELETE FROM Account WHERE a_no = 101;
-
--- Test deleting current account (should succeed)
--- DELETE FROM Account WHERE a_no = 102;
-
-CALL display_pune_customers();
+-- Execute: CALL display_pune_customers();  -- Should display Amit and Rahul

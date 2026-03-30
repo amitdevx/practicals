@@ -1,7 +1,33 @@
+-- ============================================================
 -- Slip 06: Bus-Route-Driver Database
--- Q2.1 OptionA: Function accept bus_no, print driver name
--- Q2.1 OptionB: Function accept depot name, display drivers age > 50
--- Q2.2: Procedure even or odd
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
+/*
+Consider the following Entities and their Relationships:
+
+BUS (bus_no int, capacity int, depot_name varchar(20))
+ROUTE (route_no int, source char(20), destination char(20), no_of_stations int)
+DRIVER (driver_no int, driver_name char(20), license_no int, address char(20), d_age int, salary float)
+
+Relationships:
+- BUS_ROUTE: M-1 (Many buses can be on one route)
+- BUS_DRIVER: M-M with descriptive attributes:
+  - Date of duty allotted
+  - Shift (1 for Morning, 2 for Evening)
+
+Constraints:
+- License_no is unique
+- Bus capacity is not null
+*/
+
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_06_db;
+CREATE DATABASE slip_06_db;
+\c slip_06_db
 
 -- ============================================================
 -- Table Creation
@@ -66,7 +92,8 @@ INSERT INTO bus_driver VALUES (102, 2, '2024-01-16', 1);
 INSERT INTO bus_driver VALUES (103, 4, '2024-01-17', 1);
 
 -- ============================================================
--- Q2.1 Option A: Function accept bus_no, print driver name
+-- Q2.1 Option A: Write a stored function to accept the bus
+-- number and print driver name allotted to that bus. [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION get_driver_for_bus(p_bus_no INT)
@@ -91,10 +118,14 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: SELECT get_driver_for_bus(101);
+-- Execute: SELECT get_driver_for_bus(101);  -- Ramesh and Mahesh
+-- Execute: SELECT get_driver_for_bus(102);  -- Suresh
+-- Execute: SELECT get_driver_for_bus(999);  -- No driver found
 
 -- ============================================================
--- Q2.1 Option B: Function accept depot name, display drivers age > 50
+-- Q2.1 Option B (OR): Write a stored function to accept depot
+-- name and display driver details having age more than 50.
+-- [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION get_senior_drivers(p_depot VARCHAR)
@@ -120,10 +151,12 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: SELECT get_senior_drivers('Swargate');
+-- Execute: SELECT get_senior_drivers('Swargate');     -- Ramesh (52), Mahesh (55)
+-- Execute: SELECT get_senior_drivers('Shivajinagar'); -- No drivers > 50
 
 -- ============================================================
--- Q2.2: Procedure even or odd
+-- Q2.2: Write a procedure to find number is even or odd.
+-- [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE PROCEDURE check_even_odd(n INT)
@@ -137,5 +170,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: CALL check_even_odd(7);
--- Test: CALL check_even_odd(12);
+-- Execute: CALL check_even_odd(10);  -- Even
+-- Execute: CALL check_even_odd(7);   -- Odd
+-- Execute: CALL check_even_odd(0);   -- Even
+

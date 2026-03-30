@@ -1,7 +1,31 @@
+-- ============================================================
 -- Slip 08: Train-Passenger-Ticket Database
--- Q2.1 OptionA: Function display ticket details for train name, raise exception if invalid
--- Q2.1 OptionB: Trigger after insert on passenger - if age>5 display "Age above 5 will be charged full fare"
--- Q2.2: Procedure addition of two numbers
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
+/*
+Consider the following Entities and their Relationships:
+
+TRAIN (train_no int, train_name varchar(20), depart_time time, arrival_time time, 
+       source_stn varchar(20), dest_stn varchar(20), no_of_res_bogies int, bogie_capacity int)
+PASSENGER (passenger_id int, passenger_name varchar(20), address varchar(30), age int, gender char)
+
+Relationships:
+- Train_Passenger: M-M relationship named ticket with descriptive attributes.
+- TICKET (train_no int, passenger_id int, ticket_no int, bogie_no int, no_of_berths int, 
+         tdate date, ticket_amt decimal(7,2), status char)
+
+Constraints:
+- The status of a berth can be 'W' (waiting) or 'C' (confirmed).
+*/
+
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_08_db;
+CREATE DATABASE slip_08_db;
+\c slip_08_db
 
 -- ============================================================
 -- Table Creation
@@ -61,7 +85,9 @@ INSERT INTO TICKET VALUES (12001, 3, 5003, 3, 1, '2024-03-15', 0.00, 'C');
 INSERT INTO TICKET VALUES (12003, 4, 5004, 7, 1, '2024-03-17', 1800.00, 'W');
 
 -- ============================================================
--- Q2.1 Option A: Function display ticket details for train name
+-- Q2.1 Option A: Write a stored function to display the ticket
+-- details of a train. Accept train name as input parameter.
+-- Raise an exception in case of invalid train name. [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION get_ticket_details(p_train_name VARCHAR)
@@ -98,11 +124,14 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: SELECT get_ticket_details('Shatabdi');
--- Test: SELECT get_ticket_details('InvalidTrain');
+-- Execute: SELECT get_ticket_details('Shatabdi');  -- Shows tickets for Shatabdi
+-- Execute: SELECT get_ticket_details('Rajdhani');  -- Shows tickets for Rajdhani
+-- Execute: SELECT get_ticket_details('Invalid');   -- Should raise exception
 
 -- ============================================================
--- Q2.1 Option B: Trigger after insert on passenger - age > 5 message
+-- Q2.1 Option B (OR): Write a trigger after insert on passenger
+-- to display message "Age above 5 will be charged full fare"
+-- if age of passenger is more than 5. [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION check_passenger_age()
@@ -120,10 +149,12 @@ AFTER INSERT ON PASSENGER
 FOR EACH ROW
 EXECUTE FUNCTION check_passenger_age();
 
--- Test: INSERT INTO PASSENGER VALUES (5, 'Test', 'Pune', 10, 'M');
+-- Execute: INSERT INTO PASSENGER VALUES (10, 'Adult', 'Mumbai', 25, 'M');  -- Shows fare message
+-- Execute: INSERT INTO PASSENGER VALUES (11, 'Child', 'Pune', 4, 'F');     -- No message (age <= 5)
 
 -- ============================================================
--- Q2.2: Procedure addition of two numbers
+-- Q2.2: Write a procedure to display addition of two numbers.
+-- [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE PROCEDURE add_two_numbers(a NUMERIC, b NUMERIC)
@@ -136,4 +167,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: CALL add_two_numbers(15, 25);
+-- Execute: CALL add_two_numbers(10, 5);   -- Result: 15
+-- Execute: CALL add_two_numbers(-3, 7);   -- Result: 4
+

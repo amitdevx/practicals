@@ -1,7 +1,27 @@
+-- ============================================================
 -- Slip 05: Student-Competition Database
--- Q2.1 OptionA: Function with cursor to accept year and class, display student name, competition name, rank
--- Q2.1 OptionB: Trigger before update on competition - raise notice "competition record is being updated"
--- Q2.2: Procedure max and min from three numbers
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
+/*
+Consider the following Entities and their Relationships for Student-Competition database.
+
+Student (sreg_no int, s_name varchar(20), s_class char(10))
+Competition (c_no int, c_name varchar(20), c_type char(10))
+
+The Relationship between Student and Competition is Many-to-Many (M-M) with descriptive
+attributes rank and year.
+
+Constraints: Primary Key, c_type should not be null, c_type can be 'sport' or 'academic'.
+*/
+
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_05_db;
+CREATE DATABASE slip_05_db;
+\c slip_05_db
 
 -- ============================================================
 -- Table Creation
@@ -51,7 +71,9 @@ INSERT INTO student_competition VALUES (4, 101, 3, 2024);
 INSERT INTO student_competition VALUES (1, 102, 2, 2024);
 
 -- ============================================================
--- Q2.1 Option A: Function with cursor - accept year and class, display details
+-- Q2.1 Option A: Write a function using cursor to accept year
+-- and class to display student name, competition name and
+-- rank. [10 Marks]
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION get_competition_details(p_year INT, p_class CHAR)
@@ -81,10 +103,14 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: SELECT get_competition_details(2024, 'SY');
+-- Execute: SELECT get_competition_details(2023, 'SY');  -- Amit in Cricket
+-- Execute: SELECT get_competition_details(2024, 'TY');  -- Priya in Cricket
+-- Execute: SELECT get_competition_details(2020, 'SY');  -- No records
 
 -- ============================================================
--- Q2.1 Option B: Trigger before update on competition
+-- Q2.1 Option B (OR): Define a trigger before updating a
+-- competition table. Raise a notice and display message
+-- "competition record is being updated". [10 Marks]
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION notify_competition_update()
@@ -100,10 +126,12 @@ BEFORE UPDATE ON Competition
 FOR EACH ROW
 EXECUTE FUNCTION notify_competition_update();
 
--- Test: UPDATE Competition SET c_name = 'Football' WHERE c_no = 101;
+-- Execute: UPDATE Competition SET c_name = 'Chess Tournament' WHERE c_no = 103;
+-- This will display: "competition record is being updated"
 
 -- ============================================================
--- Q2.2: Procedure max and min from three numbers
+-- Q2.2: Write a procedure to find maximum and minimum from
+-- three numbers. [5 Marks]
 -- ============================================================
 
 CREATE OR REPLACE PROCEDURE find_max_min_three(a NUMERIC, b NUMERIC, c NUMERIC)
@@ -127,4 +155,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Test: CALL find_max_min_three(15, 7, 23);
+-- Execute: CALL find_max_min_three(5, 10, 3);   -- Max: 10, Min: 3
+-- Execute: CALL find_max_min_three(7, 7, 7);    -- All equal
+-- Execute: CALL find_max_min_three(-1, 0, 1);   -- Max: 1, Min: -1
+

@@ -1,16 +1,61 @@
+-- ============================================================
+-- Slip 13: Bus-Route-Driver Database
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
 /*
-  SLIP 13
-  Schema: BUS(bus_no int PK, capacity int NOT NULL, depot_name varchar(20)),
-          ROUTE(route_no int PK, source char(20), destination char(20), no_of_stations int),
-          DRIVER(driver_no int PK, driver_name char(20), license_no int UNIQUE, address char(20), d_age int, salary float),
-          BUS.route_no FK -> ROUTE,
-          bus_driver(bus_no, driver_no, duty_date date, shift int CHECK IN(1,2)) M:M
-  Q2.1A: Trigger before insert on driver - age must be between 18 and 50.
-  Q2.1B: Function accept bus_no and date, print allotted drivers, raise exception for invalid bus.
-  Q2.2:  Procedure check if number is in given range.
+DATABASE SCHEMA: Bus-Route-Driver Database
+
+Tables:
+  1. BUS (bus_no, capacity, depot_name)
+     - bus_no: INT, Primary Key
+     - capacity: INT, NOT NULL - Bus capacity
+     - depot_name: VARCHAR(20), Depot name
+     - route_no: INT, Foreign Key -> ROUTE(route_no)
+
+  2. ROUTE (route_no, source, destination, no_of_stations)
+     - route_no: INT, Primary Key
+     - source: CHAR(20), Source location
+     - destination: CHAR(20), Destination location
+     - no_of_stations: INT, Number of stations
+
+  3. DRIVER (driver_no, driver_name, license_no, address, d_age, salary)
+     - driver_no: INT, Primary Key
+     - driver_name: CHAR(20), Driver name
+     - license_no: INT, UNIQUE - License number
+     - address: CHAR(20), Driver address
+     - d_age: INT, Driver age
+     - salary: FLOAT, Driver salary
+
+  4. bus_driver (bus_no, driver_no, duty_date, shift) - Junction Table
+     - bus_no: INT, Foreign Key -> BUS(bus_no)
+     - driver_no: INT, Foreign Key -> DRIVER(driver_no)
+     - duty_date: DATE, Date of duty allotted
+     - shift: INT, CHECK (1 for Morning, 2 for Evening)
+     - PRIMARY KEY (bus_no, driver_no, duty_date, shift)
+
+Relationships:
+  - BUS_ROUTE: M-1 (Many buses to one route)
+  - BUS_DRIVER: M-M with descriptive attributes Date of duty allotted and
+                Shift (1 for Morning, 2 for Evening)
+
+Constraints:
+  - License no is unique
+  - Bus capacity is not null
 */
 
--- Schema
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_13_db;
+CREATE DATABASE slip_13_db;
+\c slip_13_db
+
+-- ============================================================
+-- Table Creation
+-- ============================================================
+
 DROP TABLE IF EXISTS bus_driver CASCADE;
 DROP TABLE IF EXISTS BUS CASCADE;
 DROP TABLE IF EXISTS ROUTE CASCADE;
@@ -47,7 +92,10 @@ CREATE TABLE bus_driver (
     PRIMARY KEY (bus_no, driver_no, duty_date, shift)
 );
 
+-- ============================================================
 -- Sample Data
+-- ============================================================
+
 INSERT INTO ROUTE VALUES (1, 'Pune', 'Mumbai', 15), (2, 'Pune', 'Nashik', 10);
 INSERT INTO BUS VALUES (101, 50, 'Swargate', 1), (102, 40, 'Shivajinagar', 2);
 INSERT INTO DRIVER VALUES (1, 'Suresh', 5001, 'Pune', 35, 25000),
@@ -56,7 +104,10 @@ INSERT INTO bus_driver VALUES
     (101, 1, '2024-01-15', 1), (101, 2, '2024-01-15', 2),
     (102, 3, '2024-01-15', 1), (101, 3, '2024-01-16', 1);
 
--- Q2.1 Option A: Trigger before insert on driver - age between 18 and 50
+-- ============================================================
+-- Q2.1 Option A: Define a trigger before insert the record of driver if the age is not between 18 and 50, raise an error message "invalid entry". [10 Marks]
+-- ============================================================
+
 CREATE OR REPLACE FUNCTION fn_check_driver_age()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -73,7 +124,13 @@ CREATE TRIGGER trg_check_driver_age
     FOR EACH ROW
     EXECUTE FUNCTION fn_check_driver_age();
 
--- Q2.1 Option B: Function accept bus_no and date, print allotted drivers
+-- Execute: INSERT INTO DRIVER VALUES (4, 'Mohan', 5004, 'Pune', 55, 20000);  -- Should fail (age > 50)
+-- Execute: INSERT INTO DRIVER VALUES (4, 'Mohan', 5004, 'Pune', 30, 20000);  -- Should succeed
+
+-- ============================================================
+-- Q2.1 Option B (OR): Write a stored function to accept the bus_no and date and print its allotted drivers. Raise an exception in case of invalid bus number. [10 Marks]
+-- ============================================================
+
 CREATE OR REPLACE FUNCTION get_bus_drivers(p_bus_no INT, p_date DATE)
 RETURNS VOID AS $$
 DECLARE
@@ -102,7 +159,13 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Q2.2: Procedure check if number is in given range
+-- Execute: SELECT get_bus_drivers(101, '2024-01-15');
+-- Execute: SELECT get_bus_drivers(999, '2024-01-15');  -- Should raise exception (invalid bus)
+
+-- ============================================================
+-- Q2.2: Write a procedure to search the given number is in given range. [5 Marks]
+-- ============================================================
+
 CREATE OR REPLACE PROCEDURE sp_check_range(p_num INT, p_low INT, p_high INT)
 LANGUAGE plpgsql AS $$
 BEGIN
@@ -114,8 +177,5 @@ BEGIN
 END;
 $$;
 
--- Test Calls
--- This should fail: INSERT INTO DRIVER VALUES (4, 'Young', 5004, 'Pune', 16, 15000);
-SELECT get_bus_drivers(101, '2024-01-15');
-CALL sp_check_range(15, 10, 20);
-CALL sp_check_range(25, 10, 20);
+-- Execute: CALL sp_check_range(15, 10, 20);
+-- Execute: CALL sp_check_range(5, 10, 20);

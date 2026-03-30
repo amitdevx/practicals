@@ -1,14 +1,34 @@
+-- ============================================================
+-- Slip 19: Project-Employee Database
+-- Section II: Database Management Systems-II [15 Marks]
+-- ============================================================
+
 /*
-  SLIP 19
-  Schema: PROJECT(pno int PK, p_name char(30) NOT NULL, ptype char(20), duration int CHECK >0),
-          EMPLOYEE(eno int PK, e_name char(20), qualification char(15), joindate date),
-          project_employee(pno, eno, start_date date, no_of_hours_worked int) M:M
-  Q2.1A: Function accept eno, count projects.
-  Q2.1B: Trigger before insert on project duration>0.
-  Q2.2:  Procedure min and max from two numbers.
+DATABASE SCHEMA: Project-Employee Database
+
+Tables:
+  Project (pno integer, pname char(30), ptype char(20), duration integer)
+  Employee (eno integer, ename char(20), qualification char(15), joining_date date)
+  
+Relationship: M-M with descriptive attributes start_date date, 
+no_of_hours_worked integer.
+  
+Constraints: Primary Key, duration should be greater than zero,
+pname should not be null.
 */
 
--- Schema
+-- ============================================================
+-- Database Setup
+-- ============================================================
+
+DROP DATABASE IF EXISTS slip_19_db;
+CREATE DATABASE slip_19_db;
+\c slip_19_db
+
+-- ============================================================
+-- Table Creation
+-- ============================================================
+
 DROP TABLE IF EXISTS project_employee CASCADE;
 DROP TABLE IF EXISTS PROJECT CASCADE;
 DROP TABLE IF EXISTS EMPLOYEE CASCADE;
@@ -35,7 +55,10 @@ CREATE TABLE project_employee (
     PRIMARY KEY (pno, eno)
 );
 
+-- ============================================================
 -- Sample Data
+-- ============================================================
+
 INSERT INTO PROJECT VALUES (1, 'Alpha', 'Software', 12), (2, 'Beta', 'Hardware', 6), (3, 'Gamma', 'Software', 8);
 INSERT INTO EMPLOYEE VALUES (101, 'Amit', 'BE', '2020-01-15'), (102, 'Neha', 'MCA', '2019-06-10'),
     (103, 'Raj', 'BSc', '2021-03-20'), (104, 'Priya', 'ME', '2018-09-01');
@@ -43,7 +66,10 @@ INSERT INTO project_employee VALUES
     (1, 101, '2020-02-01', 200), (1, 102, '2020-02-01', 180),
     (2, 103, '2021-04-01', 150), (3, 101, '2021-05-01', 100), (3, 104, '2021-05-01', 220);
 
--- Q2.1 Option A: Function accept eno, count projects
+-- ============================================================
+-- Q2.1 Option A: Write a stored function to accept eno as input parameter and count number of projects on which that employee is working. [10 Marks]
+-- ============================================================
+
 CREATE OR REPLACE FUNCTION count_employee_projects(p_eno INT)
 RETURNS INT AS $$
 DECLARE
@@ -61,7 +87,13 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Q2.1 Option B: Trigger before insert on project - duration>0
+-- Execute: SELECT count_employee_projects(101);
+-- Execute: SELECT count_employee_projects(999);  -- Should raise exception
+
+-- ============================================================
+-- Q2.1 Option B (OR): Write a trigger before inserting into a project table to check duration should be always greater than zero. Display appropriate message. [10 Marks]
+-- ============================================================
+
 CREATE OR REPLACE FUNCTION fn_check_project_duration()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -78,7 +110,13 @@ CREATE TRIGGER trg_check_project_duration
     FOR EACH ROW
     EXECUTE FUNCTION fn_check_project_duration();
 
--- Q2.2: Procedure min and max from two numbers
+-- Execute: INSERT INTO PROJECT VALUES (4, 'Delta', 'Testing', 0);  -- Should fail (duration <= 0)
+-- Execute: INSERT INTO PROJECT VALUES (4, 'Delta', 'Testing', 5);  -- Should succeed
+
+-- ============================================================
+-- Q2.2: Write a procedure to find minimum and maximum from two numbers. [5 Marks]
+-- ============================================================
+
 CREATE OR REPLACE PROCEDURE sp_min_max(p_a NUMERIC, p_b NUMERIC)
 LANGUAGE plpgsql AS $$
 BEGIN
@@ -92,8 +130,5 @@ BEGIN
 END;
 $$;
 
--- Test Calls
-SELECT count_employee_projects(101);
--- This should fail: INSERT INTO PROJECT VALUES (4, 'Test', 'Other', -1);
-CALL sp_min_max(15, 42);
-CALL sp_min_max(100, 100);
+-- Execute: CALL sp_min_max(30, 50);
+-- Execute: CALL sp_min_max(10, 10);
