@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slip_09_CN_SOLUTION.md</title>
+    <style>
+        @media print {
+            body { margin: 0.5in; }
+            h1, h2, h3 { page-break-after: avoid; }
+            pre, table { page-break-inside: avoid; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
+            font-size: 11pt;
+        }
+        
+        h1 {
+            color: #1a237e;
+            border-bottom: 3px solid #3f51b5;
+            padding-bottom: 10px;
+            font-size: 28pt;
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #283593;
+            border-bottom: 2px solid #5c6bc0;
+            padding-bottom: 8px;
+            margin-top: 35px;
+            font-size: 20pt;
+        }
+        
+        h3 {
+            color: #3949ab;
+            font-size: 16pt;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #5c6bc0;
+            font-size: 13pt;
+            margin-top: 20px;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 10pt;
+            color: #d32f2f;
+        }
+        
+        pre {
+            background-color: #263238;
+            color: #aed581;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+            overflow-x: auto;
+            font-size: 9.5pt;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 10pt;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3f51b5;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        tr:hover {
+            background-color: #e8eaf6;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 30px 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #ff9800;
+            padding-left: 15px;
+            color: #616161;
+            font-style: italic;
+            margin: 20px 0;
+            background-color: #fff3e0;
+            padding: 10px 15px;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background-color: #45a049;
+        }
+        
+        @media print {
+            .print-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print to PDF</button>
+    <h1>Slip 9 — Computer Networks Solution Guide</h1>
+<h2>Q1: Theory Questions (10 marks - Answer Any 5)</h2>
+<hr />
+<h3>Q1.a) List and Explain All Five IP Address Classes with Examples</h3>
+<h4>Concept</h4>
+<p>IP addresses are divided into <strong>5 classes</strong> (A, B, C, D, E) based on the first octet value and network/host bit allocation.</p>
+<h4>IP Address Classes Table</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>First Octet Range</th>
+<th>Network Bits</th>
+<th>Host Bits</th>
+<th>Default Subnet Mask</th>
+<th>Networks</th>
+<th>Hosts/Network</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>1-126</td>
+<td>8</td>
+<td>24</td>
+<td>255.0.0.0</td>
+<td>126</td>
+<td>16,777,214</td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>128-191</td>
+<td>16</td>
+<td>16</td>
+<td>255.255.0.0</td>
+<td>16,384</td>
+<td>65,534</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>192-223</td>
+<td>24</td>
+<td>8</td>
+<td>255.255.255.0</td>
+<td>2,097,152</td>
+<td>254</td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>224-239</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>Multicast</td>
+<td>Multicast</td>
+</tr>
+<tr>
+<td><strong>E</strong></td>
+<td>240-255</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>Reserved</td>
+<td>Research</td>
+</tr>
+</tbody>
+</table>
+<h4>Binary First Octet Patterns</h4>
+<div class="codehilite"><pre><span></span><code>Class A: 0xxxxxxx  (starts with 0)
+Class B: 10xxxxxx  (starts with 10)
+Class C: 110xxxxx  (starts with 110)
+Class D: 1110xxxx  (starts with 1110)
+Class E: 1111xxxx  (starts with 1111)
+</code></pre></div>
+
+<h4>Detailed Explanation</h4>
+<p><strong>Class A:</strong><br />
+- <strong>Range:</strong> 1.0.0.0 to 126.255.255.255<br />
+- <strong>Purpose:</strong> Very large networks (governments, large corporations)<br />
+- <strong>Format:</strong> N.H.H.H (1 byte network, 3 bytes host)<br />
+- <strong>Example:</strong> 10.0.0.1 (Private), 8.8.8.8 (Google DNS)<br />
+- <strong>Note:</strong> 127.x.x.x reserved for loopback (127.0.0.1)</p>
+<p><strong>Class B:</strong><br />
+- <strong>Range:</strong> 128.0.0.0 to 191.255.255.255<br />
+- <strong>Purpose:</strong> Medium to large organizations (universities, companies)<br />
+- <strong>Format:</strong> N.N.H.H (2 bytes network, 2 bytes host)<br />
+- <strong>Example:</strong> 172.16.0.1 (Private), 150.100.25.30</p>
+<p><strong>Class C:</strong><br />
+- <strong>Range:</strong> 192.0.0.0 to 223.255.255.255<br />
+- <strong>Purpose:</strong> Small networks (small businesses, homes)<br />
+- <strong>Format:</strong> N.N.N.H (3 bytes network, 1 byte host)<br />
+- <strong>Example:</strong> 192.168.1.1 (Private), 200.100.50.25</p>
+<p><strong>Class D:</strong><br />
+- <strong>Range:</strong> 224.0.0.0 to 239.255.255.255<br />
+- <strong>Purpose:</strong> Multicasting (one-to-many communication)<br />
+- <strong>Example:</strong> 224.0.0.1 (All hosts), 224.0.0.5 (OSPF routers)</p>
+<p><strong>Class E:</strong><br />
+- <strong>Range:</strong> 240.0.0.0 to 255.255.255.255<br />
+- <strong>Purpose:</strong> Reserved for experimental/research use<br />
+- <strong>Example:</strong> 255.255.255.255 (Broadcast)</p>
+<h4>Private IP Address Ranges</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Private Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>10.0.0.0 – 10.255.255.255</td>
+</tr>
+<tr>
+<td>B</td>
+<td>172.16.0.0 – 172.31.255.255</td>
+</tr>
+<tr>
+<td>C</td>
+<td>192.168.0.0 – 192.168.255.255</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Q1.b) Explain the Format and Example of an IPv6 Address</h3>
+<h4>Concept</h4>
+<p>IPv6 is the next-generation Internet Protocol with <strong>128-bit addresses</strong> designed to overcome IPv4 address exhaustion.</p>
+<h4>IPv6 Address Format</h4>
+<div class="codehilite"><pre><span></span><code>Full Format: xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx
+             |____|  Each group is a 16-bit hextet (4 hex digits)
+
+Total: 8 groups × 16 bits = 128 bits
+</code></pre></div>
+
+<h4>Key Features</h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Address Length</td>
+<td>32 bits</td>
+<td>128 bits</td>
+</tr>
+<tr>
+<td>Notation</td>
+<td>Decimal (dotted)</td>
+<td>Hexadecimal (colon)</td>
+</tr>
+<tr>
+<td>Total Addresses</td>
+<td>~4.3 billion</td>
+<td>3.4 × 10^38</td>
+</tr>
+<tr>
+<td>Example</td>
+<td>192.168.1.1</td>
+<td>2001:0db8:85a3::8a2e:0370:7334</td>
+</tr>
+</tbody>
+</table>
+<h4>IPv6 Address Components</h4>
+<div class="codehilite"><pre><span></span><code><span class="mi">2001</span><span class="o">:</span><span class="mi">0</span><span class="n">db8</span><span class="o">:</span><span class="mi">85</span><span class="n">a3</span><span class="o">:</span><span class="mi">0000</span><span class="o">:</span><span class="mi">0000</span><span class="o">:</span><span class="mi">8</span><span class="n">a2e</span><span class="o">:</span><span class="mi">0370</span><span class="o">:</span><span class="mi">7334</span>
+<span class="o">|</span><span class="n">__________</span><span class="o">|</span><span class="n">__________________</span><span class="o">|</span><span class="n">________</span><span class="o">|</span>
+<span class="w">  </span><span class="n">Prefix</span><span class="w">    </span><span class="n">Subnet</span><span class="w"> </span><span class="n">ID</span><span class="w">          </span><span class="n">Interface</span><span class="w"> </span><span class="n">ID</span>
+<span class="o">(</span><span class="n">Network</span><span class="o">)</span><span class="w">  </span><span class="o">(</span><span class="n">Organization</span><span class="o">)</span><span class="w">     </span><span class="o">(</span><span class="n">Host</span><span class="o">/</span><span class="n">Device</span><span class="o">)</span>
+</code></pre></div>
+
+<h4>Simplification Rules</h4>
+<p><strong>Rule 1: Remove Leading Zeros</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="mi">2001</span><span class="o">:</span><span class="mi">0</span><span class="n">db8</span><span class="o">:</span><span class="mi">0000</span><span class="o">:</span><span class="mi">0042</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mi">2001</span><span class="o">:</span><span class="n">db8</span><span class="o">:</span><span class="mi">0</span><span class="o">:</span><span class="mi">42</span>
+</code></pre></div>
+
+<p><strong>Rule 2: Replace Consecutive Zero Groups with <code>::</code></strong></p>
+<div class="codehilite"><pre><span></span><code><span class="mi">2001</span><span class="o">:</span><span class="mi">0</span><span class="n">db8</span><span class="o">:</span><span class="mi">0000</span><span class="o">:</span><span class="mi">0000</span><span class="o">:</span><span class="mi">0000</span><span class="o">:</span><span class="mi">0000</span><span class="o">:</span><span class="mi">0000</span><span class="o">:</span><span class="mi">0001</span>
+<span class="err">→</span><span class="w"> </span><span class="mi">2001</span><span class="o">:</span><span class="n">db8</span><span class="o">::</span><span class="mi">1</span>
+</code></pre></div>
+
+<p><strong>Note:</strong> <code>::</code> can only be used ONCE in an address.</p>
+<h4>Examples</h4>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Full Form</th>
+<th>Shortened</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loopback</td>
+<td>0000:0000:0000:0000:0000:0000:0000:0001</td>
+<td>::1</td>
+</tr>
+<tr>
+<td>Unspecified</td>
+<td>0000:0000:0000:0000:0000:0000:0000:0000</td>
+<td>::</td>
+</tr>
+<tr>
+<td>Link-Local</td>
+<td>fe80:0000:0000:0000:0000:0000:0000:0001</td>
+<td>fe80::1</td>
+</tr>
+<tr>
+<td>Global</td>
+<td>2001:0db8:85a3:0000:0000:8a2e:0370:7334</td>
+<td>2001:db8:85a3::8a2e:370:7334</td>
+</tr>
+</tbody>
+</table>
+<h4>IPv6 Address Types</h4>
+<div class="codehilite"><pre><span></span><code><span class="err">┌─────────────────────────────────────────────────┐</span>
+<span class="err">│</span><span class="w"> </span><span class="nx">Unicast</span><span class="p">:</span><span class="w"> </span><span class="nx">One</span><span class="o">-</span><span class="nx">to</span><span class="o">-</span><span class="nx">One</span><span class="w"> </span><span class="nx">communication</span><span class="w">               </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="nx">Global</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="o">::/</span><span class="mi">3</span><span class="w"> </span><span class="p">(</span><span class="nx">Internet</span><span class="w"> </span><span class="nx">routable</span><span class="p">)</span><span class="w">        </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="nx">Link</span><span class="o">-</span><span class="nx">Local</span><span class="p">:</span><span class="w"> </span><span class="nx">fe80</span><span class="o">::/</span><span class="mi">10</span><span class="w"> </span><span class="p">(</span><span class="nx">Local</span><span class="w"> </span><span class="nx">network</span><span class="w"> </span><span class="nx">only</span><span class="p">)</span><span class="w">  </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="nx">Unique</span><span class="w"> </span><span class="nx">Local</span><span class="p">:</span><span class="w"> </span><span class="nx">fc00</span><span class="o">::/</span><span class="mi">7</span><span class="w"> </span><span class="p">(</span><span class="nx">Private</span><span class="p">)</span><span class="w">            </span><span class="err">│</span>
+<span class="err">├─────────────────────────────────────────────────┤</span>
+<span class="err">│</span><span class="w"> </span><span class="nx">Multicast</span><span class="p">:</span><span class="w"> </span><span class="nx">One</span><span class="o">-</span><span class="nx">to</span><span class="o">-</span><span class="nx">Many</span><span class="w"> </span><span class="nx">communication</span><span class="w">            </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="nx">ff00</span><span class="o">::/</span><span class="mi">8</span><span class="w"> </span><span class="p">(</span><span class="nx">All</span><span class="w"> </span><span class="nx">multicast</span><span class="w"> </span><span class="nx">addresses</span><span class="p">)</span><span class="w">          </span><span class="err">│</span>
+<span class="err">├─────────────────────────────────────────────────┤</span>
+<span class="err">│</span><span class="w"> </span><span class="nx">Anycast</span><span class="p">:</span><span class="w"> </span><span class="nx">One</span><span class="o">-</span><span class="nx">to</span><span class="o">-</span><span class="nx">Nearest</span><span class="w"> </span><span class="nx">communication</span><span class="w">           </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="nx">Same</span><span class="w"> </span><span class="nx">format</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nx">unicast</span><span class="w">                      </span><span class="err">│</span>
+<span class="err">└─────────────────────────────────────────────────┘</span>
+</code></pre></div>
+
+<hr />
+<h3>Q1.c) Differentiate Between Static NAT, Dynamic NAT, and PAT</h3>
+<h4>Concept</h4>
+<p><strong>NAT (Network Address Translation)</strong> translates private IP addresses to public IP addresses for internet communication.</p>
+<h4>Comparison Table</h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Static NAT</th>
+<th>Dynamic NAT</th>
+<th>PAT (NAT Overload)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mapping</strong></td>
+<td>One-to-One (permanent)</td>
+<td>One-to-One (temporary)</td>
+<td>Many-to-One</td>
+</tr>
+<tr>
+<td><strong>IP Pool</strong></td>
+<td>Single public IP per device</td>
+<td>Pool of public IPs</td>
+<td>Single or few public IPs</td>
+</tr>
+<tr>
+<td><strong>Port Translation</strong></td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Web servers, mail servers</td>
+<td>Medium organizations</td>
+<td>Home/office networks</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Highest (many IPs needed)</td>
+<td>Medium</td>
+<td>Lowest</td>
+</tr>
+<tr>
+<td><strong>Scalability</strong></td>
+<td>Low</td>
+<td>Medium</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>Connection Initiated</strong></td>
+<td>Both directions</td>
+<td>Internal only</td>
+<td>Internal only</td>
+</tr>
+</tbody>
+</table>
+<h4>Detailed Explanation with Examples</h4>
+<p><strong>1. Static NAT (One-to-One)</strong></p>
+<div class="codehilite"><pre><span></span><code>                   STATIC NAT
+Internal           ┌──────────┐        External
+192.168.1.10  ────►│ NAT      │────►  203.0.113.10
+                   │ Router   │
+192.168.1.20  ────►│          │────►  203.0.113.20
+                   └──────────┘
+Fixed mapping: Each private IP always maps to same public IP
+</code></pre></div>
+
+<ul>
+<li><strong>Use:</strong> Hosting servers that need consistent external access</li>
+<li><strong>Example:</strong> Web server 192.168.1.100 → always 203.0.113.100</li>
+</ul>
+<p><strong>2. Dynamic NAT (One-to-One, Temporary)</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="w">                   </span><span class="nx">DYNAMIC</span><span class="w"> </span><span class="nx">NAT</span>
+<span class="nx">Internal</span><span class="w">           </span><span class="err">┌──────────┐</span><span class="w">        </span><span class="nx">External</span><span class="w"> </span><span class="nx">Pool</span>
+<span class="m m-Double">192.168.1.10</span><span class="w">  </span><span class="err">────►│</span><span class="w"> </span><span class="nx">NAT</span><span class="w">      </span><span class="err">│────►</span><span class="w">  </span><span class="p">{</span><span class="m m-Double">203.0.113.10</span>
+<span class="m m-Double">192.168.1.20</span><span class="w">  </span><span class="err">────►│</span><span class="w"> </span><span class="nx">Router</span><span class="w">   </span><span class="err">│────►</span><span class="w">   </span><span class="m m-Double">203.0.113.11</span>
+<span class="m m-Double">192.168.1.30</span><span class="w">  </span><span class="err">────►│</span><span class="w">          </span><span class="err">│────►</span><span class="w">   </span><span class="m m-Double">203.0.113.12</span><span class="p">}</span>
+<span class="w">                   </span><span class="err">└──────────┘</span>
+<span class="nx">Pool</span><span class="w"> </span><span class="nx">assigns</span><span class="w"> </span><span class="nx">IPs</span><span class="w"> </span><span class="nx">temporarily</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="nx">available</span><span class="w"> </span><span class="nx">addresses</span>
+</code></pre></div>
+
+<ul>
+<li><strong>Use:</strong> Organizations with multiple users needing internet</li>
+<li><strong>Example:</strong> First available public IP assigned; returned when done</li>
+</ul>
+<p><strong>3. PAT / NAT Overload (Many-to-One)</strong></p>
+<div class="codehilite"><pre><span></span><code>                   PAT (Port Address Translation)
+Internal                  ┌──────────┐         External
+192.168.1.10:5000   ────►│ NAT      │────►  203.0.113.1:40001
+192.168.1.20:5000   ────►│ Router   │────►  203.0.113.1:40002
+192.168.1.30:5000   ────►│          │────►  203.0.113.1:40003
+                         └──────────┘
+Same public IP, different ports identify connections
+</code></pre></div>
+
+<ul>
+<li><strong>Use:</strong> Home/SOHO networks (most common)</li>
+<li><strong>Example:</strong> All home devices share single public IP using port numbers</li>
+</ul>
+<h4>NAT Translation Table Example (PAT)</h4>
+<table>
+<thead>
+<tr>
+<th>Inside Local</th>
+<th>Inside Global</th>
+<th>Outside Global</th>
+<th>Outside Local</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.1.10:1025</td>
+<td>203.0.113.1:40001</td>
+<td>8.8.8.8:53</td>
+<td>8.8.8.8:53</td>
+</tr>
+<tr>
+<td>192.168.1.20:1026</td>
+<td>203.0.113.1:40002</td>
+<td>8.8.8.8:53</td>
+<td>8.8.8.8:53</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Q1.d) Configure Dynamic NAT with a Pool of Public IP Addresses</h3>
+<h4>Concept</h4>
+<p>Dynamic NAT configuration involves defining an IP pool and ACL to specify which internal addresses can be translated.</p>
+<h4>Configuration Steps (Cisco IOS)</h4>
+<div class="codehilite"><pre><span></span><code><span class="nx">Step</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="nx">Define</span><span class="w"> </span><span class="nx">Internal</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">External</span><span class="w"> </span><span class="nx">Interfaces</span>
+<span class="err">─────────────────────────────────────────────────</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">inside</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">1</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">203.0.113.1</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">outside</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nv">Step</span><span class="w"> </span><span class="mi">2</span>:<span class="w"> </span><span class="nv">Define</span><span class="w"> </span><span class="nv">Public</span><span class="w"> </span><span class="nv">IP</span><span class="w"> </span><span class="nv">Address</span><span class="w"> </span><span class="nv">Pool</span>
+─────────────────────────────────────────────────
+<span class="nv">Router</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="nv">ip</span><span class="w"> </span><span class="nv">nat</span><span class="w"> </span><span class="nv">pool</span><span class="w"> </span><span class="nv">NATPOOL</span><span class="w"> </span><span class="mi">203</span>.<span class="mi">0</span>.<span class="mi">113</span>.<span class="mi">10</span><span class="w"> </span><span class="mi">203</span>.<span class="mi">0</span>.<span class="mi">113</span>.<span class="mi">20</span><span class="w"> </span><span class="nv">netmask</span><span class="w"> </span><span class="mi">255</span>.<span class="mi">255</span>.<span class="mi">255</span>.<span class="mi">0</span>
+
+<span class="nv">Explanation</span>:
+<span class="o">-</span><span class="w"> </span><span class="nv">Pool</span><span class="w"> </span><span class="nv">name</span>:<span class="w"> </span><span class="nv">NATPOOL</span>
+<span class="o">-</span><span class="w"> </span><span class="nv">Start</span><span class="w"> </span><span class="nv">IP</span>:<span class="w"> </span><span class="mi">203</span>.<span class="mi">0</span>.<span class="mi">113</span>.<span class="mi">10</span>
+<span class="o">-</span><span class="w"> </span><span class="k">End</span><span class="w"> </span><span class="nv">IP</span>:<span class="w"> </span><span class="mi">203</span>.<span class="mi">0</span>.<span class="mi">113</span>.<span class="mi">20</span>
+<span class="o">-</span><span class="w"> </span><span class="nv">Provides</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="nv">public</span><span class="w"> </span><span class="nv">IPs</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>Step 3: Create Access Control List (ACL)
+─────────────────────────────────────────────────
+Router(config)# access-list 1 permit 192.168.1.0 0.0.0.255
+
+Explanation:
+- ACL 1 permits internal network 192.168.1.0/24
+- Wildcard mask: 0.0.0.255 (inverse of subnet mask)
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>Step 4: Associate ACL with NAT Pool
+─────────────────────────────────────────────────
+Router(config)# ip nat inside source list 1 pool NATPOOL
+
+Explanation:
+- Links ACL 1 (internal IPs) to NATPOOL (public IPs)
+</code></pre></div>
+
+<h4>Complete Configuration Example</h4>
+<div class="codehilite"><pre><span></span><code><span class="p">!</span><span class="w"> </span><span class="nx">Configure</span><span class="w"> </span><span class="nx">interfaces</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+<span class="w"> </span><span class="nx">description</span><span class="w"> </span><span class="nx">LAN</span><span class="w"> </span><span class="nx">Interface</span>
+<span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">inside</span>
+<span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+<span class="p">!</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">1</span>
+<span class="w"> </span><span class="nx">description</span><span class="w"> </span><span class="nx">WAN</span><span class="w"> </span><span class="nx">Interface</span><span class="w">  </span>
+<span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">203.0.113.1</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">outside</span>
+<span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+<span class="p">!</span>
+<span class="p">!</span><span class="w"> </span><span class="nx">Define</span><span class="w"> </span><span class="nx">NAT</span><span class="w"> </span><span class="nx">pool</span>
+<span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">pool</span><span class="w"> </span><span class="nx">COMPANY_POOL</span><span class="w"> </span><span class="m m-Double">203.0.113.10</span><span class="w"> </span><span class="m m-Double">203.0.113.20</span><span class="w"> </span><span class="nx">netmask</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="p">!</span>
+<span class="p">!</span><span class="w"> </span><span class="nx">Define</span><span class="w"> </span><span class="nx">which</span><span class="w"> </span><span class="nx">internal</span><span class="w"> </span><span class="nx">addresses</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">translate</span>
+<span class="nx">access</span><span class="o">-</span><span class="nx">list</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="nx">permit</span><span class="w"> </span><span class="m m-Double">192.168.1.0</span><span class="w"> </span><span class="m m-Double">0.0.0.255</span>
+<span class="p">!</span>
+<span class="p">!</span><span class="w"> </span><span class="nx">Apply</span><span class="w"> </span><span class="nx">NAT</span>
+<span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">inside</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="nx">pool</span><span class="w"> </span><span class="nx">COMPANY_POOL</span>
+</code></pre></div>
+
+<h4>Verification Commands</h4>
+<div class="codehilite"><pre><span></span><code>Router# show ip nat translations      ! View active translations
+Router# show ip nat statistics        ! View NAT statistics
+Router# debug ip nat                  ! Debug NAT operations
+Router# clear ip nat translation *    ! Clear all translations
+</code></pre></div>
+
+<h4>Network Diagram</h4>
+<div class="codehilite"><pre><span></span><code>         Internal Network              NAT Router                Internet
+    ┌─────────────────────┐       ┌──────────────┐        ┌───────────────┐
+    │  PC1: 192.168.1.10  │───────│ Inside:      │        │               │
+    │  PC2: 192.168.1.20  │───────│ 192.168.1.1  │────────│   Internet    │
+    │  PC3: 192.168.1.30  │───────│              │        │   Servers     │
+    │         ...         │       │ Outside:     │        │               │
+    └─────────────────────┘       │ 203.0.113.1  │        └───────────────┘
+                                  │              │
+                                  │ Pool:        │
+                                  │ 203.0.113.10 │
+                                  │     to       │
+                                  │ 203.0.113.20 │
+                                  └──────────────┘
+</code></pre></div>
+
+<hr />
+<h3>Q1.f) Define Cyber Security</h3>
+<h4>Definition</h4>
+<p><strong>Cyber Security</strong> (also spelled Cybersecurity) is the practice of protecting systems, networks, programs, devices, and data from digital attacks, unauthorized access, damage, or theft.</p>
+<h4>Key Components (CIA Triad + AAA)</h4>
+<div class="codehilite"><pre><span></span><code><span class="w">                     </span>┌─────────────────┐
+<span class="w">                     </span>│<span class="w"> </span><span class="nv">CONFIDENTIALITY</span><span class="w"> </span>│
+<span class="w">                     </span>│<span class="w"> </span><span class="ss">(</span><span class="nv">Prevent</span><span class="w">        </span>│
+<span class="w">                     </span>│<span class="w">  </span><span class="nv">unauthorized</span><span class="w">   </span>│
+<span class="w">                     </span>│<span class="w">  </span><span class="nv">access</span><span class="ss">)</span><span class="w">        </span>│
+<span class="w">                     </span>└────────┬────────┘
+<span class="w">                              </span>│
+<span class="w">              </span>┌───────────────┼───────────────┐
+<span class="w">              </span>│<span class="w">               </span>│<span class="w">               </span>│
+<span class="w">     </span>┌────────▼───────┐<span class="w">       </span>│<span class="w">      </span>┌────────▼───────┐
+<span class="w">     </span>│<span class="w">   </span><span class="nv">INTEGRITY</span><span class="w">    </span>│<span class="w">       </span>│<span class="w">      </span>│<span class="w">  </span><span class="nv">AVAILABILITY</span><span class="w">  </span>│
+<span class="w">     </span>│<span class="w"> </span><span class="ss">(</span><span class="nv">Prevent</span><span class="w">       </span>│<span class="w">       </span>│<span class="w">      </span>│<span class="w"> </span><span class="ss">(</span><span class="nv">Ensure</span><span class="w"> </span><span class="nv">system</span><span class="w"> </span>│
+<span class="w">     </span>│<span class="w">  </span><span class="nv">unauthorized</span><span class="w">  </span>│◄──────┴─────►│<span class="w">  </span><span class="k">uptime</span><span class="w"> </span><span class="nv">and</span><span class="w">    </span>│
+<span class="w">     </span>│<span class="w">  </span><span class="nv">modification</span><span class="ss">)</span><span class="w"> </span>│<span class="w">              </span>│<span class="w">  </span><span class="nv">accessibility</span><span class="ss">)</span>│
+<span class="w">     </span>└────────────────┘<span class="w">              </span>└────────────────┘
+</code></pre></div>
+
+<h4>Types of Cyber Security</h4>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Network Security</strong></td>
+<td>Protect network infrastructure</td>
+<td>Firewalls, IDS/IPS, VPN</td>
+</tr>
+<tr>
+<td><strong>Application Security</strong></td>
+<td>Secure software applications</td>
+<td>Code review, WAF, patches</td>
+</tr>
+<tr>
+<td><strong>Information Security</strong></td>
+<td>Protect data integrity</td>
+<td>Encryption, DLP, backups</td>
+</tr>
+<tr>
+<td><strong>Endpoint Security</strong></td>
+<td>Secure end-user devices</td>
+<td>Antivirus, EDR, MDM</td>
+</tr>
+<tr>
+<td><strong>Cloud Security</strong></td>
+<td>Protect cloud resources</td>
+<td>IAM, encryption, monitoring</td>
+</tr>
+<tr>
+<td><strong>Identity Management</strong></td>
+<td>Control user access</td>
+<td>MFA, SSO, RBAC</td>
+</tr>
+</tbody>
+</table>
+<h4>Common Cyber Threats</h4>
+<div class="codehilite"><pre><span></span><code>┌────────────────────────────────────────────────────────┐
+│ CYBER THREATS                                          │
+├────────────────────────────────────────────────────────┤
+│ • Malware: Viruses, worms, trojans, ransomware        │
+│ • Phishing: Fraudulent emails/websites                │
+│ • DDoS: Overwhelming systems with traffic             │
+│ • Man-in-the-Middle: Intercepting communications      │
+│ • SQL Injection: Database manipulation                │
+│ • Zero-Day Exploits: Unknown vulnerabilities          │
+│ • Social Engineering: Human manipulation              │
+│ • Insider Threats: Malicious employees                │
+└────────────────────────────────────────────────────────┘
+</code></pre></div>
+
+<h4>Cyber Security Best Practices</h4>
+<ol>
+<li><strong>Strong Passwords:</strong> Use complex, unique passwords</li>
+<li><strong>Multi-Factor Authentication (MFA):</strong> Add extra verification</li>
+<li><strong>Regular Updates:</strong> Patch systems and software</li>
+<li><strong>Encryption:</strong> Protect data in transit and at rest</li>
+<li><strong>Backup:</strong> Regular data backups (3-2-1 rule)</li>
+<li><strong>Training:</strong> Security awareness for employees</li>
+<li><strong>Monitoring:</strong> Continuous security monitoring</li>
+</ol>
+<hr />
+<h3>Q1.g) Explain Ethical Hacking</h3>
+<h4>Definition</h4>
+<p><strong>Ethical Hacking</strong> (also called Penetration Testing or White Hat Hacking) is the authorized practice of bypassing system security to identify potential data breaches and threats in a network or system.</p>
+<h4>Ethical Hacking vs. Malicious Hacking</h4>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Ethical Hacking</th>
+<th>Malicious Hacking</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Authorization</strong></td>
+<td>Has written permission</td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td><strong>Intent</strong></td>
+<td>Improve security</td>
+<td>Cause harm/steal data</td>
+</tr>
+<tr>
+<td><strong>Legal Status</strong></td>
+<td>Legal</td>
+<td>Illegal (criminal)</td>
+</tr>
+<tr>
+<td><strong>Reporting</strong></td>
+<td>Reports all findings</td>
+<td>Exploits vulnerabilities</td>
+</tr>
+<tr>
+<td><strong>Outcome</strong></td>
+<td>Strengthens defenses</td>
+<td>Creates damage</td>
+</tr>
+</tbody>
+</table>
+<h4>Types of Hackers</h4>
+<div class="codehilite"><pre><span></span><code>┌──────────────────────────────────────────────────────────┐
+│           HACKER CLASSIFICATION                          │
+├──────────────────────────────────────────────────────────┤
+│ WHITE HAT (Ethical)                                      │
+│   • Authorized security professionals                    │
+│   • Work to protect systems                              │
+│   • Examples: Penetration testers, security researchers  │
+├──────────────────────────────────────────────────────────┤
+│ BLACK HAT (Malicious)                                    │
+│   • Unauthorized access                                  │
+│   • Criminal intent                                      │
+│   • Examples: Cybercriminals, hacktivists (malicious)    │
+├──────────────────────────────────────────────────────────┤
+│ GREY HAT (Mixed)                                         │
+│   • May not have explicit permission                     │
+│   • No malicious intent                                  │
+│   • May disclose vulnerabilities publicly                │
+└──────────────────────────────────────────────────────────┘
+</code></pre></div>
+
+<h4>Ethical Hacking Phases</h4>
+<div class="codehilite"><pre><span></span><code>  ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+  │ 1.RECON     │────►│ 2.SCANNING  │────►│ 3.GAINING   │
+  │ (Footprint- │     │ (Port scan, │     │   ACCESS    │
+  │  ing)       │     │  vuln scan) │     │ (Exploit)   │
+  └─────────────┘     └─────────────┘     └──────┬──────┘
+                                                 │
+  ┌─────────────┐     ┌─────────────┐            │
+  │ 5.REPORTING │◄────│ 4.MAINTAIN  │◄───────────┘
+  │ (Document   │     │   ACCESS    │
+  │  findings)  │     │ (Persist)   │
+  └─────────────┘     └─────────────┘
+</code></pre></div>
+
+<p><strong>Phase 1: Reconnaissance (Information Gathering)</strong><br />
+- Passive: WHOIS, DNS lookup, social media<br />
+- Active: Network scanning, social engineering</p>
+<p><strong>Phase 2: Scanning</strong><br />
+- Port scanning (Nmap)<br />
+- Vulnerability scanning (Nessus, OpenVAS)<br />
+- Network mapping</p>
+<p><strong>Phase 3: Gaining Access</strong><br />
+- Exploit vulnerabilities<br />
+- Password cracking<br />
+- Social engineering attacks</p>
+<p><strong>Phase 4: Maintaining Access</strong><br />
+- Install backdoors<br />
+- Create persistence mechanisms<br />
+- Escalate privileges</p>
+<p><strong>Phase 5: Covering Tracks &amp; Reporting</strong><br />
+- Document all findings<br />
+- Provide remediation recommendations<br />
+- Present report to management</p>
+<h4>Common Ethical Hacking Tools</h4>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reconnaissance</td>
+<td>Nmap, Maltego, Shodan</td>
+</tr>
+<tr>
+<td>Vulnerability Scanning</td>
+<td>Nessus, OpenVAS, Nikto</td>
+</tr>
+<tr>
+<td>Exploitation</td>
+<td>Metasploit, Burp Suite</td>
+</tr>
+<tr>
+<td>Password Cracking</td>
+<td>John the Ripper, Hashcat</td>
+</tr>
+<tr>
+<td>Wireless</td>
+<td>Aircrack-ng, Wireshark</td>
+</tr>
+</tbody>
+</table>
+<h4>Certifications for Ethical Hackers</h4>
+<ul>
+<li><strong>CEH (Certified Ethical Hacker)</strong> - EC-Council</li>
+<li><strong>OSCP (Offensive Security Certified Professional)</strong></li>
+<li><strong>GPEN (GIAC Penetration Tester)</strong></li>
+<li><strong>CompTIA PenTest+</strong></li>
+</ul>
+<hr />
+<h2>Q2: Practical Questions (20 marks)</h2>
+<hr />
+<h3>Q2 Option A: IP Address Class Determination Program</h3>
+<h4>Concept</h4>
+<p>Determine the class of an IP address by analyzing the first octet value.</p>
+<h4>Algorithm</h4>
+<div class="codehilite"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="kr">Input</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">string</span>
+<span class="mf">2.</span><span class="w"> </span><span class="n">Extract</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="n">octet</span><span class="w"> </span><span class="p">(</span><span class="n">parse</span><span class="w"> </span><span class="n">before</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="n">dot</span><span class="p">)</span>
+<span class="mf">3.</span><span class="w"> </span><span class="n">Convert</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="n">octet</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="nb">int</span><span class="n">eger</span>
+<span class="mf">4.</span><span class="w"> </span><span class="n">Determine</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="n">based</span><span class="w"> </span><span class="kr">on</span><span class="w"> </span><span class="n">range</span><span class="p">:</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="o">-</span><span class="mf">126</span><span class="p">:</span><span class="w"> </span><span class="n">Class</span><span class="w"> </span><span class="n">A</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="mf">127</span><span class="p">:</span><span class="w"> </span><span class="n">Loopback</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="mf">128</span><span class="o">-</span><span class="mf">191</span><span class="p">:</span><span class="w"> </span><span class="n">Class</span><span class="w"> </span><span class="n">B</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="mf">192</span><span class="o">-</span><span class="mf">223</span><span class="p">:</span><span class="w"> </span><span class="n">Class</span><span class="w"> </span><span class="n">C</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="mf">224</span><span class="o">-</span><span class="mf">239</span><span class="p">:</span><span class="w"> </span><span class="n">Class</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="p">(</span><span class="n">Multicast</span><span class="p">)</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="mf">240</span><span class="o">-</span><span class="mf">255</span><span class="p">:</span><span class="w"> </span><span class="n">Class</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="p">(</span><span class="n">Reserved</span><span class="p">)</span>
+<span class="mf">5.</span><span class="w"> </span><span class="n">Display</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">additional</span><span class="w"> </span><span class="n">information</span>
+</code></pre></div>
+
+<h4>Pseudocode</h4>
+<div class="codehilite"><pre><span></span><code><span class="nx">FUNCTION</span><span class="w"> </span><span class="nx">determine_ip_class</span><span class="p">(</span><span class="nx">ip_address</span><span class="p">):</span>
+<span class="w">    </span><span class="nx">first_octet</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">extract_first_octet</span><span class="p">(</span><span class="nx">ip_address</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">IF</span><span class="w"> </span><span class="nx">first_octet</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="nx">AND</span><span class="w"> </span><span class="nx">first_octet</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">126</span><span class="p">:</span>
+<span class="w">        </span><span class="nx">RETURN</span><span class="w"> </span><span class="s">&quot;Class A&quot;</span>
+<span class="w">    </span><span class="nx">ELSE</span><span class="w"> </span><span class="nx">IF</span><span class="w"> </span><span class="nx">first_octet</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">127</span><span class="p">:</span>
+<span class="w">        </span><span class="nx">RETURN</span><span class="w"> </span><span class="s">&quot;Loopback&quot;</span>
+<span class="w">    </span><span class="nx">ELSE</span><span class="w"> </span><span class="nx">IF</span><span class="w"> </span><span class="nx">first_octet</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="nx">AND</span><span class="w"> </span><span class="nx">first_octet</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">191</span><span class="p">:</span>
+<span class="w">        </span><span class="nx">RETURN</span><span class="w"> </span><span class="s">&quot;Class B&quot;</span>
+<span class="w">    </span><span class="nx">ELSE</span><span class="w"> </span><span class="nx">IF</span><span class="w"> </span><span class="nx">first_octet</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">192</span><span class="w"> </span><span class="nx">AND</span><span class="w"> </span><span class="nx">first_octet</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">223</span><span class="p">:</span>
+<span class="w">        </span><span class="nx">RETURN</span><span class="w"> </span><span class="s">&quot;Class C&quot;</span>
+<span class="w">    </span><span class="nx">ELSE</span><span class="w"> </span><span class="nx">IF</span><span class="w"> </span><span class="nx">first_octet</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">224</span><span class="w"> </span><span class="nx">AND</span><span class="w"> </span><span class="nx">first_octet</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">239</span><span class="p">:</span>
+<span class="w">        </span><span class="nx">RETURN</span><span class="w"> </span><span class="s">&quot;Class D (Multicast)&quot;</span>
+<span class="w">    </span><span class="nx">ELSE</span><span class="w"> </span><span class="nx">IF</span><span class="w"> </span><span class="nx">first_octet</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">240</span><span class="w"> </span><span class="nx">AND</span><span class="w"> </span><span class="nx">first_octet</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">255</span><span class="p">:</span>
+<span class="w">        </span><span class="nx">RETURN</span><span class="w"> </span><span class="s">&quot;Class E (Reserved)&quot;</span>
+<span class="w">    </span><span class="nx">ELSE</span><span class="p">:</span>
+<span class="w">        </span><span class="nx">RETURN</span><span class="w"> </span><span class="s">&quot;Invalid IP&quot;</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>Implementation:</strong> See <code>Slip_09_Q2_OptionA.c</code></p>
+</blockquote>
+<hr />
+<h3>Q2 Option B: Static Routing Simulation Program</h3>
+<h4>Concept</h4>
+<p>Simulate static routing by maintaining a routing table and determining next-hop for destination IPs.</p>
+<h4>Algorithm</h4>
+<div class="codehilite"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="n">Initialize</span><span class="w"> </span><span class="n">routing</span><span class="w"> </span><span class="nb">tab</span><span class="n">le</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">network</span><span class="p">,</span><span class="w"> </span><span class="n">mask</span><span class="p">,</span><span class="w"> </span><span class="kr">next</span><span class="o">-</span><span class="n">hop</span><span class="p">,</span><span class="w"> </span><span class="nb">int</span><span class="n">erface</span>
+<span class="mf">2.</span><span class="w"> </span><span class="kr">Input</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="n">address</span>
+<span class="mf">3.</span><span class="w"> </span><span class="kr">For</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">route</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">routing</span><span class="w"> </span><span class="nb">tab</span><span class="n">le</span><span class="p">:</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="n">Apply</span><span class="w"> </span><span class="n">subnet</span><span class="w"> </span><span class="n">mask</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">destination</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="n">Compare</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">network</span><span class="w"> </span><span class="n">address</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="kr">If</span><span class="w"> </span><span class="n">match</span><span class="w"> </span><span class="n">found</span><span class="p">,</span><span class="w"> </span><span class="kr">return</span><span class="w"> </span><span class="n">route</span><span class="w"> </span><span class="n">info</span>
+<span class="mf">4.</span><span class="w"> </span><span class="kr">If</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">match</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="kd">def</span><span class="n">ault</span><span class="w"> </span><span class="n">route</span><span class="w"> </span><span class="p">(</span><span class="mf">0.0.0.0</span><span class="p">)</span>
+<span class="mf">5.</span><span class="w"> </span><span class="n">Display</span><span class="w"> </span><span class="n">routing</span><span class="w"> </span><span class="n">decision</span>
+</code></pre></div>
+
+<h4>Pseudocode</h4>
+<div class="codehilite"><pre><span></span><code><span class="nx">STRUCTURE</span><span class="w"> </span><span class="nx">Route</span><span class="p">:</span>
+<span class="w">    </span><span class="nx">network_address</span>
+<span class="w">    </span><span class="nx">subnet_mask</span>
+<span class="w">    </span><span class="nx">next_hop</span>
+<span class="w">    </span><span class="kd">interface</span>
+
+<span class="nx">FUNCTION</span><span class="w"> </span><span class="nx">find_route</span><span class="p">(</span><span class="nx">destination</span><span class="p">,</span><span class="w"> </span><span class="nx">routing_table</span><span class="p">):</span>
+<span class="w">    </span><span class="nx">best_match</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">NULL</span>
+
+<span class="w">    </span><span class="nx">FOR</span><span class="w"> </span><span class="nx">each</span><span class="w"> </span><span class="nx">route</span><span class="w"> </span><span class="nx">IN</span><span class="w"> </span><span class="nx">routing_table</span><span class="p">:</span>
+<span class="w">        </span><span class="nx">masked_dest</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="nx">AND</span><span class="w"> </span><span class="nx">route</span><span class="p">.</span><span class="nx">subnet_mask</span>
+<span class="w">        </span><span class="nx">IF</span><span class="w"> </span><span class="nx">masked_dest</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">route</span><span class="p">.</span><span class="nx">network_address</span><span class="p">:</span>
+<span class="w">            </span><span class="nx">IF</span><span class="w"> </span><span class="nx">route</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">more</span><span class="w"> </span><span class="nx">specific</span><span class="w"> </span><span class="nx">than</span><span class="w"> </span><span class="nx">best_match</span><span class="p">:</span>
+<span class="w">                </span><span class="nx">best_match</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">route</span>
+
+<span class="w">    </span><span class="nx">IF</span><span class="w"> </span><span class="nx">best_match</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nx">NULL</span><span class="p">:</span>
+<span class="w">        </span><span class="nx">RETURN</span><span class="w"> </span><span class="nx">best_match</span>
+<span class="w">    </span><span class="nx">ELSE</span><span class="p">:</span>
+<span class="w">        </span><span class="nx">RETURN</span><span class="w"> </span><span class="nx">default_route</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>Implementation:</strong> See <code>Slip_09_Q2_OptionB.c</code></p>
+</blockquote>
+<hr />
+<h3>Q2 Option C: Packet Tracer Configuration</h3>
+<h4>Network Setup</h4>
+<div class="codehilite"><pre><span></span><code>         PC1                    Switch                   PC2
+    ┌──────────┐           ┌──────────┐            ┌──────────┐
+    │172.20.1.1│───────────│  Switch  │────────────│172.20.1.2│
+    │/16       │    Fa0    │          │    Fa1     │/16       │
+    └──────────┘           └──────────┘            └──────────┘
+</code></pre></div>
+
+<h4>Step-by-Step Configuration</h4>
+<p><strong>Step 1: Add Devices</strong><br />
+1. Open Cisco Packet Tracer<br />
+2. Add: 1 Switch (2960)<br />
+3. Add: 2 PCs</p>
+<p><strong>Step 2: Connect Devices</strong></p>
+<div class="codehilite"><pre><span></span><code>PC1 (FastEthernet0) ─── Copper Straight ─── Switch (Fa0/1)
+PC2 (FastEthernet0) ─── Copper Straight ─── Switch (Fa0/2)
+</code></pre></div>
+
+<p><strong>Step 3: Configure PC1</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nv">Click</span><span class="w"> </span><span class="nv">PC1</span><span class="w"> </span>→<span class="w"> </span><span class="nv">Desktop</span><span class="w"> </span>→<span class="w"> </span><span class="nv">IP</span><span class="w"> </span><span class="nv">Configuration</span>
+
+<span class="nv">IP</span><span class="w"> </span><span class="nv">Address</span>:<span class="w">    </span><span class="mi">172</span>.<span class="mi">20</span>.<span class="mi">1</span>.<span class="mi">1</span>
+<span class="nv">Subnet</span><span class="w"> </span><span class="nv">Mask</span>:<span class="w">   </span><span class="mi">255</span>.<span class="mi">255</span>.<span class="mi">0</span>.<span class="mi">0</span>
+<span class="nv">Default</span><span class="w"> </span><span class="nv">Gateway</span>:<span class="w"> </span><span class="mi">172</span>.<span class="mi">20</span>.<span class="mi">1</span>.<span class="mi">1</span><span class="w"> </span><span class="ss">(</span><span class="nv">or</span><span class="w"> </span><span class="nv">leave</span><span class="w"> </span><span class="nv">blank</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">same</span><span class="w"> </span><span class="nv">network</span><span class="ss">)</span>
+</code></pre></div>
+
+<p><strong>Step 4: Configure PC2</strong></p>
+<div class="codehilite"><pre><span></span><code>Click PC2 → Desktop → IP Configuration
+
+IP Address:    172.20.1.2
+Subnet Mask:   255.255.0.0
+Default Gateway: 172.20.1.2 (or leave blank)
+</code></pre></div>
+
+<p><strong>Step 5: Verify Connectivity</strong></p>
+<div class="codehilite"><pre><span></span><code>PC1 → Desktop → Command Prompt
+C:\&gt; ping 172.20.1.2
+
+Reply from 172.20.1.2: bytes=32 time&lt;1ms TTL=128
+Reply from 172.20.1.2: bytes=32 time&lt;1ms TTL=128
+</code></pre></div>
+
+<h4>IP Class Explanation for This Configuration</h4>
+<p><strong>IP Address: 172.20.1.1 and 172.20.1.2</strong><br />
+- <strong>First Octet:</strong> 172<br />
+- <strong>Range Check:</strong> 128-191<br />
+- <strong>Class:</strong> B</p>
+<p><strong>Class B Characteristics:</strong><br />
+- Network portion: First 2 octets (172.20)<br />
+- Host portion: Last 2 octets (1.1 and 1.2)<br />
+- Default mask: 255.255.0.0 (matches configuration)<br />
+- Network ID: 172.20.0.0<br />
+- Broadcast: 172.20.255.255<br />
+- Usable hosts: 65,534 (2^16 - 2)</p>
+<p><strong>Why Both PCs Can Communicate:</strong><br />
+1. Same network: 172.20.0.0/16<br />
+2. Same subnet mask: 255.255.0.0<br />
+3. Both hosts are in valid range (1-65534)<br />
+4. Switch provides Layer 2 connectivity</p>
+<hr />
+<h2>Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Topic</th>
+<th>Key Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1.a</td>
+<td>IP Classes</td>
+<td>A(1-126), B(128-191), C(192-223), D(224-239), E(240-255)</td>
+</tr>
+<tr>
+<td>Q1.b</td>
+<td>IPv6</td>
+<td>128-bit, 8 hextets, :: compression, types</td>
+</tr>
+<tr>
+<td>Q1.c</td>
+<td>NAT Types</td>
+<td>Static(1:1 fixed), Dynamic(1:1 pool), PAT(many:1+ports)</td>
+</tr>
+<tr>
+<td>Q1.d</td>
+<td>Dynamic NAT</td>
+<td>Pool config, ACL, interface marking</td>
+</tr>
+<tr>
+<td>Q1.f</td>
+<td>Cyber Security</td>
+<td>CIA triad, protection of digital assets</td>
+</tr>
+<tr>
+<td>Q1.g</td>
+<td>Ethical Hacking</td>
+<td>Authorized testing, 5 phases, white hat</td>
+</tr>
+<tr>
+<td>Q2.A</td>
+<td>IP Class Program</td>
+<td>Parse first octet, range checking</td>
+</tr>
+<tr>
+<td>Q2.B</td>
+<td>Routing Simulation</td>
+<td>Routing table, longest prefix match</td>
+</tr>
+<tr>
+<td>Q2.C</td>
+<td>Packet Tracer</td>
+<td>Switch config, Class B network</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Code Solutions:</strong> See <code>Slip_09_Q2_OptionA.c</code> and <code>Slip_09_Q2_OptionB.c</code> in this folder.</p>
+</blockquote>
+    
+    <script>
+        // Add syntax highlighting for code blocks
+        document.querySelectorAll('pre code').forEach((block) => {
+            block.style.fontFamily = "'Consolas', 'Monaco', 'Courier New', monospace";
+        });
+    </script>
+</body>
+</html>

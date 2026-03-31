@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slip_03_CN_SOLUTION.md</title>
+    <style>
+        @media print {
+            body { margin: 0.5in; }
+            h1, h2, h3 { page-break-after: avoid; }
+            pre, table { page-break-inside: avoid; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
+            font-size: 11pt;
+        }
+        
+        h1 {
+            color: #1a237e;
+            border-bottom: 3px solid #3f51b5;
+            padding-bottom: 10px;
+            font-size: 28pt;
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #283593;
+            border-bottom: 2px solid #5c6bc0;
+            padding-bottom: 8px;
+            margin-top: 35px;
+            font-size: 20pt;
+        }
+        
+        h3 {
+            color: #3949ab;
+            font-size: 16pt;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #5c6bc0;
+            font-size: 13pt;
+            margin-top: 20px;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 10pt;
+            color: #d32f2f;
+        }
+        
+        pre {
+            background-color: #263238;
+            color: #aed581;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+            overflow-x: auto;
+            font-size: 9.5pt;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 10pt;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3f51b5;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        tr:hover {
+            background-color: #e8eaf6;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 30px 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #ff9800;
+            padding-left: 15px;
+            color: #616161;
+            font-style: italic;
+            margin: 20px 0;
+            background-color: #fff3e0;
+            padding: 10px 15px;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background-color: #45a049;
+        }
+        
+        @media print {
+            .print-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print to PDF</button>
+    <h1>Slip 3 — Computer Networks Solution Guide</h1>
+<h2>Q1: Theory Questions (10 marks - Answer any 5)</h2>
+<hr />
+<h3>a) What does the command tracert or traceroute do?</h3>
+<p><strong>Definition:</strong><br />
+<code>traceroute</code> (Linux/Mac) or <code>tracert</code> (Windows) is a network diagnostic tool that traces the path packets take from source to destination.</p>
+<p><strong>How It Works:</strong><br />
+| Step | TTL Value | Action |<br />
+|------|-----------|--------|<br />
+| 1 | TTL = 1 | First router decrements TTL to 0, sends ICMP "Time Exceeded" |<br />
+| 2 | TTL = 2 | Second router responds |<br />
+| 3 | TTL = n | Continues until destination reached |</p>
+<p><strong>Output Information:</strong><br />
+- Hop number (sequence)<br />
+- Router IP address/hostname<br />
+- Round Trip Time (RTT) for each probe (usually 3 probes)</p>
+<p><strong>Syntax:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Linux/Mac</span>
+traceroute<span class="w"> </span>www.google.com
+
+<span class="c1"># Windows</span>
+tracert<span class="w"> </span>www.google.com
+</code></pre></div>
+
+<p><strong>Sample Output:</strong></p>
+<div class="codehilite"><pre><span></span><code>traceroute to google.com (142.250.183.46), 30 hops max
+ 1  192.168.1.1    1.234 ms   1.123 ms   1.089 ms
+ 2  10.0.0.1       5.432 ms   5.123 ms   5.234 ms
+ 3  72.14.215.85   15.234 ms  14.567 ms  14.890 ms
+ 4  142.250.183.46 20.123 ms  19.876 ms  20.234 ms
+</code></pre></div>
+
+<p><strong>Applications:</strong><br />
+1. Diagnose network connectivity issues<br />
+2. Identify network bottlenecks<br />
+3. Map network paths<br />
+4. Detect routing loops</p>
+<hr />
+<h3>b) Differentiate between ip addr and ifconfig commands in Linux</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th><code>ifconfig</code></th>
+<th><code>ip addr</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Package</strong></td>
+<td>net-tools (legacy)</td>
+<td>iproute2 (modern)</td>
+</tr>
+<tr>
+<td><strong>Status</strong></td>
+<td>Deprecated</td>
+<td>Current standard</td>
+</tr>
+<tr>
+<td><strong>IPv6 Support</strong></td>
+<td>Limited</td>
+<td>Full support</td>
+</tr>
+<tr>
+<td><strong>Syntax</strong></td>
+<td><code>ifconfig eth0</code></td>
+<td><code>ip addr show eth0</code></td>
+</tr>
+<tr>
+<td><strong>Output Format</strong></td>
+<td>Human-readable</td>
+<td>Structured, scriptable</td>
+</tr>
+<tr>
+<td><strong>Features</strong></td>
+<td>Basic network config</td>
+<td>Advanced routing, tunneling</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Slower</td>
+<td>Faster</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Commands:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Show all interfaces</span>
+ifconfig<span class="w"> </span>-a<span class="w">              </span><span class="c1"># Old way</span>
+ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w">             </span><span class="c1"># New way (or: ip a)</span>
+
+<span class="c1"># Assign IP address</span>
+ifconfig<span class="w"> </span>eth0<span class="w"> </span><span class="m">192</span>.168.1.10<span class="w"> </span>netmask<span class="w"> </span><span class="m">255</span>.255.255.0<span class="w">    </span><span class="c1"># Old</span>
+ip<span class="w"> </span>addr<span class="w"> </span>add<span class="w"> </span><span class="m">192</span>.168.1.10/24<span class="w"> </span>dev<span class="w"> </span>eth0<span class="w">                 </span><span class="c1"># New</span>
+
+<span class="c1"># Enable/Disable interface</span>
+ifconfig<span class="w"> </span>eth0<span class="w"> </span>up<span class="w">         </span><span class="c1"># Old</span>
+ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>eth0<span class="w"> </span>up<span class="w">      </span><span class="c1"># New</span>
+
+<span class="c1"># Show specific interface</span>
+ifconfig<span class="w"> </span>eth0<span class="w">            </span><span class="c1"># Old</span>
+ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w"> </span>dev<span class="w"> </span>eth0<span class="w">    </span><span class="c1"># New</span>
+</code></pre></div>
+
+<p><strong>Key Differences:</strong><br />
+1. <code>ip</code> command is more powerful with consistent syntax<br />
+2. <code>ip</code> supports network namespaces<br />
+3. <code>ifconfig</code> may not be pre-installed on modern systems<br />
+4. <code>ip</code> provides more detailed information</p>
+<hr />
+<h3>c) What does nslookup do?</h3>
+<p><strong>Definition:</strong><br />
+<code>nslookup</code> (Name Server Lookup) is a command-line tool for querying DNS (Domain Name System) to obtain domain name or IP address mapping.</p>
+<p><strong>Primary Functions:</strong><br />
+| Function | Description |<br />
+|----------|-------------|<br />
+| Forward Lookup | Domain name → IP address |<br />
+| Reverse Lookup | IP address → Domain name |<br />
+| Query DNS Records | A, MX, NS, CNAME, TXT, etc. |</p>
+<p><strong>Syntax:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Basic lookup</span>
+nslookup<span class="w"> </span>www.google.com
+
+<span class="c1"># Reverse lookup</span>
+nslookup<span class="w"> </span><span class="m">8</span>.8.8.8
+
+<span class="c1"># Query specific DNS server</span>
+nslookup<span class="w"> </span>www.google.com<span class="w"> </span><span class="m">8</span>.8.8.8
+
+<span class="c1"># Query specific record type</span>
+nslookup<span class="w"> </span>-type<span class="o">=</span>MX<span class="w"> </span>gmail.com
+</code></pre></div>
+
+<p><strong>Sample Output:</strong></p>
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>nslookup<span class="w"> </span>www.google.com
+Server:<span class="w">     </span><span class="m">192</span>.168.1.1
+Address:<span class="w">    </span><span class="m">192</span>.168.1.1#53
+
+Non-authoritative<span class="w"> </span>answer:
+Name:<span class="w">   </span>www.google.com
+Address:<span class="w"> </span><span class="m">142</span>.250.183.68
+</code></pre></div>
+
+<p><strong>DNS Record Types:</strong><br />
+| Record | Purpose |<br />
+|--------|---------|<br />
+| A | IPv4 address |<br />
+| AAAA | IPv6 address |<br />
+| MX | Mail exchange server |<br />
+| NS | Name server |<br />
+| CNAME | Canonical name (alias) |<br />
+| TXT | Text records (SPF, etc.) |<br />
+| PTR | Pointer for reverse DNS |</p>
+<p><strong>Applications:</strong><br />
+1. Troubleshoot DNS resolution problems<br />
+2. Verify DNS configuration<br />
+3. Check mail server records<br />
+4. Investigate domain information</p>
+<hr />
+<h3>d) Two Advantages and Two Disadvantages of Dynamic IP Configuration</h3>
+<p><strong>Dynamic IP Configuration (DHCP):</strong><br />
+IP addresses are automatically assigned by a DHCP server rather than manually configured.</p>
+<p><strong>Advantages:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Advantage</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Simplified Administration</strong></td>
+<td>No manual configuration needed. DHCP server automatically assigns IP, subnet mask, gateway, and DNS. Reduces human error.</td>
+</tr>
+<tr>
+<td><strong>2. Efficient IP Utilization</strong></td>
+<td>IPs are leased temporarily. When a device disconnects, its IP can be reassigned to another device. Ideal for large networks with many transient users.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Additional Advantages:</strong><br />
+- Centralized management of network settings<br />
+- Easy to change network configuration<br />
+- Prevents IP conflicts automatically</p>
+<p><strong>Disadvantages:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Disadvantage</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Dependency on DHCP Server</strong></td>
+<td>If DHCP server fails, new devices cannot obtain IP addresses. Existing devices may lose connectivity when lease expires.</td>
+</tr>
+<tr>
+<td><strong>2. Unsuitable for Servers</strong></td>
+<td>Servers need consistent IPs for DNS records and client connections. Dynamic IPs change, breaking these services.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Additional Disadvantages:</strong><br />
+- Slight delay in obtaining IP address<br />
+- Less control over specific IP assignments<br />
+- Security concerns (rogue DHCP servers)</p>
+<p><strong>When to Use:</strong></p>
+<div class="codehilite"><pre><span></span><code>Dynamic IP: Workstations, laptops, mobile devices, guest networks
+Static IP:  Servers, printers, routers, network infrastructure
+</code></pre></div>
+
+<hr />
+<h3>f) What is the function of a switch in a computer network?</h3>
+<p><strong>Definition:</strong><br />
+A switch is a Layer 2 (Data Link Layer) network device that connects multiple devices on a LAN and uses MAC addresses to forward data to the correct destination port.</p>
+<p><strong>Key Functions:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Frame Forwarding</strong></td>
+<td>Sends frames only to the intended recipient port</td>
+</tr>
+<tr>
+<td><strong>MAC Learning</strong></td>
+<td>Builds MAC address table from incoming frames</td>
+</tr>
+<tr>
+<td><strong>Collision Domain Segmentation</strong></td>
+<td>Each port is a separate collision domain</td>
+</tr>
+<tr>
+<td><strong>Full-Duplex Communication</strong></td>
+<td>Enables simultaneous send/receive</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How a Switch Works:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nv">Step</span><span class="w"> </span><span class="mi">1</span>:<span class="w"> </span><span class="nv">Device</span><span class="w"> </span><span class="nv">A</span><span class="w"> </span><span class="nv">sends</span><span class="w"> </span><span class="nv">frame</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">switch</span>
+<span class="w">        </span><span class="nv">Frame</span><span class="w"> </span><span class="nv">contains</span>:<span class="w"> </span><span class="nv">Source</span><span class="w"> </span><span class="nv">MAC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">AA</span>:<span class="nv">AA</span>:<span class="nv">AA</span>:<span class="nv">AA</span>:<span class="nv">AA</span>:<span class="nv">AA</span>
+<span class="w">                       </span><span class="nv">Dest</span><span class="w"> </span><span class="nv">MAC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">BB</span>:<span class="nv">BB</span>:<span class="nv">BB</span>:<span class="nv">BB</span>:<span class="nv">BB</span>:<span class="nv">BB</span>
+
+<span class="nv">Step</span><span class="w"> </span><span class="mi">2</span>:<span class="w"> </span><span class="nv">Switch</span><span class="w"> </span><span class="nv">learns</span><span class="w"> </span><span class="nv">Source</span><span class="w"> </span><span class="nv">MAC</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">Port</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="nv">MAC</span><span class="w"> </span><span class="nv">Table</span>:<span class="w"> </span><span class="nv">AA</span>:<span class="nv">AA</span>:<span class="nv">AA</span>:<span class="nv">AA</span>:<span class="nv">AA</span>:<span class="nv">AA</span><span class="w"> </span>→<span class="w"> </span><span class="nv">Port</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="nv">Step</span><span class="w"> </span><span class="mi">3</span>:<span class="w"> </span><span class="nv">Switch</span><span class="w"> </span><span class="nv">looks</span><span class="w"> </span><span class="nv">up</span><span class="w"> </span><span class="nv">Destination</span><span class="w"> </span><span class="nv">MAC</span>
+<span class="w">        </span><span class="k">If</span><span class="w"> </span><span class="nv">found</span><span class="w"> </span>→<span class="w"> </span><span class="nv">Forward</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">specific</span><span class="w"> </span><span class="nv">port</span>
+<span class="w">        </span><span class="k">If</span><span class="w"> </span><span class="nv">not</span><span class="w"> </span><span class="nv">found</span><span class="w"> </span>→<span class="w"> </span><span class="nv">Flood</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">ports</span><span class="w"> </span><span class="ss">(</span><span class="nv">except</span><span class="w"> </span><span class="nv">source</span><span class="ss">)</span>
+
+<span class="nv">Step</span><span class="w"> </span><span class="mi">4</span>:<span class="w"> </span><span class="nv">When</span><span class="w"> </span><span class="nv">B</span><span class="w"> </span><span class="nv">replies</span>,<span class="w"> </span><span class="nv">switch</span><span class="w"> </span><span class="nv">learns</span><span class="w"> </span><span class="nv">B</span><span class="err">&#39;s MAC</span>
+<span class="err">        MAC Table: BB:BB:BB:BB:BB:BB → Port 3</span>
+</code></pre></div>
+
+<p><strong>Switch vs Hub:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Switch</th>
+<th>Hub</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Layer</td>
+<td>Layer 2</td>
+<td>Layer 1</td>
+</tr>
+<tr>
+<td>Intelligence</td>
+<td>Smart (MAC-based)</td>
+<td>Dumb (broadcasts all)</td>
+</tr>
+<tr>
+<td>Collision Domain</td>
+<td>Per port</td>
+<td>Single shared</td>
+</tr>
+<tr>
+<td>Bandwidth</td>
+<td>Dedicated per port</td>
+<td>Shared</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Better</td>
+<td>Poor</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Types of Switches:</strong><br />
+1. <strong>Unmanaged Switch</strong> - Plug and play, no configuration<br />
+2. <strong>Managed Switch</strong> - Configurable, VLANs, QoS support<br />
+3. <strong>Layer 3 Switch</strong> - Can perform routing functions</p>
+<p><strong>Diagram:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="w">      </span><span class="o">[</span><span class="n">Switch MAC Table</span><span class="o">]</span>
+<span class="w">      </span><span class="n">MAC</span><span class="w"> </span><span class="n">Address</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">Port</span>
+<span class="w">      </span><span class="err">─────────────────</span>
+<span class="w">      </span><span class="nl">AA</span><span class="p">:</span><span class="n">AA</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">Port</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="nl">BB</span><span class="p">:</span><span class="n">BB</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">Port</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">      </span><span class="nl">CC</span><span class="p">:</span><span class="n">CC</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">Port</span><span class="w"> </span><span class="mi">3</span>
+
+<span class="w">   </span><span class="o">[</span><span class="n">PC-A</span><span class="o">]</span><span class="w">     </span><span class="o">[</span><span class="n">PC-B</span><span class="o">]</span><span class="w">     </span><span class="o">[</span><span class="n">PC-C</span><span class="o">]</span>
+<span class="w">   </span><span class="n">Port</span><span class="w"> </span><span class="mi">1</span><span class="w">     </span><span class="n">Port</span><span class="w"> </span><span class="mi">2</span><span class="w">     </span><span class="n">Port</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">      </span><span class="err">│</span><span class="w">          </span><span class="err">│</span><span class="w">          </span><span class="err">│</span>
+<span class="w">      </span><span class="err">└────┬─────┴────┬─────┘</span>
+<span class="w">           </span><span class="err">│</span><span class="w"> </span><span class="o">[</span><span class="n">SWITCH</span><span class="o">]</span><span class="w"> </span><span class="err">│</span>
+<span class="w">           </span><span class="err">└──────────┘</span>
+</code></pre></div>
+
+<hr />
+<h3>g) What is network topology? What are its applications?</h3>
+<p><strong>Definition:</strong><br />
+Network topology refers to the arrangement or layout of different elements (nodes, links) in a computer network. It can be physical (actual layout) or logical (data flow pattern).</p>
+<p><strong>Types of Network Topologies:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Topology</th>
+<th>Description</th>
+<th>Diagram</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bus</strong></td>
+<td>All devices share single cable</td>
+<td><code>─●─●─●─●─</code></td>
+</tr>
+<tr>
+<td><strong>Star</strong></td>
+<td>All devices connect to central hub/switch</td>
+<td>Hub at center</td>
+</tr>
+<tr>
+<td><strong>Ring</strong></td>
+<td>Devices form closed loop</td>
+<td><code>●─●─●─●─●</code> (circle)</td>
+</tr>
+<tr>
+<td><strong>Mesh</strong></td>
+<td>Every device connects to every other</td>
+<td>Complex interconnections</td>
+</tr>
+<tr>
+<td><strong>Tree</strong></td>
+<td>Hierarchical combination of star</td>
+<td>Root with branches</td>
+</tr>
+<tr>
+<td><strong>Hybrid</strong></td>
+<td>Combination of multiple topologies</td>
+<td>Mixed</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Comparison Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Topology</th>
+<th>Cost</th>
+<th>Reliability</th>
+<th>Scalability</th>
+<th>Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bus</td>
+<td>Low</td>
+<td>Low</td>
+<td>Limited</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Star</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Good</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Ring</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Limited</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Mesh</td>
+<td>High</td>
+<td>High</td>
+<td>Complex</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Tree</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Good</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Applications:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Topology</th>
+<th>Best Used In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bus</strong></td>
+<td>Small LANs, temporary networks, legacy Ethernet</td>
+</tr>
+<tr>
+<td><strong>Star</strong></td>
+<td>Office networks, home networks, most modern LANs</td>
+</tr>
+<tr>
+<td><strong>Ring</strong></td>
+<td>Token Ring networks, FDDI, some industrial networks</td>
+</tr>
+<tr>
+<td><strong>Mesh</strong></td>
+<td>WANs, Internet backbone, military networks, critical systems</td>
+</tr>
+<tr>
+<td><strong>Tree</strong></td>
+<td>Large organizations, campus networks, hierarchical structures</td>
+</tr>
+<tr>
+<td><strong>Hybrid</strong></td>
+<td>Enterprise networks, data centers</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Factors for Choosing Topology:</strong><br />
+1. Cost and budget constraints<br />
+2. Network size and scalability needs<br />
+3. Fault tolerance requirements<br />
+4. Security considerations<br />
+5. Ease of installation and maintenance<br />
+6. Performance requirements</p>
+<hr />
+<h2>Q2: Practical Questions (20 marks)</h2>
+<hr />
+<h2>Option A: Bus Topology Display Program</h2>
+<h3>Concept</h3>
+<p>Bus topology connects all devices to a single backbone cable. Data travels in both directions and all devices receive the data, but only the intended recipient processes it.</p>
+<p><strong>Characteristics:</strong><br />
+- Single cable (backbone/trunk)<br />
+- Terminators at both ends to prevent signal reflection<br />
+- Devices use T-connectors to tap into bus<br />
+- CSMA/CD for collision handling</p>
+<h3>Data Structure</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">#define MAX_DEVICES 10</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">devices</span><span class="p">[</span><span class="n">MAX_DEVICES</span><span class="p">][</span><span class="mi">30</span><span class="p">];</span><span class="w">  </span><span class="c1">// Device names</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">device_count</span><span class="p">;</span><span class="w">               </span><span class="c1">// Number of devices</span>
+</code></pre></div>
+
+<h3>Algorithm</h3>
+<ol>
+<li>Accept number of devices from user</li>
+<li>Accept name of each device</li>
+<li>Display bus topology visualization:<br />
+   - Draw top boundary of bus<br />
+   - Draw connection points for each device<br />
+   - Draw device labels below<br />
+   - Draw terminators at both ends</li>
+</ol>
+<h3>Pseudocode</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">displayBusTopology</span><span class="p">()</span><span class="err">:</span>
+<span class="w">    </span><span class="k">INPUT</span><span class="w"> </span><span class="n">number_of_devices</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">number_of_devices</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span>
+<span class="w">        </span><span class="k">INPUT</span><span class="w"> </span><span class="n">device_name</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+
+<span class="w">    </span><span class="k">PRINT</span><span class="w"> </span><span class="ss">&quot;TERMINATOR&quot;</span>
+<span class="w">    </span><span class="k">PRINT</span><span class="w"> </span><span class="n">horizontal_bus_line</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">connection_points</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="k">each</span><span class="w"> </span><span class="nl">device</span><span class="p">:</span>
+<span class="w">        </span><span class="k">PRINT</span><span class="w"> </span><span class="n">vertical_connector</span>
+<span class="w">    </span><span class="k">PRINT</span><span class="w"> </span><span class="n">device_labels</span>
+<span class="w">    </span><span class="k">PRINT</span><span class="w"> </span><span class="ss">&quot;TERMINATOR&quot;</span>
+</code></pre></div>
+
+<h3>Program: <code>Slip_03_Q2_OptionA.c</code></h3>
+<hr />
+<h2>Option B: Even Parity Error Detection</h2>
+<h3>Concept</h3>
+<p><strong>Parity Check</strong> is a simple error detection method that adds an extra bit (parity bit) to ensure the total number of 1s in the data is even (even parity) or odd (odd parity).</p>
+<p><strong>Even Parity Rule:</strong><br />
+- Count number of 1s in data<br />
+- If count is odd → parity bit = 1<br />
+- If count is even → parity bit = 0<br />
+- Total 1s (data + parity) must be <strong>even</strong></p>
+<h3>Data Structure</h3>
+<div class="codehilite"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">data_bits</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span><span class="w">     </span><span class="c1">// Original data bits</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">parity_bit</span><span class="p">;</span><span class="w">       </span><span class="c1">// Calculated parity bit</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">received_bits</span><span class="p">[</span><span class="mi">9</span><span class="p">];</span><span class="w"> </span><span class="c1">// Data + parity for checking</span>
+</code></pre></div>
+
+<h3>Algorithm</h3>
+<p><strong>Generating Parity Bit:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="n">Count</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="mf">1</span><span class="n">s</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="kd">data</span>
+<span class="mf">2.</span><span class="w"> </span><span class="kr">If</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">odd</span><span class="p">:</span><span class="w"> </span><span class="n">parity_bit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span>
+<span class="mf">3.</span><span class="w"> </span><span class="kr">If</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">even</span><span class="p">:</span><span class="w"> </span><span class="n">parity_bit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span>
+<span class="mf">4.</span><span class="w"> </span><span class="n">Append</span><span class="w"> </span><span class="n">parity_bit</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="kd">data</span>
+</code></pre></div>
+
+<p><strong>Checking for Errors:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="n">Count</span><span class="w"> </span><span class="kr">to</span><span class="n">tal</span><span class="w"> </span><span class="mf">1</span><span class="n">s</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">received</span><span class="w"> </span><span class="kd">data</span><span class="w"> </span><span class="p">(</span><span class="n">including</span><span class="w"> </span><span class="n">parity</span><span class="p">)</span>
+<span class="mf">2.</span><span class="w"> </span><span class="kr">If</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">even</span><span class="p">:</span><span class="w"> </span><span class="n">No</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="n">detected</span>
+<span class="mf">3.</span><span class="w"> </span><span class="kr">If</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">odd</span><span class="p">:</span><span class="w"> </span><span class="n">Error</span><span class="w"> </span><span class="n">detected</span>
+</code></pre></div>
+
+<h3>Pseudocode</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">generateEvenParity</span><span class="p">(</span><span class="k">data</span><span class="err">[]</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="nf">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="err">:</span>
+<span class="w">        </span><span class="k">IF</span><span class="w"> </span><span class="k">data</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span>
+<span class="w">            </span><span class="nf">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="nf">count</span><span class="w"> </span><span class="k">MOD</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span>
+<span class="w">        </span><span class="k">RETURN</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">ELSE</span><span class="err">:</span>
+<span class="w">        </span><span class="k">RETURN</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="k">FUNCTION</span><span class="w"> </span><span class="n">checkEvenParity</span><span class="p">(</span><span class="k">data</span><span class="err">[]</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="nf">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="err">:</span>
+<span class="w">        </span><span class="k">IF</span><span class="w"> </span><span class="k">data</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span>
+<span class="w">            </span><span class="nf">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="nf">count</span><span class="w"> </span><span class="k">MOD</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="err">:</span>
+<span class="w">        </span><span class="k">PRINT</span><span class="w"> </span><span class="ss">&quot;No error detected&quot;</span>
+<span class="w">    </span><span class="k">ELSE</span><span class="err">:</span>
+<span class="w">        </span><span class="k">PRINT</span><span class="w"> </span><span class="ss">&quot;Error detected!&quot;</span>
+</code></pre></div>
+
+<h3>Worked Example</h3>
+<p><strong>Generating Even Parity for Data: 1011001</strong></p>
+<div class="codehilite"><pre><span></span><code>Data bits:    1  0  1  1  0  0  1
+Count of 1s:  1     2  3        4  → 4 (even)
+Parity bit:   0 (since count is already even)
+Transmitted:  1  0  1  1  0  0  1  [0]
+</code></pre></div>
+
+<p><strong>Checking Received Data: 10110010 (No Error)</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Received</span><span class="o">:</span><span class="w">     </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span>
+<span class="n">Count</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="mi">1</span><span class="n">s</span><span class="o">:</span><span class="w">  </span><span class="mi">1</span><span class="w">     </span><span class="mi">2</span><span class="w">  </span><span class="mi">3</span><span class="w">        </span><span class="mi">4</span><span class="w">     </span><span class="err">→</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">(</span><span class="n">even</span><span class="o">)</span>
+<span class="n">Result</span><span class="o">:</span><span class="w">       </span><span class="n">NO</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="o">(</span><span class="n">even</span><span class="w"> </span><span class="n">count</span><span class="o">)</span>
+</code></pre></div>
+
+<p><strong>Checking Received Data: 10110110 (With Error)</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Received</span><span class="o">:</span><span class="w">     </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span>
+<span class="n">Count</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="mi">1</span><span class="n">s</span><span class="o">:</span><span class="w">  </span><span class="mi">1</span><span class="w">     </span><span class="mi">2</span><span class="w">  </span><span class="mi">3</span><span class="w">     </span><span class="mi">4</span><span class="w">  </span><span class="mi">5</span><span class="w">     </span><span class="err">→</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">(</span><span class="n">odd</span><span class="o">)</span>
+<span class="n">Result</span><span class="o">:</span><span class="w">       </span><span class="n">ERROR</span><span class="w"> </span><span class="n">DETECTED</span><span class="w"> </span><span class="o">(</span><span class="n">odd</span><span class="w"> </span><span class="n">count</span><span class="o">)</span>
+</code></pre></div>
+
+<h3>Limitations</h3>
+<table>
+<thead>
+<tr>
+<th>Limitation</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single-bit errors only</td>
+<td>Detects odd number of bit errors</td>
+</tr>
+<tr>
+<td>No error correction</td>
+<td>Can only detect, not fix errors</td>
+</tr>
+<tr>
+<td>Even-bit errors missed</td>
+<td>2-bit errors go undetected</td>
+</tr>
+</tbody>
+</table>
+<h3>Program: <code>Slip_03_Q2_OptionB.c</code></h3>
+<hr />
+<h2>Option C: Packet Tracer Configuration</h2>
+<h3>CIDR Values for IP Address Classes</h3>
+<p><strong>CIDR (Classless Inter-Domain Routing)</strong> notation specifies network prefix length.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Default Subnet Mask</th>
+<th>CIDR Notation</th>
+<th>Network Bits</th>
+<th>Host Bits</th>
+<th>Usable Hosts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>255.0.0.0</td>
+<td>/8</td>
+<td>8</td>
+<td>24</td>
+<td>16,777,214</td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>255.255.0.0</td>
+<td>/16</td>
+<td>16</td>
+<td>16</td>
+<td>65,534</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>255.255.255.0</td>
+<td>/24</td>
+<td>24</td>
+<td>8</td>
+<td>254</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Class A Example:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">IP</span><span class="o">:</span><span class="w"> </span><span class="mf">10.0</span><span class="o">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">8</span>
+<span class="n">Network</span><span class="o">:</span><span class="w">   </span><span class="mf">10.0</span><span class="o">.</span><span class="mf">0.0</span>
+<span class="n">Broadcast</span><span class="o">:</span><span class="w"> </span><span class="mf">10.255</span><span class="o">.</span><span class="mf">255.255</span>
+<span class="n">Range</span><span class="o">:</span><span class="w">     </span><span class="mf">10.0</span><span class="o">.</span><span class="mf">0.1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">10.255</span><span class="o">.</span><span class="mf">255.254</span>
+<span class="n">Hosts</span><span class="o">:</span><span class="w">     </span><span class="mi">2</span><span class="o">^</span><span class="mi">24</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="o">,</span><span class="mi">777</span><span class="o">,</span><span class="mi">214</span>
+</code></pre></div>
+
+<p><strong>Class C Example:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">IP</span><span class="o">:</span><span class="w"> </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.0</span><span class="o">/</span><span class="mi">24</span>
+<span class="n">Network</span><span class="o">:</span><span class="w">   </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.0</span>
+<span class="n">Broadcast</span><span class="o">:</span><span class="w"> </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.255</span>
+<span class="n">Range</span><span class="o">:</span><span class="w">     </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.254</span>
+<span class="n">Hosts</span><span class="o">:</span><span class="w">     </span><span class="mi">2</span><span class="o">^</span><span class="mi">8</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">254</span>
+</code></pre></div>
+
+<h3>Network Diagram</h3>
+<div class="codehilite"><pre><span></span><code>                    ROUTER 2911
+                   ┌──────────┐
+                   │          │
+         G0/0      │          │      G0/1
+      10.0.0.4/8   │          │   192.168.1.4/24
+           ┌──────┤          ├──────┐
+           │      └──────────┘      │
+           │                        │
+      ┌────┴────┐              ┌────┴────┐
+      │ SWITCH 1│              │ SWITCH 2│
+      └────┬────┘              └────┬────┘
+        ┌──┼──┐                  ┌──┼──┐
+        │  │  │                  │  │  │
+      PC1 PC2 PC3              PC4 PC5 PC6
+
+   LAN 1: 10.0.0.0/8       LAN 2: 192.168.1.0/24
+</code></pre></div>
+
+<h3>IP Address Configuration</h3>
+<p><strong>LAN 1 (Class A Network: 10.0.0.0/8)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>IP Address</th>
+<th>Subnet Mask</th>
+<th>Default Gateway</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC1</td>
+<td>10.0.0.1</td>
+<td>255.0.0.0</td>
+<td>10.0.0.4</td>
+</tr>
+<tr>
+<td>PC2</td>
+<td>10.0.0.2</td>
+<td>255.0.0.0</td>
+<td>10.0.0.4</td>
+</tr>
+<tr>
+<td>PC3</td>
+<td>10.0.0.3</td>
+<td>255.0.0.0</td>
+<td>10.0.0.4</td>
+</tr>
+<tr>
+<td>Router G0/0</td>
+<td>10.0.0.4</td>
+<td>255.0.0.0</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p><strong>LAN 2 (Class C Network: 192.168.1.0/24)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>IP Address</th>
+<th>Subnet Mask</th>
+<th>Default Gateway</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC4</td>
+<td>192.168.1.1</td>
+<td>255.255.255.0</td>
+<td>192.168.1.4</td>
+</tr>
+<tr>
+<td>PC5</td>
+<td>192.168.1.2</td>
+<td>255.255.255.0</td>
+<td>192.168.1.4</td>
+</tr>
+<tr>
+<td>PC6</td>
+<td>192.168.1.3</td>
+<td>255.255.255.0</td>
+<td>192.168.1.4</td>
+</tr>
+<tr>
+<td>Router G0/1</td>
+<td>192.168.1.4</td>
+<td>255.255.255.0</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3>Packet Tracer Configuration Steps</h3>
+<p><strong>Step 1: Add Devices</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="n">Drag</span><span class="w"> </span><span class="n">Router</span><span class="w"> </span><span class="mf">2911</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">workspace</span>
+<span class="mf">2.</span><span class="w"> </span><span class="n">Drag</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="n">Switches</span><span class="w"> </span><span class="p">(</span><span class="mf">2960</span><span class="p">)</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">workspace</span>
+<span class="mf">3.</span><span class="w"> </span><span class="n">Drag</span><span class="w"> </span><span class="mf">6</span><span class="w"> </span><span class="n">PCs</span><span class="w"> </span><span class="p">(</span><span class="mf">3</span><span class="w"> </span><span class="kr">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">LAN</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Step 2: Connect Devices</strong></p>
+<div class="codehilite"><pre><span></span><code>Use Copper Straight-Through cables:
+- Switch1 to Router G0/0
+- Switch2 to Router G0/1
+- PC1, PC2, PC3 to Switch1
+- PC4, PC5, PC6 to Switch2
+</code></pre></div>
+
+<p><strong>Step 3: Configure Router</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">Router</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">enable</span>
+<span class="nx">Router</span><span class="err">#</span><span class="w"> </span><span class="nx">configure</span><span class="w"> </span><span class="nx">terminal</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Configure</span><span class="w"> </span><span class="nx">G0</span><span class="o">/</span><span class="mi">0</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">LAN</span><span class="w"> </span><span class="mi">1</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">10.0.0.4</span><span class="w"> </span><span class="m m-Double">255.0.0.0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Configure</span><span class="w"> </span><span class="nx">G0</span><span class="o">/</span><span class="mi">1</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">LAN</span><span class="w"> </span><span class="mi">2</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">1</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.1.4</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+<span class="nx">Router</span><span class="err">#</span><span class="w"> </span><span class="nx">write</span><span class="w"> </span><span class="nx">memory</span>
+</code></pre></div>
+
+<p><strong>Step 4: Configure PCs</strong></p>
+<p>For PC1 (and similarly PC2, PC3):</p>
+<div class="codehilite"><pre><span></span><code>Desktop → IP Configuration
+IP Address:      10.0.0.1
+Subnet Mask:     255.0.0.0
+Default Gateway: 10.0.0.4
+</code></pre></div>
+
+<p>For PC4 (and similarly PC5, PC6):</p>
+<div class="codehilite"><pre><span></span><code>Desktop → IP Configuration
+IP Address:      192.168.1.1
+Subnet Mask:     255.255.255.0
+Default Gateway: 192.168.1.4
+</code></pre></div>
+
+<p><strong>Step 5: Verify Connectivity</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># From PC1 - Test local connectivity</span>
+ping<span class="w"> </span><span class="m">10</span>.0.0.2
+ping<span class="w"> </span><span class="m">10</span>.0.0.3
+ping<span class="w"> </span><span class="m">10</span>.0.0.4
+
+<span class="c1"># From PC1 - Test inter-LAN connectivity</span>
+ping<span class="w"> </span><span class="m">192</span>.168.1.1
+ping<span class="w"> </span><span class="m">192</span>.168.1.4
+
+<span class="c1"># From Router - Test both interfaces</span>
+Router#<span class="w"> </span>ping<span class="w"> </span><span class="m">10</span>.0.0.1
+Router#<span class="w"> </span>ping<span class="w"> </span><span class="m">192</span>.168.1.1
+</code></pre></div>
+
+<h3>Expected Results</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">C</span>:\<span class="o">&gt;</span><span class="w"> </span><span class="nv">ping</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">1</span>
+
+<span class="nv">Pinging</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">1</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="nv">bytes</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">data</span>:
+
+<span class="nv">Reply</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">1</span>:<span class="w"> </span><span class="nv">bytes</span><span class="o">=</span><span class="mi">32</span><span class="w"> </span><span class="nv">time</span><span class="o">&lt;</span><span class="mi">1</span><span class="nv">ms</span><span class="w"> </span><span class="nv">TTL</span><span class="o">=</span><span class="mi">127</span>
+<span class="nv">Reply</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">1</span>:<span class="w"> </span><span class="nv">bytes</span><span class="o">=</span><span class="mi">32</span><span class="w"> </span><span class="nv">time</span><span class="o">&lt;</span><span class="mi">1</span><span class="nv">ms</span><span class="w"> </span><span class="nv">TTL</span><span class="o">=</span><span class="mi">127</span>
+<span class="nv">Reply</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">1</span>:<span class="w"> </span><span class="nv">bytes</span><span class="o">=</span><span class="mi">32</span><span class="w"> </span><span class="nv">time</span><span class="o">&lt;</span><span class="mi">1</span><span class="nv">ms</span><span class="w"> </span><span class="nv">TTL</span><span class="o">=</span><span class="mi">127</span>
+<span class="nv">Reply</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">1</span>:<span class="w"> </span><span class="nv">bytes</span><span class="o">=</span><span class="mi">32</span><span class="w"> </span><span class="nv">time</span><span class="o">&lt;</span><span class="mi">1</span><span class="nv">ms</span><span class="w"> </span><span class="nv">TTL</span><span class="o">=</span><span class="mi">127</span>
+
+<span class="nv">Ping</span><span class="w"> </span><span class="nv">statistics</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">1</span>:
+<span class="w">    </span><span class="nv">Packets</span>:<span class="w"> </span><span class="nv">Sent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>,<span class="w"> </span><span class="nv">Received</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>,<span class="w"> </span><span class="nv">Lost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ss">(</span><span class="mi">0</span><span class="o">%</span><span class="w"> </span><span class="nv">loss</span><span class="ss">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Summary Table</h2>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Topic</th>
+<th>Key Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1a</td>
+<td>traceroute</td>
+<td>Traces packet path, shows hops and RTT</td>
+</tr>
+<tr>
+<td>Q1b</td>
+<td>ip addr vs ifconfig</td>
+<td>Modern vs legacy, ip is preferred</td>
+</tr>
+<tr>
+<td>Q1c</td>
+<td>nslookup</td>
+<td>DNS query tool for name resolution</td>
+</tr>
+<tr>
+<td>Q1d</td>
+<td>Dynamic IP</td>
+<td>DHCP pros/cons, server dependency</td>
+</tr>
+<tr>
+<td>Q1f</td>
+<td>Switch</td>
+<td>Layer 2, MAC learning, frame forwarding</td>
+</tr>
+<tr>
+<td>Q1g</td>
+<td>Topology</td>
+<td>Physical/logical layout, types and uses</td>
+</tr>
+<tr>
+<td>Q2A</td>
+<td>Bus Topology</td>
+<td>Single backbone, all devices share cable</td>
+</tr>
+<tr>
+<td>Q2B</td>
+<td>Even Parity</td>
+<td>Error detection using parity bit</td>
+</tr>
+<tr>
+<td>Q2C</td>
+<td>Packet Tracer</td>
+<td>Router connecting two LANs, CIDR</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Quick Revision Points</h2>
+<ol>
+<li><strong>traceroute</strong> uses TTL manipulation to discover path</li>
+<li><strong>ip addr</strong> is the modern replacement for ifconfig</li>
+<li><strong>nslookup</strong> queries DNS for domain/IP mapping</li>
+<li><strong>Dynamic IP</strong> simplifies management but creates dependencies</li>
+<li><strong>Switch</strong> uses MAC table for intelligent forwarding</li>
+<li><strong>Topology</strong> defines network physical/logical structure</li>
+<li><strong>Even Parity</strong> detects odd number of bit errors</li>
+<li><strong>CIDR /8</strong> = Class A, <strong>/16</strong> = Class B, <strong>/24</strong> = Class C</li>
+</ol>
+    
+    <script>
+        // Add syntax highlighting for code blocks
+        document.querySelectorAll('pre code').forEach((block) => {
+            block.style.fontFamily = "'Consolas', 'Monaco', 'Courier New', monospace";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slip_02_CN_SOLUTION.md</title>
+    <style>
+        @media print {
+            body { margin: 0.5in; }
+            h1, h2, h3 { page-break-after: avoid; }
+            pre, table { page-break-inside: avoid; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
+            font-size: 11pt;
+        }
+        
+        h1 {
+            color: #1a237e;
+            border-bottom: 3px solid #3f51b5;
+            padding-bottom: 10px;
+            font-size: 28pt;
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #283593;
+            border-bottom: 2px solid #5c6bc0;
+            padding-bottom: 8px;
+            margin-top: 35px;
+            font-size: 20pt;
+        }
+        
+        h3 {
+            color: #3949ab;
+            font-size: 16pt;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #5c6bc0;
+            font-size: 13pt;
+            margin-top: 20px;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 10pt;
+            color: #d32f2f;
+        }
+        
+        pre {
+            background-color: #263238;
+            color: #aed581;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+            overflow-x: auto;
+            font-size: 9.5pt;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 10pt;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3f51b5;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        tr:hover {
+            background-color: #e8eaf6;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 30px 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #ff9800;
+            padding-left: 15px;
+            color: #616161;
+            font-style: italic;
+            margin: 20px 0;
+            background-color: #fff3e0;
+            padding: 10px 15px;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background-color: #45a049;
+        }
+        
+        @media print {
+            .print-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print to PDF</button>
+    <h1>Slip 2 — Computer Networks Solution Guide</h1>
+<h2>Q1: Theory Questions (Answer ANY 5) — 10 Marks</h2>
+<hr />
+<h3>a) What is the functional difference between a switch and a router?</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Switch</th>
+<th>Router</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OSI Layer</strong></td>
+<td>Layer 2 (Data Link)</td>
+<td>Layer 3 (Network)</td>
+</tr>
+<tr>
+<td><strong>Addressing</strong></td>
+<td>Uses MAC addresses</td>
+<td>Uses IP addresses</td>
+</tr>
+<tr>
+<td><strong>Function</strong></td>
+<td>Connects devices within same LAN</td>
+<td>Connects different networks</td>
+</tr>
+<tr>
+<td><strong>Broadcast Domain</strong></td>
+<td>Single broadcast domain</td>
+<td>Separates broadcast domains</td>
+</tr>
+<tr>
+<td><strong>Packet Routing</strong></td>
+<td>Forwards frames within network</td>
+<td>Routes packets between networks</td>
+</tr>
+<tr>
+<td><strong>Intelligence</strong></td>
+<td>Limited to local segment</td>
+<td>Path selection, NAT, filtering</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Difference:</strong><br />
+- <strong>Switch</strong>: Operates within a single network, forwarding data based on MAC addresses<br />
+- <strong>Router</strong>: Operates between networks, forwarding data based on IP addresses and routing tables</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[PC1]---[PC2]                    [Network A]</span>
+<span class="w">    </span><span class="na">\   /                             |</span>
+<span class="w">   </span><span class="na">[SWITCH] ← Same Network    [ROUTER] ← Between Networks</span>
+<span class="w">    </span><span class="na">/   \                             |</span>
+<span class="k">[PC3]---[PC4]                    [Network B]</span>
+</code></pre></div>
+
+<hr />
+<h3>b) How many hosts are possible in a /26 subnet?</h3>
+<p><strong>Calculation:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="mi">26</span><span class="w"> </span><span class="nx">means</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="w"> </span><span class="nx">bits</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">network</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="nx">bits</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">hosts</span>
+
+<span class="nx">Host</span><span class="w"> </span><span class="nx">bits</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">26</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="nx">bits</span>
+
+<span class="nx">Total</span><span class="w"> </span><span class="nx">addresses</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="mi">6</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="nx">addresses</span>
+
+<span class="nx">Usable</span><span class="w"> </span><span class="nx">hosts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">62</span><span class="w"> </span><span class="nx">hosts</span>
+</code></pre></div>
+
+<p><strong>Why subtract 2?</strong><br />
+1. <strong>Network Address</strong>: First address (all host bits = 0)<br />
+2. <strong>Broadcast Address</strong>: Last address (all host bits = 1)</p>
+<p><strong>Example with 192.168.1.0/26:</strong><br />
+| Component | Address |<br />
+|-----------|---------|<br />
+| Network Address | 192.168.1.0 |<br />
+| First Usable | 192.168.1.1 |<br />
+| Last Usable | 192.168.1.62 |<br />
+| Broadcast | 192.168.1.63 |<br />
+| <strong>Usable Hosts</strong> | <strong>62</strong> |</p>
+<hr />
+<h3>c) What are the differences between Cat5e, Cat6, and Cat7 Ethernet cables?</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Cat5e</th>
+<th>Cat6</th>
+<th>Cat7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Speed</strong></td>
+<td>1 Gbps</td>
+<td>10 Gbps</td>
+<td>10+ Gbps</td>
+</tr>
+<tr>
+<td><strong>Bandwidth</strong></td>
+<td>100 MHz</td>
+<td>250 MHz</td>
+<td>600 MHz</td>
+</tr>
+<tr>
+<td><strong>Max Distance (10G)</strong></td>
+<td>Not supported</td>
+<td>55 meters</td>
+<td>100 meters</td>
+</tr>
+<tr>
+<td><strong>Shielding</strong></td>
+<td>UTP (Unshielded)</td>
+<td>UTP or STP</td>
+<td>STP (Shielded)</td>
+</tr>
+<tr>
+<td><strong>Crosstalk Protection</strong></td>
+<td>Basic</td>
+<td>Improved</td>
+<td>Excellent</td>
+</tr>
+<tr>
+<td><strong>Connector</strong></td>
+<td>RJ-45</td>
+<td>RJ-45</td>
+<td>GG45 or TERA</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Lowest</td>
+<td>Medium</td>
+<td>Highest</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Home/Small office</td>
+<td>Enterprise LAN</td>
+<td>Data centers</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Visual Comparison:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nl">Cat5e</span><span class="p">:</span><span class="w">  </span><span class="err">════════</span><span class="w">  </span><span class="p">(</span><span class="n">Basic</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">Gbps</span><span class="p">,</span><span class="w"> </span><span class="n">Budget</span><span class="o">-</span><span class="n">friendly</span><span class="p">)</span>
+<span class="nl">Cat6</span><span class="p">:</span><span class="w">   </span><span class="err">══▓▓══</span><span class="w">    </span><span class="p">(</span><span class="n">Better</span><span class="w"> </span><span class="n">shielding</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="n">Gbps</span><span class="mi">@55</span><span class="n">m</span><span class="p">)</span>
+<span class="nl">Cat7</span><span class="p">:</span><span class="w">   </span><span class="err">▓▓▓▓▓▓▓▓</span><span class="w">  </span><span class="p">(</span><span class="n">Full</span><span class="w"> </span><span class="n">shielding</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="n">Gbps</span><span class="mi">@100</span><span class="n">m</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h3>d) Write the steps to identify a phishing email</h3>
+<p><strong>Step-by-Step Detection Process:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="err">┌─────────────────────────────────────────────┐</span>
+<span class="err">│</span>         <span class="n">PHISHING</span> <span class="n">EMAIL</span> <span class="n">DETECTION</span>            <span class="err">│</span>
+<span class="err">├─────────────────────────────────────────────┤</span>
+<span class="err">│</span> <span class="mi">1</span><span class="p">.</span> <span class="n">CHECK</span> <span class="n">SENDER</span> <span class="n">ADDRESS</span>                     <span class="err">│</span>
+<span class="err">│</span>    <span class="err">•</span> <span class="n">Look</span> <span class="n">for</span> <span class="n">misspellings</span>                  <span class="err">│</span>
+<span class="err">│</span>    <span class="err">•</span> <span class="n">Verify</span> <span class="n">domain</span> <span class="p">(</span><span class="n">amaz0n</span><span class="p">.</span><span class="n">com</span> <span class="n">vs</span> <span class="n">amazon</span><span class="p">)</span>   <span class="err">│</span>
+<span class="err">│</span>                                             <span class="err">│</span>
+<span class="err">│</span> <span class="mi">2</span><span class="p">.</span> <span class="n">EXAMINE</span> <span class="n">THE</span> <span class="n">GREETING</span>                     <span class="err">│</span>
+<span class="err">│</span>    <span class="err">•</span> <span class="n">Generic</span><span class="p">:</span> <span class="s">&quot;Dear Customer&quot;</span> <span class="o">=</span> <span class="n">Suspicious</span>  <span class="err">│</span>
+<span class="err">│</span>    <span class="err">•</span> <span class="n">Personal</span> <span class="n">name</span> <span class="o">=</span> <span class="n">More</span> <span class="n">likely</span> <span class="n">legitimate</span> <span class="err">│</span>
+<span class="err">│</span>                                             <span class="err">│</span>
+<span class="err">│</span> <span class="mi">3</span><span class="p">.</span> <span class="n">INSPECT</span> <span class="n">LINKS</span> <span class="p">(</span><span class="n">HOVER</span><span class="p">,</span> <span class="n">DON</span><span class="err">&#39;</span><span class="n">T</span> <span class="n">CLICK</span><span class="p">)</span>       <span class="err">│</span>
+<span class="err">│</span>    <span class="err">•</span> <span class="n">URL</span> <span class="n">doesn</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">match</span> <span class="n">displayed</span> <span class="n">text</span>       <span class="err">│</span>
+<span class="err">│</span>    <span class="err">•</span> <span class="n">Shortened</span> <span class="n">URLs</span> <span class="n">hiding</span> <span class="n">destination</span>      <span class="err">│</span>
+<span class="err">│</span>                                             <span class="err">│</span>
+<span class="err">│</span> <span class="mi">4</span><span class="p">.</span> <span class="n">LOOK</span> <span class="kr">FOR</span> <span class="n">URGENCY</span><span class="o">/</span><span class="n">THREATS</span>                 <span class="err">│</span>
+<span class="err">│</span>    <span class="err">•</span> <span class="s">&quot;Account suspended in 24 hours!&quot;</span>       <span class="err">│</span>
+<span class="err">│</span>    <span class="err">•</span> <span class="s">&quot;Verify immediately or lose access&quot;</span>    <span class="err">│</span>
+<span class="err">│</span>                                             <span class="err">│</span>
+<span class="err">│</span> <span class="mi">5</span><span class="p">.</span> <span class="n">CHECK</span> <span class="kr">FOR</span> <span class="n">SPELLING</span><span class="o">/</span><span class="n">GRAMMAR</span> <span class="n">ERRORS</span>        <span class="err">│</span>
+<span class="err">│</span>    <span class="err">•</span> <span class="n">Professional</span> <span class="n">companies</span> <span class="n">proofread</span>       <span class="err">│</span>
+<span class="err">│</span>                                             <span class="err">│</span>
+<span class="err">│</span> <span class="mi">6</span><span class="p">.</span> <span class="n">VERIFY</span> <span class="n">ATTACHMENTS</span>                       <span class="err">│</span>
+<span class="err">│</span>    <span class="err">•</span> <span class="n">Unexpected</span> <span class="p">.</span><span class="n">exe</span><span class="p">,</span> <span class="p">.</span><span class="n">zip</span><span class="p">,</span> <span class="p">.</span><span class="n">doc</span> <span class="n">files</span>      <span class="err">│</span>
+<span class="err">│</span>    <span class="err">•</span> <span class="n">Don</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">open</span> <span class="n">suspicious</span> <span class="n">attachments</span>      <span class="err">│</span>
+<span class="err">│</span>                                             <span class="err">│</span>
+<span class="err">│</span> <span class="mi">7</span><span class="p">.</span> <span class="n">CROSS</span><span class="o">-</span><span class="n">CHECK</span> <span class="kr">WITH</span> <span class="n">OFFICIAL</span> <span class="n">CHANNELS</span>       <span class="err">│</span>
+<span class="err">│</span>    <span class="err">•</span> <span class="n">Contact</span> <span class="n">company</span> <span class="n">directly</span>               <span class="err">│</span>
+<span class="err">│</span>    <span class="err">•</span> <span class="n">Don</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">use</span> <span class="n">contact</span> <span class="n">info</span> <span class="n">from</span> <span class="n">email</span>      <span class="err">│</span>
+<span class="err">└─────────────────────────────────────────────┘</span>
+</code></pre></div>
+
+<p><strong>Red Flags Summary:</strong><br />
+- Mismatched sender domain<br />
+- Generic greeting<br />
+- Suspicious links/URLs<br />
+- Urgent language<br />
+- Poor grammar<br />
+- Unexpected attachments<br />
+- Requests for personal info</p>
+<hr />
+<h3>f) What are the two analysis methods used for analyzing malware?</h3>
+<p><strong>1. Static Analysis</strong></p>
+<div class="codehilite"><pre><span></span><code>┌────────────────────────────────────┐
+│       STATIC ANALYSIS              │
+├────────────────────────────────────┤
+│ • Examines code WITHOUT executing  │
+│ • Analyzes file structure          │
+│ • Checks signatures &amp; patterns     │
+│ • Reviews strings in binary        │
+│ • Disassembles executable          │
+├────────────────────────────────────┤
+│ Tools: IDA Pro, Strings, PEiD      │
+│ Pros: Safe, fast, no infection     │
+│ Cons: Can&#39;t detect runtime behavior│
+└────────────────────────────────────┘
+</code></pre></div>
+
+<p><strong>2. Dynamic Analysis</strong></p>
+<div class="codehilite"><pre><span></span><code>┌────────────────────────────────────┐
+│       DYNAMIC ANALYSIS             │
+├────────────────────────────────────┤
+│ • Executes malware in sandbox      │
+│ • Monitors runtime behavior        │
+│ • Tracks system calls              │
+│ • Observes network connections     │
+│ • Records file modifications       │
+├────────────────────────────────────┤
+│ Tools: Cuckoo, Wireshark, ProcMon  │
+│ Pros: Sees actual behavior         │
+│ Cons: Risk of infection, evasion   │
+└────────────────────────────────────┘
+</code></pre></div>
+
+<p><strong>Comparison Table:</strong><br />
+| Aspect | Static Analysis | Dynamic Analysis |<br />
+|--------|----------------|------------------|<br />
+| Execution | No | Yes (in sandbox) |<br />
+| Safety | Very Safe | Controlled risk |<br />
+| Speed | Fast | Slower |<br />
+| Obfuscation | Can be fooled | Reveals true behavior |<br />
+| Environment | Any | Requires sandbox |</p>
+<hr />
+<h3>g) What is the use of the ping command in networking?</h3>
+<p><strong>Purpose:</strong> Tests connectivity between two network devices using ICMP protocol.</p>
+<p><strong>Syntax:</strong></p>
+<div class="codehilite"><pre><span></span><code>ping<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;destination&gt;
+ping<span class="w"> </span><span class="m">192</span>.168.1.1<span class="w">        </span><span class="c1"># Ping IP address</span>
+ping<span class="w"> </span>google.com<span class="w">         </span><span class="c1"># Ping hostname</span>
+ping<span class="w"> </span>-c<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">8</span>.8.8.8<span class="w">       </span><span class="c1"># Send 4 packets (Linux)</span>
+ping<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">8</span>.8.8.8<span class="w">       </span><span class="c1"># Send 4 packets (Windows)</span>
+</code></pre></div>
+
+<p><strong>What Ping Tells You:</strong></p>
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>ping<span class="w"> </span>google.com
+PING<span class="w"> </span>google.com<span class="w"> </span><span class="o">(</span><span class="m">142</span>.250.190.78<span class="o">)</span>:<span class="w"> </span><span class="m">56</span><span class="w"> </span>bytes
+<span class="m">64</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span><span class="m">142</span>.250.190.78:<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">ttl</span><span class="o">=</span><span class="m">117</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="m">12</span>.3<span class="w"> </span>ms
+<span class="m">64</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span><span class="m">142</span>.250.190.78:<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="nv">ttl</span><span class="o">=</span><span class="m">117</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="m">11</span>.8<span class="w"> </span>ms
+<span class="m">64</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span><span class="m">142</span>.250.190.78:<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="nv">ttl</span><span class="o">=</span><span class="m">117</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="m">12</span>.1<span class="w"> </span>ms
+
+---<span class="w"> </span>google.com<span class="w"> </span>ping<span class="w"> </span>statistics<span class="w"> </span>---
+<span class="m">3</span><span class="w"> </span>packets<span class="w"> </span>transmitted,<span class="w"> </span><span class="m">3</span><span class="w"> </span>received,<span class="w"> </span><span class="m">0</span>%<span class="w"> </span>packet<span class="w"> </span>loss
+round-trip<span class="w"> </span>min/avg/max<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">11</span>.8/12.1/12.3<span class="w"> </span>ms
+</code></pre></div>
+
+<p><strong>Key Information:</strong><br />
+| Metric | Meaning |<br />
+|--------|---------|<br />
+| <strong>Reply</strong> | Host is reachable |<br />
+| <strong>TTL</strong> | Time To Live (hop count) |<br />
+| <strong>Time</strong> | Round-trip time (latency) |<br />
+| <strong>Packet Loss</strong> | Network reliability |<br />
+| <strong>icmp_seq</strong> | Sequence number |</p>
+<p><strong>Use Cases:</strong><br />
+1. <strong>Test if host is online</strong><br />
+2. <strong>Measure network latency</strong><br />
+3. <strong>Diagnose connectivity issues</strong><br />
+4. <strong>Verify DNS resolution</strong><br />
+5. <strong>Check network reliability</strong></p>
+<hr />
+<h2>Q2: Practical Options — 20 Marks</h2>
+<hr />
+<h2>Option A: Simple Hash Simulation (C Program)</h2>
+<h3>Concept</h3>
+<p>A <strong>hash function</strong> converts data of arbitrary size into a fixed-size value. Used in:<br />
+- Data integrity verification<br />
+- Password storage<br />
+- Hash tables/dictionaries</p>
+<h3>Algorithm (Simple Additive Hash)</h3>
+<div class="codehilite"><pre><span></span><code><span class="nx">FUNCTION</span><span class="w"> </span><span class="nx">simpleHash</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">tableSize</span><span class="p">):</span>
+<span class="w">    </span><span class="nx">hash</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="nx">FOR</span><span class="w"> </span><span class="nx">each</span><span class="w"> </span><span class="nx">character</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">data</span><span class="p">:</span>
+<span class="w">        </span><span class="nx">hash</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">ASCII_value</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">RETURN</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="nx">MOD</span><span class="w"> </span><span class="nx">tableSize</span>
+</code></pre></div>
+
+<h3>How It Works</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">Input</span>:<span class="w"> </span><span class="s2">&quot;HELLO&quot;</span>
+<span class="nv">H</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">72</span>,<span class="w"> </span><span class="nv">E</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">69</span>,<span class="w"> </span><span class="nv">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">76</span>,<span class="w"> </span><span class="nv">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">76</span>,<span class="w"> </span><span class="nv">O</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">79</span>
+
+<span class="nv">Sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">72</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">69</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">76</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">76</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">79</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">372</span>
+
+<span class="k">If</span><span class="w"> </span><span class="nv">tableSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>:
+<span class="nv">Hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">372</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+</code></pre></div>
+
+<h3>Collision Handling</h3>
+<p>When two keys produce same hash:<br />
+1. <strong>Chaining</strong>: Store multiple items in linked list<br />
+2. <strong>Linear Probing</strong>: Find next empty slot</p>
+<h3>Time &amp; Space Complexity</h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hash Calculation</td>
+<td>O(n) where n = string length</td>
+</tr>
+<tr>
+<td>Insert (avg)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Search (avg)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Space</td>
+<td>O(m) where m = table size</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Code:</strong> See <code>Slip_02_Q2_OptionA.c</code></p>
+</blockquote>
+<hr />
+<h2>Option B: Character Count Framing (C Program)</h2>
+<h3>Concept</h3>
+<p>In data link layer, <strong>framing</strong> divides data into manageable units called frames.</p>
+<p><strong>Character Count Method:</strong><br />
+- First byte of each frame indicates frame length<br />
+- Receiver uses count to determine frame boundaries</p>
+<h3>Algorithm</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">frameData</span><span class="p">(</span><span class="k">data</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="n">frameSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LENGTH</span><span class="p">(</span><span class="k">data</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="o">+</span><span class="mi">1</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nf">count</span><span class="w"> </span><span class="n">byte</span>
+<span class="w">    </span><span class="n">frame</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frameSize</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">LENGTH</span><span class="p">(</span><span class="k">data</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="err">:</span>
+<span class="w">        </span><span class="n">frame</span><span class="o">[</span><span class="n">i+1</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">data</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+<span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="n">frame</span>
+
+<span class="k">FUNCTION</span><span class="w"> </span><span class="n">extractFrame</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="k">position</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="nf">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stream</span><span class="o">[</span><span class="n">position</span><span class="o">]</span>
+<span class="w">    </span><span class="k">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stream</span><span class="o">[</span><span class="n">position+1 TO position+count-1</span><span class="o">]</span>
+<span class="w">    </span><span class="n">nextPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">position</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">count</span>
+<span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="k">data</span><span class="p">,</span><span class="w"> </span><span class="n">nextPosition</span>
+</code></pre></div>
+
+<h3>Visualization</h3>
+<div class="codehilite"><pre><span></span><code>Data: &quot;ABC&quot; &quot;DE&quot; &quot;FGHI&quot;
+
+Framed Stream:
+┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
+│ 4 │ A │ B │ C │ 3 │ D │ E │ 5 │ F │ G │ H │ I │
+└───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘
+  ↑               ↑           ↑
+  Frame 1 (4)     Frame 2 (3) Frame 3 (5)
+</code></pre></div>
+
+<h3>Advantages &amp; Disadvantages</h3>
+<table>
+<thead>
+<tr>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simple to implement</td>
+<td>Error propagation</td>
+</tr>
+<tr>
+<td>Efficient processing</td>
+<td>Single bit error corrupts all subsequent frames</td>
+</tr>
+<tr>
+<td>No special characters needed</td>
+<td>Limited frame size (count byte)</td>
+</tr>
+</tbody>
+</table>
+<h3>Time Complexity</h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Framing</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Deframing</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Code:</strong> See <code>Slip_02_Q2_OptionB.c</code></p>
+</blockquote>
+<hr />
+<h2>Option C: Packet Tracer Configuration</h2>
+<h3>Subnetting 192.168.10.0/26</h3>
+<p><strong>Subnet Details:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Network</span><span class="o">:</span><span class="w"> </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">10.0</span><span class="o">/</span><span class="mi">26</span>
+<span class="n">Subnet</span><span class="w"> </span><span class="n">Mask</span><span class="o">:</span><span class="w"> </span><span class="mf">255.255</span><span class="o">.</span><span class="mf">255.192</span>
+
+<span class="n">Subnets</span><span class="w"> </span><span class="n">Available</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span>
+<span class="n">Hosts</span><span class="w"> </span><span class="n">per</span><span class="w"> </span><span class="n">Subnet</span><span class="o">:</span><span class="w"> </span><span class="mi">62</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Subnet</th>
+<th>Network Address</th>
+<th>Usable Range</th>
+<th>Broadcast</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>192.168.10.0</td>
+<td>.1 - .62</td>
+<td>192.168.10.63</td>
+</tr>
+<tr>
+<td>2</td>
+<td>192.168.10.64</td>
+<td>.65 - .126</td>
+<td>192.168.10.127</td>
+</tr>
+<tr>
+<td>3</td>
+<td>192.168.10.128</td>
+<td>.129 - .190</td>
+<td>192.168.10.191</td>
+</tr>
+<tr>
+<td>4</td>
+<td>192.168.10.192</td>
+<td>.193 - .254</td>
+<td>192.168.10.255</td>
+</tr>
+</tbody>
+</table>
+<h3>PC Configuration Steps</h3>
+<p><strong>Configure PC with:</strong><br />
+- IP: 192.168.2.10<br />
+- Mask: 255.255.255.0<br />
+- Gateway: 192.168.2.1</p>
+<p><strong>Steps in Packet Tracer:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="n">Click</span><span class="w"> </span><span class="kr">on</span><span class="w"> </span><span class="n">PC</span><span class="w"> </span><span class="n">icon</span>
+<span class="mf">2.</span><span class="w"> </span><span class="kr">Go</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">Desktop</span><span class="w"> </span><span class="nb">tab</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="n">Configuration</span>
+<span class="mf">3.</span><span class="w"> </span><span class="n">Select</span><span class="w"> </span><span class="s">&quot;Static&quot;</span>
+<span class="mf">4.</span><span class="w"> </span><span class="n">Enter</span><span class="p">:</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="n">Address</span><span class="p">:</span><span class="w"> </span><span class="mf">192.168.2.10</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="n">Subnet</span><span class="w"> </span><span class="n">Mask</span><span class="p">:</span><span class="w"> </span><span class="mf">255.255.255.0</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="kd">Def</span><span class="n">ault</span><span class="w"> </span><span class="n">Gateway</span><span class="p">:</span><span class="w"> </span><span class="mf">192.168.2.1</span>
+<span class="mf">5.</span><span class="w"> </span><span class="kr">Close</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="n">window</span>
+</code></pre></div>
+
+<p><strong>Verification Commands (on PC):</strong></p>
+<div class="codehilite"><pre><span></span><code>C:\&gt; ipconfig
+C:\&gt; ping 192.168.2.1    (Test gateway)
+</code></pre></div>
+
+<hr />
+<blockquote>
+<p><strong>Solution Code:</strong> See <code>Slip_02_Q2_OptionA.c</code> and <code>Slip_02_Q2_OptionB.c</code> in this folder.</p>
+</blockquote>
+    
+    <script>
+        // Add syntax highlighting for code blocks
+        document.querySelectorAll('pre code').forEach((block) => {
+            block.style.fontFamily = "'Consolas', 'Monaco', 'Courier New', monospace";
+        });
+    </script>
+</body>
+</html>

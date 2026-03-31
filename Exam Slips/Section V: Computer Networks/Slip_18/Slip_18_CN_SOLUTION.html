@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slip_18_CN_SOLUTION.md</title>
+    <style>
+        @media print {
+            body { margin: 0.5in; }
+            h1, h2, h3 { page-break-after: avoid; }
+            pre, table { page-break-inside: avoid; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
+            font-size: 11pt;
+        }
+        
+        h1 {
+            color: #1a237e;
+            border-bottom: 3px solid #3f51b5;
+            padding-bottom: 10px;
+            font-size: 28pt;
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #283593;
+            border-bottom: 2px solid #5c6bc0;
+            padding-bottom: 8px;
+            margin-top: 35px;
+            font-size: 20pt;
+        }
+        
+        h3 {
+            color: #3949ab;
+            font-size: 16pt;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #5c6bc0;
+            font-size: 13pt;
+            margin-top: 20px;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 10pt;
+            color: #d32f2f;
+        }
+        
+        pre {
+            background-color: #263238;
+            color: #aed581;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+            overflow-x: auto;
+            font-size: 9.5pt;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 10pt;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3f51b5;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        tr:hover {
+            background-color: #e8eaf6;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 30px 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #ff9800;
+            padding-left: 15px;
+            color: #616161;
+            font-style: italic;
+            margin: 20px 0;
+            background-color: #fff3e0;
+            padding: 10px 15px;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background-color: #45a049;
+        }
+        
+        @media print {
+            .print-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print to PDF</button>
+    <h1>Slip 18 — Computer Networks Solution Guide</h1>
+<h2>Q1: Theory Questions (10 Marks - Answer ANY 5)</h2>
+<hr />
+<h3>a) In Cisco's Packet Tracer, which command is used to change the prompt from Router&gt; to Router# mode?</h3>
+<h4>Concept</h4>
+<p>Cisco routers have different privilege levels or modes. Each mode provides different access levels and capabilities.</p>
+<h4>Router Modes</h4>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Prompt</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User EXEC Mode</td>
+<td><code>Router&gt;</code></td>
+<td>Basic monitoring, limited commands</td>
+</tr>
+<tr>
+<td>Privileged EXEC Mode</td>
+<td><code>Router#</code></td>
+<td>Full access, configuration, debugging</td>
+</tr>
+<tr>
+<td>Global Configuration</td>
+<td><code>Router(config)#</code></td>
+<td>System-wide configuration</td>
+</tr>
+<tr>
+<td>Interface Configuration</td>
+<td><code>Router(config-if)#</code></td>
+<td>Interface-specific settings</td>
+</tr>
+</tbody>
+</table>
+<h4>Command to Change from Router&gt; to Router</h4>
+<div class="codehilite"><pre><span></span><code>Router&gt; enable
+Router#
+</code></pre></div>
+
+<p>The <strong><code>enable</code></strong> command is used to enter Privileged EXEC Mode (Router#) from User EXEC Mode (Router&gt;).</p>
+<h4>Complete Mode Navigation Commands</h4>
+<div class="codehilite"><pre><span></span><code><span class="nv">Router</span><span class="o">&gt;</span><span class="w"> </span><span class="nv">enable</span><span class="w">                          </span><span class="o">!</span><span class="w"> </span><span class="nv">User</span><span class="w"> </span>→<span class="w"> </span><span class="nv">Privileged</span>
+<span class="nv">Router</span>#<span class="w"> </span><span class="nv">configure</span><span class="w"> </span><span class="nv">terminal</span><span class="w">              </span><span class="o">!</span><span class="w"> </span><span class="nv">Privileged</span><span class="w"> </span>→<span class="w"> </span><span class="nv">Global</span><span class="w"> </span><span class="nv">Config</span>
+<span class="nv">Router</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="nv">interface</span><span class="w"> </span><span class="nv">fa0</span><span class="o">/</span><span class="mi">0</span><span class="w">         </span><span class="o">!</span><span class="w"> </span><span class="nv">Global</span><span class="w"> </span>→<span class="w"> </span><span class="nv">Interface</span><span class="w"> </span><span class="nv">Config</span>
+<span class="nv">Router</span><span class="ss">(</span><span class="nv">config</span><span class="o">-</span><span class="k">if</span><span class="ss">)</span>#<span class="w"> </span><span class="k">exit</span><span class="w">                 </span><span class="o">!</span><span class="w"> </span><span class="nv">Back</span><span class="w"> </span><span class="nv">one</span><span class="w"> </span><span class="nv">level</span>
+<span class="nv">Router</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="k">exit</span><span class="w">                    </span><span class="o">!</span><span class="w"> </span><span class="nv">Back</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">Privileged</span>
+<span class="nv">Router</span>#<span class="w"> </span><span class="nv">disable</span><span class="w">                         </span><span class="o">!</span><span class="w"> </span><span class="nv">Privileged</span><span class="w"> </span>→<span class="w"> </span><span class="nv">User</span>
+<span class="nv">Router</span><span class="o">&gt;</span>
+</code></pre></div>
+
+<h4>Password Protection</h4>
+<p>To require a password for <code>enable</code>:</p>
+<div class="codehilite"><pre><span></span><code>Router(config)# enable secret MyPassword
+</code></pre></div>
+
+<h4>Summary</h4>
+<ul>
+<li><strong>Command</strong>: <code>enable</code></li>
+<li><strong>Purpose</strong>: Elevates privileges from User EXEC to Privileged EXEC</li>
+<li><strong>Prompt Change</strong>: <code>Router&gt;</code> → <code>Router#</code></li>
+</ul>
+<hr />
+<h3>b) Steps to Connect a PC to the Linksys Router's Web-Based Configuration Page and Default IP Address</h3>
+<h4>Default IP Address</h4>
+<p><strong>Linksys Router Default IP</strong>: <code>192.168.1.1</code></p>
+<p>Other common defaults:<br />
+| Manufacturer | Default IP | Default Gateway |<br />
+|--------------|------------|-----------------|<br />
+| Linksys | 192.168.1.1 | 192.168.1.1 |<br />
+| Netgear | 192.168.0.1 | 192.168.0.1 |<br />
+| TP-Link | 192.168.0.1 | 192.168.0.1 |<br />
+| D-Link | 192.168.0.1 | 192.168.0.1 |</p>
+<h4>Steps to Connect</h4>
+<h5>Step 1: Physical Connection</h5>
+<ol>
+<li>Connect one end of an Ethernet cable to the PC's network port</li>
+<li>Connect the other end to one of the LAN ports (1-4) on the Linksys router</li>
+<li>Ensure the router is powered ON</li>
+<li>Wait for link lights to show connection</li>
+</ol>
+<h5>Step 2: Configure PC IP Settings</h5>
+<p><strong>Option A: DHCP (Automatic)</strong><br />
+1. Open Network Settings on PC<br />
+2. Select the Ethernet adapter<br />
+3. Set to "Obtain an IP address automatically"<br />
+4. PC will receive IP like 192.168.1.x from router</p>
+<p><strong>Option B: Static IP</strong><br />
+1. Go to Network Connections → Ethernet Properties<br />
+2. Select IPv4 → Properties<br />
+3. Configure:<br />
+   - IP Address: <code>192.168.1.10</code><br />
+   - Subnet Mask: <code>255.255.255.0</code><br />
+   - Default Gateway: <code>192.168.1.1</code><br />
+   - DNS Server: <code>192.168.1.1</code></p>
+<h5>Step 3: Access Web Configuration</h5>
+<ol>
+<li>Open a web browser (Chrome, Firefox, Edge)</li>
+<li>Enter router IP in address bar: <code>http://192.168.1.1</code></li>
+<li>Press Enter</li>
+</ol>
+<h5>Step 4: Login to Router</h5>
+<ol>
+<li>Login page appears</li>
+<li>Default credentials:<br />
+   - <strong>Username</strong>: (leave blank or <code>admin</code>)<br />
+   - <strong>Password</strong>: <code>admin</code></li>
+<li>Click Login/Submit</li>
+</ol>
+<h5>Step 5: Configure Router</h5>
+<ul>
+<li>Change admin password (security)</li>
+<li>Configure wireless settings (SSID, password)</li>
+<li>Set up internet connection type</li>
+<li>Configure DHCP settings</li>
+<li>Enable/disable firewall</li>
+</ul>
+<h4>Troubleshooting</h4>
+<div class="codehilite"><pre><span></span><code># Windows Command Prompt
+C:\&gt; ipconfig                    # Check IP configuration
+C:\&gt; ping 192.168.1.1           # Test connection to router
+C:\&gt; ipconfig /release          # Release DHCP lease
+C:\&gt; ipconfig /renew            # Get new DHCP lease
+</code></pre></div>
+
+<hr />
+<h3>c) What is Dynamic Routing? Give its Features</h3>
+<h4>Concept</h4>
+<p><strong>Dynamic Routing</strong> is a networking technique where routers automatically learn and share network topology information using routing protocols, without manual configuration.</p>
+<h4>How Dynamic Routing Works</h4>
+<div class="codehilite"><pre><span></span><code>+----------+       Routing       +----------+
+| Router A | ← → Protocol Messages → ← → | Router B |
++----------+                     +----------+
+     ↓ Learns routes automatically ↓
+   Updates routing table when network changes
+</code></pre></div>
+
+<h4>Comparison: Static vs Dynamic Routing</h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Static Routing</th>
+<th>Dynamic Routing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Configuration</td>
+<td>Manual</td>
+<td>Automatic</td>
+</tr>
+<tr>
+<td>Scalability</td>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Bandwidth Usage</td>
+<td>None</td>
+<td>Uses bandwidth for updates</td>
+</tr>
+<tr>
+<td>Adaptability</td>
+<td>No auto-adjustment</td>
+<td>Adapts to changes</td>
+</tr>
+<tr>
+<td>CPU Usage</td>
+<td>Low</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td>Best For</td>
+<td>Small networks</td>
+<td>Large networks</td>
+</tr>
+</tbody>
+</table>
+<h4>Dynamic Routing Protocols</h4>
+<table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Type</th>
+<th>Algorithm</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RIP</td>
+<td>Distance Vector</td>
+<td>Bellman-Ford</td>
+<td>Small networks</td>
+</tr>
+<tr>
+<td>OSPF</td>
+<td>Link State</td>
+<td>Dijkstra's</td>
+<td>Enterprise networks</td>
+</tr>
+<tr>
+<td>EIGRP</td>
+<td>Hybrid</td>
+<td>DUAL</td>
+<td>Cisco environments</td>
+</tr>
+<tr>
+<td>BGP</td>
+<td>Path Vector</td>
+<td>Best Path</td>
+<td>Internet backbone</td>
+</tr>
+<tr>
+<td>IS-IS</td>
+<td>Link State</td>
+<td>SPF</td>
+<td>Large ISP networks</td>
+</tr>
+</tbody>
+</table>
+<h4>Features of Dynamic Routing</h4>
+<h5>1. Automatic Route Discovery</h5>
+<ul>
+<li>Routers discover neighbors automatically</li>
+<li>Build routing tables without manual entry</li>
+<li>Learn optimal paths to all networks</li>
+</ul>
+<h5>2. Self-Healing/Convergence</h5>
+<ul>
+<li>Automatically detects link failures</li>
+<li>Recalculates alternative routes</li>
+<li>Network recovers without admin intervention</li>
+</ul>
+<h5>3. Load Balancing</h5>
+<ul>
+<li>Distributes traffic across multiple paths</li>
+<li>Improves network performance</li>
+<li>Supports equal-cost multipath (ECMP)</li>
+</ul>
+<h5>4. Scalability</h5>
+<ul>
+<li>Easily add new routers/networks</li>
+<li>Protocol handles topology changes</li>
+<li>Suitable for large enterprise networks</li>
+</ul>
+<h5>5. Reduced Administrative Overhead</h5>
+<ul>
+<li>No need to manually update every router</li>
+<li>Changes propagate automatically</li>
+<li>Less prone to human configuration errors</li>
+</ul>
+<h5>6. Metric-Based Path Selection</h5>
+<ul>
+<li>Uses metrics (hop count, bandwidth, delay)</li>
+<li>Chooses best path based on criteria</li>
+<li>Example: OSPF uses cost (100M/bandwidth)</li>
+</ul>
+<h5>7. Neighbor Relationships</h5>
+<ul>
+<li>Routers form adjacencies</li>
+<li>Exchange routing information</li>
+<li>Maintain state of neighbor routers</li>
+</ul>
+<h4>Configuration Example (Cisco OSPF)</h4>
+<div class="codehilite"><pre><span></span><code>Router(config)# router ospf 1
+Router(config-router)# network 192.168.1.0 0.0.0.255 area 0
+Router(config-router)# network 10.0.0.0 0.255.255.255 area 0
+</code></pre></div>
+
+<h4>Configuration Example (Cisco RIP)</h4>
+<div class="codehilite"><pre><span></span><code>Router(config)# router rip
+Router(config-router)# version 2
+Router(config-router)# network 192.168.1.0
+Router(config-router)# network 10.0.0.0
+</code></pre></div>
+
+<hr />
+<h3>d) List Commands Used for Network Address Translation (NAT) on Cisco's Packet Tracer</h3>
+<h4>Concept</h4>
+<p><strong>NAT (Network Address Translation)</strong> translates private IP addresses to public IP addresses, allowing multiple devices to share a single public IP.</p>
+<h4>NAT Configuration Commands</h4>
+<h5>1. Define Inside and Outside Interfaces</h5>
+<div class="codehilite"><pre><span></span><code><span class="nv">Router</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="nv">interface</span><span class="w"> </span><span class="nv">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+<span class="nv">Router</span><span class="ss">(</span><span class="nv">config</span><span class="o">-</span><span class="k">if</span><span class="ss">)</span>#<span class="w"> </span><span class="nv">ip</span><span class="w"> </span><span class="nv">nat</span><span class="w"> </span><span class="nv">inside</span>
+<span class="nv">Router</span><span class="ss">(</span><span class="nv">config</span><span class="o">-</span><span class="k">if</span><span class="ss">)</span>#<span class="w"> </span><span class="k">exit</span>
+
+<span class="nv">Router</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="nv">interface</span><span class="w"> </span><span class="nv">GigabitEthernet0</span><span class="o">/</span><span class="mi">1</span><span class="w">  </span>
+<span class="nv">Router</span><span class="ss">(</span><span class="nv">config</span><span class="o">-</span><span class="k">if</span><span class="ss">)</span>#<span class="w"> </span><span class="nv">ip</span><span class="w"> </span><span class="nv">nat</span><span class="w"> </span><span class="nv">outside</span>
+<span class="nv">Router</span><span class="ss">(</span><span class="nv">config</span><span class="o">-</span><span class="k">if</span><span class="ss">)</span>#<span class="w"> </span><span class="k">exit</span>
+</code></pre></div>
+
+<h5>2. Static NAT (One-to-One Mapping)</h5>
+<div class="codehilite"><pre><span></span><code><span class="o">!</span><span class="w"> </span><span class="nv">Map</span><span class="w"> </span><span class="nv">internal</span><span class="w"> </span><span class="nv">IP</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">external</span><span class="w"> </span><span class="nv">IP</span>
+<span class="nv">Router</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="nv">ip</span><span class="w"> </span><span class="nv">nat</span><span class="w"> </span><span class="nv">inside</span><span class="w"> </span><span class="nv">source</span><span class="w"> </span><span class="nv">static</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">10</span><span class="w"> </span><span class="mi">203</span>.<span class="mi">0</span>.<span class="mi">113</span>.<span class="mi">10</span>
+
+<span class="o">!</span><span class="w"> </span><span class="k">For</span><span class="w"> </span><span class="nv">specific</span><span class="w"> </span><span class="nv">port</span><span class="w"> </span><span class="ss">(</span><span class="nv">Port</span><span class="w"> </span><span class="nv">Forwarding</span><span class="ss">)</span>
+<span class="nv">Router</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="nv">ip</span><span class="w"> </span><span class="nv">nat</span><span class="w"> </span><span class="nv">inside</span><span class="w"> </span><span class="nv">source</span><span class="w"> </span><span class="nv">static</span><span class="w"> </span><span class="nv">tcp</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">10</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="mi">203</span>.<span class="mi">0</span>.<span class="mi">113</span>.<span class="mi">10</span><span class="w"> </span><span class="mi">8080</span>
+</code></pre></div>
+
+<h5>3. Dynamic NAT (Pool of Public IPs)</h5>
+<div class="codehilite"><pre><span></span><code><span class="p">!</span><span class="w"> </span><span class="nx">Create</span><span class="w"> </span><span class="nx">pool</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">public</span><span class="w"> </span><span class="nx">addresses</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">pool</span><span class="w"> </span><span class="nx">MYPOOL</span><span class="w"> </span><span class="m m-Double">203.0.113.1</span><span class="w"> </span><span class="m m-Double">203.0.113.10</span><span class="w"> </span><span class="nx">netmask</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Define</span><span class="w"> </span><span class="nx">which</span><span class="w"> </span><span class="nx">internal</span><span class="w"> </span><span class="nx">addresses</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">translate</span><span class="w"> </span><span class="p">(</span><span class="nx">ACL</span><span class="p">)</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">access</span><span class="o">-</span><span class="nx">list</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="nx">permit</span><span class="w"> </span><span class="m m-Double">192.168.1.0</span><span class="w"> </span><span class="m m-Double">0.0.0.255</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Link</span><span class="w"> </span><span class="nx">ACL</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">NAT</span><span class="w"> </span><span class="nx">pool</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">inside</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="nx">pool</span><span class="w"> </span><span class="nx">MYPOOL</span>
+</code></pre></div>
+
+<h5>4. PAT / NAT Overload (Many-to-One)</h5>
+<div class="codehilite"><pre><span></span><code><span class="o">!</span><span class="w"> </span><span class="n">Using</span><span class="w"> </span><span class="n">interface</span><span class="s1">&#39;s IP address</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1"># access-list 1 permit 192.168.1.0 0.0.0.255</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1"># ip nat inside source list 1 interface GigabitEthernet0/1 overload</span>
+
+<span class="o">!</span><span class="w"> </span><span class="n">Or</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">pool</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">overload</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1"># ip nat inside source list 1 pool MYPOOL overload</span>
+</code></pre></div>
+
+<h5>5. Verification Commands</h5>
+<div class="codehilite"><pre><span></span><code>Router# show ip nat translations          ! View NAT table
+Router# show ip nat statistics            ! View NAT stats
+Router# clear ip nat translation *        ! Clear all translations
+Router# debug ip nat                      ! Enable NAT debugging
+Router# show running-config | section nat ! View NAT config
+</code></pre></div>
+
+<h4>NAT Types Summary Table</h4>
+<table>
+<thead>
+<tr>
+<th>NAT Type</th>
+<th>Command</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Static NAT</td>
+<td><code>ip nat inside source static</code></td>
+<td>Servers needing public access</td>
+</tr>
+<tr>
+<td>Dynamic NAT</td>
+<td><code>ip nat inside source list pool</code></td>
+<td>Many hosts, many public IPs</td>
+</tr>
+<tr>
+<td>PAT/Overload</td>
+<td><code>ip nat inside source list ... overload</code></td>
+<td>Many hosts, one public IP</td>
+</tr>
+</tbody>
+</table>
+<h4>Complete Configuration Example</h4>
+<div class="codehilite"><pre><span></span><code><span class="o">!</span><span class="w"> </span><span class="n">Configure</span><span class="w"> </span><span class="n">interfaces</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1"># interface GigabitEthernet0/0</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="c1"># ip address 192.168.1.1 255.255.255.0</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="c1"># ip nat inside</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="c1"># no shutdown</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="c1"># exit</span>
+
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1"># interface GigabitEthernet0/1</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="c1"># ip address 203.0.113.1 255.255.255.0</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="c1"># ip nat outside</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="c1"># no shutdown</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="c1"># exit</span>
+
+<span class="o">!</span><span class="w"> </span><span class="n">Configure</span><span class="w"> </span><span class="n">PAT</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1"># access-list 1 permit 192.168.1.0 0.0.0.255</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1"># ip nat inside source list 1 interface GigabitEthernet0/1 overload</span>
+
+<span class="o">!</span><span class="w"> </span><span class="n">Verify</span>
+<span class="n">Router</span><span class="c1"># show ip nat translations</span>
+</code></pre></div>
+
+<hr />
+<h3>f) Explain Steps to Identify a Phishing Email</h3>
+<h4>Concept</h4>
+<p><strong>Phishing</strong> is a social engineering attack where attackers send fraudulent emails disguised as legitimate communications to steal sensitive information (passwords, credit cards, personal data).</p>
+<h4>Steps to Identify Phishing Emails</h4>
+<h5>Step 1: Check the Sender's Email Address</h5>
+<div class="codehilite"><pre><span></span><code><span class="n">Legitimate</span><span class="o">:</span><span class="w">  </span><span class="n">support</span><span class="err">@</span><span class="n">paypal</span><span class="o">.</span><span class="na">com</span>
+<span class="n">Phishing</span><span class="o">:</span><span class="w">    </span><span class="n">support</span><span class="err">@</span><span class="n">paypa1</span><span class="o">.</span><span class="na">com</span><span class="w"> </span><span class="o">(</span><span class="n">using</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="w"> </span><span class="n">instead</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="s1">&#39;l&#39;</span><span class="o">)</span>
+<span class="w">             </span><span class="n">support</span><span class="err">@</span><span class="n">paypal</span><span class="o">-</span><span class="n">security</span><span class="o">.</span><span class="na">com</span><span class="w"> </span><span class="o">(</span><span class="n">added</span><span class="w"> </span><span class="n">domain</span><span class="o">)</span>
+<span class="w">             </span><span class="n">support</span><span class="err">@</span><span class="n">paypal</span><span class="o">.</span><span class="na">suspicious</span><span class="o">.</span><span class="na">com</span><span class="w"> </span><span class="o">(</span><span class="n">subdomain</span><span class="w"> </span><span class="n">trick</span><span class="o">)</span>
+</code></pre></div>
+
+<p><strong>What to look for:</strong><br />
+- Misspelled domain names<br />
+- Extra characters or numbers<br />
+- Unusual domain extensions<br />
+- Different reply-to address</p>
+<h5>Step 2: Examine the Subject Line</h5>
+<p><strong>Red flags:</strong><br />
+- Urgent action required: "Your account will be closed!"<br />
+- Threats: "Unauthorized access detected!"<br />
+- Too good to be true: "You've won $1,000,000!"<br />
+- Suspicious urgency: "Act within 24 hours"</p>
+<h5>Step 3: Hover Over Links (Don't Click!)</h5>
+<div class="codehilite"><pre><span></span><code>Displayed text:  www.paypal.com/login
+Actual URL:      www.phishing-site.com/paypal
+
+Check by hovering to see the real destination in browser status bar
+</code></pre></div>
+
+<p><strong>What to check:</strong><br />
+- Does the URL match the displayed text?<br />
+- Is it using HTTP instead of HTTPS?<br />
+- Are there misspellings in the URL?<br />
+- Is it using URL shorteners (bit.ly, tinyurl)?</p>
+<h5>Step 4: Look for Grammar and Spelling Errors</h5>
+<p><strong>Phishing indicators:</strong><br />
+- Poor grammar: "Your account have been suspended"<br />
+- Spelling mistakes: "We have detcted unusual activity"<br />
+- Unusual formatting or inconsistent fonts<br />
+- Machine-translated text</p>
+<h5>Step 5: Check for Generic Greetings</h5>
+<div class="codehilite"><pre><span></span><code>Legitimate:  &quot;Dear John Smith,&quot;
+Phishing:    &quot;Dear Customer,&quot;
+             &quot;Dear User,&quot;
+             &quot;Dear Account Holder,&quot;
+</code></pre></div>
+
+<h5>Step 6: Verify Attachments Are Expected</h5>
+<p><strong>Dangerous attachment types:</strong><br />
+- <code>.exe</code>, <code>.bat</code>, <code>.cmd</code> (executables)<br />
+- <code>.zip</code>, <code>.rar</code> with password in email<br />
+- <code>.doc</code>, <code>.xls</code> asking to "enable macros"<br />
+- <code>.html</code>, <code>.htm</code> files</p>
+<h5>Step 7: Check for Requests for Sensitive Information</h5>
+<p><strong>Legitimate companies NEVER ask via email for:</strong><br />
+- Passwords<br />
+- Credit card numbers<br />
+- Social Security numbers<br />
+- PINs or OTPs<br />
+- Full account numbers</p>
+<h5>Step 8: Verify Through Official Channels</h5>
+<ol>
+<li>Don't click links in the email</li>
+<li>Open a new browser window</li>
+<li>Type the official website URL manually</li>
+<li>Log in and check for alerts/messages</li>
+<li>Call the company's official phone number</li>
+</ol>
+<h5>Step 9: Check Email Headers (Advanced)</h5>
+<div class="codehilite"><pre><span></span><code><span class="k">View</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="n">headers</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">verify</span><span class="p">:</span>
+<span class="o">-</span><span class="w"> </span><span class="nl">Received</span><span class="p">:</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="p">(</span><span class="n">actual</span><span class="w"> </span><span class="n">sending</span><span class="w"> </span><span class="n">server</span><span class="p">)</span>
+<span class="o">-</span><span class="w"> </span><span class="k">Return</span><span class="o">-</span><span class="k">Path</span><span class="err">:</span><span class="w"> </span><span class="p">(</span><span class="k">where</span><span class="w"> </span><span class="n">replies</span><span class="w"> </span><span class="k">go</span><span class="p">)</span>
+<span class="o">-</span><span class="w"> </span><span class="n">SPF</span><span class="o">/</span><span class="n">DKIM</span><span class="o">/</span><span class="nl">DMARC</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">authentication</span><span class="w"> </span><span class="n">status</span><span class="p">)</span>
+</code></pre></div>
+
+<h4>Quick Checklist</h4>
+<div class="codehilite"><pre><span></span><code>[<span class="w"> </span>]<span class="w"> </span><span class="nv">Sender</span><span class="w"> </span><span class="nv">email</span><span class="w"> </span><span class="nv">matches</span><span class="w"> </span><span class="nv">official</span><span class="w"> </span><span class="nv">domain</span>
+[<span class="w"> </span>]<span class="w"> </span><span class="nv">No</span><span class="w"> </span><span class="nv">urgent</span><span class="o">/</span><span class="nv">threatening</span><span class="w"> </span><span class="nv">language</span>
+[<span class="w"> </span>]<span class="w"> </span><span class="nv">Links</span><span class="w"> </span><span class="nv">point</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">legitimate</span><span class="w"> </span><span class="nv">URLs</span>
+[<span class="w"> </span>]<span class="w"> </span><span class="nv">No</span><span class="w"> </span><span class="nv">grammar</span><span class="o">/</span><span class="nv">spelling</span><span class="w"> </span><span class="nv">errors</span>
+[<span class="w"> </span>]<span class="w"> </span><span class="nv">Personalized</span><span class="w"> </span><span class="nv">greeting</span><span class="w"> </span><span class="ss">(</span><span class="nv">not</span><span class="w"> </span><span class="nv">generic</span><span class="ss">)</span>
+[<span class="w"> </span>]<span class="w"> </span><span class="nv">No</span><span class="w"> </span><span class="nv">unexpected</span><span class="w"> </span><span class="nv">attachments</span>
+[<span class="w"> </span>]<span class="w"> </span><span class="nv">No</span><span class="w"> </span><span class="nv">requests</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">sensitive</span><span class="w"> </span><span class="nv">info</span>
+[<span class="w"> </span>]<span class="w"> </span><span class="nv">Company</span><span class="w"> </span><span class="nv">logo</span><span class="o">/</span><span class="nv">branding</span><span class="w"> </span><span class="nv">looks</span><span class="w"> </span><span class="nv">correct</span>
+</code></pre></div>
+
+<h4>Example Phishing Email Analysis</h4>
+<div class="codehilite"><pre><span></span><code><span class="nl">From</span><span class="p">:</span><span class="w"> </span><span class="n">security</span><span class="p">@</span><span class="n">amazon</span><span class="o">-</span><span class="n">verify</span><span class="p">.</span><span class="n">com</span><span class="w">        </span><span class="err">←</span><span class="w"> </span><span class="n">Fake</span><span class="w"> </span><span class="n">domain</span><span class="o">!</span>
+<span class="nl">Subject</span><span class="p">:</span><span class="w"> </span><span class="n">URGENT</span><span class="o">:</span><span class="w"> </span><span class="n">Verify</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="n">NOW</span><span class="o">!</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="n">Fear</span><span class="o">/</span><span class="n">urgency</span>
+<span class="o">--------------------------------------------------------</span>
+<span class="n">Dear</span><span class="w"> </span><span class="n">Customer</span><span class="p">,</span><span class="w">                          </span><span class="err">←</span><span class="w"> </span><span class="n">Generic</span><span class="w"> </span><span class="n">greeting</span>
+
+<span class="n">Your</span><span class="w"> </span><span class="n">amazon</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">compromized</span><span class="p">.</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="n">Spelling</span><span class="w"> </span><span class="n">error</span>
+<span class="n">Click</span><span class="w"> </span><span class="n">here</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">verify</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">Verify</span><span class="w"> </span><span class="n">Now</span><span class="p">]</span><span class="w">      </span><span class="err">←</span><span class="w"> </span><span class="n">Suspicious</span><span class="w"> </span><span class="n">link</span>
+<span class="w">                      </span><span class="p">(</span><span class="n">points</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">malicious</span><span class="w"> </span><span class="n">site</span><span class="p">)</span>
+
+<span class="n">If</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">don</span><span class="err">&#39;</span><span class="n">t</span><span class="w"> </span><span class="n">act</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="n">hours</span><span class="p">,</span><span class="w"> </span><span class="n">your</span><span class="w">      </span><span class="err">←</span><span class="w"> </span><span class="n">Urgency</span><span class="o">/</span><span class="n">threat</span>
+<span class="n">account</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">permanantly</span><span class="w"> </span><span class="n">closed</span><span class="p">.</span><span class="w">     </span><span class="err">←</span><span class="w"> </span><span class="n">Spelling</span><span class="w"> </span><span class="n">error</span>
+
+<span class="n">Amazon</span><span class="w"> </span><span class="n">Security</span><span class="w"> </span><span class="n">Team</span><span class="w">                    </span><span class="err">←</span><span class="w"> </span><span class="n">Generic</span><span class="w"> </span><span class="n">signature</span>
+</code></pre></div>
+
+<hr />
+<h3>g) Perform Dictionary Attack on SHA256 Hash Using Hashcat</h3>
+<h4>Concept</h4>
+<p><strong>Dictionary Attack</strong>: A method of cracking passwords by systematically testing each word from a pre-compiled list (dictionary/wordlist) until the correct password is found.</p>
+<p><strong>SHA256</strong>: A cryptographic hash function that produces a 256-bit (32-byte) hash value, commonly used for password storage.</p>
+<h4>Prerequisites</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Install Hashcat on Linux</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>hashcat
+
+<span class="c1"># Verify installation</span>
+hashcat<span class="w"> </span>--version
+</code></pre></div>
+
+<h4>Step 1: Create a Hash File</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Create file containing the SHA256 hash to crack</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;5e884898da28047d9e8a52c8bfe11a3df7f24e8e0f7f2fb9b3f3e3c3e3c3e3c3&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>hash.txt
+
+<span class="c1"># Or if you have a password and want to test:</span>
+<span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;password123&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sha256sum
+<span class="c1"># Output: ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f</span>
+</code></pre></div>
+
+<h4>Step 2: Obtain/Create a Wordlist</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Common wordlist locations on Kali Linux</span>
+/usr/share/wordlists/rockyou.txt
+/usr/share/wordlists/dirb/common.txt
+
+<span class="c1"># Create a simple test wordlist</span>
+cat<span class="w"> </span>&gt;<span class="w"> </span>wordlist.txt<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
+<span class="s">password</span>
+<span class="s">123456</span>
+<span class="s">password123</span>
+<span class="s">admin</span>
+<span class="s">letmein</span>
+<span class="s">qwerty</span>
+<span class="s">welcome</span>
+<span class="s">monkey</span>
+<span class="s">dragon</span>
+<span class="s">master</span>
+<span class="s">EOF</span>
+
+<span class="c1"># Download rockyou.txt (if not available)</span>
+wget<span class="w"> </span>https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
+</code></pre></div>
+
+<h4>Step 3: Identify Hash Type</h4>
+<div class="codehilite"><pre><span></span><code><span class="nv">Hashcat</span><span class="w"> </span><span class="nv">Hash</span><span class="w"> </span><span class="nv">Mode</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">SHA256</span>:<span class="w"> </span><span class="mi">1400</span>
+
+<span class="nv">Common</span><span class="w"> </span><span class="nv">hash</span><span class="w"> </span><span class="nv">modes</span>:
+<span class="o">-</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">MD5</span>
+<span class="o">-</span><span class="w"> </span><span class="mi">100</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">SHA1</span>
+<span class="o">-</span><span class="w"> </span><span class="mi">1400</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">SHA256</span>
+<span class="o">-</span><span class="w"> </span><span class="mi">1700</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">SHA512</span>
+<span class="o">-</span><span class="w"> </span><span class="mi">3200</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">bcrypt</span>
+<span class="o">-</span><span class="w"> </span><span class="mi">1000</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">NTLM</span>
+</code></pre></div>
+
+<h4>Step 4: Run Hashcat Dictionary Attack</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Basic syntax</span>
+hashcat<span class="w"> </span>-m<span class="w"> </span>&lt;hash_mode&gt;<span class="w"> </span>-a<span class="w"> </span><span class="m">0</span><span class="w"> </span>&lt;hash_file&gt;<span class="w"> </span>&lt;wordlist&gt;
+
+<span class="c1"># SHA256 Dictionary Attack</span>
+hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">1400</span><span class="w"> </span>-a<span class="w"> </span><span class="m">0</span><span class="w"> </span>hash.txt<span class="w"> </span>wordlist.txt
+
+<span class="c1"># With options</span>
+hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">1400</span><span class="w"> </span>-a<span class="w"> </span><span class="m">0</span><span class="w"> </span>hash.txt<span class="w"> </span>rockyou.txt<span class="w"> </span>--force<span class="w"> </span>-o<span class="w"> </span>cracked.txt
+
+<span class="c1"># Explanation:</span>
+<span class="c1"># -m 1400     : Hash type (SHA256)</span>
+<span class="c1"># -a 0        : Attack mode (0 = straight/dictionary)</span>
+<span class="c1"># hash.txt    : File containing hash to crack</span>
+<span class="c1"># wordlist.txt: Dictionary file</span>
+<span class="c1"># --force     : Ignore warnings (use if needed)</span>
+<span class="c1"># -o cracked.txt : Output file for cracked passwords</span>
+</code></pre></div>
+
+<h4>Step 5: Useful Hashcat Options</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Show status during cracking</span>
+hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">1400</span><span class="w"> </span>-a<span class="w"> </span><span class="m">0</span><span class="w"> </span>hash.txt<span class="w"> </span>wordlist.txt<span class="w"> </span>--status
+
+<span class="c1"># Use rules to modify wordlist words</span>
+hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">1400</span><span class="w"> </span>-a<span class="w"> </span><span class="m">0</span><span class="w"> </span>hash.txt<span class="w"> </span>wordlist.txt<span class="w"> </span>-r<span class="w"> </span>/usr/share/hashcat/rules/best64.rule
+
+<span class="c1"># Use GPU (faster)</span>
+hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">1400</span><span class="w"> </span>-a<span class="w"> </span><span class="m">0</span><span class="w"> </span>hash.txt<span class="w"> </span>wordlist.txt<span class="w"> </span>-d<span class="w"> </span><span class="m">1</span>
+
+<span class="c1"># Restore a previous session</span>
+hashcat<span class="w"> </span>--restore
+
+<span class="c1"># Show cracked passwords</span>
+hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">1400</span><span class="w"> </span>hash.txt<span class="w"> </span>--show
+</code></pre></div>
+
+<h4>Complete Example Session</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 1. Create test hash (password is &quot;monkey&quot;)</span>
+<span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;monkey&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sha256sum<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>hash.txt
+cat<span class="w"> </span>hash.txt
+<span class="c1"># 000c285457fc971f862a79b786476c78812c8897063c6fa9c045f579a3b2d63f</span>
+
+<span class="c1"># 2. Create wordlist</span>
+<span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;password\n123456\nmonkey\nadmin\nqwerty&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>wordlist.txt
+
+<span class="c1"># 3. Run hashcat</span>
+hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">1400</span><span class="w"> </span>-a<span class="w"> </span><span class="m">0</span><span class="w"> </span>hash.txt<span class="w"> </span>wordlist.txt
+
+<span class="c1"># 4. Expected output:</span>
+<span class="c1"># 000c285457fc971f862a79b786476c78812c8897063c6fa9c045f579a3b2d63f:monkey</span>
+<span class="c1"># Status: Cracked</span>
+
+<span class="c1"># 5. View cracked password</span>
+hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">1400</span><span class="w"> </span>hash.txt<span class="w"> </span>--show
+</code></pre></div>
+
+<h4>Attack Modes Reference</h4>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a 0</td>
+<td>Dictionary</td>
+<td>Straight wordlist attack</td>
+</tr>
+<tr>
+<td>-a 1</td>
+<td>Combination</td>
+<td>Combine two wordlists</td>
+</tr>
+<tr>
+<td>-a 3</td>
+<td>Brute Force</td>
+<td>Try all combinations</td>
+</tr>
+<tr>
+<td>-a 6</td>
+<td>Hybrid</td>
+<td>Wordlist + mask</td>
+</tr>
+<tr>
+<td>-a 7</td>
+<td>Hybrid</td>
+<td>Mask + wordlist</td>
+</tr>
+</tbody>
+</table>
+<h4>Legal Disclaimer</h4>
+<p>⚠️ <strong>IMPORTANT</strong>: Only use Hashcat for:<br />
+- Testing your own password security<br />
+- Authorized penetration testing<br />
+- Educational purposes with proper permission</p>
+<p>Unauthorized password cracking is illegal and unethical.</p>
+<hr />
+<h2>Q2: Practical Questions (20 Marks)</h2>
+<hr />
+<h2>Option A: Phishing Simulation Program</h2>
+<h3>Concept</h3>
+<p>A phishing simulation demonstrates how attackers collect credentials through fake login pages. This educational program shows the mechanics without actual malicious intent.</p>
+<h3>Algorithm</h3>
+<div class="codehilite"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="n">START</span>
+<span class="mf">2.</span><span class="w"> </span><span class="n">Display</span><span class="w"> </span><span class="n">fake</span><span class="w"> </span><span class="nb">log</span><span class="n">in</span><span class="w"> </span><span class="n">prompt</span><span class="w"> </span><span class="p">(</span><span class="n">mimicking</span><span class="w"> </span><span class="n">legitimate</span><span class="w"> </span><span class="n">site</span><span class="p">)</span>
+<span class="mf">3.</span><span class="w"> </span><span class="n">Collect</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">user</span>
+<span class="mf">4.</span><span class="w"> </span><span class="n">Collect</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="p">(</span><span class="n">hidden</span><span class="w"> </span><span class="kr">input</span><span class="p">)</span>
+<span class="mf">5.</span><span class="w"> </span><span class="nb">Log</span><span class="w"> </span><span class="n">captured</span><span class="w"> </span><span class="n">credentials</span>
+<span class="mf">6.</span><span class="w"> </span><span class="n">Display</span><span class="w"> </span><span class="s">&quot;authentication failed&quot;</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="p">(</span><span class="n">typical</span><span class="w"> </span><span class="n">phishing</span><span class="w"> </span><span class="n">behavior</span><span class="p">)</span>
+<span class="mf">7.</span><span class="w"> </span><span class="n">Show</span><span class="w"> </span><span class="n">educational</span><span class="w"> </span><span class="n">warning</span><span class="w"> </span><span class="n">about</span><span class="w"> </span><span class="n">phishing</span>
+<span class="mf">8.</span><span class="w"> </span><span class="kr">END</span>
+</code></pre></div>
+
+<h3>Pseudocode</h3>
+<div class="codehilite"><pre><span></span><code>FUNCTION phishingSimulation():
+    clearScreen()
+    displayFakeBanner(&quot;SECURE BANK LOGIN&quot;)
+
+    PRINT &quot;Please enter your credentials&quot;
+
+    username = INPUT(&quot;Username: &quot;)
+    password = INPUT_HIDDEN(&quot;Password: &quot;)
+
+    timestamp = getCurrentTime()
+
+    logCredentials(timestamp, username, password)
+
+    PRINT &quot;Authentication failed. Please try again.&quot;
+    PRINT &quot;(This was a simulation - never enter real credentials)&quot;
+
+    displayPhishingWarnings()
+
+FUNCTION displayPhishingWarnings():
+    PRINT &quot;=== PHISHING AWARENESS ===&quot;
+    PRINT &quot;Signs of phishing:&quot;
+    PRINT &quot;- Suspicious URLs&quot;
+    PRINT &quot;- Urgent/threatening language&quot;
+    PRINT &quot;- Generic greetings&quot;
+    PRINT &quot;- Requests for sensitive info&quot;
+</code></pre></div>
+
+<h3>Time &amp; Space Complexity</h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Time</th>
+<th>Space</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Display prompt</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Capture input</td>
+<td>O(n)</td>
+<td>O(n) where n = input length</td>
+</tr>
+<tr>
+<td>Log to file</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Option B: NAT System Simulation</h2>
+<h3>Concept</h3>
+<p><strong>Network Address Translation (NAT)</strong> allows multiple devices on a private network to access the internet using a single public IP address. This simulation demonstrates:<br />
+- Private to public IP translation<br />
+- Port mapping for multiple connections<br />
+- Translation table management</p>
+<h3>NAT Types</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Static NAT</td>
+<td>1:1 mapping</td>
+<td>Servers</td>
+</tr>
+<tr>
+<td>Dynamic NAT</td>
+<td>Pool of public IPs</td>
+<td>Medium networks</td>
+</tr>
+<tr>
+<td>PAT/Overload</td>
+<td>Many:1 using ports</td>
+<td>Home/office networks</td>
+</tr>
+</tbody>
+</table>
+<h3>Algorithm</h3>
+<div class="codehilite"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="n">START</span>
+<span class="mf">2.</span><span class="w"> </span><span class="n">Initialize</span><span class="w"> </span><span class="n">NAT</span><span class="w"> </span><span class="nb">tab</span><span class="n">le</span><span class="w"> </span><span class="p">(</span><span class="n">empty</span><span class="p">)</span>
+<span class="mf">3.</span><span class="w"> </span><span class="n">Initialize</span><span class="w"> </span><span class="n">public</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="n">range</span>
+<span class="mf">4.</span><span class="w"> </span><span class="n">LOOP</span><span class="p">:</span>
+<span class="w">   </span><span class="n">a</span><span class="mf">.</span><span class="w"> </span><span class="n">Receive</span><span class="w"> </span><span class="n">packet</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="nb">int</span><span class="n">ernal</span><span class="w"> </span><span class="n">network</span>
+<span class="w">   </span><span class="n">b</span><span class="mf">.</span><span class="w"> </span><span class="n">Check</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="n">translation</span><span class="w"> </span><span class="n">exists</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">NAT</span><span class="w"> </span><span class="nb">tab</span><span class="n">le</span>
+<span class="w">   </span><span class="n">c</span><span class="mf">.</span><span class="w"> </span><span class="kr">If</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">exists</span><span class="p">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">Allocate</span><span class="w"> </span><span class="kr">new</span><span class="w"> </span><span class="n">public</span><span class="w"> </span><span class="n">port</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">Create</span><span class="w"> </span><span class="n">NAT</span><span class="w"> </span><span class="nb">tab</span><span class="n">le</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="p">(</span><span class="n">private_ip</span><span class="p">:</span><span class="n">port</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">public_ip</span><span class="p">:</span><span class="n">port</span><span class="p">)</span>
+<span class="w">   </span><span class="n">d</span><span class="mf">.</span><span class="w"> </span><span class="n">Translate</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="n">address</span>
+<span class="w">   </span><span class="n">e</span><span class="mf">.</span><span class="w"> </span><span class="kr">For</span><span class="n">ward</span><span class="w"> </span><span class="n">packet</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">destination</span>
+<span class="w">   </span><span class="n">f</span><span class="mf">.</span><span class="w"> </span><span class="kr">For</span><span class="w"> </span><span class="kr">return</span><span class="w"> </span><span class="n">traffic</span><span class="p">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">Look</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="n">translation</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">NAT</span><span class="w"> </span><span class="nb">tab</span><span class="n">le</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">Translate</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="n">back</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">private</span><span class="w"> </span><span class="n">address</span>
+<span class="mf">5.</span><span class="w"> </span><span class="kr">END</span>
+</code></pre></div>
+
+<h3>Pseudocode</h3>
+<div class="codehilite"><pre><span></span><code>STRUCTURE NATEntry:
+    private_ip: STRING
+    private_port: INTEGER
+    public_port: INTEGER
+    protocol: STRING
+    destination: STRING
+    timestamp: TIME
+
+GLOBAL nat_table: ARRAY of NATEntry
+GLOBAL public_ip: STRING = &quot;203.0.113.1&quot;
+GLOBAL next_port: INTEGER = 10000
+
+FUNCTION translateOutgoing(private_ip, private_port, dest_ip, dest_port):
+    // Check for existing translation
+    FOR entry IN nat_table:
+        IF entry.private_ip == private_ip AND entry.private_port == private_port:
+            RETURN (public_ip, entry.public_port)
+
+    // Create new translation
+    new_entry = CREATE NATEntry
+    new_entry.private_ip = private_ip
+    new_entry.private_port = private_port
+    new_entry.public_port = next_port++
+    new_entry.timestamp = NOW()
+
+    ADD new_entry TO nat_table
+
+    RETURN (public_ip, new_entry.public_port)
+
+FUNCTION translateIncoming(public_port):
+    FOR entry IN nat_table:
+        IF entry.public_port == public_port:
+            RETURN (entry.private_ip, entry.private_port)
+
+    RETURN NULL  // No translation found
+
+FUNCTION displayNATTable():
+    PRINT &quot;=== NAT Translation Table ===&quot;
+    PRINT &quot;Private IP:Port  →  Public IP:Port&quot;
+    FOR entry IN nat_table:
+        PRINT entry.private_ip:entry.private_port → public_ip:entry.public_port
+</code></pre></div>
+
+<h3>Time &amp; Space Complexity</h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Time</th>
+<th>Space</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add translation</td>
+<td>O(n) lookup, O(1) insert</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Lookup translation</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Display table</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Total table</td>
+<td>-</td>
+<td>O(n) where n = active connections</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Option C: Bus Topology with 4 PCs in Packet Tracer</h2>
+<h3>Configuration Details</h3>
+<table>
+<thead>
+<tr>
+<th>PC</th>
+<th>IP Address</th>
+<th>Subnet Mask</th>
+<th>Gateway</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC0</td>
+<td>192.168.1.1</td>
+<td>255.255.255.0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>PC1</td>
+<td>192.168.1.2</td>
+<td>255.255.255.0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>PC2</td>
+<td>192.168.1.3</td>
+<td>255.255.255.0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>PC3</td>
+<td>192.168.1.4</td>
+<td>255.255.255.0</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3>Steps in Packet Tracer</h3>
+<h4>Step 1: Add Devices</h4>
+<ol>
+<li>Open Cisco Packet Tracer</li>
+<li>From End Devices, drag 4 PCs to workspace</li>
+<li>From Network Devices → Hubs, drag a Hub (for bus simulation)</li>
+</ol>
+<h4>Step 2: Connect Devices</h4>
+<ol>
+<li>Select Connections → Copper Straight-Through cable</li>
+<li>Connect PC0 FastEthernet0 → Hub Port0</li>
+<li>Connect PC1 FastEthernet0 → Hub Port1</li>
+<li>Connect PC2 FastEthernet0 → Hub Port2</li>
+<li>Connect PC3 FastEthernet0 → Hub Port3</li>
+</ol>
+<h4>Step 3: Configure IP Addresses</h4>
+<p><strong>PC0:</strong><br />
+1. Click PC0 → Desktop → IP Configuration<br />
+2. Select Static<br />
+3. Enter:<br />
+   - IP Address: <code>192.168.1.1</code><br />
+   - Subnet Mask: <code>255.255.255.0</code></p>
+<p><strong>PC1:</strong><br />
+1. Click PC1 → Desktop → IP Configuration<br />
+2. Enter:<br />
+   - IP Address: <code>192.168.1.2</code><br />
+   - Subnet Mask: <code>255.255.255.0</code></p>
+<p><strong>PC2:</strong><br />
+1. Click PC2 → Desktop → IP Configuration<br />
+2. Enter:<br />
+   - IP Address: <code>192.168.1.3</code><br />
+   - Subnet Mask: <code>255.255.255.0</code></p>
+<p><strong>PC3:</strong><br />
+1. Click PC3 → Desktop → IP Configuration<br />
+2. Enter:<br />
+   - IP Address: <code>192.168.1.4</code><br />
+   - Subnet Mask: <code>255.255.255.0</code></p>
+<h4>Step 4: Verify Connectivity</h4>
+<p>From PC0 Command Prompt:</p>
+<div class="codehilite"><pre><span></span><code>C:\&gt; ping 192.168.1.2
+C:\&gt; ping 192.168.1.3
+C:\&gt; ping 192.168.1.4
+</code></pre></div>
+
+<h3>Bus Topology Characteristics</h3>
+<ul>
+<li>All devices share single communication line</li>
+<li>Hub broadcasts to all ports (simulates bus)</li>
+<li>Collision domain = entire network</li>
+<li>Simple but not scalable</li>
+<li>Single point of failure at hub</li>
+</ul>
+<h3>Network Diagram</h3>
+<div class="codehilite"><pre><span></span><code>         HUB (Bus Simulation)
+    ┌──────┬──────┬──────┐
+    │      │      │      │
+   PC0    PC1    PC2    PC3
+192.168  192.168  192.168  192.168
+  .1.1    .1.2    .1.3    .1.4
+</code></pre></div>
+
+<hr />
+<blockquote>
+<p><strong>Solution Code:</strong> See <code>Slip_18_Q2_OptionA.c</code> and <code>Slip_18_Q2_OptionB.c</code> in this folder.</p>
+</blockquote>
+    
+    <script>
+        // Add syntax highlighting for code blocks
+        document.querySelectorAll('pre code').forEach((block) => {
+            block.style.fontFamily = "'Consolas', 'Monaco', 'Courier New', monospace";
+        });
+    </script>
+</body>
+</html>

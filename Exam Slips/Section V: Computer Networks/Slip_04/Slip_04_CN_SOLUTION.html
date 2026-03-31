@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slip_04_CN_SOLUTION.md</title>
+    <style>
+        @media print {
+            body { margin: 0.5in; }
+            h1, h2, h3 { page-break-after: avoid; }
+            pre, table { page-break-inside: avoid; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
+            font-size: 11pt;
+        }
+        
+        h1 {
+            color: #1a237e;
+            border-bottom: 3px solid #3f51b5;
+            padding-bottom: 10px;
+            font-size: 28pt;
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #283593;
+            border-bottom: 2px solid #5c6bc0;
+            padding-bottom: 8px;
+            margin-top: 35px;
+            font-size: 20pt;
+        }
+        
+        h3 {
+            color: #3949ab;
+            font-size: 16pt;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #5c6bc0;
+            font-size: 13pt;
+            margin-top: 20px;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 10pt;
+            color: #d32f2f;
+        }
+        
+        pre {
+            background-color: #263238;
+            color: #aed581;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+            overflow-x: auto;
+            font-size: 9.5pt;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 10pt;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3f51b5;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        tr:hover {
+            background-color: #e8eaf6;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 30px 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #ff9800;
+            padding-left: 15px;
+            color: #616161;
+            font-style: italic;
+            margin: 20px 0;
+            background-color: #fff3e0;
+            padding: 10px 15px;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background-color: #45a049;
+        }
+        
+        @media print {
+            .print-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print to PDF</button>
+    <h1>Slip 4 — Computer Networks Solution Guide</h1>
+<h2>Question 1 (10 Marks) - Theory Questions (Answer ANY 5)</h2>
+<hr />
+<h2>Q1(a): What is Cyber Attack? Write the types of Cyberattacks</h2>
+<h3>Definition</h3>
+<p>A <strong>Cyber Attack</strong> is a deliberate attempt by individuals or organizations to breach the information systems of another individual or organization. The attacker seeks to gain unauthorized access, disrupt operations, steal data, or cause damage to computer systems, networks, or devices.</p>
+<h3>Key Characteristics</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intent</td>
+<td>Malicious purpose to harm or exploit</td>
+</tr>
+<tr>
+<td>Target</td>
+<td>Computer systems, networks, data</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>Digital means via internet/network</td>
+</tr>
+<tr>
+<td>Impact</td>
+<td>Data loss, financial damage, service disruption</td>
+</tr>
+</tbody>
+</table>
+<h3>Types of Cyber Attacks</h3>
+<h4>1. <strong>Malware Attacks</strong></h4>
+<ul>
+<li><strong>Virus</strong>: Self-replicating code that attaches to programs</li>
+<li><strong>Worm</strong>: Spreads across networks without user action</li>
+<li><strong>Trojan Horse</strong>: Disguised as legitimate software</li>
+<li><strong>Ransomware</strong>: Encrypts data and demands payment</li>
+<li><strong>Spyware</strong>: Secretly monitors user activity</li>
+</ul>
+<h4>2. <strong>Phishing Attacks</strong></h4>
+<ul>
+<li>Fraudulent emails/messages mimicking legitimate sources</li>
+<li>Trick users into revealing sensitive information</li>
+<li>Types: Spear phishing (targeted), Whaling (executives)</li>
+</ul>
+<h4>3. <strong>Man-in-the-Middle (MITM) Attack</strong></h4>
+<div class="codehilite"><pre><span></span><code><span class="k">[Victim A] ←→ [Attacker] ←→ [Victim B]</span>
+<span class="w">        </span><span class="na">Intercepts and modifies communication</span>
+</code></pre></div>
+
+<h4>4. <strong>Denial of Service (DoS/DDoS)</strong></h4>
+<ul>
+<li>Floods target with traffic to overwhelm resources</li>
+<li>Distributed DoS uses multiple compromised systems</li>
+</ul>
+<h4>5. <strong>SQL Injection</strong></h4>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- Normal query:</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;admin&#39;</span>
+
+<span class="c1">-- Malicious input:</span>
+<span class="s1">&#39; OR &#39;</span><span class="mi">1</span><span class="s1">&#39;=&#39;</span><span class="mi">1</span><span class="err">&#39;</span><span class="w"> </span><span class="c1">--</span>
+<span class="c1">-- Results in unauthorized access</span>
+</code></pre></div>
+
+<h4>6. <strong>Password Attacks</strong></h4>
+<ul>
+<li><strong>Brute Force</strong>: Try all possible combinations</li>
+<li><strong>Dictionary Attack</strong>: Try common passwords</li>
+<li><strong>Credential Stuffing</strong>: Use leaked password databases</li>
+</ul>
+<h4>7. <strong>Cross-Site Scripting (XSS)</strong></h4>
+<ul>
+<li>Inject malicious scripts into web pages</li>
+<li>Execute in victims' browsers</li>
+</ul>
+<h4>8. <strong>Zero-Day Exploit</strong></h4>
+<ul>
+<li>Attack exploiting unknown vulnerabilities</li>
+<li>No patch available yet</li>
+</ul>
+<h3>Prevention Measures</h3>
+<table>
+<thead>
+<tr>
+<th>Attack Type</th>
+<th>Prevention</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Malware</td>
+<td>Antivirus, software updates</td>
+</tr>
+<tr>
+<td>Phishing</td>
+<td>User training, email filtering</td>
+</tr>
+<tr>
+<td>MITM</td>
+<td>HTTPS, VPN encryption</td>
+</tr>
+<tr>
+<td>DoS/DDoS</td>
+<td>Rate limiting, CDN</td>
+</tr>
+<tr>
+<td>SQL Injection</td>
+<td>Parameterized queries</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Q1(b): How can you reset or release an IP address obtained from DHCP?</h2>
+<h3>DHCP (Dynamic Host Configuration Protocol)</h3>
+<p>DHCP automatically assigns IP addresses to devices on a network. Sometimes you need to release the current IP and obtain a new one.</p>
+<h3>Commands for Different Operating Systems</h3>
+<h4>Windows Commands</h4>
+<div class="codehilite"><pre><span></span><code># Release current DHCP lease
+ipconfig /release
+
+# Renew DHCP lease (get new IP)
+ipconfig /renew
+
+# Release and renew together
+ipconfig /release &amp;&amp; ipconfig /renew
+
+# View current IP configuration
+ipconfig /all
+</code></pre></div>
+
+<h4>Linux/Unix Commands</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Using dhclient (most common)</span>
+sudo<span class="w"> </span>dhclient<span class="w"> </span>-r<span class="w"> </span>eth0<span class="w">        </span><span class="c1"># Release IP on eth0</span>
+sudo<span class="w"> </span>dhclient<span class="w"> </span>eth0<span class="w">           </span><span class="c1"># Renew IP on eth0</span>
+
+<span class="c1"># Using dhcpcd</span>
+sudo<span class="w"> </span>dhcpcd<span class="w"> </span>-k<span class="w"> </span>eth0<span class="w">          </span><span class="c1"># Release</span>
+sudo<span class="w"> </span>dhcpcd<span class="w"> </span>eth0<span class="w">             </span><span class="c1"># Renew</span>
+
+<span class="c1"># Using nmcli (NetworkManager)</span>
+nmcli<span class="w"> </span>connection<span class="w"> </span>down<span class="w"> </span>eth0
+nmcli<span class="w"> </span>connection<span class="w"> </span>up<span class="w"> </span>eth0
+</code></pre></div>
+
+<h4>macOS Commands</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Release and renew</span>
+sudo<span class="w"> </span>ipconfig<span class="w"> </span><span class="nb">set</span><span class="w"> </span>en0<span class="w"> </span>BOOTP
+sudo<span class="w"> </span>ipconfig<span class="w"> </span><span class="nb">set</span><span class="w"> </span>en0<span class="w"> </span>DHCP
+</code></pre></div>
+
+<h3>DHCP Process Flow</h3>
+<div class="codehilite"><pre><span></span><code>┌──────────┐     DHCPDISCOVER    ┌──────────┐
+│  Client  │ ──────────────────→ │  Server  │
+│          │     DHCPOFFER       │          │
+│          │ ←────────────────── │          │
+│          │     DHCPREQUEST     │          │
+│          │ ──────────────────→ │          │
+│          │     DHCPACK         │          │
+│          │ ←────────────────── │          │
+└──────────┘                     └──────────┘
+
+    Release: Client sends DHCPRELEASE to server
+</code></pre></div>
+
+<h3>When to Release/Renew IP</h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IP conflict</td>
+<td>Release + Renew</td>
+</tr>
+<tr>
+<td>Network change</td>
+<td>Release + Renew</td>
+</tr>
+<tr>
+<td>Troubleshooting</td>
+<td>Release + Renew</td>
+</tr>
+<tr>
+<td>Lease expired</td>
+<td>Automatic renew</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Q1(c): Explain supernetting with an example combining IPv4 Class C networks</h2>
+<h3>What is Supernetting?</h3>
+<p><strong>Supernetting</strong> (also called <strong>route aggregation</strong> or <strong>CIDR</strong>) is the process of combining multiple smaller networks into a single larger network. It's the opposite of subnetting.</p>
+<h3>Purpose of Supernetting</h3>
+<table>
+<thead>
+<tr>
+<th>Benefit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reduce routing table size</td>
+<td>Fewer entries to store/process</td>
+</tr>
+<tr>
+<td>Efficient address allocation</td>
+<td>Flexibility beyond classful limits</td>
+</tr>
+<tr>
+<td>Faster routing decisions</td>
+<td>Smaller tables = faster lookups</td>
+</tr>
+<tr>
+<td>Conserve IP addresses</td>
+<td>Better utilization of address space</td>
+</tr>
+</tbody>
+</table>
+<h3>Rules for Supernetting</h3>
+<ol>
+<li>All networks must be <strong>contiguous</strong> (consecutive)</li>
+<li>Number of networks must be a <strong>power of 2</strong> (2, 4, 8, 16...)</li>
+<li>First network address must be <strong>evenly divisible</strong> by total size</li>
+</ol>
+<h3>Example: Combining 4 Class C Networks</h3>
+<p><strong>Given Networks:</strong><br />
+- 192.168.0.0/24 (192.168.0.0 - 192.168.0.255)<br />
+- 192.168.1.0/24 (192.168.1.0 - 192.168.1.255)<br />
+- 192.168.2.0/24 (192.168.2.0 - 192.168.2.255)<br />
+- 192.168.3.0/24 (192.168.3.0 - 192.168.3.255)</p>
+<p><strong>Step 1: Verify Contiguity</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="mf">192.168.0.0</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">192.168.1.0</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">192.168.2.0</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">192.168.3.0</span>
+<span class="w">     </span><span class="err">✓</span><span class="w"> </span><span class="n">Consecutive</span><span class="w"> </span><span class="n">networks</span>
+</code></pre></div>
+
+<p><strong>Step 2: Calculate New Prefix Length</strong></p>
+<div class="codehilite"><pre><span></span><code>Original: /24 (255.255.255.0)
+Number of networks: 4 = 2²
+New prefix: 24 - 2 = /22
+
+New mask: 255.255.252.0
+</code></pre></div>
+
+<p><strong>Step 3: Binary Analysis</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="mf">192.168.0.0</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mf">11000000.10101000.00000000.00000000</span>
+<span class="mf">192.168.1.0</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mf">11000000.10101000.00000001.00000000</span>
+<span class="mf">192.168.2.0</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mf">11000000.10101000.00000010.00000000</span>
+<span class="mf">192.168.3.0</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mf">11000000.10101000.00000011.00000000</span>
+<span class="w">                </span><span class="err">─────────────────────────┬───────────</span>
+<span class="w">                       </span><span class="mf">22</span><span class="w"> </span><span class="n">bits</span><span class="w"> </span><span class="n">same</span><span class="w">      </span><span class="err">│</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="n">bits</span><span class="w"> </span><span class="n">vary</span>
+
+<span class="n">Supernet</span><span class="p">:</span><span class="w"> </span><span class="mf">192.168.0.0</span><span class="o">/</span><span class="mf">22</span>
+</code></pre></div>
+
+<p><strong>Step 4: Result Summary</strong><br />
+| Attribute | Value |<br />
+|-----------|-------|<br />
+| Supernet Address | 192.168.0.0/22 |<br />
+| Subnet Mask | 255.255.252.0 |<br />
+| Total Hosts | 4 × 254 = 1,016 usable |<br />
+| Range | 192.168.0.1 - 192.168.3.254 |<br />
+| Broadcast | 192.168.3.255 |</p>
+<h3>Diagram</h3>
+<div class="codehilite"><pre><span></span><code><span class="nx">BEFORE</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="nx">separate</span><span class="w"> </span><span class="nx">routes</span><span class="p">):</span><span class="w">              </span><span class="nx">AFTER</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="nx">supernet</span><span class="p">):</span>
+<span class="err">┌─────────────────────┐</span><span class="w">                 </span><span class="err">┌─────────────────────┐</span>
+<span class="err">│</span><span class="w"> </span><span class="m m-Double">192.168.0.0</span><span class="o">/</span><span class="mi">24</span><span class="w">      </span><span class="err">│</span><span class="w">                 </span><span class="err">│</span><span class="w">                     </span><span class="err">│</span>
+<span class="err">├─────────────────────┤</span><span class="w">                 </span><span class="err">│</span><span class="w">                     </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="m m-Double">192.168.1.0</span><span class="o">/</span><span class="mi">24</span><span class="w">      </span><span class="err">│</span><span class="w">   </span><span class="nx">Supernetting</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="m m-Double">192.168.0.0</span><span class="o">/</span><span class="mi">22</span><span class="w">     </span><span class="err">│</span>
+<span class="err">├─────────────────────┤</span><span class="w">  </span><span class="err">───────────→</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="p">(</span><span class="mi">1024</span><span class="w"> </span><span class="nx">addresses</span><span class="p">)</span><span class="w">  </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="m m-Double">192.168.2.0</span><span class="o">/</span><span class="mi">24</span><span class="w">      </span><span class="err">│</span><span class="w">                 </span><span class="err">│</span><span class="w">                     </span><span class="err">│</span>
+<span class="err">├─────────────────────┤</span><span class="w">                 </span><span class="err">│</span><span class="w">                     </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="m m-Double">192.168.3.0</span><span class="o">/</span><span class="mi">24</span><span class="w">      </span><span class="err">│</span><span class="w">                 </span><span class="err">└─────────────────────┘</span>
+<span class="err">└─────────────────────┘</span>
+<span class="w">     </span><span class="mi">4</span><span class="w"> </span><span class="nx">routing</span><span class="w"> </span><span class="nx">entries</span><span class="w">                      </span><span class="mi">1</span><span class="w"> </span><span class="nx">routing</span><span class="w"> </span><span class="nx">entry</span>
+</code></pre></div>
+
+<hr />
+<h2>Q1(d): How do you crack passwords with John the Ripper?</h2>
+<h3>What is John the Ripper?</h3>
+<p><strong>John the Ripper</strong> is a popular open-source password security auditing and password recovery tool. It's used by security professionals to test password strength and recover lost passwords.</p>
+<blockquote>
+<p>⚠️ <strong>LEGAL WARNING</strong>: Only use on systems you own or have explicit authorization to test!</p>
+</blockquote>
+<h3>Supported Hash Types</h3>
+<table>
+<thead>
+<tr>
+<th>Hash Type</th>
+<th>Example Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MD5</td>
+<td>Linux, web applications</td>
+</tr>
+<tr>
+<td>SHA-256/512</td>
+<td>Modern Linux (yescrypt)</td>
+</tr>
+<tr>
+<td>NTLM</td>
+<td>Windows passwords</td>
+</tr>
+<tr>
+<td>bcrypt</td>
+<td>Modern web apps</td>
+</tr>
+<tr>
+<td>DES</td>
+<td>Legacy Unix systems</td>
+</tr>
+</tbody>
+</table>
+<h3>Basic Usage</h3>
+<h4>1. <strong>Extract Password Hashes</strong></h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Linux - combine passwd and shadow files</span>
+sudo<span class="w"> </span>unshadow<span class="w"> </span>/etc/passwd<span class="w"> </span>/etc/shadow<span class="w"> </span>&gt;<span class="w"> </span>hashes.txt
+
+<span class="c1"># Windows - extract from SAM (requires admin)</span>
+<span class="c1"># Use tools like samdump2, pwdump</span>
+</code></pre></div>
+
+<h4>2. <strong>Run John the Ripper</strong></h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Automatic mode (tries multiple attack types)</span>
+john<span class="w"> </span>hashes.txt
+
+<span class="c1"># Specify hash format</span>
+john<span class="w"> </span>--format<span class="o">=</span>sha512crypt<span class="w"> </span>hashes.txt
+
+<span class="c1"># Show cracked passwords</span>
+john<span class="w"> </span>--show<span class="w"> </span>hashes.txt
+</code></pre></div>
+
+<h3>Attack Modes</h3>
+<h4>Single Crack Mode (Default first)</h4>
+<div class="codehilite"><pre><span></span><code>john<span class="w"> </span>--single<span class="w"> </span>hashes.txt
+<span class="c1"># Uses username variations as password guesses</span>
+<span class="c1"># user123 → user123, User123, USER123, 123user, etc.</span>
+</code></pre></div>
+
+<h4>Dictionary/Wordlist Mode</h4>
+<div class="codehilite"><pre><span></span><code>john<span class="w"> </span>--wordlist<span class="o">=</span>/usr/share/wordlists/rockyou.txt<span class="w"> </span>hashes.txt
+
+<span class="c1"># With rules (mutations)</span>
+john<span class="w"> </span>--wordlist<span class="o">=</span>words.txt<span class="w"> </span>--rules<span class="w"> </span>hashes.txt
+<span class="c1"># password → Password, password1, p@ssword, etc.</span>
+</code></pre></div>
+
+<h4>Incremental (Brute Force) Mode</h4>
+<div class="codehilite"><pre><span></span><code>john<span class="w"> </span>--incremental<span class="w"> </span>hashes.txt
+
+<span class="c1"># Specific character set</span>
+john<span class="w"> </span>--incremental<span class="o">=</span>digits<span class="w"> </span>hashes.txt<span class="w">    </span><span class="c1"># Numbers only</span>
+john<span class="w"> </span>--incremental<span class="o">=</span>alpha<span class="w"> </span>hashes.txt<span class="w">     </span><span class="c1"># Letters only</span>
+</code></pre></div>
+
+<h3>Workflow Diagram</h3>
+<div class="codehilite"><pre><span></span><code>┌──────────────┐     ┌──────────────┐     ┌──────────────┐
+│ Password     │     │   John the   │     │   Cracked    │
+│   Hashes     │ ──→ │    Ripper    │ ──→ │  Passwords   │
+│ (hashes.txt) │     │              │     │ (john.pot)   │
+└──────────────┘     └──────────────┘     └──────────────┘
+                            ↑
+              ┌─────────────┼─────────────┐
+              │             │             │
+       ┌──────┴──────┐ ┌────┴────┐ ┌──────┴──────┐
+       │  Wordlist   │ │  Rules  │ │ Incremental │
+       │ rockyou.txt │ │  File   │ │   Mode      │
+       └─────────────┘ └─────────┘ └─────────────┘
+</code></pre></div>
+
+<h3>Common Commands Reference</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Check status while running</span>
+john<span class="w"> </span>--status
+
+<span class="c1"># Resume interrupted session</span>
+john<span class="w"> </span>--restore
+
+<span class="c1"># List supported formats</span>
+john<span class="w"> </span>--list<span class="o">=</span>formats
+
+<span class="c1"># Use multiple CPU cores</span>
+john<span class="w"> </span>--fork<span class="o">=</span><span class="m">4</span><span class="w"> </span>hashes.txt
+</code></pre></div>
+
+<hr />
+<h2>Q1(f): Explain the use of copy running-config startup-config</h2>
+<h3>Cisco Router Configuration Files</h3>
+<p>Cisco devices have two main configuration files:</p>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>Location</th>
+<th>Persistence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Running-config</strong></td>
+<td>RAM</td>
+<td>Lost on reboot</td>
+</tr>
+<tr>
+<td><strong>Startup-config</strong></td>
+<td>NVRAM</td>
+<td>Survives reboot</td>
+</tr>
+</tbody>
+</table>
+<h3>The Command</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">Router</span><span class="err">#</span><span class="w"> </span><span class="n">copy</span><span class="w"> </span><span class="n">running</span><span class="o">-</span><span class="n">config</span><span class="w"> </span><span class="n">startup</span><span class="o">-</span><span class="n">config</span>
+<span class="n">Destination</span><span class="w"> </span><span class="n">filename</span><span class="w"> </span><span class="o">[</span><span class="n">startup-config</span><span class="o">]</span><span class="vm">?</span><span class="w"> </span><span class="o">[</span><span class="n">Enter</span><span class="o">]</span>
+<span class="n">Building</span><span class="w"> </span><span class="n">configuration</span><span class="p">...</span>
+<span class="o">[</span><span class="n">OK</span><span class="o">]</span>
+</code></pre></div>
+
+<p><strong>Shorthand:</strong> <code>copy run start</code> or <code>wr</code> (write memory)</p>
+<h3>What It Does</h3>
+<p>This command copies the current active configuration (in RAM) to non-volatile memory (NVRAM), making changes permanent.</p>
+<h3>Configuration Flow Diagram</h3>
+<div class="codehilite"><pre><span></span><code>┌───────────────────────────────────────────────────────┐
+│                     NVRAM                              │
+│  ┌─────────────────────────────────────────────────┐  │
+│  │             startup-config                       │  │
+│  │   (Loaded at boot, survives power loss)         │  │
+│  └─────────────────────────────────────────────────┘  │
+└───────────────────────────────────────────────────────┘
+                          │
+                          │ Boot Process
+                          ↓
+┌───────────────────────────────────────────────────────┐
+│                       RAM                              │
+│  ┌─────────────────────────────────────────────────┐  │
+│  │              running-config                      │  │
+│  │   (Active config, lost on power loss)           │  │
+│  └─────────────────────────────────────────────────┘  │
+└───────────────────────────────────────────────────────┘
+
+    copy running-config startup-config
+    ────────────────────────────────→
+    Saves current changes to NVRAM
+</code></pre></div>
+
+<h3>When to Use</h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>After making changes</td>
+<td><code>copy run start</code></td>
+</tr>
+<tr>
+<td>Testing changes</td>
+<td>Don't save (reboot reverts)</td>
+</tr>
+<tr>
+<td>Before major changes</td>
+<td>Backup startup-config first</td>
+</tr>
+<tr>
+<td>Made a mistake</td>
+<td><code>copy startup-config running-config</code> to revert</td>
+</tr>
+</tbody>
+</table>
+<h3>Related Commands</h3>
+<div class="codehilite"><pre><span></span><code>#<span class="w"> </span><span class="nv">View</span><span class="w"> </span><span class="nv">running</span><span class="w"> </span><span class="nv">configuration</span>
+<span class="nv">Router</span>#<span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="nv">running</span><span class="o">-</span><span class="nv">config</span>
+
+#<span class="w"> </span><span class="nv">View</span><span class="w"> </span><span class="nv">startup</span><span class="w"> </span><span class="nv">configuration</span><span class="w">  </span>
+<span class="nv">Router</span>#<span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="nv">startup</span><span class="o">-</span><span class="nv">config</span>
+
+#<span class="w"> </span><span class="nv">Erase</span><span class="w"> </span><span class="nv">startup</span><span class="w"> </span><span class="nv">configuration</span>
+<span class="nv">Router</span>#<span class="w"> </span><span class="nv">erase</span><span class="w"> </span><span class="nv">startup</span><span class="o">-</span><span class="nv">config</span>
+
+#<span class="w"> </span><span class="nv">Alternative</span><span class="w"> </span><span class="nv">save</span><span class="w"> </span><span class="nv">command</span>
+<span class="nv">Router</span>#<span class="w"> </span><span class="nv">write</span><span class="w"> </span><span class="nv">memory</span>
+</code></pre></div>
+
+<h3>Practical Example</h3>
+<div class="codehilite"><pre><span></span><code><span class="nx">Router</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">enable</span>
+<span class="nx">Router</span><span class="err">#</span><span class="w"> </span><span class="nx">configure</span><span class="w"> </span><span class="nx">terminal</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">hostname</span><span class="w"> </span><span class="nx">MyRouter</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+<span class="nx">MyRouter</span><span class="err">#</span><span class="w"> </span><span class="nx">copy</span><span class="w"> </span><span class="nx">running</span><span class="o">-</span><span class="nx">config</span><span class="w"> </span><span class="nx">startup</span><span class="o">-</span><span class="nx">config</span>
+</code></pre></div>
+
+<hr />
+<h2>Q1(g): What is a loopback IP address? What is its range?</h2>
+<h3>Definition</h3>
+<p>A <strong>loopback IP address</strong> is a special IP address used to test network software without involving actual network hardware. Data sent to the loopback address never leaves the host machine—it's processed locally.</p>
+<h3>Loopback Address Range</h3>
+<h4>IPv4 Loopback</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Range</td>
+<td><strong>127.0.0.0 to 127.255.255.255</strong></td>
+</tr>
+<tr>
+<td>CIDR Notation</td>
+<td>127.0.0.0/8</td>
+</tr>
+<tr>
+<td>Most Common</td>
+<td><strong>127.0.0.1</strong> ("localhost")</td>
+</tr>
+<tr>
+<td>Total Addresses</td>
+<td>16,777,216 (2²⁴)</td>
+</tr>
+</tbody>
+</table>
+<h4>IPv6 Loopback</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Address</td>
+<td><strong>::1</strong> (0000:0000:0000:0000:0000:0000:0000:0001)</td>
+</tr>
+<tr>
+<td>Only One</td>
+<td>Single address (not a range)</td>
+</tr>
+</tbody>
+</table>
+<h3>How Loopback Works</h3>
+<div class="codehilite"><pre><span></span><code>┌─────────────────────────────────────────────┐
+│                  Host Machine                │
+│                                             │
+│  ┌──────────┐      ┌──────────────────┐     │
+│  │  Client  │ ───→ │  Loopback        │     │
+│  │  App     │      │  Interface (lo)  │     │
+│  │ (Browser)│ ←─── │  127.0.0.1       │     │
+│  └──────────┘      └──────────────────┘     │
+│       ↑                    │                │
+│       │                    ↓                │
+│       │            ┌──────────────────┐     │
+│       └─────────── │  Server App      │     │
+│                    │  (Web Server)    │     │
+│                    └──────────────────┘     │
+│                                             │
+│         ✗ No data leaves the machine        │
+└─────────────────────────────────────────────┘
+</code></pre></div>
+
+<h3>Uses of Loopback Address</h3>
+<table>
+<thead>
+<tr>
+<th>Use Case</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Test network stack</td>
+<td><code>ping 127.0.0.1</code></td>
+</tr>
+<tr>
+<td>Local development</td>
+<td>Web server on localhost</td>
+</tr>
+<tr>
+<td>Inter-process communication</td>
+<td>Database connections</td>
+</tr>
+<tr>
+<td>Network diagnostics</td>
+<td>Test TCP/IP is working</td>
+</tr>
+<tr>
+<td>Application testing</td>
+<td>Test before deployment</td>
+</tr>
+</tbody>
+</table>
+<h3>Common Applications</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Test if TCP/IP stack is working</span>
+ping<span class="w"> </span><span class="m">127</span>.0.0.1
+
+<span class="c1"># Access local web server</span>
+curl<span class="w"> </span>http://127.0.0.1:8080
+
+<span class="c1"># Connect to local database</span>
+mysql<span class="w"> </span>-h<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p
+
+<span class="c1"># /etc/hosts mapping</span>
+<span class="m">127</span>.0.0.1<span class="w">    </span>localhost
+<span class="m">127</span>.0.0.1<span class="w">    </span>myapp.local
+</code></pre></div>
+
+<h3>Why 127.x.x.x Range?</h3>
+<ul>
+<li>Reserved by IANA for loopback</li>
+<li>Any address in 127.0.0.0/8 works</li>
+<li>Entire Class A block dedicated to loopback</li>
+<li>Most software uses 127.0.0.1 by convention</li>
+</ul>
+<h3>Verify Loopback Interface</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Linux</span>
+ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w"> </span>lo
+<span class="c1"># lo: &lt;LOOPBACK,UP&gt; ...</span>
+<span class="c1">#     inet 127.0.0.1/8 scope host lo</span>
+
+<span class="c1"># Windows</span>
+ipconfig<span class="w"> </span><span class="p">|</span><span class="w"> </span>findstr<span class="w"> </span><span class="s2">&quot;127&quot;</span>
+</code></pre></div>
+
+<hr />
+<h2>Question 2 (20 Marks) - Practical Options</h2>
+<h3>Option A: Phishing Pattern Detection in Emails</h3>
+<p>See file: <code>Slip_04_Q2_OptionA.c</code></p>
+<h3>Option B: Private IP Range Checker</h3>
+<p>See file: <code>Slip_04_Q2_OptionB.c</code></p>
+<h3>Option C: Packet Tracer Lab (Network with Switch)</h3>
+<h4>Network Topology</h4>
+<div class="codehilite"><pre><span></span><code>        ┌──────────────────┐
+        │                  │
+        │     SWITCH       │
+        │   (Layer 2)      │
+        │                  │
+        └────┬────────┬────┘
+             │        │
+      ┌──────┘        └──────┐
+      │                      │
+┌─────┴─────┐          ┌─────┴─────┐
+│   PC0     │          │   PC1     │
+│192.168.1.1│          │192.168.1.2│
+│ /24       │          │ /24       │
+└───────────┘          └───────────┘
+</code></pre></div>
+
+<h4>Configuration Steps</h4>
+<ol>
+<li><strong>Add Devices</strong>: 2 PCs, 1 Switch (2960)</li>
+<li><strong>Connect</strong>: Use straight-through cables (PC to Switch)</li>
+<li><strong>Configure PC0</strong>:<br />
+   - IP: 192.168.1.1<br />
+   - Mask: 255.255.255.0<br />
+   - Gateway: 192.168.1.254 (optional)</li>
+<li><strong>Configure PC1</strong>:<br />
+   - IP: 192.168.1.2<br />
+   - Mask: 255.255.255.0</li>
+<li><strong>Test</strong>: <code>ping 192.168.1.2</code> from PC0</li>
+</ol>
+<h4>IP Address Classes Explained</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>First Octet Range</th>
+<th>Default Mask</th>
+<th>Network/Host Bits</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>1-126</td>
+<td>255.0.0.0 (/8)</td>
+<td>8/24</td>
+<td>Large networks</td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>128-191</td>
+<td>255.255.0.0 (/16)</td>
+<td>16/16</td>
+<td>Medium networks</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>192-223</td>
+<td>255.255.255.0 (/24)</td>
+<td>24/8</td>
+<td>Small networks</td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>224-239</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>Multicast</td>
+</tr>
+<tr>
+<td><strong>E</strong></td>
+<td>240-255</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>Experimental</td>
+</tr>
+</tbody>
+</table>
+<h4>Visual Representation</h4>
+<div class="codehilite"><pre><span></span><code>IP Address Classes:
+
+Class A: |N|  Host   |  (8 network bits, 24 host bits)
+         0xxxxxxx.xxxxxxxx.xxxxxxxx.xxxxxxxx
+         1.0.0.0 - 126.255.255.255
+
+Class B: | N  | Host |  (16 network bits, 16 host bits)
+         10xxxxxx.xxxxxxxx.xxxxxxxx.xxxxxxxx
+         128.0.0.0 - 191.255.255.255
+
+Class C: |   N   |H|  (24 network bits, 8 host bits)
+         110xxxxx.xxxxxxxx.xxxxxxxx.xxxxxxxx
+         192.0.0.0 - 223.255.255.255
+
+Class D: |    Multicast Address    |
+         1110xxxx.xxxxxxxx.xxxxxxxx.xxxxxxxx
+         224.0.0.0 - 239.255.255.255
+
+Class E: |    Reserved/Experimental |
+         1111xxxx.xxxxxxxx.xxxxxxxx.xxxxxxxx
+         240.0.0.0 - 255.255.255.255
+</code></pre></div>
+
+<h4>Private IP Ranges (Cannot be routed on Internet)</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Private Range</th>
+<th>CIDR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>10.0.0.0 - 10.255.255.255</td>
+<td>10.0.0.0/8</td>
+</tr>
+<tr>
+<td>B</td>
+<td>172.16.0.0 - 172.31.255.255</td>
+<td>172.16.0.0/12</td>
+</tr>
+<tr>
+<td>C</td>
+<td>192.168.0.0 - 192.168.255.255</td>
+<td>192.168.0.0/16</td>
+</tr>
+</tbody>
+</table>
+<h4>192.168.1.0/24 Network Details</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network Address</td>
+<td>192.168.1.0</td>
+</tr>
+<tr>
+<td>First Usable IP</td>
+<td>192.168.1.1</td>
+</tr>
+<tr>
+<td>Last Usable IP</td>
+<td>192.168.1.254</td>
+</tr>
+<tr>
+<td>Broadcast Address</td>
+<td>192.168.1.255</td>
+</tr>
+<tr>
+<td>Total Usable Hosts</td>
+<td>254</td>
+</tr>
+<tr>
+<td>Subnet Mask</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td>Class</td>
+<td>C (Private)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Quick Reference Card</h2>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Key Point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cyber Attack</td>
+<td>Malicious attempt to breach computer systems</td>
+</tr>
+<tr>
+<td>DHCP Release</td>
+<td><code>ipconfig /release</code> (Win), <code>dhclient -r</code> (Linux)</td>
+</tr>
+<tr>
+<td>Supernetting</td>
+<td>Combine networks, reduce routing table</td>
+</tr>
+<tr>
+<td>John the Ripper</td>
+<td>Password auditing tool</td>
+</tr>
+<tr>
+<td>copy run start</td>
+<td>Save Cisco config permanently</td>
+</tr>
+<tr>
+<td>Loopback</td>
+<td>127.0.0.0/8, localhost testing</td>
+</tr>
+<tr>
+<td>Class C</td>
+<td>192-223, /24, small networks</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>End of Slip 4 Computer Networks Solution Guide</em></p>
+    
+    <script>
+        // Add syntax highlighting for code blocks
+        document.querySelectorAll('pre code').forEach((block) => {
+            block.style.fontFamily = "'Consolas', 'Monaco', 'Courier New', monospace";
+        });
+    </script>
+</body>
+</html>

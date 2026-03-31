@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slip_10_CN_SOLUTION.md</title>
+    <style>
+        @media print {
+            body { margin: 0.5in; }
+            h1, h2, h3 { page-break-after: avoid; }
+            pre, table { page-break-inside: avoid; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
+            font-size: 11pt;
+        }
+        
+        h1 {
+            color: #1a237e;
+            border-bottom: 3px solid #3f51b5;
+            padding-bottom: 10px;
+            font-size: 28pt;
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #283593;
+            border-bottom: 2px solid #5c6bc0;
+            padding-bottom: 8px;
+            margin-top: 35px;
+            font-size: 20pt;
+        }
+        
+        h3 {
+            color: #3949ab;
+            font-size: 16pt;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #5c6bc0;
+            font-size: 13pt;
+            margin-top: 20px;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 10pt;
+            color: #d32f2f;
+        }
+        
+        pre {
+            background-color: #263238;
+            color: #aed581;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+            overflow-x: auto;
+            font-size: 9.5pt;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 10pt;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3f51b5;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        tr:hover {
+            background-color: #e8eaf6;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 30px 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #ff9800;
+            padding-left: 15px;
+            color: #616161;
+            font-style: italic;
+            margin: 20px 0;
+            background-color: #fff3e0;
+            padding: 10px 15px;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background-color: #45a049;
+        }
+        
+        @media print {
+            .print-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print to PDF</button>
+    <h1>Slip 10 — Computer Networks Solution Guide</h1>
+<h2>Q1: Theory Questions (Answer ANY 5) — 10 Marks</h2>
+<hr />
+<h3>a) Differences Between Cat5e, Cat6, and Cat7 Ethernet Cables</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Cat5e</th>
+<th>Cat6</th>
+<th>Cat7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Maximum Speed</strong></td>
+<td>1 Gbps</td>
+<td>10 Gbps</td>
+<td>10 Gbps</td>
+</tr>
+<tr>
+<td><strong>Bandwidth</strong></td>
+<td>100 MHz</td>
+<td>250 MHz</td>
+<td>600 MHz</td>
+</tr>
+<tr>
+<td><strong>Max Distance (at max speed)</strong></td>
+<td>100m</td>
+<td>55m (10G), 100m (1G)</td>
+<td>100m</td>
+</tr>
+<tr>
+<td><strong>Shielding</strong></td>
+<td>UTP (Unshielded)</td>
+<td>UTP or STP</td>
+<td>STP/SFTP (Fully Shielded)</td>
+</tr>
+<tr>
+<td><strong>Crosstalk Protection</strong></td>
+<td>Basic</td>
+<td>Better (separator spline)</td>
+<td>Excellent (individual shielding)</td>
+</tr>
+<tr>
+<td><strong>Connector</strong></td>
+<td>RJ-45</td>
+<td>RJ-45</td>
+<td>GG45 / TERA</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Low</td>
+<td>Medium</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Home networks</td>
+<td>Office/Enterprise</td>
+<td>Data centers, high EMI areas</td>
+</tr>
+</tbody>
+</table>
+<h4>Key Points:</h4>
+<ul>
+<li><strong>Cat5e</strong>: Enhanced Category 5, suitable for gigabit Ethernet in homes</li>
+<li><strong>Cat6</strong>: Tighter twists, better crosstalk handling, ideal for 10GbE short runs</li>
+<li><strong>Cat7</strong>: Individual pair shielding, backwards compatible, industrial use</li>
+</ul>
+<hr />
+<h3>b) Purpose of a Modem in a Network</h3>
+<h4>What is a Modem?</h4>
+<p><strong>MOdulator-DEModulator</strong> — converts digital signals to analog and vice versa.</p>
+<h4>Primary Functions:</h4>
+<ol>
+<li><strong>Signal Conversion</strong>: Digital (computer) ↔ Analog (telephone/cable line)</li>
+<li><strong>Protocol Translation</strong>: Converts data between ISP protocols and Ethernet</li>
+<li><strong>Line Interface</strong>: Terminates the ISP connection at customer premises</li>
+</ol>
+<h4>Can We Connect Directly to Internet Without a Modem?</h4>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Possible?</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DSL/Cable Internet</strong></td>
+<td>❌ No</td>
+<td>Signal modulation required</td>
+</tr>
+<tr>
+<td><strong>Fiber (FTTH)</strong></td>
+<td>⚠️ Partial</td>
+<td>ONT (Optical Network Terminal) needed, some call it "fiber modem"</td>
+</tr>
+<tr>
+<td><strong>Direct Ethernet from ISP</strong></td>
+<td>✅ Yes</td>
+<td>Some ISPs provide direct Ethernet handoff</td>
+</tr>
+<tr>
+<td><strong>Mobile Internet (4G/5G)</strong></td>
+<td>⚠️ Partial</td>
+<td>Modem built into mobile device/dongle</td>
+</tr>
+</tbody>
+</table>
+<h4>Diagram:</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">Internet</span><span class="w"> </span><span class="err">───</span><span class="w"> </span><span class="n">ISP</span><span class="w"> </span><span class="err">───</span><span class="w"> </span><span class="p">[</span><span class="n">Analog</span><span class="w"> </span><span class="n">Signal</span><span class="p">]</span><span class="w"> </span><span class="err">───</span><span class="w"> </span><span class="n">MODEM</span><span class="w"> </span><span class="err">───</span><span class="w"> </span><span class="p">[</span><span class="n">Digital</span><span class="w"> </span><span class="n">Signal</span><span class="p">]</span><span class="w"> </span><span class="err">───</span><span class="w"> </span><span class="n">Router</span><span class="w"> </span><span class="err">───</span><span class="w"> </span><span class="n">PC</span>
+<span class="w">                      </span><span class="p">(</span><span class="n">Coax</span><span class="o">/</span><span class="n">Phone</span><span class="p">)</span><span class="w">                    </span><span class="p">(</span><span class="n">Ethernet</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h3>c) Command to Assign a Static IP in Linux</h3>
+<h4>Method 1: Using <code>ip</code> command (Temporary)</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Assign IP address</span>
+sudo<span class="w"> </span>ip<span class="w"> </span>addr<span class="w"> </span>add<span class="w"> </span><span class="m">192</span>.168.1.100/24<span class="w"> </span>dev<span class="w"> </span>eth0
+
+<span class="c1"># Set default gateway</span>
+sudo<span class="w"> </span>ip<span class="w"> </span>route<span class="w"> </span>add<span class="w"> </span>default<span class="w"> </span>via<span class="w"> </span><span class="m">192</span>.168.1.1
+
+<span class="c1"># Verify</span>
+ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w"> </span>eth0
+</code></pre></div>
+
+<h4>Method 2: Using <code>ifconfig</code> (Legacy)</h4>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>ifconfig<span class="w"> </span>eth0<span class="w"> </span><span class="m">192</span>.168.1.100<span class="w"> </span>netmask<span class="w"> </span><span class="m">255</span>.255.255.0<span class="w"> </span>up
+sudo<span class="w"> </span>route<span class="w"> </span>add<span class="w"> </span>default<span class="w"> </span>gw<span class="w"> </span><span class="m">192</span>.168.1.1
+</code></pre></div>
+
+<h4>Method 3: Permanent Configuration (Netplan - Ubuntu 18.04+)</h4>
+<p>File: <code>/etc/netplan/01-netcfg.yaml</code></p>
+<div class="codehilite"><pre><span></span><code><span class="nt">network</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">ethernets</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">eth0</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">addresses</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.1.100/24</span>
+<span class="w">      </span><span class="nt">gateway4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.1.1</span>
+<span class="w">      </span><span class="nt">nameservers</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">addresses</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">8.8.8.8</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">8.8.4.4</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+
+<p>Apply: <code>sudo netplan apply</code></p>
+<h4>Method 4: Permanent Configuration (Traditional - <code>/etc/network/interfaces</code>)</h4>
+<div class="codehilite"><pre><span></span><code><span class="kt">auto</span><span class="w"> </span><span class="nx">eth0</span>
+<span class="nx">iface</span><span class="w"> </span><span class="nx">eth0</span><span class="w"> </span><span class="nx">inet</span><span class="w"> </span><span class="nx">static</span>
+<span class="w">    </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.1.100</span>
+<span class="w">    </span><span class="nx">netmask</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="w">    </span><span class="nx">gateway</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span>
+<span class="w">    </span><span class="nx">dns</span><span class="o">-</span><span class="nx">nameservers</span><span class="w"> </span><span class="m m-Double">8.8.8.8</span>
+</code></pre></div>
+
+<p>Apply: <code>sudo systemctl restart networking</code></p>
+<h4>Method 5: Using <code>nmcli</code> (NetworkManager)</h4>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span><span class="s2">&quot;Wired connection 1&quot;</span><span class="w"> </span>ipv4.addresses<span class="w"> </span><span class="m">192</span>.168.1.100/24
+sudo<span class="w"> </span>nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span><span class="s2">&quot;Wired connection 1&quot;</span><span class="w"> </span>ipv4.gateway<span class="w"> </span><span class="m">192</span>.168.1.1
+sudo<span class="w"> </span>nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span><span class="s2">&quot;Wired connection 1&quot;</span><span class="w"> </span>ipv4.dns<span class="w"> </span><span class="s2">&quot;8.8.8.8&quot;</span>
+sudo<span class="w"> </span>nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span><span class="s2">&quot;Wired connection 1&quot;</span><span class="w"> </span>ipv4.method<span class="w"> </span>manual
+sudo<span class="w"> </span>nmcli<span class="w"> </span>con<span class="w"> </span>up<span class="w"> </span><span class="s2">&quot;Wired connection 1&quot;</span>
+</code></pre></div>
+
+<hr />
+<h3>d) Use of the Ping Command in Networking</h3>
+<h4>What is Ping?</h4>
+<p><strong>Ping</strong> uses ICMP (Internet Control Message Protocol) Echo Request/Reply to test network connectivity.</p>
+<h4>Primary Uses:</h4>
+<table>
+<thead>
+<tr>
+<th>Use Case</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Connectivity Test</strong></td>
+<td>Check if a host is reachable</td>
+</tr>
+<tr>
+<td><strong>Latency Measurement</strong></td>
+<td>Measure round-trip time (RTT)</td>
+</tr>
+<tr>
+<td><strong>Packet Loss Detection</strong></td>
+<td>Identify network reliability issues</td>
+</tr>
+<tr>
+<td><strong>DNS Resolution Test</strong></td>
+<td>Verify hostname to IP resolution</td>
+</tr>
+<tr>
+<td><strong>Network Troubleshooting</strong></td>
+<td>Isolate where connectivity fails</td>
+</tr>
+<tr>
+<td><strong>MTU Discovery</strong></td>
+<td>Test maximum packet size</td>
+</tr>
+</tbody>
+</table>
+<h4>Syntax and Examples:</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Basic ping</span>
+ping<span class="w"> </span>google.com
+
+<span class="c1"># Ping with count limit</span>
+ping<span class="w"> </span>-c<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">192</span>.168.1.1
+
+<span class="c1"># Ping with specific packet size</span>
+ping<span class="w"> </span>-s<span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="m">192</span>.168.1.1
+
+<span class="c1"># Continuous ping (Linux)</span>
+ping<span class="w"> </span>-i<span class="w"> </span><span class="m">0</span>.5<span class="w"> </span><span class="m">192</span>.168.1.1<span class="w">    </span><span class="c1"># 0.5 second interval</span>
+
+<span class="c1"># Ping with timeout</span>
+ping<span class="w"> </span>-W<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">192</span>.168.1.1<span class="w">      </span><span class="c1"># 2 second timeout</span>
+</code></pre></div>
+
+<h4>Sample Output Analysis:</h4>
+<div class="codehilite"><pre><span></span><code>PING google.com (142.250.193.46) 56(84) bytes of data.
+64 bytes from del11s14-in-f14.1e100.net: icmp_seq=1 ttl=117 time=12.3 ms
+64 bytes from del11s14-in-f14.1e100.net: icmp_seq=2 ttl=117 time=11.8 ms
+
+--- google.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 11.800/12.050/12.300/0.250 ms
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>icmp_seq</code></td>
+<td>Sequence number of packet</td>
+</tr>
+<tr>
+<td><code>ttl</code></td>
+<td>Time To Live (hops remaining)</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td>Round-trip time in milliseconds</td>
+</tr>
+<tr>
+<td><code>packet loss</code></td>
+<td>Percentage of lost packets</td>
+</tr>
+<tr>
+<td><code>rtt</code></td>
+<td>Round-trip time statistics</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>f) Static NAT vs Dynamic NAT vs PAT (Port Address Translation)</h3>
+<h4>Overview Table:</h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Static NAT</th>
+<th>Dynamic NAT</th>
+<th>PAT (NAT Overload)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mapping</strong></td>
+<td>1:1 (Fixed)</td>
+<td>1:1 (From Pool)</td>
+<td>Many:1</td>
+</tr>
+<tr>
+<td><strong>Public IPs Needed</strong></td>
+<td>One per host</td>
+<td>Pool of IPs</td>
+<td>Single IP</td>
+</tr>
+<tr>
+<td><strong>IP Assignment</strong></td>
+<td>Permanent</td>
+<td>Temporary</td>
+<td>Shared</td>
+</tr>
+<tr>
+<td><strong>Uniqueness</strong></td>
+<td>IP address</td>
+<td>IP address</td>
+<td>IP + Port</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Servers (Web, Mail)</td>
+<td>Medium networks</td>
+<td>Home/Small office</td>
+</tr>
+<tr>
+<td><strong>Bidirectional</strong></td>
+<td>Yes</td>
+<td>No (outbound only)</td>
+<td>No (outbound only)</td>
+</tr>
+</tbody>
+</table>
+<h4>Detailed Comparison:</h4>
+<h5>Static NAT (One-to-One)</h5>
+<div class="codehilite"><pre><span></span><code><span class="n">Private</span><span class="w"> </span><span class="n">IP</span><span class="w">          </span><span class="n">Public</span><span class="w"> </span><span class="n">IP</span>
+<span class="mf">192.168.1.10</span><span class="w">  </span><span class="o">&lt;--&gt;</span><span class="w">  </span><span class="mf">203.0.113.10</span><span class="w">  </span><span class="p">(</span><span class="n">Permanent</span><span class="w"> </span><span class="n">mapping</span><span class="p">)</span>
+<span class="mf">192.168.1.20</span><span class="w">  </span><span class="o">&lt;--&gt;</span><span class="w">  </span><span class="mf">203.0.113.20</span><span class="w">  </span><span class="p">(</span><span class="n">Permanent</span><span class="w"> </span><span class="n">mapping</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li><strong>Use</strong>: Web servers, mail servers needing consistent public IP</li>
+<li><strong>Advantage</strong>: Allows inbound connections</li>
+<li><strong>Disadvantage</strong>: Requires one public IP per private host</li>
+</ul>
+<h5>Dynamic NAT (Pool-Based)</h5>
+<div class="codehilite"><pre><span></span><code><span class="n">Private</span><span class="w"> </span><span class="n">IP</span><span class="w">          </span><span class="n">Public</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="n">Pool</span>
+<span class="mf">192.168.1.10</span><span class="w">  </span><span class="o">---&gt;</span><span class="w">  </span><span class="mf">203.0.113.10</span><span class="w">  </span><span class="p">(</span><span class="n">Temporary</span><span class="p">)</span>
+<span class="mf">192.168.1.20</span><span class="w">  </span><span class="o">---&gt;</span><span class="w">  </span><span class="mf">203.0.113.11</span><span class="w">  </span><span class="p">(</span><span class="n">Temporary</span><span class="p">)</span>
+<span class="mf">192.168.1.30</span><span class="w">  </span><span class="o">---&gt;</span><span class="w">  </span><span class="p">[</span><span class="n">Waiting</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pool</span><span class="w"> </span><span class="n">exhausted</span><span class="p">]</span>
+</code></pre></div>
+
+<ul>
+<li><strong>Use</strong>: When public IPs &lt; private hosts, but need unique public IPs</li>
+<li><strong>Advantage</strong>: Efficient IP utilization</li>
+<li><strong>Disadvantage</strong>: Connection fails if pool exhausted</li>
+</ul>
+<h5>PAT / NAT Overload (Port-Based)</h5>
+<div class="codehilite"><pre><span></span><code><span class="n">Private</span><span class="w"> </span><span class="n">IP</span><span class="o">:</span><span class="n">Port</span><span class="w">         </span><span class="n">Public</span><span class="w"> </span><span class="n">IP</span><span class="o">:</span><span class="n">Port</span>
+<span class="mf">192.168.1.10</span><span class="o">:</span><span class="mi">5001</span><span class="w">  </span><span class="o">--&gt;</span><span class="w">  </span><span class="mf">203.0.113.1</span><span class="o">:</span><span class="mi">40001</span>
+<span class="mf">192.168.1.20</span><span class="o">:</span><span class="mi">5002</span><span class="w">  </span><span class="o">--&gt;</span><span class="w">  </span><span class="mf">203.0.113.1</span><span class="o">:</span><span class="mi">40002</span>
+<span class="mf">192.168.1.30</span><span class="o">:</span><span class="mi">5003</span><span class="w">  </span><span class="o">--&gt;</span><span class="w">  </span><span class="mf">203.0.113.1</span><span class="o">:</span><span class="mi">40003</span>
+</code></pre></div>
+
+<ul>
+<li><strong>Use</strong>: Home networks, small offices</li>
+<li><strong>Advantage</strong>: Single public IP supports thousands of hosts</li>
+<li><strong>Disadvantage</strong>: No inbound connections without port forwarding</li>
+</ul>
+<h4>Diagram:</h4>
+<div class="codehilite"><pre><span></span><code>Static NAT:      [PC1: 10.0.0.1] ─────────── [203.0.113.1] ─── Internet
+                                   1:1 Fixed
+
+Dynamic NAT:     [PC1: 10.0.0.1] ─┐
+                 [PC2: 10.0.0.2] ─┼── Pool ── [203.0.113.1-5] ── Internet
+                 [PC3: 10.0.0.3] ─┘   1:1 Temp
+
+PAT:             [PC1: 10.0.0.1] ─┐
+                 [PC2: 10.0.0.2] ─┼── [203.0.113.1:port] ──── Internet
+                 [PC3: 10.0.0.3] ─┘    Many:1 with ports
+</code></pre></div>
+
+<hr />
+<h3>g) Configure Static NAT on Cisco Router</h3>
+<h4>Network Topology:</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">[PC1: 192.168.1.10] ── [R1] ── [Internet]</span>
+<span class="w">   </span><span class="na">Private Network    G0/0   G0/1   Public IP</span><span class="o">:</span><span class="w"> </span><span class="s">203.0.113.10</span>
+<span class="w">   </span><span class="na">192.168.1.0/24            Public</span><span class="o">:</span><span class="w"> </span><span class="s">203.0.113.0/24</span>
+</code></pre></div>
+
+<h4>Cisco IOS Commands:</h4>
+<div class="codehilite"><pre><span></span><code><span class="p">!</span><span class="w"> </span><span class="nx">Enter</span><span class="w"> </span><span class="nx">global</span><span class="w"> </span><span class="nx">configuration</span><span class="w"> </span><span class="nx">mode</span>
+<span class="nx">Router</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">enable</span>
+<span class="nx">Router</span><span class="err">#</span><span class="w"> </span><span class="nx">configure</span><span class="w"> </span><span class="nx">terminal</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Configure</span><span class="w"> </span><span class="nx">inside</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="nx">network</span><span class="p">)</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">inside</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Configure</span><span class="w"> </span><span class="nx">outside</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">(</span><span class="nx">public</span><span class="w"> </span><span class="nx">network</span><span class="p">)</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">1</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">203.0.113.1</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">outside</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Configure</span><span class="w"> </span><span class="nx">Static</span><span class="w"> </span><span class="nx">NAT</span><span class="w"> </span><span class="nx">mapping</span>
+<span class="p">!</span><span class="w"> </span><span class="nx">Maps</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="m m-Double">192.168.1.10</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">public</span><span class="w"> </span><span class="m m-Double">203.0.113.10</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">inside</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="nx">static</span><span class="w"> </span><span class="m m-Double">192.168.1.10</span><span class="w"> </span><span class="m m-Double">203.0.113.10</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Save</span><span class="w"> </span><span class="nx">configuration</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+<span class="nx">Router</span><span class="err">#</span><span class="w"> </span><span class="nx">write</span><span class="w"> </span><span class="nx">memory</span>
+</code></pre></div>
+
+<h4>Verification Commands:</h4>
+<div class="codehilite"><pre><span></span><code><span class="o">!</span><span class="w"> </span><span class="k">Show</span><span class="w"> </span><span class="nv">NAT</span><span class="w"> </span><span class="nv">translations</span>
+<span class="nv">Router</span>#<span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="nv">ip</span><span class="w"> </span><span class="nv">nat</span><span class="w"> </span><span class="nv">translations</span>
+<span class="nv">Pro</span><span class="w"> </span><span class="nv">Inside</span><span class="w"> </span><span class="nv">global</span><span class="w">      </span><span class="nv">Inside</span><span class="w"> </span><span class="nv">local</span><span class="w">       </span><span class="nv">Outside</span><span class="w"> </span><span class="nv">local</span><span class="w">      </span><span class="nv">Outside</span><span class="w"> </span><span class="nv">global</span>
+<span class="o">---</span><span class="w"> </span><span class="mi">203</span>.<span class="mi">0</span>.<span class="mi">113</span>.<span class="mi">10</span><span class="w">       </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">10</span><span class="w">       </span><span class="o">---</span><span class="w">                </span><span class="o">---</span>
+
+<span class="o">!</span><span class="w"> </span><span class="k">Show</span><span class="w"> </span><span class="nv">NAT</span><span class="w"> </span><span class="nv">statistics</span>
+<span class="nv">Router</span>#<span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="nv">ip</span><span class="w"> </span><span class="nv">nat</span><span class="w"> </span><span class="nv">statistics</span>
+
+<span class="o">!</span><span class="w"> </span><span class="nv">Debug</span><span class="w"> </span><span class="nv">NAT</span><span class="w"> </span><span class="ss">(</span><span class="k">for</span><span class="w"> </span><span class="nv">troubleshooting</span><span class="ss">)</span>
+<span class="nv">Router</span>#<span class="w"> </span><span class="nv">debug</span><span class="w"> </span><span class="nv">ip</span><span class="w"> </span><span class="nv">nat</span>
+</code></pre></div>
+
+<h4>Packet Tracer Steps:</h4>
+<ol>
+<li>Create topology: PC → Switch → Router → Cloud/Server</li>
+<li>Configure PC with IP 192.168.1.10/24, Gateway 192.168.1.1</li>
+<li>Apply above router commands</li>
+<li>Test with ping from PC to external server</li>
+<li>Verify with <code>show ip nat translations</code></li>
+</ol>
+<hr />
+<h2>Q2: Programming Questions — 20 Marks</h2>
+<h3>Option A: Even Parity Error Detection</h3>
+<p>See: <code>Slip_10_Q2_OptionA.c</code></p>
+<h3>Option B: Subnetting and Supernetting Calculator</h3>
+<p>See: <code>Slip_10_Q2_OptionB.c</code></p>
+<h3>Option C: Packet Tracer Configuration</h3>
+<h4>Network Requirements:</h4>
+<ul>
+<li>Subnet: 192.168.10.0/25</li>
+<li>PC1: 192.168.10.1</li>
+<li>PC2: 192.168.10.2</li>
+<li>Subnet Mask: 255.255.255.0</li>
+</ul>
+<h4>Step-by-Step Configuration:</h4>
+<h5>1. Create Topology</h5>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">PC0</span><span class="o">]</span><span class="w"> </span><span class="err">────┐</span>
+<span class="w">          </span><span class="err">├────</span><span class="w"> </span><span class="o">[</span><span class="n">Switch0</span><span class="o">]</span>
+<span class="o">[</span><span class="n">PC1</span><span class="o">]</span><span class="w"> </span><span class="err">────┘</span>
+</code></pre></div>
+
+<h5>2. Configure PC0</h5>
+<div class="codehilite"><pre><span></span><code>IP Address: 192.168.10.1
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.10.254 (optional)
+</code></pre></div>
+
+<h5>3. Configure PC1</h5>
+<div class="codehilite"><pre><span></span><code>IP Address: 192.168.10.2
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.10.254 (optional)
+</code></pre></div>
+
+<h5>4. Test Connectivity</h5>
+<p>From PC0: <code>ping 192.168.10.2</code><br />
+From PC1: <code>ping 192.168.10.1</code></p>
+<h5>5. Subnet Analysis for /25</h5>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network Address</td>
+<td>192.168.10.0</td>
+</tr>
+<tr>
+<td>Subnet Mask</td>
+<td>255.255.255.128 (/25)</td>
+</tr>
+<tr>
+<td>Usable Host Range</td>
+<td>192.168.10.1 - 192.168.10.126</td>
+</tr>
+<tr>
+<td>Broadcast Address</td>
+<td>192.168.10.127</td>
+</tr>
+<tr>
+<td>Total Hosts</td>
+<td>126</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: The question mentions /25 subnet but uses /24 mask (255.255.255.0). Both PCs would work in either case since 192.168.10.1 and 192.168.10.2 fall within both subnets.</p>
+<hr />
+<h2>Quick Reference</h2>
+<h3>ICMP Message Types</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Echo Reply</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Destination Unreachable</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Echo Request</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Time Exceeded</td>
+</tr>
+</tbody>
+</table>
+<h3>NAT Command Summary (Cisco)</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ip nat inside</code></td>
+<td>Mark interface as inside</td>
+</tr>
+<tr>
+<td><code>ip nat outside</code></td>
+<td>Mark interface as outside</td>
+</tr>
+<tr>
+<td><code>ip nat inside source static</code></td>
+<td>Static NAT mapping</td>
+</tr>
+<tr>
+<td><code>ip nat inside source list</code></td>
+<td>Dynamic/PAT NAT</td>
+</tr>
+<tr>
+<td><code>show ip nat translations</code></td>
+<td>View NAT table</td>
+</tr>
+</tbody>
+</table>
+<h3>Network Troubleshooting Order</h3>
+<ol>
+<li><code>ping 127.0.0.1</code> — Test TCP/IP stack</li>
+<li><code>ping &lt;local IP&gt;</code> — Test NIC</li>
+<li><code>ping &lt;gateway&gt;</code> — Test local network</li>
+<li><code>ping &lt;remote IP&gt;</code> — Test routing</li>
+<li><code>ping &lt;hostname&gt;</code> — Test DNS</li>
+</ol>
+<hr />
+<h2>Compilation &amp; Execution</h2>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Option A: Even Parity</span>
+gcc<span class="w"> </span>-o<span class="w"> </span>parity<span class="w"> </span>Slip_10_Q2_OptionA.c
+./parity
+
+<span class="c1"># Option B: Subnetting Calculator</span>
+gcc<span class="w"> </span>-o<span class="w"> </span>subnet<span class="w"> </span>Slip_10_Q2_OptionB.c<span class="w"> </span>-lm
+./subnet
+</code></pre></div>
+    
+    <script>
+        // Add syntax highlighting for code blocks
+        document.querySelectorAll('pre code').forEach((block) => {
+            block.style.fontFamily = "'Consolas', 'Monaco', 'Courier New', monospace";
+        });
+    </script>
+</body>
+</html>

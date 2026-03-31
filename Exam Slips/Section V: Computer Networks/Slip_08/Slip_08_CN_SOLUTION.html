@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slip_08_CN_SOLUTION.md</title>
+    <style>
+        @media print {
+            body { margin: 0.5in; }
+            h1, h2, h3 { page-break-after: avoid; }
+            pre, table { page-break-inside: avoid; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
+            font-size: 11pt;
+        }
+        
+        h1 {
+            color: #1a237e;
+            border-bottom: 3px solid #3f51b5;
+            padding-bottom: 10px;
+            font-size: 28pt;
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #283593;
+            border-bottom: 2px solid #5c6bc0;
+            padding-bottom: 8px;
+            margin-top: 35px;
+            font-size: 20pt;
+        }
+        
+        h3 {
+            color: #3949ab;
+            font-size: 16pt;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #5c6bc0;
+            font-size: 13pt;
+            margin-top: 20px;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 10pt;
+            color: #d32f2f;
+        }
+        
+        pre {
+            background-color: #263238;
+            color: #aed581;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+            overflow-x: auto;
+            font-size: 9.5pt;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 10pt;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3f51b5;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        tr:hover {
+            background-color: #e8eaf6;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 30px 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #ff9800;
+            padding-left: 15px;
+            color: #616161;
+            font-style: italic;
+            margin: 20px 0;
+            background-color: #fff3e0;
+            padding: 10px 15px;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background-color: #45a049;
+        }
+        
+        @media print {
+            .print-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print to PDF</button>
+    <h1>Slip 08 - Computer Networks Solutions</h1>
+<h2>Q1: Theory Questions (10 Marks - Answer ANY 5)</h2>
+<hr />
+<h3>a) Why is it important to configure an enable (EXEC mode) password on a switch?</h3>
+<p><strong>Importance of Enable Password:</strong></p>
+<p>The enable password (also called privileged EXEC mode password) is crucial for network security:</p>
+<ol>
+<li>
+<p><strong>Access Control</strong>: Prevents unauthorized users from accessing privileged EXEC mode where sensitive configurations can be viewed or modified.</p>
+</li>
+<li>
+<p><strong>Protection of Configuration</strong>: Without the enable password, anyone with console access could:<br />
+   - View running configurations (including other passwords)<br />
+   - Modify VLAN configurations<br />
+   - Change IP addresses<br />
+   - Disable ports<br />
+   - Reset the device</p>
+</li>
+<li>
+<p><strong>Security Layers</strong>: Provides defense-in-depth security:<br />
+<code>User EXEC Mode (&gt;) → Limited commands
+         ↓ (requires enable password)
+   Privileged EXEC Mode (#) → Full access</code></p>
+</li>
+<li>
+<p><strong>Compliance Requirements</strong>: Most security standards (PCI-DSS, HIPAA) require access controls on network devices.</p>
+</li>
+<li>
+<p><strong>Audit Trail</strong>: When combined with usernames, helps in tracking who made configuration changes.</p>
+</li>
+</ol>
+<p><strong>Configuration Commands:</strong></p>
+<div class="codehilite"><pre><span></span><code>Switch&gt; enable
+Switch# configure terminal
+Switch(config)# enable password cisco123        ! Plain text (not recommended)
+Switch(config)# enable secret cisco456          ! MD5 encrypted (recommended)
+</code></pre></div>
+
+<p><strong>Best Practice</strong>: Always use <code>enable secret</code> instead of <code>enable password</code> as it uses MD5 hashing.</p>
+<hr />
+<h3>b) Explain the role of VLAN1 in a switch's initial configuration.</h3>
+<p><strong>VLAN1 - The Default/Native VLAN:</strong></p>
+<p>VLAN1 serves several critical roles in Cisco switch configuration:</p>
+<ol>
+<li>
+<p><strong>Default VLAN</strong>: All switch ports belong to VLAN1 by default out of the box.</p>
+</li>
+<li>
+<p><strong>Management VLAN</strong>: Used for remote switch management:<br />
+   - Telnet/SSH access<br />
+   - SNMP monitoring<br />
+   - HTTP/HTTPS management interface</p>
+</li>
+<li>
+<p><strong>Native VLAN</strong>: Carries untagged traffic on trunk links (802.1Q)</p>
+</li>
+<li>
+<p><strong>Control Plane Traffic</strong>: Carries important protocols:<br />
+   - CDP (Cisco Discovery Protocol)<br />
+   - VTP (VLAN Trunking Protocol)<br />
+   - STP (Spanning Tree Protocol)<br />
+   - DTP (Dynamic Trunking Protocol)</p>
+</li>
+</ol>
+<p><strong>Initial Configuration Diagram:</strong></p>
+<div class="codehilite"><pre><span></span><code>┌─────────────────────────────────────┐
+│           SWITCH (Initial)          │
+├─────────────────────────────────────┤
+│  Fa0/1  │  Fa0/2  │  ...  │ Fa0/24 │
+│  VLAN1  │  VLAN1  │  ...  │ VLAN1  │
+└─────────────────────────────────────┘
+         All ports in VLAN1
+</code></pre></div>
+
+<p><strong>Management IP Configuration:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">Switch</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">vlan</span><span class="w"> </span><span class="mi">1</span>
+<span class="nx">Switch</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.1.2</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="nx">Switch</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+<span class="nx">Switch</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+<span class="nx">Switch</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="k">default</span><span class="o">-</span><span class="nx">gateway</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span>
+</code></pre></div>
+
+<p><strong>Security Consideration</strong>: Best practice is to change the management VLAN from VLAN1 to another VLAN to prevent VLAN hopping attacks.</p>
+<hr />
+<h3>c) Configure Static NAT on a router using Cisco Packet Tracer</h3>
+<p><strong>Static NAT Concept:</strong><br />
+Static NAT creates a one-to-one mapping between a private (inside) IP address and a public (outside) IP address.</p>
+<div class="codehilite"><pre><span></span><code>┌─────────────┐      ┌──────────────┐      ┌─────────────┐
+│  PC/Server  │──────│    Router    │──────│  Internet   │
+│ 192.168.1.10│      │   NAT        │      │             │
+│  (Private)  │      │              │      │             │
+└─────────────┘      └──────────────┘      └─────────────┘
+                     Inside: Gig0/0              Outside: Gig0/1
+                     192.168.1.1                 203.0.113.1
+
+        Static NAT: 192.168.1.10 ↔ 203.0.113.10
+</code></pre></div>
+
+<p><strong>Configuration Steps:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="p">!</span><span class="w"> </span><span class="nx">Step</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="nx">Enter</span><span class="w"> </span><span class="nx">global</span><span class="w"> </span><span class="nx">configuration</span><span class="w"> </span><span class="nx">mode</span>
+<span class="nx">Router</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">enable</span>
+<span class="nx">Router</span><span class="err">#</span><span class="w"> </span><span class="nx">configure</span><span class="w"> </span><span class="nx">terminal</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Step</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="nx">Configure</span><span class="w"> </span><span class="nx">inside</span><span class="w"> </span><span class="kd">interface</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">inside</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Step</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="nx">Configure</span><span class="w"> </span><span class="nx">outside</span><span class="w"> </span><span class="kd">interface</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">1</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">203.0.113.1</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">outside</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Step</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span><span class="w"> </span><span class="nx">Create</span><span class="w"> </span><span class="nx">Static</span><span class="w"> </span><span class="nx">NAT</span><span class="w"> </span><span class="nx">mapping</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">inside</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="nx">static</span><span class="w"> </span><span class="m m-Double">192.168.1.10</span><span class="w"> </span><span class="m m-Double">203.0.113.10</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Step</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span><span class="w"> </span><span class="nx">Verify</span><span class="w"> </span><span class="nx">configuration</span>
+<span class="nx">Router</span><span class="err">#</span><span class="w"> </span><span class="nx">show</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">translations</span>
+<span class="nx">Router</span><span class="err">#</span><span class="w"> </span><span class="nx">show</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">statistics</span>
+</code></pre></div>
+
+<p><strong>Verification Output:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nv">Router</span>#<span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="nv">ip</span><span class="w"> </span><span class="nv">nat</span><span class="w"> </span><span class="nv">translations</span>
+<span class="nv">Pro</span><span class="w">  </span><span class="nv">Inside</span><span class="w"> </span><span class="nv">global</span><span class="w">     </span><span class="nv">Inside</span><span class="w"> </span><span class="nv">local</span><span class="w">       </span><span class="nv">Outside</span><span class="w"> </span><span class="nv">local</span><span class="w">      </span><span class="nv">Outside</span><span class="w"> </span><span class="nv">global</span>
+<span class="o">---</span><span class="w">  </span><span class="mi">203</span>.<span class="mi">0</span>.<span class="mi">113</span>.<span class="mi">10</span><span class="w">      </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">10</span><span class="w">       </span><span class="o">---</span><span class="w">                </span><span class="o">---</span>
+</code></pre></div>
+
+<hr />
+<h3>d) Configure Dynamic NAT with a pool of public IP addresses</h3>
+<p><strong>Dynamic NAT Concept:</strong><br />
+Dynamic NAT maps private IP addresses to a pool of public IP addresses on a first-come, first-served basis.</p>
+<div class="codehilite"><pre><span></span><code>┌─────────────┐
+│ PC1: .10    │───┐
+├─────────────┤   │     ┌──────────────┐     ┌─────────────┐
+│ PC2: .20    │───┼─────│    Router    │─────│  Internet   │
+├─────────────┤   │     │   NAT Pool   │     │             │
+│ PC3: .30    │───┘     │ 203.0.113.   │     │             │
+└─────────────┘         │  10-14       │     └─────────────┘
+  192.168.1.0/24        └──────────────┘
+  (5 hosts)               (5 public IPs)
+</code></pre></div>
+
+<p><strong>Configuration Steps:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="p">!</span><span class="w"> </span><span class="nx">Step</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="nx">Enter</span><span class="w"> </span><span class="nx">global</span><span class="w"> </span><span class="nx">configuration</span><span class="w"> </span><span class="nx">mode</span>
+<span class="nx">Router</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">enable</span>
+<span class="nx">Router</span><span class="err">#</span><span class="w"> </span><span class="nx">configure</span><span class="w"> </span><span class="nx">terminal</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Step</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="nx">Configure</span><span class="w"> </span><span class="nx">inside</span><span class="w"> </span><span class="kd">interface</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">inside</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Step</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="nx">Configure</span><span class="w"> </span><span class="nx">outside</span><span class="w"> </span><span class="kd">interface</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">1</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">203.0.113.1</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">outside</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Step</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span><span class="w"> </span><span class="nx">Define</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">NAT</span><span class="w"> </span><span class="nx">pool</span><span class="w"> </span><span class="nx">with</span><span class="w"> </span><span class="nx">public</span><span class="w"> </span><span class="nx">IP</span><span class="w"> </span><span class="nx">addresses</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">pool</span><span class="w"> </span><span class="nx">PUBLIC_POOL</span><span class="w"> </span><span class="m m-Double">203.0.113.10</span><span class="w"> </span><span class="m m-Double">203.0.113.14</span><span class="w"> </span><span class="nx">netmask</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Step</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span><span class="w"> </span><span class="nx">Create</span><span class="w"> </span><span class="nx">Access</span><span class="w"> </span><span class="nx">Control</span><span class="w"> </span><span class="nx">List</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">identify</span><span class="w"> </span><span class="nx">inside</span><span class="w"> </span><span class="nx">hosts</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">access</span><span class="o">-</span><span class="nx">list</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="nx">permit</span><span class="w"> </span><span class="m m-Double">192.168.1.0</span><span class="w"> </span><span class="m m-Double">0.0.0.255</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Step</span><span class="w"> </span><span class="mi">6</span><span class="p">:</span><span class="w"> </span><span class="nx">Associate</span><span class="w"> </span><span class="nx">ACL</span><span class="w"> </span><span class="nx">with</span><span class="w"> </span><span class="nx">NAT</span><span class="w"> </span><span class="nx">pool</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">inside</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="nx">pool</span><span class="w"> </span><span class="nx">PUBLIC_POOL</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Step</span><span class="w"> </span><span class="mi">7</span><span class="p">:</span><span class="w"> </span><span class="nx">Exit</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">save</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+<span class="nx">Router</span><span class="err">#</span><span class="w"> </span><span class="nx">copy</span><span class="w"> </span><span class="nx">running</span><span class="o">-</span><span class="nx">config</span><span class="w"> </span><span class="nx">startup</span><span class="o">-</span><span class="nx">config</span>
+</code></pre></div>
+
+<p><strong>Verification Commands:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">Router</span><span class="err">#</span><span class="w"> </span><span class="nx">show</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">translations</span>
+<span class="nx">Pro</span><span class="w">  </span><span class="nx">Inside</span><span class="w"> </span><span class="nx">global</span><span class="w">     </span><span class="nx">Inside</span><span class="w"> </span><span class="nx">local</span><span class="w">       </span><span class="nx">Outside</span><span class="w"> </span><span class="nx">local</span><span class="w">      </span><span class="nx">Outside</span><span class="w"> </span><span class="nx">global</span>
+<span class="o">---</span><span class="w">  </span><span class="m m-Double">203.0.113.10</span><span class="w">      </span><span class="m m-Double">192.168.1.10</span><span class="w">       </span><span class="o">---</span><span class="w">                </span><span class="o">---</span>
+<span class="o">---</span><span class="w">  </span><span class="m m-Double">203.0.113.11</span><span class="w">      </span><span class="m m-Double">192.168.1.20</span><span class="w">       </span><span class="o">---</span><span class="w">                </span><span class="o">---</span>
+<span class="o">---</span><span class="w">  </span><span class="m m-Double">203.0.113.12</span><span class="w">      </span><span class="m m-Double">192.168.1.30</span><span class="w">       </span><span class="o">---</span><span class="w">                </span><span class="o">---</span>
+
+<span class="nx">Router</span><span class="err">#</span><span class="w"> </span><span class="nx">show</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">statistics</span>
+<span class="nx">Total</span><span class="w"> </span><span class="nx">active</span><span class="w"> </span><span class="nx">translations</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="nx">Outside</span><span class="w"> </span><span class="nx">interfaces</span><span class="p">:</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">1</span>
+<span class="nx">Inside</span><span class="w"> </span><span class="nx">interfaces</span><span class="p">:</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+<span class="nx">Hits</span><span class="p">:</span><span class="w"> </span><span class="mi">156</span><span class="w">  </span><span class="nx">Misses</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="nx">Dynamic</span><span class="w"> </span><span class="nx">mappings</span><span class="p">:</span>
+<span class="w">  </span><span class="o">--</span><span class="w"> </span><span class="nx">Inside</span><span class="w"> </span><span class="nx">Source</span>
+<span class="w">  </span><span class="nx">access</span><span class="o">-</span><span class="nx">list</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="nx">pool</span><span class="w"> </span><span class="nx">PUBLIC_POOL</span><span class="w"> </span><span class="nx">refcount</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">  </span><span class="nx">pool</span><span class="w"> </span><span class="nx">PUBLIC_POOL</span><span class="p">:</span><span class="w"> </span><span class="nx">netmask</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="w">    </span><span class="nx">start</span><span class="w"> </span><span class="m m-Double">203.0.113.10</span><span class="w"> </span><span class="nx">end</span><span class="w"> </span><span class="m m-Double">203.0.113.14</span>
+<span class="w">    </span><span class="k">type</span><span class="w"> </span><span class="nx">generic</span><span class="p">,</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="nx">addresses</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="nx">allocated</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nx">misses</span><span class="w"> </span><span class="mi">0</span>
+</code></pre></div>
+
+<hr />
+<h3>f) Define Hashing</h3>
+<p><strong>Definition:</strong><br />
+Hashing is a cryptographic technique that converts data of any size into a fixed-size string of characters (hash value/digest) using a mathematical function called a hash function.</p>
+<p><strong>Key Properties of Hash Functions:</strong></p>
+<ol>
+<li><strong>Deterministic</strong>: Same input always produces same output</li>
+<li><strong>Fixed Output Size</strong>: Regardless of input size</li>
+<li><strong>One-Way Function</strong>: Cannot reverse to get original data</li>
+<li><strong>Avalanche Effect</strong>: Small input change → completely different hash</li>
+<li><strong>Collision Resistant</strong>: Difficult to find two inputs with same hash</li>
+</ol>
+<p><strong>Common Hash Algorithms:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Output Size</th>
+<th>Security Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MD5</td>
+<td>128 bits</td>
+<td>Weak (deprecated)</td>
+</tr>
+<tr>
+<td>SHA-1</td>
+<td>160 bits</td>
+<td>Weak (deprecated)</td>
+</tr>
+<tr>
+<td>SHA-256</td>
+<td>256 bits</td>
+<td>Strong</td>
+</tr>
+<tr>
+<td>SHA-512</td>
+<td>512 bits</td>
+<td>Very Strong</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Visual Representation:</strong></p>
+<div class="codehilite"><pre><span></span><code>Input Data (any size)          Hash Function         Hash Value (fixed size)
+┌──────────────────┐          ┌───────────┐         ┌──────────────────┐
+│ &quot;Hello World&quot;    │ ───────► │  SHA-256  │ ──────► │ a591a6d40bf420...│
+│ (11 characters)  │          └───────────┘         │ (256 bits/64 hex)│
+└──────────────────┘                                └──────────────────┘
+
+┌──────────────────┐          ┌───────────┐         ┌──────────────────┐
+│ &quot;Hello World!&quot;   │ ───────► │  SHA-256  │ ──────► │ 7f83b1657ff1fc...│
+│ (12 characters)  │          └───────────┘         │ (completely diff)│
+└──────────────────┘                                └──────────────────┘
+</code></pre></div>
+
+<p><strong>Applications in Networking:</strong></p>
+<ol>
+<li><strong>Password Storage</strong>: Store hash instead of plain text</li>
+<li><strong>Data Integrity</strong>: Verify file/message not modified</li>
+<li><strong>Digital Signatures</strong>: Sign hash of document</li>
+<li><strong>HMAC</strong>: Message authentication codes</li>
+<li><strong>Blockchain</strong>: Linking blocks securely</li>
+<li><strong>Certificate Verification</strong>: SSL/TLS certificates</li>
+</ol>
+<p><strong>Example (MD5):</strong></p>
+<div class="codehilite"><pre><span></span><code>Input: &quot;password123&quot;
+MD5 Hash: 482c811da5d5b4bc6d497ffa98491e38
+</code></pre></div>
+
+<hr />
+<h3>g) What are Cyber Security Policies?</h3>
+<p><strong>Definition:</strong><br />
+Cyber Security Policies are formal documented guidelines that define how an organization protects its digital assets, manages security risks, and responds to security incidents.</p>
+<p><strong>Types of Cyber Security Policies:</strong></p>
+<div class="codehilite"><pre><span></span><code>┌────────────────────────────────────────────────────────────────┐
+│                  CYBER SECURITY POLICIES                        │
+├────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐│
+│  │ Access Control  │  │ Data Protection │  │ Network Security││
+│  │ Policy          │  │ Policy          │  │ Policy          ││
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘│
+│                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐│
+│  │ Incident        │  │ Password        │  │ Acceptable Use  ││
+│  │ Response Policy │  │ Policy          │  │ Policy          ││
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘│
+│                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐│
+│  │ BYOD Policy     │  │ Remote Access   │  │ Backup &amp; Recovery│
+│  │                 │  │ Policy          │  │ Policy          ││
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘│
+└────────────────────────────────────────────────────────────────┘
+</code></pre></div>
+
+<p><strong>Key Policy Components:</strong></p>
+<ol>
+<li>
+<p><strong>Access Control Policy</strong><br />
+   - User authentication requirements<br />
+   - Role-based access control (RBAC)<br />
+   - Privilege management</p>
+</li>
+<li>
+<p><strong>Password Policy</strong><br />
+   - Minimum length (e.g., 12+ characters)<br />
+   - Complexity requirements<br />
+   - Expiration periods<br />
+   - History restrictions</p>
+</li>
+<li>
+<p><strong>Data Protection Policy</strong><br />
+   - Data classification (Public, Internal, Confidential)<br />
+   - Encryption requirements<br />
+   - Data retention periods</p>
+</li>
+<li>
+<p><strong>Network Security Policy</strong><br />
+   - Firewall rules<br />
+   - VPN usage<br />
+   - Wireless security standards</p>
+</li>
+<li>
+<p><strong>Incident Response Policy</strong><br />
+   - Detection procedures<br />
+   - Reporting chain<br />
+   - Containment steps<br />
+   - Recovery procedures</p>
+</li>
+</ol>
+<p><strong>Importance:</strong><br />
+- Regulatory compliance (GDPR, HIPAA, PCI-DSS)<br />
+- Risk management<br />
+- Employee awareness<br />
+- Legal protection<br />
+- Business continuity</p>
+<hr />
+<h2>Q2: Practical Programming Questions (20 Marks)</h2>
+<h3>Option A: Network Configuration Verification Program</h3>
+<p>See: <code>Slip_08_Q2_OptionA.c</code></p>
+<h3>Option B: Dynamic Routing Protocol (RIP) Simulation</h3>
+<p>See: <code>Slip_08_Q2_OptionB.c</code></p>
+<h3>Option C: Configure Cisco Switch 2960 Initial Settings</h3>
+<p><strong>Packet Tracer Steps:</strong></p>
+<ol>
+<li><strong>Open Packet Tracer</strong> and add a Switch 2960</li>
+<li><strong>Connect via Console Cable</strong> to a PC</li>
+<li><strong>Access CLI</strong> through Terminal on PC</li>
+</ol>
+<p><strong>CLI Configuration Commands:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="err">!</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span><span class="w"> </span><span class="n">Enter</span><span class="w"> </span><span class="n">privileged</span><span class="w"> </span><span class="k">EXEC</span><span class="w"> </span><span class="n">mode</span>
+<span class="n">Switch</span><span class="o">&gt;</span><span class="w"> </span><span class="n">enable</span>
+
+<span class="err">!</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="mi">2</span><span class="err">:</span><span class="w"> </span><span class="n">Enter</span><span class="w"> </span><span class="k">global</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="n">mode</span>
+<span class="n">Switch</span><span class="err">#</span><span class="w"> </span><span class="n">configure</span><span class="w"> </span><span class="n">terminal</span>
+
+<span class="err">!</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="mi">3</span><span class="err">:</span><span class="w"> </span><span class="k">Set</span><span class="w"> </span><span class="n">hostname</span>
+<span class="n">Switch</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="n">hostname</span><span class="w"> </span><span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span>
+
+<span class="err">!</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="mi">4</span><span class="err">:</span><span class="w"> </span><span class="n">Secure</span><span class="w"> </span><span class="n">console</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">password</span>
+<span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="n">console</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="n">line</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="n">console123</span>
+<span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="n">line</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="n">login</span>
+<span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="n">line</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="k">exit</span>
+
+<span class="err">!</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="mi">5</span><span class="err">:</span><span class="w"> </span><span class="k">Set</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="p">(</span><span class="n">encrypted</span><span class="p">)</span>
+<span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="n">secret</span><span class="w"> </span><span class="n">admin456</span>
+
+<span class="err">!</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="mi">6</span><span class="err">:</span><span class="w"> </span><span class="k">Set</span><span class="w"> </span><span class="n">VTY</span><span class="w"> </span><span class="p">(</span><span class="n">Telnet</span><span class="o">/</span><span class="n">SSH</span><span class="p">)</span><span class="w"> </span><span class="n">password</span>
+<span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="n">vty</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">15</span>
+<span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="n">line</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="n">vty789</span>
+<span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="n">line</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="n">login</span>
+<span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="n">line</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="k">exit</span>
+
+<span class="err">!</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="mi">7</span><span class="err">:</span><span class="w"> </span><span class="n">Encrypt</span><span class="w"> </span><span class="ow">all</span><span class="w"> </span><span class="n">plain</span><span class="o">-</span><span class="nc">text</span><span class="w"> </span><span class="n">passwords</span>
+<span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="n">password</span><span class="o">-</span><span class="n">encryption</span>
+
+<span class="err">!</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="mi">8</span><span class="err">:</span><span class="w"> </span><span class="k">Set</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nf">Day</span><span class="w"> </span><span class="n">banner</span>
+<span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="n">banner</span><span class="w"> </span><span class="n">motd</span><span class="w"> </span><span class="n">#Unauthorized</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="n">Prohibited</span><span class="err">!#</span>
+
+<span class="err">!</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="mi">9</span><span class="err">:</span><span class="w"> </span><span class="n">Configure</span><span class="w"> </span><span class="n">management</span><span class="w"> </span><span class="n">interface</span>
+<span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">vlan</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="n">ip</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="mf">192.168.1.2</span><span class="w"> </span><span class="mf">255.255.255.0</span>
+<span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="k">no</span><span class="w"> </span><span class="k">shutdown</span>
+<span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="k">exit</span>
+
+<span class="err">!</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="mi">10</span><span class="err">:</span><span class="w"> </span><span class="k">Set</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">gateway</span>
+<span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="n">ip</span><span class="w"> </span><span class="k">default</span><span class="o">-</span><span class="n">gateway</span><span class="w"> </span><span class="mf">192.168.1.1</span>
+
+<span class="err">!</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="mi">11</span><span class="err">:</span><span class="w"> </span><span class="k">Exit</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">save</span><span class="w"> </span><span class="n">configuration</span>
+<span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="k">exit</span>
+<span class="n">SW</span><span class="o">-</span><span class="n">CLASSROOM</span><span class="err">#</span><span class="w"> </span><span class="n">copy</span><span class="w"> </span><span class="n">running</span><span class="o">-</span><span class="n">config</span><span class="w"> </span><span class="n">startup</span><span class="o">-</span><span class="n">config</span>
+<span class="n">Destination</span><span class="w"> </span><span class="n">filename</span><span class="w"> </span><span class="o">[</span><span class="n">startup-config</span><span class="o">]</span><span class="vm">?</span><span class="w"> </span>
+<span class="n">Building</span><span class="w"> </span><span class="n">configuration</span><span class="p">...</span>
+<span class="o">[</span><span class="n">OK</span><span class="o">]</span>
+</code></pre></div>
+
+<p><strong>Verification Commands:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nv">SW</span><span class="o">-</span><span class="nv">CLASSROOM</span>#<span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="nv">running</span><span class="o">-</span><span class="nv">config</span>
+<span class="nv">SW</span><span class="o">-</span><span class="nv">CLASSROOM</span>#<span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="nv">ip</span><span class="w"> </span><span class="nv">interface</span><span class="w"> </span><span class="nv">brief</span>
+<span class="nv">SW</span><span class="o">-</span><span class="nv">CLASSROOM</span>#<span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="nv">version</span>
+</code></pre></div>
+
+<hr />
+<h2>Summary Table</h2>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Topic</th>
+<th>Key Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1(a)</td>
+<td>Enable Password</td>
+<td>Security, Access Control, MD5 Encryption</td>
+</tr>
+<tr>
+<td>Q1(b)</td>
+<td>VLAN1</td>
+<td>Default VLAN, Management, Native VLAN</td>
+</tr>
+<tr>
+<td>Q1(c)</td>
+<td>Static NAT</td>
+<td>One-to-one mapping, ip nat inside/outside</td>
+</tr>
+<tr>
+<td>Q1(d)</td>
+<td>Dynamic NAT</td>
+<td>Pool of IPs, ACL, First-come-first-served</td>
+</tr>
+<tr>
+<td>Q1(f)</td>
+<td>Hashing</td>
+<td>One-way function, SHA-256, Integrity</td>
+</tr>
+<tr>
+<td>Q1(g)</td>
+<td>Security Policies</td>
+<td>Guidelines, Compliance, Risk Management</td>
+</tr>
+<tr>
+<td>Q2-A</td>
+<td>Config Verification</td>
+<td>show running-config, ping</td>
+</tr>
+<tr>
+<td>Q2-B</td>
+<td>Dynamic Routing</td>
+<td>RIP, Distance Vector, Hop Count</td>
+</tr>
+<tr>
+<td>Q2-C</td>
+<td>Switch Config</td>
+<td>hostname, console password, CLI</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Slip 08 - Computer Networks - Complete Solutions</em></p>
+    
+    <script>
+        // Add syntax highlighting for code blocks
+        document.querySelectorAll('pre code').forEach((block) => {
+            block.style.fontFamily = "'Consolas', 'Monaco', 'Courier New', monospace";
+        });
+    </script>
+</body>
+</html>

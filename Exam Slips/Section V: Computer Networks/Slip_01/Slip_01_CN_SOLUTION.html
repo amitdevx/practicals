@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slip_01_CN_SOLUTION.md</title>
+    <style>
+        @media print {
+            body { margin: 0.5in; }
+            h1, h2, h3 { page-break-after: avoid; }
+            pre, table { page-break-inside: avoid; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
+            font-size: 11pt;
+        }
+        
+        h1 {
+            color: #1a237e;
+            border-bottom: 3px solid #3f51b5;
+            padding-bottom: 10px;
+            font-size: 28pt;
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #283593;
+            border-bottom: 2px solid #5c6bc0;
+            padding-bottom: 8px;
+            margin-top: 35px;
+            font-size: 20pt;
+        }
+        
+        h3 {
+            color: #3949ab;
+            font-size: 16pt;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #5c6bc0;
+            font-size: 13pt;
+            margin-top: 20px;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 10pt;
+            color: #d32f2f;
+        }
+        
+        pre {
+            background-color: #263238;
+            color: #aed581;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+            overflow-x: auto;
+            font-size: 9.5pt;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 10pt;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3f51b5;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        tr:hover {
+            background-color: #e8eaf6;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 30px 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #ff9800;
+            padding-left: 15px;
+            color: #616161;
+            font-style: italic;
+            margin: 20px 0;
+            background-color: #fff3e0;
+            padding: 10px 15px;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background-color: #45a049;
+        }
+        
+        @media print {
+            .print-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print to PDF</button>
+    <h1>Slip 1 — Computer Networks Solution Guide</h1>
+<h2>Q1: Theory Questions (10 Marks - Answer ANY 5)</h2>
+<hr />
+<h3>a) What is the purpose of a modem in a network? Can we connect directly to the internet without it?</h3>
+<h4>Concept</h4>
+<p>A <strong>MODEM</strong> (Modulator-Demodulator) is a hardware device that converts digital signals from a computer into analog signals for transmission over telephone lines (modulation) and vice versa (demodulation).</p>
+<h4>Purpose of a Modem</h4>
+<ol>
+<li><strong>Signal Conversion</strong>: Converts digital data (0s and 1s) to analog signals for transmission</li>
+<li><strong>Enable Communication</strong>: Allows computers to communicate over analog telephone networks</li>
+<li><strong>Data Transmission</strong>: Facilitates internet connectivity through ISP</li>
+<li><strong>Protocol Handling</strong>: Manages communication protocols between devices</li>
+</ol>
+<h4>Types of Modems</h4>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Connection</th>
+<th>Speed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DSL Modem</td>
+<td>Phone line</td>
+<td>Up to 100 Mbps</td>
+</tr>
+<tr>
+<td>Cable Modem</td>
+<td>Coaxial cable</td>
+<td>Up to 1 Gbps</td>
+</tr>
+<tr>
+<td>Fiber Modem (ONT)</td>
+<td>Fiber optic</td>
+<td>Up to 10 Gbps</td>
+</tr>
+<tr>
+<td>Dial-up Modem</td>
+<td>Phone line</td>
+<td>Up to 56 Kbps</td>
+</tr>
+</tbody>
+</table>
+<h4>Can We Connect Without a Modem?</h4>
+<p><strong>Yes</strong>, in certain scenarios:<br />
+- <strong>Direct Fiber/Ethernet from ISP</strong>: Some ISPs provide direct Ethernet connection<br />
+- <strong>Mobile Hotspot</strong>: Uses cellular network (modem built into phone)<br />
+- <strong>LAN Networks</strong>: Direct connection within local network doesn't need modem<br />
+- <strong>Leased Line</strong>: Direct digital connection for enterprises</p>
+<p><strong>No</strong>, when:<br />
+- Using DSL/Cable internet (analog to digital conversion required)<br />
+- Traditional telephone line connections</p>
+<hr />
+<h3>b) What is a MAC address and how is it different from an IP address?</h3>
+<h4>MAC Address (Media Access Control)</h4>
+<p>A <strong>MAC address</strong> is a unique hardware identifier assigned to the Network Interface Card (NIC) by the manufacturer.</p>
+<p><strong>Format</strong>: 48-bit (6 bytes), written as <code>XX:XX:XX:XX:XX:XX</code> (hexadecimal)<br />
+<strong>Example</strong>: <code>00:1A:2B:3C:4D:5E</code></p>
+<p><strong>Structure</strong>:</p>
+<div class="codehilite"><pre><span></span><code>First 3 bytes (OUI): Manufacturer ID (Organizationally Unique Identifier)
+Last 3 bytes (NIC): Unique device identifier
+</code></pre></div>
+
+<h4>IP Address (Internet Protocol)</h4>
+<p>A <strong>logical address</strong> assigned to devices for network identification and location addressing.</p>
+<p><strong>IPv4 Format</strong>: 32-bit, written as <code>X.X.X.X</code> (dotted decimal)<br />
+<strong>Example</strong>: <code>192.168.1.100</code></p>
+<h4>Key Differences</h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>MAC Address</th>
+<th>IP Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Layer</strong></td>
+<td>Data Link (Layer 2)</td>
+<td>Network (Layer 3)</td>
+</tr>
+<tr>
+<td><strong>Type</strong></td>
+<td>Physical/Hardware</td>
+<td>Logical/Software</td>
+</tr>
+<tr>
+<td><strong>Assigned by</strong></td>
+<td>Manufacturer</td>
+<td>Network Admin/DHCP</td>
+</tr>
+<tr>
+<td><strong>Uniqueness</strong></td>
+<td>Globally unique</td>
+<td>Unique within network</td>
+</tr>
+<tr>
+<td><strong>Format</strong></td>
+<td>48-bit hexadecimal</td>
+<td>32-bit (IPv4) / 128-bit (IPv6)</td>
+</tr>
+<tr>
+<td><strong>Change</strong></td>
+<td>Permanent (can be spoofed)</td>
+<td>Can be changed</td>
+</tr>
+<tr>
+<td><strong>Scope</strong></td>
+<td>Local network</td>
+<td>Global (routable)</td>
+</tr>
+<tr>
+<td><strong>Example</strong></td>
+<td><code>00:1A:2B:3C:4D:5E</code></td>
+<td><code>192.168.1.10</code></td>
+</tr>
+</tbody>
+</table>
+<h4>Commands to View</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># View MAC address</span>
+ifconfig<span class="w">          </span><span class="c1"># Linux/Mac</span>
+ip<span class="w"> </span>link<span class="w"> </span>show<span class="w">      </span><span class="c1"># Linux</span>
+ipconfig<span class="w"> </span>/all<span class="w">     </span><span class="c1"># Windows</span>
+
+<span class="c1"># View IP address</span>
+ifconfig<span class="w">          </span><span class="c1"># Linux/Mac</span>
+ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w">      </span><span class="c1"># Linux</span>
+ipconfig<span class="w">          </span><span class="c1"># Windows</span>
+</code></pre></div>
+
+<hr />
+<h3>c) What is a loopback IP address? What is its range?</h3>
+<h4>Concept</h4>
+<p>A <strong>loopback address</strong> is a special IP address that routes traffic back to the same device without sending it to the network. It's used for testing and diagnostics.</p>
+<h4>Purpose</h4>
+<ol>
+<li><strong>Testing Network Software</strong>: Test applications without network hardware</li>
+<li><strong>Self-Diagnostics</strong>: Verify TCP/IP stack is functioning</li>
+<li><strong>Local Development</strong>: Run and test servers locally</li>
+<li><strong>Inter-Process Communication</strong>: Applications on same host communicate</li>
+</ol>
+<h4>Loopback Address Range</h4>
+<p><strong>IPv4 Loopback Range</strong>: <code>127.0.0.0</code> to <code>127.255.255.255</code> (127.0.0.0/8)</p>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>127.0.0.1</code></td>
+<td>Standard loopback (localhost)</td>
+</tr>
+<tr>
+<td><code>127.0.0.0/8</code></td>
+<td>Entire loopback block (16 million addresses)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>IPv6 Loopback</strong>: <code>::1</code> (single address)</p>
+<h4>Key Characteristics</h4>
+<ul>
+<li>Packets sent to loopback <strong>never leave the host</strong></li>
+<li>The entire <code>127.x.x.x</code> range is reserved for loopback</li>
+<li>Most commonly used: <code>127.0.0.1</code> (mapped to <code>localhost</code> in hosts file)</li>
+<li>Used for testing TCP/IP stack functionality</li>
+</ul>
+<h4>Testing Loopback</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Ping loopback address</span>
+ping<span class="w"> </span><span class="m">127</span>.0.0.1
+ping<span class="w"> </span>localhost
+
+<span class="c1"># IPv6 loopback</span>
+ping6<span class="w"> </span>::1
+</code></pre></div>
+
+<h4>Hosts File Entry</h4>
+<div class="codehilite"><pre><span></span><code># /etc/hosts (Linux) or C:\Windows\System32\drivers\etc\hosts (Windows)
+127.0.0.1    localhost
+::1          localhost
+</code></pre></div>
+
+<hr />
+<h3>d) Write the command to assign a static IP in Linux</h3>
+<h4>Method 1: Using <code>ip</code> command (Temporary - until reboot)</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Assign static IP</span>
+sudo<span class="w"> </span>ip<span class="w"> </span>addr<span class="w"> </span>add<span class="w"> </span><span class="m">192</span>.168.1.100/24<span class="w"> </span>dev<span class="w"> </span>eth0
+
+<span class="c1"># Set default gateway</span>
+sudo<span class="w"> </span>ip<span class="w"> </span>route<span class="w"> </span>add<span class="w"> </span>default<span class="w"> </span>via<span class="w"> </span><span class="m">192</span>.168.1.1
+
+<span class="c1"># Bring interface up</span>
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>eth0<span class="w"> </span>up
+</code></pre></div>
+
+<h4>Method 2: Using <code>ifconfig</code> (Deprecated but still works)</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Assign IP and netmask</span>
+sudo<span class="w"> </span>ifconfig<span class="w"> </span>eth0<span class="w"> </span><span class="m">192</span>.168.1.100<span class="w"> </span>netmask<span class="w"> </span><span class="m">255</span>.255.255.0<span class="w"> </span>up
+
+<span class="c1"># Add default gateway</span>
+sudo<span class="w"> </span>route<span class="w"> </span>add<span class="w"> </span>default<span class="w"> </span>gw<span class="w"> </span><span class="m">192</span>.168.1.1<span class="w"> </span>eth0
+</code></pre></div>
+
+<h4>Method 3: Permanent Configuration (Netplan - Ubuntu 18.04+)</h4>
+<p>Edit <code>/etc/netplan/01-netcfg.yaml</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">network</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">ethernets</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">eth0</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">addresses</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.1.100/24</span>
+<span class="w">      </span><span class="nt">gateway4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.1.1</span>
+<span class="w">      </span><span class="nt">nameservers</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">addresses</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">8.8.8.8</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">8.8.4.4</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+
+<p>Apply configuration:</p>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>netplan<span class="w"> </span>apply
+</code></pre></div>
+
+<h4>Method 4: Permanent Configuration (interfaces file - Debian/older Ubuntu)</h4>
+<p>Edit <code>/etc/network/interfaces</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="kt">auto</span><span class="w"> </span><span class="nx">eth0</span>
+<span class="nx">iface</span><span class="w"> </span><span class="nx">eth0</span><span class="w"> </span><span class="nx">inet</span><span class="w"> </span><span class="nx">static</span>
+<span class="w">    </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.1.100</span>
+<span class="w">    </span><span class="nx">netmask</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="w">    </span><span class="nx">gateway</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span>
+<span class="w">    </span><span class="nx">dns</span><span class="o">-</span><span class="nx">nameservers</span><span class="w"> </span><span class="m m-Double">8.8.8.8</span><span class="w"> </span><span class="m m-Double">8.8.4.4</span>
+</code></pre></div>
+
+<p>Restart networking:</p>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>networking
+</code></pre></div>
+
+<h4>Method 5: Using nmcli (NetworkManager)</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Add static IP configuration</span>
+sudo<span class="w"> </span>nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span><span class="s2">&quot;Wired connection 1&quot;</span><span class="w"> </span>ipv4.addresses<span class="w"> </span><span class="m">192</span>.168.1.100/24
+sudo<span class="w"> </span>nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span><span class="s2">&quot;Wired connection 1&quot;</span><span class="w"> </span>ipv4.gateway<span class="w"> </span><span class="m">192</span>.168.1.1
+sudo<span class="w"> </span>nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span><span class="s2">&quot;Wired connection 1&quot;</span><span class="w"> </span>ipv4.dns<span class="w"> </span><span class="s2">&quot;8.8.8.8&quot;</span>
+sudo<span class="w"> </span>nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span><span class="s2">&quot;Wired connection 1&quot;</span><span class="w"> </span>ipv4.method<span class="w"> </span>manual
+
+<span class="c1"># Restart connection</span>
+sudo<span class="w"> </span>nmcli<span class="w"> </span>con<span class="w"> </span>down<span class="w"> </span><span class="s2">&quot;Wired connection 1&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>nmcli<span class="w"> </span>con<span class="w"> </span>up<span class="w"> </span><span class="s2">&quot;Wired connection 1&quot;</span>
+</code></pre></div>
+
+<hr />
+<h3>f) Which online tool is used to check password strength?</h3>
+<h4>Popular Online Password Strength Checkers</h4>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>URL</th>
+<th>Features</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>How Secure Is My Password</strong></td>
+<td>howsecureismypassword.net</td>
+<td>Shows time to crack</td>
+</tr>
+<tr>
+<td><strong>Password Meter</strong></td>
+<td>passwordmeter.com</td>
+<td>Detailed strength analysis</td>
+</tr>
+<tr>
+<td><strong>Kaspersky Password Checker</strong></td>
+<td>password.kaspersky.com</td>
+<td>Security company tool</td>
+</tr>
+<tr>
+<td><strong>LastPass Password Generator</strong></td>
+<td>lastpass.com/password-generator</td>
+<td>Create &amp; check passwords</td>
+</tr>
+<tr>
+<td><strong>NordPass Password Checker</strong></td>
+<td>nordpass.com/password-strength-checker</td>
+<td>Breach database check</td>
+</tr>
+<tr>
+<td><strong>Bitwarden Password Strength</strong></td>
+<td>bitwarden.com/password-strength</td>
+<td>Open source option</td>
+</tr>
+</tbody>
+</table>
+<h4>What These Tools Check</h4>
+<ol>
+<li><strong>Length</strong>: Minimum 8-12 characters recommended</li>
+<li><strong>Character Variety</strong>: Uppercase, lowercase, numbers, symbols</li>
+<li><strong>Common Patterns</strong>: Dictionary words, sequences (123, abc)</li>
+<li><strong>Personal Info</strong>: Avoids names, dates, common substitutions</li>
+<li><strong>Entropy</strong>: Measure of randomness/unpredictability</li>
+</ol>
+<h4>Password Strength Criteria</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">Weak</span><span class="p">:</span><span class="w">     </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="n">chars</span><span class="p">,</span><span class="w"> </span><span class="n">dictionary</span><span class="w"> </span><span class="n">words</span><span class="p">,</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">special</span><span class="w"> </span><span class="n">chars</span>
+<span class="n">Medium</span><span class="p">:</span><span class="w">   </span><span class="mi">8</span><span class="o">-</span><span class="mi">12</span><span class="w"> </span><span class="n">chars</span><span class="p">,</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">variety</span>
+<span class="n">Strong</span><span class="p">:</span><span class="w">   </span><span class="mi">12</span><span class="o">-</span><span class="mi">16</span><span class="w"> </span><span class="n">chars</span><span class="p">,</span><span class="w"> </span><span class="n">mixed</span><span class="w"> </span><span class="n">case</span><span class="p">,</span><span class="w"> </span><span class="n">numbers</span><span class="p">,</span><span class="w"> </span><span class="n">symbols</span>
+<span class="n">Very</span><span class="w"> </span><span class="n">Strong</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="o">+</span><span class="w"> </span><span class="n">chars</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="w"> </span><span class="n">entropy</span><span class="p">,</span><span class="w"> </span><span class="n">passphrase</span>
+</code></pre></div>
+
+<h4>Security Note</h4>
+<p>⚠️ <strong>Never enter your actual password</strong> on untrusted websites. Use these tools to test password <strong>patterns</strong>, not your real passwords.</p>
+<hr />
+<h3>g) How to Use Nmap to Scan for Open Ports</h3>
+<h4>What is Nmap?</h4>
+<p><strong>Nmap</strong> (Network Mapper) is an open-source tool for network discovery and security auditing. It can detect open ports, services, and operating systems.</p>
+<h4>Installation</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Ubuntu/Debian</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nmap
+
+<span class="c1"># CentOS/RHEL</span>
+sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>nmap
+
+<span class="c1"># macOS</span>
+brew<span class="w"> </span>install<span class="w"> </span>nmap
+</code></pre></div>
+
+<h4>Basic Port Scanning Commands</h4>
+<h5>1. Scan Single Host</h5>
+<div class="codehilite"><pre><span></span><code>nmap<span class="w"> </span><span class="m">192</span>.168.1.1
+nmap<span class="w"> </span>example.com
+</code></pre></div>
+
+<h5>2. Scan Specific Ports</h5>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Single port</span>
+nmap<span class="w"> </span>-p<span class="w"> </span><span class="m">80</span><span class="w"> </span><span class="m">192</span>.168.1.1
+
+<span class="c1"># Multiple ports</span>
+nmap<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span>,80,443<span class="w"> </span><span class="m">192</span>.168.1.1
+
+<span class="c1"># Port range</span>
+nmap<span class="w"> </span>-p<span class="w"> </span><span class="m">1</span>-1000<span class="w"> </span><span class="m">192</span>.168.1.1
+
+<span class="c1"># All ports (65535)</span>
+nmap<span class="w"> </span>-p-<span class="w"> </span><span class="m">192</span>.168.1.1
+</code></pre></div>
+
+<h5>3. Scan Types</h5>
+<div class="codehilite"><pre><span></span><code><span class="c1"># TCP SYN scan (default, requires root)</span>
+sudo<span class="w"> </span>nmap<span class="w"> </span>-sS<span class="w"> </span><span class="m">192</span>.168.1.1
+
+<span class="c1"># TCP Connect scan (no root needed)</span>
+nmap<span class="w"> </span>-sT<span class="w"> </span><span class="m">192</span>.168.1.1
+
+<span class="c1"># UDP scan</span>
+sudo<span class="w"> </span>nmap<span class="w"> </span>-sU<span class="w"> </span><span class="m">192</span>.168.1.1
+
+<span class="c1"># Service version detection</span>
+nmap<span class="w"> </span>-sV<span class="w"> </span><span class="m">192</span>.168.1.1
+
+<span class="c1"># OS detection</span>
+sudo<span class="w"> </span>nmap<span class="w"> </span>-O<span class="w"> </span><span class="m">192</span>.168.1.1
+</code></pre></div>
+
+<h5>4. Scan Network Range</h5>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Scan entire subnet</span>
+nmap<span class="w"> </span><span class="m">192</span>.168.1.0/24
+
+<span class="c1"># Scan IP range</span>
+nmap<span class="w"> </span><span class="m">192</span>.168.1.1-50
+
+<span class="c1"># Scan from file</span>
+nmap<span class="w"> </span>-iL<span class="w"> </span>targets.txt
+</code></pre></div>
+
+<h5>5. Common Useful Scans</h5>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Fast scan (top 100 ports)</span>
+nmap<span class="w"> </span>-F<span class="w"> </span><span class="m">192</span>.168.1.1
+
+<span class="c1"># Aggressive scan (OS, version, scripts, traceroute)</span>
+nmap<span class="w"> </span>-A<span class="w"> </span><span class="m">192</span>.168.1.1
+
+<span class="c1"># Scan common ports with service versions</span>
+nmap<span class="w"> </span>-sV<span class="w"> </span>--top-ports<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">192</span>.168.1.1
+</code></pre></div>
+
+<h4>Sample Output</h4>
+<div class="codehilite"><pre><span></span><code><span class="nx">Starting</span><span class="w"> </span><span class="nx">Nmap</span><span class="w"> </span><span class="m m-Double">7.80</span>
+<span class="nx">Nmap</span><span class="w"> </span><span class="nx">scan</span><span class="w"> </span><span class="nx">report</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span>
+<span class="nx">Host</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">up</span><span class="w"> </span><span class="p">(</span><span class="m m-Double">0.0012</span><span class="nx">s</span><span class="w"> </span><span class="nx">latency</span><span class="p">).</span>
+
+<span class="nx">PORT</span><span class="w">     </span><span class="nx">STATE</span><span class="w">  </span><span class="nx">SERVICE</span><span class="w">     </span><span class="nx">VERSION</span>
+<span class="mi">22</span><span class="o">/</span><span class="nx">tcp</span><span class="w">   </span><span class="nx">open</span><span class="w">   </span><span class="nx">ssh</span><span class="w">         </span><span class="nx">OpenSSH</span><span class="w"> </span><span class="m m-Double">8.2</span>
+<span class="mi">80</span><span class="o">/</span><span class="nx">tcp</span><span class="w">   </span><span class="nx">open</span><span class="w">   </span><span class="nx">http</span><span class="w">        </span><span class="nx">Apache</span><span class="w"> </span><span class="m m-Double">2.4.41</span>
+<span class="mi">443</span><span class="o">/</span><span class="nx">tcp</span><span class="w">  </span><span class="nx">open</span><span class="w">   </span><span class="nx">https</span><span class="w">       </span><span class="nx">Apache</span><span class="w"> </span><span class="m m-Double">2.4.41</span>
+<span class="mi">3306</span><span class="o">/</span><span class="nx">tcp</span><span class="w"> </span><span class="nx">closed</span><span class="w"> </span><span class="nx">mysql</span>
+
+<span class="nx">Nmap</span><span class="w"> </span><span class="nx">done</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="nx">IP</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="nx">host</span><span class="w"> </span><span class="nx">up</span><span class="p">)</span><span class="w"> </span><span class="nx">scanned</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m m-Double">2.34</span><span class="w"> </span><span class="nx">seconds</span>
+</code></pre></div>
+
+<h4>Port States</h4>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>open</code></td>
+<td>Service accepting connections</td>
+</tr>
+<tr>
+<td><code>closed</code></td>
+<td>Accessible but no service listening</td>
+</tr>
+<tr>
+<td><code>filtered</code></td>
+<td>Firewall blocking probe</td>
+</tr>
+<tr>
+<td><code>unfiltered</code></td>
+<td>Accessible, undetermined if open/closed</td>
+</tr>
+</tbody>
+</table>
+<h4>⚠️ Legal Notice</h4>
+<p>Only scan networks you own or have explicit permission to test. Unauthorized scanning is illegal in many jurisdictions.</p>
+<hr />
+<h2>Q2: Practical Questions (20 Marks)</h2>
+<hr />
+<h2>Option A: Data Link Layer Framing - Character &amp; Bit Stuffing</h2>
+<h3>Concept</h3>
+<p><strong>Framing</strong> is the process of dividing data into manageable frames at the Data Link Layer. The receiver needs to identify frame boundaries.</p>
+<h4>Character Stuffing</h4>
+<p>Used when frames are delimited by special characters (e.g., DLE STX ... DLE ETX).</p>
+<p><strong>Problem</strong>: What if data contains the delimiter?<br />
+<strong>Solution</strong>: "Stuff" an extra DLE before any DLE in data.</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">Original</span><span class="w"> </span><span class="nv">Data</span>:<span class="w">  </span><span class="nv">A</span><span class="w"> </span><span class="nv">DLE</span><span class="w"> </span><span class="nv">B</span>
+<span class="nv">After</span><span class="w"> </span><span class="nv">Stuffing</span>:<span class="w"> </span><span class="nv">DLE</span><span class="w"> </span><span class="nv">STX</span><span class="w"> </span><span class="nv">A</span><span class="w"> </span><span class="nv">DLE</span><span class="w"> </span><span class="nv">DLE</span><span class="w"> </span><span class="nv">B</span><span class="w"> </span><span class="nv">DLE</span><span class="w"> </span><span class="nv">ETX</span>
+<span class="w">                </span>↑<span class="nv">start</span><span class="w">      </span>↑<span class="nv">stuffed</span><span class="w">  </span>↑<span class="k">end</span>
+</code></pre></div>
+
+<h4>Bit Stuffing</h4>
+<p>Used in protocols like HDLC where frame delimiter is <code>01111110</code> (flag).</p>
+<p><strong>Problem</strong>: What if data contains six consecutive 1s?<br />
+<strong>Solution</strong>: After five consecutive 1s, insert a 0.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Original</span><span class="o">:</span><span class="w">       </span><span class="mi">011111110</span>
+<span class="n">After</span><span class="w"> </span><span class="n">Stuffing</span><span class="o">:</span><span class="w"> </span><span class="mi">0111110110</span>
+<span class="w">                     </span><span class="err">↑</span><span class="n">inserted</span><span class="w"> </span><span class="mi">0</span>
+</code></pre></div>
+
+<h3>Algorithm</h3>
+<h4>Character Stuffing</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">characterStuff</span><span class="p">(</span><span class="k">data</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="k">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;DLE STX &quot;</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="k">each</span><span class="w"> </span><span class="k">character</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">data</span><span class="err">:</span>
+<span class="w">        </span><span class="k">IF</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="ss">&quot;DLE&quot;</span><span class="err">:</span>
+<span class="w">            </span><span class="k">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="ss">&quot;DLE DLE &quot;</span><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="nf">Stuff</span><span class="w"> </span><span class="n">extra</span><span class="w"> </span><span class="n">DLE</span>
+<span class="w">        </span><span class="k">ELSE</span><span class="err">:</span>
+<span class="w">            </span><span class="k">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="ss">&quot; &quot;</span>
+<span class="w">    </span><span class="k">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="ss">&quot;DLE ETX&quot;</span>
+<span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="k">result</span>
+
+<span class="k">FUNCTION</span><span class="w"> </span><span class="n">characterDestuff</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="n">Remove</span><span class="w"> </span><span class="ss">&quot;DLE STX&quot;</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">start</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">&quot;DLE ETX&quot;</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">end</span>
+<span class="w">    </span><span class="k">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;&quot;</span>
+<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">WHILE</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span><span class="err">:</span>
+<span class="w">        </span><span class="k">IF</span><span class="w"> </span><span class="n">frame</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="ss">&quot;DLE&quot;</span><span class="w"> </span><span class="ow">AND</span><span class="w"> </span><span class="n">frame</span><span class="o">[</span><span class="n">i+1</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="ss">&quot;DLE&quot;</span><span class="err">:</span>
+<span class="w">            </span><span class="k">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="ss">&quot;DLE&quot;</span>
+<span class="w">            </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">2</span><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="n">Skip</span><span class="w"> </span><span class="n">stuffed</span><span class="w"> </span><span class="n">DLE</span>
+<span class="w">        </span><span class="k">ELSE</span><span class="err">:</span>
+<span class="w">            </span><span class="k">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">frame</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+<span class="w">            </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="k">result</span>
+</code></pre></div>
+
+<h4>Bit Stuffing</h4>
+<div class="codehilite"><pre><span></span><code><span class="nv">FUNCTION</span><span class="w"> </span><span class="nv">bitStuff</span><span class="ss">(</span><span class="nv">data</span><span class="ss">)</span>:
+<span class="w">    </span><span class="nb">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;01111110&quot;</span><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="nv">Start</span><span class="w"> </span><span class="nv">flag</span>
+<span class="w">    </span><span class="nv">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="nv">each</span><span class="w"> </span><span class="nv">bit</span><span class="w"> </span><span class="nv">b</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">data</span>:
+<span class="w">        </span><span class="nb">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nv">b</span>
+<span class="w">        </span><span class="k">IF</span><span class="w"> </span><span class="nv">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;1&#39;</span>:
+<span class="w">            </span><span class="nv">count</span><span class="o">++</span>
+<span class="w">            </span><span class="k">IF</span><span class="w"> </span><span class="nv">count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">5</span>:
+<span class="w">                </span><span class="nb">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">&#39;0&#39;</span><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="nv">Stuff</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">                </span><span class="nv">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="k">ELSE</span>:
+<span class="w">            </span><span class="nv">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="nb">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;01111110&quot;</span><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="k">End</span><span class="w"> </span><span class="nv">flag</span>
+<span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="nb">result</span>
+
+<span class="nv">FUNCTION</span><span class="w"> </span><span class="nv">bitDestuff</span><span class="ss">(</span><span class="nv">frame</span><span class="ss">)</span>:
+<span class="w">    </span><span class="nv">Remove</span><span class="w"> </span><span class="nv">start</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="nv">flags</span>
+<span class="w">    </span><span class="nb">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="nv">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="nv">each</span><span class="w"> </span><span class="nv">bit</span><span class="w"> </span><span class="nv">b</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">frame</span>:
+<span class="w">        </span><span class="nb">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nv">b</span>
+<span class="w">        </span><span class="k">IF</span><span class="w"> </span><span class="nv">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;1&#39;</span>:
+<span class="w">            </span><span class="nv">count</span><span class="o">++</span>
+<span class="w">            </span><span class="k">IF</span><span class="w"> </span><span class="nv">count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">5</span>:
+<span class="w">                </span><span class="nv">Skip</span><span class="w"> </span><span class="k">next</span><span class="w"> </span><span class="nv">bit</span><span class="w"> </span><span class="ss">(</span><span class="nv">stuffed</span><span class="w"> </span><span class="mi">0</span><span class="ss">)</span>
+<span class="w">                </span><span class="nv">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="k">ELSE</span>:
+<span class="w">            </span><span class="nv">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="nb">result</span>
+</code></pre></div>
+
+<h3>Time &amp; Space Complexity</h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Time</th>
+<th>Space</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Character Stuffing</td>
+<td>O(n)</td>
+<td>O(n) - worst case doubles size</td>
+</tr>
+<tr>
+<td>Bit Stuffing</td>
+<td>O(n)</td>
+<td>O(n) - worst case adds n/5 bits</td>
+</tr>
+</tbody>
+</table>
+<h3>Worked Example</h3>
+<h4>Character Stuffing</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">Input</span><span class="o">:</span><span class="w">  </span><span class="n">H</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="n">DLE</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="n">O</span>
+<span class="n">Output</span><span class="o">:</span><span class="w"> </span><span class="n">DLE</span><span class="w"> </span><span class="n">STX</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="n">DLE</span><span class="w"> </span><span class="n">DLE</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="n">O</span><span class="w"> </span><span class="n">DLE</span><span class="w"> </span><span class="n">ETX</span>
+</code></pre></div>
+
+<h4>Bit Stuffing</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">Input</span><span class="o">:</span><span class="w">  </span><span class="mi">01111111100</span>
+<span class="w">        </span><span class="err">↑</span><span class="mi">5</span><span class="w"> </span><span class="n">ones</span><span class="o">,</span><span class="w"> </span><span class="n">then</span><span class="w"> </span><span class="mi">6</span><span class="n">th</span><span class="w"> </span><span class="n">one</span>
+
+<span class="n">After</span><span class="w"> </span><span class="n">Stuffing</span><span class="o">:</span>
+<span class="w">        </span><span class="mi">01111110</span><span class="w"> </span><span class="mi">011111011100</span><span class="w"> </span><span class="mi">01111110</span>
+<span class="w">        </span><span class="err">↑</span><span class="n">flag</span><span class="w">    </span><span class="err">↑</span><span class="n">stuffed</span><span class="w"> </span><span class="mi">0</span><span class="w">    </span><span class="err">↑</span><span class="n">flag</span>
+</code></pre></div>
+
+<hr />
+<h2>Option B: Password Strength Checker</h2>
+<h3>Concept</h3>
+<p>A password strength checker evaluates passwords based on multiple criteria:<br />
+1. <strong>Length</strong> - Longer is stronger<br />
+2. <strong>Character Types</strong> - Mix of uppercase, lowercase, digits, symbols<br />
+3. <strong>Entropy</strong> - Randomness/unpredictability<br />
+4. <strong>Common Patterns</strong> - Avoid dictionary words, sequences</p>
+<h3>Strength Criteria</h3>
+<table>
+<thead>
+<tr>
+<th>Strength</th>
+<th>Requirements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Very Weak</td>
+<td>&lt; 6 characters</td>
+</tr>
+<tr>
+<td>Weak</td>
+<td>6-7 characters, limited variety</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>8-11 characters, some variety</td>
+</tr>
+<tr>
+<td>Strong</td>
+<td>12-15 characters, good variety</td>
+</tr>
+<tr>
+<td>Very Strong</td>
+<td>16+ characters, all types, high entropy</td>
+</tr>
+</tbody>
+</table>
+<h3>Algorithm</h3>
+<div class="codehilite"><pre><span></span><code><span class="nx">FUNCTION</span><span class="w"> </span><span class="nx">checkPasswordStrength</span><span class="p">(</span><span class="nx">password</span><span class="p">):</span>
+<span class="w">    </span><span class="nx">score</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="nx">length</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">len</span><span class="p">(</span><span class="nx">password</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// Length scoring</span>
+<span class="w">    </span><span class="nx">IF</span><span class="w"> </span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">8</span><span class="p">:</span><span class="w"> </span><span class="nx">score</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nx">IF</span><span class="w"> </span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">12</span><span class="p">:</span><span class="w"> </span><span class="nx">score</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nx">IF</span><span class="w"> </span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">16</span><span class="p">:</span><span class="w"> </span><span class="nx">score</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="w">    </span><span class="c1">// Character type scoring</span>
+<span class="w">    </span><span class="nx">IF</span><span class="w"> </span><span class="nx">hasUppercase</span><span class="p">(</span><span class="nx">password</span><span class="p">):</span><span class="w"> </span><span class="nx">score</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nx">IF</span><span class="w"> </span><span class="nx">hasLowercase</span><span class="p">(</span><span class="nx">password</span><span class="p">):</span><span class="w"> </span><span class="nx">score</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nx">IF</span><span class="w"> </span><span class="nx">hasDigit</span><span class="p">(</span><span class="nx">password</span><span class="p">):</span><span class="w"> </span><span class="nx">score</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nx">IF</span><span class="w"> </span><span class="nx">hasSpecialChar</span><span class="p">(</span><span class="nx">password</span><span class="p">):</span><span class="w"> </span><span class="nx">score</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="w">    </span><span class="c1">// Penalty for common patterns</span>
+<span class="w">    </span><span class="nx">IF</span><span class="w"> </span><span class="nx">hasSequence</span><span class="p">(</span><span class="nx">password</span><span class="p">):</span><span class="w"> </span><span class="nx">score</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nx">IF</span><span class="w"> </span><span class="nx">hasRepeating</span><span class="p">(</span><span class="nx">password</span><span class="p">):</span><span class="w"> </span><span class="nx">score</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="w">    </span><span class="nx">RETURN</span><span class="w"> </span><span class="nx">strengthLevel</span><span class="p">(</span><span class="nx">score</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Pseudocode</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">FUNCTION</span><span class="w"> </span><span class="nv">main</span><span class="ss">()</span>:
+<span class="w">    </span><span class="nv">READ</span><span class="w"> </span><span class="nv">password</span>
+
+<span class="w">    </span><span class="nv">hasUpper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">FALSE</span>
+<span class="w">    </span><span class="nv">hasLower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">FALSE</span>
+<span class="w">    </span><span class="nv">hasDigit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">FALSE</span>
+<span class="w">    </span><span class="nv">hasSpecial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">FALSE</span>
+<span class="w">    </span><span class="nv">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="nv">each</span><span class="w"> </span><span class="nv">char</span><span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">password</span>:
+<span class="w">        </span><span class="nv">length</span><span class="o">++</span>
+<span class="w">        </span><span class="k">IF</span><span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">uppercase</span>:<span class="w"> </span><span class="nv">hasUpper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">TRUE</span>
+<span class="w">        </span><span class="k">IF</span><span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">lowercase</span>:<span class="w"> </span><span class="nv">hasLower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">TRUE</span>
+<span class="w">        </span><span class="k">IF</span><span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">digit</span>:<span class="w"> </span><span class="nv">hasDigit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">TRUE</span>
+<span class="w">        </span><span class="k">IF</span><span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">special</span>:<span class="w"> </span><span class="nv">hasSpecial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">TRUE</span>
+
+<span class="w">    </span><span class="nv">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="nv">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">8</span>:<span class="w"> </span><span class="nv">score</span><span class="o">++</span>
+<span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="nv">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">12</span>:<span class="w"> </span><span class="nv">score</span><span class="o">++</span>
+<span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="nv">hasUpper</span>:<span class="w"> </span><span class="nv">score</span><span class="o">++</span>
+<span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="nv">hasLower</span>:<span class="w"> </span><span class="nv">score</span><span class="o">++</span>
+<span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="nv">hasDigit</span>:<span class="w"> </span><span class="nv">score</span><span class="o">++</span>
+<span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="nv">hasSpecial</span>:<span class="w"> </span><span class="nv">score</span><span class="o">++</span>
+
+<span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="nv">score</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">2</span>:<span class="w"> </span><span class="nv">PRINT</span><span class="w"> </span><span class="s2">&quot;Weak&quot;</span>
+<span class="w">    </span><span class="k">ELSE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="nv">score</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">4</span>:<span class="w"> </span><span class="nv">PRINT</span><span class="w"> </span><span class="s2">&quot;Medium&quot;</span>
+<span class="w">    </span><span class="k">ELSE</span>:<span class="w"> </span><span class="nv">PRINT</span><span class="w"> </span><span class="s2">&quot;Strong&quot;</span>
+</code></pre></div>
+
+<h3>Time &amp; Space Complexity</h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Time</th>
+<th>Space</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Check Password</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<p>Where n = length of password.</p>
+<hr />
+<h2>Option C: Subnetting in Packet Tracer</h2>
+<h3>Given Information</h3>
+<ul>
+<li><strong>Network Address</strong>: 192.168.10.0/25</li>
+<li><strong>Configuration IP</strong>: 192.168.1.10</li>
+<li><strong>Subnet Mask</strong>: 255.255.255.0 (/24)</li>
+<li><strong>Default Gateway</strong>: 192.168.1.1</li>
+</ul>
+<h3>Subnetting Calculations for 192.168.10.0/25</h3>
+<h4>Step 1: Calculate Network and Host Bits</h4>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="mi">25</span><span class="w"> </span><span class="nv">means</span><span class="w"> </span><span class="mi">25</span><span class="w"> </span><span class="nv">bits</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">network</span>,<span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="nv">bits</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">hosts</span>
+
+<span class="nv">Total</span><span class="w"> </span><span class="nv">bits</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">IPv4</span>:<span class="w"> </span><span class="mi">32</span>
+<span class="nv">Network</span><span class="w"> </span><span class="nv">bits</span>:<span class="w"> </span><span class="mi">25</span>
+<span class="nv">Host</span><span class="w"> </span><span class="nv">bits</span>:<span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">25</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span>
+</code></pre></div>
+
+<h4>Step 2: Calculate Number of Subnetworks</h4>
+<div class="codehilite"><pre><span></span><code><span class="nv">Original</span><span class="w"> </span><span class="nv">network</span>:<span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">10</span>.<span class="mi">0</span><span class="o">/</span><span class="mi">24</span><span class="w"> </span><span class="ss">(</span><span class="nv">Class</span><span class="w"> </span><span class="nv">C</span><span class="ss">)</span>
+<span class="nv">Borrowed</span><span class="w"> </span><span class="nv">bits</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">subnetting</span>:<span class="w"> </span><span class="mi">25</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="nv">bit</span>
+
+<span class="nv">Number</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">subnets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="mi">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="nv">subnets</span>
+</code></pre></div>
+
+<h4>Step 3: Calculate Usable Hosts per Subnet</h4>
+<div class="codehilite"><pre><span></span><code><span class="nx">Host</span><span class="w"> </span><span class="nx">bits</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">7</span>
+<span class="nx">Total</span><span class="w"> </span><span class="nx">addresses</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="mi">7</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="nx">addresses</span><span class="w"> </span><span class="nx">per</span><span class="w"> </span><span class="nx">subnet</span>
+<span class="nx">Usable</span><span class="w"> </span><span class="nx">hosts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">126</span><span class="w"> </span><span class="nx">hosts</span><span class="w"> </span><span class="p">(</span><span class="nx">minus</span><span class="w"> </span><span class="nx">network</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">broadcast</span><span class="p">)</span>
+</code></pre></div>
+
+<h4>Step 4: Subnet Details</h4>
+<table>
+<thead>
+<tr>
+<th>Subnet</th>
+<th>Network Address</th>
+<th>First Usable</th>
+<th>Last Usable</th>
+<th>Broadcast</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subnet 0</td>
+<td>192.168.10.0</td>
+<td>192.168.10.1</td>
+<td>192.168.10.126</td>
+<td>192.168.10.127</td>
+</tr>
+<tr>
+<td>Subnet 1</td>
+<td>192.168.10.128</td>
+<td>192.168.10.129</td>
+<td>192.168.10.254</td>
+<td>192.168.10.255</td>
+</tr>
+</tbody>
+</table>
+<h4>Summary Table</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network Address</td>
+<td>192.168.10.0/25</td>
+</tr>
+<tr>
+<td>Subnet Mask</td>
+<td>255.255.255.128</td>
+</tr>
+<tr>
+<td>Network Bits</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Host Bits</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Number of Subnets</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Hosts per Subnet</td>
+<td>126 (usable)</td>
+</tr>
+</tbody>
+</table>
+<h3>Packet Tracer Configuration Steps</h3>
+<h4>Step 1: Open Packet Tracer</h4>
+<ol>
+<li>Launch Cisco Packet Tracer</li>
+<li>Create new topology with PC and Router</li>
+</ol>
+<h4>Step 2: Configure PC IP Address</h4>
+<ol>
+<li>Click on PC → Desktop tab → IP Configuration</li>
+<li>Select "Static" (not DHCP)</li>
+<li>Enter:<br />
+   - <strong>IP Address</strong>: 192.168.1.10<br />
+   - <strong>Subnet Mask</strong>: 255.255.255.0<br />
+   - <strong>Default Gateway</strong>: 192.168.1.1</li>
+</ol>
+<h4>Step 3: Configure Router (if applicable)</h4>
+<div class="codehilite"><pre><span></span><code><span class="nx">Router</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">enable</span>
+<span class="nx">Router</span><span class="err">#</span><span class="w"> </span><span class="nx">configure</span><span class="w"> </span><span class="nx">terminal</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+</code></pre></div>
+
+<h4>Step 4: Verify Configuration</h4>
+<p>On PC Command Prompt:</p>
+<div class="codehilite"><pre><span></span><code>C:\&gt; ipconfig
+C:\&gt; ping 192.168.1.1
+</code></pre></div>
+
+<h3>Subnetting Quick Reference Formula</h3>
+<div class="codehilite"><pre><span></span><code>Number of subnets = 2^n (n = borrowed bits)
+Hosts per subnet = 2^h - 2 (h = host bits)
+Block size = 256 - subnet mask last octet
+</code></pre></div>
+
+<hr />
+<blockquote>
+<p><strong>Solution Code:</strong> See <code>Slip_01_Q2_OptionA.c</code> and <code>Slip_01_Q2_OptionB.c</code> in this folder.</p>
+</blockquote>
+    
+    <script>
+        // Add syntax highlighting for code blocks
+        document.querySelectorAll('pre code').forEach((block) => {
+            block.style.fontFamily = "'Consolas', 'Monaco', 'Courier New', monospace";
+        });
+    </script>
+</body>
+</html>

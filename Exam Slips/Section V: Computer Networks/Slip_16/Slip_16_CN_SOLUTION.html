@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slip_16_CN_SOLUTION.md</title>
+    <style>
+        @media print {
+            body { margin: 0.5in; }
+            h1, h2, h3 { page-break-after: avoid; }
+            pre, table { page-break-inside: avoid; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
+            font-size: 11pt;
+        }
+        
+        h1 {
+            color: #1a237e;
+            border-bottom: 3px solid #3f51b5;
+            padding-bottom: 10px;
+            font-size: 28pt;
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #283593;
+            border-bottom: 2px solid #5c6bc0;
+            padding-bottom: 8px;
+            margin-top: 35px;
+            font-size: 20pt;
+        }
+        
+        h3 {
+            color: #3949ab;
+            font-size: 16pt;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #5c6bc0;
+            font-size: 13pt;
+            margin-top: 20px;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 10pt;
+            color: #d32f2f;
+        }
+        
+        pre {
+            background-color: #263238;
+            color: #aed581;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+            overflow-x: auto;
+            font-size: 9.5pt;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 10pt;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3f51b5;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        tr:hover {
+            background-color: #e8eaf6;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 30px 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #ff9800;
+            padding-left: 15px;
+            color: #616161;
+            font-style: italic;
+            margin: 20px 0;
+            background-color: #fff3e0;
+            padding: 10px 15px;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background-color: #45a049;
+        }
+        
+        @media print {
+            .print-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print to PDF</button>
+    <h1>Slip 16 — Computer Networks Solution Guide</h1>
+<h2>Q1: Theory Questions (10 Marks - Answer ANY 5)</h2>
+<hr />
+<h3>a) Compare and contrast the functionalities of a switch and a router</h3>
+<h4>Concept</h4>
+<p>Both <strong>switches</strong> and <strong>routers</strong> are networking devices used to connect devices, but they operate at different OSI layers and serve different purposes.</p>
+<h4>Switch</h4>
+<p>A <strong>switch</strong> is a Layer 2 (Data Link) device that connects devices within the <strong>same network (LAN)</strong>.</p>
+<p><strong>Key Functions:</strong><br />
+1. <strong>MAC Address Learning</strong>: Builds a MAC address table<br />
+2. <strong>Frame Forwarding</strong>: Sends frames only to destination port<br />
+3. <strong>Collision Domain Separation</strong>: Each port is a separate collision domain<br />
+4. <strong>Broadcast Domain</strong>: All ports share one broadcast domain</p>
+<h4>Router</h4>
+<p>A <strong>router</strong> is a Layer 3 (Network) device that connects <strong>different networks</strong> and makes routing decisions.</p>
+<p><strong>Key Functions:</strong><br />
+1. <strong>IP Routing</strong>: Forwards packets between networks using IP addresses<br />
+2. <strong>Routing Table Management</strong>: Maintains paths to destination networks<br />
+3. <strong>Broadcast Domain Separation</strong>: Each interface is a separate broadcast domain<br />
+4. <strong>NAT/PAT</strong>: Network Address Translation for private-to-public IP</p>
+<h4>Comparison Table</h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Switch</th>
+<th>Router</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OSI Layer</strong></td>
+<td>Layer 2 (Data Link)</td>
+<td>Layer 3 (Network)</td>
+</tr>
+<tr>
+<td><strong>Address Used</strong></td>
+<td>MAC Address</td>
+<td>IP Address</td>
+</tr>
+<tr>
+<td><strong>Connects</strong></td>
+<td>Devices in same LAN</td>
+<td>Different networks (LAN to WAN)</td>
+</tr>
+<tr>
+<td><strong>Broadcast Domain</strong></td>
+<td>Single (all ports)</td>
+<td>Separate per interface</td>
+</tr>
+<tr>
+<td><strong>Collision Domain</strong></td>
+<td>Separate per port</td>
+<td>Separate per interface</td>
+</tr>
+<tr>
+<td><strong>Speed</strong></td>
+<td>Fast (hardware-based)</td>
+<td>Slower (software routing)</td>
+</tr>
+<tr>
+<td><strong>Routing Table</strong></td>
+<td>MAC Table</td>
+<td>Routing Table (IP-based)</td>
+</tr>
+<tr>
+<td><strong>NAT Support</strong></td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Lower</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td><strong>Intelligence</strong></td>
+<td>Less intelligent</td>
+<td>More intelligent</td>
+</tr>
+<tr>
+<td><strong>Packet Inspection</strong></td>
+<td>Frame header only</td>
+<td>Full packet header</td>
+</tr>
+</tbody>
+</table>
+<h4>Visual Comparison</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">Switch</span><span class="w"> </span><span class="p">(</span><span class="n">Layer</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="err">:</span>
+<span class="o">[</span><span class="n">PC1</span><span class="o">]</span><span class="err">─┬─</span><span class="o">[</span><span class="n">Switch</span><span class="o">]</span><span class="err">─┬─</span><span class="o">[</span><span class="n">PC2</span><span class="o">]</span>
+<span class="w">      </span><span class="err">│</span><span class="w">          </span><span class="err">│</span>
+<span class="o">[</span><span class="n">PC3</span><span class="o">]</span><span class="err">─┘</span><span class="w">          </span><span class="err">└─</span><span class="o">[</span><span class="n">PC4</span><span class="o">]</span>
+<span class="w">      </span><span class="n">Same</span><span class="w"> </span><span class="n">Network</span><span class="w"> </span><span class="p">(</span><span class="n">LAN</span><span class="p">)</span>
+
+<span class="n">Router</span><span class="w"> </span><span class="p">(</span><span class="n">Layer</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="err">:</span>
+<span class="o">[</span><span class="n">LAN 1: 192.168.1.x</span><span class="o">]</span><span class="err">──</span><span class="o">[</span><span class="n">Router</span><span class="o">]</span><span class="err">──</span><span class="o">[</span><span class="n">LAN 2: 192.168.2.x</span><span class="o">]</span>
+<span class="w">                         </span><span class="err">│</span>
+<span class="w">                    </span><span class="o">[</span><span class="n">Internet</span><span class="o">]</span>
+<span class="w">      </span><span class="n">Connects</span><span class="w"> </span><span class="n">Different</span><span class="w"> </span><span class="n">Networks</span>
+</code></pre></div>
+
+<hr />
+<h3>b) What is a MAC address and how is it different from an IP address?</h3>
+<h4>MAC Address (Media Access Control)</h4>
+<p>A <strong>MAC address</strong> is a unique hardware identifier assigned to the Network Interface Card (NIC) by the manufacturer.</p>
+<p><strong>Format</strong>: 48-bit (6 bytes), written as <code>XX:XX:XX:XX:XX:XX</code> (hexadecimal)<br />
+<strong>Example</strong>: <code>00:1A:2B:3C:4D:5E</code></p>
+<p><strong>Structure</strong>:</p>
+<div class="codehilite"><pre><span></span><code>┌─────────────────┬─────────────────┐
+│   First 3 bytes │   Last 3 bytes  │
+│       OUI       │       NIC       │
+│ (Manufacturer)  │ (Device Unique) │
+└─────────────────┴─────────────────┘
+Example: 00:1A:2B : 3C:4D:5E
+         Intel     : Unique ID
+</code></pre></div>
+
+<h4>IP Address (Internet Protocol)</h4>
+<p>A <strong>logical address</strong> assigned to devices for network identification and location addressing.</p>
+<p><strong>IPv4 Format</strong>: 32-bit, written as <code>X.X.X.X</code> (dotted decimal)<br />
+<strong>Example</strong>: <code>192.168.1.100</code></p>
+<h4>Key Differences</h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>MAC Address</th>
+<th>IP Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OSI Layer</strong></td>
+<td>Data Link (Layer 2)</td>
+<td>Network (Layer 3)</td>
+</tr>
+<tr>
+<td><strong>Type</strong></td>
+<td>Physical/Hardware</td>
+<td>Logical/Software</td>
+</tr>
+<tr>
+<td><strong>Assigned by</strong></td>
+<td>Manufacturer (burned-in)</td>
+<td>Network Admin/DHCP</td>
+</tr>
+<tr>
+<td><strong>Uniqueness</strong></td>
+<td>Globally unique</td>
+<td>Unique within network</td>
+</tr>
+<tr>
+<td><strong>Format</strong></td>
+<td>48-bit hexadecimal</td>
+<td>32-bit (IPv4) / 128-bit (IPv6)</td>
+</tr>
+<tr>
+<td><strong>Change</strong></td>
+<td>Permanent (can be spoofed)</td>
+<td>Can be changed/reassigned</td>
+</tr>
+<tr>
+<td><strong>Scope</strong></td>
+<td>Local network only</td>
+<td>Global (routable)</td>
+</tr>
+<tr>
+<td><strong>Used for</strong></td>
+<td>Local delivery</td>
+<td>End-to-end routing</td>
+</tr>
+<tr>
+<td><strong>Example</strong></td>
+<td><code>00:1A:2B:3C:4D:5E</code></td>
+<td><code>192.168.1.10</code></td>
+</tr>
+</tbody>
+</table>
+<h4>How They Work Together</h4>
+<div class="codehilite"><pre><span></span><code><span class="nv">PC</span><span class="w"> </span><span class="nv">A</span><span class="w"> </span><span class="ss">(</span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">10</span>,<span class="w"> </span><span class="nv">MAC</span>:<span class="w"> </span><span class="nv">AA</span>:<span class="nv">AA</span>:<span class="nv">AA</span>:<span class="nv">AA</span>:<span class="nv">AA</span>:<span class="nv">AA</span><span class="ss">)</span>
+<span class="w">       </span>↓
+<span class="w">       </span>│<span class="w"> </span><span class="s2">&quot;Send to 192.168.1.20&quot;</span>
+<span class="w">       </span>↓
+<span class="w">    </span><span class="nv">ARP</span><span class="w"> </span><span class="nv">Request</span>:<span class="w"> </span><span class="s2">&quot;Who has 192.168.1.20?&quot;</span>
+<span class="w">       </span>↓
+<span class="w">    </span><span class="nv">ARP</span><span class="w"> </span><span class="nv">Reply</span>:<span class="w"> </span><span class="s2">&quot;192.168.1.20 is at BB:BB:BB:BB:BB:BB&quot;</span>
+<span class="w">       </span>↓
+<span class="nv">Frame</span><span class="w"> </span><span class="nv">sent</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">MAC</span>:<span class="w"> </span><span class="nv">BB</span>:<span class="nv">BB</span>:<span class="nv">BB</span>:<span class="nv">BB</span>:<span class="nv">BB</span>:<span class="nv">BB</span>
+<span class="w">       </span>↓
+<span class="nv">PC</span><span class="w"> </span><span class="nv">B</span><span class="w"> </span><span class="ss">(</span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">20</span>,<span class="w"> </span><span class="nv">MAC</span>:<span class="w"> </span><span class="nv">BB</span>:<span class="nv">BB</span>:<span class="nv">BB</span>:<span class="nv">BB</span>:<span class="nv">BB</span>:<span class="nv">BB</span><span class="ss">)</span>
+</code></pre></div>
+
+<h4>Commands to View</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Linux</span>
+ip<span class="w"> </span>link<span class="w"> </span>show<span class="w">           </span><span class="c1"># MAC address</span>
+ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w">           </span><span class="c1"># IP address</span>
+arp<span class="w"> </span>-a<span class="w">                 </span><span class="c1"># ARP table</span>
+
+<span class="c1"># Windows</span>
+ipconfig<span class="w"> </span>/all<span class="w">          </span><span class="c1"># Both MAC and IP</span>
+arp<span class="w"> </span>-a<span class="w">                 </span><span class="c1"># ARP table</span>
+</code></pre></div>
+
+<hr />
+<h3>c) Perform subnetting on 192.168.1.0/26 and list all 4 subnet ranges with usable host IPs</h3>
+<h4>Given Information</h4>
+<ul>
+<li><strong>Network Address</strong>: 192.168.1.0</li>
+<li><strong>CIDR Notation</strong>: /26</li>
+<li><strong>Required</strong>: List all 4 subnets with usable host ranges</li>
+</ul>
+<h4>Step 1: Calculate Network Parameters</h4>
+<div class="codehilite"><pre><span></span><code>Total IPv4 bits: 32
+Network bits (/26): 26
+Host bits: 32 - 26 = 6
+
+Subnet Mask (binary): 11111111.11111111.11111111.11000000
+Subnet Mask (decimal): 255.255.255.192
+</code></pre></div>
+
+<h4>Step 2: Calculate Subnets and Hosts</h4>
+<div class="codehilite"><pre><span></span><code><span class="nx">Number</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">subnets</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="o">/</span><span class="mi">24</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="p">(</span><span class="mi">26</span><span class="o">-</span><span class="mi">24</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="nx">subnets</span>
+<span class="nx">Hosts</span><span class="w"> </span><span class="nx">per</span><span class="w"> </span><span class="nx">subnet</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="mi">6</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="nx">addresses</span>
+<span class="nx">Usable</span><span class="w"> </span><span class="nx">hosts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">62</span><span class="w"> </span><span class="nx">hosts</span><span class="w"> </span><span class="nx">per</span><span class="w"> </span><span class="nx">subnet</span>
+<span class="nx">Block</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">192</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">64</span>
+</code></pre></div>
+
+<h4>Step 3: Four Subnet Ranges</h4>
+<table>
+<thead>
+<tr>
+<th>Subnet</th>
+<th>Network Address</th>
+<th>First Usable</th>
+<th>Last Usable</th>
+<th>Broadcast</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Subnet 1</strong></td>
+<td>192.168.1.0</td>
+<td>192.168.1.1</td>
+<td>192.168.1.62</td>
+<td>192.168.1.63</td>
+</tr>
+<tr>
+<td><strong>Subnet 2</strong></td>
+<td>192.168.1.64</td>
+<td>192.168.1.65</td>
+<td>192.168.1.126</td>
+<td>192.168.1.127</td>
+</tr>
+<tr>
+<td><strong>Subnet 3</strong></td>
+<td>192.168.1.128</td>
+<td>192.168.1.129</td>
+<td>192.168.1.190</td>
+<td>192.168.1.191</td>
+</tr>
+<tr>
+<td><strong>Subnet 4</strong></td>
+<td>192.168.1.192</td>
+<td>192.168.1.193</td>
+<td>192.168.1.254</td>
+<td>192.168.1.255</td>
+</tr>
+</tbody>
+</table>
+<h4>Detailed Subnet Breakdown</h4>
+<p><strong>Subnet 1: 192.168.1.0/26</strong></p>
+<div class="codehilite"><pre><span></span><code>Network Address:  192.168.1.0
+Usable Range:     192.168.1.1 - 192.168.1.62
+Broadcast:        192.168.1.63
+Default Gateway:  192.168.1.1 (typically)
+Usable Hosts:     62
+</code></pre></div>
+
+<p><strong>Subnet 2: 192.168.1.64/26</strong></p>
+<div class="codehilite"><pre><span></span><code>Network Address:  192.168.1.64
+Usable Range:     192.168.1.65 - 192.168.1.126
+Broadcast:        192.168.1.127
+Default Gateway:  192.168.1.65 (typically)
+Usable Hosts:     62
+</code></pre></div>
+
+<p><strong>Subnet 3: 192.168.1.128/26</strong></p>
+<div class="codehilite"><pre><span></span><code>Network Address:  192.168.1.128
+Usable Range:     192.168.1.129 - 192.168.1.190
+Broadcast:        192.168.1.191
+Default Gateway:  192.168.1.129 (typically)
+Usable Hosts:     62
+</code></pre></div>
+
+<p><strong>Subnet 4: 192.168.1.192/26</strong></p>
+<div class="codehilite"><pre><span></span><code>Network Address:  192.168.1.192
+Usable Range:     192.168.1.193 - 192.168.1.254
+Broadcast:        192.168.1.255
+Default Gateway:  192.168.1.193 (typically)
+Usable Hosts:     62
+</code></pre></div>
+
+<h4>Visual Representation</h4>
+<div class="codehilite"><pre><span></span><code><span class="mf">192.168.1.0</span><span class="o">/</span><span class="mf">24</span><span class="w"> </span><span class="p">(</span><span class="ow">Or</span><span class="n">iginal</span><span class="w"> </span><span class="n">Class</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">Network</span><span class="p">)</span>
+<span class="err">├──</span><span class="w"> </span><span class="mf">192.168.1.0</span><span class="o">/</span><span class="mf">26</span><span class="w">   </span><span class="err">[</span><span class="mf">0</span><span class="o">-</span><span class="mf">63</span><span class="err">]</span><span class="w">     </span><span class="n">Subnet</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">(</span><span class="mf">62</span><span class="w"> </span><span class="n">usable</span><span class="w"> </span><span class="n">hosts</span><span class="p">)</span>
+<span class="err">├──</span><span class="w"> </span><span class="mf">192.168.1.64</span><span class="o">/</span><span class="mf">26</span><span class="w">  </span><span class="err">[</span><span class="mf">64</span><span class="o">-</span><span class="mf">127</span><span class="err">]</span><span class="w">   </span><span class="n">Subnet</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">(</span><span class="mf">62</span><span class="w"> </span><span class="n">usable</span><span class="w"> </span><span class="n">hosts</span><span class="p">)</span>
+<span class="err">├──</span><span class="w"> </span><span class="mf">192.168.1.128</span><span class="o">/</span><span class="mf">26</span><span class="w"> </span><span class="err">[</span><span class="mf">128</span><span class="o">-</span><span class="mf">191</span><span class="err">]</span><span class="w">  </span><span class="n">Subnet</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="p">(</span><span class="mf">62</span><span class="w"> </span><span class="n">usable</span><span class="w"> </span><span class="n">hosts</span><span class="p">)</span>
+<span class="err">└──</span><span class="w"> </span><span class="mf">192.168.1.192</span><span class="o">/</span><span class="mf">26</span><span class="w"> </span><span class="err">[</span><span class="mf">192</span><span class="o">-</span><span class="mf">255</span><span class="err">]</span><span class="w">  </span><span class="n">Subnet</span><span class="w"> </span><span class="mf">4</span><span class="w"> </span><span class="p">(</span><span class="mf">62</span><span class="w"> </span><span class="n">usable</span><span class="w"> </span><span class="n">hosts</span><span class="p">)</span>
+</code></pre></div>
+
+<h4>Summary Table</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Original Network</td>
+<td>192.168.1.0/24</td>
+</tr>
+<tr>
+<td>Subnet Mask</td>
+<td>255.255.255.192 (/26)</td>
+</tr>
+<tr>
+<td>Number of Subnets</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Block Size</td>
+<td>64</td>
+</tr>
+<tr>
+<td>Usable Hosts per Subnet</td>
+<td>62</td>
+</tr>
+<tr>
+<td>Total Usable Hosts</td>
+<td>248 (62 × 4)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>d) List and explain all five IP address classes with examples</h3>
+<h4>Concept</h4>
+<p>IPv4 addresses are divided into <strong>five classes (A, B, C, D, E)</strong> based on the first few bits of the address. Classes A, B, and C are used for host addressing.</p>
+<h4>IP Address Classes Overview</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>First Octet Range</th>
+<th>Leading Bits</th>
+<th>Default Mask</th>
+<th>Networks</th>
+<th>Hosts per Network</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>1 - 126</td>
+<td>0</td>
+<td>255.0.0.0 (/8)</td>
+<td>126</td>
+<td>16,777,214</td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>128 - 191</td>
+<td>10</td>
+<td>255.255.0.0 (/16)</td>
+<td>16,384</td>
+<td>65,534</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>192 - 223</td>
+<td>110</td>
+<td>255.255.255.0 (/24)</td>
+<td>2,097,152</td>
+<td>254</td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>224 - 239</td>
+<td>1110</td>
+<td>N/A</td>
+<td>Multicast</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><strong>E</strong></td>
+<td>240 - 255</td>
+<td>1111</td>
+<td>N/A</td>
+<td>Reserved</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h4>Class A</h4>
+<p><strong>Purpose</strong>: Large organizations (governments, large enterprises)</p>
+<div class="codehilite"><pre><span></span><code>First Octet: 1 - 126 (0 is reserved, 127 is loopback)
+Format: N.H.H.H (Network.Host.Host.Host)
+Default Mask: 255.0.0.0 (/8)
+Networks: 2^7 - 2 = 126
+Hosts: 2^24 - 2 = 16,777,214 per network
+
+Example: 10.0.0.1
+         ↑Network ↑Host portion
+
+Binary: 0xxxxxxx.xxxxxxxx.xxxxxxxx.xxxxxxxx
+        ↑Leading bit is 0
+</code></pre></div>
+
+<p><strong>Examples</strong>: <br />
+- <code>10.0.0.1</code> (Private)<br />
+- <code>45.33.32.156</code> (Public)<br />
+- <code>100.64.0.1</code> (Carrier-grade NAT)</p>
+<h4>Class B</h4>
+<p><strong>Purpose</strong>: Medium-sized organizations (universities, mid-size companies)</p>
+<div class="codehilite"><pre><span></span><code>First Octet: 128 - 191
+Format: N.N.H.H (Network.Network.Host.Host)
+Default Mask: 255.255.0.0 (/16)
+Networks: 2^14 = 16,384
+Hosts: 2^16 - 2 = 65,534 per network
+
+Example: 172.16.0.1
+         ↑Network ↑Host
+
+Binary: 10xxxxxx.xxxxxxxx.xxxxxxxx.xxxxxxxx
+        ↑Leading bits are 10
+</code></pre></div>
+
+<p><strong>Examples</strong>:<br />
+- <code>172.16.0.1</code> (Private)<br />
+- <code>172.31.255.254</code> (Private)<br />
+- <code>150.100.50.25</code> (Public)</p>
+<h4>Class C</h4>
+<p><strong>Purpose</strong>: Small organizations (small businesses, home networks)</p>
+<div class="codehilite"><pre><span></span><code>First Octet: 192 - 223
+Format: N.N.N.H (Network.Network.Network.Host)
+Default Mask: 255.255.255.0 (/24)
+Networks: 2^21 = 2,097,152
+Hosts: 2^8 - 2 = 254 per network
+
+Example: 192.168.1.100
+         ↑Network      ↑Host
+
+Binary: 110xxxxx.xxxxxxxx.xxxxxxxx.xxxxxxxx
+        ↑Leading bits are 110
+</code></pre></div>
+
+<p><strong>Examples</strong>:<br />
+- <code>192.168.1.1</code> (Private)<br />
+- <code>192.168.0.100</code> (Private)<br />
+- <code>200.50.100.5</code> (Public)</p>
+<h4>Class D (Multicast)</h4>
+<p><strong>Purpose</strong>: One-to-many communication (streaming, routing protocols)</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">First</span><span class="w"> </span><span class="nx">Octet</span><span class="p">:</span><span class="w"> </span><span class="mi">224</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">239</span>
+<span class="nx">Usage</span><span class="p">:</span><span class="w"> </span><span class="nx">Multicast</span><span class="w"> </span><span class="nx">groups</span><span class="w"> </span><span class="p">(</span><span class="k">not</span><span class="w"> </span><span class="nx">assigned</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">hosts</span><span class="p">)</span>
+<span class="nx">No</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">mask</span><span class="w"> </span><span class="p">(</span><span class="k">not</span><span class="w"> </span><span class="nx">used</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">host</span><span class="w"> </span><span class="nx">addressing</span><span class="p">)</span>
+
+<span class="nx">Binary</span><span class="p">:</span><span class="w"> </span><span class="mi">1110</span><span class="nx">xxxx</span><span class="p">.</span><span class="nx">xxxxxxxx</span><span class="p">.</span><span class="nx">xxxxxxxx</span><span class="p">.</span><span class="nx">xxxxxxxx</span>
+<span class="w">        </span><span class="err">↑</span><span class="nx">Leading</span><span class="w"> </span><span class="nx">bits</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="mi">1110</span>
+</code></pre></div>
+
+<p><strong>Examples</strong>:<br />
+- <code>224.0.0.1</code> (All hosts on segment)<br />
+- <code>224.0.0.2</code> (All routers on segment)<br />
+- <code>239.255.255.255</code> (Administratively scoped)</p>
+<h4>Class E (Reserved)</h4>
+<p><strong>Purpose</strong>: Experimental/Future use (not for public use)</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">First</span><span class="w"> </span><span class="nv">Octet</span>:<span class="w"> </span><span class="mi">240</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">255</span>
+<span class="nv">Usage</span>:<span class="w"> </span><span class="nv">Reserved</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">research</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">development</span>
+
+<span class="nv">Binary</span>:<span class="w"> </span><span class="mi">1111</span><span class="nv">xxxx</span>.<span class="nv">xxxxxxxx</span>.<span class="nv">xxxxxxxx</span>.<span class="nv">xxxxxxxx</span>
+<span class="w">        </span>↑<span class="nv">Leading</span><span class="w"> </span><span class="nv">bits</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="mi">1111</span>
+</code></pre></div>
+
+<p><strong>Examples</strong>:<br />
+- <code>240.0.0.1</code><br />
+- <code>255.255.255.254</code><br />
+- <code>250.100.50.25</code></p>
+<h4>Special Addresses</h4>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0.0.0.0</code></td>
+<td>Default route / "this network"</td>
+</tr>
+<tr>
+<td><code>127.0.0.0/8</code></td>
+<td>Loopback (localhost)</td>
+</tr>
+<tr>
+<td><code>255.255.255.255</code></td>
+<td>Limited broadcast</td>
+</tr>
+<tr>
+<td><code>169.254.0.0/16</code></td>
+<td>Link-local (APIPA)</td>
+</tr>
+</tbody>
+</table>
+<h4>Private IP Ranges (RFC 1918)</h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Private Range</th>
+<th>Networks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>10.0.0.0 - 10.255.255.255</td>
+<td>1 network</td>
+</tr>
+<tr>
+<td>B</td>
+<td>172.16.0.0 - 172.31.255.255</td>
+<td>16 networks</td>
+</tr>
+<tr>
+<td>C</td>
+<td>192.168.0.0 - 192.168.255.255</td>
+<td>256 networks</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>f) How many hexadecimal digits are needed for a 64-bit WEP key? Give any 5 examples</h3>
+<h4>Concept</h4>
+<p><strong>WEP (Wired Equivalent Privacy)</strong> is an older wireless security protocol that uses encryption keys of various lengths.</p>
+<h4>WEP Key Lengths</h4>
+<table>
+<thead>
+<tr>
+<th>WEP Version</th>
+<th>Key Bits</th>
+<th>+ IV (24 bits)</th>
+<th>Total Bits</th>
+<th>Hex Digits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>64-bit WEP</td>
+<td>40</td>
+<td>24</td>
+<td>64</td>
+<td><strong>10</strong></td>
+</tr>
+<tr>
+<td>128-bit WEP</td>
+<td>104</td>
+<td>24</td>
+<td>128</td>
+<td><strong>26</strong></td>
+</tr>
+<tr>
+<td>256-bit WEP</td>
+<td>232</td>
+<td>24</td>
+<td>256</td>
+<td><strong>58</strong></td>
+</tr>
+</tbody>
+</table>
+<h4>Calculation for 64-bit WEP Key</h4>
+<div class="codehilite"><pre><span></span><code><span class="mf">64</span><span class="o">-</span><span class="n">bit</span><span class="w"> </span><span class="n">WEP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">40</span><span class="o">-</span><span class="n">bit</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">24</span><span class="o">-</span><span class="n">bit</span><span class="w"> </span><span class="n">IV</span><span class="w"> </span><span class="p">(</span><span class="n">Initialization</span><span class="w"> </span><span class="n">Vector</span><span class="p">)</span>
+
+<span class="n">User</span><span class="o">-</span><span class="n">entered</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">40</span><span class="w"> </span><span class="n">bits</span>
+<span class="mf">1</span><span class="w"> </span><span class="n">hexadecimal</span><span class="w"> </span><span class="n">digit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4</span><span class="w"> </span><span class="n">bits</span>
+<span class="n">Hex</span><span class="w"> </span><span class="n">digits</span><span class="w"> </span><span class="n">needed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">40</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="w"> </span><span class="n">hexadecimal</span><span class="w"> </span><span class="n">digits</span>
+</code></pre></div>
+
+<p><strong>Answer</strong>: <strong>10 hexadecimal digits</strong> are needed for a 64-bit WEP key.</p>
+<h4>Valid Hexadecimal Characters</h4>
+<div class="codehilite"><pre><span></span><code><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="n">E</span><span class="p">,</span><span class="w"> </span><span class="n">F</span>
+<span class="p">(</span><span class="ow">or</span><span class="w"> </span><span class="n">lowercase</span><span class="p">:</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">)</span>
+</code></pre></div>
+
+<h4>5 Examples of 64-bit WEP Keys (10 hex digits)</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>WEP Key (Hex)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>1234567890</code></td>
+<td>Numeric only</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>ABCDEF1234</code></td>
+<td>Mixed alphanumeric</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>A1B2C3D4E5</code></td>
+<td>Alternating pattern</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>DEADBEEF00</code></td>
+<td>Common debug value</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>CAFE123456</code></td>
+<td>Readable hex word</td>
+</tr>
+</tbody>
+</table>
+<h4>Additional Examples</h4>
+<div class="codehilite"><pre><span></span><code>Example 6:  0F0F0F0F0F
+Example 7:  AAAAAAAAAA
+Example 8:  1A2B3C4D5E
+Example 9:  F00DBABE12
+Example 10: 9876543210
+</code></pre></div>
+
+<h4>ASCII vs Hex Format</h4>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Length</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hexadecimal</td>
+<td>10 characters</td>
+<td><code>1234567890</code></td>
+</tr>
+<tr>
+<td>ASCII</td>
+<td>5 characters</td>
+<td><code>hello</code></td>
+</tr>
+</tbody>
+</table>
+<p>Note: 5 ASCII characters × 8 bits = 40 bits = 10 hex digits</p>
+<h4>WEP Key Structure</h4>
+<div class="codehilite"><pre><span></span><code>┌─────────────────────────────────────────────────────────────────┐
+│                        64-bit WEP Frame                         │
+├────────────────────────────┬────────────────────────────────────┤
+│    IV (24 bits)            │    Secret Key (40 bits)            │
+│   (Generated by device)    │   (User-configured: 10 hex digits) │
+└────────────────────────────┴────────────────────────────────────┘
+</code></pre></div>
+
+<h4>⚠️ Security Note</h4>
+<p>WEP is <strong>obsolete and insecure</strong>. It can be cracked in minutes using tools like Aircrack-ng. Use WPA2 or WPA3 instead.</p>
+<hr />
+<h3>g) What are two more secure wireless encryption standards that should be used instead of WEP in a real-world scenario?</h3>
+<h4>Why WEP is Insecure</h4>
+<table>
+<thead>
+<tr>
+<th>Vulnerability</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Short IV</td>
+<td>24-bit IV repeats frequently (birthday attack)</td>
+</tr>
+<tr>
+<td>Weak RC4</td>
+<td>Flawed key scheduling algorithm</td>
+</tr>
+<tr>
+<td>No Integrity</td>
+<td>CRC-32 is not cryptographically secure</td>
+</tr>
+<tr>
+<td>Static Keys</td>
+<td>Same key used indefinitely</td>
+</tr>
+</tbody>
+</table>
+<h4>Two Secure Alternatives</h4>
+<hr />
+<h4>1. WPA2 (Wi-Fi Protected Access 2)</h4>
+<p><strong>Released</strong>: 2004<br />
+<strong>Encryption</strong>: AES-CCMP (128-bit)<br />
+<strong>Standard</strong>: IEEE 802.11i</p>
+<p><strong>Features</strong>:<br />
+- <strong>AES Encryption</strong>: Strong 128-bit block cipher<br />
+- <strong>CCMP Protocol</strong>: Counter Mode with CBC-MAC Protocol<br />
+- <strong>4-Way Handshake</strong>: Secure key exchange<br />
+- <strong>Dynamic Keys</strong>: Per-session encryption keys</p>
+<p><strong>Modes</strong>:<br />
+| Mode | Authentication | Use Case |<br />
+|------|----------------|----------|<br />
+| WPA2-Personal (PSK) | Pre-shared Key | Home/Small office |<br />
+| WPA2-Enterprise | 802.1X/RADIUS | Corporate networks |</p>
+<p><strong>Security Level</strong>: Strong (but vulnerable to KRACK attacks if unpatched)</p>
+<div class="codehilite"><pre><span></span><code>WPA2-PSK Key Requirements:
+- Minimum: 8 characters
+- Maximum: 63 characters
+- Recommended: 20+ characters (passphrase)
+</code></pre></div>
+
+<hr />
+<h4>2. WPA3 (Wi-Fi Protected Access 3)</h4>
+<p><strong>Released</strong>: 2018<br />
+<strong>Encryption</strong>: AES-GCMP-256 (192-bit in Enterprise)<br />
+<strong>Standard</strong>: Latest Wi-Fi security standard</p>
+<p><strong>Features</strong>:<br />
+- <strong>SAE (Simultaneous Authentication of Equals)</strong>: Replaces 4-way handshake<br />
+- <strong>Forward Secrecy</strong>: Past sessions can't be decrypted if key is compromised<br />
+- <strong>Protected Management Frames</strong>: Prevents deauthentication attacks<br />
+- <strong>Enhanced Open (OWE)</strong>: Encryption even on open networks</p>
+<p><strong>Modes</strong>:<br />
+| Mode | Authentication | Encryption |<br />
+|------|----------------|------------|<br />
+| WPA3-Personal | SAE (Dragonfly) | AES-128/256 |<br />
+| WPA3-Enterprise | 802.1X/EAP | AES-256-GCMP |</p>
+<p><strong>Key Improvements Over WPA2</strong>:<br />
+| Feature | WPA2 | WPA3 |<br />
+|---------|------|------|<br />
+| Key Exchange | 4-Way Handshake | SAE (Dragonfly) |<br />
+| Offline Dictionary Attack | Vulnerable | Protected |<br />
+| Forward Secrecy | No | Yes |<br />
+| Min Encryption | 128-bit | 128/192/256-bit |<br />
+| Open Network Security | None | OWE (encrypted) |</p>
+<hr />
+<h4>Comparison Table</h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>WEP</th>
+<th>WPA2</th>
+<th>WPA3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Year</strong></td>
+<td>1999</td>
+<td>2004</td>
+<td>2018</td>
+</tr>
+<tr>
+<td><strong>Encryption</strong></td>
+<td>RC4 (40/104-bit)</td>
+<td>AES-CCMP (128-bit)</td>
+<td>AES-GCMP (128/256-bit)</td>
+</tr>
+<tr>
+<td><strong>Key Exchange</strong></td>
+<td>None (static)</td>
+<td>4-Way Handshake</td>
+<td>SAE</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>Broken</td>
+<td>Strong</td>
+<td>Strongest</td>
+</tr>
+<tr>
+<td><strong>Forward Secrecy</strong></td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Offline Attack Protection</strong></td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Recommendation</strong></td>
+<td><strong>Never use</strong></td>
+<td>Good</td>
+<td>Best</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4>Recommendation Summary</h4>
+<div class="codehilite"><pre><span></span><code><span class="err">┌─────────────────────────────────────────────────────────┐</span>
+<span class="err">│</span><span class="w">              </span><span class="nx">Wireless</span><span class="w"> </span><span class="nx">Security</span><span class="w"> </span><span class="nx">Recommendation</span><span class="w">           </span><span class="err">│</span>
+<span class="err">├─────────────────────────────────────────────────────────┤</span>
+<span class="err">│</span><span class="w"> </span><span class="err">❌</span><span class="w"> </span><span class="nx">WEP</span><span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="nx">NEVER</span><span class="w"> </span><span class="nx">use</span><span class="w"> </span><span class="p">(</span><span class="nx">cracked</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">minutes</span><span class="p">)</span><span class="w">           </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="err">⚠️</span><span class="w">  </span><span class="nx">WPA</span><span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="nx">Avoid</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">possible</span><span class="w"> </span><span class="p">(</span><span class="nx">TKIP</span><span class="w"> </span><span class="nx">vulnerable</span><span class="p">)</span><span class="w">      </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="err">✓</span><span class="w"> </span><span class="nx">WPA2</span><span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="nx">Good</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">most</span><span class="w"> </span><span class="nx">cases</span><span class="w"> </span><span class="p">(</span><span class="nx">use</span><span class="w"> </span><span class="nx">long</span><span class="w"> </span><span class="nx">password</span><span class="p">)</span><span class="w">   </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="err">✓✓</span><span class="w"> </span><span class="nx">WPA3</span><span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="nx">Best</span><span class="w"> </span><span class="kd">choice</span><span class="w"> </span><span class="p">(</span><span class="nx">use</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">devices</span><span class="w"> </span><span class="nx">support</span><span class="w"> </span><span class="nx">it</span><span class="p">)</span><span class="w">  </span><span class="err">│</span>
+<span class="err">└─────────────────────────────────────────────────────────┘</span>
+</code></pre></div>
+
+<p><strong>Best Practice</strong>: Use <strong>WPA3</strong> if all devices support it, otherwise use <strong>WPA2-AES</strong> with a strong, long passphrase (16+ characters).</p>
+<hr />
+<h2>Q2: Practical Questions (20 Marks)</h2>
+<hr />
+<h2>Option A: Caesar Cipher Encryption Program</h2>
+<h3>Concept</h3>
+<p>The <strong>Caesar Cipher</strong> is one of the oldest and simplest encryption techniques. It encrypts text by shifting each letter by a fixed number of positions in the alphabet.</p>
+<h4>How It Works</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">Plaintext</span><span class="o">:</span><span class="w">  </span><span class="n">HELLO</span>
+<span class="n">Shift</span><span class="w"> </span><span class="o">(</span><span class="n">key</span><span class="o">):</span><span class="w"> </span><span class="mi">3</span>
+<span class="n">Ciphertext</span><span class="o">:</span><span class="w"> </span><span class="n">KHOOR</span>
+
+<span class="n">H</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">K</span><span class="w"> </span><span class="o">(</span><span class="n">H</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">)</span>
+<span class="n">E</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="o">(</span><span class="n">E</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">)</span>
+<span class="n">L</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">O</span><span class="w"> </span><span class="o">(</span><span class="n">L</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">)</span>
+<span class="n">L</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">O</span><span class="w"> </span><span class="o">(</span><span class="n">L</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">)</span>
+<span class="n">O</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">(</span><span class="n">O</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">)</span>
+</code></pre></div>
+
+<h4>Encryption Formula</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">For</span><span class="w"> </span><span class="nv">uppercase</span><span class="w"> </span><span class="nv">letters</span>:
+<span class="w">    </span><span class="nv">Cipher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">(</span><span class="nv">Plain</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">key</span><span class="ss">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">26</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;A&#39;</span>
+
+<span class="k">For</span><span class="w"> </span><span class="nv">lowercase</span><span class="w"> </span><span class="nv">letters</span>:
+<span class="w">    </span><span class="nv">Cipher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">(</span><span class="nv">Plain</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">key</span><span class="ss">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">26</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;a&#39;</span>
+</code></pre></div>
+
+<h4>Decryption Formula</h4>
+<div class="codehilite"><pre><span></span><code>Plain = (Cipher - &#39;A&#39; - key + 26) % 26 + &#39;A&#39;
+</code></pre></div>
+
+<h3>Algorithm</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">FUNCTION</span><span class="w"> </span><span class="nv">caesarEncrypt</span><span class="ss">(</span><span class="nv">message</span>,<span class="w"> </span><span class="nv">key</span><span class="ss">)</span>:
+<span class="w">    </span><span class="nb">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="nv">each</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">message</span>:
+<span class="w">        </span><span class="k">IF</span><span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">uppercase</span><span class="w"> </span><span class="nv">letter</span>:
+<span class="w">            </span><span class="nv">shifted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">(</span><span class="nv">c</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">key</span><span class="ss">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">26</span>
+<span class="w">            </span><span class="nb">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="ss">(</span><span class="nv">shifted</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="ss">)</span>
+<span class="w">        </span><span class="k">ELSE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">lowercase</span><span class="w"> </span><span class="nv">letter</span>:
+<span class="w">            </span><span class="nv">shifted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">(</span><span class="nv">c</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">key</span><span class="ss">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">26</span>
+<span class="w">            </span><span class="nb">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="ss">(</span><span class="nv">shifted</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="ss">)</span>
+<span class="w">        </span><span class="k">ELSE</span>:
+<span class="w">            </span><span class="nb">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nv">c</span><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="nv">Keep</span><span class="w"> </span><span class="nv">non</span><span class="o">-</span><span class="nv">alphabetic</span><span class="w"> </span><span class="nv">characters</span><span class="w"> </span><span class="nv">unchanged</span>
+<span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="nb">result</span>
+</code></pre></div>
+
+<h3>Time &amp; Space Complexity</h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Time</th>
+<th>Space</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Encryption</td>
+<td>O(n)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Decryption</td>
+<td>O(n)</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
+<p>Where n = length of message</p>
+<h3>Worked Example</h3>
+<div class="codehilite"><pre><span></span><code>Plaintext:  &quot;Attack at Dawn!&quot;
+Key:        5
+
+Encryption:
+A(0)  + 5 = F(5)
+t(19) + 5 = y(24)
+t(19) + 5 = y(24)
+a(0)  + 5 = f(5)
+c(2)  + 5 = h(7)
+k(10) + 5 = p(15)
+&#39; &#39;        = &#39; &#39;
+a(0)  + 5 = f(5)
+t(19) + 5 = y(24)
+&#39; &#39;        = &#39; &#39;
+D(3)  + 5 = I(8)
+a(0)  + 5 = f(5)
+w(22) + 5 = b(1)  [wrap: (22+5)%26 = 1]
+n(13) + 5 = s(18)
+!          = !
+
+Ciphertext: &quot;Fyyfhp fy Ifbs!&quot;
+</code></pre></div>
+
+<hr />
+<h2>Option B: Data Link Layer Framing - Character Stuffing</h2>
+<h3>Concept</h3>
+<p><strong>Framing</strong> is the process of organizing data into manageable units (frames) at the Data Link Layer. The receiver must identify where frames begin and end.</p>
+<h4>Character Stuffing (Byte Stuffing)</h4>
+<p>Used when frames are delimited by special flag characters.</p>
+<p><strong>Common Delimiters</strong>:<br />
+- <strong>DLE</strong> (Data Link Escape): Control character<br />
+- <strong>STX</strong> (Start of Text): Frame start marker<br />
+- <strong>ETX</strong> (End of Text): Frame end marker</p>
+<p><strong>Problem</strong>: What if the data contains the delimiter character (DLE)?</p>
+<p><strong>Solution</strong>: "Stuff" an extra DLE before any DLE in the data.</p>
+<div class="codehilite"><pre><span></span><code>Original Data:  A B DLE C
+Frame Format:   DLE STX &lt;data&gt; DLE ETX
+
+Stuffed Frame:  DLE STX A B DLE DLE C DLE ETX
+                          ↑stuffed
+</code></pre></div>
+
+<h3>Algorithm</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">characterStuff</span><span class="p">(</span><span class="k">data</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="n">frame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;DLE STX &quot;</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="k">each</span><span class="w"> </span><span class="k">character</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">data</span><span class="err">:</span>
+<span class="w">        </span><span class="k">IF</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nl">DLE</span><span class="p">:</span>
+<span class="w">            </span><span class="n">frame</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="ss">&quot;DLE DLE &quot;</span><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="nf">Stuff</span><span class="w"> </span><span class="n">extra</span><span class="w"> </span><span class="n">DLE</span>
+<span class="w">        </span><span class="k">ELSE</span><span class="err">:</span>
+<span class="w">            </span><span class="n">frame</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="ss">&quot; &quot;</span>
+<span class="w">    </span><span class="n">frame</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="ss">&quot;DLE ETX&quot;</span>
+<span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="n">frame</span>
+
+<span class="k">FUNCTION</span><span class="w"> </span><span class="n">characterDestuff</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="n">Remove</span><span class="w"> </span><span class="ss">&quot;DLE STX&quot;</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">beginning</span>
+<span class="w">    </span><span class="n">Remove</span><span class="w"> </span><span class="ss">&quot;DLE ETX&quot;</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">end</span>
+<span class="w">    </span><span class="k">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;&quot;</span>
+<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">WHILE</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span><span class="err">:</span>
+<span class="w">        </span><span class="k">IF</span><span class="w"> </span><span class="n">frame</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">DLE</span><span class="w"> </span><span class="ow">AND</span><span class="w"> </span><span class="n">frame</span><span class="o">[</span><span class="n">i+1</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nl">DLE</span><span class="p">:</span>
+<span class="w">            </span><span class="k">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">DLE</span>
+<span class="w">            </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">2</span><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="n">Skip</span><span class="w"> </span><span class="n">stuffed</span><span class="w"> </span><span class="n">DLE</span>
+<span class="w">        </span><span class="k">ELSE</span><span class="err">:</span>
+<span class="w">            </span><span class="k">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">frame</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+<span class="w">            </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="k">result</span>
+</code></pre></div>
+
+<h3>Time &amp; Space Complexity</h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Time</th>
+<th>Space</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stuffing</td>
+<td>O(n)</td>
+<td>O(n) - worst case 2n</td>
+</tr>
+<tr>
+<td>Destuffing</td>
+<td>O(n)</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
+<h3>Worked Example</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">Original</span><span class="w"> </span><span class="n">Data</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;HELLO DLE WORLD&quot;</span>
+
+<span class="n">Stuffing</span><span class="w"> </span><span class="n">Process</span><span class="o">:</span>
+<span class="n">H</span><span class="w">     </span><span class="err">→</span><span class="w"> </span><span class="n">H</span>
+<span class="n">E</span><span class="w">     </span><span class="err">→</span><span class="w"> </span><span class="n">E</span>
+<span class="n">L</span><span class="w">     </span><span class="err">→</span><span class="w"> </span><span class="n">L</span>
+<span class="n">L</span><span class="w">     </span><span class="err">→</span><span class="w"> </span><span class="n">L</span>
+<span class="n">O</span><span class="w">     </span><span class="err">→</span><span class="w"> </span><span class="n">O</span>
+<span class="p">(</span><span class="n">space</span><span class="p">)</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="p">(</span><span class="n">space</span><span class="p">)</span>
+<span class="n">DLE</span><span class="w">   </span><span class="err">→</span><span class="w"> </span><span class="n">DLE</span><span class="w"> </span><span class="n">DLE</span><span class="w">  </span><span class="p">(</span><span class="n">stuffed</span><span class="o">!</span><span class="p">)</span>
+<span class="p">(</span><span class="n">space</span><span class="p">)</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="p">(</span><span class="n">space</span><span class="p">)</span>
+<span class="n">W</span><span class="w">     </span><span class="err">→</span><span class="w"> </span><span class="n">W</span>
+<span class="n">O</span><span class="w">     </span><span class="err">→</span><span class="w"> </span><span class="n">O</span>
+<span class="n">R</span><span class="w">     </span><span class="err">→</span><span class="w"> </span><span class="n">R</span>
+<span class="n">L</span><span class="w">     </span><span class="err">→</span><span class="w"> </span><span class="n">L</span>
+<span class="n">D</span><span class="w">     </span><span class="err">→</span><span class="w"> </span><span class="n">D</span>
+
+<span class="n">Stuffed</span><span class="w"> </span><span class="n">Frame</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">DLE</span><span class="w"> </span><span class="n">STX</span><span class="p">]</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="n">O</span><span class="w">   </span><span class="n">DLE</span><span class="w"> </span><span class="n">DLE</span><span class="w">   </span><span class="n">W</span><span class="w"> </span><span class="n">O</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="p">[</span><span class="n">DLE</span><span class="w"> </span><span class="n">ETX</span><span class="p">]</span>
+<span class="w">                                    </span><span class="err">↑</span><span class="w"> </span><span class="n">stuffed</span>
+</code></pre></div>
+
+<hr />
+<h2>Option C: Star Topology in Packet Tracer</h2>
+<h3>Given Requirements</h3>
+<ul>
+<li><strong>Topology</strong>: Star</li>
+<li><strong>Number of PCs</strong>: 5</li>
+<li><strong>IP Range</strong>: 172.16.1.1 to 172.16.1.5</li>
+<li><strong>Subnet Mask</strong>: 255.255.0.0 (/16)</li>
+</ul>
+<h3>Network Design</h3>
+<div class="codehilite"><pre><span></span><code><span class="w">                    </span><span class="o">[</span><span class="n">Switch</span><span class="o">]</span>
+<span class="w">                       </span><span class="err">│</span>
+<span class="w">        </span><span class="err">┌──────┬───────┼───────┬──────┐</span>
+<span class="w">        </span><span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">       </span><span class="err">│</span><span class="w">       </span><span class="err">│</span><span class="w">      </span><span class="err">│</span>
+<span class="w">      </span><span class="o">[</span><span class="n">PC0</span><span class="o">]</span><span class="w">  </span><span class="o">[</span><span class="n">PC1</span><span class="o">]</span><span class="w">   </span><span class="o">[</span><span class="n">PC2</span><span class="o">]</span><span class="w">   </span><span class="o">[</span><span class="n">PC3</span><span class="o">]</span><span class="w">  </span><span class="o">[</span><span class="n">PC4</span><span class="o">]</span>
+<span class="w">      </span><span class="mf">.1</span><span class="w">     </span><span class="mf">.2</span><span class="w">      </span><span class="mf">.3</span><span class="w">      </span><span class="mf">.4</span><span class="w">     </span><span class="mf">.5</span>
+</code></pre></div>
+
+<h3>IP Addressing Table</h3>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>IP Address</th>
+<th>Subnet Mask</th>
+<th>Default Gateway</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC0</td>
+<td>172.16.1.1</td>
+<td>255.255.0.0</td>
+<td>172.16.1.254</td>
+</tr>
+<tr>
+<td>PC1</td>
+<td>172.16.1.2</td>
+<td>255.255.0.0</td>
+<td>172.16.1.254</td>
+</tr>
+<tr>
+<td>PC2</td>
+<td>172.16.1.3</td>
+<td>255.255.0.0</td>
+<td>172.16.1.254</td>
+</tr>
+<tr>
+<td>PC3</td>
+<td>172.16.1.4</td>
+<td>255.255.0.0</td>
+<td>172.16.1.254</td>
+</tr>
+<tr>
+<td>PC4</td>
+<td>172.16.1.5</td>
+<td>255.255.0.0</td>
+<td>172.16.1.254</td>
+</tr>
+</tbody>
+</table>
+<h3>Packet Tracer Configuration Steps</h3>
+<h4>Step 1: Add Devices</h4>
+<ol>
+<li>Open Cisco Packet Tracer</li>
+<li>From <strong>Network Devices</strong> → <strong>Switches</strong>, drag a <strong>2960 Switch</strong></li>
+<li>From <strong>End Devices</strong>, drag <strong>5 PCs</strong> around the switch</li>
+</ol>
+<h4>Step 2: Connect Devices</h4>
+<ol>
+<li>Select <strong>Connections</strong> → <strong>Copper Straight-Through</strong> cable</li>
+<li>Connect each PC's <strong>FastEthernet0</strong> port to switch ports:<br />
+   - PC0 → Switch Fa0/1<br />
+   - PC1 → Switch Fa0/2<br />
+   - PC2 → Switch Fa0/3<br />
+   - PC3 → Switch Fa0/4<br />
+   - PC4 → Switch Fa0/5</li>
+</ol>
+<h4>Step 3: Configure PC IP Addresses</h4>
+<p>For each PC (PC0 to PC4):</p>
+<ol>
+<li>Click on PC</li>
+<li>Go to <strong>Desktop</strong> tab</li>
+<li>Click <strong>IP Configuration</strong></li>
+<li>Select <strong>Static</strong></li>
+<li>Enter IP configuration:</li>
+</ol>
+<p><strong>PC0:</strong></p>
+<div class="codehilite"><pre><span></span><code>IP Address:      172.16.1.1
+Subnet Mask:     255.255.0.0
+Default Gateway: 172.16.1.254
+</code></pre></div>
+
+<p><strong>PC1:</strong></p>
+<div class="codehilite"><pre><span></span><code>IP Address:      172.16.1.2
+Subnet Mask:     255.255.0.0
+Default Gateway: 172.16.1.254
+</code></pre></div>
+
+<p><strong>PC2:</strong></p>
+<div class="codehilite"><pre><span></span><code>IP Address:      172.16.1.3
+Subnet Mask:     255.255.0.0
+Default Gateway: 172.16.1.254
+</code></pre></div>
+
+<p><strong>PC3:</strong></p>
+<div class="codehilite"><pre><span></span><code>IP Address:      172.16.1.4
+Subnet Mask:     255.255.0.0
+Default Gateway: 172.16.1.254
+</code></pre></div>
+
+<p><strong>PC4:</strong></p>
+<div class="codehilite"><pre><span></span><code>IP Address:      172.16.1.5
+Subnet Mask:     255.255.0.0
+Default Gateway: 172.16.1.254
+</code></pre></div>
+
+<h4>Step 4: Verify Configuration</h4>
+<ol>
+<li>Click on any PC</li>
+<li>Go to <strong>Desktop</strong> → <strong>Command Prompt</strong></li>
+<li>Test connectivity:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>C:\&gt; ipconfig
+
+IP Address:      172.16.1.1
+Subnet Mask:     255.255.0.0
+Default Gateway: 172.16.1.254
+
+C:\&gt; ping 172.16.1.2
+Pinging 172.16.1.2 with 32 bytes of data:
+Reply from 172.16.1.2: bytes=32 time&lt;1ms TTL=128
+Reply from 172.16.1.2: bytes=32 time&lt;1ms TTL=128
+...
+
+C:\&gt; ping 172.16.1.5
+Pinging 172.16.1.5 with 32 bytes of data:
+Reply from 172.16.1.5: bytes=32 time&lt;1ms TTL=128
+...
+</code></pre></div>
+
+<h3>Network Information</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network Address</td>
+<td>172.16.0.0</td>
+</tr>
+<tr>
+<td>Subnet Mask</td>
+<td>255.255.0.0 (/16)</td>
+</tr>
+<tr>
+<td>Network Class</td>
+<td>Class B (Private)</td>
+</tr>
+<tr>
+<td>Total Hosts</td>
+<td>65,534 usable</td>
+</tr>
+<tr>
+<td>Broadcast Address</td>
+<td>172.16.255.255</td>
+</tr>
+<tr>
+<td>IP Range Used</td>
+<td>172.16.1.1 - 172.16.1.5</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Solution Code:</strong> See <code>Slip_16_Q2_OptionA.c</code> (Caesar Cipher) and <code>Slip_16_Q2_OptionB.c</code> (Character Stuffing) in this folder.</p>
+</blockquote>
+    
+    <script>
+        // Add syntax highlighting for code blocks
+        document.querySelectorAll('pre code').forEach((block) => {
+            block.style.fontFamily = "'Consolas', 'Monaco', 'Courier New', monospace";
+        });
+    </script>
+</body>
+</html>

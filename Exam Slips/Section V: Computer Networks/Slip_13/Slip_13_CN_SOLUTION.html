@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slip_13_CN_SOLUTION.md</title>
+    <style>
+        @media print {
+            body { margin: 0.5in; }
+            h1, h2, h3 { page-break-after: avoid; }
+            pre, table { page-break-inside: avoid; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
+            font-size: 11pt;
+        }
+        
+        h1 {
+            color: #1a237e;
+            border-bottom: 3px solid #3f51b5;
+            padding-bottom: 10px;
+            font-size: 28pt;
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #283593;
+            border-bottom: 2px solid #5c6bc0;
+            padding-bottom: 8px;
+            margin-top: 35px;
+            font-size: 20pt;
+        }
+        
+        h3 {
+            color: #3949ab;
+            font-size: 16pt;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #5c6bc0;
+            font-size: 13pt;
+            margin-top: 20px;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 10pt;
+            color: #d32f2f;
+        }
+        
+        pre {
+            background-color: #263238;
+            color: #aed581;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+            overflow-x: auto;
+            font-size: 9.5pt;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 10pt;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3f51b5;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        tr:hover {
+            background-color: #e8eaf6;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 30px 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #ff9800;
+            padding-left: 15px;
+            color: #616161;
+            font-style: italic;
+            margin: 20px 0;
+            background-color: #fff3e0;
+            padding: 10px 15px;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background-color: #45a049;
+        }
+        
+        @media print {
+            .print-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print to PDF</button>
+    <h1>Slip 13 — Computer Networks Solution Guide</h1>
+<h2>Q1: Theory Questions (10 Marks - Answer ANY 5)</h2>
+<hr />
+<h3>a) How do you verify if an interface received an IP dynamically?</h3>
+<h4>Concept</h4>
+<p>DHCP (Dynamic Host Configuration Protocol) automatically assigns IP addresses to network interfaces. Verifying dynamic IP assignment is crucial for network troubleshooting.</p>
+<h4>Methods to Verify Dynamic IP Assignment</h4>
+<p><strong>1. Using ipconfig (Windows):</strong></p>
+<div class="codehilite"><pre><span></span><code>ipconfig /all
+</code></pre></div>
+
+<p>Look for:<br />
+- "DHCP Enabled: Yes"<br />
+- "Lease Obtained" and "Lease Expires" fields<br />
+- "DHCP Server" address</p>
+<p><strong>2. Using ip command (Linux):</strong></p>
+<div class="codehilite"><pre><span></span><code>ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w"> </span>eth0
+</code></pre></div>
+
+<p>Look for "dynamic" flag in output.</p>
+<p><strong>3. Check DHCP lease file (Linux):</strong></p>
+<div class="codehilite"><pre><span></span><code>cat<span class="w"> </span>/var/lib/dhcp/dhclient.leases
+<span class="c1"># OR</span>
+cat<span class="w"> </span>/var/lib/NetworkManager/dhclient-*.lease
+</code></pre></div>
+
+<p><strong>4. Using nmcli (Linux NetworkManager):</strong></p>
+<div class="codehilite"><pre><span></span><code>nmcli<span class="w"> </span>device<span class="w"> </span>show<span class="w"> </span>eth0<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>dhcp
+</code></pre></div>
+
+<p><strong>5. On Cisco Router/Switch:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">show</span><span class="w"> </span><span class="nv">ip</span><span class="w"> </span><span class="nv">interface</span><span class="w"> </span><span class="nv">brief</span>
+<span class="k">show</span><span class="w"> </span><span class="nv">dhcp</span><span class="w"> </span><span class="nv">lease</span>
+</code></pre></div>
+
+<h4>Example Output (Windows):</h4>
+<div class="codehilite"><pre><span></span><code>Ethernet adapter Local Area Connection:
+   DHCP Enabled. . . . . . . . . : Yes
+   IPv4 Address. . . . . . . . . : 192.168.1.105
+   Subnet Mask . . . . . . . . . : 255.255.255.0
+   Lease Obtained. . . . . . . . : Monday, January 15, 2024 9:00:00 AM
+   Lease Expires . . . . . . . . : Tuesday, January 16, 2024 9:00:00 AM
+   DHCP Server . . . . . . . . . : 192.168.1.1
+</code></pre></div>
+
+<hr />
+<h3>b) Demonstrate assigning IPs and testing connectivity for 3 systems in a LAN</h3>
+<h4>Network Setup</h4>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">PC1</span><span class="o">]</span><span class="w"> </span><span class="o">----+</span>
+<span class="w">          </span><span class="o">|</span>
+<span class="o">[</span><span class="n">PC2</span><span class="o">]</span><span class="w"> </span><span class="o">----+----</span><span class="w"> </span><span class="o">[</span><span class="n">Switch</span><span class="o">]</span><span class="w"> </span><span class="o">----</span><span class="w"> </span><span class="p">(</span><span class="nl">LAN</span><span class="p">:</span><span class="w"> </span><span class="mf">192.168.1.0</span><span class="o">/</span><span class="mi">24</span><span class="p">)</span>
+<span class="w">          </span><span class="o">|</span>
+<span class="o">[</span><span class="n">PC3</span><span class="o">]</span><span class="w"> </span><span class="c1">----+</span>
+</code></pre></div>
+
+<h4>Step 1: Assign IP Addresses</h4>
+<p><strong>PC1 Configuration (Windows):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">netsh</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="s">&quot;Local Area Connection&quot;</span><span class="w"> </span><span class="nx">static</span><span class="w"> </span><span class="m m-Double">192.168.1.10</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span>
+</code></pre></div>
+
+<p><strong>PC2 Configuration (Windows):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">netsh</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="s">&quot;Local Area Connection&quot;</span><span class="w"> </span><span class="nx">static</span><span class="w"> </span><span class="m m-Double">192.168.1.20</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span>
+</code></pre></div>
+
+<p><strong>PC3 Configuration (Windows):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">netsh</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="s">&quot;Local Area Connection&quot;</span><span class="w"> </span><span class="nx">static</span><span class="w"> </span><span class="m m-Double">192.168.1.30</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span>
+</code></pre></div>
+
+<p><strong>Linux Alternative:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># PC1</span>
+sudo<span class="w"> </span>ip<span class="w"> </span>addr<span class="w"> </span>add<span class="w"> </span><span class="m">192</span>.168.1.10/24<span class="w"> </span>dev<span class="w"> </span>eth0
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>eth0<span class="w"> </span>up
+
+<span class="c1"># PC2</span>
+sudo<span class="w"> </span>ip<span class="w"> </span>addr<span class="w"> </span>add<span class="w"> </span><span class="m">192</span>.168.1.20/24<span class="w"> </span>dev<span class="w"> </span>eth0
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>eth0<span class="w"> </span>up
+
+<span class="c1"># PC3</span>
+sudo<span class="w"> </span>ip<span class="w"> </span>addr<span class="w"> </span>add<span class="w"> </span><span class="m">192</span>.168.1.30/24<span class="w"> </span>dev<span class="w"> </span>eth0
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>eth0<span class="w"> </span>up
+</code></pre></div>
+
+<h4>Step 2: Test Connectivity</h4>
+<p><strong>From PC1 - Test connectivity to PC2 and PC3:</strong></p>
+<div class="codehilite"><pre><span></span><code>ping 192.168.1.20
+ping 192.168.1.30
+</code></pre></div>
+
+<p><strong>From PC2 - Test connectivity to PC1 and PC3:</strong></p>
+<div class="codehilite"><pre><span></span><code>ping 192.168.1.10
+ping 192.168.1.30
+</code></pre></div>
+
+<p><strong>From PC3 - Test connectivity to PC1 and PC2:</strong></p>
+<div class="codehilite"><pre><span></span><code>ping 192.168.1.10
+ping 192.168.1.20
+</code></pre></div>
+
+<h4>Expected Successful Output:</h4>
+<div class="codehilite"><pre><span></span><code><span class="nv">Pinging</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">20</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="nv">bytes</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">data</span>:
+<span class="nv">Reply</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">20</span>:<span class="w"> </span><span class="nv">bytes</span><span class="o">=</span><span class="mi">32</span><span class="w"> </span><span class="nv">time</span><span class="o">&lt;</span><span class="mi">1</span><span class="nv">ms</span><span class="w"> </span><span class="nv">TTL</span><span class="o">=</span><span class="mi">128</span>
+<span class="nv">Reply</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">20</span>:<span class="w"> </span><span class="nv">bytes</span><span class="o">=</span><span class="mi">32</span><span class="w"> </span><span class="nv">time</span><span class="o">&lt;</span><span class="mi">1</span><span class="nv">ms</span><span class="w"> </span><span class="nv">TTL</span><span class="o">=</span><span class="mi">128</span>
+<span class="nv">Reply</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">20</span>:<span class="w"> </span><span class="nv">bytes</span><span class="o">=</span><span class="mi">32</span><span class="w"> </span><span class="nv">time</span><span class="o">&lt;</span><span class="mi">1</span><span class="nv">ms</span><span class="w"> </span><span class="nv">TTL</span><span class="o">=</span><span class="mi">128</span>
+<span class="nv">Reply</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">20</span>:<span class="w"> </span><span class="nv">bytes</span><span class="o">=</span><span class="mi">32</span><span class="w"> </span><span class="nv">time</span><span class="o">&lt;</span><span class="mi">1</span><span class="nv">ms</span><span class="w"> </span><span class="nv">TTL</span><span class="o">=</span><span class="mi">128</span>
+
+<span class="nv">Ping</span><span class="w"> </span><span class="nv">statistics</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">20</span>:
+<span class="w">    </span><span class="nv">Packets</span>:<span class="w"> </span><span class="nv">Sent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>,<span class="w"> </span><span class="nv">Received</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>,<span class="w"> </span><span class="nv">Lost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ss">(</span><span class="mi">0</span><span class="o">%</span><span class="w"> </span><span class="nv">loss</span><span class="ss">)</span>
+</code></pre></div>
+
+<h4>IP Assignment Summary Table:</h4>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>IP Address</th>
+<th>Subnet Mask</th>
+<th>Default Gateway</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC1</td>
+<td>192.168.1.10</td>
+<td>255.255.255.0</td>
+<td>192.168.1.1</td>
+</tr>
+<tr>
+<td>PC2</td>
+<td>192.168.1.20</td>
+<td>255.255.255.0</td>
+<td>192.168.1.1</td>
+</tr>
+<tr>
+<td>PC3</td>
+<td>192.168.1.30</td>
+<td>255.255.255.0</td>
+<td>192.168.1.1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>c) Explain the role of VLAN1 in a switch's initial configuration</h3>
+<h4>What is VLAN1?</h4>
+<p>VLAN1 is the <strong>default VLAN</strong> (also called the <strong>native VLAN</strong> or <strong>management VLAN</strong>) on Cisco switches. All switch ports belong to VLAN1 by default.</p>
+<h4>Roles of VLAN1:</h4>
+<p><strong>1. Default VLAN:</strong><br />
+- All switch ports are assigned to VLAN1 out of the box<br />
+- Enables immediate communication between connected devices<br />
+- No configuration required for basic operation</p>
+<p><strong>2. Management VLAN:</strong><br />
+- Used for remote switch management (Telnet, SSH, HTTP)<br />
+- Switch virtual interface (SVI) for VLAN1 receives management IP<br />
+- Example configuration:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">Switch</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">vlan</span><span class="w"> </span><span class="mi">1</span>
+<span class="nx">Switch</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.1.254</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="nx">Switch</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+</code></pre></div>
+
+<p><strong>3. Native VLAN for Trunk Ports:</strong><br />
+- Untagged traffic on trunk links belongs to VLAN1<br />
+- IEEE 802.1Q standard specifies native VLAN<br />
+- Security Note: Consider changing native VLAN to prevent VLAN hopping attacks</p>
+<p><strong>4. Control Plane Protocols:</strong><br />
+- CDP (Cisco Discovery Protocol) operates on VLAN1<br />
+- VTP (VLAN Trunking Protocol) advertisements use VLAN1<br />
+- STP (Spanning Tree Protocol) BPDUs sent on VLAN1</p>
+<h4>Security Considerations:</h4>
+<div class="codehilite"><pre><span></span><code><span class="o">!</span><span class="w"> </span><span class="nv">Best</span><span class="w"> </span><span class="nv">Practice</span>:<span class="w"> </span><span class="nv">Don</span><span class="err">&#39;t use VLAN1 for user traffic</span>
+<span class="err">Switch(config)# interface range fa0/1-24</span>
+<span class="err">Switch(config-if-range)# switchport access vlan 10</span>
+
+<span class="err">! Change native VLAN on trunks</span>
+<span class="err">Switch(config)# interface gi0/1</span>
+<span class="err">Switch(config-if)# switchport trunk native vlan 999</span>
+</code></pre></div>
+
+<h4>Diagram:</h4>
+<div class="codehilite"><pre><span></span><code><span class="nb">+------------------------------------------+</span>
+<span class="c">|              SWITCH                       |</span>
+<span class="c">|  </span><span class="nb">+--------------------------------------+</span><span class="c"> |</span>
+<span class="c">|  |           VLAN 1 (Default)           | |</span>
+<span class="c">|  |  </span><span class="nb">-</span><span class="c"> All ports initially              | |</span>
+<span class="c">|  |  </span><span class="nb">-</span><span class="c"> Management IP: 192</span><span class="nt">.</span><span class="c">168</span><span class="nt">.</span><span class="c">1</span><span class="nt">.</span><span class="c">254     | |</span>
+<span class="c">|  |  </span><span class="nb">-</span><span class="c"> CDP</span><span class="nt">,</span><span class="c"> VTP</span><span class="nt">,</span><span class="c"> STP traffic            | |</span>
+<span class="c">|  </span><span class="nb">+--------------------------------------+</span><span class="c"> |</span>
+<span class="nb">+------------------------------------------+</span>
+</code></pre></div>
+
+<hr />
+<h3>d) What steps are required to configure the default gateway as 192.168.1.1</h3>
+<h4>On Windows PC:</h4>
+<p><strong>Method 1: Command Line (netsh)</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">netsh</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="s">&quot;Local Area Connection&quot;</span><span class="w"> </span><span class="nx">static</span><span class="w"> </span><span class="m m-Double">192.168.1.100</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span>
+</code></pre></div>
+
+<p><strong>Method 2: GUI</strong><br />
+1. Open Network Connections (ncpa.cpl)<br />
+2. Right-click adapter → Properties<br />
+3. Select IPv4 → Properties<br />
+4. Enter Default Gateway: 192.168.1.1<br />
+5. Click OK</p>
+<h4>On Linux PC:</h4>
+<p><strong>Method 1: ip command (temporary)</strong></p>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>ip<span class="w"> </span>route<span class="w"> </span>add<span class="w"> </span>default<span class="w"> </span>via<span class="w"> </span><span class="m">192</span>.168.1.1
+</code></pre></div>
+
+<p><strong>Method 2: Netplan (Ubuntu - permanent)</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># /etc/netplan/01-config.yaml</span>
+<span class="nt">network</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">ethernets</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">eth0</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">addresses</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">192.168.1.100/24</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">gateway4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.1.1</span>
+</code></pre></div>
+
+<p>Apply: <code>sudo netplan apply</code></p>
+<h4>On Cisco Switch (Layer 2):</h4>
+<div class="codehilite"><pre><span></span><code><span class="nv">Switch</span><span class="o">&gt;</span><span class="w"> </span><span class="nv">enable</span>
+<span class="nv">Switch</span>#<span class="w"> </span><span class="nv">configure</span><span class="w"> </span><span class="nv">terminal</span>
+<span class="nv">Switch</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="nv">ip</span><span class="w"> </span><span class="nv">default</span><span class="o">-</span><span class="nv">gateway</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">1</span>
+<span class="nv">Switch</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="k">end</span>
+<span class="nv">Switch</span>#<span class="w"> </span><span class="nv">write</span><span class="w"> </span><span class="nv">memory</span>
+</code></pre></div>
+
+<h4>On Cisco Router:</h4>
+<div class="codehilite"><pre><span></span><code><span class="nv">Router</span><span class="o">&gt;</span><span class="w"> </span><span class="nv">enable</span>
+<span class="nv">Router</span>#<span class="w"> </span><span class="nv">configure</span><span class="w"> </span><span class="nv">terminal</span>
+<span class="nv">Router</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="nv">ip</span><span class="w"> </span><span class="nv">route</span><span class="w"> </span><span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span><span class="w"> </span><span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">1</span>
+<span class="nv">Router</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="k">end</span>
+<span class="nv">Router</span>#<span class="w"> </span><span class="nv">write</span><span class="w"> </span><span class="nv">memory</span>
+</code></pre></div>
+
+<h4>Verification Commands:</h4>
+<div class="codehilite"><pre><span></span><code>#<span class="w"> </span><span class="nv">Windows</span>
+<span class="nv">route</span><span class="w"> </span><span class="nv">print</span>
+<span class="nv">netstat</span><span class="w"> </span><span class="o">-</span><span class="nv">rn</span>
+
+#<span class="w"> </span><span class="nv">Linux</span>
+<span class="nv">ip</span><span class="w"> </span><span class="nv">route</span><span class="w"> </span><span class="k">show</span>
+<span class="nv">route</span><span class="w"> </span><span class="o">-</span><span class="nv">n</span>
+
+#<span class="w"> </span><span class="nv">Cisco</span>
+<span class="k">show</span><span class="w"> </span><span class="nv">ip</span><span class="w"> </span><span class="nv">route</span>
+<span class="k">show</span><span class="w"> </span><span class="nv">running</span><span class="o">-</span><span class="nv">config</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">include</span><span class="w"> </span><span class="nv">default</span>
+</code></pre></div>
+
+<hr />
+<h3>f) What steps are required to configure Dynamic NAT with a pool of public IP addresses</h3>
+<h4>Concept</h4>
+<p><strong>Dynamic NAT</strong> maps internal private IP addresses to a pool of public IP addresses on a first-come, first-served basis.</p>
+<h4>Network Scenario:</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">[Inside Network]          [Router]          [Outside Network]</span>
+<span class="na">192.168.1.0/24  -----&gt; NAT Pool</span><span class="o">:</span><span class="w"> </span><span class="s">203.0.113.10-20 -----&gt; Internet</span>
+</code></pre></div>
+
+<h4>Configuration Steps on Cisco Router:</h4>
+<p><strong>Step 1: Define the NAT Pool</strong></p>
+<div class="codehilite"><pre><span></span><code>Router(config)# ip nat pool MYPOOL 203.0.113.10 203.0.113.20 netmask 255.255.255.0
+</code></pre></div>
+
+<p><strong>Step 2: Create Access List for Inside Hosts</strong></p>
+<div class="codehilite"><pre><span></span><code>Router(config)# access-list 1 permit 192.168.1.0 0.0.0.255
+</code></pre></div>
+
+<p><strong>Step 3: Associate ACL with NAT Pool</strong></p>
+<div class="codehilite"><pre><span></span><code>Router(config)# ip nat inside source list 1 pool MYPOOL
+</code></pre></div>
+
+<p><strong>Step 4: Define Inside and Outside Interfaces</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">inside</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">1</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">203.0.113.1</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">outside</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+</code></pre></div>
+
+<h4>Complete Configuration:</h4>
+<div class="codehilite"><pre><span></span><code><span class="p">!</span><span class="w"> </span><span class="nx">Define</span><span class="w"> </span><span class="nx">NAT</span><span class="w"> </span><span class="nx">pool</span>
+<span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">pool</span><span class="w"> </span><span class="nx">MYPOOL</span><span class="w"> </span><span class="m m-Double">203.0.113.10</span><span class="w"> </span><span class="m m-Double">203.0.113.20</span><span class="w"> </span><span class="nx">netmask</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Define</span><span class="w"> </span><span class="nx">which</span><span class="w"> </span><span class="nx">internal</span><span class="w"> </span><span class="nx">addresses</span><span class="w"> </span><span class="nx">can</span><span class="w"> </span><span class="nx">use</span><span class="w"> </span><span class="nx">NAT</span>
+<span class="nx">access</span><span class="o">-</span><span class="nx">list</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="nx">permit</span><span class="w"> </span><span class="m m-Double">192.168.1.0</span><span class="w"> </span><span class="m m-Double">0.0.0.255</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Link</span><span class="w"> </span><span class="nx">ACL</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">NAT</span><span class="w"> </span><span class="nx">pool</span>
+<span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">inside</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="nx">pool</span><span class="w"> </span><span class="nx">MYPOOL</span>
+
+<span class="p">!</span><span class="w"> </span><span class="nx">Configure</span><span class="w"> </span><span class="nx">interfaces</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+<span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">inside</span>
+
+<span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">1</span>
+<span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">203.0.113.1</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">nat</span><span class="w"> </span><span class="nx">outside</span>
+</code></pre></div>
+
+<h4>Verification Commands:</h4>
+<div class="codehilite"><pre><span></span><code><span class="nv">Router</span>#<span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="nv">ip</span><span class="w"> </span><span class="nv">nat</span><span class="w"> </span><span class="nv">translations</span>
+<span class="nv">Router</span>#<span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="nv">ip</span><span class="w"> </span><span class="nv">nat</span><span class="w"> </span><span class="nv">statistics</span>
+<span class="nv">Router</span>#<span class="w"> </span><span class="nv">debug</span><span class="w"> </span><span class="nv">ip</span><span class="w"> </span><span class="nv">nat</span>
+</code></pre></div>
+
+<h4>NAT Translation Table Example:</h4>
+<table>
+<thead>
+<tr>
+<th>Inside Local</th>
+<th>Inside Global</th>
+<th>Outside Local</th>
+<th>Outside Global</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.1.10</td>
+<td>203.0.113.10</td>
+<td>8.8.8.8</td>
+<td>8.8.8.8</td>
+</tr>
+<tr>
+<td>192.168.1.20</td>
+<td>203.0.113.11</td>
+<td>8.8.8.8</td>
+<td>8.8.8.8</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>g) Use debug ip routing or debug ip rip to monitor routing events and updates</h3>
+<h4>debug ip routing</h4>
+<p><strong>Purpose:</strong> Monitors routing table changes and routing protocol events.</p>
+<p><strong>Enable Debugging:</strong></p>
+<div class="codehilite"><pre><span></span><code>Router# debug ip routing
+IP routing debugging is on
+</code></pre></div>
+
+<p><strong>Sample Output:</strong></p>
+<div class="codehilite"><pre><span></span><code>*Mar  1 00:01:23: RT: add 10.0.0.0/8 via 192.168.1.2, rip metric [120/1]
+*Mar  1 00:01:23: RT: SET_LAST_RDB for 10.0.0.0/8
+*Mar  1 00:01:25: RT: del 172.16.0.0/16 via 192.168.1.3, rip metric [120/1]
+*Mar  1 00:01:25: RT: delete subnet route to 172.16.0.0/16
+</code></pre></div>
+
+<p><strong>Interpretation:</strong><br />
+- <code>RT: add</code> - New route added to routing table<br />
+- <code>RT: del</code> - Route removed from routing table<br />
+- Shows metric, next-hop, and protocol</p>
+<h4>debug ip rip</h4>
+<p><strong>Purpose:</strong> Monitors RIP (Routing Information Protocol) specific events.</p>
+<p><strong>Enable Debugging:</strong></p>
+<div class="codehilite"><pre><span></span><code>Router# debug ip rip
+RIP protocol debugging is on
+</code></pre></div>
+
+<p><strong>Sample Output:</strong></p>
+<div class="codehilite"><pre><span></span><code>*Mar  1 00:02:00: RIP: received v2 update from 192.168.1.2 on FastEthernet0/0
+*Mar  1 00:02:00:      10.0.0.0/8 via 0.0.0.0 in 1 hops
+*Mar  1 00:02:00:      172.16.0.0/16 via 0.0.0.0 in 2 hops
+*Mar  1 00:02:30: RIP: sending v2 update to 224.0.0.9 via FastEthernet0/0
+*Mar  1 00:02:30: RIP: build update entries
+*Mar  1 00:02:30:      192.168.2.0/24 via 0.0.0.0, metric 1, tag 0
+</code></pre></div>
+
+<p><strong>Interpretation:</strong><br />
+- Shows RIP version (v1/v2)<br />
+- Received updates with network and hop count<br />
+- Sent updates with advertised networks<br />
+- Multicast address 224.0.0.9 for RIPv2</p>
+<h4>Best Practices:</h4>
+<p><strong>1. Use with Terminal Monitor:</strong></p>
+<div class="codehilite"><pre><span></span><code>Router# terminal monitor
+Router# debug ip rip
+</code></pre></div>
+
+<p><strong>2. Disable When Done:</strong></p>
+<div class="codehilite"><pre><span></span><code>Router# undebug all
+! OR
+Router# no debug ip routing
+Router# no debug ip rip
+</code></pre></div>
+
+<p><strong>3. Limit Output:</strong></p>
+<div class="codehilite"><pre><span></span><code>Router# debug ip rip events    ! Only major events
+</code></pre></div>
+
+<h4>Comparison:</h4>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>debug ip routing</td>
+<td>General routing table changes</td>
+</tr>
+<tr>
+<td>debug ip rip</td>
+<td>RIP-specific updates and timers</td>
+</tr>
+<tr>
+<td>debug ip ospf</td>
+<td>OSPF protocol debugging</td>
+</tr>
+<tr>
+<td>debug ip eigrp</td>
+<td>EIGRP protocol debugging</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Q2: Programming Questions (20 Marks)</h2>
+<hr />
+<h2>Option A: Display Hybrid Topology</h2>
+<h3>Concept</h3>
+<p>A <strong>Hybrid Topology</strong> combines two or more network topologies to leverage advantages of each. Common combinations include:<br />
+- Star + Bus<br />
+- Star + Ring<br />
+- Star + Star (Tree topology)</p>
+<h3>Characteristics:</h3>
+<ul>
+<li><strong>Flexibility</strong> - Mix topologies based on needs</li>
+<li><strong>Scalability</strong> - Easy to expand</li>
+<li><strong>Fault Tolerance</strong> - Failure isolation between segments</li>
+<li><strong>Cost Effective</strong> - Use appropriate topology per segment</li>
+</ul>
+<h3>Program Structure:</h3>
+<div class="codehilite"><pre><span></span><code>Main Network (Bus Backbone)
+    |
++---+---+---+---+
+|       |       |
+Star1   Star2   Star3
+ /|\     /|\     /|\
+Devices Devices Devices
+</code></pre></div>
+
+<h3>Files:</h3>
+<ul>
+<li><strong>Slip_13_Q2_OptionA.c</strong> - Complete implementation</li>
+</ul>
+<h3>Pseudocode:</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">FUNCTION</span><span class="w"> </span><span class="nv">displayHybridTopology</span><span class="ss">()</span>:
+<span class="w">    </span><span class="nv">PRINT</span><span class="w"> </span><span class="nv">header</span>
+<span class="w">    </span><span class="nv">PRINT</span><span class="w"> </span><span class="nv">bus</span><span class="w"> </span><span class="nv">backbone</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="nv">each</span><span class="w"> </span><span class="nv">star</span><span class="w"> </span><span class="nv">segment</span>:
+<span class="w">        </span><span class="nv">PRINT</span><span class="w"> </span><span class="nv">central</span><span class="w"> </span><span class="nv">hub</span>
+<span class="w">        </span><span class="k">FOR</span><span class="w"> </span><span class="nv">each</span><span class="w"> </span><span class="nv">device</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">star</span>:
+<span class="w">            </span><span class="nv">PRINT</span><span class="w"> </span><span class="nv">connection</span>
+<span class="w">    </span><span class="nv">PRINT</span><span class="w"> </span><span class="nv">topology</span><span class="w"> </span><span class="nv">summary</span>
+</code></pre></div>
+
+<h3>Compilation &amp; Execution:</h3>
+<div class="codehilite"><pre><span></span><code>gcc<span class="w"> </span>-o<span class="w"> </span>hybrid_topology<span class="w"> </span>Slip_13_Q2_OptionA.c
+./hybrid_topology
+</code></pre></div>
+
+<hr />
+<h2>Option B: Save Initial Switch Configuration</h2>
+<h3>Concept</h3>
+<p>Switch configuration includes:<br />
+- Hostname, passwords, interfaces<br />
+- VLANs, spanning tree, security<br />
+- Saving config ensures backup and documentation</p>
+<h3>Configuration Elements:</h3>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hostname</td>
+<td>Device identification</td>
+</tr>
+<tr>
+<td>Enable Secret</td>
+<td>Privileged mode security</td>
+</tr>
+<tr>
+<td>VTY Lines</td>
+<td>Remote access config</td>
+</tr>
+<tr>
+<td>Console</td>
+<td>Local access config</td>
+</tr>
+<tr>
+<td>Interfaces</td>
+<td>Port settings</td>
+</tr>
+<tr>
+<td>VLANs</td>
+<td>Broadcast domain separation</td>
+</tr>
+</tbody>
+</table>
+<h3>Files:</h3>
+<ul>
+<li><strong>Slip_13_Q2_OptionB.c</strong> - Complete implementation</li>
+</ul>
+<h3>Pseudocode:</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">FUNCTION</span><span class="w"> </span><span class="nv">saveConfigToFile</span><span class="ss">(</span><span class="nv">filename</span><span class="ss">)</span>:
+<span class="w">    </span><span class="nv">OPEN</span><span class="w"> </span><span class="nv">file</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">writing</span>
+<span class="w">    </span><span class="nv">WRITE</span><span class="w"> </span><span class="nv">header</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">timestamp</span>
+<span class="w">    </span><span class="nv">WRITE</span><span class="w"> </span><span class="nv">hostname</span><span class="w"> </span><span class="nv">config</span>
+<span class="w">    </span><span class="nv">WRITE</span><span class="w"> </span><span class="nv">password</span><span class="w"> </span><span class="nv">config</span>
+<span class="w">    </span><span class="nv">WRITE</span><span class="w"> </span><span class="nv">interface</span><span class="w"> </span><span class="nv">config</span>
+<span class="w">    </span><span class="nv">WRITE</span><span class="w"> </span><span class="nv">VLAN</span><span class="w"> </span><span class="nv">config</span>
+<span class="w">    </span><span class="nv">WRITE</span><span class="w"> </span><span class="nv">line</span><span class="w"> </span><span class="nv">config</span><span class="w"> </span><span class="ss">(</span><span class="nv">console</span>,<span class="w"> </span><span class="nv">vty</span><span class="ss">)</span>
+<span class="w">    </span><span class="nv">CLOSE</span><span class="w"> </span><span class="nv">file</span>
+<span class="w">    </span><span class="nv">PRINT</span><span class="w"> </span><span class="nv">success</span><span class="w"> </span><span class="nv">message</span>
+</code></pre></div>
+
+<h3>Compilation &amp; Execution:</h3>
+<div class="codehilite"><pre><span></span><code>gcc<span class="w"> </span>-o<span class="w"> </span>switch_config<span class="w"> </span>Slip_13_Q2_OptionB.c
+./switch_config
+</code></pre></div>
+
+<hr />
+<h2>Option C: Packet Tracer - Hybrid Topology</h2>
+<h3>Objective</h3>
+<p>Create a Hybrid Topology (Star + Star/Bus) connecting 8 PCs with IP addresses 192.168.1.1 through 192.168.1.8.</p>
+<h3>Network Design:</h3>
+<div class="codehilite"><pre><span></span><code>           +---------+
+           | Switch1 |---- (Backbone)
+           +---------+
+              |   |
+    +---------+   +---------+
+    |                       |
++---------+           +---------+
+| Switch2 |           | Switch3 |
++---------+           +---------+
+ /   |   \             /   |   \
+PC1 PC2  PC3         PC5  PC6  PC7
+         PC4                   PC8
+</code></pre></div>
+
+<h3>Step-by-Step Instructions:</h3>
+<p><strong>Step 1: Open Packet Tracer</strong><br />
+- Launch Cisco Packet Tracer<br />
+- Create new project</p>
+<p><strong>Step 2: Add Network Devices</strong><br />
+- Add 3 switches (2960-24TT)<br />
+- Add 8 PCs (PC-PT)</p>
+<p><strong>Step 3: Connect Devices</strong></p>
+<div class="codehilite"><pre><span></span><code>Switch1 Fa0/1 ---- Fa0/24 Switch2 (Trunk)
+Switch1 Fa0/2 ---- Fa0/24 Switch3 (Trunk)
+
+Switch2:
+  Fa0/1 ---- PC1
+  Fa0/2 ---- PC2
+  Fa0/3 ---- PC3
+  Fa0/4 ---- PC4
+
+Switch3:
+  Fa0/1 ---- PC5
+  Fa0/2 ---- PC6
+  Fa0/3 ---- PC7
+  Fa0/4 ---- PC8
+</code></pre></div>
+
+<p><strong>Step 4: Configure PC IP Addresses</strong><br />
+| Device | IP Address    | Subnet Mask     | Gateway       |<br />
+|--------|---------------|-----------------|---------------|<br />
+| PC1    | 192.168.1.1   | 255.255.255.0   | 192.168.1.254 |<br />
+| PC2    | 192.168.1.2   | 255.255.255.0   | 192.168.1.254 |<br />
+| PC3    | 192.168.1.3   | 255.255.255.0   | 192.168.1.254 |<br />
+| PC4    | 192.168.1.4   | 255.255.255.0   | 192.168.1.254 |<br />
+| PC5    | 192.168.1.5   | 255.255.255.0   | 192.168.1.254 |<br />
+| PC6    | 192.168.1.6   | 255.255.255.0   | 192.168.1.254 |<br />
+| PC7    | 192.168.1.7   | 255.255.255.0   | 192.168.1.254 |<br />
+| PC8    | 192.168.1.8   | 255.255.255.0   | 192.168.1.254 |</p>
+<p><strong>Step 5: Configure on Each PC</strong><br />
+1. Click PC → Desktop → IP Configuration<br />
+2. Select Static<br />
+3. Enter IP, Subnet Mask, Gateway<br />
+4. Close window</p>
+<p><strong>Step 6: Test Connectivity</strong><br />
+1. Click PC1 → Desktop → Command Prompt<br />
+2. Type: <code>ping 192.168.1.8</code><br />
+3. Verify replies from all PCs</p>
+<h3>Verification Commands on PCs:</h3>
+<div class="codehilite"><pre><span></span><code>C:\&gt; ipconfig
+C:\&gt; ping 192.168.1.2
+C:\&gt; ping 192.168.1.5
+C:\&gt; ping 192.168.1.8
+</code></pre></div>
+
+<h3>Switch Configuration (Optional):</h3>
+<div class="codehilite"><pre><span></span><code><span class="nx">Switch</span><span class="p">&gt;</span><span class="nx">enable</span>
+<span class="nx">Switch</span><span class="err">#</span><span class="nx">configure</span><span class="w"> </span><span class="nx">terminal</span>
+<span class="nx">Switch</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="nx">hostname</span><span class="w"> </span><span class="nx">Switch1</span>
+<span class="nx">Switch</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="kd">interface</span><span class="w"> </span><span class="nx">vlan</span><span class="w"> </span><span class="mi">1</span>
+<span class="nx">Switch</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.1.254</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="nx">Switch</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+<span class="nx">Switch</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="nx">exit</span>
+<span class="nx">Switch</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="nx">end</span>
+<span class="nx">Switch</span><span class="err">#</span><span class="nx">write</span><span class="w"> </span><span class="nx">memory</span>
+</code></pre></div>
+
+<h3>Expected Ping Results:</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">C</span>:\<span class="o">&gt;</span><span class="w"> </span><span class="nv">ping</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">8</span>
+
+<span class="nv">Pinging</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">8</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="nv">bytes</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">data</span>:
+
+<span class="nv">Reply</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">8</span>:<span class="w"> </span><span class="nv">bytes</span><span class="o">=</span><span class="mi">32</span><span class="w"> </span><span class="nv">time</span><span class="o">&lt;</span><span class="mi">1</span><span class="nv">ms</span><span class="w"> </span><span class="nv">TTL</span><span class="o">=</span><span class="mi">128</span>
+<span class="nv">Reply</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">8</span>:<span class="w"> </span><span class="nv">bytes</span><span class="o">=</span><span class="mi">32</span><span class="w"> </span><span class="nv">time</span><span class="o">&lt;</span><span class="mi">1</span><span class="nv">ms</span><span class="w"> </span><span class="nv">TTL</span><span class="o">=</span><span class="mi">128</span>
+<span class="nv">Reply</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">8</span>:<span class="w"> </span><span class="nv">bytes</span><span class="o">=</span><span class="mi">32</span><span class="w"> </span><span class="nv">time</span><span class="o">&lt;</span><span class="mi">1</span><span class="nv">ms</span><span class="w"> </span><span class="nv">TTL</span><span class="o">=</span><span class="mi">128</span>
+<span class="nv">Reply</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">8</span>:<span class="w"> </span><span class="nv">bytes</span><span class="o">=</span><span class="mi">32</span><span class="w"> </span><span class="nv">time</span><span class="o">&lt;</span><span class="mi">1</span><span class="nv">ms</span><span class="w"> </span><span class="nv">TTL</span><span class="o">=</span><span class="mi">128</span>
+
+<span class="nv">Ping</span><span class="w"> </span><span class="nv">statistics</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">8</span>:
+<span class="w">    </span><span class="nv">Packets</span>:<span class="w"> </span><span class="nv">Sent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>,<span class="w"> </span><span class="nv">Received</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>,<span class="w"> </span><span class="nv">Lost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ss">(</span><span class="mi">0</span><span class="o">%</span><span class="w"> </span><span class="nv">loss</span><span class="ss">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Quick Reference Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Key Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dynamic IP Verify</td>
+<td><code>ipconfig /all</code>, look for DHCP Enabled: Yes</td>
+</tr>
+<tr>
+<td>LAN IP Assignment</td>
+<td>Static IP via netsh/ip command, ping to test</td>
+</tr>
+<tr>
+<td>VLAN1 Role</td>
+<td>Default VLAN, management, native VLAN</td>
+</tr>
+<tr>
+<td>Default Gateway</td>
+<td><code>ip default-gateway</code> (switch), <code>ip route 0.0.0.0</code> (router)</td>
+</tr>
+<tr>
+<td>Dynamic NAT</td>
+<td>Pool + ACL + inside/outside interfaces</td>
+</tr>
+<tr>
+<td>Debug Routing</td>
+<td><code>debug ip routing</code> for table changes</td>
+</tr>
+<tr>
+<td>Debug RIP</td>
+<td><code>debug ip rip</code> for RIP updates</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Files in This Solution</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slip_13_CN_SOLUTION.md</td>
+<td>This document with theory answers</td>
+</tr>
+<tr>
+<td>Slip_13_Q2_OptionA.c</td>
+<td>Hybrid topology display program</td>
+</tr>
+<tr>
+<td>Slip_13_Q2_OptionB.c</td>
+<td>Switch configuration save program</td>
+</tr>
+</tbody>
+</table>
+    
+    <script>
+        // Add syntax highlighting for code blocks
+        document.querySelectorAll('pre code').forEach((block) => {
+            block.style.fontFamily = "'Consolas', 'Monaco', 'Courier New', monospace";
+        });
+    </script>
+</body>
+</html>

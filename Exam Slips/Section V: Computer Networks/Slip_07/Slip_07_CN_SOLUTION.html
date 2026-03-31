@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slip_07_CN_SOLUTION.md</title>
+    <style>
+        @media print {
+            body { margin: 0.5in; }
+            h1, h2, h3 { page-break-after: avoid; }
+            pre, table { page-break-inside: avoid; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
+            font-size: 11pt;
+        }
+        
+        h1 {
+            color: #1a237e;
+            border-bottom: 3px solid #3f51b5;
+            padding-bottom: 10px;
+            font-size: 28pt;
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #283593;
+            border-bottom: 2px solid #5c6bc0;
+            padding-bottom: 8px;
+            margin-top: 35px;
+            font-size: 20pt;
+        }
+        
+        h3 {
+            color: #3949ab;
+            font-size: 16pt;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #5c6bc0;
+            font-size: 13pt;
+            margin-top: 20px;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 10pt;
+            color: #d32f2f;
+        }
+        
+        pre {
+            background-color: #263238;
+            color: #aed581;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+            overflow-x: auto;
+            font-size: 9.5pt;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 10pt;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3f51b5;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        tr:hover {
+            background-color: #e8eaf6;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 30px 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #ff9800;
+            padding-left: 15px;
+            color: #616161;
+            font-style: italic;
+            margin: 20px 0;
+            background-color: #fff3e0;
+            padding: 10px 15px;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background-color: #45a049;
+        }
+        
+        @media print {
+            .print-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print to PDF</button>
+    <h1>Slip 07 — Computer Networks Solution Guide</h1>
+<h2>Q1: Theory Questions (Any 5 × 2 = 10 Marks)</h2>
+<hr />
+<h3>Q1.a) Difference Between Ping and Traceroute</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th><strong>Ping</strong></th>
+<th><strong>Traceroute</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>Test if a host is reachable</td>
+<td>Show the path (route) packets take</td>
+</tr>
+<tr>
+<td><strong>Protocol</strong></td>
+<td>ICMP Echo Request/Reply</td>
+<td>ICMP + TTL manipulation</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>Round-trip time (RTT), packet loss</td>
+<td>List of routers (hops) along the path</td>
+</tr>
+<tr>
+<td><strong>Information</strong></td>
+<td>Connectivity status only</td>
+<td>Full network path with latency per hop</td>
+</tr>
+<tr>
+<td><strong>Usage</strong></td>
+<td><code>ping google.com</code></td>
+<td><code>traceroute google.com</code> (Linux) or <code>tracert</code> (Windows)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ping Working:</strong><br />
+1. Sends ICMP Echo Request to destination<br />
+2. Destination responds with ICMP Echo Reply<br />
+3. Measures round-trip time (RTT)<br />
+4. Reports packet loss percentage</p>
+<p><strong>Traceroute Working:</strong><br />
+1. Sends packets with TTL=1, then TTL=2, TTL=3, etc.<br />
+2. Each router decrements TTL; when TTL=0, router sends "Time Exceeded" message<br />
+3. Source identifies each router in the path<br />
+4. Shows complete route from source to destination</p>
+<p><strong>Example:</strong></p>
+<div class="codehilite"><pre><span></span><code>PING:
+$ ping 8.8.8.8
+64 bytes from 8.8.8.8: time=15.3 ms
+
+TRACEROUTE:
+$ traceroute 8.8.8.8
+1  192.168.1.1     1.2 ms
+2  10.0.0.1        5.4 ms
+3  8.8.8.8        15.3 ms
+</code></pre></div>
+
+<hr />
+<h3>Q1.b) Steps to Identify a Phishing Email</h3>
+<p><strong>Step-by-Step Identification Process:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Check</th>
+<th>Red Flag Indicator</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Sender Address</strong></td>
+<td>Misspelled domain (amaz0n.com, g00gle.com)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Greeting</strong></td>
+<td>Generic "Dear Customer" instead of your name</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Urgency</strong></td>
+<td>"Act immediately" or "Account suspended"</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Links</strong></td>
+<td>Hover to see actual URL different from displayed</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Attachments</strong></td>
+<td>Unexpected .exe, .zip, or macro-enabled files</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Grammar</strong></td>
+<td>Poor spelling, awkward phrasing</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Request Type</strong></td>
+<td>Asking for passwords, SSN, credit card</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Logo/Branding</strong></td>
+<td>Low quality or slightly different logos</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Detailed Steps:</strong></p>
+<ol>
+<li>
+<p><strong>Check Sender's Email Address:</strong><br />
+   - Real: support@amazon.com<br />
+   - Fake: support@amazon-secure.com or support@amaz0n.com</p>
+</li>
+<li>
+<p><strong>Examine the Greeting:</strong><br />
+   - Legitimate emails use your name<br />
+   - Phishing uses "Dear User" or "Dear Customer"</p>
+</li>
+<li>
+<p><strong>Look for Urgency/Threats:</strong><br />
+   - "Your account will be closed in 24 hours"<br />
+   - "Unusual activity detected"</p>
+</li>
+<li>
+<p><strong>Hover Over Links (Don't Click!):</strong><br />
+   - Displayed: www.paypal.com/verify<br />
+   - Actual: www.paypa1-secure.malicious.com</p>
+</li>
+<li>
+<p><strong>Check for Grammatical Errors:</strong><br />
+   - Professional companies proofread emails</p>
+</li>
+<li>
+<p><strong>Verify Unexpected Attachments:</strong><br />
+   - Banks never send executable files</p>
+</li>
+<li>
+<p><strong>Contact Company Directly:</strong><br />
+   - Use official website, not email links</p>
+</li>
+</ol>
+<hr />
+<h3>Q1.c) Function of a Switch in a Computer Network</h3>
+<p><strong>Definition:</strong><br />
+A switch is a Layer 2 (Data Link Layer) network device that connects multiple devices within a LAN and forwards data based on MAC addresses.</p>
+<p><strong>Key Functions:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MAC Address Learning</strong></td>
+<td>Builds a MAC address table by examining source addresses</td>
+</tr>
+<tr>
+<td><strong>Frame Forwarding</strong></td>
+<td>Sends frames only to the specific destination port</td>
+</tr>
+<tr>
+<td><strong>Loop Prevention</strong></td>
+<td>Uses Spanning Tree Protocol (STP) to prevent broadcast storms</td>
+</tr>
+<tr>
+<td><strong>Collision Domain Separation</strong></td>
+<td>Each port is a separate collision domain</td>
+</tr>
+<tr>
+<td><strong>Full Duplex</strong></td>
+<td>Allows simultaneous send and receive</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How a Switch Works:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="w">            </span><span class="o">[</span><span class="n">SWITCH</span><span class="o">]</span>
+<span class="w">           </span><span class="o">/</span><span class="w">   </span><span class="o">|</span><span class="w">    </span><span class="err">\</span>
+<span class="w">         </span><span class="n">PC1</span><span class="w">  </span><span class="n">PC2</span><span class="w">   </span><span class="n">PC3</span>
+
+<span class="n">MAC</span><span class="w"> </span><span class="nc">Table</span><span class="err">:</span>
+<span class="o">+---------+------+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">MAC</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="n">Port</span><span class="w"> </span><span class="o">|</span>
+<span class="o">+---------+------+</span>
+<span class="o">|</span><span class="w"> </span><span class="nl">AA</span><span class="p">:</span><span class="nl">AA</span><span class="p">:</span><span class="n">AA</span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w">    </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="nl">BB</span><span class="p">:</span><span class="nl">BB</span><span class="p">:</span><span class="n">BB</span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">    </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="nl">CC</span><span class="p">:</span><span class="nl">CC</span><span class="p">:</span><span class="n">CC</span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">    </span><span class="o">|</span>
+<span class="o">+</span><span class="c1">---------+------+</span>
+</code></pre></div>
+
+<p><strong>Process:</strong><br />
+1. PC1 sends frame to PC2<br />
+2. Switch reads source MAC (AA:AA:AA), adds to table<br />
+3. Switch looks up destination MAC (BB:BB:BB)<br />
+4. Forwards frame ONLY to Port 2<br />
+5. PC3 never sees this traffic (unlike a hub)</p>
+<p><strong>Switch vs Hub:</strong><br />
+| Feature | Switch | Hub |<br />
+|---------|--------|-----|<br />
+| Forwards to | Specific port | All ports |<br />
+| Collision domain | Per port | Entire network |<br />
+| Performance | High | Low |<br />
+| Intelligence | Smart (MAC table) | Dumb (signal repeater) |</p>
+<hr />
+<h3>Q1.d) Hexadecimal Digits for 64-bit WEP Key</h3>
+<p><strong>Calculation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>WEP Type</th>
+<th>Key Size</th>
+<th>Hex Digits Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>64-bit WEP</td>
+<td>40 bits for key + 24 bits IV</td>
+<td><strong>10 hex digits</strong></td>
+</tr>
+<tr>
+<td>128-bit WEP</td>
+<td>104 bits for key + 24 bits IV</td>
+<td>26 hex digits</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why 10 Hex Digits?</strong><br />
+- 64-bit WEP actually uses a 40-bit key (the other 24 bits are Initialization Vector)<br />
+- 1 hexadecimal digit = 4 bits<br />
+- 40 bits ÷ 4 bits/digit = <strong>10 hexadecimal digits</strong></p>
+<p><strong>5 Examples of 64-bit WEP Keys:</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>WEP Key (10 Hex Digits)</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>1234567890</code></td>
+<td>Sequential digits</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>ABCDEF1234</code></td>
+<td>Mixed alphanumeric</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>A1B2C3D4E5</code></td>
+<td>Alternating pattern</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>DEADBEEF00</code></td>
+<td>Commonly used test key</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>0F1E2D3C4B</code></td>
+<td>Random hex string</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Valid Hex Characters:</strong> 0-9 and A-F (case insensitive)</p>
+<p><strong>Note:</strong> WEP is deprecated due to security vulnerabilities. Use WPA2/WPA3 instead.</p>
+<hr />
+<h3>Q1.f) Banner MOTD - Purpose, Legal and Security Functions</h3>
+<p><strong>What is Banner MOTD?</strong><br />
+- MOTD = Message of the Day<br />
+- Text message displayed before login prompt on network devices (routers/switches)<br />
+- Configured using <code>banner motd</code> command</p>
+<p><strong>Primary Purpose:</strong><br />
+Display warning messages to users accessing the device, informing them of:<br />
+- Authorized access only<br />
+- Monitoring policies<br />
+- Legal consequences of unauthorized access</p>
+<p><strong>Legal Function:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Legal Notice</strong></td>
+<td>Establishes that only authorized users may access</td>
+</tr>
+<tr>
+<td><strong>Evidence in Court</strong></td>
+<td>Shows intruder was warned before unauthorized access</td>
+</tr>
+<tr>
+<td><strong>Liability Protection</strong></td>
+<td>Company can prove due diligence in security</td>
+</tr>
+<tr>
+<td><strong>Policy Acknowledgment</strong></td>
+<td>Users acknowledge terms by proceeding</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Security Function:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Deterrent</strong></td>
+<td>Warns potential attackers of monitoring</td>
+</tr>
+<tr>
+<td><strong>No Information Leakage</strong></td>
+<td>Should NOT reveal device type, OS, location</td>
+</tr>
+<tr>
+<td><strong>Audit Trail</strong></td>
+<td>Documents that warnings were in place</td>
+</tr>
+<tr>
+<td><strong>Compliance</strong></td>
+<td>Meets regulatory requirements (HIPAA, PCI-DSS)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Configuration Example:</strong></p>
+<div class="codehilite"><pre><span></span><code>Router(config)# banner motd #
+*********************************************
+<span class="gs">* WARNING: AUTHORIZED ACCESS ONLY!          *</span>
+<span class="k">*</span> All activities are monitored and logged.  *
+<span class="k">*</span> Unauthorized access will be prosecuted.   *
+*********************************************
+#
+</code></pre></div>
+
+<p><strong>Best Practices:</strong><br />
+1. ❌ Don't include: hostname, IP addresses, OS version<br />
+2. ✅ Do include: warning, legal notice, monitoring statement<br />
+3. Use delimiter characters (#, $, %) that aren't in the message</p>
+<hr />
+<h3>Q1.g) Dummy Phishing Email with Indicators</h3>
+<p><strong>Example Phishing Email:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nl">From</span><span class="p">:</span><span class="w"> </span><span class="n">security</span><span class="o">-</span><span class="n">alert</span><span class="p">@</span><span class="n">amaz0n</span><span class="o">-</span><span class="n">verify</span><span class="p">.</span><span class="n">com</span><span class="w">        </span><span class="err">←</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="n">Fake</span><span class="w"> </span><span class="n">domain</span>
+<span class="nl">To</span><span class="p">:</span><span class="w"> </span><span class="n">customer</span><span class="p">@</span><span class="n">email</span><span class="p">.</span><span class="n">com</span>
+<span class="nl">Subject</span><span class="p">:</span><span class="w"> </span><span class="err">⚠️</span><span class="w"> </span><span class="n">URGENT</span><span class="o">:</span><span class="w"> </span><span class="n">Your</span><span class="w"> </span><span class="n">Account</span><span class="w"> </span><span class="n">Will</span><span class="w"> </span><span class="n">Be</span><span class="w"> </span><span class="n">Suspended</span><span class="o">!</span><span class="w">  </span><span class="err">←</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="n">Urgency</span>
+
+<span class="n">Dear</span><span class="w"> </span><span class="n">Valued</span><span class="w"> </span><span class="n">Customer</span><span class="p">,</span><span class="w">                          </span><span class="err">←</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="n">Generic</span><span class="w"> </span><span class="n">greeting</span>
+
+<span class="n">We</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">detected</span><span class="w"> </span><span class="n">unusual</span><span class="w"> </span><span class="n">activity</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">Amazon</span><span class="w"> </span><span class="n">account</span><span class="p">.</span><span class="w"> </span><span class="n">Your</span><span class="w"> </span>
+<span class="n">account</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">permanantly</span><span class="w"> </span><span class="n">suspended</span><span class="w"> </span><span class="n">within</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="n">hours</span><span class="w"> </span><span class="n">unless</span><span class="w"> </span><span class="n">you</span><span class="w"> </span>
+<span class="n">verify</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">informations</span><span class="w"> </span><span class="n">immediately</span><span class="p">.</span><span class="w">           </span><span class="err">←</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="n">Grammar</span><span class="w"> </span><span class="n">errors</span>
+
+<span class="n">Please</span><span class="w"> </span><span class="n">click</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">link</span><span class="w"> </span><span class="n">below</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">verify</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">account</span><span class="o">:</span>
+
+<span class="p">[</span><span class="n">Verify</span><span class="w"> </span><span class="n">Now</span><span class="p">]</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">https</span><span class="o">:</span><span class="c1">//amaz0n-secure.malicious.com/verify</span>
+<span class="w">                                               </span><span class="err">←</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="n">Fake</span><span class="w"> </span><span class="n">URL</span>
+
+<span class="n">You</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">need</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">provide</span><span class="o">:</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Full</span><span class="w"> </span><span class="n">Name</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Credit</span><span class="w"> </span><span class="n">Card</span><span class="w"> </span><span class="n">Number</span><span class="w">                           </span><span class="err">←</span><span class="w"> </span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="n">Requesting</span><span class="w"> </span>
+<span class="o">-</span><span class="w"> </span><span class="n">Social</span><span class="w"> </span><span class="n">Security</span><span class="w"> </span><span class="n">Number</span><span class="w">                           </span><span class="n">sensitive</span><span class="w"> </span><span class="n">info</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Account</span><span class="w"> </span><span class="n">Password</span>
+
+<span class="n">If</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">verify</span><span class="w"> </span><span class="n">within</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="n">hours</span><span class="p">,</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span>
+<span class="n">closed</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">purchases</span><span class="w"> </span><span class="n">refunded</span><span class="p">.</span><span class="w">             </span><span class="err">←</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="w"> </span><span class="n">Threat</span>
+
+<span class="n">Thank</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">cooperation</span><span class="p">.</span>
+
+<span class="n">Amazon</span><span class="w"> </span><span class="n">Security</span><span class="w"> </span><span class="n">Team</span>
+<span class="p">[</span><span class="n">Low</span><span class="w"> </span><span class="n">quality</span><span class="w"> </span><span class="n">Amazon</span><span class="w"> </span><span class="n">logo</span><span class="p">]</span><span class="w">                      </span><span class="err">←</span><span class="w"> </span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="w"> </span><span class="n">Poor</span><span class="w"> </span><span class="n">branding</span>
+</code></pre></div>
+
+<p><strong>Phishing Indicators Explained:</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Indicator</th>
+<th>What's Wrong</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Spoofed Domain</strong></td>
+<td>amaz0n-verify.com (not amazon.com)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Urgency/Pressure</strong></td>
+<td>"URGENT", "24 hours", creates panic</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Generic Greeting</strong></td>
+<td>"Valued Customer" not your name</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Grammar Errors</strong></td>
+<td>"permanantly", "informations"</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Suspicious Link</strong></td>
+<td>URL doesn't match amazon.com</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Data Harvesting</strong></td>
+<td>Asking for SSN, passwords, credit card</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Threats</strong></td>
+<td>Account closure, creates fear</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Poor Branding</strong></td>
+<td>Blurry logo, inconsistent formatting</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How to Respond:</strong><br />
+1. ❌ Don't click any links<br />
+2. ❌ Don't reply to the email<br />
+3. ✅ Report to IT/Security team<br />
+4. ✅ Mark as spam/phishing<br />
+5. ✅ Go directly to amazon.com (type in browser)<br />
+6. ✅ Check account status directly</p>
+<hr />
+<h2>Q2: Practical Options (20 Marks)</h2>
+<hr />
+<h2>Q2 Option A: Program to Display Mesh Topology</h2>
+<h3>Concept</h3>
+<p><strong>Mesh Topology:</strong> Every node connects directly to every other node.<br />
+- <strong>Full Mesh:</strong> All devices connected to all others<br />
+- <strong>Formula:</strong> Number of links = n(n-1)/2 (where n = number of nodes)</p>
+<h3>Topology Diagram</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">For</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="nv">nodes</span><span class="w"> </span><span class="ss">(</span><span class="nv">A</span>,<span class="w"> </span><span class="nv">B</span>,<span class="w"> </span><span class="nv">C</span>,<span class="w"> </span><span class="nv">D</span><span class="ss">)</span>:
+
+<span class="w">    </span><span class="nv">A</span><span class="w"> </span><span class="o">--------</span><span class="w"> </span><span class="nv">B</span>
+<span class="w">    </span><span class="o">|</span>\<span class="w">        </span><span class="o">/|</span>
+<span class="w">    </span><span class="o">|</span><span class="w"> </span>\<span class="w">      </span><span class="o">/</span><span class="w"> </span><span class="o">|</span>
+<span class="w">    </span><span class="o">|</span><span class="w">  </span>\<span class="w">    </span><span class="o">/</span><span class="w">  </span><span class="o">|</span>
+<span class="w">    </span><span class="o">|</span><span class="w">   </span>\<span class="w">  </span><span class="o">/</span><span class="w">   </span><span class="o">|</span>
+<span class="w">    </span><span class="o">|</span><span class="w">    </span>\<span class="o">/</span><span class="w">    </span><span class="o">|</span>
+<span class="w">    </span><span class="o">|</span><span class="w">    </span><span class="o">/</span>\<span class="w">    </span><span class="o">|</span>
+<span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="o">/</span><span class="w">  </span>\<span class="w">   </span><span class="o">|</span>
+<span class="w">    </span><span class="o">|</span><span class="w">  </span><span class="o">/</span><span class="w">    </span>\<span class="w">  </span><span class="o">|</span>
+<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="o">/</span><span class="w">      </span>\<span class="w"> </span><span class="o">|</span>
+<span class="w">    </span><span class="o">|/</span><span class="w">        </span>\<span class="o">|</span>
+<span class="w">    </span><span class="nv">D</span><span class="w"> </span><span class="o">--------</span><span class="w"> </span><span class="nv">C</span>
+
+<span class="nv">Links</span>:<span class="w"> </span><span class="nv">A</span><span class="o">-</span><span class="nv">B</span>,<span class="w"> </span><span class="nv">A</span><span class="o">-</span><span class="nv">C</span>,<span class="w"> </span><span class="nv">A</span><span class="o">-</span><span class="nv">D</span>,<span class="w"> </span><span class="nv">B</span><span class="o">-</span><span class="nv">C</span>,<span class="w"> </span><span class="nv">B</span><span class="o">-</span><span class="nv">D</span>,<span class="w"> </span><span class="nv">C</span><span class="o">-</span><span class="nv">D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="nv">links</span>
+<span class="nv">Formula</span>:<span class="w"> </span><span class="mi">4</span><span class="ss">(</span><span class="mi">4</span><span class="o">-</span><span class="mi">1</span><span class="ss">)</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span>✓
+</code></pre></div>
+
+<h3>Algorithm</h3>
+<ol>
+<li>Input number of nodes</li>
+<li>Create nodes with names (A, B, C, ...)</li>
+<li>For each pair of nodes (i, j) where i &lt; j:<br />
+   - Create a connection</li>
+<li>Display adjacency matrix</li>
+<li>Display connection list</li>
+<li>Calculate total connections</li>
+</ol>
+<h3>Pseudocode</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">displayMeshTopology</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="k">Create</span><span class="w"> </span><span class="n">adjacency</span><span class="w"> </span><span class="n">matrix</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="err">:</span>
+<span class="w">        </span><span class="k">FOR</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="err">:</span>
+<span class="w">            </span><span class="k">IF</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="k">THEN</span>
+<span class="w">                </span><span class="n">matrix</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">            </span><span class="k">ELSE</span>
+<span class="w">                </span><span class="n">matrix</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="n">Display</span><span class="w"> </span><span class="n">connections</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="err">:</span>
+<span class="w">        </span><span class="k">FOR</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="err">:</span>
+<span class="w">            </span><span class="k">PRINT</span><span class="w"> </span><span class="ss">&quot;Node &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="ss">&quot; &lt;---&gt; Node &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span>
+
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="n">Total</span><span class="w"> </span><span class="n">connections</span>
+<span class="w">    </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="k">PRINT</span><span class="w"> </span><span class="ss">&quot;Total connections: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">total</span>
+</code></pre></div>
+
+<h3>See: <code>Slip_07_Q2_OptionA.c</code></h3>
+<hr />
+<h2>Q2 Option B: Router Configuration Simulation</h2>
+<h3>Concept</h3>
+<p>Simulate Cisco router CLI commands for:<br />
+1. <strong>Hostname</strong> - Device name identification<br />
+2. <strong>Enable Password</strong> - Unencrypted privileged access password<br />
+3. <strong>Secret Password</strong> - Encrypted privileged access password (MD5)</p>
+<h3>Cisco IOS Commands</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">Router</span><span class="o">&gt;</span><span class="w"> </span><span class="nv">enable</span>
+<span class="nv">Router</span>#<span class="w"> </span><span class="nv">configure</span><span class="w"> </span><span class="nv">terminal</span>
+<span class="nv">Router</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="nv">hostname</span><span class="w"> </span><span class="nv">MyRouter</span>
+<span class="nv">MyRouter</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="nv">enable</span><span class="w"> </span><span class="nv">password</span><span class="w"> </span><span class="nv">cisco123</span>
+<span class="nv">MyRouter</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="nv">enable</span><span class="w"> </span><span class="nv">secret</span><span class="w"> </span><span class="nv">class456</span>
+<span class="nv">MyRouter</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="k">exit</span>
+<span class="nv">MyRouter</span>#<span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="nv">running</span><span class="o">-</span><span class="nv">config</span>
+</code></pre></div>
+
+<h3>Password Types</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Command</th>
+<th>Storage</th>
+<th>Security</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enable Password</td>
+<td><code>enable password &lt;pwd&gt;</code></td>
+<td>Plaintext</td>
+<td>Weak</td>
+</tr>
+<tr>
+<td>Secret Password</td>
+<td><code>enable secret &lt;pwd&gt;</code></td>
+<td>MD5 Hash</td>
+<td>Strong</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> Secret password overrides enable password when both are set.</p>
+<h3>Algorithm</h3>
+<ol>
+<li>Display initial router prompt</li>
+<li>Simulate entering privileged EXEC mode</li>
+<li>Enter global configuration mode</li>
+<li>Accept hostname from user</li>
+<li>Accept enable password (store as plaintext)</li>
+<li>Accept secret password (hash with MD5)</li>
+<li>Display running configuration</li>
+<li>Show difference between stored passwords</li>
+</ol>
+<h3>Pseudocode</h3>
+<div class="codehilite"><pre><span></span><code><span class="kr">FUNCTION</span><span class="w"> </span><span class="n">configureRouter</span><span class="p">()</span><span class="o">:</span>
+<span class="w">    </span><span class="n">hostname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Router&quot;</span>
+<span class="w">    </span><span class="n">enable_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="n">secret_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+
+<span class="w">    </span><span class="n">PRINT</span><span class="w"> </span><span class="n">hostname</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&gt; enable&quot;</span>
+<span class="w">    </span><span class="n">PRINT</span><span class="w"> </span><span class="n">hostname</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;# configure terminal&quot;</span>
+
+<span class="w">    </span><span class="n">INPUT</span><span class="w"> </span><span class="s">&quot;Enter hostname: &quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">new_hostname</span>
+<span class="w">    </span><span class="n">hostname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_hostname</span>
+
+<span class="w">    </span><span class="n">INPUT</span><span class="w"> </span><span class="s">&quot;Enter enable password: &quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">enable_password</span>
+<span class="w">    </span><span class="n">INPUT</span><span class="w"> </span><span class="s">&quot;Enter secret password: &quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">secret_input</span>
+<span class="w">    </span><span class="n">secret_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MD5_HASH</span><span class="p">(</span><span class="n">secret_input</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">PRINT</span><span class="w"> </span><span class="s">&quot;Running Configuration:&quot;</span>
+<span class="w">    </span><span class="n">PRINT</span><span class="w"> </span><span class="s">&quot;hostname &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">hostname</span>
+<span class="w">    </span><span class="n">PRINT</span><span class="w"> </span><span class="s">&quot;enable password &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">enable_password</span>
+<span class="w">    </span><span class="n">PRINT</span><span class="w"> </span><span class="s">&quot;enable secret 5 &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">secret_password</span>
+</code></pre></div>
+
+<h3>See: <code>Slip_07_Q2_OptionB.c</code></h3>
+<hr />
+<h2>Q2 Option C: Packet Tracer - Mesh Topology</h2>
+<h3>Network Diagram</h3>
+<div class="codehilite"><pre><span></span><code>                  PC0 (192.168.1.1)
+                    /     |     \
+                   /      |      \
+                  /       |       \
+                 /        |        \
+   PC1 --------+-------- HUB -------+-------- PC2
+(192.168.1.2)   \         |        / (192.168.1.3)
+                 \        |       /
+                  \       |      /
+                   \      |     /
+                    \     |    /
+                  PC3 (192.168.1.4)
+</code></pre></div>
+
+<h3>Configuration Table</h3>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>IP Address</th>
+<th>Subnet Mask</th>
+<th>Gateway</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC0</td>
+<td>192.168.1.1</td>
+<td>255.255.255.0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>PC1</td>
+<td>192.168.1.2</td>
+<td>255.255.255.0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>PC2</td>
+<td>192.168.1.3</td>
+<td>255.255.255.0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>PC3</td>
+<td>192.168.1.4</td>
+<td>255.255.255.0</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3>Step-by-Step Configuration</h3>
+<p><strong>Step 1: Add Devices</strong><br />
+1. Open Cisco Packet Tracer<br />
+2. Drag 4 PCs from End Devices<br />
+3. Add switches/direct connections for mesh</p>
+<p><strong>Step 2: Connect Devices (Mesh requires 6 connections)</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nv">Connections</span><span class="w"> </span><span class="nv">needed</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">full</span><span class="w"> </span><span class="nv">mesh</span>:
+<span class="nv">PC0</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="nv">PC1</span><span class="w"> </span><span class="ss">(</span><span class="nv">Cross</span><span class="o">-</span><span class="nv">over</span><span class="w"> </span><span class="nv">cable</span><span class="ss">)</span>
+<span class="nv">PC0</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="nv">PC2</span><span class="w"> </span><span class="ss">(</span><span class="nv">Cross</span><span class="o">-</span><span class="nv">over</span><span class="w"> </span><span class="nv">cable</span><span class="ss">)</span>
+<span class="nv">PC0</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="nv">PC3</span><span class="w"> </span><span class="ss">(</span><span class="nv">Cross</span><span class="o">-</span><span class="nv">over</span><span class="w"> </span><span class="nv">cable</span><span class="ss">)</span>
+<span class="nv">PC1</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="nv">PC2</span><span class="w"> </span><span class="ss">(</span><span class="nv">Cross</span><span class="o">-</span><span class="nv">over</span><span class="w"> </span><span class="nv">cable</span><span class="ss">)</span>
+<span class="nv">PC1</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="nv">PC3</span><span class="w"> </span><span class="ss">(</span><span class="nv">Cross</span><span class="o">-</span><span class="nv">over</span><span class="w"> </span><span class="nv">cable</span><span class="ss">)</span>
+<span class="nv">PC2</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="nv">PC3</span><span class="w"> </span><span class="ss">(</span><span class="nv">Cross</span><span class="o">-</span><span class="nv">over</span><span class="w"> </span><span class="nv">cable</span><span class="ss">)</span>
+</code></pre></div>
+
+<p><strong>Step 3: Configure IP Addresses</strong><br />
+For each PC:<br />
+1. Click on PC<br />
+2. Go to Desktop → IP Configuration<br />
+3. Enter:<br />
+   - IP Address: 192.168.1.X<br />
+   - Subnet Mask: 255.255.255.0</p>
+<p><strong>Step 4: Verify Connectivity</strong></p>
+<div class="codehilite"><pre><span></span><code>PC0&gt; ping 192.168.1.2  ✓
+PC0&gt; ping 192.168.1.3  ✓
+PC0&gt; ping 192.168.1.4  ✓
+PC1&gt; ping 192.168.1.3  ✓
+PC1&gt; ping 192.168.1.4  ✓
+PC2&gt; ping 192.168.1.4  ✓
+</code></pre></div>
+
+<h3>Alternative: Using a Switch (Logical Mesh)</h3>
+<div class="codehilite"><pre><span></span><code><span class="w">         </span><span class="o">[</span><span class="n">Switch</span><span class="o">]</span>
+<span class="w">        </span><span class="o">/</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="err">\</span>
+<span class="w">      </span><span class="n">PC0</span><span class="w"> </span><span class="n">PC1</span><span class="w"> </span><span class="n">PC2</span><span class="w"> </span><span class="n">PC3</span>
+</code></pre></div>
+
+<p>All PCs connect to central switch - each can reach all others.</p>
+<hr />
+<h2>Quick Reference</h2>
+<h3>Network Commands</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ping</code></td>
+<td>Test connectivity</td>
+<td><code>ping 192.168.1.1</code></td>
+</tr>
+<tr>
+<td><code>traceroute</code></td>
+<td>Show path</td>
+<td><code>traceroute google.com</code></td>
+</tr>
+<tr>
+<td><code>ipconfig</code></td>
+<td>Show IP (Windows)</td>
+<td><code>ipconfig /all</code></td>
+</tr>
+<tr>
+<td><code>ifconfig</code></td>
+<td>Show IP (Linux)</td>
+<td><code>ifconfig eth0</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Cisco IOS Modes</h3>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Prompt</th>
+<th>Access</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User EXEC</td>
+<td><code>Router&gt;</code></td>
+<td>Default</td>
+</tr>
+<tr>
+<td>Privileged EXEC</td>
+<td><code>Router#</code></td>
+<td><code>enable</code></td>
+</tr>
+<tr>
+<td>Global Config</td>
+<td><code>Router(config)#</code></td>
+<td><code>configure terminal</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Mesh Topology Formulas</h3>
+<ul>
+<li><strong>Full Mesh Links:</strong> n(n-1)/2</li>
+<li><strong>Ports per device:</strong> n-1</li>
+</ul>
+<hr />
+<h2>Files in This Directory</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Slip_07_CN_SOLUTION.md</code></td>
+<td>This solution guide</td>
+</tr>
+<tr>
+<td><code>Slip_07_Q2_OptionA.c</code></td>
+<td>Mesh Topology display program</td>
+</tr>
+<tr>
+<td><code>Slip_07_Q2_OptionB.c</code></td>
+<td>Router configuration simulation</td>
+</tr>
+</tbody>
+</table>
+    
+    <script>
+        // Add syntax highlighting for code blocks
+        document.querySelectorAll('pre code').forEach((block) => {
+            block.style.fontFamily = "'Consolas', 'Monaco', 'Courier New', monospace";
+        });
+    </script>
+</body>
+</html>

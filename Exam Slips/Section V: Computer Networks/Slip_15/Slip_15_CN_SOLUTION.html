@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slip_15_CN_SOLUTION.md</title>
+    <style>
+        @media print {
+            body { margin: 0.5in; }
+            h1, h2, h3 { page-break-after: avoid; }
+            pre, table { page-break-inside: avoid; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
+            font-size: 11pt;
+        }
+        
+        h1 {
+            color: #1a237e;
+            border-bottom: 3px solid #3f51b5;
+            padding-bottom: 10px;
+            font-size: 28pt;
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #283593;
+            border-bottom: 2px solid #5c6bc0;
+            padding-bottom: 8px;
+            margin-top: 35px;
+            font-size: 20pt;
+        }
+        
+        h3 {
+            color: #3949ab;
+            font-size: 16pt;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #5c6bc0;
+            font-size: 13pt;
+            margin-top: 20px;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 10pt;
+            color: #d32f2f;
+        }
+        
+        pre {
+            background-color: #263238;
+            color: #aed581;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+            overflow-x: auto;
+            font-size: 9.5pt;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 10pt;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3f51b5;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        tr:hover {
+            background-color: #e8eaf6;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 30px 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #ff9800;
+            padding-left: 15px;
+            color: #616161;
+            font-style: italic;
+            margin: 20px 0;
+            background-color: #fff3e0;
+            padding: 10px 15px;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background-color: #45a049;
+        }
+        
+        @media print {
+            .print-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print to PDF</button>
+    <h1>Slip 15 — Computer Networks Solution Guide</h1>
+<h2>Q1: Theory Questions (10 marks) — Answer ANY 5</h2>
+<hr />
+<h3>Q1(a) Command to Move from Router&gt; to Router# Mode</h3>
+<h4>Concept</h4>
+<p>Cisco routers have different privilege levels:<br />
+- <strong>User EXEC Mode (Router&gt;):</strong> Limited commands, monitoring only<br />
+- <strong>Privileged EXEC Mode (Router#):</strong> Full access to all commands</p>
+<h4>Answer</h4>
+<div class="codehilite"><pre><span></span><code>Router&gt; enable
+Router#
+</code></pre></div>
+
+<h4>Explanation</h4>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Prompt</th>
+<th>Access Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User EXEC</td>
+<td>Router&gt;</td>
+<td>View-only, basic diagnostics</td>
+</tr>
+<tr>
+<td>Privileged EXEC</td>
+<td>Router#</td>
+<td>Full configuration access</td>
+</tr>
+<tr>
+<td>Global Config</td>
+<td>Router(config)#</td>
+<td>System-wide settings</td>
+</tr>
+</tbody>
+</table>
+<h4>Additional Commands</h4>
+<div class="codehilite"><pre><span></span><code><span class="nv">Router</span>#<span class="w"> </span><span class="nv">disable</span><span class="w">          </span>→<span class="w"> </span><span class="k">Return</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">User</span><span class="w"> </span><span class="k">EXEC</span>
+<span class="nv">Router</span>#<span class="w"> </span><span class="nv">configure</span><span class="w"> </span><span class="nv">terminal</span><span class="w"> </span>→<span class="w"> </span><span class="nv">Enter</span><span class="w"> </span><span class="nv">Global</span><span class="w"> </span><span class="nv">Config</span><span class="w"> </span><span class="nv">Mode</span>
+<span class="nv">Router</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="k">exit</span><span class="w">     </span>→<span class="w"> </span><span class="k">Return</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">Privileged</span><span class="w"> </span><span class="k">EXEC</span>
+</code></pre></div>
+
+<hr />
+<h3>Q1(b) Hexadecimal Digits for 64-bit WEP Key</h3>
+<h4>Concept</h4>
+<p><strong>WEP (Wired Equivalent Privacy):</strong> Early Wi-Fi encryption standard.</p>
+<h4>Calculation</h4>
+<ul>
+<li>64-bit WEP key = 40 bits for key + 24 bits IV (Initialization Vector)</li>
+<li>User provides 40-bit key</li>
+<li>40 bits ÷ 4 bits per hex digit = <strong>10 hexadecimal digits</strong></li>
+</ul>
+<h4>Answer</h4>
+<p><strong>10 hexadecimal digits</strong> are needed for a 64-bit WEP key.</p>
+<h4>5 Examples of 64-bit WEP Keys</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Key (10 hex digits)</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>1234567890</code></td>
+<td>Sequential digits</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>ABCDEF1234</code></td>
+<td>Mixed alphanumeric</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>A1B2C3D4E5</code></td>
+<td>Alternating pattern</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>0F0F0F0F0F</code></td>
+<td>Repeating pattern</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>DEADBEEF01</code></td>
+<td>Memorable hex word</td>
+</tr>
+</tbody>
+</table>
+<h4>WEP Key Sizes</h4>
+<table>
+<thead>
+<tr>
+<th>Standard</th>
+<th>Total Bits</th>
+<th>Key Bits</th>
+<th>IV Bits</th>
+<th>Hex Digits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>64-bit WEP</td>
+<td>64</td>
+<td>40</td>
+<td>24</td>
+<td>10</td>
+</tr>
+<tr>
+<td>128-bit WEP</td>
+<td>128</td>
+<td>104</td>
+<td>24</td>
+<td>26</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note:</strong> WEP is deprecated due to security vulnerabilities. Use WPA2/WPA3.</p>
+</blockquote>
+<hr />
+<h3>Q1(c) Dummy Phishing Email and Indicators</h3>
+<h4>Dummy Phishing Email</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">From</span><span class="o">:</span><span class="w"> </span><span class="n">security</span><span class="err">@</span><span class="n">amaz0n</span><span class="o">-</span><span class="n">verify</span><span class="o">.</span><span class="na">com</span>
+<span class="n">To</span><span class="o">:</span><span class="w"> </span><span class="n">customer</span><span class="err">@</span><span class="n">email</span><span class="o">.</span><span class="na">com</span>
+<span class="n">Subject</span><span class="o">:</span><span class="w"> </span><span class="n">URGENT</span><span class="o">:</span><span class="w"> </span><span class="n">Your</span><span class="w"> </span><span class="n">Amazon</span><span class="w"> </span><span class="n">Account</span><span class="w"> </span><span class="n">Has</span><span class="w"> </span><span class="n">Been</span><span class="w"> </span><span class="n">Compromised</span><span class="o">!</span>
+
+<span class="n">Dear</span><span class="w"> </span><span class="n">Valued</span><span class="w"> </span><span class="n">Customer</span><span class="o">,</span>
+
+<span class="n">We</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">detected</span><span class="w"> </span><span class="n">suspicious</span><span class="w"> </span><span class="n">activity</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">Amazon</span><span class="w"> </span><span class="n">account</span><span class="o">.</span><span class="w"> </span><span class="n">Your</span><span class="w"> </span><span class="n">account</span><span class="w"> </span>
+<span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">SUSPENDED</span><span class="w"> </span><span class="n">within</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="n">hours</span><span class="w"> </span><span class="n">unless</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">verify</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">information</span><span class="o">.</span>
+
+<span class="n">Click</span><span class="w"> </span><span class="n">here</span><span class="w"> </span><span class="n">immediately</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">secure</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">account</span><span class="o">:</span>
+<span class="n">http</span><span class="o">://</span><span class="n">amaz0n</span><span class="o">-</span><span class="n">secure</span><span class="o">-</span><span class="n">login</span><span class="o">.</span><span class="na">fakesite</span><span class="o">.</span><span class="na">com</span><span class="o">/</span><span class="n">verify</span>
+
+<span class="n">Please</span><span class="w"> </span><span class="n">provide</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">following</span><span class="o">:</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Full</span><span class="w"> </span><span class="n">Name</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Credit</span><span class="w"> </span><span class="n">Card</span><span class="w"> </span><span class="n">Number</span>
+<span class="o">-</span><span class="w"> </span><span class="n">CVV</span><span class="w"> </span><span class="n">Code</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Social</span><span class="w"> </span><span class="n">Security</span><span class="w"> </span><span class="n">Number</span>
+
+<span class="n">Failure</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">respond</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">permanent</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="n">closure</span><span class="o">.</span>
+
+<span class="n">Amazon</span><span class="w"> </span><span class="n">Security</span><span class="w"> </span><span class="n">Team</span>
+<span class="n">This</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">sent</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">unmonitored</span><span class="w"> </span><span class="n">address</span><span class="o">.</span>
+</code></pre></div>
+
+<h4>Phishing Indicators</h4>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Example from Email</th>
+<th>Why It's Suspicious</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Spoofed Domain</strong></td>
+<td><code>amaz0n-verify.com</code></td>
+<td>Zero instead of 'o', not official domain</td>
+</tr>
+<tr>
+<td><strong>Urgency/Fear</strong></td>
+<td>"SUSPENDED within 24 hours"</td>
+<td>Creates panic to bypass rational thinking</td>
+</tr>
+<tr>
+<td><strong>Generic Greeting</strong></td>
+<td>"Dear Valued Customer"</td>
+<td>Legitimate emails use your name</td>
+</tr>
+<tr>
+<td><strong>Suspicious Links</strong></td>
+<td><code>fakesite.com/verify</code></td>
+<td>Hover reveals non-Amazon URL</td>
+</tr>
+<tr>
+<td><strong>Requests Sensitive Data</strong></td>
+<td>SSN, CVV</td>
+<td>Real companies never ask for this via email</td>
+</tr>
+<tr>
+<td><strong>Grammar/Spelling Issues</strong></td>
+<td>Often present</td>
+<td>Professional companies proofread emails</td>
+</tr>
+<tr>
+<td><strong>Unmonitored Address</strong></td>
+<td>"sent from unmonitored"</td>
+<td>Prevents verification attempts</td>
+</tr>
+<tr>
+<td><strong>Mismatched Sender</strong></td>
+<td>From header vs actual</td>
+<td>Headers can be spoofed</td>
+</tr>
+</tbody>
+</table>
+<h4>How to Verify Legitimacy</h4>
+<ol>
+<li><strong>Hover over links</strong> — Check actual URL before clicking</li>
+<li><strong>Check sender email</strong> — Verify domain is official</li>
+<li><strong>Contact company directly</strong> — Use official website/phone</li>
+<li><strong>Look for HTTPS</strong> — Secure sites use SSL certificates</li>
+<li><strong>Check for personalization</strong> — Real emails know your name</li>
+</ol>
+<hr />
+<h3>Q1(d) Cracking ZIP Password with fcrackzip</h3>
+<h4>Concept</h4>
+<p><strong>fcrackzip:</strong> Linux tool for cracking password-protected ZIP archives using:<br />
+- Dictionary attacks<br />
+- Brute-force attacks</p>
+<h4>Installation</h4>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>fcrackzip
+</code></pre></div>
+
+<h4>Method 1: Dictionary Attack</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Using a wordlist</span>
+fcrackzip<span class="w"> </span>-D<span class="w"> </span>-p<span class="w"> </span>/usr/share/wordlists/rockyou.txt<span class="w"> </span>-u<span class="w"> </span>secret.zip
+</code></pre></div>
+
+<h4>Method 2: Brute-Force Attack</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Brute-force with lowercase letters, max 6 characters</span>
+fcrackzip<span class="w"> </span>-b<span class="w"> </span>-c<span class="w"> </span>a<span class="w"> </span>-l<span class="w"> </span><span class="m">1</span>-6<span class="w"> </span>-u<span class="w"> </span>secret.zip
+
+<span class="c1"># Brute-force with all characters (a-z, A-Z, 0-9)</span>
+fcrackzip<span class="w"> </span>-b<span class="w"> </span>-c<span class="w"> </span>aA1<span class="w"> </span>-l<span class="w"> </span><span class="m">1</span>-8<span class="w"> </span>-u<span class="w"> </span>secret.zip
+</code></pre></div>
+
+<h4>Options Explained</h4>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-D</code></td>
+<td>Dictionary mode</td>
+</tr>
+<tr>
+<td><code>-b</code></td>
+<td>Brute-force mode</td>
+</tr>
+<tr>
+<td><code>-p &lt;file&gt;</code></td>
+<td>Path to wordlist/password file</td>
+</tr>
+<tr>
+<td><code>-c &lt;charset&gt;</code></td>
+<td>Character set: a=lowercase, A=uppercase, 1=digits, !=special</td>
+</tr>
+<tr>
+<td><code>-l &lt;min&gt;-&lt;max&gt;</code></td>
+<td>Password length range</td>
+</tr>
+<tr>
+<td><code>-u</code></td>
+<td>Use unzip to verify (eliminates false positives)</td>
+</tr>
+<tr>
+<td><code>-v</code></td>
+<td>Verbose output</td>
+</tr>
+</tbody>
+</table>
+<h4>Complete Example</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Create a test password-protected ZIP</span>
+zip<span class="w"> </span>-P<span class="w"> </span><span class="s2">&quot;test123&quot;</span><span class="w"> </span>secret.zip<span class="w"> </span>important_file.txt
+
+<span class="c1"># Crack with dictionary</span>
+fcrackzip<span class="w"> </span>-D<span class="w"> </span>-p<span class="w"> </span>/usr/share/wordlists/rockyou.txt<span class="w"> </span>-u<span class="w"> </span>secret.zip
+
+<span class="c1"># Output: PASSWORD FOUND!!!!: pw == test123</span>
+
+<span class="c1"># Extract using found password</span>
+unzip<span class="w"> </span>-P<span class="w"> </span><span class="s2">&quot;test123&quot;</span><span class="w"> </span>secret.zip
+</code></pre></div>
+
+<h4>Practical Brute-Force Example</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Numbers only, 4 digits (PIN-style)</span>
+fcrackzip<span class="w"> </span>-b<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>-l<span class="w"> </span><span class="m">4</span>-4<span class="w"> </span>-u<span class="w"> </span>encrypted.zip
+
+<span class="c1"># Lowercase + numbers, 1-6 chars</span>
+fcrackzip<span class="w"> </span>-b<span class="w"> </span>-c<span class="w"> </span>a1<span class="w"> </span>-l<span class="w"> </span><span class="m">1</span>-6<span class="w"> </span>-u<span class="w"> </span>encrypted.zip
+</code></pre></div>
+
+<hr />
+<h3>Q1(f) Comparing ip addr vs ifconfig Output</h3>
+<h4>Concept</h4>
+<p>Both commands display network interface information, but <code>ip addr</code> is modern and <code>ifconfig</code> is legacy.</p>
+<h4>Command Execution</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Modern command (iproute2 package)</span>
+ip<span class="w"> </span>addr
+
+<span class="c1"># Legacy command (net-tools package)</span>
+ifconfig
+</code></pre></div>
+
+<h4>Sample Output: ip addr</h4>
+<div class="codehilite"><pre><span></span><code><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">lo</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">LOOPBACK</span><span class="o">,</span><span class="n">UP</span><span class="o">,</span><span class="n">LOWER_UP</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mtu</span><span class="w"> </span><span class="mi">65536</span><span class="w"> </span><span class="n">qdisc</span><span class="w"> </span><span class="n">noqueue</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="n">UNKNOWN</span>
+<span class="w">    </span><span class="n">link</span><span class="o">/</span><span class="n">loopback</span><span class="w"> </span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="w"> </span><span class="n">brd</span><span class="w"> </span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span>
+<span class="w">    </span><span class="n">inet</span><span class="w"> </span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="o">/</span><span class="mi">8</span><span class="w"> </span><span class="n">scope</span><span class="w"> </span><span class="n">host</span><span class="w"> </span><span class="n">lo</span>
+<span class="w">    </span><span class="n">inet6</span><span class="w"> </span><span class="o">::</span><span class="mi">1</span><span class="o">/</span><span class="mi">128</span><span class="w"> </span><span class="n">scope</span><span class="w"> </span><span class="n">host</span>
+
+<span class="mi">2</span><span class="o">:</span><span class="w"> </span><span class="n">eth0</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">BROADCAST</span><span class="o">,</span><span class="n">MULTICAST</span><span class="o">,</span><span class="n">UP</span><span class="o">,</span><span class="n">LOWER_UP</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mtu</span><span class="w"> </span><span class="mi">1500</span><span class="w"> </span><span class="n">qdisc</span><span class="w"> </span><span class="n">fq_codel</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="n">UP</span>
+<span class="w">    </span><span class="n">link</span><span class="o">/</span><span class="n">ether</span><span class="w"> </span><span class="mi">00</span><span class="o">:</span><span class="mi">1</span><span class="n">a</span><span class="o">:</span><span class="mi">2</span><span class="n">b</span><span class="o">:</span><span class="mi">3</span><span class="n">c</span><span class="o">:</span><span class="mi">4</span><span class="n">d</span><span class="o">:</span><span class="mi">5</span><span class="n">e</span><span class="w"> </span><span class="n">brd</span><span class="w"> </span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span>
+<span class="w">    </span><span class="n">inet</span><span class="w"> </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.100</span><span class="o">/</span><span class="mi">24</span><span class="w"> </span><span class="n">brd</span><span class="w"> </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.255</span><span class="w"> </span><span class="n">scope</span><span class="w"> </span><span class="n">global</span><span class="w"> </span><span class="kd">dynamic</span><span class="w"> </span><span class="n">eth0</span>
+<span class="w">    </span><span class="n">inet6</span><span class="w"> </span><span class="n">fe80</span><span class="o">::</span><span class="mi">21</span><span class="n">a</span><span class="o">:</span><span class="mi">2</span><span class="n">bff</span><span class="o">:</span><span class="n">fe3c</span><span class="o">:</span><span class="mi">4</span><span class="n">d5e</span><span class="o">/</span><span class="mi">64</span><span class="w"> </span><span class="n">scope</span><span class="w"> </span><span class="n">link</span>
+</code></pre></div>
+
+<h4>Sample Output: ifconfig</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">eth0</span><span class="o">:</span><span class="w"> </span><span class="n">flags</span><span class="o">=</span><span class="mi">4163</span><span class="o">&lt;</span><span class="n">UP</span><span class="o">,</span><span class="n">BROADCAST</span><span class="o">,</span><span class="n">RUNNING</span><span class="o">,</span><span class="n">MULTICAST</span><span class="o">&gt;</span><span class="w">  </span><span class="n">mtu</span><span class="w"> </span><span class="mi">1500</span>
+<span class="w">        </span><span class="n">inet</span><span class="w"> </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.100</span><span class="w">  </span><span class="n">netmask</span><span class="w"> </span><span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span><span class="w">  </span><span class="n">broadcast</span><span class="w"> </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.255</span>
+<span class="w">        </span><span class="n">inet6</span><span class="w"> </span><span class="n">fe80</span><span class="o">::</span><span class="mi">21</span><span class="n">a</span><span class="o">:</span><span class="mi">2</span><span class="n">bff</span><span class="o">:</span><span class="n">fe3c</span><span class="o">:</span><span class="mi">4</span><span class="n">d5e</span><span class="w">  </span><span class="n">prefixlen</span><span class="w"> </span><span class="mi">64</span><span class="w">  </span><span class="n">scopeid</span><span class="w"> </span><span class="mh">0x20</span><span class="o">&lt;</span><span class="n">link</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="n">ether</span><span class="w"> </span><span class="mi">00</span><span class="o">:</span><span class="mi">1</span><span class="n">a</span><span class="o">:</span><span class="mi">2</span><span class="n">b</span><span class="o">:</span><span class="mi">3</span><span class="n">c</span><span class="o">:</span><span class="mi">4</span><span class="n">d</span><span class="o">:</span><span class="mi">5</span><span class="n">e</span><span class="w">  </span><span class="n">txqueuelen</span><span class="w"> </span><span class="mi">1000</span><span class="w">  </span><span class="o">(</span><span class="n">Ethernet</span><span class="o">)</span>
+<span class="w">        </span><span class="n">RX</span><span class="w"> </span><span class="n">packets</span><span class="w"> </span><span class="mi">12345</span><span class="w">  </span><span class="n">bytes</span><span class="w"> </span><span class="mi">6789012</span><span class="w"> </span><span class="o">(</span><span class="mf">6.7</span><span class="w"> </span><span class="n">MB</span><span class="o">)</span>
+<span class="w">        </span><span class="n">TX</span><span class="w"> </span><span class="n">packets</span><span class="w"> </span><span class="mi">9876</span><span class="w">  </span><span class="n">bytes</span><span class="w"> </span><span class="mi">1234567</span><span class="w"> </span><span class="o">(</span><span class="mf">1.2</span><span class="w"> </span><span class="n">MB</span><span class="o">)</span>
+
+<span class="n">lo</span><span class="o">:</span><span class="w"> </span><span class="n">flags</span><span class="o">=</span><span class="mi">73</span><span class="o">&lt;</span><span class="n">UP</span><span class="o">,</span><span class="n">LOOPBACK</span><span class="o">,</span><span class="n">RUNNING</span><span class="o">&gt;</span><span class="w">  </span><span class="n">mtu</span><span class="w"> </span><span class="mi">65536</span>
+<span class="w">        </span><span class="n">inet</span><span class="w"> </span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="w">  </span><span class="n">netmask</span><span class="w"> </span><span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span>
+<span class="w">        </span><span class="n">inet6</span><span class="w"> </span><span class="o">::</span><span class="mi">1</span><span class="w">  </span><span class="n">prefixlen</span><span class="w"> </span><span class="mi">128</span><span class="w">  </span><span class="n">scopeid</span><span class="w"> </span><span class="mh">0x10</span><span class="o">&lt;</span><span class="n">host</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="n">loop</span><span class="w">  </span><span class="n">txqueuelen</span><span class="w"> </span><span class="mi">1000</span><span class="w">  </span><span class="o">(</span><span class="n">Local</span><span class="w"> </span><span class="n">Loopback</span><span class="o">)</span>
+</code></pre></div>
+
+<h4>Comparison Table</h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>ip addr</th>
+<th>ifconfig</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Package</strong></td>
+<td>iproute2 (default)</td>
+<td>net-tools (legacy)</td>
+</tr>
+<tr>
+<td><strong>Status</strong></td>
+<td>Modern, actively maintained</td>
+<td>Deprecated</td>
+</tr>
+<tr>
+<td><strong>CIDR Notation</strong></td>
+<td>Yes (192.168.1.100/24)</td>
+<td>No (shows netmask separately)</td>
+</tr>
+<tr>
+<td><strong>Multiple IPs</strong></td>
+<td>Shows all IPs per interface</td>
+<td>May not show secondary IPs</td>
+</tr>
+<tr>
+<td><strong>IPv6 Support</strong></td>
+<td>Full support</td>
+<td>Limited</td>
+</tr>
+<tr>
+<td><strong>Interface Numbering</strong></td>
+<td>Shows index (1:, 2:)</td>
+<td>No index</td>
+</tr>
+<tr>
+<td><strong>State Information</strong></td>
+<td>Detailed (UP, LOWER_UP)</td>
+<td>Basic flags</td>
+</tr>
+<tr>
+<td><strong>Output Format</strong></td>
+<td>Consistent, parseable</td>
+<td>Less structured</td>
+</tr>
+<tr>
+<td><strong>Alias Support</strong></td>
+<td>Secondary addresses</td>
+<td>eth0:0, eth0:1 aliases</td>
+</tr>
+</tbody>
+</table>
+<h4>Key Differences</h4>
+<ol>
+<li><strong>ip addr</strong> uses CIDR notation (<code>/24</code>), ifconfig shows netmask (<code>255.255.255.0</code>)</li>
+<li><strong>ip addr</strong> is part of iproute2, the standard Linux networking toolkit</li>
+<li><strong>ifconfig</strong> requires net-tools package, often not installed by default</li>
+<li><strong>ip addr</strong> shows more detailed interface states</li>
+</ol>
+<h4>Recommendation</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Use ip command family for modern Linux</span>
+ip<span class="w"> </span>addr<span class="w">       </span><span class="c1"># Show addresses</span>
+ip<span class="w"> </span>link<span class="w">       </span><span class="c1"># Show link layer info</span>
+ip<span class="w"> </span>route<span class="w">      </span><span class="c1"># Show routing table</span>
+</code></pre></div>
+
+<hr />
+<h3>Q1(g) Reset/Release IP Address from DHCP</h3>
+<h4>Concept</h4>
+<p>DHCP (Dynamic Host Configuration Protocol) assigns IP addresses dynamically. You can release the current lease and obtain a new one.</p>
+<h4>Linux Commands</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Release current DHCP lease</span>
+sudo<span class="w"> </span>dhclient<span class="w"> </span>-r
+
+<span class="c1"># Obtain new IP address</span>
+sudo<span class="w"> </span>dhclient
+
+<span class="c1"># Or in one command (release and renew)</span>
+sudo<span class="w"> </span>dhclient<span class="w"> </span>-r<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>dhclient
+
+<span class="c1"># For specific interface</span>
+sudo<span class="w"> </span>dhclient<span class="w"> </span>-r<span class="w"> </span>eth0
+sudo<span class="w"> </span>dhclient<span class="w"> </span>eth0
+</code></pre></div>
+
+<h4>Alternative: Using systemd-networkd</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Restart networking service</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>systemd-networkd
+
+<span class="c1"># Or using networkctl</span>
+sudo<span class="w"> </span>networkctl<span class="w"> </span>reconfigure<span class="w"> </span>eth0
+</code></pre></div>
+
+<h4>Windows Commands</h4>
+<div class="codehilite"><pre><span></span><code><span class="nx">REM</span><span class="w"> </span><span class="nx">Release</span><span class="w"> </span><span class="nx">IP</span><span class="w"> </span><span class="nx">address</span>
+<span class="nx">ipconfig</span><span class="w"> </span><span class="o">/</span><span class="nx">release</span>
+
+<span class="nx">REM</span><span class="w"> </span><span class="nx">Renew</span><span class="w"> </span><span class="nx">IP</span><span class="w"> </span><span class="nx">address</span>
+<span class="nx">ipconfig</span><span class="w"> </span><span class="o">/</span><span class="nx">renew</span>
+
+<span class="nx">REM</span><span class="w"> </span><span class="nx">Release</span><span class="w"> </span><span class="nx">specific</span><span class="w"> </span><span class="nx">adapter</span>
+<span class="nx">ipconfig</span><span class="w"> </span><span class="o">/</span><span class="nx">release</span><span class="w"> </span><span class="s">&quot;Ethernet&quot;</span>
+
+<span class="nx">REM</span><span class="w"> </span><span class="nx">View</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="nx">configuration</span>
+<span class="nx">ipconfig</span><span class="w"> </span><span class="o">/</span><span class="nx">all</span>
+</code></pre></div>
+
+<h4>DHCP Lease Process (DORA)</h4>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Message</th>
+<th>Direction</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>D</strong>iscover</td>
+<td>Client → Server</td>
+<td>Find DHCP servers</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>O</strong>ffer</td>
+<td>Server → Client</td>
+<td>Server offers IP</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>R</strong>equest</td>
+<td>Client → Server</td>
+<td>Client accepts offer</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>A</strong>ck</td>
+<td>Server → Client</td>
+<td>Server confirms lease</td>
+</tr>
+</tbody>
+</table>
+<h4>Additional Commands</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Check current DHCP lease</span>
+cat<span class="w"> </span>/var/lib/dhcp/dhclient.leases
+
+<span class="c1"># View DHCP client status</span>
+systemctl<span class="w"> </span>status<span class="w"> </span>dhclient
+
+<span class="c1"># Force release and flush</span>
+sudo<span class="w"> </span>ip<span class="w"> </span>addr<span class="w"> </span>flush<span class="w"> </span>dev<span class="w"> </span>eth0
+sudo<span class="w"> </span>dhclient<span class="w"> </span>eth0
+</code></pre></div>
+
+<hr />
+<h2>Q2: Practical Programs (20 marks)</h2>
+<hr />
+<h2>Q2 Option A: Command-Line Phishing Simulation</h2>
+<h3>Concept</h3>
+<p>Simulate a phishing attack to demonstrate how attackers collect credentials through fake login prompts.</p>
+<h3>Algorithm</h3>
+<ol>
+<li>Display fake login banner (mimicking legitimate service)</li>
+<li>Prompt for username</li>
+<li>Prompt for password (hide input)</li>
+<li>Store/display captured credentials</li>
+<li>Show educational message about phishing dangers</li>
+</ol>
+<h3>Pseudocode</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">FUNCTION</span> <span class="n">phishing_simulation</span><span class="p">():</span>
+    <span class="n">DISPLAY</span> <span class="n">fake_banner</span>
+    <span class="n">PRINT</span> <span class="s">&quot;Enter username: &quot;</span>
+    <span class="n">READ</span> <span class="n">username</span>
+    <span class="n">PRINT</span> <span class="s">&quot;Enter password: &quot;</span>
+    <span class="n">READ</span> <span class="n">password</span> <span class="p">(</span><span class="n">hidden</span><span class="p">)</span>
+
+    <span class="n">LOG</span> <span class="n">credentials</span> <span class="n">to</span> <span class="n">file</span>
+    <span class="n">DISPLAY</span> <span class="s">&quot;Login failed&quot;</span> <span class="p">(</span><span class="n">typical</span> <span class="n">phishing</span> <span class="n">response</span><span class="p">)</span>
+    <span class="n">DISPLAY</span> <span class="n">educational</span> <span class="n">warning</span>
+<span class="kr">END</span> <span class="n">FUNCTION</span>
+</code></pre></div>
+
+<h3>Program Features</h3>
+<ul>
+<li>Simulates bank/email login page</li>
+<li>Demonstrates credential harvesting</li>
+<li>Educational purpose only</li>
+</ul>
+<blockquote>
+<p><strong>See:</strong> <code>Slip_15_Q2_OptionA.c</code></p>
+</blockquote>
+<hr />
+<h2>Q2 Option B: Mesh Topology Display</h2>
+<h3>Concept</h3>
+<p>Mesh topology: Every device connects to every other device directly.</p>
+<h3>Formula</h3>
+<ul>
+<li><strong>Full Mesh Connections:</strong> n(n-1)/2 (undirected)</li>
+<li><strong>Full Mesh Links:</strong> n(n-1) (directed)</li>
+</ul>
+<h3>Algorithm</h3>
+<ol>
+<li>Accept number of nodes</li>
+<li>Calculate total connections</li>
+<li>Display adjacency matrix (all 1s except diagonal)</li>
+<li>List all connections graphically</li>
+</ol>
+<h3>Pseudocode</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">display_mesh</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="n">connections</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span>
+
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="k">Create</span><span class="w"> </span><span class="n">adjacency</span><span class="w"> </span><span class="n">matrix</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="err">:</span>
+<span class="w">        </span><span class="k">FOR</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="err">:</span>
+<span class="w">            </span><span class="k">IF</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nl">j</span><span class="p">:</span>
+<span class="w">                </span><span class="n">matrix</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">            </span><span class="k">ELSE</span><span class="err">:</span>
+<span class="w">                </span><span class="n">matrix</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="n">Display</span><span class="w"> </span><span class="n">connections</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="err">:</span>
+<span class="w">        </span><span class="k">FOR</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="err">:</span>
+<span class="w">            </span><span class="k">PRINT</span><span class="w"> </span><span class="ss">&quot;Node&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="ss">&quot; &lt;---&gt; Node&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span>
+<span class="k">END</span><span class="w"> </span><span class="k">FUNCTION</span>
+</code></pre></div>
+
+<h3>Mesh Topology Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connections</td>
+<td>n(n-1)/2</td>
+</tr>
+<tr>
+<td>Fault Tolerance</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Redundancy</td>
+<td>Maximum</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>High (more cables)</td>
+</tr>
+<tr>
+<td>Use Case</td>
+<td>Critical networks</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>See:</strong> <code>Slip_15_Q2_OptionB.c</code></p>
+</blockquote>
+<hr />
+<h2>Q2 Option C: Packet Tracer — Mesh Topology (4 PCs)</h2>
+<h3>Network Configuration</h3>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>IP Address</th>
+<th>Subnet Mask</th>
+<th>Gateway</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC0</td>
+<td>172.16.1.1</td>
+<td>255.255.0.0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>PC1</td>
+<td>172.16.1.2</td>
+<td>255.255.0.0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>PC2</td>
+<td>172.16.1.3</td>
+<td>255.255.0.0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>PC3</td>
+<td>172.16.1.4</td>
+<td>255.255.0.0</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3>Steps in Packet Tracer</h3>
+<ol>
+<li><strong>Add Devices:</strong> Place 4 PCs (PC0-PC3)</li>
+<li><strong>Add NICs:</strong> Each PC needs 3 additional Ethernet NICs (total 4 per PC)</li>
+<li><strong>Connect PCs:</strong> Create mesh connections:<br />
+   - PC0 ↔ PC1, PC0 ↔ PC2, PC0 ↔ PC3<br />
+   - PC1 ↔ PC2, PC1 ↔ PC3<br />
+   - PC2 ↔ PC3</li>
+<li><strong>Configure IPs:</strong> Set IP addresses on each interface</li>
+<li><strong>Verify:</strong> Ping between all PCs</li>
+</ol>
+<h3>Mesh Connections for 4 Nodes</h3>
+<div class="codehilite"><pre><span></span><code>Total Connections = 4(4-1)/2 = 6 connections
+
+PC0 -------- PC1
+ | \        / |
+ |  \      /  |
+ |   \    /   |
+ |    \  /    |
+ |     \/     |
+ |     /\     |
+ |    /  \    |
+ |   /    \   |
+ |  /      \  |
+ | /        \ |
+PC3 -------- PC2
+</code></pre></div>
+
+<h3>Configuration Commands (per PC)</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">PC0</span><span class="o">:</span>
+<span class="w">  </span><span class="n">FastEthernet0</span><span class="o">:</span><span class="w"> </span><span class="mf">172.16</span><span class="o">.</span><span class="mf">1.1</span><span class="o">,</span><span class="w"> </span><span class="mf">255.255</span><span class="o">.</span><span class="mf">0.0</span>
+
+<span class="n">PC1</span><span class="o">:</span>
+<span class="w">  </span><span class="n">FastEthernet0</span><span class="o">:</span><span class="w"> </span><span class="mf">172.16</span><span class="o">.</span><span class="mf">1.2</span><span class="o">,</span><span class="w"> </span><span class="mf">255.255</span><span class="o">.</span><span class="mf">0.0</span>
+
+<span class="n">PC2</span><span class="o">:</span>
+<span class="w">  </span><span class="n">FastEthernet0</span><span class="o">:</span><span class="w"> </span><span class="mf">172.16</span><span class="o">.</span><span class="mf">1.3</span><span class="o">,</span><span class="w"> </span><span class="mf">255.255</span><span class="o">.</span><span class="mf">0.0</span>
+
+<span class="n">PC3</span><span class="o">:</span>
+<span class="w">  </span><span class="n">FastEthernet0</span><span class="o">:</span><span class="w"> </span><span class="mf">172.16</span><span class="o">.</span><span class="mf">1.4</span><span class="o">,</span><span class="w"> </span><span class="mf">255.255</span><span class="o">.</span><span class="mf">0.0</span>
+</code></pre></div>
+
+<h3>Verification</h3>
+<div class="codehilite"><pre><span></span><code>PC0&gt; ping 172.16.1.2   (Success)
+PC0&gt; ping 172.16.1.3   (Success)
+PC0&gt; ping 172.16.1.4   (Success)
+</code></pre></div>
+
+<hr />
+<h2>Quick Reference Card</h2>
+<h3>Cisco Router Mode Commands</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Transition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enable</code></td>
+<td>User → Privileged</td>
+</tr>
+<tr>
+<td><code>disable</code></td>
+<td>Privileged → User</td>
+</tr>
+<tr>
+<td><code>configure terminal</code></td>
+<td>Privileged → Global Config</td>
+</tr>
+<tr>
+<td><code>exit</code></td>
+<td>Back one level</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td>To Privileged from any</td>
+</tr>
+</tbody>
+</table>
+<h3>Network Commands</h3>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Linux</th>
+<th>Windows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Show IP</td>
+<td><code>ip addr</code></td>
+<td><code>ipconfig</code></td>
+</tr>
+<tr>
+<td>Release DHCP</td>
+<td><code>dhclient -r</code></td>
+<td><code>ipconfig /release</code></td>
+</tr>
+<tr>
+<td>Renew DHCP</td>
+<td><code>dhclient</code></td>
+<td><code>ipconfig /renew</code></td>
+</tr>
+<tr>
+<td>Flush DNS</td>
+<td><code>systemd-resolve --flush</code></td>
+<td><code>ipconfig /flushdns</code></td>
+</tr>
+</tbody>
+</table>
+<h3>WEP Key Sizes</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Hex Digits</th>
+<th>Bits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>64-bit</td>
+<td>10</td>
+<td>40 key + 24 IV</td>
+</tr>
+<tr>
+<td>128-bit</td>
+<td>26</td>
+<td>104 key + 24 IV</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Solution Programs:</strong> See <code>Slip_15_Q2_OptionA.c</code> and <code>Slip_15_Q2_OptionB.c</code></p>
+</blockquote>
+    
+    <script>
+        // Add syntax highlighting for code blocks
+        document.querySelectorAll('pre code').forEach((block) => {
+            block.style.fontFamily = "'Consolas', 'Monaco', 'Courier New', monospace";
+        });
+    </script>
+</body>
+</html>

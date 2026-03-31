@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slip_05_CN_SOLUTION.md</title>
+    <style>
+        @media print {
+            body { margin: 0.5in; }
+            h1, h2, h3 { page-break-after: avoid; }
+            pre, table { page-break-inside: avoid; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
+            font-size: 11pt;
+        }
+        
+        h1 {
+            color: #1a237e;
+            border-bottom: 3px solid #3f51b5;
+            padding-bottom: 10px;
+            font-size: 28pt;
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #283593;
+            border-bottom: 2px solid #5c6bc0;
+            padding-bottom: 8px;
+            margin-top: 35px;
+            font-size: 20pt;
+        }
+        
+        h3 {
+            color: #3949ab;
+            font-size: 16pt;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #5c6bc0;
+            font-size: 13pt;
+            margin-top: 20px;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 10pt;
+            color: #d32f2f;
+        }
+        
+        pre {
+            background-color: #263238;
+            color: #aed581;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+            overflow-x: auto;
+            font-size: 9.5pt;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 10pt;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3f51b5;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        tr:hover {
+            background-color: #e8eaf6;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 30px 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #ff9800;
+            padding-left: 15px;
+            color: #616161;
+            font-style: italic;
+            margin: 20px 0;
+            background-color: #fff3e0;
+            padding: 10px 15px;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background-color: #45a049;
+        }
+        
+        @media print {
+            .print-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print to PDF</button>
+    <h1>Slip 5 — Computer Networks Solution Guide</h1>
+<h2>Q1: Theory Questions (10 marks - Any 5)</h2>
+<hr />
+<h3>a) What does the <code>ip link set eth0 up</code> command do?</h3>
+<p><strong>Answer:</strong><br />
+This command activates/enables the network interface named <code>eth0</code>.</p>
+<p><strong>Detailed Explanation:</strong><br />
+| Component | Description |<br />
+|-----------|-------------|<br />
+| <code>ip</code> | Modern Linux networking utility (replaces ifconfig) |<br />
+| <code>link</code> | Subcommand to manage network device properties |<br />
+| <code>set</code> | Modify device attributes |<br />
+| <code>eth0</code> | Target interface name (first Ethernet adapter) |<br />
+| <code>up</code> | Enable/activate the interface |</p>
+<p><strong>Effects:</strong><br />
+- Changes interface state from DOWN to UP<br />
+- Enables the interface to send/receive packets<br />
+- Allows IP configuration to be applied<br />
+- Triggers link detection on physical ports</p>
+<p><strong>Related Commands:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Disable interface</span>
+ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>eth0<span class="w"> </span>down
+
+<span class="c1"># Check interface status</span>
+ip<span class="w"> </span>link<span class="w"> </span>show<span class="w"> </span>eth0
+
+<span class="c1"># Legacy equivalent (deprecated)</span>
+ifconfig<span class="w"> </span>eth0<span class="w"> </span>up
+</code></pre></div>
+
+<hr />
+<h3>b) How to detect hidden Wi-Fi networks</h3>
+<p><strong>Answer:</strong><br />
+Hidden Wi-Fi networks don't broadcast their SSID but can still be detected through active scanning and monitoring.</p>
+<p><strong>Detection Methods:</strong></p>
+<p><strong>1. Using <code>iwlist</code> (Linux):</strong></p>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>iwlist<span class="w"> </span>wlan0<span class="w"> </span>scan<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;essid&quot;</span>
+<span class="c1"># Hidden networks show as ESSID:&quot;&quot;</span>
+</code></pre></div>
+
+<p><strong>2. Using <code>airodump-ng</code> (Kali Linux):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Put interface in monitor mode</span>
+sudo<span class="w"> </span>airmon-ng<span class="w"> </span>start<span class="w"> </span>wlan0
+<span class="c1"># Scan for networks</span>
+sudo<span class="w"> </span>airodump-ng<span class="w"> </span>wlan0mon
+<span class="c1"># Hidden networks appear with &lt;length: X&gt; instead of SSID</span>
+</code></pre></div>
+
+<p><strong>3. De-authentication Attack (captures SSID when client reconnects):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Force client reconnection to reveal SSID</span>
+sudo<span class="w"> </span>aireplay-ng<span class="w"> </span>-0<span class="w"> </span><span class="m">5</span><span class="w"> </span>-a<span class="w"> </span>&lt;BSSID&gt;<span class="w"> </span>wlan0mon
+</code></pre></div>
+
+<p><strong>4. Windows Method:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nv">netsh</span><span class="w"> </span><span class="nv">wlan</span><span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="nv">networks</span><span class="w"> </span><span class="nv">mode</span><span class="o">=</span><span class="nv">bssid</span>
+</code></pre></div>
+
+<p><strong>Key Indicators of Hidden Networks:</strong><br />
+- Empty SSID field in scan results<br />
+- Beacon frames with zero-length SSID<br />
+- Valid BSSID (MAC address) present</p>
+<hr />
+<h3>c) Command sequence to configure a router interface with IP</h3>
+<p><strong>Answer:</strong><br />
+Configuration in Cisco IOS:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">Router</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">enable</span>
+<span class="nx">Router</span><span class="err">#</span><span class="w"> </span><span class="nx">configure</span><span class="w"> </span><span class="nx">terminal</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">description</span><span class="w"> </span><span class="s">&quot;LAN Interface&quot;</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+<span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+<span class="nx">Router</span><span class="err">#</span><span class="w"> </span><span class="nx">copy</span><span class="w"> </span><span class="nx">running</span><span class="o">-</span><span class="nx">config</span><span class="w"> </span><span class="nx">startup</span><span class="o">-</span><span class="nx">config</span>
+</code></pre></div>
+
+<p><strong>Step-by-Step Breakdown:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>enable</code></td>
+<td>Enter privileged EXEC mode</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>configure terminal</code></td>
+<td>Enter global configuration mode</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>interface GigabitEthernet0/0</code></td>
+<td>Select the interface</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>ip address &lt;IP&gt; &lt;mask&gt;</code></td>
+<td>Assign IP address</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>no shutdown</code></td>
+<td>Enable the interface</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>description</code></td>
+<td>Add interface description</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>copy run start</code></td>
+<td>Save configuration</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Verification Commands:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">show</span><span class="w"> </span><span class="nv">ip</span><span class="w"> </span><span class="nv">interface</span><span class="w"> </span><span class="nv">brief</span>
+<span class="k">show</span><span class="w"> </span><span class="nv">interface</span><span class="w"> </span><span class="nv">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+<span class="k">show</span><span class="w"> </span><span class="nv">running</span><span class="o">-</span><span class="nv">config</span><span class="w"> </span><span class="nv">interface</span><span class="w"> </span><span class="nv">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+</code></pre></div>
+
+<hr />
+<h3>d) Purpose of assigning a hostname to a switch</h3>
+<p><strong>Answer:</strong><br />
+Assigning a hostname to a switch provides identification and management benefits.</p>
+<p><strong>Purposes:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Purpose</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Identification</strong></td>
+<td>Distinguishes devices in large networks</td>
+</tr>
+<tr>
+<td><strong>Management</strong></td>
+<td>Easier remote administration</td>
+</tr>
+<tr>
+<td><strong>Documentation</strong></td>
+<td>Self-documenting network topology</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>Identifies unauthorized devices</td>
+</tr>
+<tr>
+<td><strong>Troubleshooting</strong></td>
+<td>Quick device identification in logs</td>
+</tr>
+<tr>
+<td><strong>Prompt Display</strong></td>
+<td>Shows current device in CLI</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Configuration:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nv">Switch</span><span class="o">&gt;</span><span class="w"> </span><span class="nv">enable</span>
+<span class="nv">Switch</span>#<span class="w"> </span><span class="nv">configure</span><span class="w"> </span><span class="nv">terminal</span>
+<span class="nv">Switch</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="nv">hostname</span><span class="w"> </span><span class="nv">SW</span><span class="o">-</span><span class="nv">FLOOR1</span>
+<span class="nv">SW</span><span class="o">-</span><span class="nv">FLOOR1</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="k">exit</span>
+</code></pre></div>
+
+<p><strong>Naming Conventions (Best Practices):</strong><br />
+- <code>LOC-TYPE-NUM</code> format (e.g., NYC-SW-01)<br />
+- Include location, device type, and number<br />
+- Avoid spaces and special characters<br />
+- Use uppercase for consistency</p>
+<hr />
+<h3>f) What is Ethical Hacking?</h3>
+<p><strong>Answer:</strong><br />
+<strong>Ethical Hacking</strong> (also called Penetration Testing or White Hat Hacking) is the authorized practice of bypassing system security to identify vulnerabilities.</p>
+<p><strong>Definition:</strong><br />
+Legal and authorized attempt to break into computer systems and networks to find security weaknesses before malicious hackers exploit them.</p>
+<p><strong>Key Characteristics:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Authorization</strong></td>
+<td>Written permission from owner required</td>
+</tr>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>Improve security, not cause damage</td>
+</tr>
+<tr>
+<td><strong>Reporting</strong></td>
+<td>All findings documented and reported</td>
+</tr>
+<tr>
+<td><strong>Legal</strong></td>
+<td>Conducted within legal boundaries</td>
+</tr>
+<tr>
+<td><strong>Scope</strong></td>
+<td>Defined target systems and timeframe</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Types of Ethical Hackers:</strong><br />
+1. <strong>White Hat</strong> - Authorized security professionals<br />
+2. <strong>Gray Hat</strong> - May work without permission but report vulnerabilities<br />
+3. <strong>Bug Bounty Hunters</strong> - Find bugs for rewards</p>
+<p><strong>Phases of Ethical Hacking:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="n">Reconnaissance</span><span class="w">    </span><span class="err">→</span><span class="w"> </span><span class="n">Information</span><span class="w"> </span><span class="n">gathering</span>
+<span class="mf">2.</span><span class="w"> </span><span class="n">Scanning</span><span class="w">          </span><span class="err">→</span><span class="w"> </span><span class="n">Port</span><span class="o">/</span><span class="n">vulnerability</span><span class="w"> </span><span class="n">scanning</span>
+<span class="mf">3.</span><span class="w"> </span><span class="n">Gaining</span><span class="w"> </span><span class="n">Access</span><span class="w">    </span><span class="err">→</span><span class="w"> </span><span class="nb">Exp</span><span class="n">loit</span><span class="w"> </span><span class="n">vulnerabilities</span>
+<span class="mf">4.</span><span class="w"> </span><span class="n">Maintaining</span><span class="w"> </span><span class="n">Access</span><span class="err">→</span><span class="w"> </span><span class="n">Establish</span><span class="w"> </span><span class="n">persistence</span>
+<span class="mf">5.</span><span class="w"> </span><span class="n">Covering</span><span class="w"> </span><span class="n">Tracks</span><span class="w">   </span><span class="err">→</span><span class="w"> </span><span class="n">Clear</span><span class="w"> </span><span class="n">evidence</span><span class="w"> </span><span class="p">(</span><span class="n">test</span><span class="w"> </span><span class="n">detection</span><span class="p">)</span>
+<span class="mf">6.</span><span class="w"> </span><span class="n">Reporting</span><span class="w">         </span><span class="err">→</span><span class="w"> </span><span class="n">Document</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">findings</span>
+</code></pre></div>
+
+<p><strong>Tools Used:</strong><br />
+- Nmap, Wireshark, Metasploit, Burp Suite, Kali Linux</p>
+<hr />
+<h3>g) What does the <code>show running-config</code> command display?</h3>
+<p><strong>Answer:</strong><br />
+Displays the current active configuration stored in RAM on Cisco devices.</p>
+<p><strong>Information Displayed:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hostname</strong></td>
+<td>Device name</td>
+</tr>
+<tr>
+<td><strong>Passwords</strong></td>
+<td>Enable, console, VTY passwords</td>
+</tr>
+<tr>
+<td><strong>Interfaces</strong></td>
+<td>IP addresses, states, descriptions</td>
+</tr>
+<tr>
+<td><strong>Routing</strong></td>
+<td>Static routes, routing protocols</td>
+</tr>
+<tr>
+<td><strong>VLANs</strong></td>
+<td>VLAN configurations</td>
+</tr>
+<tr>
+<td><strong>ACLs</strong></td>
+<td>Access control lists</td>
+</tr>
+<tr>
+<td><strong>Services</strong></td>
+<td>DHCP, NAT, QoS settings</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sample Output:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">Router</span><span class="err">#</span><span class="w"> </span><span class="nx">show</span><span class="w"> </span><span class="nx">running</span><span class="o">-</span><span class="nx">config</span>
+<span class="nx">Building</span><span class="w"> </span><span class="nx">configuration</span><span class="o">...</span>
+
+<span class="nx">Current</span><span class="w"> </span><span class="nx">configuration</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="w"> </span><span class="nx">bytes</span>
+<span class="p">!</span>
+<span class="nx">hostname</span><span class="w"> </span><span class="nx">Router1</span>
+<span class="p">!</span>
+<span class="nx">enable</span><span class="w"> </span><span class="nx">secret</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="err">$</span><span class="mi">1</span><span class="err">$</span><span class="nx">mERr</span><span class="err">$</span><span class="nx">hash</span>
+<span class="p">!</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nx">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+<span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.1.1</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
+<span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+<span class="p">!</span>
+<span class="nx">ip</span><span class="w"> </span><span class="nx">route</span><span class="w"> </span><span class="m m-Double">0.0.0.0</span><span class="w"> </span><span class="m m-Double">0.0.0.0</span><span class="w"> </span><span class="m m-Double">192.168.1.254</span>
+<span class="p">!</span>
+<span class="nx">line</span><span class="w"> </span><span class="nx">vty</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">4</span>
+<span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="nx">cisco</span>
+<span class="w"> </span><span class="nx">login</span>
+<span class="p">!</span>
+<span class="nx">end</span>
+</code></pre></div>
+
+<p><strong>Related Commands:</strong><br />
+| Command | Description |<br />
+|---------|-------------|<br />
+| <code>show startup-config</code> | Shows saved config in NVRAM |<br />
+| <code>show running-config | section interface</code> | Filter specific section |<br />
+| <code>copy running-config startup-config</code> | Save running to startup |</p>
+<p><strong>Key Difference:</strong><br />
+- <code>running-config</code> = Active in RAM (volatile)<br />
+- <code>startup-config</code> = Saved in NVRAM (persistent)</p>
+<hr />
+<h2>Q2: Programming/Practical (20 marks)</h2>
+<hr />
+<h3>Option A: Ring Topology Display Program</h3>
+<p><strong>Concept:</strong><br />
+Ring topology connects each device to exactly two other devices, forming a circular data path.</p>
+<p><strong>Characteristics:</strong><br />
+| Feature | Description |<br />
+|---------|-------------|<br />
+| <strong>Structure</strong> | Circular arrangement |<br />
+| <strong>Data Flow</strong> | Unidirectional or bidirectional |<br />
+| <strong>Token Passing</strong> | Used for access control |<br />
+| <strong>Failure Impact</strong> | Single point can break entire ring |</p>
+<p><strong>Diagram:</strong></p>
+<div class="codehilite"><pre><span></span><code>    Node 0
+   ↗      ↘
+Node 3    Node 1
+   ↖      ↙
+    Node 2
+</code></pre></div>
+
+<p><strong>Algorithm:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="kr">Get</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">nodes</span>
+<span class="mf">2.</span><span class="w"> </span><span class="n">Create</span><span class="w"> </span><span class="n">adjacency</span><span class="w"> </span><span class="n">matrix</span><span class="p">:</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">connects</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="n">n</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">connects</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mf">1</span><span class="o">+</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="n">n</span>
+<span class="mf">3.</span><span class="w"> </span><span class="n">Display</span><span class="w"> </span><span class="n">connections</span>
+<span class="mf">4.</span><span class="w"> </span><span class="n">Visualize</span><span class="w"> </span><span class="n">ring</span><span class="w"> </span><span class="n">structure</span>
+</code></pre></div>
+
+<p><strong>Pseudocode:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">createRingTopology</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="err">:</span>
+<span class="w">        </span><span class="k">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">MOD</span><span class="w"> </span><span class="n">n</span>
+<span class="w">        </span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="k">MOD</span><span class="w"> </span><span class="n">n</span>
+<span class="w">        </span><span class="n">adj</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">next</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="n">adj</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">prev</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="k">FUNCTION</span><span class="w"> </span><span class="n">displayConnections</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="k">each</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="nl">i</span><span class="p">:</span>
+<span class="w">        </span><span class="k">PRINT</span><span class="w"> </span><span class="ss">&quot;Node&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;connects to:&quot;</span>
+<span class="w">        </span><span class="k">FOR</span><span class="w"> </span><span class="k">each</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="nl">j</span><span class="p">:</span>
+<span class="w">            </span><span class="k">IF</span><span class="w"> </span><span class="n">adj</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span>
+<span class="w">                </span><span class="k">PRINT</span><span class="w"> </span><span class="ss">&quot;Node&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">j</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>Solution Code:</strong> See <code>Slip_05_Q2_OptionA.c</code></p>
+</blockquote>
+<hr />
+<h3>Option B: Odd Parity Error Detection</h3>
+<p><strong>Concept:</strong><br />
+Parity checking is a simple error detection method that adds an extra bit to make the total number of 1s either odd (odd parity) or even (even parity).</p>
+<p><strong>Odd Parity:</strong><br />
+- The parity bit is set so that total number of 1s (including parity) is <strong>ODD</strong></p>
+<p><strong>Example:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Data</span><span class="o">:</span><span class="w"> </span><span class="mi">1010001</span><span class="w"> </span><span class="o">(</span><span class="n">three</span><span class="w"> </span><span class="mi">1</span><span class="n">s</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">odd</span><span class="o">)</span>
+<span class="n">Odd</span><span class="w"> </span><span class="n">Parity</span><span class="w"> </span><span class="n">Bit</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">(</span><span class="n">to</span><span class="w"> </span><span class="n">keep</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="n">odd</span><span class="o">)</span>
+<span class="n">Transmitted</span><span class="o">:</span><span class="w"> </span><span class="mi">10100010</span>
+
+<span class="n">Data</span><span class="o">:</span><span class="w"> </span><span class="mi">1010101</span><span class="w"> </span><span class="o">(</span><span class="n">four</span><span class="w"> </span><span class="mi">1</span><span class="n">s</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">even</span><span class="o">)</span>
+<span class="n">Odd</span><span class="w"> </span><span class="n">Parity</span><span class="w"> </span><span class="n">Bit</span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">(</span><span class="n">to</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="n">odd</span><span class="o">)</span>
+<span class="n">Transmitted</span><span class="o">:</span><span class="w"> </span><span class="mi">10101011</span>
+</code></pre></div>
+
+<p><strong>Algorithm:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">SENDER</span> <span class="n">SIDE</span><span class="p">:</span>
+<span class="mi">1</span><span class="p">.</span> <span class="n">Count</span> <span class="n">number</span> <span class="n">of</span> <span class="mi">1</span><span class="n">s</span> <span class="n">in</span> <span class="n">data</span>
+<span class="mi">2</span><span class="p">.</span> <span class="n">If</span> <span class="n">count</span> <span class="n">is</span> <span class="n">even</span><span class="p">,</span> <span class="n">parity</span> <span class="n">bit</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="mi">3</span><span class="p">.</span> <span class="n">If</span> <span class="n">count</span> <span class="n">is</span> <span class="n">odd</span><span class="p">,</span> <span class="n">parity</span> <span class="n">bit</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="mi">4</span><span class="p">.</span> <span class="n">Append</span> <span class="n">parity</span> <span class="n">bit</span> <span class="n">to</span> <span class="n">data</span>
+
+<span class="n">RECEIVER</span> <span class="n">SIDE</span><span class="p">:</span>
+<span class="mi">1</span><span class="p">.</span> <span class="n">Count</span> <span class="n">number</span> <span class="n">of</span> <span class="mi">1</span><span class="n">s</span> <span class="n">including</span> <span class="n">parity</span> <span class="n">bit</span>
+<span class="mi">2</span><span class="p">.</span> <span class="n">If</span> <span class="n">count</span> <span class="n">is</span> <span class="n">odd</span> <span class="err">→</span> <span class="n">No</span> <span class="n">error</span> <span class="n">detected</span>
+<span class="mi">3</span><span class="p">.</span> <span class="n">If</span> <span class="n">count</span> <span class="n">is</span> <span class="n">even</span> <span class="err">→</span> <span class="n">Error</span> <span class="n">detected</span><span class="err">!</span>
+</code></pre></div>
+
+<p><strong>Pseudocode:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">countOnes</span><span class="p">(</span><span class="k">data</span><span class="p">,</span><span class="w"> </span><span class="k">size</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="nf">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="k">size</span><span class="o">-</span><span class="mi">1</span><span class="err">:</span>
+<span class="w">        </span><span class="k">IF</span><span class="w"> </span><span class="k">data</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span>
+<span class="w">            </span><span class="nf">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="nf">count</span>
+
+<span class="k">FUNCTION</span><span class="w"> </span><span class="n">calculateOddParity</span><span class="p">(</span><span class="k">data</span><span class="p">,</span><span class="w"> </span><span class="k">size</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="n">ones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">countOnes</span><span class="p">(</span><span class="k">data</span><span class="p">,</span><span class="w"> </span><span class="k">size</span><span class="p">)</span>
+<span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">ones</span><span class="w"> </span><span class="k">MOD</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="err">:</span><span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="n">Even</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="mi">1</span><span class="n">s</span>
+<span class="w">        </span><span class="k">RETURN</span><span class="w"> </span><span class="mi">1</span><span class="w">          </span><span class="o">//</span><span class="w"> </span><span class="k">Add</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">odd</span>
+<span class="w">    </span><span class="k">ELSE</span><span class="err">:</span>
+<span class="w">        </span><span class="k">RETURN</span><span class="w"> </span><span class="mi">0</span><span class="w">          </span><span class="o">//</span><span class="w"> </span><span class="n">Already</span><span class="w"> </span><span class="n">odd</span>
+
+<span class="k">FUNCTION</span><span class="w"> </span><span class="n">checkOddParity</span><span class="p">(</span><span class="n">received</span><span class="p">,</span><span class="w"> </span><span class="k">size</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="n">ones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">countOnes</span><span class="p">(</span><span class="n">received</span><span class="p">,</span><span class="w"> </span><span class="k">size</span><span class="p">)</span><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="n">Including</span><span class="w"> </span><span class="n">parity</span><span class="w"> </span><span class="nc">bit</span>
+<span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">ones</span><span class="w"> </span><span class="k">MOD</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span>
+<span class="w">        </span><span class="k">PRINT</span><span class="w"> </span><span class="ss">&quot;No error detected&quot;</span>
+<span class="w">    </span><span class="k">ELSE</span><span class="err">:</span>
+<span class="w">        </span><span class="k">PRINT</span><span class="w"> </span><span class="ss">&quot;Error detected!&quot;</span>
+</code></pre></div>
+
+<p><strong>Worked Example:</strong></p>
+<div class="codehilite"><pre><span></span><code>Original Data: 1 0 1 1 0 0 1
+Count of 1s: 4 (even)
+Parity Bit: 1 (to make total 5, which is odd)
+Transmitted: 1 0 1 1 0 0 1 | 1
+
+Case 1 - No Error:
+Received: 1 0 1 1 0 0 1 1
+Count of 1s: 5 (odd) → No error
+
+Case 2 - Single Bit Error:
+Received: 1 0 0 1 0 0 1 1  (3rd bit flipped)
+Count of 1s: 4 (even) → Error detected!
+</code></pre></div>
+
+<p><strong>Limitations:</strong><br />
+- Detects only odd number of bit errors<br />
+- Cannot detect even number of bit errors<br />
+- Cannot correct errors</p>
+<blockquote>
+<p><strong>Solution Code:</strong> See <code>Slip_05_Q2_OptionB.c</code></p>
+</blockquote>
+<hr />
+<h3>Option C: Packet Tracer - Switch Configuration</h3>
+<p><strong>Objective:</strong><br />
+Configure 2 PCs through a switch with IP addresses 10.0.0.1 and 10.0.0.2</p>
+<p><strong>Steps:</strong></p>
+<p><strong>1. Add Devices:</strong><br />
+- 1 × Switch (2960)<br />
+- 2 × PC</p>
+<p><strong>2. Connect Devices:</strong></p>
+<div class="codehilite"><pre><span></span><code>PC0 ----[Fa0/1]---- Switch ----[Fa0/2]---- PC1
+      Straight-through         Straight-through
+</code></pre></div>
+
+<p><strong>3. Configure PC0:</strong></p>
+<div class="codehilite"><pre><span></span><code>Click PC0 → Desktop → IP Configuration
+IP Address: 10.0.0.1
+Subnet Mask: 255.0.0.0
+</code></pre></div>
+
+<p><strong>4. Configure PC1:</strong></p>
+<div class="codehilite"><pre><span></span><code>Click PC1 → Desktop → IP Configuration
+IP Address: 10.0.0.2
+Subnet Mask: 255.0.0.0
+</code></pre></div>
+
+<p><strong>5. Test Connectivity:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nv">PC0</span><span class="w"> </span>→<span class="w"> </span><span class="nv">Desktop</span><span class="w"> </span>→<span class="w"> </span><span class="nv">Command</span><span class="w"> </span><span class="nv">Prompt</span>
+<span class="nv">C</span>:\<span class="o">&gt;</span><span class="w"> </span><span class="nv">ping</span><span class="w"> </span><span class="mi">10</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">2</span>
+
+<span class="nv">Pinging</span><span class="w"> </span><span class="mi">10</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">2</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="nv">bytes</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">data</span>:
+<span class="nv">Reply</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="mi">10</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">2</span>:<span class="w"> </span><span class="nv">bytes</span><span class="o">=</span><span class="mi">32</span><span class="w"> </span><span class="nv">time</span><span class="o">&lt;</span><span class="mi">1</span><span class="nv">ms</span><span class="w"> </span><span class="nv">TTL</span><span class="o">=</span><span class="mi">128</span>
+<span class="nv">Reply</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="mi">10</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">2</span>:<span class="w"> </span><span class="nv">bytes</span><span class="o">=</span><span class="mi">32</span><span class="w"> </span><span class="nv">time</span><span class="o">&lt;</span><span class="mi">1</span><span class="nv">ms</span><span class="w"> </span><span class="nv">TTL</span><span class="o">=</span><span class="mi">128</span>
+<span class="nv">Reply</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="mi">10</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">2</span>:<span class="w"> </span><span class="nv">bytes</span><span class="o">=</span><span class="mi">32</span><span class="w"> </span><span class="nv">time</span><span class="o">&lt;</span><span class="mi">1</span><span class="nv">ms</span><span class="w"> </span><span class="nv">TTL</span><span class="o">=</span><span class="mi">128</span>
+<span class="nv">Reply</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="mi">10</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">2</span>:<span class="w"> </span><span class="nv">bytes</span><span class="o">=</span><span class="mi">32</span><span class="w"> </span><span class="nv">time</span><span class="o">&lt;</span><span class="mi">1</span><span class="nv">ms</span><span class="w"> </span><span class="nv">TTL</span><span class="o">=</span><span class="mi">128</span>
+
+<span class="nv">Ping</span><span class="w"> </span><span class="nv">statistics</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">10</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">2</span>:
+<span class="w">    </span><span class="nv">Packets</span>:<span class="w"> </span><span class="nv">Sent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>,<span class="w"> </span><span class="nv">Received</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>,<span class="w"> </span><span class="nv">Lost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ss">(</span><span class="mi">0</span><span class="o">%</span><span class="w"> </span><span class="nv">loss</span><span class="ss">)</span>
+</code></pre></div>
+
+<p><strong>Cable Testing with NSS-468A LAN Tester:</strong><br />
+| Test | Indicator | Meaning |<br />
+|------|-----------|---------|<br />
+| All LEDs 1-8 green sequentially | Good | Cable properly wired |<br />
+| Missing LED | Bad | Open/broken wire |<br />
+| Out of sequence | Bad | Crossed wires |</p>
+<hr />
+<blockquote>
+<p><strong>Solution Files:</strong><br />
+- <code>Slip_05_Q2_OptionA.c</code> - Ring Topology C Program<br />
+- <code>Slip_05_Q2_OptionB.c</code> - Odd Parity Error Detection Program</p>
+</blockquote>
+    
+    <script>
+        // Add syntax highlighting for code blocks
+        document.querySelectorAll('pre code').forEach((block) => {
+            block.style.fontFamily = "'Consolas', 'Monaco', 'Courier New', monospace";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slip_11_CN_SOLUTION.md</title>
+    <style>
+        @media print {
+            body { margin: 0.5in; }
+            h1, h2, h3 { page-break-after: avoid; }
+            pre, table { page-break-inside: avoid; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
+            font-size: 11pt;
+        }
+        
+        h1 {
+            color: #1a237e;
+            border-bottom: 3px solid #3f51b5;
+            padding-bottom: 10px;
+            font-size: 28pt;
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #283593;
+            border-bottom: 2px solid #5c6bc0;
+            padding-bottom: 8px;
+            margin-top: 35px;
+            font-size: 20pt;
+        }
+        
+        h3 {
+            color: #3949ab;
+            font-size: 16pt;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #5c6bc0;
+            font-size: 13pt;
+            margin-top: 20px;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 10pt;
+            color: #d32f2f;
+        }
+        
+        pre {
+            background-color: #263238;
+            color: #aed581;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+            overflow-x: auto;
+            font-size: 9.5pt;
+            line-height: 1.4;
+        }
+        
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 10pt;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3f51b5;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        tr:hover {
+            background-color: #e8eaf6;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 30px 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #ff9800;
+            padding-left: 15px;
+            color: #616161;
+            font-style: italic;
+            margin: 20px 0;
+            background-color: #fff3e0;
+            padding: 10px 15px;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background-color: #45a049;
+        }
+        
+        @media print {
+            .print-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print to PDF</button>
+    <h1>Slip 11 — Computer Networks Solution Guide</h1>
+<h2>Q1: Theory Questions (10 Marks - Answer ANY 5)</h2>
+<hr />
+<h3>a) Compare and Contrast Switch vs Router</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Switch</th>
+<th>Router</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OSI Layer</strong></td>
+<td>Layer 2 (Data Link)</td>
+<td>Layer 3 (Network)</td>
+</tr>
+<tr>
+<td><strong>Address Used</strong></td>
+<td>MAC Address</td>
+<td>IP Address</td>
+</tr>
+<tr>
+<td><strong>Function</strong></td>
+<td>Connects devices in same LAN</td>
+<td>Connects different networks</td>
+</tr>
+<tr>
+<td><strong>Broadcast Domain</strong></td>
+<td>Single domain (all ports)</td>
+<td>Separates broadcast domains</td>
+</tr>
+<tr>
+<td><strong>Decision Basis</strong></td>
+<td>MAC address table</td>
+<td>Routing table</td>
+</tr>
+<tr>
+<td><strong>Intelligence</strong></td>
+<td>Less intelligent</td>
+<td>More intelligent</td>
+</tr>
+<tr>
+<td><strong>Speed</strong></td>
+<td>Faster (hardware-based)</td>
+<td>Slower (software-based)</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Cheaper</td>
+<td>More expensive</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Differences:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="o">+--------+</span><span class="w">                    </span><span class="o">+--------+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Switch</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="n">Same</span><span class="w"> </span><span class="n">Network</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">Router</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="n">Different</span><span class="w"> </span><span class="n">Networks</span>
+<span class="o">+--------+</span><span class="w">  </span><span class="p">(</span><span class="n">LAN</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">LAN</span><span class="p">)</span><span class="w">      </span><span class="o">+--------+</span><span class="w">  </span><span class="p">(</span><span class="n">LAN</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">WAN</span><span class="p">)</span>
+<span class="w">    </span><span class="o">|</span><span class="w">                              </span><span class="o">|</span>
+<span class="w">  </span><span class="o">[</span><span class="n">MAC</span><span class="o">]</span><span class="w">                          </span><span class="o">[</span><span class="n">IP</span><span class="o">]</span>
+</code></pre></div>
+
+<ul>
+<li><strong>Switch</strong>: Forwards frames based on MAC addresses within a single network</li>
+<li><strong>Router</strong>: Forwards packets based on IP addresses between different networks</li>
+<li>Switches create collision domains; Routers create both collision and broadcast domains</li>
+</ul>
+<hr />
+<h3>b) Purpose of Modem - Can We Connect Without It?</h3>
+<p><strong>What is a Modem?</strong><br />
+- <strong>MO</strong>dulator-<strong>DEM</strong>odulator<br />
+- Converts digital signals (computer) ↔ analog signals (telephone/cable line)</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Computer</span><span class="w"> </span><span class="err">──</span><span class="o">[</span><span class="n">Digital</span><span class="o">]</span><span class="err">──</span><span class="o">&gt;</span><span class="w"> </span><span class="n">MODEM</span><span class="w"> </span><span class="err">──</span><span class="o">[</span><span class="n">Analog</span><span class="o">]</span><span class="err">──</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ISP</span><span class="w"> </span><span class="err">──</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Internet</span>
+<span class="w">           </span><span class="p">(</span><span class="mi">0</span><span class="n">s</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="mi">1</span><span class="n">s</span><span class="p">)</span><span class="w">        </span><span class="p">(</span><span class="n">waves</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Purpose:</strong><br />
+1. <strong>Signal Conversion</strong>: Translates digital computer data to analog signals for transmission<br />
+2. <strong>Interface</strong>: Acts as bridge between home network and ISP<br />
+3. <strong>Synchronization</strong>: Maintains timing between sender and receiver</p>
+<p><strong>Can We Connect Without Modem?</strong></p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Modem Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DSL/Cable Internet</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Fiber Optic (ONT provided)</td>
+<td>No (ONT replaces modem)</td>
+</tr>
+<tr>
+<td>Direct Ethernet from ISP</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Mobile/4G/5G Data</td>
+<td>No (phone has built-in modem)</td>
+</tr>
+<tr>
+<td>Leased Line</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: With fiber optic, an ONT (Optical Network Terminal) performs similar function but for light signals.</p>
+<hr />
+<h3>c) Types of Network Cables and Their Uses</h3>
+<table>
+<thead>
+<tr>
+<th>Cable Type</th>
+<th>Category</th>
+<th>Max Speed</th>
+<th>Max Distance</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Coaxial</strong></td>
+<td>RG-6, RG-59</td>
+<td>10 Mbps</td>
+<td>500m</td>
+<td>Cable TV, old Ethernet</td>
+</tr>
+<tr>
+<td><strong>Twisted Pair (UTP)</strong></td>
+<td>Cat5</td>
+<td>100 Mbps</td>
+<td>100m</td>
+<td>Basic networking</td>
+</tr>
+<tr>
+<td></td>
+<td>Cat5e</td>
+<td>1 Gbps</td>
+<td>100m</td>
+<td>Home/Office LAN</td>
+</tr>
+<tr>
+<td></td>
+<td>Cat6</td>
+<td>10 Gbps</td>
+<td>55m</td>
+<td>High-speed LAN</td>
+</tr>
+<tr>
+<td></td>
+<td>Cat6a</td>
+<td>10 Gbps</td>
+<td>100m</td>
+<td>Data centers</td>
+</tr>
+<tr>
+<td></td>
+<td>Cat7</td>
+<td>10 Gbps</td>
+<td>100m</td>
+<td>Enterprise networks</td>
+</tr>
+<tr>
+<td><strong>Fiber Optic</strong></td>
+<td>Single-mode</td>
+<td>100+ Gbps</td>
+<td>100+ km</td>
+<td>Long distance, WAN</td>
+</tr>
+<tr>
+<td></td>
+<td>Multi-mode</td>
+<td>10+ Gbps</td>
+<td>2 km</td>
+<td>Data centers</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cable Diagrams:</strong></p>
+<div class="codehilite"><pre><span></span><code>Twisted Pair (UTP/STP):          Coaxial:              Fiber Optic:
+   ___/\/\/\___                  =========             ┌─────────┐
+  /  insulation \                |  Core  |            │  Core   │
+ |   conductor   |               | Dielec |            │ Cladding│
+  \__/\/\/\____/                 | Shield |            │ Buffer  │
+   pair twisted                  | Jacket |            │ Jacket  │
+</code></pre></div>
+
+<p><strong>Connector Types:</strong><br />
+- <strong>RJ-45</strong>: Twisted pair cables<br />
+- <strong>BNC</strong>: Coaxial cables<br />
+- <strong>SC/LC/ST</strong>: Fiber optic cables</p>
+<hr />
+<h3>d) IPv4 vs IPv6 - Definition and Key Differences</h3>
+<p><strong>IPv4 (Internet Protocol version 4)</strong><br />
+- 32-bit address scheme<br />
+- Format: Dotted decimal (192.168.1.1)<br />
+- Total addresses: ~4.3 billion (2³²)</p>
+<p><strong>IPv6 (Internet Protocol version 6)</strong><br />
+- 128-bit address scheme<br />
+- Format: Hexadecimal (2001:0db8:85a3:0000:0000:8a2e:0370:7334)<br />
+- Total addresses: 3.4 × 10³⁸ (2¹²⁸)</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Address Length</strong></td>
+<td>32 bits</td>
+<td>128 bits</td>
+</tr>
+<tr>
+<td><strong>Address Format</strong></td>
+<td>Decimal (dotted)</td>
+<td>Hexadecimal (colon)</td>
+</tr>
+<tr>
+<td><strong>Address Space</strong></td>
+<td>~4.3 billion</td>
+<td>3.4 × 10³⁸</td>
+</tr>
+<tr>
+<td><strong>Header Size</strong></td>
+<td>20-60 bytes</td>
+<td>40 bytes (fixed)</td>
+</tr>
+<tr>
+<td><strong>Checksum</strong></td>
+<td>Yes</td>
+<td>No (removed for efficiency)</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>Optional (IPSec)</td>
+<td>Built-in (IPSec mandatory)</td>
+</tr>
+<tr>
+<td><strong>NAT Required</strong></td>
+<td>Yes (due to shortage)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Broadcast</strong></td>
+<td>Supported</td>
+<td>Replaced by multicast</td>
+</tr>
+<tr>
+<td><strong>Configuration</strong></td>
+<td>Manual/DHCP</td>
+<td>Auto-configuration (SLAAC)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Address Examples:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">IPv4</span><span class="o">:</span><span class="w"> </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.100</span>
+<span class="w">      </span><span class="err">└─┬─┘</span><span class="w"> </span><span class="err">└┬┘</span><span class="w"> </span><span class="err">└┬┘</span><span class="w"> </span><span class="err">└┬┘</span>
+<span class="w">      </span><span class="n">Network</span><span class="w">  </span><span class="o">.</span><span class="w">  </span><span class="n">Host</span>
+
+<span class="n">IPv6</span><span class="o">:</span><span class="w"> </span><span class="mi">2001</span><span class="o">:</span><span class="mi">0</span><span class="n">db8</span><span class="o">:</span><span class="mi">85</span><span class="n">a3</span><span class="o">:</span><span class="mi">0000</span><span class="o">:</span><span class="mi">0000</span><span class="o">:</span><span class="mi">8</span><span class="n">a2e</span><span class="o">:</span><span class="mi">0370</span><span class="o">:</span><span class="mi">7334</span>
+<span class="w">      </span><span class="err">└────────┬────────┘</span><span class="w"> </span><span class="err">└─────────┬─────────┘</span>
+<span class="w">         </span><span class="n">Network</span><span class="w"> </span><span class="n">Prefix</span><span class="w">        </span><span class="n">Interface</span><span class="w"> </span><span class="n">ID</span>
+</code></pre></div>
+
+<hr />
+<h3>f) Subnetting - Hosts in /26 Subnet</h3>
+<p><strong>What is Subnetting?</strong><br />
+- Process of dividing a large network into smaller sub-networks (subnets)<br />
+- Improves network efficiency, security, and management<br />
+- Uses subnet mask to determine network and host portions</p>
+<p><strong>Benefits:</strong><br />
+1. Reduces broadcast traffic<br />
+2. Improves network security<br />
+3. Better IP address management<br />
+4. Isolates network problems</p>
+<p><strong>Calculating Hosts in /26 Subnet:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="mi">26</span><span class="w"> </span><span class="nx">means</span><span class="w"> </span><span class="mi">26</span><span class="w"> </span><span class="nx">bits</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">network</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="nx">bits</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">hosts</span>
+
+<span class="nx">Subnet</span><span class="w"> </span><span class="nx">Mask</span><span class="p">:</span><span class="w"> </span><span class="m m-Double">255.255.255.192</span>
+<span class="nx">Binary</span><span class="p">:</span><span class="w">      </span><span class="m m-Double">11111111.11111111.11111111.11000000</span>
+<span class="w">             </span><span class="err">└──────────</span><span class="w"> </span><span class="mi">26</span><span class="w"> </span><span class="nx">bits</span><span class="w"> </span><span class="err">──────────┘└</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="err">┘</span>
+<span class="w">                    </span><span class="nx">Network</span><span class="w">              </span><span class="nx">Host</span>
+
+<span class="nx">Host</span><span class="w"> </span><span class="nx">bits</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">26</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="nx">bits</span>
+
+<span class="nx">Total</span><span class="w"> </span><span class="nx">addresses</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="nx">⁶</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">64</span>
+<span class="nx">Usable</span><span class="w"> </span><span class="nx">hosts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="nx">⁶</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">62</span><span class="w"> </span><span class="nx">hosts</span>
+</code></pre></div>
+
+<p><strong>Why subtract 2?</strong><br />
+- 1 address for <strong>Network ID</strong> (all host bits = 0)<br />
+- 1 address for <strong>Broadcast</strong> (all host bits = 1)</p>
+<table>
+<thead>
+<tr>
+<th>Subnet Size</th>
+<th>Host Bits</th>
+<th>Total Addresses</th>
+<th>Usable Hosts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/24</td>
+<td>8</td>
+<td>256</td>
+<td>254</td>
+</tr>
+<tr>
+<td>/25</td>
+<td>7</td>
+<td>128</td>
+<td>126</td>
+</tr>
+<tr>
+<td>/26</td>
+<td>6</td>
+<td>64</td>
+<td><strong>62</strong></td>
+</tr>
+<tr>
+<td>/27</td>
+<td>5</td>
+<td>32</td>
+<td>30</td>
+</tr>
+<tr>
+<td>/28</td>
+<td>4</td>
+<td>16</td>
+<td>14</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>g) Purpose of Assigning Hostname to a Switch</h3>
+<p><strong>What is a Hostname?</strong><br />
+- Unique identifier/name assigned to a network device<br />
+- Default hostname on Cisco switches is "Switch"</p>
+<p><strong>Purposes:</strong><br />
+1. <strong>Device Identification</strong>: Easily identify devices in large networks<br />
+2. <strong>Management</strong>: Simplifies administration and troubleshooting<br />
+3. <strong>Documentation</strong>: Clear network documentation<br />
+4. <strong>Security</strong>: Part of security best practices<br />
+5. <strong>Command Prompt Display</strong>: Shows in CLI prompt for clarity</p>
+<p><strong>Configuration Example (Cisco IOS):</strong></p>
+<div class="codehilite"><pre><span></span><code>Switch&gt; enable
+Switch# configure terminal
+Switch(config)# hostname LAB-SWITCH-01
+LAB-SWITCH-01(config)#
+</code></pre></div>
+
+<p><strong>Naming Convention Best Practices:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Format</span><span class="o">:</span><span class="w"> </span><span class="n">LOCATION</span><span class="o">-</span><span class="n">TYPE</span><span class="o">-</span><span class="n">NUMBER</span>
+<span class="n">Example</span><span class="o">:</span><span class="w"> </span><span class="n">NYC</span><span class="o">-</span><span class="n">SW</span><span class="o">-</span><span class="mi">01</span>
+
+<span class="n">NYC</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">Location</span><span class="w"> </span><span class="o">(</span><span class="n">New</span><span class="w"> </span><span class="n">York</span><span class="w"> </span><span class="n">City</span><span class="o">)</span>
+<span class="n">SW</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">Device</span><span class="w"> </span><span class="n">Type</span><span class="w"> </span><span class="o">(</span><span class="n">Switch</span><span class="o">)</span>
+<span class="mi">01</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">Sequential</span><span class="w"> </span><span class="n">Number</span>
+</code></pre></div>
+
+<p><strong>Benefits in Large Networks:</strong></p>
+<div class="codehilite"><pre><span></span><code>Without Hostname:              With Hostname:
+Switch#                        FLOOR1-SWITCH-01#
+Switch#                        FLOOR2-SWITCH-01#
+Switch#                        SERVER-ROOM-SW#
+(Which is which?)              (Clear identification!)
+</code></pre></div>
+
+<hr />
+<h2>Q2: Practical Options (20 Marks)</h2>
+<hr />
+<h2>Option A: Character Count Method (Framing)</h2>
+<h3>Concept</h3>
+<p><strong>Framing</strong> is the process of dividing a stream of bits into manageable frames at the Data Link Layer.</p>
+<p><strong>Character Count Method:</strong><br />
+- First byte of each frame contains the count of characters in the frame<br />
+- Count includes the count byte itself<br />
+- Simple but vulnerable to count field errors</p>
+<h3>How It Works</h3>
+<div class="codehilite"><pre><span></span><code>Original Data: HELLO WORLD
+
+Frame 1: [6] H E L L O    (6 characters including count)
+Frame 2: [6] W O R L D    (6 characters including count)
+         ↑
+    Character Count
+</code></pre></div>
+
+<h3>Diagram</h3>
+<div class="codehilite"><pre><span></span><code>Before Framing:
+┌─────────────────────────────────────┐
+│ H E L L O   W O R L D               │ (Raw data stream)
+└─────────────────────────────────────┘
+
+After Framing (Character Count):
+┌───┬───────────┐ ┌───┬───────────┐
+│ 6 │ H E L L O │ │ 6 │ W O R L D │
+└───┴───────────┘ └───┴───────────┘
+  ↑ Count Field     ↑ Count Field
+</code></pre></div>
+
+<h3>Algorithm</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">FRAMING</span><span class="o">:</span>
+<span class="mi">1</span><span class="o">.</span><span class="w"> </span><span class="n">Read</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="n">data</span>
+<span class="mi">2</span><span class="o">.</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="n">frame</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">g</span><span class="o">.,</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">chars</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="o">)</span>
+<span class="mi">3</span><span class="o">.</span><span class="w"> </span><span class="n">For</span><span class="w"> </span><span class="k">each</span><span class="w"> </span><span class="n">frame</span><span class="o">:</span>
+<span class="w">   </span><span class="n">a</span><span class="o">.</span><span class="w"> </span><span class="n">Calculate</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">(</span><span class="n">data</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">)</span>
+<span class="w">   </span><span class="n">b</span><span class="o">.</span><span class="w"> </span><span class="n">Insert</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="n">byte</span>
+<span class="w">   </span><span class="n">c</span><span class="o">.</span><span class="w"> </span><span class="n">Copy</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">bytes</span>
+<span class="mi">4</span><span class="o">.</span><span class="w"> </span><span class="n">Transmit</span><span class="w"> </span><span class="n">framed</span><span class="w"> </span><span class="n">data</span>
+
+<span class="n">DEFRAMING</span><span class="o">:</span>
+<span class="mi">1</span><span class="o">.</span><span class="w"> </span><span class="n">Read</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="n">byte</span>
+<span class="mi">2</span><span class="o">.</span><span class="w"> </span><span class="n">Extract</span><span class="w"> </span><span class="o">(</span><span class="n">count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="o">)</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">bytes</span>
+<span class="mi">3</span><span class="o">.</span><span class="w"> </span><span class="n">Repeat</span><span class="w"> </span><span class="n">until</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">transmission</span>
+</code></pre></div>
+
+<h3>Advantages &amp; Disadvantages</h3>
+<table>
+<thead>
+<tr>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simple implementation</td>
+<td>Single bit error in count corrupts synchronization</td>
+</tr>
+<tr>
+<td>Low overhead</td>
+<td>Hard to resynchronize after error</td>
+</tr>
+<tr>
+<td>No special characters needed</td>
+<td>Receiver loses frame boundaries</td>
+</tr>
+</tbody>
+</table>
+<h3>See: <code>Slip_11_Q2_OptionA.c</code></h3>
+<hr />
+<h2>Option B: Stop-and-Wait ARQ Protocol</h2>
+<h3>Concept</h3>
+<p><strong>ARQ (Automatic Repeat reQuest)</strong> is an error control method using acknowledgments and timeouts.</p>
+<p><strong>Stop-and-Wait ARQ:</strong><br />
+- Sender transmits ONE frame and WAITS for acknowledgment<br />
+- If ACK received → send next frame<br />
+- If timeout → retransmit same frame<br />
+- Simplest form of ARQ</p>
+<h3>Protocol Operation</h3>
+<div class="codehilite"><pre><span></span><code><span class="c">Sender                              Receiver</span>
+<span class="c">  |                                    |</span>
+<span class="c">  |</span><span class="nb">--------</span><span class="c"> Frame 0 </span><span class="nb">------------------</span><span class="nv">&gt;</span><span class="c">|</span>
+<span class="c">  |                                    | ✓ Receive</span>
+<span class="c">  |</span><span class="nv">&lt;</span><span class="nb">--------</span><span class="c"> ACK 0 </span><span class="nb">--------------------</span><span class="c">|</span>
+<span class="c">  |                                    |</span>
+<span class="c">  |</span><span class="nb">--------</span><span class="c"> Frame 1 </span><span class="nb">------------------</span><span class="nv">&gt;</span><span class="c">|</span>
+<span class="c">  |              X (Lost)              |</span>
+<span class="c">  |         </span><span class="k">[</span><span class="c">TIMEOUT</span><span class="k">]</span><span class="c">                  |</span>
+<span class="c">  |</span><span class="nb">--------</span><span class="c"> Frame 1 </span><span class="nb">------------------</span><span class="nv">&gt;</span><span class="c">| (Retransmit)</span>
+<span class="c">  |                                    | ✓ Receive</span>
+<span class="c">  |</span><span class="nv">&lt;</span><span class="nb">--------</span><span class="c"> ACK 1 </span><span class="nb">--------------------</span><span class="c">|</span>
+</code></pre></div>
+
+<h3>State Diagram</h3>
+<div class="codehilite"><pre><span></span><code><span class="w">        </span>┌─────────────────────────────────┐
+<span class="w">        </span>│<span class="w">                                 </span>│
+<span class="w">        </span>▼<span class="w">                                 </span>│
+<span class="w">  </span>┌──────────┐<span class="w">    </span><span class="k">Send</span><span class="w"> </span><span class="nv">Frame</span><span class="w">     </span>┌────────────┐
+<span class="w">  </span>│<span class="w">   </span><span class="nv">IDLE</span><span class="w">   </span>│<span class="w"> </span>───────────────→<span class="w">  </span>│<span class="w">  </span><span class="nv">WAITING</span><span class="w">   </span>│
+<span class="w">  </span>└──────────┘<span class="w">                   </span>└────────────┘
+<span class="w">        </span>▲<span class="w">                              </span>│
+<span class="w">        </span>│<span class="w">         </span><span class="nv">ACK</span><span class="w"> </span><span class="nv">Received</span><span class="w">         </span>│
+<span class="w">        </span>│<span class="w">          </span><span class="ss">(</span><span class="nv">Success</span><span class="ss">)</span><span class="w">           </span>│
+<span class="w">        </span>└──────────────────────────────┘
+<span class="w">                      </span>│
+<span class="w">              </span><span class="nb">Timeout</span><span class="w"> </span>│
+<span class="w">              </span><span class="ss">(</span><span class="nv">Retry</span><span class="ss">)</span><span class="w"> </span>│
+<span class="w">                      </span>▼
+<span class="w">                </span>┌──────────┐
+<span class="w">                </span>│<span class="w"> </span><span class="nv">RETRANS</span><span class="w">  </span>│
+<span class="w">                </span>└──────────┘
+</code></pre></div>
+
+<h3>Algorithm</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">SENDER</span><span class="o">:</span>
+<span class="mi">1</span><span class="o">.</span><span class="w"> </span><span class="n">seq_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="mi">2</span><span class="o">.</span><span class="w"> </span><span class="n">While</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">send</span><span class="o">:</span>
+<span class="w">   </span><span class="n">a</span><span class="o">.</span><span class="w"> </span><span class="n">Create</span><span class="w"> </span><span class="n">frame</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">seq_num</span>
+<span class="w">   </span><span class="n">b</span><span class="o">.</span><span class="w"> </span><span class="n">Send</span><span class="w"> </span><span class="n">frame</span><span class="o">,</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">timer</span>
+<span class="w">   </span><span class="n">c</span><span class="o">.</span><span class="w"> </span><span class="n">Wait</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ACK</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">timeout</span><span class="o">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="n">ACK</span><span class="w"> </span><span class="n">received</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">correct</span><span class="w"> </span><span class="n">seq</span><span class="o">:</span>
+<span class="w">        </span><span class="o">*</span><span class="w"> </span><span class="n">Stop</span><span class="w"> </span><span class="n">timer</span>
+<span class="w">        </span><span class="o">*</span><span class="w"> </span><span class="n">seq_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">seq_num</span><span class="w"> </span><span class="o">(</span><span class="n">toggle</span><span class="o">)</span>
+<span class="w">        </span><span class="o">*</span><span class="w"> </span><span class="n">Get</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="n">data</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="n">timeout</span><span class="o">:</span>
+<span class="w">        </span><span class="o">*</span><span class="w"> </span><span class="n">Retransmit</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">frame</span>
+<span class="mi">3</span><span class="o">.</span><span class="w"> </span><span class="n">End</span><span class="w"> </span><span class="n">transmission</span>
+
+<span class="n">RECEIVER</span><span class="o">:</span>
+<span class="mi">1</span><span class="o">.</span><span class="w"> </span><span class="n">expected_seq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="mi">2</span><span class="o">.</span><span class="w"> </span><span class="n">While</span><span class="w"> </span><span class="n">receiving</span><span class="o">:</span>
+<span class="w">   </span><span class="n">a</span><span class="o">.</span><span class="w"> </span><span class="n">Receive</span><span class="w"> </span><span class="n">frame</span>
+<span class="w">   </span><span class="n">b</span><span class="o">.</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="n">seq_num</span><span class="w"> </span><span class="n">matches</span><span class="w"> </span><span class="n">expected</span><span class="o">:</span>
+<span class="w">      </span><span class="o">*</span><span class="w"> </span><span class="n">Process</span><span class="w"> </span><span class="n">data</span>
+<span class="w">      </span><span class="o">*</span><span class="w"> </span><span class="n">Send</span><span class="w"> </span><span class="n">ACK</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">seq_num</span>
+<span class="w">      </span><span class="o">*</span><span class="w"> </span><span class="n">expected_seq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">expected_seq</span>
+<span class="w">   </span><span class="n">c</span><span class="o">.</span><span class="w"> </span><span class="n">Else</span><span class="o">:</span>
+<span class="w">      </span><span class="o">*</span><span class="w"> </span><span class="n">Discard</span><span class="w"> </span><span class="n">duplicate</span>
+<span class="w">      </span><span class="o">*</span><span class="w"> </span><span class="n">Resend</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">ACK</span>
+</code></pre></div>
+
+<h3>Sequence Number Handling</h3>
+<div class="codehilite"><pre><span></span><code>Only 2 sequence numbers needed: 0 and 1
+
+Frame 0 → ACK 0 → Frame 1 → ACK 1 → Frame 0 → ACK 0 → ...
+</code></pre></div>
+
+<h3>Efficiency Calculation</h3>
+<div class="codehilite"><pre><span></span><code>Efficiency = Transmission Time / (Transmission Time + 2 × Propagation Delay)
+
+η = Tt / (Tt + 2Tp) = 1 / (1 + 2a)
+
+where a = Tp/Tt (propagation to transmission ratio)
+</code></pre></div>
+
+<h3>Advantages &amp; Disadvantages</h3>
+<table>
+<thead>
+<tr>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simple to implement</td>
+<td>Low efficiency (especially for high-latency links)</td>
+</tr>
+<tr>
+<td>Low buffer requirements</td>
+<td>Link utilization poor</td>
+</tr>
+<tr>
+<td>Reliable delivery</td>
+<td>One frame at a time</td>
+</tr>
+<tr>
+<td>Error detection &amp; recovery</td>
+<td>Long delays in high-latency networks</td>
+</tr>
+</tbody>
+</table>
+<h3>See: <code>Slip_11_Q2_OptionB.c</code></h3>
+<hr />
+<h2>Option C: Cisco Switch Initial Configuration (Packet Tracer)</h2>
+<h3>Configuration Steps</h3>
+<p><strong>1. Access Switch CLI:</strong></p>
+<div class="codehilite"><pre><span></span><code>Switch&gt;
+</code></pre></div>
+
+<p><strong>2. Enter Privileged EXEC Mode:</strong></p>
+<div class="codehilite"><pre><span></span><code>Switch&gt; enable
+Switch#
+</code></pre></div>
+
+<p><strong>3. Enter Global Configuration Mode:</strong></p>
+<div class="codehilite"><pre><span></span><code>Switch# configure terminal
+Switch(config)#
+</code></pre></div>
+
+<p><strong>4. Set Hostname:</strong></p>
+<div class="codehilite"><pre><span></span><code>Switch(config)# hostname LAB-SWITCH
+LAB-SWITCH(config)#
+</code></pre></div>
+
+<p><strong>5. Configure Privileged EXEC Mode Password:</strong></p>
+<div class="codehilite"><pre><span></span><code>LAB-SWITCH(config)# enable secret MySecretPass123
+</code></pre></div>
+
+<p>Note: <code>enable secret</code> encrypts the password using MD5</p>
+<p><strong>6. Configure VTY Lines (Virtual Terminal for Telnet/SSH):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nv">LAB</span><span class="o">-</span><span class="nv">SWITCH</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="nv">line</span><span class="w"> </span><span class="nv">vty</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">15</span>
+<span class="nv">LAB</span><span class="o">-</span><span class="nv">SWITCH</span><span class="ss">(</span><span class="nv">config</span><span class="o">-</span><span class="nv">line</span><span class="ss">)</span>#<span class="w"> </span><span class="nv">password</span><span class="w"> </span><span class="nv">VTYPass123</span>
+<span class="nv">LAB</span><span class="o">-</span><span class="nv">SWITCH</span><span class="ss">(</span><span class="nv">config</span><span class="o">-</span><span class="nv">line</span><span class="ss">)</span>#<span class="w"> </span><span class="nv">login</span>
+<span class="nv">LAB</span><span class="o">-</span><span class="nv">SWITCH</span><span class="ss">(</span><span class="nv">config</span><span class="o">-</span><span class="nv">line</span><span class="ss">)</span>#<span class="w"> </span><span class="k">exit</span>
+</code></pre></div>
+
+<p><strong>7. (Optional) Encrypt All Passwords:</strong></p>
+<div class="codehilite"><pre><span></span><code>LAB-SWITCH(config)# service password-encryption
+</code></pre></div>
+
+<p><strong>8. Save Configuration:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nv">LAB</span><span class="o">-</span><span class="nv">SWITCH</span><span class="ss">(</span><span class="nv">config</span><span class="ss">)</span>#<span class="w"> </span><span class="k">exit</span>
+<span class="nv">LAB</span><span class="o">-</span><span class="nv">SWITCH</span>#<span class="w"> </span><span class="nv">copy</span><span class="w"> </span><span class="nv">running</span><span class="o">-</span><span class="nv">config</span><span class="w"> </span><span class="nv">startup</span><span class="o">-</span><span class="nv">config</span>
+</code></pre></div>
+
+<h3>Complete Configuration Script:</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">enable</span>
+<span class="nv">configure</span><span class="w"> </span><span class="nv">terminal</span>
+<span class="nv">hostname</span><span class="w"> </span><span class="nv">LAB</span><span class="o">-</span><span class="nv">SWITCH</span>
+<span class="nv">enable</span><span class="w"> </span><span class="nv">secret</span><span class="w"> </span><span class="nv">PrivExecPass123</span>
+<span class="nv">line</span><span class="w"> </span><span class="nv">vty</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">15</span>
+<span class="nv">password</span><span class="w"> </span><span class="nv">VTYLinePass456</span>
+<span class="nv">login</span>
+<span class="k">exit</span>
+<span class="nv">service</span><span class="w"> </span><span class="nv">password</span><span class="o">-</span><span class="nv">encryption</span>
+<span class="nv">banner</span><span class="w"> </span><span class="nv">motd</span><span class="w"> </span>#<span class="w"> </span><span class="nv">Unauthorized</span><span class="w"> </span><span class="nv">Access</span><span class="w"> </span><span class="nv">Prohibited</span><span class="o">!</span><span class="w"> </span>#
+<span class="k">exit</span>
+<span class="nv">copy</span><span class="w"> </span><span class="nv">running</span><span class="o">-</span><span class="nv">config</span><span class="w"> </span><span class="nv">startup</span><span class="o">-</span><span class="nv">config</span>
+</code></pre></div>
+
+<h3>Verification Commands:</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">LAB</span><span class="o">-</span><span class="nv">SWITCH</span>#<span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="nv">running</span><span class="o">-</span><span class="nv">config</span>
+<span class="nv">LAB</span><span class="o">-</span><span class="nv">SWITCH</span>#<span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="nv">startup</span><span class="o">-</span><span class="nv">config</span>
+</code></pre></div>
+
+<h3>Configuration Diagram:</h3>
+<div class="codehilite"><pre><span></span><code><span class="err">┌─────────────────────────────────────────────┐</span>
+<span class="err">│</span><span class="w">              </span><span class="n">SWITCH</span><span class="w"> </span><span class="n">SECURITY</span><span class="w">                </span><span class="err">│</span>
+<span class="err">├─────────────────────────────────────────────┤</span>
+<span class="err">│</span><span class="w">                                             </span><span class="err">│</span>
+<span class="err">│</span><span class="w">  </span><span class="n">Console</span><span class="w"> </span><span class="err">──→</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">Console</span><span class="w"> </span><span class="n">Password</span><span class="w"> </span><span class="p">]</span><span class="w">           </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                                             </span><span class="err">│</span>
+<span class="err">│</span><span class="w">  </span><span class="n">Telnet</span><span class="o">/</span><span class="n">SSH</span><span class="w"> </span><span class="err">──→</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">VTY</span><span class="w"> </span><span class="n">Password</span><span class="w"> </span><span class="p">]</span><span class="w">            </span><span class="err">│</span>
+<span class="err">│</span><span class="w">  </span><span class="p">(</span><span class="n">Remote</span><span class="p">)</span><span class="w">       </span><span class="p">(</span><span class="n">line</span><span class="w"> </span><span class="n">vty</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">15</span><span class="p">)</span><span class="w">             </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                                             </span><span class="err">│</span>
+<span class="err">│</span><span class="w">  </span><span class="n">Privileged</span><span class="w"> </span><span class="n">Mode</span><span class="w"> </span><span class="err">──→</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">Enable</span><span class="w"> </span><span class="n">Secret</span><span class="w"> </span><span class="p">]</span><span class="w">      </span><span class="err">│</span>
+<span class="err">│</span><span class="w">  </span><span class="p">(</span><span class="n">Switch</span><span class="err">#</span><span class="w"> </span><span class="n">prompt</span><span class="p">)</span><span class="w">                           </span><span class="err">│</span>
+<span class="err">│</span><span class="w">                                             </span><span class="err">│</span>
+<span class="err">└─────────────────────────────────────────────┘</span>
+</code></pre></div>
+
+<hr />
+<h2>Summary of Concepts</h2>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Key Point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Switch vs Router</td>
+<td>Layer 2 vs Layer 3, MAC vs IP</td>
+</tr>
+<tr>
+<td>Modem</td>
+<td>Digital ↔ Analog conversion</td>
+</tr>
+<tr>
+<td>Network Cables</td>
+<td>UTP, Coaxial, Fiber - various speeds/distances</td>
+</tr>
+<tr>
+<td>IPv4 vs IPv6</td>
+<td>32-bit vs 128-bit, address exhaustion solution</td>
+</tr>
+<tr>
+<td>Subnetting</td>
+<td>Divide networks, /26 = 62 usable hosts</td>
+</tr>
+<tr>
+<td>Hostname</td>
+<td>Device identification in network</td>
+</tr>
+<tr>
+<td>Character Count</td>
+<td>Frame size in first byte</td>
+</tr>
+<tr>
+<td>Stop-and-Wait ARQ</td>
+<td>Send one frame, wait for ACK</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Compilation Commands</h2>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Option A - Character Count Framing</span>
+gcc<span class="w"> </span>-o<span class="w"> </span>framing<span class="w"> </span>Slip_11_Q2_OptionA.c
+./framing
+
+<span class="c1"># Option B - Stop-and-Wait ARQ</span>
+gcc<span class="w"> </span>-o<span class="w"> </span>arq<span class="w"> </span>Slip_11_Q2_OptionB.c
+./arq
+</code></pre></div>
+    
+    <script>
+        // Add syntax highlighting for code blocks
+        document.querySelectorAll('pre code').forEach((block) => {
+            block.style.fontFamily = "'Consolas', 'Monaco', 'Courier New', monospace";
+        });
+    </script>
+</body>
+</html>
