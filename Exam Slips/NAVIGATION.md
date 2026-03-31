@@ -28,6 +28,12 @@
    * Format: Jupyter Notebook solutions with visualizations
    * Topics: Geometric algorithms, Transformations, Visualization
 
+5. **[Section V: Computer Networks](./Section%20V%3A%20Computer%20Networks/)**
+
+   * 20 exam slips on computer networks (SEC-251-CS-P)
+   * Format: C programs and Markdown solutions with Packet Tracer guides
+   * Topics: Network topologies, Framing, Error detection, NAT, Routing, Security
+
 ---
 
 # Document Structure
@@ -60,6 +66,13 @@ Exam Slips/
 │
 ├── Section IV: Mathematics for Computer Science-II/
 │   └── Slip_01 ... Slip_20_MATHS_Solution.ipynb
+│
+├── Section V: Computer Networks/
+│   ├── CN_topics.md                   (Topic index)
+│   └── Slip_01 ... Slip_20/
+│       ├── Slip_XX_CN_SOLUTION.md     (Theory + explanations)
+│       ├── Slip_XX_Q2_OptionA.c       (C program Option A)
+│       └── Slip_XX_Q2_OptionB.c       (C program Option B)
 │
 ├── _references/                       ← Reference PDFs and extracted text
 │
@@ -123,6 +136,18 @@ At the section root level:
 
 ---
 
+## Section V — Computer Networks
+
+Inside each `Slip_XX/` folder:
+
+* **Slip_XX_CN_SOLUTION.md** — Complete theory answers + explanations for all Q2 options
+* **Slip_XX_Q2_OptionA.c** — C program for first option
+* **Slip_XX_Q2_OptionB.c** — C program for second option
+
+Topics include: Network topologies, Data link layer framing, Error detection (parity), Subnetting, NAT simulation, Routing protocols, Socket programming, Packet Tracer configurations.
+
+---
+
 # How to Access Specific Slips
 
 ## By Subject Section
@@ -138,6 +163,9 @@ At the section root level:
 
 * **Mathematics**
   Open `Section IV: Mathematics for Computer Science-II/` and open `Slip_XX_MATHS_Solution.ipynb`
+
+* **Computer Networks**
+  Open `Section V: Computer Networks/` and navigate to `Slip_01/` → `Slip_20/`
 
 ---
 
@@ -232,7 +260,8 @@ python Q06_app2.py
 | II        | Database Management Systems II      | 30      | `.sql`, `.md`, `.pdf`            | ~90           |
 | III       | Advanced Python Programming         | 30      | `.ipynb`, `.txt`, `.py`, `.html` | ~120          |
 | IV        | Mathematics for Computer Science-II | 20      | `.ipynb`                         | ~20           |
-| **TOTAL** | —                                   | **110** | Mixed                            | **~365**      |
+| V         | Computer Networks                   | 20      | `.c`, `.md`                      | ~61           |
+| **TOTAL** | —                                   | **130** | Mixed                            | **~426**      |
 
 ---
 
@@ -268,9 +297,9 @@ Supplementary materials are available in the **`_references/`** folder:
 
 ---
 
-**Total Exam Slips:** 110
-**Total Sections:** 4
+**Total Exam Slips:** 130
+**Total Sections:** 5
 **File Formats:** C, SQL, Jupyter Notebooks, Flask Apps, Markdown, PDF
-**Last Updated:** Semester 4, 2025
+**Last Updated:** Semester 4, 2026
 
 ---
