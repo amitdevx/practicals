@@ -106,8 +106,7 @@ void displayDeviceTable(StarTopology *topology) {
 
 
     for (int i = 0; i < topology->numDevices; i++) {
-        NetworkDevice *dev = &topology->devices[i];
-
+        printf("Device %d: %s\n", i, topology->devices[i].name);
     }
 
 
