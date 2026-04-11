@@ -53,9 +53,6 @@ void senderSide() {
     int size;
     char input[MAX_DATA_SIZE + 1];
     
-    printf("\n╔════════════════════════════════════════════════╗\n");
-    printf("║              SENDER SIDE                       ║\n");
-    printf("╚════════════════════════════════════════════════╝\n\n");
     
     printf("Enter binary data (e.g., 1010011): ");
     scanf("%s", input);
@@ -125,9 +122,6 @@ void receiverSide() {
     int size;
     char input[MAX_DATA_SIZE + 2];
     
-    printf("\n╔════════════════════════════════════════════════╗\n");
-    printf("║             RECEIVER SIDE                      ║\n");
-    printf("╚════════════════════════════════════════════════╝\n\n");
     
     printf("Enter received data (including parity bit): ");
     scanf("%s", input);
@@ -191,9 +185,6 @@ void simulateWithError() {
     int size;
     char input[MAX_DATA_SIZE + 1];
     
-    printf("\n╔════════════════════════════════════════════════╗\n");
-    printf("║         ERROR INJECTION SIMULATION             ║\n");
-    printf("╚════════════════════════════════════════════════╝\n\n");
     
     printf("Enter original binary data: ");
     scanf("%s", input);
@@ -274,9 +265,6 @@ void simulateWithError() {
 
 // Display educational information about parity
 void displayInfo() {
-    printf("\n╔════════════════════════════════════════════════════════════╗\n");
-    printf("║            ODD PARITY ERROR DETECTION - EXPLAINED          ║\n");
-    printf("╚════════════════════════════════════════════════════════════╝\n\n");
     
     printf("  WHAT IS ODD PARITY?\n");
     printf("  ───────────────────\n");
@@ -326,9 +314,6 @@ void compareParities() {
     int data[MAX_DATA_SIZE];
     int size;
     
-    printf("\n╔════════════════════════════════════════════════╗\n");
-    printf("║         ODD vs EVEN PARITY COMPARISON          ║\n");
-    printf("╚════════════════════════════════════════════════╝\n\n");
     
     printf("Enter binary data: ");
     scanf("%s", input);
@@ -368,16 +353,6 @@ void compareParities() {
 
 // Display menu
 void displayMenu() {
-    printf("\n╔════════════════════════════════════════════════╗\n");
-    printf("║      ODD PARITY ERROR DETECTION - MENU         ║\n");
-    printf("╠════════════════════════════════════════════════╣\n");
-    printf("║  1. Sender: Generate Parity Bit                ║\n");
-    printf("║  2. Receiver: Check for Errors                 ║\n");
-    printf("║  3. Simulate Transmission with Errors          ║\n");
-    printf("║  4. Compare Odd vs Even Parity                 ║\n");
-    printf("║  5. Learn About Parity Detection               ║\n");
-    printf("║  6. Exit                                       ║\n");
-    printf("╚════════════════════════════════════════════════╝\n");
     printf("Enter your choice: ");
 }
 
@@ -385,10 +360,6 @@ int main() {
     int choice;
     
     printf("\n");
-    printf("╔══════════════════════════════════════════════════════╗\n");
-    printf("║     ODD PARITY ERROR DETECTION PROGRAM               ║\n");
-    printf("║     Computer Networks - Slip 5                       ║\n");
-    printf("╚══════════════════════════════════════════════════════╝\n");
     
     do {
         displayMenu();

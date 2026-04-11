@@ -1,256 +1,49 @@
 /*
- * Slip 17 - Option B: Plain Message to Cipher Message Converter
- *
- * This program implements the Caesar Cipher encryption algorithm
- * to convert plaintext messages into ciphertext.
- *
- * Features:
- * - Encrypt plaintext to ciphertext
- * - Decrypt ciphertext back to plaintext
- * - Handles uppercase and lowercase letters
- * - Preserves spaces and special characters
- * - Customizable shift key (1-25)
- *
- * Compile: gcc Slip_17_Q2_OptionB.c -o cipher
- * Run: ./cipher
+ * Slip 17 - Q2 Option B: Password Strength Checker
+ * 
+ * Validates password complexity.
+ * 
+ * Compile: gcc Slip_17_Q2_OptionB.c -o password
+ * Run: ./password
  */
 
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 
-#define MAX_MESSAGE_LEN 500
-
-// Function to encrypt plaintext using Caesar Cipher
-void encrypt(const char *plaintext, char *ciphertext, int key) {
-    int i = 0;
-
-    // Normalize key to 0-25 range
-    key = ((key % 26) + 26) % 26;
-
-    while (plaintext[i] != '\0') {
-        char ch = plaintext[i];
-
-        if (ch >= 'A' && ch <= 'Z') {
-            // Encrypt uppercase letter
-            ciphertext[i] = ((ch - 'A' + key) % 26) + 'A';
-        }
-        else if (ch >= 'a' && ch <= 'z') {
-            // Encrypt lowercase letter
-            ciphertext[i] = ((ch - 'a' + key) % 26) + 'a';
-        }
-        else {
-            // Keep non-alphabetic characters unchanged
-            ciphertext[i] = ch;
-        }
-        i++;
-    }
-    ciphertext[i] = '\0';  // Null terminate
-}
-
-// Function to decrypt ciphertext using Caesar Cipher
-void decrypt(const char *ciphertext, char *plaintext, int key) {
-    // Decryption is encryption with negative key (or 26 - key)
-    int decryptKey = (26 - (key % 26)) % 26;
-    encrypt(ciphertext, plaintext, decryptKey);
-}
-
-void displayCipherAlphabet(int key) {
-
-
-    for (char c = 'A'; c <= 'Z'; c++) {
-        printf("%c ", c);
-    }
-
-
-    for (char c = 'A'; c <= 'Z'; c++) {
-        char encrypted = ((c - 'A' + key) % 26) + 'A';
-        printf("%c ", encrypted);
-    }
-
-
-}
-
-void showEncryptionSteps(const char *plaintext, int key) {
-    printf("\n📝 STEP-BY-STEP ENCRYPTION:\n");
-    printf("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
-    printf("Formula: E(x) = (x + key) mod 26\n");
-    printf("Key = %d\n\n", key);
-
-    printf("%-6s  %-10s  %-15s  %-6s\n", "Char", "Position", "Calculation", "Result");
-    printf("━━━━━━  ━━━━━━━━━━  ━━━━━━━━━━━━━━━  ━━━━━━\n");
-
-    int count = 0;
-    for (int i = 0; plaintext[i] != '\0' && count < 10; i++) {
-        char ch = plaintext[i];
-
-        if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')) {
-            int pos, newPos;
-            char base, encrypted;
-
-            if (ch >= 'A' && ch <= 'Z') {
-                base = 'A';
-            } else {
-                base = 'a';
-            }
-
-            pos = ch - base;
-            newPos = (pos + key) % 26;
-            encrypted = newPos + base;
-
-            printf("'%c'     %-10d  (%d + %d) mod 26 = %-2d  '%c'\n",
-                   ch, pos, pos, key, newPos, encrypted);
-            count++;
-        } else if (ch == ' ') {
-            printf("' '     (space)     Unchanged          ' '\n");
-            count++;
-        }
-    }
-
-    if (count >= 10) {
-        printf("... (showing first 10 characters)\n");
-    }
-    printf("\n");
-}
-
-void displayHeader() {
-    printf("\n");
-
-
-    printf("\n");
-
-
-    printf("\n");
-}
-
-void displayMenu() {
-
-
-    printf("Enter your choice (1-6): ");
-}
-
-// Function to brute force decrypt (try all possible keys)
-void bruteForceDecrypt(const char *ciphertext) {
-    char plaintext[MAX_MESSAGE_LEN];
-
-    printf("\n🔓 BRUTE FORCE DECRYPTION - All Possible Keys:\n");
-    printf("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
-    printf("%-4s  %-50s\n", "Key", "Decrypted Message");
-    printf("━━━━  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
-
-    for (int key = 1; key <= 25; key++) {
-        decrypt(ciphertext, plaintext, key);
-
-        if (strlen(plaintext) > 45) {
-            char truncated[50];
-            strncpy(truncated, plaintext, 45);
-            truncated[45] = '\0';
-            printf("%-4d  %s...\n", key, truncated);
-        } else {
-            printf("%-4d  %s\n", key, plaintext);
-        }
-    }
-    printf("\n💡 Look for the key that produces readable text!\n");
-}
-
 int main() {
-    char message[MAX_MESSAGE_LEN];
-    char result[MAX_MESSAGE_LEN];
-    int key;
-    int choice;
-
-    displayHeader();
-
-    do {
-        displayMenu();
-        scanf("%d", &choice);
-        getchar();  // Clear newline from buffer
-
-        switch (choice) {
-            case 1:  // Encrypt
-                printf("\n📥 ENCRYPTION MODE\n");
-                printf("━━━━━━━━━━━━━━━━━━\n");
-                printf("Enter the plaintext message: ");
-                fgets(message, MAX_MESSAGE_LEN, stdin);
-                message[strcspn(message, "\n")] = '\0';  // Remove newline
-
-                printf("Enter the shift key (1-25): ");
-                scanf("%d", &key);
-                getchar();
-
-                if (key < 1 || key > 25) {
-                    printf("⚠️  Invalid key! Using key = %d (normalized)\n", ((key % 26) + 26) % 26);
-                }
-
-                encrypt(message, result, key);
-
-
-                break;
-
-            case 2:  // Decrypt
-                printf("\n📤 DECRYPTION MODE\n");
-                printf("━━━━━━━━━━━━━━━━━━\n");
-                printf("Enter the ciphertext message: ");
-                fgets(message, MAX_MESSAGE_LEN, stdin);
-                message[strcspn(message, "\n")] = '\0';
-
-                printf("Enter the shift key used for encryption (1-25): ");
-                scanf("%d", &key);
-                getchar();
-
-                decrypt(message, result, key);
-
-
-                break;
-
-            case 3:  // Show cipher alphabet
-                printf("\nEnter the shift key to display cipher alphabet (1-25): ");
-                scanf("%d", &key);
-                getchar();
-                displayCipherAlphabet(((key % 26) + 26) % 26);
-                break;
-
-            case 4:  // Encrypt with steps
-                printf("\n📝 DETAILED ENCRYPTION MODE\n");
-                printf("━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
-                printf("Enter the plaintext message: ");
-                fgets(message, MAX_MESSAGE_LEN, stdin);
-                message[strcspn(message, "\n")] = '\0';
-
-                printf("Enter the shift key (1-25): ");
-                scanf("%d", &key);
-                getchar();
-
-                key = ((key % 26) + 26) % 26;
-
-                displayCipherAlphabet(key);
-                showEncryptionSteps(message, key);
-
-                encrypt(message, result, key);
-
-
-                break;
-
-            case 5:  // Brute force
-                printf("\n🔓 BRUTE FORCE DECRYPTION MODE\n");
-                printf("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
-                printf("Enter the ciphertext message: ");
-                fgets(message, MAX_MESSAGE_LEN, stdin);
-                message[strcspn(message, "\n")] = '\0';
-
-                bruteForceDecrypt(message);
-                break;
-
-            case 6:  // Exit
-                printf("\nThank you for using the Caesar Cipher Program!\n");
-                printf("🔐 Keep your messages secure!\n\n");
-                break;
-
-            default:
-                printf("\n⚠️  Invalid choice! Please enter a number between 1-6.\n");
-        }
-
-    } while (choice != 6);
-
+    char password[100];
+    int hasUpper = 0, hasLower = 0, hasDigit = 0, hasSpecial = 0;
+    
+    printf("Enter password: ");
+    scanf("%s", password);
+    
+    int length = strlen(password);
+    
+    if (length < 8) {
+        printf("Error: Password must be at least 8 characters.\n");
+        return 1;
+    }
+    
+    for (int i = 0; password[i]; i++) {
+        if (isupper(password[i])) hasUpper = 1;
+        else if (islower(password[i])) hasLower = 1;
+        else if (isdigit(password[i])) hasDigit = 1;
+        else if (ispunct(password[i])) hasSpecial = 1;
+    }
+    
+    printf("\n--- Security Check ---\n");
+    
+    if (!hasUpper) printf("[-] Missing uppercase letter\n");
+    if (!hasLower) printf("[-] Missing lowercase letter\n");
+    if (!hasDigit) printf("[-] Missing digit\n");
+    if (!hasSpecial) printf("[-] Missing special character\n");
+    
+    if (hasUpper && hasLower && hasDigit && hasSpecial) {
+        printf("[+] Strong Password!\n");
+    } else {
+        printf("\nResult: Password is weak.\n");
+    }
+    
     return 0;
 }

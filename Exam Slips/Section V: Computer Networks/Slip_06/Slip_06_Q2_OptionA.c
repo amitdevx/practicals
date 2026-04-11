@@ -48,12 +48,6 @@ FrameCollection createFrames(const char *data, int frameSize) {
     int dataPerFrame = frameSize - 1;  // Reserve 1 for count
     int i = 0;
     
-    printf("\n╔════════════════════════════════════════════════════╗\n");
-    printf("║         FRAMING PROCESS (SENDER SIDE)              ║\n");
-    printf("╠════════════════════════════════════════════════════╣\n");
-    printf("║ Frame Size: %d (Count: 1, Data: %d)                 ║\n", 
-           frameSize, dataPerFrame);
-    printf("╚════════════════════════════════════════════════════╝\n\n");
     
     while (i < dataLen && fc.numFrames < MAX_FRAMES) {
         Frame *f = &fc.frames[fc.numFrames];
@@ -94,10 +88,6 @@ FrameCollection createFrames(const char *data, int frameSize) {
  * Purpose:  Show the complete framed data stream
  */
 void displayFramedStream(FrameCollection *fc) {
-    printf("╔════════════════════════════════════════════════════╗\n");
-    printf("║           COMPLETE FRAMED STREAM                   ║\n");
-    printf("╠════════════════════════════════════════════════════╣\n");
-    printf("║ ");
     
     for (int i = 0; i < fc->numFrames; i++) {
         printf("[%d]", fc->frames[i].count);
@@ -107,7 +97,6 @@ void displayFramedStream(FrameCollection *fc) {
         if (i < fc->numFrames - 1) printf(" ");
     }
     printf("\n");
-    printf("╚════════════════════════════════════════════════════╝\n");
 }
 
 /*
@@ -123,16 +112,10 @@ void displayFramedStream(FrameCollection *fc) {
 void extractData(FrameCollection *fc, char *output) {
     int outIdx = 0;
     
-    printf("\n╔════════════════════════════════════════════════════╗\n");
-    printf("║        DEFRAMING PROCESS (RECEIVER SIDE)           ║\n");
-    printf("╠════════════════════════════════════════════════════╣\n");
     
     for (int i = 0; i < fc->numFrames; i++) {
         Frame *f = &fc->frames[i];
         
-        printf("║ Frame %d: Read count = %d                           ║\n", 
-               i + 1, f->count);
-        printf("║          Extract %d data character(s): \"", f->count - 1);
         
         for (int j = 0; j < f->dataLength; j++) {
             output[outIdx++] = f->data[j];
@@ -142,11 +125,9 @@ void extractData(FrameCollection *fc, char *output) {
         
         // Padding for alignment
         for (int k = f->dataLength; k < 6; k++) printf(" ");
-        printf("║\n");
     }
     
     output[outIdx] = '\0';
-    printf("╚════════════════════════════════════════════════════╝\n");
 }
 
 /*
@@ -157,12 +138,8 @@ void simulateTransmission(FrameCollection *fc) {
     char transmissionStream[MAX_DATA * 2];
     int idx = 0;
     
-    printf("\n╔════════════════════════════════════════════════════╗\n");
-    printf("║         TRANSMISSION SIMULATION                    ║\n");
-    printf("╠════════════════════════════════════════════════════╣\n");
     
     // Create transmission stream
-    printf("║ Creating byte stream for transmission:             ║\n║ ");
     for (int i = 0; i < fc->numFrames; i++) {
         transmissionStream[idx++] = '0' + fc->frames[i].count;
         printf("%d", fc->frames[i].count);
@@ -173,12 +150,8 @@ void simulateTransmission(FrameCollection *fc) {
         }
     }
     transmissionStream[idx] = '\0';
-    printf("\n╚════════════════════════════════════════════════════╝\n");
     
     // Parse transmission stream (receiver side simulation)
-    printf("\n╔════════════════════════════════════════════════════╗\n");
-    printf("║       RECEIVER PARSING TRANSMISSION STREAM         ║\n");
-    printf("╠════════════════════════════════════════════════════╣\n");
     
     int pos = 0;
     int frameNum = 1;
@@ -187,11 +160,8 @@ void simulateTransmission(FrameCollection *fc) {
     
     while (pos < idx) {
         int count = transmissionStream[pos] - '0';
-        printf("║ Position %2d: Count = %d                             ║\n", 
-               pos, count);
         pos++;
         
-        printf("║              Data: \"");
         for (int i = 0; i < count - 1 && pos < idx; i++) {
             extractedData[dataIdx++] = transmissionStream[pos];
             printf("%c", transmissionStream[pos]);
@@ -199,15 +169,11 @@ void simulateTransmission(FrameCollection *fc) {
         }
         printf("\"");
         for (int k = count - 1; k < 6; k++) printf(" ");
-        printf("                     ║\n");
         
         frameNum++;
     }
     extractedData[dataIdx] = '\0';
     
-    printf("╠════════════════════════════════════════════════════╣\n");
-    printf("║ Extracted Data: %-33s ║\n", extractedData);
-    printf("╚════════════════════════════════════════════════════╝\n");
 }
 
 /*
@@ -215,28 +181,6 @@ void simulateTransmission(FrameCollection *fc) {
  * Purpose:  Show what happens when count field gets corrupted
  */
 void demonstrateErrorScenario(void) {
-    printf("\n╔════════════════════════════════════════════════════╗\n");
-    printf("║       ERROR SCENARIO DEMONSTRATION                 ║\n");
-    printf("╠════════════════════════════════════════════════════╣\n");
-    printf("║                                                    ║\n");
-    printf("║ Original Stream: [5]HELL[5]OWOR[3]LD              ║\n");
-    printf("║                                                    ║\n");
-    printf("║ Suppose count 5 in Frame 2 gets corrupted to 7:   ║\n");
-    printf("║ Corrupted:       [5]HELL[7]OWOR[3]LD              ║\n");
-    printf("║                        ↑                          ║\n");
-    printf("║                    Error here                      ║\n");
-    printf("║                                                    ║\n");
-    printf("║ Receiver's interpretation:                        ║\n");
-    printf("║  Frame 1: Count=5 → Data=\"HELL\" ✓                ║\n");
-    printf("║  Frame 2: Count=7 → Data=\"OWOR[3]L\" ✗            ║\n");
-    printf("║  Frame 3: Starts at 'D', Count='D'=68 → CORRUPT!  ║\n");
-    printf("║                                                    ║\n");
-    printf("║ Result: Synchronization lost! All subsequent      ║\n");
-    printf("║         frames are misinterpreted.                 ║\n");
-    printf("║                                                    ║\n");
-    printf("║ This is the main WEAKNESS of character count      ║\n");
-    printf("║ framing method.                                    ║\n");
-    printf("╚════════════════════════════════════════════════════╝\n");
 }
 
 /*
@@ -245,24 +189,6 @@ void demonstrateErrorScenario(void) {
  */
 void displayDiagram(void) {
     printf("\n");
-    printf("╔══════════════════════════════════════════════════════════════╗\n");
-    printf("║          CHARACTER COUNT FRAMING CONCEPT                     ║\n");
-    printf("╠══════════════════════════════════════════════════════════════╣\n");
-    printf("║                                                              ║\n");
-    printf("║  Data Link Layer Frame Format:                               ║\n");
-    printf("║  ┌─────────┬────────────────────────────────────────┐       ║\n");
-    printf("║  │  Count  │              Data Payload              │       ║\n");
-    printf("║  │(1 byte) │          (Count - 1 bytes)             │       ║\n");
-    printf("║  └─────────┴────────────────────────────────────────┘       ║\n");
-    printf("║                                                              ║\n");
-    printf("║  Example with \"HELLOWORLD\" and frame size 5:                ║\n");
-    printf("║                                                              ║\n");
-    printf("║  ┌───┬───┬───┬───┬───┐┌───┬───┬───┬───┬───┐┌───┬───┬───┐   ║\n");
-    printf("║  │ 5 │ H │ E │ L │ L ││ 5 │ O │ W │ O │ R ││ 3 │ L │ D │   ║\n");
-    printf("║  └───┴───┴───┴───┴───┘└───┴───┴───┴───┴───┘└───┴───┴───┘   ║\n");
-    printf("║  │←──── Frame 1 ────▶││←──── Frame 2 ────▶││←─ Frame 3 ─▶│ ║\n");
-    printf("║                                                              ║\n");
-    printf("╚══════════════════════════════════════════════════════════════╝\n");
 }
 
 /*
@@ -275,10 +201,6 @@ int main() {
     int choice;
     
     printf("\n");
-    printf("╔══════════════════════════════════════════════════════════════╗\n");
-    printf("║     CHARACTER COUNT FRAMING - DATA LINK LAYER                ║\n");
-    printf("║     Slip 6 - Option A                                        ║\n");
-    printf("╚══════════════════════════════════════════════════════════════╝\n");
     
     // Display the concept diagram
     displayDiagram();
@@ -315,49 +237,28 @@ int main() {
                     break;
                 }
                 
-                printf("\n═══════════════════════════════════════════════════\n");
                 printf("Original Data: \"%s\"\n", inputData);
                 printf("Data Length: %lu characters\n", strlen(inputData));
-                printf("═══════════════════════════════════════════════════\n");
                 
                 FrameCollection fc = createFrames(inputData, frameSize);
                 displayFramedStream(&fc);
                 extractData(&fc, extractedData);
                 
-                printf("\n╔════════════════════════════════════════════════════╗\n");
-                printf("║                 VERIFICATION                       ║\n");
-                printf("╠════════════════════════════════════════════════════╣\n");
-                printf("║ Original:  %-38s ║\n", inputData);
-                printf("║ Extracted: %-38s ║\n", extractedData);
-                printf("║ Match: %s                                         ║\n", 
-                       strcmp(inputData, extractedData) == 0 ? "YES ✓" : "NO ✗ ");
-                printf("╚════════════════════════════════════════════════════╝\n");
                 break;
                 
             case 2:
                 strcpy(inputData, "HELLOWORLD");
                 frameSize = DEFAULT_FRAME_SIZE;
                 
-                printf("\n═══════════════════════════════════════════════════\n");
                 printf("DEMONSTRATION with Sample Data\n");
-                printf("═══════════════════════════════════════════════════\n");
                 printf("Data: \"%s\"\n", inputData);
                 printf("Frame Size: %d\n", frameSize);
-                printf("═══════════════════════════════════════════════════\n");
                 
                 FrameCollection fc2 = createFrames(inputData, frameSize);
                 displayFramedStream(&fc2);
                 simulateTransmission(&fc2);
                 extractData(&fc2, extractedData);
                 
-                printf("\n╔════════════════════════════════════════════════════╗\n");
-                printf("║                 VERIFICATION                       ║\n");
-                printf("╠════════════════════════════════════════════════════╣\n");
-                printf("║ Original:  %-38s ║\n", inputData);
-                printf("║ Extracted: %-38s ║\n", extractedData);
-                printf("║ Match: %s                                         ║\n", 
-                       strcmp(inputData, extractedData) == 0 ? "YES ✓" : "NO ✗ ");
-                printf("╚════════════════════════════════════════════════════╝\n");
                 break;
                 
             case 3:

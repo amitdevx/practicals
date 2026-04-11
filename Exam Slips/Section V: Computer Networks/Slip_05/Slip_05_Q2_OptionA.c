@@ -45,9 +45,6 @@ void createRingTopology() {
 
 // Display the adjacency matrix
 void displayAdjacencyMatrix() {
-    printf("\n╔════════════════════════════════════════════════╗\n");
-    printf("║           ADJACENCY MATRIX                     ║\n");
-    printf("╚════════════════════════════════════════════════╝\n\n");
     
     // Print column headers
     printf("      ");
@@ -75,9 +72,6 @@ void displayAdjacencyMatrix() {
 
 // Display node connections
 void displayConnections() {
-    printf("\n╔════════════════════════════════════════════════╗\n");
-    printf("║           NODE CONNECTIONS                     ║\n");
-    printf("╚════════════════════════════════════════════════╝\n\n");
     
     for (int i = 0; i < numNodes; i++) {
         printf("Node %d is connected to: ", i);
@@ -95,9 +89,6 @@ void displayConnections() {
 
 // Visualize ring topology (ASCII art)
 void visualizeRing() {
-    printf("\n╔════════════════════════════════════════════════╗\n");
-    printf("║         RING TOPOLOGY VISUALIZATION            ║\n");
-    printf("╚════════════════════════════════════════════════╝\n\n");
     
     if (numNodes <= 4) {
         // Small ring visualization
@@ -145,9 +136,6 @@ void visualizeRing() {
 
 // Display ring topology properties
 void displayProperties() {
-    printf("\n╔════════════════════════════════════════════════╗\n");
-    printf("║         RING TOPOLOGY PROPERTIES               ║\n");
-    printf("╚════════════════════════════════════════════════╝\n\n");
     
     int totalEdges = numNodes;  // In a ring, edges = nodes
     
@@ -170,9 +158,6 @@ void displayProperties() {
 void simulateDataTransmission() {
     int source, destination;
     
-    printf("\n╔════════════════════════════════════════════════╗\n");
-    printf("║         DATA TRANSMISSION SIMULATION           ║\n");
-    printf("╚════════════════════════════════════════════════╝\n\n");
     
     printf("Enter source node (0 to %d): ", numNodes - 1);
     scanf("%d", &source);
@@ -224,17 +209,6 @@ void simulateDataTransmission() {
 
 // Display menu
 void displayMenu() {
-    printf("\n╔════════════════════════════════════════════════╗\n");
-    printf("║         RING TOPOLOGY - MENU                   ║\n");
-    printf("╠════════════════════════════════════════════════╣\n");
-    printf("║  1. Display Adjacency Matrix                   ║\n");
-    printf("║  2. Display Node Connections                   ║\n");
-    printf("║  3. Visualize Ring Topology                    ║\n");
-    printf("║  4. Display Topology Properties                ║\n");
-    printf("║  5. Simulate Data Transmission                 ║\n");
-    printf("║  6. Create New Ring                            ║\n");
-    printf("║  7. Exit                                       ║\n");
-    printf("╚════════════════════════════════════════════════╝\n");
     printf("Enter your choice: ");
 }
 
@@ -242,10 +216,6 @@ int main() {
     int choice;
     
     printf("\n");
-    printf("╔══════════════════════════════════════════════════════╗\n");
-    printf("║     RING TOPOLOGY NETWORK SIMULATION                 ║\n");
-    printf("║     Computer Networks - Slip 5                       ║\n");
-    printf("╚══════════════════════════════════════════════════════╝\n\n");
     
     // Get number of nodes
     do {
