@@ -1,34 +1,58 @@
 /*
- * Slip 19 - Q2 Option B: Latency Analysis
+ * Slip 19 - Q2 Option B: Mesh Topology Simulation
  * 
- * Calculates network latency and delay.
+ * Simulates 4 PCs in Mesh topology with IP configuration.
  * 
- * Compile: gcc Slip_19_Q2_OptionB.c -o latency
- * Run: ./latency
+ * Compile: gcc Slip_19_Q2_OptionB.c -o mesh_sim
+ * Run: ./mesh_sim
  */
 
 #include <stdio.h>
+#include <string.h>
 
 int main() {
-    double distance = 100, speed = 200000;
-    double propagation_delay = distance / speed;
+    printf("Mesh Topology Simulation\n");
+    printf("========================\n\n");
     
-    double transmission_rate = 1000000;
-    int packet_size = 1000;
-    double transmission_delay = (packet_size * 8) / transmission_rate;
+    printf("Network Diagram:\n");
+    printf("    PC1 --- PC2\n");
+    printf("    /|      /|\n");
+    printf("   / |     / |\n");
+    printf("  PC3 --- PC4\n");
+    printf("(All nodes interconnected)\n\n");
     
-    double processing_delay = 0.001;
-    double queueing_delay = 0.002;
+    typedef struct {
+        char name[10];
+        char ip[20];
+    } Node;
     
-    double total = propagation_delay + transmission_delay + processing_delay + queueing_delay;
+    Node nodes[4];
+    strcpy(nodes[0].name, "PC1");
+    strcpy(nodes[0].ip, "172.16.1.1");
+    strcpy(nodes[1].name, "PC2");
+    strcpy(nodes[1].ip, "172.16.1.2");
+    strcpy(nodes[2].name, "PC3");
+    strcpy(nodes[2].ip, "172.16.1.3");
+    strcpy(nodes[3].name, "PC4");
+    strcpy(nodes[3].ip, "172.16.1.4");
     
-    printf("Latency Analysis\n");
-    printf("================\n");
-    printf("Propagation delay: %.6lf ms\n", propagation_delay * 1000);
-    printf("Transmission delay: %.6lf ms\n", transmission_delay * 1000);
-    printf("Processing delay: %.3lf ms\n", processing_delay * 1000);
-    printf("Queueing delay: %.3lf ms\n", queueing_delay * 1000);
-    printf("Total latency: %.6lf ms\n", total * 1000);
+    printf("Node Configuration:\n");
+    printf("──────────────────────────────\n");
+    printf("Node | IP Address      | Mask\n");
+    printf("──────────────────────────────\n");
+    
+    for (int i = 0; i < 4; i++) {
+        printf("%-4s | %-15s | /24\n", nodes[i].name, nodes[i].ip);
+    }
+    
+    printf("\nConnectivity (Ping Test):\n");
+    printf("PC1 -> PC2: Success\n");
+    printf("PC1 -> PC3: Success\n");
+    printf("PC1 -> PC4: Success\n");
+    printf("PC2 -> PC3: Success\n");
+    printf("PC2 -> PC4: Success\n");
+    printf("PC3 -> PC4: Success\n");
+    printf("All nodes fully connected!\n");
     
     return 0;
 }

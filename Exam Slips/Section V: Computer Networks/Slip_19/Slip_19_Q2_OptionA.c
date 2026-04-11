@@ -1,27 +1,49 @@
 /*
- * Slip 19 - Q2 Option A: Bandwidth Allocation
+ * Slip 19 - Q2 Option A: Hash Simulation
  * 
- * Allocates bandwidth among multiple users.
+ * Simulates hash function for data storage.
  * 
- * Compile: gcc Slip_19_Q2_OptionA.c -o bandwidth_alloc
- * Run: ./bandwidth_alloc
+ * Compile: gcc Slip_19_Q2_OptionA.c -o hash_sim
+ * Run: ./hash_sim
  */
 
 #include <stdio.h>
+#include <string.h>
+
+int hash_function(char *key, int table_size) {
+    int hash = 0;
+    for (int i = 0; key[i]; i++) {
+        hash = (hash + key[i]) % table_size;
+    }
+    return hash;
+}
 
 int main() {
-    int total_bw = 1000, users = 4;
-    int per_user = total_bw / users;
+    printf("Hash Simulation\n");
+    printf("===============\n\n");
     
-    printf("Bandwidth Allocation\n");
-    printf("====================\n");
-    printf("Total Bandwidth: %d Mbps\n", total_bw);
-    printf("Number of users: %d\n", users);
-    printf("Per-user allocation: %d Mbps\n", per_user);
+    int table_size = 10;
+    char *keys[] = {"Alice", "Bob", "Charlie", "David"};
     
-    printf("\nUser Allocations:\n");
-    for (int i = 1; i <= users; i++) {
-        printf("User %d: %d Mbps\n", i, per_user);
+    printf("Hash Table (size: %d)\n", table_size);
+    printf("─────────────────────────────────\n");
+    printf("Key       | Hash Value | Index\n");
+    printf("─────────────────────────────────\n");
+    
+    for (int i = 0; keys[i]; i++) {
+        int hash = hash_function(keys[i], table_size);
+        printf("%-9s | %10s | %5d\n", keys[i], keys[i], hash);
+    }
+    
+    printf("\nHash Distribution:\n");
+    for (int i = 0; i < table_size; i++) {
+        printf("Index %d: ", i);
+        for (int j = 0; keys[j]; j++) {
+            if (hash_function(keys[j], table_size) == i) {
+                printf("%s ", keys[j]);
+            }
+        }
+        printf("\n");
     }
     
     return 0;

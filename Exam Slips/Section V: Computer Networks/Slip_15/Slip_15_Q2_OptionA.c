@@ -1,23 +1,41 @@
 /*
- * Slip 15 - Q2 Option A: Modulation Schemes
+ * Slip 15 - Q2 Option A: Encryption (Plain to Cipher Message)
  * 
- * Displays various modulation schemes and their efficiency.
+ * Simple Caesar cipher encryption.
  * 
- * Compile: gcc Slip_15_Q2_OptionA.c -o modulation
- * Run: ./modulation
+ * Compile: gcc Slip_15_Q2_OptionA.c -o encryption
+ * Run: ./encryption
  */
 
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
 int main() {
-    printf("Modulation Schemes:\n");
-    printf("==================\n");
-    printf("AM:  1 bit/Hz\n");
-    printf("FM:  0.5 bits/Hz\n");
-    printf("PSK: 2 bits/Hz\n");
-    printf("QAM: 4 bits/Hz\n");
-    printf("16-QAM: 4 bits/Hz\n");
-    printf("64-QAM: 6 bits/Hz\n");
+    char plain[256], cipher[256];
+    int shift = 3;
+    
+    printf("Encryption: Plain Message to Cipher Message\n");
+    printf("==========================================\n");
+    printf("Shift value: %d\n", shift);
+    printf("Enter plain text: ");
+    fgets(plain, 256, stdin);
+    plain[strcspn(plain, "\n")] = '\0';
+    
+    for (int i = 0; plain[i]; i++) {
+        if (isalpha(plain[i])) {
+            char base = isupper(plain[i]) ? 'A' : 'a';
+            cipher[i] = base + (plain[i] - base + shift) % 26;
+        } else {
+            cipher[i] = plain[i];
+        }
+    }
+    cipher[strlen(plain)] = '\0';
+    
+    printf("\nEncryption Result:\n");
+    printf("Plain:  %s\n", plain);
+    printf("Cipher: %s\n", cipher);
+    printf("Method: Caesar Cipher (Shift %d)\n", shift);
     
     return 0;
 }
