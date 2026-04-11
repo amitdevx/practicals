@@ -1,54 +1,37 @@
 /*
- * Slip 15 - Q2 Option B: Any Data Link Layer Framing Method
+ * Slip 15 - Q2 Option B (OR): Convert Plain to Cipher Message
  * 
- * Implements flag-based framing with stuffing.
+ * Performs ROT13 cipher conversion.
  * 
- * Compile: gcc Slip_15_Q2_OptionB.c -o framing
- * Run: ./framing
+ * Compile: gcc Slip_15_Q2_OptionB.c -o cipher
+ * Run: ./cipher
  */
 
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 int main() {
-    char data[100], frame[200];
-    int data_len, frame_len = 0;
-    int flag = 0x7E;
+    char msg[256], cipher[256];
     
-    printf("Data Link Layer Framing\n");
-    printf("=======================\n");
-    printf("Enter data: ");
-    fgets(data, 100, stdin);
-    data[strcspn(data, "\n")] = '\0';
+    printf("Plain Message to Cipher Conversion\n");
+    printf("===================================\n");
+    printf("Enter message: ");
+    fgets(msg, 256, stdin);
+    msg[strcspn(msg, "\n")] = '\0';
     
-    data_len = strlen(data);
-    
-    frame[frame_len++] = flag;
-    
-    for (int i = 0; i < data_len; i++) {
-        if ((unsigned char)data[i] == flag) {
-            frame[frame_len++] = 0x7D;
-            frame[frame_len++] = 0x5E;
-        } else if ((unsigned char)data[i] == 0x7D) {
-            frame[frame_len++] = 0x7D;
-            frame[frame_len++] = 0x5D;
+    for (int i = 0; msg[i]; i++) {
+        if (isalpha(msg[i])) {
+            char base = isupper(msg[i]) ? 'A' : 'a';
+            cipher[i] = base + (msg[i] - base + 13) % 26;
         } else {
-            frame[frame_len++] = data[i];
+            cipher[i] = msg[i];
         }
     }
+    cipher[strlen(msg)] = '\0';
     
-    frame[frame_len++] = flag;
-    
-    printf("\nFrame Structure:\n");
-    printf("Flag | Data (stuffed) | Flag\n");
-    printf("%-4d | ", flag);
-    for (int i = 1; i < frame_len - 1; i++) {
-        printf("%02X ", (unsigned char)frame[i]);
-    }
-    printf("| %-4d\n", flag);
-    
-    printf("\nOriginal: %d bytes\n", data_len);
-    printf("Framed: %d bytes\n", frame_len);
+    printf("\nOriginal: %s\n", msg);
+    printf("Cipher:   %s\n", cipher);
     
     return 0;
 }

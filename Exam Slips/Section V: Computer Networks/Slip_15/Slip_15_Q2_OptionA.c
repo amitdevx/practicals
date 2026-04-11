@@ -1,10 +1,10 @@
 /*
- * Slip 15 - Q2 Option A: Encryption (Plain to Cipher Message)
+ * Slip 15 - Q2 Option A: Password Security with Special Characters
  * 
- * Simple Caesar cipher encryption.
+ * Validates password strength.
  * 
- * Compile: gcc Slip_15_Q2_OptionA.c -o encryption
- * Run: ./encryption
+ * Compile: gcc Slip_15_Q2_OptionA.c -o password_check
+ * Run: ./password_check
  */
 
 #include <stdio.h>
@@ -12,30 +12,40 @@
 #include <ctype.h>
 
 int main() {
-    char plain[256], cipher[256];
-    int shift = 3;
+    char pwd[100];
+    int upper = 0, lower = 0, digit = 0, special = 0;
     
-    printf("Encryption: Plain Message to Cipher Message\n");
-    printf("==========================================\n");
-    printf("Shift value: %d\n", shift);
-    printf("Enter plain text: ");
-    fgets(plain, 256, stdin);
-    plain[strcspn(plain, "\n")] = '\0';
+    printf("Password Security Checker\n");
+    printf("=========================\n");
+    printf("Enter password: ");
+    scanf("%s", pwd);
     
-    for (int i = 0; plain[i]; i++) {
-        if (isalpha(plain[i])) {
-            char base = isupper(plain[i]) ? 'A' : 'a';
-            cipher[i] = base + (plain[i] - base + shift) % 26;
-        } else {
-            cipher[i] = plain[i];
-        }
+    int len = strlen(pwd);
+    
+    if (len < 8) {
+        printf("Error: Min 8 characters\n");
+        return 1;
     }
-    cipher[strlen(plain)] = '\0';
     
-    printf("\nEncryption Result:\n");
-    printf("Plain:  %s\n", plain);
-    printf("Cipher: %s\n", cipher);
-    printf("Method: Caesar Cipher (Shift %d)\n", shift);
+    for (int i = 0; pwd[i]; i++) {
+        if (isupper(pwd[i])) upper = 1;
+        else if (islower(pwd[i])) lower = 1;
+        else if (isdigit(pwd[i])) digit = 1;
+        else if (ispunct(pwd[i])) special = 1;
+    }
+    
+    printf("\nAnalysis:\n");
+    printf("Length: %d\n", len);
+    printf("Uppercase: %s\n", upper ? "Yes" : "No");
+    printf("Lowercase: %s\n", lower ? "Yes" : "No");
+    printf("Digit: %s\n", digit ? "Yes" : "No");
+    printf("Special: %s\n", special ? "Yes" : "No");
+    
+    if (upper && lower && digit && special) {
+        printf("\nResult: Strong!\n");
+    } else {
+        printf("\nResult: Weak!\n");
+    }
     
     return 0;
 }

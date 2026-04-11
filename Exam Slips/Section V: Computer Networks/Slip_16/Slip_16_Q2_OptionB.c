@@ -1,9 +1,9 @@
 /*
- * Slip 16 - Q2 Option B: Convert Plain Message to Cipher
+ * Slip 16 - Q2 Option B (OR): Convert Plain to Cipher Message
  * 
- * ROT13 cipher transformation.
+ * Performs ROT13 cipher conversion.
  * 
- * Compile: gcc Slip_16_Q2_OptionB.c -o cipher
+ * Compile: gcc Slip_15_Q2_OptionB.c -o cipher
  * Run: ./cipher
  */
 
@@ -12,28 +12,26 @@
 #include <ctype.h>
 
 int main() {
-    char message[256], cipher[256];
+    char msg[256], cipher[256];
     
-    printf("Plain Message to Cipher Conversion (ROT13)\n");
-    printf("==========================================\n");
+    printf("Plain Message to Cipher Conversion\n");
+    printf("===================================\n");
     printf("Enter message: ");
-    fgets(message, 256, stdin);
-    message[strcspn(message, "\n")] = '\0';
+    fgets(msg, 256, stdin);
+    msg[strcspn(msg, "\n")] = '\0';
     
-    for (int i = 0; message[i]; i++) {
-        if (isalpha(message[i])) {
-            char base = isupper(message[i]) ? 'A' : 'a';
-            cipher[i] = base + (message[i] - base + 13) % 26;
+    for (int i = 0; msg[i]; i++) {
+        if (isalpha(msg[i])) {
+            char base = isupper(msg[i]) ? 'A' : 'a';
+            cipher[i] = base + (msg[i] - base + 13) % 26;
         } else {
-            cipher[i] = message[i];
+            cipher[i] = msg[i];
         }
     }
-    cipher[strlen(message)] = '\0';
+    cipher[strlen(msg)] = '\0';
     
-    printf("\nConversion Result:\n");
-    printf("Original: %s\n", message);
+    printf("\nOriginal: %s\n", msg);
     printf("Cipher:   %s\n", cipher);
-    printf("Method: ROT13 (Rotate 13 positions)\n");
     
     return 0;
 }

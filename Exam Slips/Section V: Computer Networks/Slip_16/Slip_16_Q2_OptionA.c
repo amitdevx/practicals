@@ -1,10 +1,10 @@
 /*
  * Slip 16 - Q2 Option A: Password Security with Special Characters
  * 
- * Checks password strength including special characters.
+ * Validates password strength.
  * 
- * Compile: gcc Slip_16_Q2_OptionA.c -o password_security
- * Run: ./password_security
+ * Compile: gcc Slip_15_Q2_OptionA.c -o password_check
+ * Run: ./password_check
  */
 
 #include <stdio.h>
@@ -12,52 +12,39 @@
 #include <ctype.h>
 
 int main() {
-    char password[100];
-    int hasUpper = 0, hasLower = 0, hasDigit = 0, hasSpecial = 0;
+    char pwd[100];
+    int upper = 0, lower = 0, digit = 0, special = 0;
     
-    printf("Password Security Checker with Special Characters\n");
-    printf("=================================================\n");
-    printf("Requirements:\n");
-    printf("- Minimum 8 characters\n");
-    printf("- At least one uppercase letter (A-Z)\n");
-    printf("- At least one lowercase letter (a-z)\n");
-    printf("- At least one digit (0-9)\n");
-    printf("- At least one special character (!@#$%%^&*...)\n\n");
-    
+    printf("Password Security Checker\n");
+    printf("=========================\n");
     printf("Enter password: ");
-    scanf("%s", password);
+    scanf("%s", pwd);
     
-    int length = strlen(password);
+    int len = strlen(pwd);
     
-    if (length < 8) {
-        printf("Error: Password must be at least 8 characters.\n");
+    if (len < 8) {
+        printf("Error: Min 8 characters\n");
         return 1;
     }
     
-    for (int i = 0; password[i]; i++) {
-        if (isupper(password[i])) hasUpper = 1;
-        else if (islower(password[i])) hasLower = 1;
-        else if (isdigit(password[i])) hasDigit = 1;
-        else if (ispunct(password[i])) hasSpecial = 1;
+    for (int i = 0; pwd[i]; i++) {
+        if (isupper(pwd[i])) upper = 1;
+        else if (islower(pwd[i])) lower = 1;
+        else if (isdigit(pwd[i])) digit = 1;
+        else if (ispunct(pwd[i])) special = 1;
     }
     
-    printf("\nPassword Analysis:\n");
-    printf("─────────────────\n");
-    printf("Length: %d characters\n", length);
-    printf("Uppercase: %s\n", hasUpper ? "Yes" : "No");
-    printf("Lowercase: %s\n", hasLower ? "Yes" : "No");
-    printf("Digit: %s\n", hasDigit ? "Yes" : "No");
-    printf("Special: %s\n", hasSpecial ? "Yes" : "No");
+    printf("\nAnalysis:\n");
+    printf("Length: %d\n", len);
+    printf("Uppercase: %s\n", upper ? "Yes" : "No");
+    printf("Lowercase: %s\n", lower ? "Yes" : "No");
+    printf("Digit: %s\n", digit ? "Yes" : "No");
+    printf("Special: %s\n", special ? "Yes" : "No");
     
-    printf("\nResult:\n");
-    if (hasUpper && hasLower && hasDigit && hasSpecial) {
-        printf("✓ Strong Password!\n");
+    if (upper && lower && digit && special) {
+        printf("\nResult: Strong!\n");
     } else {
-        printf("✗ Weak Password - Missing:\n");
-        if (!hasUpper) printf("  • Uppercase letter\n");
-        if (!hasLower) printf("  • Lowercase letter\n");
-        if (!hasDigit) printf("  • Digit\n");
-        if (!hasSpecial) printf("  • Special character\n");
+        printf("\nResult: Weak!\n");
     }
     
     return 0;
