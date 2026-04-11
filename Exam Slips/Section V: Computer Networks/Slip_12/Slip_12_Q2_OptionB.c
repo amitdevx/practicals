@@ -1,18 +1,18 @@
 /*
  * Slip 12 - Q2 Option B: Router Password Configuration Simulator
- * 
+ *
  * Concept: Simulates Cisco IOS commands for basic router security:
  *   - hostname: Sets device identification name
  *   - enable password: Sets plaintext password (visible in config)
  *   - enable secret: Sets MD5-encrypted password (secure)
- * 
+ *
  * Cisco IOS Command Reference:
  *   Router> enable                    (Enter privileged mode)
  *   Router# configure terminal        (Enter config mode)
  *   Router(config)# hostname MyRouter (Set hostname)
  *   Router(config)# enable password X (Set plaintext password)
  *   Router(config)# enable secret Y   (Set encrypted password)
- * 
+ *
  * Compile: gcc -o router_config Slip_12_Q2_OptionB.c
  * Run:     ./router_config
  */
@@ -71,16 +71,16 @@ void encrypt_password(const char *plain, char *encrypted);
 int main() {
     Router router;
     int choice;
-    
+
     initialize_router(&router);
     display_banner();
-    
+
     while (1) {
         display_menu(&router);
         printf("Enter your choice: ");
         scanf("%d", &choice);
         getchar(); // Clear newline
-        
+
         switch (choice) {
             case 1:
                 configure_hostname(&router);
@@ -108,15 +108,14 @@ int main() {
                 break;
             case 9:
                 printf("\n");
-                printf("╔══════════════════════════════════════════════════════════╗\n");
-                printf("║    Thank you for using Router Configuration Simulator   ║\n");
-                printf("╚══════════════════════════════════════════════════════════╝\n\n");
+
+
                 exit(0);
             default:
                 printf("\n[ERROR] Invalid choice! Please try again.\n");
         }
     }
-    
+
     return 0;
 }
 
@@ -128,15 +127,14 @@ void initialize_router(Router *router) {
     router->config.password_encryption = 0;
     router->config.is_configured = 0;
     router->current_mode = 0;
-    
-    // Initialize interfaces
+
     router->interface_count = 2;
-    
+
     strcpy(router->interfaces[0].name, "FastEthernet0/0");
     strcpy(router->interfaces[0].ip_address, "unassigned");
     strcpy(router->interfaces[0].subnet_mask, "unassigned");
     router->interfaces[0].is_up = 0;
-    
+
     strcpy(router->interfaces[1].name, "FastEthernet0/1");
     strcpy(router->interfaces[1].ip_address, "unassigned");
     strcpy(router->interfaces[1].subnet_mask, "unassigned");
@@ -145,50 +143,29 @@ void initialize_router(Router *router) {
 
 void display_banner(void) {
     printf("\n");
-    printf("╔═══════════════════════════════════════════════════════════════════════╗\n");
-    printf("║        CISCO ROUTER CONFIGURATION SIMULATOR                           ║\n");
-    printf("║                    Slip 12 - Option B                                 ║\n");
-    printf("║                                                                       ║\n");
-    printf("║  Configure: hostname, enable password, enable secret                  ║\n");
-    printf("╚═══════════════════════════════════════════════════════════════════════╝\n");
+
+
 }
 
 void display_menu(Router *router) {
     printf("\n");
-    printf("┌─────────────────────────────────────────────────┐\n");
-    printf("│  Current Hostname: %-28s │\n", router->config.hostname);
-    printf("├─────────────────────────────────────────────────┤\n");
-    printf("│              CONFIGURATION MENU                 │\n");
-    printf("├─────────────────────────────────────────────────┤\n");
-    printf("│  1. Configure Hostname                          │\n");
-    printf("│  2. Configure Enable Password (plaintext)       │\n");
-    printf("│  3. Configure Enable Secret (encrypted)         │\n");
-    printf("│  4. Show Running Configuration                  │\n");
-    printf("│  5. Simulate IOS CLI Mode                       │\n");
-    printf("│  6. Password Types Information                  │\n");
-    printf("│  7. Configure Interface                         │\n");
-    printf("│  8. Enable Password Encryption Service          │\n");
-    printf("│  9. Exit                                        │\n");
-    printf("└─────────────────────────────────────────────────┘\n");
+
+
 }
 
 void configure_hostname(Router *router) {
     char new_hostname[MAX_LEN];
-    
+
     printf("\n");
-    printf("┌──────────────────────────────────────────────────────────────┐\n");
-    printf("│                  CONFIGURE HOSTNAME                          │\n");
-    printf("├──────────────────────────────────────────────────────────────┤\n");
-    printf("│ Cisco IOS Command:                                           │\n");
-    printf("│   Router(config)# hostname <name>                            │\n");
-    printf("└──────────────────────────────────────────────────────────────┘\n");
+
+
     printf("\n");
-    
+
     printf("Current hostname: %s\n", router->config.hostname);
     printf("Enter new hostname: ");
     fgets(new_hostname, MAX_LEN, stdin);
     new_hostname[strcspn(new_hostname, "\n")] = 0;
-    
+
     if (strlen(new_hostname) > 0) {
         printf("\n");
         printf("  %s(config)# hostname %s\n", router->config.hostname, new_hostname);
@@ -204,32 +181,24 @@ void configure_hostname(Router *router) {
 void configure_enable_password(Router *router) {
     char password[MAX_LEN];
     char encrypted[MAX_LEN];
-    
+
     printf("\n");
-    printf("┌──────────────────────────────────────────────────────────────┐\n");
-    printf("│              CONFIGURE ENABLE PASSWORD                       │\n");
-    printf("├──────────────────────────────────────────────────────────────┤\n");
-    printf("│ Cisco IOS Command:                                           │\n");
-    printf("│   Router(config)# enable password <password>                 │\n");
-    printf("│                                                              │\n");
-    printf("│ NOTE: This password is stored in PLAINTEXT (Type 0)         │\n");
-    printf("│       Visible in 'show running-config'                       │\n");
-    printf("│       Less secure than 'enable secret'                       │\n");
-    printf("└──────────────────────────────────────────────────────────────┘\n");
+
+
     printf("\n");
-    
+
     printf("Enter enable password: ");
     fgets(password, MAX_LEN, stdin);
     password[strcspn(password, "\n")] = 0;
-    
+
     if (strlen(password) > 0) {
         strcpy(router->config.enable_password, password);
-        
+
         printf("\n");
-        printf("  %s(config)# enable password %s\n", 
+        printf("  %s(config)# enable password %s\n",
                router->config.hostname, password);
         printf("  %s(config)#\n", router->config.hostname);
-        
+
         if (router->config.password_encryption) {
             encrypt_password(password, encrypted);
             printf("\n[SUCCESS] Enable password set (will be encrypted in config)\n");
@@ -245,30 +214,22 @@ void configure_enable_password(Router *router) {
 
 void configure_enable_secret(Router *router) {
     char password[MAX_LEN];
-    
+
     printf("\n");
-    printf("┌──────────────────────────────────────────────────────────────┐\n");
-    printf("│              CONFIGURE ENABLE SECRET                         │\n");
-    printf("├──────────────────────────────────────────────────────────────┤\n");
-    printf("│ Cisco IOS Command:                                           │\n");
-    printf("│   Router(config)# enable secret <password>                   │\n");
-    printf("│                                                              │\n");
-    printf("│ NOTE: This password is stored as MD5 HASH (Type 5)          │\n");
-    printf("│       More secure than 'enable password'                     │\n");
-    printf("│       Takes priority over 'enable password'                  │\n");
-    printf("└──────────────────────────────────────────────────────────────┘\n");
+
+
     printf("\n");
-    
+
     printf("Enter enable secret: ");
     fgets(password, MAX_LEN, stdin);
     password[strcspn(password, "\n")] = 0;
-    
+
     if (strlen(password) > 0) {
         strcpy(router->config.enable_secret, password);
         simple_hash(password, router->config.secret_hash);
-        
+
         printf("\n");
-        printf("  %s(config)# enable secret %s\n", 
+        printf("  %s(config)# enable secret %s\n",
                router->config.hostname, password);
         printf("  %s(config)#\n", router->config.hostname);
         printf("\n[SUCCESS] Enable secret configured!\n");
@@ -285,13 +246,13 @@ void simple_hash(const char *input, char *output) {
     // Simple hash simulation (not real MD5)
     unsigned long hash = 5381;
     int c;
-    
+
     while ((c = *input++)) {
         hash = ((hash << 5) + hash) + c;
     }
-    
+
     // Format as pseudo-MD5 hash
-    sprintf(output, "mERs$%.4lx$%.8lx%.8lx", 
+    sprintf(output, "mERs$%.4lx$%.8lx%.8lx",
             (hash >> 16) & 0xFFFF,
             hash & 0xFFFFFFFF,
             (hash * 31) & 0xFFFFFFFF);
@@ -308,13 +269,10 @@ void encrypt_password(const char *plain, char *encrypted) {
 
 void show_running_config(Router *router) {
     char encrypted_pass[MAX_LEN];
-    
+
     printf("\n");
-    printf("╔═══════════════════════════════════════════════════════════════════════╗\n");
-    printf("║                      RUNNING CONFIGURATION                            ║\n");
-    printf("║  %s# show running-config                                        ║\n", 
-           router->config.hostname);
-    printf("╚═══════════════════════════════════════════════════════════════════════╝\n");
+
+
     printf("\n");
     printf("Building configuration...\n\n");
     printf("Current configuration : 1024 bytes\n");
@@ -322,25 +280,25 @@ void show_running_config(Router *router) {
     printf("version 15.1\n");
     printf("service timestamps debug datetime msec\n");
     printf("service timestamps log datetime msec\n");
-    
+
     if (router->config.password_encryption) {
         printf("service password-encryption\n");
     } else {
         printf("no service password-encryption\n");
     }
-    
+
     printf("!\n");
     printf("hostname %s\n", router->config.hostname);
     printf("!\n");
     printf("boot-start-marker\n");
     printf("boot-end-marker\n");
     printf("!\n");
-    
+
     // Enable secret (always MD5 hashed)
     if (strlen(router->config.enable_secret) > 0) {
         printf("enable secret 5 $1$%s\n", router->config.secret_hash);
     }
-    
+
     // Enable password (plaintext or encrypted based on service)
     if (strlen(router->config.enable_password) > 0) {
         if (router->config.password_encryption) {
@@ -350,16 +308,16 @@ void show_running_config(Router *router) {
             printf("enable password %s\n", router->config.enable_password);
         }
     }
-    
+
     printf("!\n");
     printf("no aaa new-model\n");
     printf("!\n");
-    
+
     // Interface configurations
     for (int i = 0; i < router->interface_count; i++) {
         printf("interface %s\n", router->interfaces[i].name);
         if (strcmp(router->interfaces[i].ip_address, "unassigned") != 0) {
-            printf(" ip address %s %s\n", 
+            printf(" ip address %s %s\n",
                    router->interfaces[i].ip_address,
                    router->interfaces[i].subnet_mask);
         } else {
@@ -372,7 +330,7 @@ void show_running_config(Router *router) {
         }
         printf("!\n");
     }
-    
+
     printf("ip forward-protocol nd\n");
     printf("!\n");
     printf("no ip http server\n");
@@ -385,52 +343,48 @@ void show_running_config(Router *router) {
     printf("!\n");
     printf("end\n");
     printf("\n");
-    
+
     // Security analysis
-    printf("┌──────────────────────────────────────────────────────────────┐\n");
-    printf("│                    SECURITY ANALYSIS                         │\n");
-    printf("├──────────────────────────────────────────────────────────────┤\n");
-    
+
+
     if (strlen(router->config.enable_secret) > 0) {
-        printf("│ ✓ Enable secret configured (MD5 encrypted - Type 5)        │\n");
+
     } else {
-        printf("│ ✗ Enable secret NOT configured (Recommended!)              │\n");
+
     }
-    
+
     if (strlen(router->config.enable_password) > 0) {
         if (router->config.password_encryption) {
-            printf("│ ⚠ Enable password configured (Type 7 - weak encryption)   │\n");
+
         } else {
-            printf("│ ✗ Enable password in PLAINTEXT (Security risk!)           │\n");
+
         }
     }
-    
+
     if (router->config.password_encryption) {
-        printf("│ ✓ Password encryption service enabled                       │\n");
+
     } else {
-        printf("│ ⚠ Password encryption service disabled                      │\n");
+
     }
-    
-    printf("└──────────────────────────────────────────────────────────────┘\n");
+
+
 }
 
 void simulate_ios_cli(Router *router) {
     char command[256];
     int in_config_mode = 0;
     int in_interface_mode = 0;
-    
+
     printf("\n");
-    printf("╔═══════════════════════════════════════════════════════════════════════╗\n");
-    printf("║              CISCO IOS COMMAND LINE INTERFACE SIMULATOR              ║\n");
-    printf("║  Type 'exit' to return to main menu, 'help' for commands             ║\n");
-    printf("╚═══════════════════════════════════════════════════════════════════════╝\n");
+
+
     printf("\n");
     printf("%s>", router->config.hostname);
-    
+
     while (1) {
         fgets(command, 256, stdin);
         command[strcspn(command, "\n")] = 0;
-        
+
         // Empty command
         if (strlen(command) == 0) {
             if (in_interface_mode) {
@@ -444,7 +398,7 @@ void simulate_ios_cli(Router *router) {
             }
             continue;
         }
-        
+
         // Parse command
         if (strcmp(command, "exit") == 0 || strcmp(command, "quit") == 0) {
             if (in_interface_mode) {
@@ -473,7 +427,7 @@ void simulate_ios_cli(Router *router) {
             printf("  end                 - Return to privileged mode\n");
             printf("  exit                - Exit current mode\n");
             printf("\n");
-            
+
             if (in_interface_mode) {
                 printf("%s(config-if)#", router->config.hostname);
             } else if (in_config_mode) {
@@ -487,18 +441,18 @@ void simulate_ios_cli(Router *router) {
         else if (strcmp(command, "enable") == 0) {
             if (router->current_mode == 0) {
                 // Check if password is set
-                if (strlen(router->config.enable_secret) > 0 || 
+                if (strlen(router->config.enable_secret) > 0 ||
                     strlen(router->config.enable_password) > 0) {
                     char pass[MAX_LEN];
                     printf("Password: ");
                     fgets(pass, MAX_LEN, stdin);
                     pass[strcspn(pass, "\n")] = 0;
-                    
+
                     // Secret takes priority
-                    const char *correct = strlen(router->config.enable_secret) > 0 
-                        ? router->config.enable_secret 
+                    const char *correct = strlen(router->config.enable_secret) > 0
+                        ? router->config.enable_secret
                         : router->config.enable_password;
-                    
+
                     if (strcmp(pass, correct) == 0) {
                         router->current_mode = 1;
                         printf("%s#", router->config.hostname);
@@ -514,7 +468,7 @@ void simulate_ios_cli(Router *router) {
                 printf("%s#", router->config.hostname);
             }
         }
-        else if (strcmp(command, "configure terminal") == 0 || 
+        else if (strcmp(command, "configure terminal") == 0 ||
                  strcmp(command, "conf t") == 0) {
             if (router->current_mode == 1) {
                 in_config_mode = 1;
@@ -581,7 +535,7 @@ void simulate_ios_cli(Router *router) {
             } else {
                 printf("%%  Invalid input detected\n");
             }
-            
+
             if (in_interface_mode) {
                 printf("%s(config-if)#", router->config.hostname);
             } else if (in_config_mode) {
@@ -618,49 +572,17 @@ void simulate_ios_cli(Router *router) {
 
 void display_password_info(void) {
     printf("\n");
-    printf("╔═══════════════════════════════════════════════════════════════════════╗\n");
-    printf("║            CISCO PASSWORD TYPES - SECURITY INFORMATION               ║\n");
-    printf("╚═══════════════════════════════════════════════════════════════════════╝\n");
+
+
     printf("\n");
-    printf("┌─────────────────────────────────────────────────────────────────────┐\n");
-    printf("│                     PASSWORD TYPE COMPARISON                        │\n");
-    printf("├──────────────┬──────────────────────────────────────────────────────┤\n");
-    printf("│   Type       │   Description                                        │\n");
-    printf("├──────────────┼──────────────────────────────────────────────────────┤\n");
-    printf("│   Type 0     │   Plaintext (no encryption)                          │\n");
-    printf("│              │   • Visible in show running-config                   │\n");
-    printf("│              │   • HIGHLY INSECURE                                  │\n");
-    printf("├──────────────┼──────────────────────────────────────────────────────┤\n");
-    printf("│   Type 5     │   MD5 Hash (enable secret)                           │\n");
-    printf("│              │   • One-way encryption                               │\n");
-    printf("│              │   • Cannot be decrypted                              │\n");
-    printf("│              │   • RECOMMENDED                                      │\n");
-    printf("├──────────────┼──────────────────────────────────────────────────────┤\n");
-    printf("│   Type 7     │   Vigenère cipher (service password-encryption)      │\n");
-    printf("│              │   • Weak, easily reversible                          │\n");
-    printf("│              │   • Better than plaintext                            │\n");
-    printf("│              │   • NOT RECOMMENDED for security                     │\n");
-    printf("└──────────────┴──────────────────────────────────────────────────────┘\n");
+
+
     printf("\n");
-    printf("┌─────────────────────────────────────────────────────────────────────┐\n");
-    printf("│                    ENABLE PASSWORD vs ENABLE SECRET                 │\n");
-    printf("├──────────────────────────┬──────────────────────────────────────────┤\n");
-    printf("│     enable password      │          enable secret                   │\n");
-    printf("├──────────────────────────┼──────────────────────────────────────────┤\n");
-    printf("│  Stored as plaintext     │  Stored as MD5 hash                      │\n");
-    printf("│  (Type 0)                │  (Type 5)                                │\n");
-    printf("├──────────────────────────┼──────────────────────────────────────────┤\n");
-    printf("│  Can use Type 7 with     │  Always uses MD5                         │\n");
-    printf("│  service encryption      │                                          │\n");
-    printf("├──────────────────────────┼──────────────────────────────────────────┤\n");
-    printf("│  Lower priority          │  Higher priority                         │\n");
-    printf("│  (ignored if secret set) │  (takes precedence)                      │\n");
-    printf("├──────────────────────────┼──────────────────────────────────────────┤\n");
-    printf("│  NOT RECOMMENDED         │  RECOMMENDED                             │\n");
-    printf("└──────────────────────────┴──────────────────────────────────────────┘\n");
+
+
     printf("\n");
     printf("  BEST PRACTICES:\n");
-    printf("  ───────────────\n");
+
     printf("  1. Always use 'enable secret' instead of 'enable password'\n");
     printf("  2. Enable 'service password-encryption' for legacy passwords\n");
     printf("  3. Use strong passwords (mix of letters, numbers, symbols)\n");
@@ -672,46 +594,45 @@ void display_password_info(void) {
 void configure_interface(Router *router) {
     int choice;
     char ip[16], mask[16];
-    
+
     printf("\n");
-    printf("┌──────────────────────────────────────────────────────────────┐\n");
-    printf("│                  CONFIGURE INTERFACE                         │\n");
-    printf("└──────────────────────────────────────────────────────────────┘\n");
+
+
     printf("\n");
     printf("Available interfaces:\n");
-    
+
     for (int i = 0; i < router->interface_count; i++) {
-        printf("  %d. %s - %s/%s [%s]\n", 
+        printf("  %d. %s - %s/%s [%s]\n",
                i + 1,
                router->interfaces[i].name,
                router->interfaces[i].ip_address,
                router->interfaces[i].subnet_mask,
                router->interfaces[i].is_up ? "UP" : "DOWN");
     }
-    
+
     printf("\nSelect interface (1-%d): ", router->interface_count);
     scanf("%d", &choice);
     getchar();
-    
+
     if (choice < 1 || choice > router->interface_count) {
         printf("[ERROR] Invalid selection!\n");
         return;
     }
-    
+
     Interface *iface = &router->interfaces[choice - 1];
-    
+
     printf("Enter IP address (e.g., 192.168.1.1): ");
     fgets(ip, 16, stdin);
     ip[strcspn(ip, "\n")] = 0;
-    
+
     printf("Enter subnet mask (e.g., 255.255.255.0): ");
     fgets(mask, 16, stdin);
     mask[strcspn(mask, "\n")] = 0;
-    
+
     strcpy(iface->ip_address, ip);
     strcpy(iface->subnet_mask, mask);
     iface->is_up = 1;
-    
+
     printf("\n");
     printf("  %s(config)# interface %s\n", router->config.hostname, iface->name);
     printf("  %s(config-if)# ip address %s %s\n", router->config.hostname, ip, mask);
@@ -722,20 +643,10 @@ void configure_interface(Router *router) {
 
 void enable_password_encryption(Router *router) {
     printf("\n");
-    printf("┌──────────────────────────────────────────────────────────────┐\n");
-    printf("│            SERVICE PASSWORD-ENCRYPTION                       │\n");
-    printf("├──────────────────────────────────────────────────────────────┤\n");
-    printf("│ Cisco IOS Command:                                           │\n");
-    printf("│   Router(config)# service password-encryption                │\n");
-    printf("│                                                              │\n");
-    printf("│ This encrypts all plaintext passwords in the configuration  │\n");
-    printf("│ using Type 7 (Vigenère) encryption.                          │\n");
-    printf("│                                                              │\n");
-    printf("│ NOTE: Type 7 is weak and can be easily decoded!             │\n");
-    printf("│       Use 'enable secret' for better security.               │\n");
-    printf("└──────────────────────────────────────────────────────────────┘\n");
+
+
     printf("\n");
-    
+
     printf("  %s(config)# service password-encryption\n", router->config.hostname);
     router->config.password_encryption = 1;
     printf("\n[SUCCESS] Password encryption service enabled!\n");

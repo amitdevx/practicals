@@ -1,12 +1,12 @@
 /*
  * Slip 4 - Q2 Option A: Phishing Pattern Detection in Emails
- * 
+ *
  * This program reads an email from a file and performs phishing pattern detection
  * by analyzing suspicious patterns, URLs, and common phishing indicators.
- * 
+ *
  * Compile: gcc -o phishing_detector Slip_04_Q2_OptionA.c
  * Run: ./phishing_detector email.txt
- * 
+ *
  * Author: Computer Networks Lab
  */
 
@@ -88,17 +88,13 @@ int main(int argc, char *argv[]) {
     char email_buffer[MAX_EMAIL_SIZE];
     PhishingResult result = {0};
     const char *filename;
-    
-    printf("╔════════════════════════════════════════════════════════════╗\n");
-    printf("║        PHISHING EMAIL PATTERN DETECTOR                     ║\n");
-    printf("║        Computer Networks - Slip 4                          ║\n");
-    printf("╚════════════════════════════════════════════════════════════╝\n\n");
-    
+
+
     /* Get filename from argument or use default */
     if (argc < 2) {
         printf("Usage: %s <email_file>\n", argv[0]);
         printf("\nCreating sample phishing email for demonstration...\n\n");
-        
+
         /* Create a sample phishing email file */
         FILE *sample = fopen("sample_phishing_email.txt", "w");
         if (sample) {
@@ -138,26 +134,25 @@ int main(int argc, char *argv[]) {
     } else {
         filename = argv[1];
     }
-    
+
     /* Load email content */
     if (!load_email(filename, email_buffer, MAX_EMAIL_SIZE)) {
         printf("Error: Could not read email file '%s'\n", filename);
         return 1;
     }
-    
-    printf("═══════════════════════════════════════════════════════════════\n");
+
+
     printf("EMAIL CONTENT:\n");
-    printf("═══════════════════════════════════════════════════════════════\n");
+
     printf("%s\n", email_buffer);
-    printf("═══════════════════════════════════════════════════════════════\n\n");
-    
+
+
     /* Perform analysis */
     printf("Analyzing email for phishing patterns...\n\n");
     analyze_email(email_buffer, &result);
-    
-    /* Print report */
+
     print_report(&result);
-    
+
     return 0;
 }
 
@@ -169,16 +164,16 @@ int load_email(const char *filename, char *buffer, int max_size) {
     if (!fp) {
         return 0;
     }
-    
+
     int total_read = 0;
     char line[MAX_LINE_LENGTH];
     buffer[0] = '\0';
-    
+
     while (fgets(line, MAX_LINE_LENGTH, fp) && total_read < max_size - MAX_LINE_LENGTH) {
         strcat(buffer, line);
         total_read += strlen(line);
     }
-    
+
     fclose(fp);
     return 1;
 }
@@ -188,14 +183,14 @@ int load_email(const char *filename, char *buffer, int max_size) {
  */
 void analyze_email(const char *email, PhishingResult *result) {
     result->details[0] = '\0';
-    
+
     check_urgency_patterns(email, result);
     check_sensitive_requests(email, result);
     check_suspicious_urls(email, result);
     check_suspicious_attachments(email, result);
     check_generic_greeting(email, result);
     check_sender_spoofing(email, result);
-    
+
     calculate_threat_score(result);
 }
 
@@ -204,7 +199,7 @@ void analyze_email(const char *email, PhishingResult *result) {
  */
 void check_urgency_patterns(const char *email, PhishingResult *result) {
     result->urgency_phrases = count_pattern_matches(email, URGENCY_PATTERNS);
-    
+
     if (result->urgency_phrases > 0) {
         char temp[256];
         sprintf(temp, "• Found %d urgency/pressure phrases\n", result->urgency_phrases);
@@ -217,10 +212,10 @@ void check_urgency_patterns(const char *email, PhishingResult *result) {
  */
 void check_sensitive_requests(const char *email, PhishingResult *result) {
     result->sensitive_requests = count_pattern_matches(email, SENSITIVE_PATTERNS);
-    
+
     if (result->sensitive_requests > 0) {
         char temp[256];
-        sprintf(temp, "• Found %d requests for sensitive information\n", 
+        sprintf(temp, "• Found %d requests for sensitive information\n",
                 result->sensitive_requests);
         strcat(result->details, temp);
     }
@@ -232,14 +227,14 @@ void check_sensitive_requests(const char *email, PhishingResult *result) {
 void check_suspicious_urls(const char *email, PhishingResult *result) {
     char lower_email[MAX_EMAIL_SIZE];
     to_lowercase(email, lower_email, MAX_EMAIL_SIZE);
-    
+
     /* Check for URL shorteners and suspicious patterns */
     result->suspicious_links = count_pattern_matches(email, SUSPICIOUS_URL_PATTERNS);
-    
+
     /* Check for mismatched URLs (display text differs from actual URL) */
     if (strstr(lower_email, "http://") || strstr(lower_email, "https://")) {
         result->suspicious_links++;
-        
+
         /* Look for typosquatting (e.g., paypa1 instead of paypal) */
         for (int i = 0; LEGITIMATE_DOMAINS[i] != NULL; i++) {
             /* Create common typosquatted versions */
@@ -251,13 +246,13 @@ void check_suspicious_urls(const char *email, PhishingResult *result) {
             }
         }
     }
-    
+
     if (result->suspicious_links > 0) {
         char temp[256];
         sprintf(temp, "• Found %d suspicious URL patterns\n", result->suspicious_links);
         strcat(result->details, temp);
     }
-    
+
     if (result->mismatched_urls > 0) {
         char temp[256];
         sprintf(temp, "• Detected %d potential typosquatted domains\n", result->mismatched_urls);
@@ -270,10 +265,10 @@ void check_suspicious_urls(const char *email, PhishingResult *result) {
  */
 void check_suspicious_attachments(const char *email, PhishingResult *result) {
     result->suspicious_attachments = count_pattern_matches(email, SUSPICIOUS_EXTENSIONS);
-    
+
     if (result->suspicious_attachments > 0) {
         char temp[256];
-        sprintf(temp, "• Found %d suspicious attachment type(s)\n", 
+        sprintf(temp, "• Found %d suspicious attachment type(s)\n",
                 result->suspicious_attachments);
         strcat(result->details, temp);
     }
@@ -288,9 +283,9 @@ void check_generic_greeting(const char *email, PhishingResult *result) {
         "dear member", "dear account holder", "dear sir/madam",
         "dear client", NULL
     };
-    
+
     result->generic_greeting = count_pattern_matches(email, generic_greetings);
-    
+
     if (result->generic_greeting > 0) {
         strcat(result->details, "• Uses generic greeting (not personalized)\n");
     }
@@ -302,18 +297,17 @@ void check_generic_greeting(const char *email, PhishingResult *result) {
 void check_sender_spoofing(const char *email, PhishingResult *result) {
     char lower_email[MAX_EMAIL_SIZE];
     to_lowercase(email, lower_email, MAX_EMAIL_SIZE);
-    
+
     /* Check for mismatch between claimed sender and actual domain */
     if (strstr(lower_email, "from:")) {
-        /* Look for suspicious patterns in sender */
-        if (strstr(lower_email, "security@") || 
+        if (strstr(lower_email, "security@") ||
             strstr(lower_email, "support@") ||
             strstr(lower_email, "admin@") ||
             strstr(lower_email, "verify@") ||
             strstr(lower_email, "alert@")) {
-            
+
             /* Check if domain looks suspicious */
-            if (strstr(lower_email, "-verify") || 
+            if (strstr(lower_email, "-verify") ||
                 strstr(lower_email, "-secure") ||
                 strstr(lower_email, "-support") ||
                 strstr(lower_email, "-login")) {
@@ -329,13 +323,13 @@ void check_sender_spoofing(const char *email, PhishingResult *result) {
  */
 int count_pattern_matches(const char *text, const char *patterns[]) {
     int count = 0;
-    
+
     for (int i = 0; patterns[i] != NULL; i++) {
         if (contains_pattern_ci(text, patterns[i])) {
             count++;
         }
     }
-    
+
     return count;
 }
 
@@ -345,10 +339,10 @@ int count_pattern_matches(const char *text, const char *patterns[]) {
 int contains_pattern_ci(const char *text, const char *pattern) {
     char lower_text[MAX_EMAIL_SIZE];
     char lower_pattern[256];
-    
+
     to_lowercase(text, lower_text, MAX_EMAIL_SIZE);
     to_lowercase(pattern, lower_pattern, 256);
-    
+
     return strstr(lower_text, lower_pattern) != NULL;
 }
 
@@ -368,7 +362,7 @@ void to_lowercase(const char *src, char *dest, int max_len) {
  */
 void calculate_threat_score(PhishingResult *result) {
     result->threat_score = 0;
-    
+
     /* Weight different indicators */
     result->threat_score += result->suspicious_links * 15;
     result->threat_score += result->urgency_phrases * 10;
@@ -377,7 +371,7 @@ void calculate_threat_score(PhishingResult *result) {
     result->threat_score += result->mismatched_urls * 30;
     result->threat_score += result->suspicious_attachments * 25;
     result->threat_score += result->generic_greeting * 5;
-    
+
     /* Cap at 100 */
     if (result->threat_score > 100) {
         result->threat_score = 100;
@@ -388,85 +382,55 @@ void calculate_threat_score(PhishingResult *result) {
  * Print analysis report
  */
 void print_report(const PhishingResult *result) {
-    printf("╔════════════════════════════════════════════════════════════╗\n");
-    printf("║              PHISHING ANALYSIS REPORT                      ║\n");
-    printf("╠════════════════════════════════════════════════════════════╣\n");
-    
+
+
     /* Threat level indicator */
-    printf("║ THREAT SCORE: %3d/100  ", result->threat_score);
-    
+
+
     if (result->threat_score >= 70) {
-        printf("[████████████████████] HIGH RISK      ║\n");
+
     } else if (result->threat_score >= 40) {
-        printf("[████████████        ] MEDIUM RISK    ║\n");
+
     } else if (result->threat_score >= 20) {
-        printf("[████████            ] LOW RISK       ║\n");
+
     } else {
-        printf("[████                ] MINIMAL RISK   ║\n");
+
     }
-    
-    printf("╠════════════════════════════════════════════════════════════╣\n");
-    printf("║ DETECTION SUMMARY:                                         ║\n");
-    printf("╠════════════════════════════════════════════════════════════╣\n");
-    
-    printf("║ Suspicious URLs:        %-3d                                ║\n", 
-           result->suspicious_links);
-    printf("║ Urgency Phrases:        %-3d                                ║\n", 
-           result->urgency_phrases);
-    printf("║ Sensitive Data Requests:%-3d                                ║\n", 
-           result->sensitive_requests);
-    printf("║ Spoofed Sender:         %-3s                                ║\n", 
-           result->spoofed_sender ? "Yes" : "No");
-    printf("║ Typosquatted Domains:   %-3d                                ║\n", 
-           result->mismatched_urls);
-    printf("║ Suspicious Attachments: %-3d                                ║\n", 
-           result->suspicious_attachments);
-    printf("║ Generic Greeting:       %-3s                                ║\n", 
-           result->generic_greeting ? "Yes" : "No");
-    
-    printf("╠════════════════════════════════════════════════════════════╣\n");
-    printf("║ DETAILED FINDINGS:                                         ║\n");
-    printf("╠════════════════════════════════════════════════════════════╣\n");
-    
+
+
     if (strlen(result->details) > 0) {
-        /* Print details line by line */
         char *details_copy = strdup(result->details);
         char *line = strtok(details_copy, "\n");
         while (line != NULL) {
-            printf("║ %-58s ║\n", line);
+
             line = strtok(NULL, "\n");
         }
         free(details_copy);
     } else {
-        printf("║ No significant phishing indicators detected.              ║\n");
+
     }
-    
-    printf("╠════════════════════════════════════════════════════════════╣\n");
-    printf("║ RECOMMENDATION:                                            ║\n");
-    printf("╠════════════════════════════════════════════════════════════╣\n");
-    
+
+
     if (result->threat_score >= 70) {
-        printf("║ ⚠️  HIGH RISK: This email is very likely a phishing attempt.║\n");
-        printf("║ Do NOT click any links or download attachments.           ║\n");
-        printf("║ Report this email as spam/phishing and delete it.         ║\n");
+
+
     } else if (result->threat_score >= 40) {
-        printf("║ ⚠️  MEDIUM RISK: Exercise caution with this email.          ║\n");
-        printf("║ Verify sender through official channels before acting.    ║\n");
-        printf("║ Do not provide sensitive information via email.           ║\n");
+
+
     } else if (result->threat_score >= 20) {
-        printf("║ ℹ️  LOW RISK: Some suspicious elements detected.            ║\n");
-        printf("║ Verify sender if requesting any action or information.    ║\n");
+
+
     } else {
-        printf("║ ✓  MINIMAL RISK: No major phishing indicators found.       ║\n");
-        printf("║ Always remain vigilant with unexpected emails.            ║\n");
+
+
     }
-    
-    printf("╚════════════════════════════════════════════════════════════╝\n");
+
+
 }
 
 /*
  * ALGORITHM SUMMARY:
- * 
+ *
  * 1. Load email content from file
  * 2. Perform multiple pattern checks:
  *    a) Urgency patterns (pressure tactics)
@@ -477,7 +441,7 @@ void print_report(const PhishingResult *result) {
  *    f) Sender spoofing indicators
  * 3. Calculate weighted threat score
  * 4. Generate detailed report with recommendations
- * 
+ *
  * SCORING WEIGHTS:
  * - Mismatched/Typosquatted URLs: 30 points
  * - Spoofed sender: 25 points
@@ -486,7 +450,7 @@ void print_report(const PhishingResult *result) {
  * - Suspicious links: 15 points each
  * - Urgency phrases: 10 points each
  * - Generic greeting: 5 points
- * 
+ *
  * THREAT LEVELS:
  * - 70-100: HIGH RISK
  * - 40-69:  MEDIUM RISK

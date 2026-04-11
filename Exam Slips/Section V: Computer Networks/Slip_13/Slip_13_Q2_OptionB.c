@@ -1,15 +1,15 @@
 /*
  * Slip 13 - Q2 Option B: Save Initial Switch Configuration to Text File
- * 
+ *
  * Description: This program generates and saves an initial Cisco switch
  *              configuration to a text file for documentation/backup.
- * 
+ *
  * Features:
  * - Generates complete switch configuration
  * - Includes hostname, passwords, interfaces, VLANs
  * - Saves configuration with timestamp
  * - User can customize basic parameters
- * 
+ *
  * Compile: gcc -o switch_config Slip_13_Q2_OptionB.c
  * Run:     ./switch_config
  */
@@ -73,26 +73,24 @@ char* getCurrentTimestamp(void);
 int main() {
     SwitchConfig switchConfig;
     int choice;
-    
+
     printBanner();
-    
-    // Initialize with default values
+
     initializeSwitchConfig(&switchConfig);
-    
+
     printf("\n>>> Configuration Options:\n");
     printf("    1. Use Default Configuration\n");
     printf("    2. Enter Custom Configuration\n");
     printf("    Enter choice (1-2): ");
     scanf("%d", &choice);
     getchar(); // Clear newline
-    
+
     if (choice == 2) {
         getUserInput(&switchConfig);
     }
-    
-    // Display configuration summary
+
     displayConfigSummary(&switchConfig);
-    
+
     // Save configuration to file
     if (saveConfigToFile(&switchConfig, CONFIG_FILE)) {
         printf("\n>>> Configuration saved successfully to: %s\n", CONFIG_FILE);
@@ -100,14 +98,13 @@ int main() {
         printf("\n>>> Error: Failed to save configuration!\n");
         return 1;
     }
-    
+
     printf("\n>>> Press Enter to exit...");
     getchar();
-    
+
     return 0;
 }
 
-// Print program banner
 void printBanner(void) {
     printf("\n");
     printf("====================================================================\n");
@@ -125,7 +122,6 @@ char* getCurrentTimestamp(void) {
     return timestamp;
 }
 
-// Initialize switch configuration with default values
 void initializeSwitchConfig(SwitchConfig *config) {
     // Basic settings
     strcpy(config->hostname, "Switch1");
@@ -137,31 +133,29 @@ void initializeSwitchConfig(SwitchConfig *config) {
     strcpy(config->managementIP, "192.168.1.254");
     strcpy(config->subnetMask, "255.255.255.0");
     strcpy(config->defaultGateway, "192.168.1.1");
-    
-    // Initialize VLANs
+
     config->vlanCount = 3;
-    
+
     config->vlans[0].vlanId = 10;
     strcpy(config->vlans[0].name, "ENGINEERING");
     strcpy(config->vlans[0].description, "Engineering Department");
-    
+
     config->vlans[1].vlanId = 20;
     strcpy(config->vlans[1].name, "SALES");
     strcpy(config->vlans[1].description, "Sales Department");
-    
+
     config->vlans[2].vlanId = 30;
     strcpy(config->vlans[2].name, "MANAGEMENT");
     strcpy(config->vlans[2].description, "Network Management");
-    
-    // Initialize Interfaces
+
     config->interfaceCount = 8;
-    
+
     // FastEthernet interfaces
     for (int i = 0; i < 8; i++) {
         sprintf(config->interfaces[i].name, "FastEthernet0/%d", i + 1);
         config->interfaces[i].isEnabled = 1;
         strcpy(config->interfaces[i].mode, "access");
-        
+
         if (i < 3) {
             config->interfaces[i].vlanId = 10;
             sprintf(config->interfaces[i].description, "Engineering PC %d", i + 1);
@@ -179,31 +173,30 @@ void initializeSwitchConfig(SwitchConfig *config) {
 void getUserInput(SwitchConfig *config) {
     printf("\n>>> Enter Custom Configuration:\n");
     printf("-----------------------------------\n");
-    
+
     printf("Hostname [%s]: ", config->hostname);
     fgets(config->hostname, sizeof(config->hostname), stdin);
     config->hostname[strcspn(config->hostname, "\n")] = 0;
     if (strlen(config->hostname) == 0) strcpy(config->hostname, "Switch1");
-    
+
     printf("Enable Secret [%s]: ", config->enableSecret);
     fgets(config->enableSecret, sizeof(config->enableSecret), stdin);
     config->enableSecret[strcspn(config->enableSecret, "\n")] = 0;
     if (strlen(config->enableSecret) == 0) strcpy(config->enableSecret, "cisco123");
-    
+
     printf("Management IP [%s]: ", config->managementIP);
     fgets(config->managementIP, sizeof(config->managementIP), stdin);
     config->managementIP[strcspn(config->managementIP, "\n")] = 0;
     if (strlen(config->managementIP) == 0) strcpy(config->managementIP, "192.168.1.254");
-    
+
     printf("Default Gateway [%s]: ", config->defaultGateway);
     fgets(config->defaultGateway, sizeof(config->defaultGateway), stdin);
     config->defaultGateway[strcspn(config->defaultGateway, "\n")] = 0;
     if (strlen(config->defaultGateway) == 0) strcpy(config->defaultGateway, "192.168.1.1");
-    
+
     printf("\n>>> Using default VLANs and interfaces.\n");
 }
 
-// Display configuration summary
 void displayConfigSummary(SwitchConfig *config) {
     printf("\n");
     printf("====================================================================\n");
@@ -229,26 +222,26 @@ void displayConfigSummary(SwitchConfig *config) {
 // Save configuration to file
 int saveConfigToFile(SwitchConfig *config, const char *filename) {
     FILE *fp = fopen(filename, "w");
-    
+
     if (fp == NULL) {
         perror("Error opening file");
         return 0;
     }
-    
+
     writeConfigHeader(fp, config);
     writeBasicConfig(fp, config);
     writeSecurityConfig(fp, config);
     writeVLANConfig(fp, config);
     writeInterfaceConfig(fp, config);
     writeLineConfig(fp, config);
-    
+
     // End of configuration
     fprintf(fp, "!\n");
     fprintf(fp, "!--------------------------------------------------------------\n");
     fprintf(fp, "! END OF CONFIGURATION\n");
     fprintf(fp, "!--------------------------------------------------------------\n");
     fprintf(fp, "end\n");
-    
+
     fclose(fp);
     return 1;
 }
@@ -324,7 +317,7 @@ void writeVLANConfig(FILE *fp, SwitchConfig *config) {
     fprintf(fp, "! VLAN CONFIGURATION\n");
     fprintf(fp, "!--------------------------------------------------------------\n");
     fprintf(fp, "!\n");
-    
+
     for (int i = 0; i < config->vlanCount; i++) {
         fprintf(fp, "! Create VLAN %d\n", config->vlans[i].vlanId);
         fprintf(fp, "vlan %d\n", config->vlans[i].vlanId);
@@ -332,7 +325,7 @@ void writeVLANConfig(FILE *fp, SwitchConfig *config) {
         fprintf(fp, "exit\n");
         fprintf(fp, "!\n");
     }
-    
+
     fprintf(fp, "! Configure management VLAN interface (VLAN 1)\n");
     fprintf(fp, "interface vlan 1\n");
     fprintf(fp, " description Management Interface\n");
@@ -348,28 +341,28 @@ void writeInterfaceConfig(FILE *fp, SwitchConfig *config) {
     fprintf(fp, "! INTERFACE CONFIGURATION\n");
     fprintf(fp, "!--------------------------------------------------------------\n");
     fprintf(fp, "!\n");
-    
+
     for (int i = 0; i < config->interfaceCount; i++) {
         fprintf(fp, "interface %s\n", config->interfaces[i].name);
         fprintf(fp, " description %s\n", config->interfaces[i].description);
         fprintf(fp, " switchport mode %s\n", config->interfaces[i].mode);
-        
+
         if (strcmp(config->interfaces[i].mode, "access") == 0) {
             fprintf(fp, " switchport access vlan %d\n", config->interfaces[i].vlanId);
         }
-        
+
         fprintf(fp, " spanning-tree portfast\n");
-        
+
         if (config->interfaces[i].isEnabled) {
             fprintf(fp, " no shutdown\n");
         } else {
             fprintf(fp, " shutdown\n");
         }
-        
+
         fprintf(fp, "exit\n");
         fprintf(fp, "!\n");
     }
-    
+
     // Configure trunk port
     fprintf(fp, "! Configure trunk port for uplink\n");
     fprintf(fp, "interface GigabitEthernet0/1\n");
@@ -387,7 +380,7 @@ void writeLineConfig(FILE *fp, SwitchConfig *config) {
     fprintf(fp, "! LINE CONFIGURATION (Console and VTY)\n");
     fprintf(fp, "!--------------------------------------------------------------\n");
     fprintf(fp, "!\n");
-    
+
     // Console configuration
     fprintf(fp, "! Console line configuration\n");
     fprintf(fp, "line console 0\n");
@@ -397,7 +390,7 @@ void writeLineConfig(FILE *fp, SwitchConfig *config) {
     fprintf(fp, " exec-timeout 5 0\n");
     fprintf(fp, "exit\n");
     fprintf(fp, "!\n");
-    
+
     // VTY configuration
     fprintf(fp, "! VTY (Telnet/SSH) line configuration\n");
     fprintf(fp, "line vty 0 4\n");
@@ -414,12 +407,12 @@ void writeLineConfig(FILE *fp, SwitchConfig *config) {
     fprintf(fp, " exec-timeout 5 0\n");
     fprintf(fp, "exit\n");
     fprintf(fp, "!\n");
-    
+
     // SSH configuration
     fprintf(fp, "! Generate RSA key for SSH (run in privileged mode)\n");
     fprintf(fp, "! crypto key generate rsa modulus 2048\n");
     fprintf(fp, "!\n");
-    
+
     // Save configuration
     fprintf(fp, "! Save configuration to startup-config\n");
     fprintf(fp, "exit\n");

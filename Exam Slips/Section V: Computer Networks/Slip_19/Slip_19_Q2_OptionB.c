@@ -1,9 +1,9 @@
 /*
  * Slip 19 - Q2 Option B: NAT Translation Verification Program
- * 
+ *
  * This program simulates Network Address Translation (NAT) and demonstrates
  * how to verify NAT translations similar to Cisco's "show ip nat translations"
- * 
+ *
  * Compile: gcc -o nat_verify Slip_19_Q2_OptionB.c
  * Run: ./nat_verify
  */
@@ -71,7 +71,7 @@ void verify_nat_translation(void);
 void clear_nat_translations(void);
 void simulate_traffic(void);
 void demonstrate_nat_types(void);
-void add_nat_entry(const char *proto, const char *inside_local, 
+void add_nat_entry(const char *proto, const char *inside_local,
                    const char *inside_global, const char *outside_local,
                    const char *outside_global, int is_static);
 char* get_next_public_ip(void);
@@ -79,22 +79,22 @@ int get_next_port(void);
 
 int main() {
     int choice;
-    
+
     srand(time(NULL));
     display_banner();
     initialize_nat();
-    
+
     while (1) {
         display_menu();
         printf("\nEnter your choice: ");
-        
+
         if (scanf("%d", &choice) != 1) {
             while (getchar() != '\n');
             printf("Invalid input! Please enter a number.\n");
             continue;
         }
         while (getchar() != '\n');
-        
+
         switch (choice) {
             case 1:
                 add_static_nat();
@@ -130,63 +130,48 @@ int main() {
                 printf("Invalid choice! Please select 1-10.\n");
         }
     }
-    
+
     return 0;
 }
 
 void display_banner(void) {
     printf("\n");
-    printf("╔════════════════════════════════════════════════════════════════╗\n");
-    printf("║           NAT TRANSLATION VERIFICATION SIMULATOR               ║\n");
-    printf("║                  Computer Networks Lab                         ║\n");
-    printf("║        (Similar to Cisco 'show ip nat translations')           ║\n");
-    printf("╚════════════════════════════════════════════════════════════════╝\n");
+
+
 }
 
 void display_menu(void) {
     printf("\n");
-    printf("┌────────────────────── NAT MENU ─────────────────────┐\n");
-    printf("│                                                     │\n");
-    printf("│  1. Add Static NAT Entry                            │\n");
-    printf("│  2. Add Dynamic NAT Entry                           │\n");
-    printf("│  3. Add PAT (Overload) Entry                        │\n");
-    printf("│  4. Show NAT Translations (show ip nat translations)│\n");
-    printf("│  5. Show NAT Statistics                             │\n");
-    printf("│  6. Verify Specific Translation                     │\n");
-    printf("│  7. Clear All NAT Translations                      │\n");
-    printf("│  8. Simulate Network Traffic                        │\n");
-    printf("│  9. Demonstrate NAT Types                           │\n");
-    printf("│  10. Exit                                           │\n");
-    printf("│                                                     │\n");
-    printf("└─────────────────────────────────────────────────────┘\n");
+
+
 }
 
 void initialize_nat(void) {
     nat_stats.start_time = time(NULL);
     nat_stats.total_translations = 0;
     nat_stats.active_translations = 0;
-    
+
     // Add some sample translations for demonstration
-    add_nat_entry("TCP", "192.168.1.10:80", "203.0.113.1:1024", 
+    add_nat_entry("TCP", "192.168.1.10:80", "203.0.113.1:1024",
                   "8.8.8.8:443", "8.8.8.8:443", 0);
-    add_nat_entry("---", "192.168.1.100", "203.0.113.10", 
+    add_nat_entry("---", "192.168.1.100", "203.0.113.10",
                   "---", "---", 1);
-    add_nat_entry("UDP", "192.168.1.11:53", "203.0.113.1:1025", 
+    add_nat_entry("UDP", "192.168.1.11:53", "203.0.113.1:1025",
                   "1.1.1.1:53", "1.1.1.1:53", 0);
-    
+
     printf("\n✓ NAT system initialized with sample entries.\n");
 }
 
-void add_nat_entry(const char *proto, const char *inside_local, 
+void add_nat_entry(const char *proto, const char *inside_local,
                    const char *inside_global, const char *outside_local,
                    const char *outside_global, int is_static) {
     if (nat_count >= MAX_TRANSLATIONS) {
         printf("Error: NAT table is full!\n");
         return;
     }
-    
+
     NATEntry *entry = &nat_table[nat_count];
-    
+
     strncpy(entry->protocol, proto, PROTO_LENGTH - 1);
     strncpy(entry->inside_local, inside_local, IP_LENGTH - 1);
     strncpy(entry->inside_global, inside_global, IP_LENGTH - 1);
@@ -195,11 +180,11 @@ void add_nat_entry(const char *proto, const char *inside_local,
     entry->created_time = time(NULL);
     entry->timeout = time(NULL) + 300;  // 5 minute timeout
     entry->active = 1;
-    
+
     nat_count++;
     nat_stats.total_translations++;
     nat_stats.active_translations++;
-    
+
     if (is_static) {
         nat_stats.static_translations++;
     } else {
@@ -210,42 +195,42 @@ void add_nat_entry(const char *proto, const char *inside_local,
 void add_static_nat(void) {
     char inside_local[IP_LENGTH];
     char inside_global[IP_LENGTH];
-    
+
     printf("\n=== ADD STATIC NAT ENTRY ===\n");
     printf("Static NAT: One-to-one mapping (e.g., web server)\n\n");
-    
+
     printf("Enter Inside Local IP (private): ");
     fgets(inside_local, sizeof(inside_local), stdin);
     inside_local[strcspn(inside_local, "\n")] = '\0';
-    
+
     printf("Enter Inside Global IP (public): ");
     fgets(inside_global, sizeof(inside_global), stdin);
     inside_global[strcspn(inside_global, "\n")] = '\0';
-    
+
     add_nat_entry("---", inside_local, inside_global, "---", "---", 1);
-    
+
     printf("\n✓ Static NAT added successfully!\n");
     printf("  Cisco command equivalent:\n");
-    printf("  Router(config)# ip nat inside source static %s %s\n", 
+    printf("  Router(config)# ip nat inside source static %s %s\n",
            inside_local, inside_global);
 }
 
 void add_dynamic_nat(void) {
     char inside_local[IP_LENGTH];
     char inside_global[IP_LENGTH];
-    
+
     printf("\n=== ADD DYNAMIC NAT ENTRY ===\n");
     printf("Dynamic NAT: Maps from a pool of public IPs\n\n");
-    
+
     printf("Enter Inside Local IP (private): ");
     fgets(inside_local, sizeof(inside_local), stdin);
     inside_local[strcspn(inside_local, "\n")] = '\0';
-    
+
     // Automatically assign from pool
     strcpy(inside_global, get_next_public_ip());
-    
+
     add_nat_entry("---", inside_local, inside_global, "---", "---", 0);
-    
+
     printf("\n✓ Dynamic NAT added successfully!\n");
     printf("  Private IP %s mapped to Public IP %s\n", inside_local, inside_global);
 }
@@ -257,40 +242,40 @@ void add_pat_entry(void) {
     char protocol[PROTO_LENGTH];
     char temp[IP_LENGTH];
     int inside_port, outside_port;
-    
+
     printf("\n=== ADD PAT (Port Address Translation) ENTRY ===\n");
     printf("PAT/Overload: Many-to-one using port numbers\n\n");
-    
+
     printf("Enter Protocol (TCP/UDP/ICMP): ");
     fgets(protocol, sizeof(protocol), stdin);
     protocol[strcspn(protocol, "\n")] = '\0';
-    
+
     printf("Enter Inside Local IP: ");
     fgets(temp, sizeof(temp), stdin);
     temp[strcspn(temp, "\n")] = '\0';
-    
+
     printf("Enter Inside Local Port: ");
     scanf("%d", &inside_port);
     while (getchar() != '\n');
-    
+
     snprintf(inside_local, sizeof(inside_local), "%s:%d", temp, inside_port);
-    
+
     // Assign global IP:port
     outside_port = get_next_port();
     snprintf(inside_global, sizeof(inside_global), "203.0.113.1:%d", outside_port);
-    
+
     printf("Enter Destination IP: ");
     fgets(temp, sizeof(temp), stdin);
     temp[strcspn(temp, "\n")] = '\0';
-    
+
     printf("Enter Destination Port: ");
     scanf("%d", &inside_port);
     while (getchar() != '\n');
-    
+
     snprintf(outside, sizeof(outside), "%s:%d", temp, inside_port);
-    
+
     add_nat_entry(protocol, inside_local, inside_global, outside, outside, 0);
-    
+
     printf("\n✓ PAT entry added successfully!\n");
     printf("  %s %s -> %s (Dest: %s)\n", protocol, inside_local, inside_global, outside);
 }
@@ -298,11 +283,11 @@ void add_pat_entry(void) {
 void show_nat_translations(void) {
     printf("\n");
     printf("Router# show ip nat translations\n");
-    printf("═══════════════════════════════════════════════════════════════════════════════════════\n");
-    printf("%-5s %-20s %-20s %-20s %-20s\n", 
+
+    printf("%-5s %-20s %-20s %-20s %-20s\n",
            "Pro", "Inside global", "Inside local", "Outside local", "Outside global");
-    printf("═══════════════════════════════════════════════════════════════════════════════════════\n");
-    
+
+
     if (nat_count == 0) {
         printf("No NAT translations found.\n");
     } else {
@@ -317,17 +302,17 @@ void show_nat_translations(void) {
             }
         }
     }
-    printf("═══════════════════════════════════════════════════════════════════════════════════════\n");
+
     printf("Total entries: %d\n", nat_stats.active_translations);
 }
 
 void show_nat_statistics(void) {
     time_t now = time(NULL);
     int uptime = (int)(now - nat_stats.start_time);
-    
+
     printf("\n");
     printf("Router# show ip nat statistics\n");
-    printf("═══════════════════════════════════════════════════════════════════\n");
+
     printf("Total active translations: %d (Static: %d, Dynamic: %d)\n",
            nat_stats.active_translations,
            nat_stats.static_translations,
@@ -342,38 +327,38 @@ void show_nat_statistics(void) {
     printf("\n");
     printf("Hits: %ld  Misses: 0\n", nat_stats.packets_translated);
     printf("\n");
-    printf("CEF Translated packets: %ld, CEF Punted packets: 0\n", 
+    printf("CEF Translated packets: %ld, CEF Punted packets: 0\n",
            nat_stats.packets_translated);
     printf("\n");
     printf("Expired translations: %d\n", nat_stats.expired_translations);
     printf("Pool stats drop: 0  Mapping stats drop: 0\n");
     printf("\n");
     printf("NAT uptime: %d seconds\n", uptime);
-    printf("═══════════════════════════════════════════════════════════════════\n");
+
 }
 
 void verify_nat_translation(void) {
     char search_ip[IP_LENGTH];
     int found = 0;
-    
+
     printf("\n=== VERIFY NAT TRANSLATION ===\n");
     printf("Enter IP address to search (private or public): ");
     fgets(search_ip, sizeof(search_ip), stdin);
     search_ip[strcspn(search_ip, "\n")] = '\0';
-    
+
     printf("\nRouter# show ip nat translations | include %s\n", search_ip);
-    printf("═══════════════════════════════════════════════════════════════════════════════════════\n");
-    printf("%-5s %-20s %-20s %-20s %-20s\n", 
+
+    printf("%-5s %-20s %-20s %-20s %-20s\n",
            "Pro", "Inside global", "Inside local", "Outside local", "Outside global");
-    printf("═══════════════════════════════════════════════════════════════════════════════════════\n");
-    
+
+
     for (int i = 0; i < nat_count; i++) {
         if (nat_table[i].active) {
             if (strstr(nat_table[i].inside_local, search_ip) ||
                 strstr(nat_table[i].inside_global, search_ip) ||
                 strstr(nat_table[i].outside_local, search_ip) ||
                 strstr(nat_table[i].outside_global, search_ip)) {
-                
+
                 printf("%-5s %-20s %-20s %-20s %-20s\n",
                        nat_table[i].protocol,
                        nat_table[i].inside_global,
@@ -384,9 +369,8 @@ void verify_nat_translation(void) {
             }
         }
     }
-    
-    printf("═══════════════════════════════════════════════════════════════════════════════════════\n");
-    
+
+
     if (found == 0) {
         printf("\n✗ No NAT translation found for IP: %s\n", search_ip);
         printf("  Possible reasons:\n");
@@ -401,12 +385,12 @@ void verify_nat_translation(void) {
 
 void clear_nat_translations(void) {
     char confirm;
-    
+
     printf("\n⚠️  WARNING: This will clear all dynamic NAT translations.\n");
     printf("Confirm clear? (y/n): ");
     scanf("%c", &confirm);
     while (getchar() != '\n');
-    
+
     if (confirm == 'y' || confirm == 'Y') {
         int cleared = 0;
         for (int i = 0; i < nat_count; i++) {
@@ -418,7 +402,7 @@ void clear_nat_translations(void) {
                 cleared++;
             }
         }
-        
+
         printf("\nRouter# clear ip nat translation *\n");
         printf("✓ Cleared %d dynamic NAT translation(s).\n", cleared);
         printf("  (Static translations preserved)\n");
@@ -443,77 +427,35 @@ void simulate_traffic(void) {
     char protocols[][PROTO_LENGTH] = {"TCP", "UDP", "TCP", "TCP"};
     int src_ports[] = {45123, 33456, 52789, 41234};
     int dst_ports[] = {443, 53, 80, 443};
-    
+
     printf("\n=== SIMULATING NETWORK TRAFFIC ===\n");
     printf("Generating NAT translations for outbound traffic...\n\n");
-    
+
     for (int i = 0; i < 4; i++) {
         char inside_local[IP_LENGTH];
         char inside_global[IP_LENGTH];
         char outside[IP_LENGTH];
         int nat_port = get_next_port();
-        
+
         snprintf(inside_local, sizeof(inside_local), "%s:%d", private_ips[i], src_ports[i]);
         snprintf(inside_global, sizeof(inside_global), "203.0.113.1:%d", nat_port);
         snprintf(outside, sizeof(outside), "%s:%d", dest_ips[i], dst_ports[i]);
-        
+
         add_nat_entry(protocols[i], inside_local, inside_global, outside, outside, 0);
         nat_stats.packets_translated += rand() % 100 + 10;
-        
-        printf("  [%s] %s -> %s -> %s\n", 
+
+        printf("  [%s] %s -> %s -> %s\n",
                protocols[i], inside_local, inside_global, outside);
     }
-    
+
     printf("\n✓ Traffic simulation complete. %d new translations created.\n", 4);
     printf("  Use option 4 to view all translations.\n");
 }
 
 void demonstrate_nat_types(void) {
     printf("\n");
-    printf("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
-    printf("║                            NAT TYPES DEMONSTRATION                                 ║\n");
-    printf("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
-    printf("║                                                                                    ║\n");
-    printf("║  1. STATIC NAT (One-to-One)                                                        ║\n");
-    printf("║     ┌──────────────┐      ┌──────────┐      ┌───────────────┐                     ║\n");
-    printf("║     │ 192.168.1.10 │ ───> │  Router  │ ───> │ 203.0.113.10  │                     ║\n");
-    printf("║     │ (Web Server) │      │   NAT    │      │   (Public)    │                     ║\n");
-    printf("║     └──────────────┘      └──────────┘      └───────────────┘                     ║\n");
-    printf("║     • Permanent mapping                                                            ║\n");
-    printf("║     • Used for servers that need external access                                   ║\n");
-    printf("║     • Command: ip nat inside source static 192.168.1.10 203.0.113.10              ║\n");
-    printf("║                                                                                    ║\n");
-    printf("║  2. DYNAMIC NAT (Pool-based)                                                       ║\n");
-    printf("║     ┌──────────────┐                        ┌───────────────┐                     ║\n");
-    printf("║     │ 192.168.1.11 │ ──┐   ┌──────────┐     │ 203.0.113.1   │                     ║\n");
-    printf("║     └──────────────┘   ├─> │  Router  │ ──> │ 203.0.113.2   │                     ║\n");
-    printf("║     ┌──────────────┐   │   │   NAT    │     │ 203.0.113.3   │                     ║\n");
-    printf("║     │ 192.168.1.12 │ ──┘   └──────────┘     │   (Pool)      │                     ║\n");
-    printf("║     └──────────────┘                        └───────────────┘                     ║\n");
-    printf("║     • First-come, first-served from pool                                           ║\n");
-    printf("║     • Number of simultaneous users limited by pool size                            ║\n");
-    printf("║                                                                                    ║\n");
-    printf("║  3. PAT/NAT OVERLOAD (Port Address Translation)                                    ║\n");
-    printf("║     ┌──────────────────┐                    ┌─────────────────────┐               ║\n");
-    printf("║     │ 192.168.1.11:80  │ ──┐               │ 203.0.113.1:1024    │               ║\n");
-    printf("║     └──────────────────┘   │               └─────────────────────┘               ║\n");
-    printf("║     ┌──────────────────┐   │ ┌──────────┐  ┌─────────────────────┐               ║\n");
-    printf("║     │ 192.168.1.12:80  │ ──┼>│  Router  │─>│ 203.0.113.1:1025    │               ║\n");
-    printf("║     └──────────────────┘   │ │   NAT    │  └─────────────────────┘               ║\n");
-    printf("║     ┌──────────────────┐   │ └──────────┘  ┌─────────────────────┐               ║\n");
-    printf("║     │ 192.168.1.13:443 │ ──┘               │ 203.0.113.1:1026    │               ║\n");
-    printf("║     └──────────────────┘                    └─────────────────────┘               ║\n");
-    printf("║     • Many private IPs share ONE public IP                                         ║\n");
-    printf("║     • Distinguished by unique port numbers                                         ║\n");
-    printf("║     • Most common type (home routers)                                              ║\n");
-    printf("║                                                                                    ║\n");
-    printf("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
-    printf("║  NAT TERMINOLOGY:                                                                  ║\n");
-    printf("║  • Inside Local:  Private IP as seen inside the network                            ║\n");
-    printf("║  • Inside Global: Private IP as seen from outside (after NAT)                      ║\n");
-    printf("║  • Outside Local: External IP as seen from inside                                  ║\n");
-    printf("║  • Outside Global: External IP as seen from outside                                ║\n");
-    printf("╚════════════════════════════════════════════════════════════════════════════════════╝\n");
+
+
 }
 
 char* get_next_public_ip(void) {

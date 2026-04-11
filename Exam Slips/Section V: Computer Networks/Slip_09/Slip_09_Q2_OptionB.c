@@ -1,6 +1,6 @@
 /*
  * Slip 9 - Q2 Option B: Static Routing Simulation Program
- * 
+ *
  * This program simulates static routing by maintaining a routing table
  * and determining the best route for destination IP addresses using
  * longest prefix matching algorithm.
@@ -44,7 +44,7 @@ typedef struct {
 unsigned int ip_to_int(const char *ip);
 void int_to_ip(unsigned int ip, char *buffer);
 void init_router(Router *router, const char *hostname);
-void add_route(Router *router, const char *network, const char *mask, 
+void add_route(Router *router, const char *network, const char *mask,
                const char *next_hop, const char *interface, int metric);
 void add_default_route(Router *router, const char *next_hop, const char *interface);
 Route* find_best_route(Router *router, unsigned int dest_ip);
@@ -59,45 +59,33 @@ int main() {
     char dest_ip[20];
     int choice;
 
-    printf("╔══════════════════════════════════════════════════════════════════╗\n");
-    printf("║            STATIC ROUTING SIMULATION PROGRAM                     ║\n");
-    printf("║                     Slip 9 - Option B                            ║\n");
-    printf("╚══════════════════════════════════════════════════════════════════╝\n\n");
 
     /* Initialize router */
     init_router(&router, "Router1");
 
     /* Add sample static routes */
     printf("📡 Configuring static routes...\n\n");
-    
+
     /* Local networks (directly connected) */
     add_route(&router, "192.168.1.0", "255.255.255.0", "0.0.0.0", "eth0", 0);
     add_route(&router, "192.168.2.0", "255.255.255.0", "0.0.0.0", "eth1", 0);
     add_route(&router, "10.0.0.0", "255.255.255.0", "0.0.0.0", "eth2", 0);
-    
+
     /* Remote networks (via next-hop) */
     add_route(&router, "172.16.0.0", "255.255.0.0", "192.168.1.254", "eth0", 10);
     add_route(&router, "172.16.10.0", "255.255.255.0", "192.168.1.253", "eth0", 5);
     add_route(&router, "10.10.0.0", "255.255.0.0", "10.0.0.254", "eth2", 10);
     add_route(&router, "8.8.8.0", "255.255.255.0", "192.168.2.1", "eth1", 20);
-    
+
     /* Default route (gateway of last resort) */
     add_default_route(&router, "192.168.2.1", "eth1");
 
-    /* Display routing table */
     display_routing_table(&router);
 
     /* Main menu loop */
     do {
-        printf("\n┌────────────────────────────────────────────────────────────────┐\n");
-        printf("│                         MAIN MENU                              │\n");
-        printf("├────────────────────────────────────────────────────────────────┤\n");
-        printf("│  1. Simulate Packet Forwarding                                 │\n");
-        printf("│  2. Display Routing Table                                      │\n");
-        printf("│  3. Add New Static Route                                       │\n");
-        printf("│  4. Show Route Lookup Process (Detailed)                       │\n");
-        printf("│  5. Exit                                                       │\n");
-        printf("└────────────────────────────────────────────────────────────────┘\n");
+
+
         printf("Enter choice: ");
         scanf("%d", &choice);
 
@@ -107,11 +95,11 @@ int main() {
                 scanf("%s", dest_ip);
                 simulate_packet_forwarding(&router, dest_ip);
                 break;
-                
+
             case 2:
                 display_routing_table(&router);
                 break;
-                
+
             case 3: {
                 char network[20], mask[20], next_hop[20], interface[20];
                 int metric;
@@ -129,17 +117,17 @@ int main() {
                 printf("✅ Route added successfully!\n");
                 break;
             }
-            
+
             case 4:
                 printf("\nEnter destination IP address: ");
                 scanf("%s", dest_ip);
                 display_route_lookup_process(&router, ip_to_int(dest_ip));
                 break;
-                
+
             case 5:
                 printf("\nExiting Static Routing Simulation. Goodbye!\n");
                 break;
-                
+
             default:
                 printf("❌ Invalid choice! Please try again.\n");
         }
@@ -236,12 +224,12 @@ Route* find_best_route(Router *router, unsigned int dest_ip) {
 
     for (i = 0; i < router->route_count; i++) {
         Route *route = &router->table[i];
-        
+
         if (!route->active) continue;
-        
+
         /* Apply mask to destination and compare with network */
         unsigned int masked_dest = dest_ip & route->mask;
-        
+
         if (masked_dest == route->network) {
             /* Longest prefix match wins */
             if (route->prefix_length > longest_prefix) {
@@ -267,26 +255,18 @@ void display_routing_table(Router *router) {
     char network_str[20], mask_str[20], next_hop_str[20];
     int i;
 
-    printf("\n╔══════════════════════════════════════════════════════════════════════════════╗\n");
-    printf("║                    ROUTING TABLE - %s                              ║\n", router->hostname);
-    printf("╠══════════════════════════════════════════════════════════════════════════════╣\n");
-    printf("║  Network           Mask              Next-Hop         Interface   Metric    ║\n");
-    printf("╠══════════════════════════════════════════════════════════════════════════════╣\n");
 
     for (i = 0; i < router->route_count; i++) {
         Route *route = &router->table[i];
-        
+
         int_to_ip(route->network, network_str);
         int_to_ip(route->mask, mask_str);
         int_to_ip(route->next_hop, next_hop_str);
 
-        printf("║  %-17s %-17s %-16s %-10s %-8d ║\n",
-               network_str, mask_str, 
-               route->next_hop == 0 ? "Directly Conn." : next_hop_str,
-               route->interface, route->metric);
+
     }
 
-    printf("╚══════════════════════════════════════════════════════════════════════════════╝\n");
+
     printf("Total routes: %d\n", router->route_count);
 }
 
@@ -297,11 +277,6 @@ void simulate_packet_forwarding(Router *router, const char *dest_ip) {
     unsigned int dest = ip_to_int(dest_ip);
     char next_hop_str[20], network_str[20], mask_str[20];
 
-    printf("\n┌──────────────────────────────────────────────────────────────────┐\n");
-    printf("│                   PACKET FORWARDING SIMULATION                   │\n");
-    printf("├──────────────────────────────────────────────────────────────────┤\n");
-    printf("│ Destination IP: %-48s │\n", dest_ip);
-    printf("└──────────────────────────────────────────────────────────────────┘\n\n");
 
     /* Find best route */
     Route *best_route = find_best_route(router, dest);
@@ -317,30 +292,23 @@ void simulate_packet_forwarding(Router *router, const char *dest_ip) {
     int_to_ip(best_route->next_hop, next_hop_str);
 
     printf("✅ ROUTE FOUND!\n\n");
-    printf("┌──────────────────────────────────────────────────────────────────┐\n");
-    printf("│ Routing Decision:                                                │\n");
-    printf("├──────────────────────────────────────────────────────────────────┤\n");
-    printf("│ Matched Network:  %s/%d\n", network_str, best_route->prefix_length);
-    printf("│ Subnet Mask:      %s\n", mask_str);
-    
+
+
     if (best_route->next_hop == 0) {
-        printf("│ Action:           DELIVER DIRECTLY (Connected Network)\n");
-        printf("│ Interface:        %s\n", best_route->interface);
+
+
     } else {
-        printf("│ Next-Hop:         %s\n", next_hop_str);
-        printf("│ Interface:        %s\n", best_route->interface);
+
+
     }
-    printf("│ Metric:           %d\n", best_route->metric);
-    printf("└──────────────────────────────────────────────────────────────────┘\n");
+
 
     /* Visual representation */
     printf("\n📦 Packet Flow:\n");
     if (best_route->next_hop == 0) {
-        printf("   [Packet] ──► [%s] ──► [%s] (Direct Delivery)\n",
-               router->hostname, dest_ip);
+
     } else {
-        printf("   [Packet] ──► [%s] ──► [%s] ──► [%s] ──► ... ──► [%s]\n",
-               router->hostname, best_route->interface, next_hop_str, dest_ip);
+
     }
 }
 
@@ -350,61 +318,54 @@ void simulate_packet_forwarding(Router *router, const char *dest_ip) {
 void display_route_lookup_process(Router *router, unsigned int dest_ip) {
     char dest_str[20], network_str[20], mask_str[20], masked_str[20];
     int i;
-    
+
     int_to_ip(dest_ip, dest_str);
-    
-    printf("\n╔════════════════════════════════════════════════════════════════════════════╗\n");
-    printf("║              ROUTE LOOKUP PROCESS (Longest Prefix Match)                   ║\n");
-    printf("╠════════════════════════════════════════════════════════════════════════════╣\n");
-    printf("║ Destination: %-63s ║\n", dest_str);
-    printf("╚════════════════════════════════════════════════════════════════════════════╝\n\n");
-    
+
+
     printf("Checking each route in table:\n");
-    printf("────────────────────────────────────────────────────────────────────────────\n");
-    
+
+
     Route *best_route = NULL;
     int longest_prefix = -1;
-    
+
     for (i = 0; i < router->route_count; i++) {
         Route *route = &router->table[i];
-        
+
         int_to_ip(route->network, network_str);
         int_to_ip(route->mask, mask_str);
-        
+
         unsigned int masked_dest = dest_ip & route->mask;
         int_to_ip(masked_dest, masked_str);
-        
+
         printf("\nRoute %d: %s/%d\n", i + 1, network_str, route->prefix_length);
-        printf("  ├─ Mask applied:  %s AND %s = %s\n", dest_str, mask_str, masked_str);
-        printf("  ├─ Compare with:  %s\n", network_str);
-        
+
+
         if (masked_dest == route->network) {
-            printf("  └─ Result: ✅ MATCH (prefix length: %d)\n", route->prefix_length);
-            
+
+
             if (route->prefix_length > longest_prefix) {
                 longest_prefix = route->prefix_length;
                 best_route = route;
-                printf("     └─ 🎯 New best match!\n");
+
             } else if (best_route != NULL && route->prefix_length == longest_prefix) {
                 if (route->metric < best_route->metric) {
                     best_route = route;
-                    printf("     └─ 🎯 Better metric, new best match!\n");
+
                 } else {
-                    printf("     └─ ❌ Same prefix but higher/equal metric, skipped\n");
+
                 }
             }
         } else {
-            printf("  └─ Result: ❌ NO MATCH\n");
+
         }
     }
-    
-    printf("\n────────────────────────────────────────────────────────────────────────────\n");
-    
+
+
     if (best_route != NULL) {
         int_to_ip(best_route->network, network_str);
         char next_hop_str[20];
         int_to_ip(best_route->next_hop, next_hop_str);
-        
+
         printf("\n🏆 BEST ROUTE SELECTED:\n");
         printf("   Network: %s/%d\n", network_str, best_route->prefix_length);
         printf("   Next-Hop: %s\n", best_route->next_hop == 0 ? "Direct" : next_hop_str);
@@ -413,54 +374,3 @@ void display_route_lookup_process(Router *router, unsigned int dest_ip) {
         printf("\n❌ NO MATCHING ROUTE FOUND - Packet dropped!\n");
     }
 }
-
-/*
- * SAMPLE OUTPUT:
- * ════════════════════════════════════════════════════════════════════════════════
- * 
- * ╔══════════════════════════════════════════════════════════════════╗
- * ║            STATIC ROUTING SIMULATION PROGRAM                     ║
- * ║                     Slip 9 - Option B                            ║
- * ╚══════════════════════════════════════════════════════════════════╝
- * 
- * 📡 Configuring static routes...
- * 
- * ╔══════════════════════════════════════════════════════════════════════════════╗
- * ║                    ROUTING TABLE - Router1                              ║
- * ╠══════════════════════════════════════════════════════════════════════════════╣
- * ║  Network           Mask              Next-Hop         Interface   Metric    ║
- * ╠══════════════════════════════════════════════════════════════════════════════╣
- * ║  192.168.1.0       255.255.255.0     Directly Conn.   eth0       0         ║
- * ║  192.168.2.0       255.255.255.0     Directly Conn.   eth1       0         ║
- * ║  10.0.0.0          255.255.255.0     Directly Conn.   eth2       0         ║
- * ║  172.16.0.0        255.255.0.0       192.168.1.254    eth0       10        ║
- * ║  172.16.10.0       255.255.255.0     192.168.1.253    eth0       5         ║
- * ║  10.10.0.0         255.255.0.0       10.0.0.254       eth2       10        ║
- * ║  8.8.8.0           255.255.255.0     192.168.2.1      eth1       20        ║
- * ║  0.0.0.0           0.0.0.0           192.168.2.1      eth1       100       ║
- * ╚══════════════════════════════════════════════════════════════════════════════╝
- * Total routes: 8
- * 
- * Enter destination IP address: 172.16.10.50
- * 
- * ┌──────────────────────────────────────────────────────────────────┐
- * │                   PACKET FORWARDING SIMULATION                   │
- * ├──────────────────────────────────────────────────────────────────┤
- * │ Destination IP: 172.16.10.50                                     │
- * └──────────────────────────────────────────────────────────────────┘
- * 
- * ✅ ROUTE FOUND!
- * 
- * ┌──────────────────────────────────────────────────────────────────┐
- * │ Routing Decision:                                                │
- * ├──────────────────────────────────────────────────────────────────┤
- * │ Matched Network:  172.16.10.0/24
- * │ Subnet Mask:      255.255.255.0
- * │ Next-Hop:         192.168.1.253
- * │ Interface:        eth0
- * │ Metric:           5
- * └──────────────────────────────────────────────────────────────────┘
- * 
- * 📦 Packet Flow:
- *    [Packet] ──► [Router1] ──► [eth0] ──► [192.168.1.253] ──► ... ──► [172.16.10.50]
- */

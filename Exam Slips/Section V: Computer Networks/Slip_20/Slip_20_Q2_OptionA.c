@@ -32,23 +32,16 @@ void createMeshTopology(int n) {
 
 void displayAdjacencyMatrix(int n) {
     int i, j;
-    
+
     printf("\n========================================\n");
     printf("       MESH TOPOLOGY ADJACENCY MATRIX\n");
-    printf("========================================\n\n");
-    
-    printf("     ");
-    for (i = 0; i < n; i++) {
+    printf("========================================\n\n");    for (i = 0; i < n; i++) {
         printf("%6s", nodeNames[i]);
     }
-    printf("\n");
-    
-    printf("     ");
-    for (i = 0; i < n; i++) {
-        printf("------");
+    printf("\n");    for (i = 0; i < n; i++) {
     }
     printf("\n");
-    
+
     for (i = 0; i < n; i++) {
         printf("%5s|", nodeNames[i]);
         for (j = 0; j < n; j++) {
@@ -61,14 +54,14 @@ void displayAdjacencyMatrix(int n) {
 void displayConnections(int n) {
     int i, j, count = 0;
     int totalConnections = n * (n - 1) / 2;
-    
+
     printf("\n========================================\n");
     printf("         MESH TOPOLOGY CONNECTIONS\n");
     printf("========================================\n\n");
-    
+
     printf("All Direct Connections:\n");
     printf("------------------------\n");
-    
+
     for (i = 0; i < n; i++) {
         for (j = i + 1; j < n; j++) {
             if (adjMatrix[i][j] == 1) {
@@ -77,7 +70,7 @@ void displayConnections(int n) {
             }
         }
     }
-    
+
     printf("\n------------------------\n");
     printf("Total Connections: %d\n", count);
     printf("Formula: n(n-1)/2 = %d(%d-1)/2 = %d\n", n, n, totalConnections);
@@ -87,7 +80,7 @@ void displayTopologyDiagram(int n) {
     printf("\n========================================\n");
     printf("       MESH TOPOLOGY VISUALIZATION\n");
     printf("========================================\n\n");
-    
+
     if (n == 4) {
         printf("           %s\n", nodeNames[0]);
         printf("          / | \\\n");
@@ -131,11 +124,11 @@ void displayStatistics(int n) {
     int totalConnections = n * (n - 1) / 2;
     int cablesPerNode = n - 1;
     int totalPorts = n * (n - 1);
-    
+
     printf("\n========================================\n");
     printf("         MESH TOPOLOGY STATISTICS\n");
     printf("========================================\n\n");
-    
+
     printf("  Number of Nodes       : %d\n", n);
     printf("  Connections per Node  : %d\n", cablesPerNode);
     printf("  Total Connections     : %d\n", totalConnections);
@@ -164,14 +157,14 @@ int getDegree(int node, int n) {
 
 void displayNodeDetails(int n) {
     int i;
-    
+
     printf("\n========================================\n");
     printf("            NODE DETAILS\n");
     printf("========================================\n\n");
-    
+
     printf("  %-10s  %-10s  %-15s\n", "Node", "Degree", "Connected To");
     printf("  %-10s  %-10s  %-15s\n", "----", "------", "------------");
-    
+
     for (i = 0; i < n; i++) {
         int j, first = 1;
         printf("  %-10s  %-10d  ", nodeNames[i], getDegree(i, n));
@@ -188,25 +181,25 @@ void displayNodeDetails(int n) {
 
 int main() {
     int n, i, choice;
-    
+
     printf("========================================\n");
     printf("     MESH TOPOLOGY REPRESENTATION\n");
     printf("========================================\n\n");
-    
+
     printf("Enter number of nodes (2-%d): ", MAX_NODES);
     scanf("%d", &n);
-    
+
     if (n < 2 || n > MAX_NODES) {
         printf("Error: Invalid number of nodes!\n");
         return 1;
     }
-    
+
     printf("\nNode Naming Options:\n");
     printf("1. Default names (PC0, PC1, ...)\n");
     printf("2. Custom names\n");
     printf("Enter choice: ");
     scanf("%d", &choice);
-    
+
     if (choice == 2) {
         printf("\nEnter names for %d nodes:\n", n);
         for (i = 0; i < n; i++) {
@@ -218,19 +211,19 @@ int main() {
             sprintf(nodeNames[i], "PC%d", i);
         }
     }
-    
+
     initializeMatrix(n);
     createMeshTopology(n);
-    
+
     displayAdjacencyMatrix(n);
     displayConnections(n);
     displayTopologyDiagram(n);
     displayNodeDetails(n);
     displayStatistics(n);
-    
+
     printf("\n========================================\n");
     printf("       PROGRAM COMPLETED\n");
     printf("========================================\n");
-    
+
     return 0;
 }

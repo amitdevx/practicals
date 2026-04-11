@@ -1,6 +1,6 @@
 /*
  * Slip 9 - Q2 Option A: IP Address Class Determination Program
- * 
+ *
  * This program determines the class of an IP address based on its first octet.
  * It also provides additional information like default subnet mask, network type,
  * and validates the IP address format.
@@ -44,16 +44,12 @@ int main() {
     IPClassInfo class_info;
     char choice;
 
-    printf("╔══════════════════════════════════════════════════════════════╗\n");
-    printf("║          IP ADDRESS CLASS DETERMINATION PROGRAM              ║\n");
-    printf("║                    Slip 9 - Option A                         ║\n");
-    printf("╚══════════════════════════════════════════════════════════════╝\n\n");
 
     do {
-        printf("┌────────────────────────────────────────────────────────────────┐\n");
-        printf("│ Enter IP Address (e.g., 192.168.1.1): ");
+
+
         scanf("%s", ip_address);
-        printf("└────────────────────────────────────────────────────────────────┘\n\n");
+
 
         /* Validate IP address */
         if (!validate_ip_address(ip_address, octets)) {
@@ -62,18 +58,16 @@ int main() {
         } else {
             /* Determine IP class */
             determine_ip_class(octets[0], &class_info);
-            
-            /* Display all information */
+
             display_ip_info(octets, &class_info);
-            
+
             /* Check if private address */
             check_private_address(octets);
         }
 
-        printf("\n┌────────────────────────────────────────────────────────────────┐\n");
-        printf("│ Check another IP address? (y/n): ");
+
         scanf(" %c", &choice);
-        printf("└────────────────────────────────────────────────────────────────┘\n\n");
+
 
     } while (choice == 'y' || choice == 'Y');
 
@@ -103,20 +97,20 @@ int validate_ip_address(const char *ip, int octets[4]) {
                 return 0;  /* Empty octet */
             }
             temp[temp_idx] = '\0';
-            
+
             /* Convert to integer */
             octets[octet_count] = atoi(temp);
-            
+
             /* Validate range */
             if (octets[octet_count] < 0 || octets[octet_count] > 255) {
                 return 0;
             }
-            
+
             /* Check for leading zeros (except "0" itself) */
             if (temp_idx > 1 && temp[0] == '0') {
                 return 0;
             }
-            
+
             octet_count++;
             temp_idx = 0;
         } else if (isdigit(ip[i])) {
@@ -216,11 +210,10 @@ void check_private_address(int octets[4]) {
         strcpy(private_range, "169.254.0.0 - 169.254.255.255 (APIPA/Link-Local)");
     }
 
-    printf("┌────────────────────────────────────────────────────────────────┐\n");
-    printf("│ Address Type: ");
+
     if (is_private) {
         printf("🔒 PRIVATE (Non-routable on Internet)\n");
-        printf("│ Private Range: %s\n", private_range);
+
     } else if (octets[0] == 127) {
         printf("🔄 LOOPBACK (localhost)\n");
     } else if (octets[0] >= 224 && octets[0] <= 239) {
@@ -230,7 +223,7 @@ void check_private_address(int octets[4]) {
     } else {
         printf("🌐 PUBLIC (Routable on Internet)\n");
     }
-    printf("└────────────────────────────────────────────────────────────────┘\n");
+
 }
 
 /*
@@ -248,77 +241,18 @@ void print_binary(int octet) {
  */
 void display_ip_info(int octets[4], IPClassInfo *info) {
     unsigned long max_hosts;
-    
-    printf("╔════════════════════════════════════════════════════════════════╗\n");
-    printf("║                    IP ADDRESS ANALYSIS                         ║\n");
-    printf("╠════════════════════════════════════════════════════════════════╣\n");
-    
-    printf("║ IP Address:       %d.%d.%d.%d\n", 
-           octets[0], octets[1], octets[2], octets[3]);
-    
-    printf("║ Binary:           ");
+
+
     print_binary(octets[0]); printf(".");
     print_binary(octets[1]); printf(".");
     print_binary(octets[2]); printf(".");
     print_binary(octets[3]); printf("\n");
-    
-    printf("╠════════════════════════════════════════════════════════════════╣\n");
-    printf("║ IP Class:         %-15s\n", info->class_name);
-    printf("║ Default Mask:     %-15s\n", info->subnet_mask);
-    printf("║ Network Bits:     %d bits\n", info->network_bits);
-    printf("║ Host Bits:        %d bits\n", info->host_bits);
-    
+
+
     if (info->host_bits > 0) {
         max_hosts = (1UL << info->host_bits) - 2;  /* 2^n - 2 */
-        printf("║ Max Hosts:        %lu hosts per network\n", max_hosts);
-    }
-    
-    printf("╠════════════════════════════════════════════════════════════════╣\n");
-    printf("║ Description:      %s\n", info->description);
-    printf("╚════════════════════════════════════════════════════════════════╝\n\n");
-    
-    /* Display class range */
-    printf("┌────────────────────────────────────────────────────────────────┐\n");
-    printf("│ Class Range Reference:                                         │\n");
-    printf("├────────────────────────────────────────────────────────────────┤\n");
-    printf("│ Class A: 1.0.0.0   - 126.255.255.255  (First bit: 0)          │\n");
-    printf("│ Class B: 128.0.0.0 - 191.255.255.255  (First bits: 10)        │\n");
-    printf("│ Class C: 192.0.0.0 - 223.255.255.255  (First bits: 110)       │\n");
-    printf("│ Class D: 224.0.0.0 - 239.255.255.255  (First bits: 1110)      │\n");
-    printf("│ Class E: 240.0.0.0 - 255.255.255.255  (First bits: 1111)      │\n");
-    printf("└────────────────────────────────────────────────────────────────┘\n");
-}
 
-/*
- * SAMPLE OUTPUT:
- * ══════════════════════════════════════════════════════════════
- * 
- * ╔══════════════════════════════════════════════════════════════╗
- * ║          IP ADDRESS CLASS DETERMINATION PROGRAM              ║
- * ║                    Slip 9 - Option A                         ║
- * ╚══════════════════════════════════════════════════════════════╝
- * 
- * ┌────────────────────────────────────────────────────────────────┐
- * │ Enter IP Address (e.g., 192.168.1.1): 172.20.1.1
- * └────────────────────────────────────────────────────────────────┘
- * 
- * ╔════════════════════════════════════════════════════════════════╗
- * ║                    IP ADDRESS ANALYSIS                         ║
- * ╠════════════════════════════════════════════════════════════════╣
- * ║ IP Address:       172.20.1.1
- * ║ Binary:           10101100.00010100.00000001.00000001
- * ╠════════════════════════════════════════════════════════════════╣
- * ║ IP Class:         Class B        
- * ║ Default Mask:     255.255.0.0    
- * ║ Network Bits:     16 bits
- * ║ Host Bits:        16 bits
- * ║ Max Hosts:        65534 hosts per network
- * ╠════════════════════════════════════════════════════════════════╣
- * ║ Description:      Medium networks (Universities, Companies)
- * ╚════════════════════════════════════════════════════════════════╝
- * 
- * ┌────────────────────────────────────────────────────────────────┐
- * │ Address Type: 🔒 PRIVATE (Non-routable on Internet)
- * │ Private Range: 172.16.0.0 - 172.31.255.255 (Class B Private)
- * └────────────────────────────────────────────────────────────────┘
- */
+    }
+
+
+}

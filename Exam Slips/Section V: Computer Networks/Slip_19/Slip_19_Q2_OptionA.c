@@ -1,12 +1,12 @@
 /*
  * Slip 19 - Q2 Option A: Phishing Simulation Program
- * 
+ *
  * This program demonstrates how phishing attacks work for educational purposes.
  * It creates a simple simulation showing credential capture techniques.
- * 
+ *
  * ⚠️ WARNING: This is for EDUCATIONAL PURPOSES ONLY!
  * Using this for unauthorized access is ILLEGAL and UNETHICAL.
- * 
+ *
  * Compile: gcc -o phishing_sim Slip_19_Q2_OptionA.c
  * Run: ./phishing_sim
  */
@@ -52,24 +52,24 @@ int main() {
     char target_site[MAX_STRING];
     char username[MAX_STRING];
     char password[MAX_STRING];
-    
+
     display_banner();
     display_educational_warning();
-    
+
     printf("\nPress Enter to continue with the simulation...");
     getchar();
-    
+
     while (1) {
         display_menu();
         printf("\nEnter your choice: ");
-        
+
         if (scanf("%d", &choice) != 1) {
             while (getchar() != '\n');
             printf("Invalid input! Please enter a number.\n");
             continue;
         }
         while (getchar() != '\n');
-        
+
         switch (choice) {
             case 1:
                 printf("\n=== FAKE LOGIN PAGE SIMULATION ===\n");
@@ -78,40 +78,40 @@ int main() {
                 target_site[strcspn(target_site, "\n")] = '\0';
                 simulate_fake_login_page(target_site);
                 break;
-                
+
             case 2:
                 printf("\n=== MANUAL CREDENTIAL CAPTURE TEST ===\n");
                 printf("Enter username: ");
                 fgets(username, sizeof(username), stdin);
                 username[strcspn(username, "\n")] = '\0';
-                
+
                 printf("Enter password: ");
                 fgets(password, sizeof(password), stdin);
                 password[strcspn(password, "\n")] = '\0';
-                
+
                 capture_credentials(username, password, generate_fake_ip());
                 printf("\n✓ Credentials captured for demonstration!\n");
                 break;
-                
+
             case 3:
                 display_captured_data();
                 break;
-                
+
             case 4:
                 printf("\nEnter site name for HTML template: ");
                 fgets(target_site, sizeof(target_site), stdin);
                 target_site[strcspn(target_site, "\n")] = '\0';
                 generate_html_page(target_site);
                 break;
-                
+
             case 5:
                 show_phishing_indicators();
                 break;
-                
+
             case 6:
                 run_awareness_quiz();
                 break;
-                
+
             case 7:
                 printf("\n=== EDUCATIONAL SUMMARY ===\n");
                 printf("This simulation demonstrated:\n");
@@ -125,54 +125,31 @@ int main() {
                 printf("- Enable two-factor authentication\n\n");
                 printf("Exiting simulation. Stay safe online!\n");
                 return 0;
-                
+
             default:
                 printf("Invalid choice! Please select 1-7.\n");
         }
     }
-    
+
     return 0;
 }
 
 void display_banner(void) {
     printf("\n");
-    printf("╔════════════════════════════════════════════════════════════════╗\n");
-    printf("║         PHISHING SIMULATION - EDUCATIONAL TOOL                 ║\n");
-    printf("║                  Computer Networks Lab                         ║\n");
-    printf("╚════════════════════════════════════════════════════════════════╝\n");
+
+
 }
 
 void display_educational_warning(void) {
     printf("\n");
-    printf("┌────────────────────────────────────────────────────────────────┐\n");
-    printf("│                    ⚠️  IMPORTANT WARNING ⚠️                     │\n");
-    printf("├────────────────────────────────────────────────────────────────┤\n");
-    printf("│  This program is designed SOLELY for EDUCATIONAL PURPOSES     │\n");
-    printf("│  to demonstrate how phishing attacks work.                    │\n");
-    printf("│                                                               │\n");
-    printf("│  USING THIS FOR UNAUTHORIZED ACCESS IS:                       │\n");
-    printf("│  • ILLEGAL under computer fraud laws                          │\n");
-    printf("│  • UNETHICAL and violates privacy                             │\n");
-    printf("│  • PUNISHABLE by fines and imprisonment                       │\n");
-    printf("│                                                               │\n");
-    printf("│  Only use this in controlled lab environments with proper     │\n");
-    printf("│  authorization for security awareness training.               │\n");
-    printf("└────────────────────────────────────────────────────────────────┘\n");
+
+
 }
 
 void display_menu(void) {
     printf("\n");
-    printf("┌─────────────────── MAIN MENU ───────────────────┐\n");
-    printf("│                                                 │\n");
-    printf("│  1. Simulate Fake Login Page                    │\n");
-    printf("│  2. Test Credential Capture                     │\n");
-    printf("│  3. View Captured Data                          │\n");
-    printf("│  4. Generate HTML Phishing Page Template        │\n");
-    printf("│  5. Learn Phishing Indicators                   │\n");
-    printf("│  6. Take Awareness Quiz                         │\n");
-    printf("│  7. Exit                                        │\n");
-    printf("│                                                 │\n");
-    printf("└─────────────────────────────────────────────────┘\n");
+
+
 }
 
 char* get_current_timestamp(void) {
@@ -185,10 +162,10 @@ char* get_current_timestamp(void) {
 
 char* generate_fake_ip(void) {
     static char ip[20];
-    sprintf(ip, "%d.%d.%d.%d", 
-            192 + rand() % 10, 
-            168, 
-            rand() % 256, 
+    sprintf(ip, "%d.%d.%d.%d",
+            192 + rand() % 10,
+            168,
+            rand() % 256,
             rand() % 256);
     return ip;
 }
@@ -196,57 +173,26 @@ char* generate_fake_ip(void) {
 void simulate_fake_login_page(const char *target_site) {
     char username[MAX_STRING];
     char password[MAX_STRING];
-    
+
     printf("\n");
-    printf("╔════════════════════════════════════════════════════════════════╗\n");
-    printf("║                                                                ║\n");
-    printf("║                    %s                                     \n", target_site);
-    printf("║                                                                ║\n");
-    printf("║   ┌──────────────────────────────────────────────────────┐    ║\n");
-    printf("║   │                                                      │    ║\n");
-    printf("║   │              Welcome! Please Sign In                 │    ║\n");
-    printf("║   │                                                      │    ║\n");
-    printf("║   │  Username/Email: [________________________]          │    ║\n");
-    printf("║   │                                                      │    ║\n");
-    printf("║   │  Password:       [________________________]          │    ║\n");
-    printf("║   │                                                      │    ║\n");
-    printf("║   │            [ Remember Me ]    [ Sign In ]            │    ║\n");
-    printf("║   │                                                      │    ║\n");
-    printf("║   │              Forgot Password? | Sign Up              │    ║\n");
-    printf("║   │                                                      │    ║\n");
-    printf("║   └──────────────────────────────────────────────────────┘    ║\n");
-    printf("║                                                                ║\n");
-    printf("╚════════════════════════════════════════════════════════════════╝\n");
+
+
     printf("\n[SIMULATION] This is what a victim would see.\n");
     printf("[SIMULATION] In real attack, this would be a web page.\n\n");
-    
+
     printf("Enter username (victim simulation): ");
     fgets(username, sizeof(username), stdin);
     username[strcspn(username, "\n")] = '\0';
-    
+
     printf("Enter password (victim simulation): ");
     fgets(password, sizeof(password), stdin);
     password[strcspn(password, "\n")] = '\0';
-    
+
     capture_credentials(username, password, generate_fake_ip());
-    
+
     printf("\n");
-    printf("╔════════════════════════════════════════════════════════════════╗\n");
-    printf("║                     ⚠️  ALERT ⚠️                                ║\n");
-    printf("╠════════════════════════════════════════════════════════════════╣\n");
-    printf("║                                                                ║\n");
-    printf("║   THIS WAS A PHISHING SIMULATION!                              ║\n");
-    printf("║                                                                ║\n");
-    printf("║   If this were a real attack, your credentials would           ║\n");
-    printf("║   have been stolen and sent to an attacker.                    ║\n");
-    printf("║                                                                ║\n");
-    printf("║   RED FLAGS YOU SHOULD HAVE NOTICED:                           ║\n");
-    printf("║   • The page appeared in a command line (unusual!)             ║\n");
-    printf("║   • No HTTPS/SSL certificate verification                      ║\n");
-    printf("║   • Generic login prompt without proper branding               ║\n");
-    printf("║   • No URL to verify authenticity                              ║\n");
-    printf("║                                                                ║\n");
-    printf("╚════════════════════════════════════════════════════════════════╝\n");
+
+
 }
 
 void capture_credentials(const char *username, const char *password, const char *ip) {
@@ -254,15 +200,15 @@ void capture_credentials(const char *username, const char *password, const char 
         printf("Warning: Maximum attempts reached!\n");
         return;
     }
-    
+
     PhishingAttempt *attempt = &attempts[attempt_count];
-    
+
     strncpy(attempt->username, username, MAX_STRING - 1);
     strncpy(attempt->password, password, MAX_STRING - 1);
     strncpy(attempt->ip_address, ip, sizeof(attempt->ip_address) - 1);
     strncpy(attempt->timestamp, get_current_timestamp(), sizeof(attempt->timestamp) - 1);
     attempt->attempt_number = attempt_count + 1;
-    
+
     log_attempt(attempt);
     attempt_count++;
 }
@@ -282,46 +228,37 @@ void log_attempt(PhishingAttempt *attempt) {
 
 void display_captured_data(void) {
     printf("\n");
-    printf("╔════════════════════════════════════════════════════════════════════════════╗\n");
-    printf("║                        CAPTURED CREDENTIALS LOG                            ║\n");
-    printf("╠════════════════════════════════════════════════════════════════════════════╣\n");
-    
+
+
     if (attempt_count == 0) {
-        printf("║  No credentials captured yet.                                              ║\n");
+
     } else {
-        printf("║  #   │ Timestamp           │ IP Address      │ Username                    ║\n");
-        printf("║──────┼─────────────────────┼─────────────────┼─────────────────────────────║\n");
-        
+
+
         for (int i = 0; i < attempt_count; i++) {
-            printf("║  %-3d │ %-19s │ %-15s │ %-27s ║\n",
-                   attempts[i].attempt_number,
-                   attempts[i].timestamp,
-                   attempts[i].ip_address,
-                   attempts[i].username);
+
         }
     }
-    
-    printf("╠════════════════════════════════════════════════════════════════════════════╣\n");
-    printf("║  Total Attempts: %-3d                                                       ║\n", attempt_count);
-    printf("╚════════════════════════════════════════════════════════════════════════════╝\n");
+
+
     printf("\nNote: Passwords are not displayed for security. Check %s for logs.\n", LOG_FILE);
 }
 
 void generate_html_page(const char *target_site) {
     char filename[MAX_STRING];
     sprintf(filename, "fake_%s_login.html", target_site);
-    
+
     // Replace spaces with underscores
     for (int i = 0; filename[i]; i++) {
         if (filename[i] == ' ') filename[i] = '_';
     }
-    
+
     FILE *html = fopen(filename, "w");
     if (html == NULL) {
         printf("Error: Could not create HTML file!\n");
         return;
     }
-    
+
     fprintf(html, "<!DOCTYPE html>\n");
     fprintf(html, "<html lang=\"en\">\n");
     fprintf(html, "<head>\n");
@@ -402,9 +339,9 @@ void generate_html_page(const char *target_site) {
     fprintf(html, "    </script>\n");
     fprintf(html, "</body>\n");
     fprintf(html, "</html>\n");
-    
+
     fclose(html);
-    
+
     printf("\n✓ HTML phishing page template created: %s\n", filename);
     printf("\nNote: This is for EDUCATIONAL demonstration only!\n");
     printf("The page includes a warning that displays after 'login' attempt.\n");
@@ -412,51 +349,17 @@ void generate_html_page(const char *target_site) {
 
 void show_phishing_indicators(void) {
     printf("\n");
-    printf("╔════════════════════════════════════════════════════════════════════════════╗\n");
-    printf("║                    HOW TO IDENTIFY PHISHING ATTEMPTS                       ║\n");
-    printf("╠════════════════════════════════════════════════════════════════════════════╣\n");
-    printf("║                                                                            ║\n");
-    printf("║  🔍 CHECK THE SENDER:                                                      ║\n");
-    printf("║     ✗ support@amaz0n-secure.com  (FAKE - notice the '0' and extra words)  ║\n");
-    printf("║     ✓ support@amazon.com          (REAL)                                  ║\n");
-    printf("║                                                                            ║\n");
-    printf("║  🔍 INSPECT URLs (hover before clicking):                                  ║\n");
-    printf("║     ✗ http://paypa1-login.com/secure    (FAKE - 'l' replaced with '1')   ║\n");
-    printf("║     ✓ https://www.paypal.com/login      (REAL)                            ║\n");
-    printf("║                                                                            ║\n");
-    printf("║  🔍 URGENCY & THREATS:                                                     ║\n");
-    printf("║     ✗ 'Your account will be SUSPENDED in 24 hours!'                       ║\n");
-    printf("║     ✗ 'Immediate action required - verify NOW!'                           ║\n");
-    printf("║     ✓ Legitimate companies rarely use threatening language                ║\n");
-    printf("║                                                                            ║\n");
-    printf("║  🔍 GENERIC GREETINGS:                                                     ║\n");
-    printf("║     ✗ 'Dear Customer' or 'Dear User'                                      ║\n");
-    printf("║     ✓ 'Dear John Smith' (companies know your name)                        ║\n");
-    printf("║                                                                            ║\n");
-    printf("║  🔍 SPELLING & GRAMMAR ERRORS:                                             ║\n");
-    printf("║     ✗ 'Your account has been compromize. Please login to you're account.' ║\n");
-    printf("║     ✓ Professional companies proofread their communications               ║\n");
-    printf("║                                                                            ║\n");
-    printf("║  🔍 SUSPICIOUS ATTACHMENTS:                                                ║\n");
-    printf("║     ✗ Invoice.exe, Document.zip, Update.scr                               ║\n");
-    printf("║     ✓ Be wary of unexpected attachments, especially executables           ║\n");
-    printf("║                                                                            ║\n");
-    printf("║  🔍 REQUESTS FOR SENSITIVE INFO:                                           ║\n");
-    printf("║     ✗ 'Please reply with your password and SSN'                           ║\n");
-    printf("║     ✓ Legitimate companies NEVER ask for passwords via email              ║\n");
-    printf("║                                                                            ║\n");
-    printf("╚════════════════════════════════════════════════════════════════════════════╝\n");
+
+
 }
 
 void run_awareness_quiz(void) {
     int score = 0;
     int answer;
-    
+
     printf("\n");
-    printf("╔════════════════════════════════════════════════════════════════╗\n");
-    printf("║              PHISHING AWARENESS QUIZ                           ║\n");
-    printf("╚════════════════════════════════════════════════════════════════╝\n\n");
-    
+
+
     // Question 1
     printf("Q1: You receive an email from 'security@micros0ft-support.com'\n");
     printf("    asking you to verify your account. What should you do?\n");
@@ -467,7 +370,7 @@ void run_awareness_quiz(void) {
     scanf("%d", &answer);
     if (answer == 2) { score++; printf("    ✓ Correct!\n\n"); }
     else printf("    ✗ Wrong! The domain 'micros0ft' (with zero) is suspicious.\n\n");
-    
+
     // Question 2
     printf("Q2: An email says 'Your account will be deleted in 2 hours unless\n");
     printf("    you verify now!' What type of tactic is this?\n");
@@ -478,7 +381,7 @@ void run_awareness_quiz(void) {
     scanf("%d", &answer);
     if (answer == 2) { score++; printf("    ✓ Correct!\n\n"); }
     else printf("    ✗ Wrong! Creating urgency is a common phishing tactic.\n\n");
-    
+
     // Question 3
     printf("Q3: Before clicking a link in an email, you should:\n");
     printf("    1. Click immediately if it looks important\n");
@@ -488,7 +391,7 @@ void run_awareness_quiz(void) {
     scanf("%d", &answer);
     if (answer == 2) { score++; printf("    ✓ Correct!\n\n"); }
     else printf("    ✗ Wrong! Always hover to check the actual URL destination.\n\n");
-    
+
     // Question 4
     printf("Q4: A legitimate bank email would typically:\n");
     printf("    1. Ask you to reply with your password\n");
@@ -498,7 +401,7 @@ void run_awareness_quiz(void) {
     scanf("%d", &answer);
     if (answer == 2) { score++; printf("    ✓ Correct!\n\n"); }
     else printf("    ✗ Wrong! Banks know your name and never ask for passwords.\n\n");
-    
+
     // Question 5
     printf("Q5: Which URL is most likely legitimate?\n");
     printf("    1. http://paypal-secure-login.suspicious.com/\n");
@@ -508,20 +411,16 @@ void run_awareness_quiz(void) {
     scanf("%d", &answer);
     if (answer == 2) { score++; printf("    ✓ Correct!\n\n"); }
     else printf("    ✗ Wrong! Only option 2 has HTTPS and correct domain.\n\n");
-    
-    printf("╔════════════════════════════════════════════════════════════════╗\n");
-    printf("║                     QUIZ RESULTS                               ║\n");
-    printf("╠════════════════════════════════════════════════════════════════╣\n");
-    printf("║  Your Score: %d/5                                               ║\n", score);
-    
+
+
     if (score == 5) {
-        printf("║  Rating: EXCELLENT! You're phishing-aware!                     ║\n");
+
     } else if (score >= 3) {
-        printf("║  Rating: GOOD! Review the indicators you missed.               ║\n");
+
     } else {
-        printf("║  Rating: NEEDS IMPROVEMENT - Please review phishing indicators ║\n");
+
     }
-    printf("╚════════════════════════════════════════════════════════════════╝\n");
-    
+
+
     while (getchar() != '\n');  // Clear input buffer
 }

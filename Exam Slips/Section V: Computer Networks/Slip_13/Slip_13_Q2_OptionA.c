@@ -1,13 +1,13 @@
 /*
  * Slip 13 - Q2 Option A: Hybrid Topology Display Program
- * 
+ *
  * Description: This program displays a Hybrid Network Topology
  *              combining Star and Bus topologies.
- * 
+ *
  * Hybrid Topology: Combines multiple topology types
  * - Bus backbone connecting switches
  * - Star topology at each switch with connected PCs
- * 
+ *
  * Compile: gcc -o hybrid_topology Slip_13_Q2_OptionA.c
  * Run:     ./hybrid_topology
  */
@@ -54,75 +54,71 @@ void printCentered(const char *text, int width);
 
 int main() {
     HybridTopology network;
-    
-    // Initialize the hybrid topology
+
     initializeTopology(&network);
-    
-    // Display the complete topology
+
     displayFullTopology(&network);
-    
+
     return 0;
 }
 
-// Initialize hybrid topology with sample data
 void initializeTopology(HybridTopology *topology) {
     strcpy(topology->backboneName, "Main Bus Backbone (Cat6)");
     topology->segmentCount = 3;
-    
+
     // Star Segment 1 - Engineering Department
     strcpy(topology->segments[0].hubName, "Switch-1 (Engineering)");
     topology->segments[0].deviceCount = 3;
-    
+
     strcpy(topology->segments[0].devices[0].name, "PC-ENG-01");
     strcpy(topology->segments[0].devices[0].ipAddress, "192.168.1.10");
     strcpy(topology->segments[0].devices[0].macAddress, "AA:BB:CC:01:01:01");
     topology->segments[0].devices[0].isActive = 1;
-    
+
     strcpy(topology->segments[0].devices[1].name, "PC-ENG-02");
     strcpy(topology->segments[0].devices[1].ipAddress, "192.168.1.11");
     strcpy(topology->segments[0].devices[1].macAddress, "AA:BB:CC:01:01:02");
     topology->segments[0].devices[1].isActive = 1;
-    
+
     strcpy(topology->segments[0].devices[2].name, "PC-ENG-03");
     strcpy(topology->segments[0].devices[2].ipAddress, "192.168.1.12");
     strcpy(topology->segments[0].devices[2].macAddress, "AA:BB:CC:01:01:03");
     topology->segments[0].devices[2].isActive = 0;
-    
+
     // Star Segment 2 - Sales Department
     strcpy(topology->segments[1].hubName, "Switch-2 (Sales)");
     topology->segments[1].deviceCount = 3;
-    
+
     strcpy(topology->segments[1].devices[0].name, "PC-SALES-01");
     strcpy(topology->segments[1].devices[0].ipAddress, "192.168.1.20");
     strcpy(topology->segments[1].devices[0].macAddress, "AA:BB:CC:02:01:01");
     topology->segments[1].devices[0].isActive = 1;
-    
+
     strcpy(topology->segments[1].devices[1].name, "PC-SALES-02");
     strcpy(topology->segments[1].devices[1].ipAddress, "192.168.1.21");
     strcpy(topology->segments[1].devices[1].macAddress, "AA:BB:CC:02:01:02");
     topology->segments[1].devices[1].isActive = 1;
-    
+
     strcpy(topology->segments[1].devices[2].name, "PC-SALES-03");
     strcpy(topology->segments[1].devices[2].ipAddress, "192.168.1.22");
     strcpy(topology->segments[1].devices[2].macAddress, "AA:BB:CC:02:01:03");
     topology->segments[1].devices[2].isActive = 1;
-    
+
     // Star Segment 3 - HR Department
     strcpy(topology->segments[2].hubName, "Switch-3 (HR)");
     topology->segments[2].deviceCount = 2;
-    
+
     strcpy(topology->segments[2].devices[0].name, "PC-HR-01");
     strcpy(topology->segments[2].devices[0].ipAddress, "192.168.1.30");
     strcpy(topology->segments[2].devices[0].macAddress, "AA:BB:CC:03:01:01");
     topology->segments[2].devices[0].isActive = 1;
-    
+
     strcpy(topology->segments[2].devices[1].name, "PC-HR-02");
     strcpy(topology->segments[2].devices[1].ipAddress, "192.168.1.31");
     strcpy(topology->segments[2].devices[1].macAddress, "AA:BB:CC:03:01:02");
     topology->segments[2].devices[1].isActive = 1;
 }
 
-// Display header
 void displayHeader(void) {
     printf("\n");
     printSeparator('=', 70);
@@ -132,7 +128,6 @@ void displayHeader(void) {
     printf("\n");
 }
 
-// Print separator line
 void printSeparator(char ch, int length) {
     for (int i = 0; i < length; i++) {
         printf("%c", ch);
@@ -140,15 +135,12 @@ void printSeparator(char ch, int length) {
     printf("\n");
 }
 
-// Print centered text
 void printCentered(const char *text, int width) {
     int len = strlen(text);
     int padding = (width - len) / 2;
-    for (int i = 0; i < padding; i++) printf(" ");
-    printf("%s\n", text);
+    for (int i = 0; i < padding; i++)    printf("%s\n", text);
 }
 
-// Display Bus Backbone
 void displayBusBackbone(HybridTopology *topology) {
     printf("\n>>> BUS BACKBONE: %s\n", topology->backboneName);
     printSeparator('-', 50);
@@ -158,16 +150,15 @@ void displayBusBackbone(HybridTopology *topology) {
     printSeparator('-', 50);
 }
 
-// Display a Star Segment
 void displayStarSegment(StarSegment *segment, int segmentNum) {
     printf("\n*** STAR SEGMENT %d: %s ***\n", segmentNum, segment->hubName);
     printSeparator('-', 50);
-    
+
     printf("    Central Hub: %s\n", segment->hubName);
     printf("    Connected Devices: %d\n", segment->deviceCount);
     printf("\n    %-15s %-16s %-20s %s\n", "Device", "IP Address", "MAC Address", "Status");
     printSeparator('.', 70);
-    
+
     for (int i = 0; i < segment->deviceCount; i++) {
         printf("    %-15s %-16s %-20s %s\n",
                segment->devices[i].name,
@@ -178,13 +169,12 @@ void displayStarSegment(StarSegment *segment, int segmentNum) {
     printSeparator('-', 50);
 }
 
-// Display ASCII representation of topology
 void displayASCIITopology(HybridTopology *topology) {
     printf("\n");
     printSeparator('=', 70);
     printCentered("ASCII TOPOLOGY DIAGRAM", 70);
     printSeparator('=', 70);
-    
+
     printf("\n");
     printf("                        HYBRID TOPOLOGY\n");
     printf("                    (Star + Bus Combination)\n");
@@ -212,11 +202,10 @@ void displayASCIITopology(HybridTopology *topology) {
     printf("\n");
 }
 
-// Display topology statistics
 void displayTopologyStats(HybridTopology *topology) {
     int totalDevices = 0;
     int activeDevices = 0;
-    
+
     for (int i = 0; i < topology->segmentCount; i++) {
         totalDevices += topology->segments[i].deviceCount;
         for (int j = 0; j < topology->segments[i].deviceCount; j++) {
@@ -225,12 +214,12 @@ void displayTopologyStats(HybridTopology *topology) {
             }
         }
     }
-    
+
     printf("\n");
     printSeparator('=', 70);
     printCentered("TOPOLOGY STATISTICS", 70);
     printSeparator('=', 70);
-    
+
     printf("\n");
     printf("    +--------------------------------+----------------+\n");
     printf("    | Metric                         | Value          |\n");
@@ -247,10 +236,9 @@ void displayTopologyStats(HybridTopology *topology) {
     printf("\n");
 }
 
-// Display full topology
 void displayFullTopology(HybridTopology *topology) {
     displayHeader();
-    
+
     printf("\n>>> TOPOLOGY DESCRIPTION:\n");
     printf("    A Hybrid Topology combines multiple network topologies.\n");
     printf("    This implementation uses:\n");
@@ -261,21 +249,17 @@ void displayFullTopology(HybridTopology *topology) {
     printf("    - Easy to add new segments\n");
     printf("    - Fault isolation between segments\n");
     printf("    - Scalable architecture\n");
-    
-    // Display Bus Backbone
+
     displayBusBackbone(topology);
-    
-    // Display each Star Segment
+
     for (int i = 0; i < topology->segmentCount; i++) {
         displayStarSegment(&topology->segments[i], i + 1);
     }
-    
-    // Display ASCII Diagram
+
     displayASCIITopology(topology);
-    
-    // Display Statistics
+
     displayTopologyStats(topology);
-    
+
     printSeparator('=', 70);
     printCentered("END OF HYBRID TOPOLOGY DISPLAY", 70);
     printSeparator('=', 70);
