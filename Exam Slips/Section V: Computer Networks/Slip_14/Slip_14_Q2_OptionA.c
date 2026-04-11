@@ -2,7 +2,7 @@
  * ============================================================================
  * Slip 14 - Q2 Option A: Static Routing Simulation Program
  * ============================================================================
- *
+ * 
  * This program simulates a static routing network where routers have
  * pre-configured routing tables. It demonstrates:
  * - Routing table structure and lookup
@@ -24,6 +24,10 @@
 #define MAX_ROUTERS 10
 #define MAX_INTERFACES 4
 #define IP_ADDR_LEN 16
+
+/* ============================================================================
+ * Data Structures
+ * ============================================================================ */
 
 /* Structure to represent an IP address */
 typedef struct {
@@ -57,6 +61,10 @@ typedef struct {
     Interface interfaces[MAX_INTERFACES];
     int interface_count;
 } Router;
+
+/* ============================================================================
+ * Utility Functions
+ * ============================================================================ */
 
 /* Convert string IP to IPAddress structure */
 void string_to_ip(const char *str, IPAddress *ip) {
@@ -102,6 +110,10 @@ bool ip_in_network(const IPAddress *ip, const IPAddress *network, const IPAddres
     return ip_equals(&masked_ip, network);
 }
 
+/* ============================================================================
+ * Router Functions
+ * ============================================================================ */
+
 /* Initialize a router */
 void init_router(Router *router, const char *hostname) {
     strncpy(router->hostname, hostname, sizeof(router->hostname) - 1);
@@ -116,22 +128,22 @@ void add_interface(Router *router, const char *name, const char *ip, const char 
         printf("[ERROR] Maximum interfaces reached.\n");
         return;
     }
-
+    
     Interface *iface = &router->interfaces[router->interface_count];
     strncpy(iface->name, name, sizeof(iface->name) - 1);
     string_to_ip(ip, &iface->ip_address);
     string_to_ip(mask, &iface->subnet_mask);
     iface->is_up = true;
-
+    
     router->interface_count++;
     printf("[CONFIG] Added interface %s with IP %s/%s\n", name, ip, mask);
-
+    
     /* Automatically add connected route */
     IPAddress network;
     apply_mask(&iface->ip_address, &iface->subnet_mask, &network);
     char net_str[IP_ADDR_LEN];
     ip_to_string(&network, net_str);
-
+    
     /* Add connected route (metric = 0) */
     RouteEntry *route = &router->routing_table[router->route_count];
     route->network = network;
@@ -141,7 +153,7 @@ void add_interface(Router *router, const char *name, const char *ip, const char 
     route->metric = 0;
     route->is_active = true;
     route->route_type = 'C';
-
+    
     router->route_count++;
     printf("[ROUTE] Added connected route for network %s\n", net_str);
 }
@@ -153,7 +165,7 @@ void add_static_route(Router *router, const char *network, const char *mask,
         printf("[ERROR] Maximum routes reached.\n");
         return;
     }
-
+    
     RouteEntry *route = &router->routing_table[router->route_count];
     string_to_ip(network, &route->network);
     string_to_ip(mask, &route->subnet_mask);
@@ -162,9 +174,9 @@ void add_static_route(Router *router, const char *network, const char *mask,
     route->metric = metric;
     route->is_active = true;
     route->route_type = 'S';
-
+    
     router->route_count++;
-
+    
     printf("[STATIC] Added route: %s/%s via %s (%s), metric %d\n",
            network, mask, next_hop, interface, metric);
 }
@@ -174,11 +186,11 @@ bool delete_route(Router *router, const char *network, const char *mask) {
     IPAddress net, msk;
     string_to_ip(network, &net);
     string_to_ip(mask, &msk);
-
+    
     for (int i = 0; i < router->route_count; i++) {
         if (ip_equals(&router->routing_table[i].network, &net) &&
             ip_equals(&router->routing_table[i].subnet_mask, &msk)) {
-
+            
             /* Shift remaining routes */
             for (int j = i; j < router->route_count - 1; j++) {
                 router->routing_table[j] = router->routing_table[j + 1];
@@ -192,50 +204,62 @@ bool delete_route(Router *router, const char *network, const char *mask) {
     return false;
 }
 
+/* Display routing table (similar to 'show ip route') */
 void show_routing_table(const Router *router) {
     printf("\n");
-
-
+    printf("╔══════════════════════════════════════════════════════════════════════════════╗\n");
+    printf("║               %s - IP Routing Table                                  ║\n", router->hostname);
+    printf("╠══════════════════════════════════════════════════════════════════════════════╣\n");
+    printf("║ Codes: C - Connected, S - Static                                             ║\n");
+    printf("╠══════════════════════════════════════════════════════════════════════════════╣\n");
+    printf("║ Type │ Network/Prefix        │ Next Hop        │ Interface   │ Metric        ║\n");
+    printf("╠══════════════════════════════════════════════════════════════════════════════╣\n");
+    
     for (int i = 0; i < router->route_count; i++) {
         const RouteEntry *route = &router->routing_table[i];
         if (!route->is_active) continue;
-
+        
         char net_str[IP_ADDR_LEN], hop_str[IP_ADDR_LEN];
         ip_to_string(&route->network, net_str);
         ip_to_string(&route->next_hop, hop_str);
         int prefix = get_prefix_length(&route->subnet_mask);
-
+        
         char network_prefix[25];
         sprintf(network_prefix, "%s/%d", net_str, prefix);
-
+        
+        printf("║  %c   │ %-21s │ %-15s │ %-11s │ %d             ║\n",
                route->route_type, network_prefix,
                (route->route_type == 'C') ? "Directly" : hop_str,
                route->interface_name, route->metric);
     }
-
-
+    
+    printf("╚══════════════════════════════════════════════════════════════════════════════╝\n\n");
 }
+
+/* ============================================================================
+ * Routing Lookup (Longest Prefix Match)
+ * ============================================================================ */
 
 /* Find the best route for a destination (longest prefix match) */
 RouteEntry* route_lookup(Router *router, const IPAddress *destination) {
     RouteEntry *best_route = NULL;
     int best_prefix_length = -1;
-
+    
     printf("\n[LOOKUP] Searching route for destination...\n");
-
+    
     for (int i = 0; i < router->route_count; i++) {
         RouteEntry *route = &router->routing_table[i];
         if (!route->is_active) continue;
-
+        
         /* Check if destination matches this route */
         if (ip_in_network(destination, &route->network, &route->subnet_mask)) {
             int prefix_len = get_prefix_length(&route->subnet_mask);
-
+            
             char net_str[IP_ADDR_LEN];
             ip_to_string(&route->network, net_str);
             printf("  [MATCH] Route %s/%d matches (prefix length: %d)\n",
                    net_str, prefix_len, prefix_len);
-
+            
             /* Longest prefix match wins */
             if (prefix_len > best_prefix_length) {
                 best_route = route;
@@ -243,9 +267,13 @@ RouteEntry* route_lookup(Router *router, const IPAddress *destination) {
             }
         }
     }
-
+    
     return best_route;
 }
+
+/* ============================================================================
+ * Packet Forwarding Simulation
+ * ============================================================================ */
 
 /* Structure to represent a packet */
 typedef struct {
@@ -260,36 +288,44 @@ void forward_packet(Router *router, Packet *packet) {
     char src_str[IP_ADDR_LEN], dst_str[IP_ADDR_LEN];
     ip_to_string(&packet->source, src_str);
     ip_to_string(&packet->destination, dst_str);
-
-
+    
+    printf("\n╔════════════════════════════════════════════════════════════════╗\n");
+    printf("║                    PACKET FORWARDING                           ║\n");
+    printf("╠════════════════════════════════════════════════════════════════╣\n");
+    printf("║ Router: %-54s ║\n", router->hostname);
+    printf("║ Source: %-54s ║\n", src_str);
+    printf("║ Destination: %-49s ║\n", dst_str);
+    printf("║ TTL: %-57d ║\n", packet->ttl);
+    printf("╚════════════════════════════════════════════════════════════════╝\n");
+    
     /* Check TTL */
     if (packet->ttl <= 0) {
         printf("\n[DROPPED] Packet TTL expired. Sending ICMP Time Exceeded.\n");
         return;
     }
-
+    
     /* Decrement TTL */
     packet->ttl--;
-
+    
     /* Perform route lookup */
     RouteEntry *route = route_lookup(router, &packet->destination);
-
+    
     if (route == NULL) {
         printf("\n[DROPPED] No route to destination. Sending ICMP Destination Unreachable.\n");
         return;
     }
-
+    
     char net_str[IP_ADDR_LEN], hop_str[IP_ADDR_LEN];
     ip_to_string(&route->network, net_str);
     ip_to_string(&route->next_hop, hop_str);
     int prefix = get_prefix_length(&route->subnet_mask);
-
+    
     printf("\n[FORWARD] Best route found:\n");
     printf("  Network:   %s/%d\n", net_str, prefix);
     printf("  Next Hop:  %s\n", (route->route_type == 'C') ? "Directly Connected" : hop_str);
     printf("  Interface: %s\n", route->interface_name);
     printf("  New TTL:   %d\n", packet->ttl);
-
+    
     if (route->route_type == 'C') {
         printf("\n[DELIVERED] Packet delivered directly to %s via %s\n",
                dst_str, route->interface_name);
@@ -299,42 +335,50 @@ void forward_packet(Router *router, Packet *packet) {
     }
 }
 
+/* ============================================================================
+ * Traceroute Simulation
+ * ============================================================================ */
+
 void simulate_traceroute(Router *routers[], int router_count,
                          const char *source, const char *destination) {
-
-
+    printf("\n╔════════════════════════════════════════════════════════════════╗\n");
+    printf("║                    TRACEROUTE SIMULATION                       ║\n");
+    printf("╠════════════════════════════════════════════════════════════════╣\n");
+    printf("║ Tracing route from %s to %s                 ║\n", source, destination);
+    printf("╚════════════════════════════════════════════════════════════════╝\n\n");
+    
     IPAddress src_ip, dst_ip, current_ip;
     string_to_ip(source, &src_ip);
     string_to_ip(destination, &dst_ip);
     current_ip = src_ip;
-
+    
     int hop = 1;
     int max_hops = 30;
-
+    
     while (hop <= max_hops) {
         bool found = false;
-
+        
         /* Find router that owns current_ip or has route to it */
         for (int r = 0; r < router_count; r++) {
             Router *router = routers[r];
-
+            
             /* Check if this router has an interface with current_ip */
             for (int i = 0; i < router->interface_count; i++) {
                 if (ip_equals(&router->interfaces[i].ip_address, &current_ip) ||
                     ip_in_network(&current_ip,
                                  &router->routing_table[0].network,
                                  &router->routing_table[0].subnet_mask)) {
-
+                    
                     char curr_str[IP_ADDR_LEN];
                     ip_to_string(&current_ip, curr_str);
                     printf("  %2d  %-15s  %s\n", hop, curr_str, router->hostname);
-
+                    
                     /* Check if we reached destination */
                     if (ip_equals(&current_ip, &dst_ip)) {
                         printf("\n[COMPLETE] Traceroute complete. Destination reached.\n");
                         return;
                     }
-
+                    
                     /* Find next hop */
                     RouteEntry *route = route_lookup(router, &dst_ip);
                     if (route && route->route_type == 'S') {
@@ -342,14 +386,14 @@ void simulate_traceroute(Router *routers[], int router_count,
                     } else {
                         current_ip = dst_ip;  /* Direct delivery */
                     }
-
+                    
                     found = true;
                     break;
                 }
             }
             if (found) break;
         }
-
+        
         if (!found) {
             printf("  %2d  * * * Request timed out.\n", hop);
             if (hop > 5) {
@@ -357,56 +401,90 @@ void simulate_traceroute(Router *routers[], int router_count,
                 return;
             }
         }
-
+        
         hop++;
     }
-
+    
     printf("\n[FAILED] Maximum hops exceeded.\n");
 }
 
+/* ============================================================================
+ * Interactive Menu
+ * ============================================================================ */
+
 void print_menu() {
     printf("\n");
-
-
+    printf("╔════════════════════════════════════════════════════════════════╗\n");
+    printf("║           STATIC ROUTING SIMULATION MENU                       ║\n");
+    printf("╠════════════════════════════════════════════════════════════════╣\n");
+    printf("║  1. Show Routing Table                                         ║\n");
+    printf("║  2. Add Static Route                                           ║\n");
+    printf("║  3. Delete Static Route                                        ║\n");
+    printf("║  4. Forward a Packet                                           ║\n");
+    printf("║  5. Run Traceroute                                             ║\n");
+    printf("║  6. Show Network Topology                                      ║\n");
+    printf("║  7. Switch Router                                              ║\n");
+    printf("║  8. Exit                                                       ║\n");
+    printf("╚════════════════════════════════════════════════════════════════╝\n");
     printf("Enter choice: ");
 }
 
 void show_topology() {
     printf("\n");
-
-
+    printf("╔════════════════════════════════════════════════════════════════════════════════╗\n");
+    printf("║                         NETWORK TOPOLOGY                                       ║\n");
+    printf("╠════════════════════════════════════════════════════════════════════════════════╣\n");
+    printf("║                                                                                ║\n");
+    printf("║    [PC1]                                                          [PC4]        ║\n");
+    printf("║  192.168.1.10                                                  192.168.4.10    ║\n");
+    printf("║       │                                                              │         ║\n");
+    printf("║       │                                                              │         ║\n");
+    printf("║  ┌────┴────┐        ┌──────────┐        ┌──────────┐        ┌───────┴──┐      ║\n");
+    printf("║  │ Router1 │────────│  Router2 │────────│  Router3 │────────│  Router4 │      ║\n");
+    printf("║  │.1.1     │ .2.1   │.2.2  .3.1│ .3.2   │.3.3  .4.1│  .4.2  │.4.3      │      ║\n");
+    printf("║  └─────────┘        └──────────┘        └──────────┘        └──────────┘      ║\n");
+    printf("║  192.168.1.0/24     192.168.2.0/24      192.168.3.0/24      192.168.4.0/24    ║\n");
+    printf("║                                                                                ║\n");
+    printf("╚════════════════════════════════════════════════════════════════════════════════╝\n");
 }
+
+/* ============================================================================
+ * Main Function
+ * ============================================================================ */
 
 int main() {
     printf("\n");
-
-
+    printf("╔════════════════════════════════════════════════════════════════╗\n");
+    printf("║         STATIC ROUTING SIMULATION PROGRAM                      ║\n");
+    printf("║         Slip 14 - Computer Networks                            ║\n");
+    printf("╚════════════════════════════════════════════════════════════════╝\n");
+    
     /* Create routers */
     Router router1, router2, router3, router4;
     Router *routers[4] = {&router1, &router2, &router3, &router4};
     Router *current_router;
-
+    
     /* Initialize Router 1 */
     init_router(&router1, "Router1");
     add_interface(&router1, "Gig0/0", "192.168.1.1", "255.255.255.0");
     add_interface(&router1, "Gig0/1", "192.168.2.1", "255.255.255.0");
     add_static_route(&router1, "192.168.3.0", "255.255.255.0", "192.168.2.2", "Gig0/1", 1);
     add_static_route(&router1, "192.168.4.0", "255.255.255.0", "192.168.2.2", "Gig0/1", 2);
-
+    
     /* Initialize Router 2 */
     init_router(&router2, "Router2");
     add_interface(&router2, "Gig0/0", "192.168.2.2", "255.255.255.0");
     add_interface(&router2, "Gig0/1", "192.168.3.1", "255.255.255.0");
     add_static_route(&router2, "192.168.1.0", "255.255.255.0", "192.168.2.1", "Gig0/0", 1);
     add_static_route(&router2, "192.168.4.0", "255.255.255.0", "192.168.3.2", "Gig0/1", 1);
-
+    
     /* Initialize Router 3 */
     init_router(&router3, "Router3");
     add_interface(&router3, "Gig0/0", "192.168.3.2", "255.255.255.0");
     add_interface(&router3, "Gig0/1", "192.168.4.1", "255.255.255.0");
     add_static_route(&router3, "192.168.1.0", "255.255.255.0", "192.168.3.1", "Gig0/0", 2);
     add_static_route(&router3, "192.168.2.0", "255.255.255.0", "192.168.3.1", "Gig0/0", 1);
-
+    
     /* Initialize Router 4 */
     init_router(&router4, "Router4");
     add_interface(&router4, "Gig0/0", "192.168.4.2", "255.255.255.0");
@@ -414,28 +492,29 @@ int main() {
     add_static_route(&router4, "192.168.2.0", "255.255.255.0", "192.168.4.1", "Gig0/0", 2);
     add_static_route(&router4, "192.168.3.0", "255.255.255.0", "192.168.4.1", "Gig0/0", 1);
     add_static_route(&router4, "0.0.0.0", "0.0.0.0", "192.168.4.1", "Gig0/0", 255);  /* Default route */
-
+    
     current_router = &router1;
     int choice;
-
+    
+    /* Show initial topology */
     show_topology();
-
+    
     /* Interactive menu */
     while (1) {
         print_menu();
         scanf("%d", &choice);
         getchar();  /* Consume newline */
-
+        
         switch (choice) {
             case 1:
                 show_routing_table(current_router);
                 break;
-
+                
             case 2: {
                 char network[IP_ADDR_LEN], mask[IP_ADDR_LEN];
                 char next_hop[IP_ADDR_LEN], interface[20];
                 int metric;
-
+                
                 printf("Enter destination network: ");
                 scanf("%s", network);
                 printf("Enter subnet mask: ");
@@ -446,11 +525,11 @@ int main() {
                 scanf("%s", interface);
                 printf("Enter metric: ");
                 scanf("%d", &metric);
-
+                
                 add_static_route(current_router, network, mask, next_hop, interface, metric);
                 break;
             }
-
+                
             case 3: {
                 char network[IP_ADDR_LEN], mask[IP_ADDR_LEN];
                 printf("Enter network to delete: ");
@@ -460,26 +539,26 @@ int main() {
                 delete_route(current_router, network, mask);
                 break;
             }
-
+                
             case 4: {
                 Packet pkt;
                 char src[IP_ADDR_LEN], dst[IP_ADDR_LEN];
-
+                
                 printf("Enter source IP: ");
                 scanf("%s", src);
                 printf("Enter destination IP: ");
                 scanf("%s", dst);
                 printf("Enter TTL (default 64): ");
                 scanf("%d", &pkt.ttl);
-
+                
                 string_to_ip(src, &pkt.source);
                 string_to_ip(dst, &pkt.destination);
                 strcpy(pkt.payload, "Test Packet");
-
+                
                 forward_packet(current_router, &pkt);
                 break;
             }
-
+                
             case 5: {
                 char src[IP_ADDR_LEN], dst[IP_ADDR_LEN];
                 printf("Enter source IP: ");
@@ -489,11 +568,11 @@ int main() {
                 simulate_traceroute(routers, 4, src, dst);
                 break;
             }
-
+                
             case 6:
                 show_topology();
                 break;
-
+                
             case 7: {
                 int r;
                 printf("Select router (1-4): ");
@@ -506,15 +585,47 @@ int main() {
                 }
                 break;
             }
-
+                
             case 8:
                 printf("\n[EXIT] Thank you for using Static Routing Simulator!\n\n");
                 return 0;
-
+                
             default:
                 printf("[ERROR] Invalid choice. Please try again.\n");
         }
     }
-
+    
     return 0;
 }
+
+/* ============================================================================
+ * Sample Output:
+ * ============================================================================
+ *
+ * ╔════════════════════════════════════════════════════════════════╗
+ * ║         STATIC ROUTING SIMULATION PROGRAM                      ║
+ * ║         Slip 14 - Computer Networks                            ║
+ * ╚════════════════════════════════════════════════════════════════╝
+ *
+ * [INIT] Router 'Router1' initialized.
+ * [CONFIG] Added interface Gig0/0 with IP 192.168.1.1/255.255.255.0
+ * [ROUTE] Added connected route for network 192.168.1.0
+ * [CONFIG] Added interface Gig0/1 with IP 192.168.2.1/255.255.255.0
+ * [ROUTE] Added connected route for network 192.168.2.0
+ * [STATIC] Added route: 192.168.3.0/255.255.255.0 via 192.168.2.2 (Gig0/1), metric 1
+ * [STATIC] Added route: 192.168.4.0/255.255.255.0 via 192.168.2.2 (Gig0/1), metric 2
+ *
+ * ╔══════════════════════════════════════════════════════════════════════════════╗
+ * ║               Router1 - IP Routing Table                                     ║
+ * ╠══════════════════════════════════════════════════════════════════════════════╣
+ * ║ Codes: C - Connected, S - Static                                             ║
+ * ╠══════════════════════════════════════════════════════════════════════════════╣
+ * ║ Type │ Network/Prefix        │ Next Hop        │ Interface   │ Metric        ║
+ * ╠══════════════════════════════════════════════════════════════════════════════╣
+ * ║  C   │ 192.168.1.0/24        │ Directly        │ Gig0/0      │ 0             ║
+ * ║  C   │ 192.168.2.0/24        │ Directly        │ Gig0/1      │ 0             ║
+ * ║  S   │ 192.168.3.0/24        │ 192.168.2.2     │ Gig0/1      │ 1             ║
+ * ║  S   │ 192.168.4.0/24        │ 192.168.2.2     │ Gig0/1      │ 2             ║
+ * ╚══════════════════════════════════════════════════════════════════════════════╝
+ *
+ * ============================================================================ */
