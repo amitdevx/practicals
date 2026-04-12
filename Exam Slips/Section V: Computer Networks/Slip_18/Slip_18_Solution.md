@@ -1,83 +1,58 @@
 # Slip 18 — Computer Networks Solution Guide
 
-## Q1: Short Answer Questions
-
-### a) What is a gateway?
-
-**Gateway:**
-- Device that connects different network types
-- Translates between protocols
-- Examples: VoIP gateway, email gateway
-- Operates at application layer
-- Different from router (IP gateway)
+## Q1: Short Answer Questions (10 Marks - Answer ANY 5)
 
 ---
 
-### b) What is protocol header?
+### a) In Cisco’s Packet tracer, which command used to change the prompt from Router> to Router# mode?
 
-**Protocol Header:**
-- Control information at packet beginning
-- Contains source/destination info
-- Specifies protocol version, length
-- Example: IP header, TCP header
+Use the `enable` command.
+---
 
-**IP Header Components:**
-- Version (4 bits)
-- Header length (4 bits)
-- Protocol (8 bits)
-- Source IP (32 bits)
-- Destination IP (32 bits)
+### b) Write down the steps to connect a PC to the Linksys router's web-based configuration page and find the default IP address.
+
+Connect the PC to the router, open the browser, enter the router default IP address, and access the web configuration page.
+---
+
+### c) What is dynamic routing? Gives its features.
+
+Dynamic routing automatically learns and updates routes using routing protocols such as RIP, OSPF, and EIGRP.
+---
+
+### d) List the commands used for Network Address Translation on Cisco’s Packet Tracer.
+
+Common NAT commands include interface `ip nat inside`, interface `ip nat outside`, ACL configuration, and `ip nat inside source` rules.
+---
+
+### f) Explain steps to identify a phishing email.
+
+Check sender address, suspicious links, urgent language, spelling mistakes, and unexpected requests for passwords or OTPs.
+---
+
+### g) Perform dictionary attack on SHA256 hash using Hashcat.
+
+Hashcat can be used with an authorized wordlist attack to test password strength against SHA256 hashes.
+---
+
+## Q2: Practical Questions (20 Marks)
+
+### OPTION A: Write a C program for Phishing Simulation.
+
+Implement and verify using [Slip_18_Q2_OptionA.c](Slip_18_Q2_OptionA.c).
 
 ---
 
-### c) What is network redundancy?
+### OPTION B: Write a C program that simulates a NAT system.
 
-**Redundancy:**
-- Backup systems for reliability
-- Prevents single point of failure
-- Examples: Dual WAN links, backup servers
-
-**Techniques:**
-- Link redundancy
-- Device redundancy
-- Data redundancy
+Implement and verify using [Slip_18_Q2_OptionB.c](Slip_18_Q2_OptionB.c).
 
 ---
 
-### d) What are routing protocols?
+### Q3: Bus Topology in Cisco Packet Tracer
 
-**Routing Protocols:**
-- **Static**: Manual route configuration
-- **Dynamic**: Automatic route discovery
-  - RIP: Routing Information Protocol
-  - OSPF: Open Shortest Path First
-  - BGP: Border Gateway Protocol
+To create and simulate a Bus Topology using four PCs in Cisco Packet Tracer. Assign appropriate IP addresses to all nodes and verify communication between them using the ping command.
 
----
-
-### f) What is load balancing?
-
-**Load Balancing:**
-- Distributes traffic across multiple servers
-- Improves performance and availability
-- Methods: Round-robin, least connections, IP hash
-
----
-
-### g) What is network reliability?
-
-**Reliability Metrics:**
-- Uptime percentage
-- Mean Time Between Failures (MTBF)
-- Mean Time To Repair (MTTR)
-- Redundancy level
-- Backup systems
-
----
-
-## Q2: Practical Questions
-
-Gateway configuration and routing implementation.
-
----
-
+- PC1 → 192.168.1.1 / 255.255.255.0
+- PC2 → 192.168.1.2 / 255.255.255.0
+- PC3 → 192.168.1.3 / 255.255.255.0
+- PC4 → 192.168.1.4 / 255.255.255.0

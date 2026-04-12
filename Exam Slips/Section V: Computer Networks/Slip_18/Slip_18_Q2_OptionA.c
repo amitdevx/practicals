@@ -1,38 +1,36 @@
 /*
- * Slip 18 - Q2 Option A: Verify NAT Translation using show NAT
- * 
- * Displays NAT translation table with statistics.
- * 
- * Compile: gcc Slip_18_Q2_OptionA.c -o nat_verify
- * Run: ./nat_verify
+ * Slip 18 - Q2 Option A (OR): Write a C program for Phishing Simulation.
+ *
+ * Compile: gcc Slip_18_Q2_OptionA.c -o phishing_sim
+ * Run: ./phishing_sim
  */
 
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
-int main() {
-    printf("NAT Translation Verification\n");
-    printf("===========================\n\n");
-    
-    printf("show nat translation\n");
-    printf("───────────────────────────────────────────────────\n");
-    printf("Protocol | Inside Local | Inside Global | Timeout\n");
-    printf("───────────────────────────────────────────────────\n");
-    printf("tcp      | 192.168.1.100| 203.0.113.50  | 86400\n");
-    printf("tcp      | 192.168.1.101| 203.0.113.51  | 86400\n");
-    printf("tcp      | 192.168.1.102| 203.0.113.52  | 86400\n");
-    printf("udp      | 192.168.1.100| 203.0.113.50  | 300\n");
-    printf("───────────────────────────────────────────────────\n\n");
-    
-    printf("NAT Statistics:\n");
-    printf("Total Inside Addresses: 3\n");
-    printf("Total Outside Addresses: 3\n");
-    printf("Dynamic Translations: 4\n");
-    printf("Static Translations: 0\n\n");
-    
-    printf("Translation Details:\n");
-    printf("- TCP translations persist for 86400 seconds\n");
-    printf("- UDP translations persist for 300 seconds\n");
-    printf("- All internal hosts successfully translated\n");
-    
+int suspicious(const char *text) {
+    const char *keywords[] = {"verify", "urgent", "password", "login", "click", "account", "bank", "update"};
+    char lower[512];
+    strncpy(lower, text, sizeof(lower) - 1);
+    lower[sizeof(lower) - 1] = '\0';
+    for (int i = 0; lower[i]; i++) {
+        lower[i] = (char)tolower((unsigned char)lower[i]);
+    }
+    int score = 0;
+    for (int i = 0; i < 8; i++) {
+        if (strstr(lower, keywords[i])) score++;
+    }
+    if (strstr(lower, "http://") || strstr(lower, "bit.ly")) score++;
+    return score >= 2;
+}
+
+int main(void) {
+    char mail[512];
+    printf("Phishing Simulation\n");
+    printf("===================\n");
+    printf("Enter email/message text: ");
+    fgets(mail, sizeof(mail), stdin);
+    printf("Result: %s\n", suspicious(mail) ? "Likely PHISHING" : "Likely SAFE");
     return 0;
 }

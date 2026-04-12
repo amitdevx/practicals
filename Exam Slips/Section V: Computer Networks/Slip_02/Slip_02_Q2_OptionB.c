@@ -1,38 +1,30 @@
 /*
- * Slip 2 - Q2 Option B (OR): Even Parity Error Detection
- * 
- * Detects single-bit errors using even parity.
- * 
- * Compile: gcc Slip_02_Q2_OptionB.c -o even_parity
- * Run: ./even_parity
+ * Slip 2 - Q2 Option B: Character Count Framing
+ *
+ * Compile: gcc Slip_02_Q2_OptionB.c -o char_count
+ * Run: ./char_count
  */
 
 #include <stdio.h>
+#include <string.h>
 
-int main() {
-    int data;
-    
-    printf("Even Parity Error Detection\n");
-    printf("===========================\n");
-    printf("Enter 7-bit data (0-127): ");
-    scanf("%d", &data);
-    
-    if (data < 0 || data > 127) {
-        printf("Invalid range\n");
-        return 1;
+int main(void) {
+    char data[256];
+
+    printf("Character Count Framing\n");
+    printf("=======================\n");
+    printf("Enter data: ");
+    fgets(data, sizeof(data), stdin);
+
+    size_t len = strlen(data);
+    if (len > 0 && data[len - 1] == '\n') {
+        data[len - 1] = '\0';
+        len--;
     }
-    
-    int ones = 0;
-    for (int i = 0; i < 7; i++) {
-        if ((data >> i) & 1) ones++;
-    }
-    
-    int parity = ones % 2;
-    
-    printf("Data: %d\n", data);
-    printf("1-bits: %d\n", ones);
-    printf("Parity bit: %d\n", parity);
-    printf("Even parity: %s\n", parity == 0 ? "Yes" : "No");
-    
+
+    printf("\nFramed output:\n");
+    printf("[%zu]%s\n", len, data);
+    printf("Total frame size (count + data): %zu\n", len + 1);
+
     return 0;
 }

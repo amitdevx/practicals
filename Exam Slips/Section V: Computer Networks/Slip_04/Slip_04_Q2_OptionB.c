@@ -1,38 +1,41 @@
 /*
- * Slip 4 - Q2 Option B (OR): Odd Parity Error Detection
- * 
- * Detects errors using odd parity.
- * 
- * Compile: gcc Slip_04_Q2_OptionB.c -o odd_parity
- * Run: ./odd_parity
+ * Slip 4 - Q2 Option B: Write a C program that checks private IP ranges.
+ *
+ * Compile: gcc Slip_04_Q2_OptionB.c -o private_ip
+ * Run: ./private_ip
  */
 
 #include <stdio.h>
 
-int main() {
-    int data;
-    
-    printf("Odd Parity Error Detection\n");
-    printf("==========================\n");
-    printf("Enter 7-bit data (0-127): ");
-    scanf("%d", &data);
-    
-    if (data < 0 || data > 127) {
-        printf("Invalid range\n");
+int is_private_ip(int a, int b, int c, int d) {
+    if (a == 10) return 1;
+    if (a == 172 && b >= 16 && b <= 31) return 1;
+    if (a == 192 && b == 168) return 1;
+    return 0;
+}
+
+int main(void) {
+    int a, b, c, d;
+
+    printf("Private IP Range Checker\n");
+    printf("========================\n");
+    printf("Enter IP address (a.b.c.d): ");
+
+    if (scanf("%d.%d.%d.%d", &a, &b, &c, &d) != 4) {
+        printf("Invalid input.\n");
         return 1;
     }
-    
-    int ones = 0;
-    for (int i = 0; i < 7; i++) {
-        if ((data >> i) & 1) ones++;
+
+    if (a < 0 || a > 255 || b < 0 || b > 255 || c < 0 || c > 255 || d < 0 || d > 255) {
+        printf("Invalid IP address.\n");
+        return 1;
     }
-    
-    int parity = ones % 2;
-    
-    printf("Data: %d\n", data);
-    printf("1-bits: %d\n", ones);
-    printf("Parity bit: %d\n", parity);
-    printf("Odd parity: %s\n", parity == 1 ? "Yes" : "No");
-    
+
+    if (is_private_ip(a, b, c, d)) {
+        printf("The IP address is PRIVATE.\n");
+    } else {
+        printf("The IP address is PUBLIC.\n");
+    }
+
     return 0;
 }

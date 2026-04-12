@@ -1,31 +1,35 @@
 /*
- * Slip 7 - Q2 Option B (OR): Set up Dynamic Routing Protocols
- * 
- * Simulates RIP protocol configuration.
- * 
- * Compile: gcc Slip_07_Q2_OptionB.c -o routing
- * Run: ./routing
+ * Slip 7 - Q2 Option B: Write a program to configure hostname, enable password
+ * and encrypted secret password.
+ *
+ * Compile: gcc Slip_07_Q2_OptionB.c -o switch_passwords
+ * Run: ./switch_passwords
  */
 
 #include <stdio.h>
+#include <string.h>
 
-int main() {
-    printf("Dynamic Routing Protocols Configuration\n");
-    printf("======================================\n\n");
-    
-    printf("RIP Configuration:\n");
-    printf("─────────────────\n");
-    printf("router rip\n");
-    printf("version 2\n");
-    printf("network 192.168.0.0\n");
-    printf("network 10.0.0.0\n");
-    printf("no auto-summary\n\n");
-    
-    printf("Routing Table:\n");
-    printf("──────────────\n");
-    printf("192.168.1.0/24 via 192.168.0.1\n");
-    printf("10.0.0.0/8 via 10.0.0.254\n");
-    printf("172.16.0.0/16 via 192.168.0.2\n");
-    
+int main(void) {
+    char hostname[50], enable_password[50], secret_password[50];
+
+    printf("Switch Password Configuration\n");
+    printf("=============================\n");
+    printf("Enter hostname: ");
+    fgets(hostname, sizeof(hostname), stdin);
+    hostname[strcspn(hostname, "\n")] = '\0';
+
+    printf("Enter enable password: ");
+    fgets(enable_password, sizeof(enable_password), stdin);
+    enable_password[strcspn(enable_password, "\n")] = '\0';
+
+    printf("Enter encrypted secret password: ");
+    fgets(secret_password, sizeof(secret_password), stdin);
+    secret_password[strcspn(secret_password, "\n")] = '\0';
+
+    printf("\nhostname %s\n", hostname);
+    printf("enable password %s\n", enable_password);
+    printf("enable secret %s\n", secret_password);
+    printf("Configuration saved successfully.\n");
+
     return 0;
 }

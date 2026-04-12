@@ -1,51 +1,50 @@
 /*
- * Slip 15 - Q2 Option A: Password Security with Special Characters
- * 
- * Validates password strength.
- * 
- * Compile: gcc Slip_15_Q2_OptionA.c -o password_check
- * Run: ./password_check
+ * Slip 15 - Q2 Option A: Write a program to Command-Line Phishing Simulation.
+ *
+ * Compile: gcc Slip_15_Q2_OptionA.c -o phishing_cli
+ * Run: ./phishing_cli
  */
 
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 
-int main() {
-    char pwd[100];
-    int upper = 0, lower = 0, digit = 0, special = 0;
-    
-    printf("Password Security Checker\n");
-    printf("=========================\n");
-    printf("Enter password: ");
-    scanf("%s", pwd);
-    
-    int len = strlen(pwd);
-    
-    if (len < 8) {
-        printf("Error: Min 8 characters\n");
-        return 1;
+int suspicious(const char *text) {
+    const char *keywords[] = {"urgent", "verify", "password", "login", "click", "bank", "update"};
+    char lower[512];
+    int score = 0;
+
+    strncpy(lower, text, sizeof(lower) - 1);
+    lower[sizeof(lower) - 1] = '\0';
+    for (int i = 0; lower[i] != '\0'; i++) {
+        lower[i] = (char)tolower((unsigned char)lower[i]);
     }
-    
-    for (int i = 0; pwd[i]; i++) {
-        if (isupper(pwd[i])) upper = 1;
-        else if (islower(pwd[i])) lower = 1;
-        else if (isdigit(pwd[i])) digit = 1;
-        else if (ispunct(pwd[i])) special = 1;
+
+    for (int i = 0; i < 7; i++) {
+        if (strstr(lower, keywords[i])) {
+            score++;
+        }
     }
-    
-    printf("\nAnalysis:\n");
-    printf("Length: %d\n", len);
-    printf("Uppercase: %s\n", upper ? "Yes" : "No");
-    printf("Lowercase: %s\n", lower ? "Yes" : "No");
-    printf("Digit: %s\n", digit ? "Yes" : "No");
-    printf("Special: %s\n", special ? "Yes" : "No");
-    
-    if (upper && lower && digit && special) {
-        printf("\nResult: Strong!\n");
+    if (strstr(lower, "http://") || strstr(lower, "https://") || strstr(lower, "bit.ly")) {
+        score++;
+    }
+
+    return score >= 2;
+}
+
+int main(void) {
+    char text[512];
+
+    printf("Command-Line Phishing Simulation\n");
+    printf("=================================\n");
+    printf("Enter message: ");
+    fgets(text, sizeof(text), stdin);
+
+    if (suspicious(text)) {
+        printf("Result: Likely PHISHING\n");
     } else {
-        printf("\nResult: Weak!\n");
+        printf("Result: Likely SAFE\n");
     }
-    
+
     return 0;
 }

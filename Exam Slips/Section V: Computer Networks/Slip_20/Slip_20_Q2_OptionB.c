@@ -1,32 +1,34 @@
 /*
- * Slip 20 - Q2 Option B: Topology Simulation
- * 
- * Displays various network topologies.
- * 
- * Compile: gcc Slip_20_Q2_OptionB.c -o topology
- * Run: ./topology
+ * Slip 20 - Q2 Option B (OR): Write a C program for Hash Simulation.
+ *
+ * Compile: gcc Slip_20_Q2_OptionB.c -o hash_sim
+ * Run: ./hash_sim
  */
 
 #include <stdio.h>
 
-int main() {
-    printf("Network Topologies\n");
-    printf("==================\n\n");
-    
-    printf("1. Star Topology:\n");
-    printf("   Switch at center, nodes connected radially\n\n");
-    
-    printf("2. Ring Topology:\n");
-    printf("   Nodes connected in circle\n");
-    printf("   Node 1 - Node 2 - Node 3 - Node 1\n\n");
-    
-    printf("3. Mesh Topology:\n");
-    printf("   All nodes connected to all other nodes\n");
-    printf("   Full connectivity, higher cost\n\n");
-    
-    printf("4. Bus Topology:\n");
-    printf("   All nodes share single communication line\n");
-    printf("   Simple, vulnerable\n");
-    
+int hash_function(const char *key, int table_size) {
+    int hash = 0;
+    for (int i = 0; key[i] != '\0'; i++) {
+        hash = (hash + key[i]) % table_size;
+    }
+    return hash;
+}
+
+int main(void) {
+    const char *keys[] = {"Alice", "Bob", "Charlie", "David", NULL};
+    int table_size = 10;
+
+    printf("Hash Simulation\n");
+    printf("===============\n\n");
+    printf("Hash Table (size: %d)\n", table_size);
+    printf("------------------------------\n");
+    printf("Key       | Index\n");
+    printf("------------------------------\n");
+
+    for (int i = 0; keys[i] != NULL; i++) {
+        printf("%-9s | %5d\n", keys[i], hash_function(keys[i], table_size));
+    }
+
     return 0;
 }

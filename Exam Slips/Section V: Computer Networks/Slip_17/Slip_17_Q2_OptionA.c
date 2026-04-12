@@ -1,55 +1,45 @@
 /*
- * Slip 17 - Q2 Option A: NAT (Network Address Translation) System
- * 
- * Simulates NAT translation table.
- * 
- * Compile: gcc Slip_17_Q2_OptionA.c -o nat_system
- * Run: ./nat_system
+ * Slip 17 - Q2 Option A: Write a C program for password security with
+ * Special Characters that includes special character checks along with
+ * uppercase, lowercase, digit, and length rules.
+ *
+ * Compile: gcc Slip_17_Q2_OptionA.c -o password_check
+ * Run: ./password_check
  */
 
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
-typedef struct {
-    char private_ip[20];
-    char public_ip[20];
-    int port;
-} NATEntry;
+int main(void) {
+    char pwd[256];
+    int upper = 0, lower = 0, digit = 0, special = 0;
 
-int main() {
-    printf("NAT (Network Address Translation) System\n");
-    printf("========================================\n\n");
-    
-    NATEntry nat_table[3];
-    
-    strcpy(nat_table[0].private_ip, "192.168.1.100");
-    strcpy(nat_table[0].public_ip, "203.0.113.50");
-    nat_table[0].port = 8080;
-    
-    strcpy(nat_table[1].private_ip, "192.168.1.101");
-    strcpy(nat_table[1].public_ip, "203.0.113.51");
-    nat_table[1].port = 8081;
-    
-    strcpy(nat_table[2].private_ip, "192.168.1.102");
-    strcpy(nat_table[2].public_ip, "203.0.113.52");
-    nat_table[2].port = 8082;
-    
-    printf("NAT Translation Table:\n");
-    printf("─────────────────────────────────────────\n");
-    printf("Private IP      | Public IP       | Port\n");
-    printf("─────────────────────────────────────────\n");
-    
-    for (int i = 0; i < 3; i++) {
-        printf("%-15s | %-15s | %d\n",
-            nat_table[i].private_ip,
-            nat_table[i].public_ip,
-            nat_table[i].port);
+    printf("Password Security Checker\n");
+    printf("=========================\n");
+    printf("Enter password: ");
+    scanf("%255s", pwd);
+
+    int len = (int)strlen(pwd);
+    for (int i = 0; pwd[i] != '\0'; i++) {
+        unsigned char ch = (unsigned char)pwd[i];
+        if (isupper(ch)) upper = 1;
+        else if (islower(ch)) lower = 1;
+        else if (isdigit(ch)) digit = 1;
+        else if (ispunct(ch)) special = 1;
     }
-    
-    printf("\nNAT Function:\n");
-    printf("Private network 192.168.1.0/24\n");
-    printf("Translated to public IP 203.0.113.0/24\n");
-    printf("Allows multiple internal IPs using single public IP\n");
-    
+
+    printf("Length >= 8  : %s\n", len >= 8 ? "Yes" : "No");
+    printf("Uppercase    : %s\n", upper ? "Yes" : "No");
+    printf("Lowercase    : %s\n", lower ? "Yes" : "No");
+    printf("Digit        : %s\n", digit ? "Yes" : "No");
+    printf("Special char : %s\n", special ? "Yes" : "No");
+
+    if (len >= 8 && upper && lower && digit && special) {
+        printf("Result: Strong password\n");
+    } else {
+        printf("Result: Weak password\n");
+    }
+
     return 0;
 }

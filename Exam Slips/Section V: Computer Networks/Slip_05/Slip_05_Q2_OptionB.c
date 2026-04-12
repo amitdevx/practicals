@@ -1,36 +1,36 @@
 /*
- * Slip 5 - Q2 Option B: Star Topology Display
- * 
- * Displays star topology with central switch.
- * 
- * Compile: gcc Slip_05_Q2_OptionB.c -o star_topology
- * Run: ./star_topology
+ * Slip 5 - Q2 Option B: Write a program to implement odd parity error detection.
+ *
+ * Compile: gcc Slip_05_Q2_OptionB.c -o odd_parity
+ * Run: ./odd_parity
  */
 
 #include <stdio.h>
 
-int main() {
-    printf("Star Topology\n");
-    printf("=============\n\n");
-    printf("                    SWITCH (Center)\n");
-    printf("                         |\n");
-    printf("          PC1 -------- PC2 -------- PC3\n");
-    printf("                         |\n");
-    printf("                      PC4\n\n");
-    
-    printf("Configuration:\n");
-    for (int i = 1; i <= 4; i++) {
-        printf("PC%d: 192.168.1.%d\n", i, i + 10);
+int main(void) {
+    char bits[128];
+    int ones = 0;
+
+    printf("Odd Parity Error Detection\n");
+    printf("==========================\n");
+    printf("Enter binary data: ");
+    scanf("%127s", bits);
+
+    for (int i = 0; bits[i] != '\0'; i++) {
+        if (bits[i] == '1') {
+            ones++;
+        } else if (bits[i] != '0') {
+            printf("Invalid input. Use only 0 and 1.\n");
+            return 1;
+        }
     }
-    
-    printf("\nAdvantages:\n");
-    printf("- Central management\n");
-    printf("- Easy to add/remove nodes\n");
-    printf("- Good performance\n");
-    
-    printf("\nDisadvantages:\n");
-    printf("- Switch is single point of failure\n");
-    printf("- More cable needed\n");
-    
+
+    if (ones % 2 == 0) {
+        printf("Parity bit for odd parity: 1\n");
+    } else {
+        printf("Parity bit for odd parity: 0\n");
+    }
+
+    printf("Total number of 1s after parity adjustment will be odd.\n");
     return 0;
 }

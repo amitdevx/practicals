@@ -4,144 +4,55 @@
 
 ---
 
-### a) What is the difference between TCP and UDP?
+### a) Explain the difference between ping and traceroute.
 
-**TCP (Transmission Control Protocol):**
-- Connection-oriented
-- Reliable delivery
-- Error checking and recovery
-- Ordered data
-- Slower but guaranteed
-- Used for: Email, web, file transfer
-
-**UDP (User Datagram Protocol):**
-- Connectionless
-- Unreliable delivery
-- No error correction
-- Unordered data
-- Faster with less overhead
-- Used for: Voice, video, gaming
-
-**Comparison:**
-
-| Feature | TCP | UDP |
-|---------|-----|-----|
-| **Connection** | Established | Connectionless |
-| **Reliability** | Guaranteed | Best effort |
-| **Ordering** | In sequence | Unordered |
-| **Speed** | Slower | Faster |
-| **Error Checking** | Yes | Minimal |
-| **Use Case** | Accuracy critical | Speed critical |
-
+`ping` checks reachability and latency to a host, while `traceroute` shows the path and intermediate hops used to reach the destination.
 ---
 
-### b) How does DHCP work? Explain the mechanism.
+### b) Explain steps to identify a phishing email.
 
-**DHCP (Dynamic Host Configuration Protocol)** automatically assigns network configuration to devices.
-
-**4-Step DHCP Process:**
-
-1. **DISCOVER**: Client broadcasts request for IP
-2. **OFFER**: Server offers available IP
-3. **REQUEST**: Client requests specific IP
-4. **ACK**: Server confirms assignment
-
-**Lease Time:**
-- IP assigned for specific duration
-- Device must renew before expiration
-- Unused IPs returned to pool
-
+Check the sender address, suspicious links, urgent or unusual requests, spelling mistakes, and requests for passwords or OTPs.
 ---
 
-### c) Convert the given binary number to decimal and vice versa.
+### c) What is the function of a switch in a computer network?
 
-**Binary to Decimal:**
-```
-10110101 (binary)
-= 1×128 + 0×64 + 1×32 + 1×16 + 0×8 + 1×4 + 0×2 + 1×1
-= 128 + 32 + 16 + 4 + 1
-= 181 (decimal)
-```
-
-**Decimal to Binary:**
-```
-181 (decimal)
-181 ÷ 2 = 90 remainder 1
-90 ÷ 2 = 45 remainder 0
-45 ÷ 2 = 22 remainder 1
-22 ÷ 2 = 11 remainder 0
-11 ÷ 2 = 5 remainder 1
-5 ÷ 2 = 2 remainder 1
-2 ÷ 2 = 1 remainder 0
-1 ÷ 2 = 0 remainder 1
-
-Result: 10110101 (binary)
-```
-
+A switch connects devices in a LAN and forwards frames to the correct port using MAC addresses.
 ---
 
-### d) What are firewall rules? How to implement them?
+### d) How many hexadecimal digits are needed for a 64-bit WEP key? Give any 5 examples.
 
-**Firewall Rules:** Define which traffic is allowed/blocked.
-
-**Rule Components:**
-- Source IP/address
-- Destination IP/address
-- Protocol (TCP/UDP/ICMP)
-- Port number
-- Action (Allow/Block)
-
-**Example Rules:**
-```
-Allow TCP port 80 (HTTP) from any to web server
-Block UDP port 53 (DNS) from external
-Allow SSH (port 22) from admin subnet only
-```
-
+A 64-bit WEP key uses 16 hexadecimal digits. Example hexadecimal values include 1A, 2B, 3C, 4D, and 5E.
 ---
 
-### f) What is FTP? How does it work?
+### f) What is the primary purpose of a banner motd? How can it serve both a legal and security function?
 
-**FTP (File Transfer Protocol):**
-- Transfers files between computers
-- Uses port 21 (control) and port 20 (data)
-- Unencrypted (use SFTP for security)
-
-**Command:**
-```bash
-ftp server_ip
-```
-
+A banner MOTD displays a login warning or notice before access. It can warn unauthorized users and help show that access is restricted.
 ---
 
-### g) What is TTL? Why is it important?
+### g) Create a dummy phishing email and explain indicators of phishing.
 
-**TTL (Time To Live):**
-- Hop count limit for packets
-- Decremented at each router
-- When TTL reaches 0, packet discarded
-- Prevents infinite loops
-
-**Default TTL:** 64 or 128 (varies by OS)
-
+A dummy phishing email often uses urgent language, suspicious links, poor grammar, and fake sender details to trick the user.
 ---
 
 ## Q2: Practical Questions (20 Marks)
 
-### OPTION A: TCP Handshake (3-Way Handshake)
+### OPTION A: Write a program to displays a Mesh Topology.
 
-Establishes connection before data transfer.
-
-**Steps:**
-1. **SYN**: Client sends sequence number
-2. **SYN-ACK**: Server acknowledges and sends its sequence
-3. **ACK**: Client acknowledges server's sequence
+Implement and verify using [Slip_07_Q2_OptionA.c](Slip_07_Q2_OptionA.c).
 
 ---
 
-### OPTION B: Data Link Layer Protocol
+### OPTION B: Write a program to configure hostname, enable password and encrypted secret password.
 
-Implements error detection and MAC addressing.
+Implement and verify using [Slip_07_Q2_OptionB.c](Slip_07_Q2_OptionB.c).
 
 ---
 
+### Q3: Mesh Topology in Cisco Packet Tracer
+
+Create a Mesh Topology in Cisco Packet Tracer using four PCs. Assign the following IP addresses and verify connectivity between all nodes.
+
+- PC1 → 192.168.1.1 / 255.255.255.0
+- PC2 → 192.168.1.2 / 255.255.255.0
+- PC3 → 192.168.1.3 / 255.255.255.0
+- PC4 → 192.168.1.4 / 255.255.255.0

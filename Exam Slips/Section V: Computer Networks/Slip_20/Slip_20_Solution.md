@@ -1,90 +1,58 @@
 # Slip 20 — Computer Networks Solution Guide
 
-## Q1: Short Answer Questions
-
-### a) What is a firewall rule?
-
-**Firewall Rule:**
-- Defines what traffic is allowed/blocked
-- Components: Source, destination, protocol, port, action
-
-**Example Rules:**
-```
-Allow TCP port 80 from ANY to WEB_SERVER
-Block UDP port 53 from EXTERNAL to DNS
-Allow SSH from ADMIN_SUBNET only
-```
-
-**Rule Order:** Matters - first match is applied
+## Q1: Short Answer Questions (10 Marks - Answer ANY 5)
 
 ---
 
-### b) What is access control?
+### a) What is the primary purpose of a banner MOTD?
 
-**Access Control:**
-- Restricts access to resources
-- Types: MAC (physical), DAC (user-based), RBAC (role-based)
+A banner MOTD displays a warning or message before login to inform users and support security policy.
+---
 
-**Methods:**
-- Authentication: Verify identity
-- Authorization: Grant permissions
-- Accounting: Track usage
+### b) How many hexadecimal digits are needed for a 64-bit WEP key? Give any 5 examples.
+
+A 64-bit WEP key uses 16 hexadecimal digits.
+---
+
+### c) List types of Cyber Threats. Describe any two.
+
+Common cyber threats include phishing, malware, ransomware, spoofing, and DDoS attacks.
+---
+
+### d) Differentiate between Static and Dynamic routing.
+
+Static routing is manually configured and fixed, while dynamic routing automatically learns and updates routes using routing protocols.
+---
+
+### f) What is the function of a switch in a computer network?
+
+A switch connects devices in a LAN and forwards frames to the correct port using MAC addresses.
+---
+
+### g) Describe any two network topologies.
+
+Star topology uses a central switch or hub, and mesh topology connects nodes through multiple paths for higher reliability.
+---
+
+## Q2: Practical Questions (20 Marks)
+
+### OPTION A: Write a C program to represent Mesh Topology.
+
+Implement and verify using [Slip_20_Q2_OptionA.c](Slip_20_Q2_OptionA.c).
 
 ---
 
-### c) What is network policy?
+### OPTION B: Write a C program for Hash Simulation.
 
-**Network Policy:**
-- Set of rules for network usage
-- Defines acceptable practices
-- Enforced by firewalls and servers
-
-**Policies:**
-- Security policies
-- Usage policies
-- Acceptable use policies
+Implement and verify using [Slip_20_Q2_OptionB.c](Slip_20_Q2_OptionB.c).
 
 ---
 
-### d) What is security implementation?
+### Q3: Mesh Topology in Cisco Packet Tracer
 
-**Implementation Steps:**
-1. Assess threats and risks
-2. Design security architecture
-3. Deploy security tools
-4. Configure protections
-5. Monitor and update
+To create a Mesh Topology in Cisco Packet Tracer using four PCs. Assign the following IP addresses and verify connectivity between all nodes.
 
----
-
-### f) What are best practices?
-
-**Network Best Practices:**
-- Regular backups
-- Security patches
-- Strong passwords
-- Access controls
-- Monitoring
-- Documentation
-- Incident response plan
-
----
-
-### g) What is incident response?
-
-**Incident Response Plan:**
-1. **Preparation**: Tools, procedures
-2. **Detection**: Identify incidents
-3. **Analysis**: Understand scope
-4. **Containment**: Stop spread
-5. **Recovery**: Restore systems
-6. **Lessons Learned**: Prevent recurrence
-
----
-
-## Q2: Practical Questions
-
-Firewall rules and access control implementation.
-
----
-
+- PC1 → 172.16.1.1 / 255.255.0.0
+- PC2 → 172.16.1.2 / 255.255.0.0
+- PC3 → 172.16.1.3 / 255.255.0.0
+- PC4 → 172.16.1.4 / 255.255.0.0

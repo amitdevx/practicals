@@ -1,58 +1,23 @@
 /*
- * Slip 19 - Q2 Option B: Mesh Topology Simulation
- * 
- * Simulates 4 PCs in Mesh topology with IP configuration.
- * 
- * Compile: gcc Slip_19_Q2_OptionB.c -o mesh_sim
- * Run: ./mesh_sim
+ * Slip 19 - Q2 Option B: Write a program to verify successful NAT translation
+ * using show NAT translation.
+ *
+ * Compile: gcc Slip_19_Q2_OptionB.c -o nat_verify
+ * Run: ./nat_verify
  */
 
 #include <stdio.h>
-#include <string.h>
 
-int main() {
-    printf("Mesh Topology Simulation\n");
-    printf("========================\n\n");
-    
-    printf("Network Diagram:\n");
-    printf("    PC1 --- PC2\n");
-    printf("    /|      /|\n");
-    printf("   / |     / |\n");
-    printf("  PC3 --- PC4\n");
-    printf("(All nodes interconnected)\n\n");
-    
-    typedef struct {
-        char name[10];
-        char ip[20];
-    } Node;
-    
-    Node nodes[4];
-    strcpy(nodes[0].name, "PC1");
-    strcpy(nodes[0].ip, "172.16.1.1");
-    strcpy(nodes[1].name, "PC2");
-    strcpy(nodes[1].ip, "172.16.1.2");
-    strcpy(nodes[2].name, "PC3");
-    strcpy(nodes[2].ip, "172.16.1.3");
-    strcpy(nodes[3].name, "PC4");
-    strcpy(nodes[3].ip, "172.16.1.4");
-    
-    printf("Node Configuration:\n");
-    printf("──────────────────────────────\n");
-    printf("Node | IP Address      | Mask\n");
-    printf("──────────────────────────────\n");
-    
-    for (int i = 0; i < 4; i++) {
-        printf("%-4s | %-15s | /24\n", nodes[i].name, nodes[i].ip);
-    }
-    
-    printf("\nConnectivity (Ping Test):\n");
-    printf("PC1 -> PC2: Success\n");
-    printf("PC1 -> PC3: Success\n");
-    printf("PC1 -> PC4: Success\n");
-    printf("PC2 -> PC3: Success\n");
-    printf("PC2 -> PC4: Success\n");
-    printf("PC3 -> PC4: Success\n");
-    printf("All nodes fully connected!\n");
-    
+int main(void) {
+    printf("show nat translation\n");
+    printf("------------------------------------------------------------\n");
+    printf("Protocol  Inside Local      Inside Global     State/Timeout\n");
+    printf("------------------------------------------------------------\n");
+    printf("tcp       192.168.1.10:1024 203.0.113.10:5000 ESTABLISHED\n");
+    printf("udp       192.168.1.11:1060 203.0.113.11:5001 00:04:59\n");
+    printf("tcp       192.168.1.12:1025 203.0.113.12:5002 ESTABLISHED\n");
+    printf("------------------------------------------------------------\n");
+    printf("NAT translation is successful.\n");
+
     return 0;
 }

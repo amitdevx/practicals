@@ -1,35 +1,18 @@
 /*
- * Slip 12 - Q2 Option A: Hybrid Topology Display
- * 
- * Displays hybrid topology (combination of topologies).
- * 
- * Compile: gcc Slip_12_Q2_OptionA.c -o hybrid_topology
- * Run: ./hybrid_topology
+ * Slip 12 - Q2 Option A: Write a C program to display a Star Topology.
+ *
+ * Compile: gcc Slip_12_Q2_OptionA.c -o star_topology
+ * Run: ./star_topology
  */
 
 #include <stdio.h>
 
-int main() {
-    printf("Hybrid Topology\n");
-    printf("===============\n\n");
-    printf("Combination of multiple topologies\n\n");
-    
-    printf("Configuration:\n");
-    printf("Department 1: Star (3 nodes)\n");
-    printf("Department 2: Bus (3 nodes)\n");
-    printf("Department 3: Ring (3 nodes)\n");
-    printf("Connected via backbone (Main Router)\n\n");
-    
-    printf("Advantages:\n");
-    printf("- Flexibility\n");
-    printf("- Scalability\n");
-    printf("- Fault isolation\n");
-    printf("- Better performance\n\n");
-    
-    printf("Disadvantages:\n");
-    printf("- Complex design\n");
-    printf("- Expensive\n");
-    printf("- Difficult to manage\n");
-    
+int main(void) {
+    printf("Star Topology\n");
+    printf("=============\n\n");
+    printf("                [Switch 2960]\n");
+    printf("              /   |   |   \\\n");
+    printf("            PC1  PC2  PC3  PC4  PC5\n");
+
     return 0;
 }

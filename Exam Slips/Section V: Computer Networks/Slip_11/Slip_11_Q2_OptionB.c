@@ -1,37 +1,26 @@
 /*
- * Slip 11 - Q2 Option B (OR): Configure Hostname & Passwords
- * 
- * Simulates switch password configuration.
- * 
- * Compile: gcc Slip_11_Q2_OptionB.c -o config
- * Run: ./config
+ * Slip 11 - Q2 Option B: Write a C program to simulate the Stop-and-Wait
+ * ARQ protocol.
+ *
+ * Compile: gcc Slip_11_Q2_OptionB.c -o stop_and_wait
+ * Run: ./stop_and_wait
  */
 
 #include <stdio.h>
-#include <string.h>
 
-int main() {
-    char host[50], enable[50], secret[50];
-    
-    printf("Switch Configuration\n");
-    printf("====================\n\n");
-    
-    printf("hostname: ");
-    fgets(host, 50, stdin);
-    host[strcspn(host, "\n")] = '\0';
-    
-    printf("enable password: ");
-    fgets(enable, 50, stdin);
-    enable[strcspn(enable, "\n")] = '\0';
-    
-    printf("secret password: ");
-    fgets(secret, 50, stdin);
-    secret[strcspn(secret, "\n")] = '\0';
-    
-    printf("\nApplied Configuration:\n");
-    printf("hostname %s\n", host);
-    printf("enable password [set]\n");
-    printf("enable secret [encrypted]\n");
-    
+int main(void) {
+    int frames;
+
+    printf("Stop-and-Wait ARQ Simulation\n");
+    printf("=============================\n");
+    printf("Enter number of frames to transmit: ");
+    scanf("%d", &frames);
+
+    for (int i = 1; i <= frames; i++) {
+        printf("Frame %d sent\n", i);
+        printf("ACK %d received\n", i);
+    }
+
+    printf("All frames transmitted successfully.\n");
     return 0;
 }

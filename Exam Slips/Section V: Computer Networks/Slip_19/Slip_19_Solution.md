@@ -1,94 +1,60 @@
 # Slip 19 — Computer Networks Solution Guide
 
-## Q1: Short Answer Questions
-
-### a) What is network troubleshooting?
-
-**Network Troubleshooting:**
-- Systematic process to identify and fix network problems
-- Uses diagnostic tools and techniques
-- Common tools: Ping, Tracert, Ipconfig, Netstat
-
-**Steps:**
-1. Identify the problem
-2. Gather information
-3. Analyze data
-4. Implement solution
-5. Verify fix
-6. Document results
+## Q1: Short Answer Questions (10 Marks - Answer ANY 5)
 
 ---
 
-### b) What is DNS and DHCP?
+### a) What is static routing? Gives its features.
 
-**DNS (Domain Name System):**
-- Translates domain names to IP addresses
-- Hierarchical system
-- Port 53 (UDP/TCP)
+Static routing is a manually configured route that does not change automatically. It is simple, secure, and suitable for small networks.
+---
 
-**DHCP (Dynamic Host Configuration Protocol):**
-- Automatically assigns IP addresses
-- Provides network configuration
-- Leases IP addresses for duration
+### b) List the commands used for Network Address Translation on Cisco’s Packet Tracer.
+
+Common NAT commands include `ip nat inside`, `ip nat outside`, ACLs, and `ip nat inside source` rules.
+---
+
+### c) Write an algorithm to Hash a password using SHA256.
+
+SHA-256 hashes the password input into a fixed-length digest using a secure one-way hash function.
+---
+
+### d) Write the Linux commands used to detect hidden Wi-Fi networks.
+
+Use wireless scanning tools and adapter commands such as `iwlist`, `iw`, or NetworkManager utilities to inspect hidden SSIDs.
+---
+
+### f) Explain steps to identify a phishing email.
+
+Check sender details, suspicious links, urgent requests, grammar mistakes, and unexpected attachment behavior.
+---
+
+### g) List types of Cyber Threats.
+
+Examples include phishing, malware, ransomware, spyware, spoofing, and DDoS attacks.
+---
+
+## Q2: Practical Questions (20 Marks)
+
+### OPTION A: Write a C program for Phishing Simulation.
+
+Implement and verify using [Slip_19_Q2_OptionA.c](Slip_19_Q2_OptionA.c).
 
 ---
 
-### c) What are TCP/IP issues?
+### OPTION B: Write a program to verify successful NAT translation using show NAT translation.
 
-**Common TCP/IP Problems:**
-- IP address conflicts
-- Default gateway unreachable
-- DNS resolution failures
-- Incorrect subnet mask
-- Routing issues
-- Port blocking
-
-**Diagnosis Tools:**
-- Ipconfig: Display IP configuration
-- Ping: Test connectivity
-- Tracert: Trace route
-- Netstat: Show connections
-- Nslookup: DNS resolution
+Implement and verify using [Slip_19_Q2_OptionB.c](Slip_19_Q2_OptionB.c).
 
 ---
 
-### d) What are performance metrics?
+### Q3: Two PCs and One Router in Cisco Packet Tracer
 
-**Performance Metrics:**
-- **Bandwidth**: Maximum capacity (Mbps)
-- **Latency**: Delay time (ms)
-- **Throughput**: Actual data rate (Mbps)
-- **Jitter**: Latency variation (ms)
-- **Packet Loss**: Percentage lost
+To create and configure a simple network in Cisco Packet Tracer using two PCs and one router. Assign the given IP addresses, configure the router interfaces, and verify network connectivity using ipconfig/ifconfig, ping, tracert, and nslookup commands.
 
----
+Configuration:
 
-### f) What is network diagnostic?
-
-**Diagnostic Tools:**
-- Protocol analyzers
-- Network monitors
-- Packet sniffers
-- Bandwidth testers
-- Latency measurements
-
----
-
-### g) What is network maintenance?
-
-**Maintenance Activities:**
-- Regular backups
-- Software updates
-- Security patches
-- Performance monitoring
-- Capacity planning
-- Documentation updates
-
----
-
-## Q2: Practical Questions
-
-Network troubleshooting and diagnostics implementation.
-
----
-
+- PC1 → 192.168.1.2 / 255.255.255.0
+- PC2 → 192.168.2.2 / 255.255.255.0
+- Router G0/0 → 192.168.1.1 / 255.255.255.0
+- Router G0/1 → 192.168.2.1 / 255.255.255.0

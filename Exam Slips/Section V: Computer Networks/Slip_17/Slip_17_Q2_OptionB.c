@@ -1,62 +1,36 @@
 /*
- * Slip 17 - Q2 Option B: Bus Topology Simulation
- * 
- * Simulates 4 PCs in Bus topology with IP configuration.
- * 
- * Compile: gcc Slip_17_Q2_OptionB.c -o bus_topology
- * Run: ./bus_topology
+ * Slip 17 - Q2 Option B: Write a C program to convert plain message to cipher
+ * message.
+ *
+ * Compile: gcc Slip_17_Q2_OptionB.c -o cipher
+ * Run: ./cipher
  */
 
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
-int main() {
-    printf("Bus Topology Simulation\n");
-    printf("=======================\n\n");
-    
-    printf("Network Structure:\n");
-    printf("PC1 ---- PC2 ---- PC3 ---- PC4\n");
-    printf("(Single shared cable/backbone)\n\n");
-    
-    typedef struct {
-        char name[10];
-        char ip[20];
-        char mask[20];
-    } PC;
-    
-    PC nodes[4];
-    strcpy(nodes[0].name, "PC1");
-    strcpy(nodes[0].ip, "192.168.1.1");
-    strcpy(nodes[0].mask, "255.255.255.0");
-    
-    strcpy(nodes[1].name, "PC2");
-    strcpy(nodes[1].ip, "192.168.1.2");
-    strcpy(nodes[1].mask, "255.255.255.0");
-    
-    strcpy(nodes[2].name, "PC3");
-    strcpy(nodes[2].ip, "192.168.1.3");
-    strcpy(nodes[2].mask, "255.255.255.0");
-    
-    strcpy(nodes[3].name, "PC4");
-    strcpy(nodes[3].ip, "192.168.1.4");
-    strcpy(nodes[3].mask, "255.255.255.0");
-    
-    printf("IP Configuration:\n");
-    printf("─────────────────────────────────────\n");
-    printf("Name | IP              | Subnet Mask\n");
-    printf("─────────────────────────────────────\n");
-    
-    for (int i = 0; i < 4; i++) {
-        printf("%-4s | %-15s | %s\n",
-            nodes[i].name, nodes[i].ip, nodes[i].mask);
+int main(void) {
+    char msg[256], cipher[256];
+
+    printf("Plain Message to Cipher Conversion\n");
+    printf("===================================\n");
+    printf("Enter message: ");
+    fgets(msg, sizeof(msg), stdin);
+    msg[strcspn(msg, "\n")] = '\0';
+
+    for (int i = 0; msg[i] != '\0'; i++) {
+        if (isalpha((unsigned char)msg[i])) {
+            char base = isupper((unsigned char)msg[i]) ? 'A' : 'a';
+            cipher[i] = (char)(base + (msg[i] - base + 13) % 26);
+        } else {
+            cipher[i] = msg[i];
+        }
     }
-    
-    printf("\nConnectivity Test (Ping):\n");
-    printf("PC1 -> PC2: Success\n");
-    printf("PC1 -> PC3: Success\n");
-    printf("PC1 -> PC4: Success\n");
-    printf("PC2 -> PC4: Success\n");
-    printf("(All nodes reachable via bus)\n");
-    
+    cipher[strlen(msg)] = '\0';
+
+    printf("Original: %s\n", msg);
+    printf("Cipher:   %s\n", cipher);
+
     return 0;
 }

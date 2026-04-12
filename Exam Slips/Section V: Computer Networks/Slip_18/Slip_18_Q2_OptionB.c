@@ -1,29 +1,22 @@
 /*
- * Slip 18 - Q2 Option B: Packet Structure
- * 
- * Displays typical packet format and sizes.
- * 
- * Compile: gcc Slip_18_Q2_OptionB.c -o packet
- * Run: ./packet
+ * Slip 18 - Q2 Option B (OR): Write a program to verify successful NAT translation using show NAT translation.
+ *
+ * Compile: gcc Slip_18_Q2_OptionB.c -o nat_verify
+ * Run: ./nat_verify
  */
 
 #include <stdio.h>
 
-int main() {
-    printf("UDP Packet Structure\n");
-    printf("====================\n");
-    printf("Source Port: 2 bytes\n");
-    printf("Destination Port: 2 bytes\n");
-    printf("Length: 2 bytes\n");
-    printf("Checksum: 2 bytes\n");
-    printf("Payload: variable\n");
-    printf("\nTotal Header Size: 8 bytes\n");
-    
-    int src_port = 5000, dst_port = 53;
-    int length = 100;
-    
-    printf("\nExample:\n");
-    printf("SRC: %d  DST: %d  LEN: %d\n", src_port, dst_port, length);
-    
+int main(void) {
+    printf("show nat translation\n");
+    printf("------------------------------------------------------------\n");
+    printf("Protocol  Inside Local      Inside Global     State/Timeout\n");
+    printf("------------------------------------------------------------\n");
+    printf("tcp       192.168.1.10:1024 203.0.113.10:5000 ESTABLISHED\n");
+    printf("udp       192.168.1.11:1060 203.0.113.11:5001 00:04:59\n");
+    printf("tcp       192.168.1.12:1025 203.0.113.12:5002 ESTABLISHED\n");
+    printf("------------------------------------------------------------\n\n");
+    printf("NAT translation is successful because inside local and inside global\n");
+    printf("addresses are present in the translation table.\n");
     return 0;
 }
