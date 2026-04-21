@@ -6,45 +6,45 @@
 
 ### a) Compare and contrast the functionalities of a switch and a router.
 
-A switch connects devices within the same LAN and forwards frames using MAC addresses. A router connects different networks and forwards packets using IP addresses.
+A switch connects devices within the same LAN and forwards frames using MAC addresses. A router connects different networks and forwards packets using IP addresses and routing tables.
 ---
 
 ### b) What is the purpose of a modem in a network? Can we connect directly to the Internet without it?
 
-A modem converts signals for the ISP medium. In most connections, a modem or gateway is needed before internet access.
+A modem converts signals for the ISP medium. In most connections, a modem or gateway is needed before internet access because the end device usually cannot connect directly to the provider line.
 ---
 
 ### c) List different types of network cables and their uses.
 
-Common cable types are coaxial, twisted pair, and fiber optic. Coaxial is used in older networks, twisted pair in LANs, and fiber optic for high-speed long-distance links.
+Common cable types are coaxial, twisted pair, and fiber optic. Coaxial is used in older networks, twisted pair in LANs, and fiber optic for high-speed long-distance links with low interference.
 ---
 
 ### d) Define IPv4 and IPv6. Mention key differences between them.
 
-IPv4 uses 32-bit addresses, while IPv6 uses 128-bit addresses. IPv6 offers a much larger address space and better scalability.
+IPv4 uses 32-bit addresses, while IPv6 uses 128-bit addresses. IPv6 offers a much larger address space, better scalability, and simpler address exhaustion handling.
 ---
 
 ### f) What is subnetting? How many hosts are possible in a /26 subnet?
 
-Subnetting divides a network into smaller parts. A /26 subnet has 62 usable host addresses.
+Subnetting divides a network into smaller parts. A /26 subnet has 62 usable host addresses because 64 total addresses exist and 2 are reserved for network and broadcast.
 ---
 
 ### g) What is the purpose of assigning a hostname to a switch?
 
-A hostname identifies the switch clearly for management and troubleshooting.
+A hostname identifies the switch clearly for management and troubleshooting. It also makes the CLI prompt easier to recognize in a larger network.
 ---
 
 ## Q2: Practical Questions (20 Marks)
 
 ### OPTION A: Write a C program to implement framing using the Character Count Method.
 
-Implement and verify using [Slip_11_Q2_OptionA.c](Slip_11_Q2_OptionA.c).
+The program frames data by adding a count field that specifies the number of characters in each frame. Implement and verify using [Slip_11_Q2_OptionA.c](Slip_11_Q2_OptionA.c).
 
 ---
 
 ### OPTION B: Write a C program to simulate the Stop-and-Wait ARQ protocol.
 
-Implement and verify using [Slip_11_Q2_OptionB.c](Slip_11_Q2_OptionB.c).
+The program simulates Stop-and-Wait ARQ, where one frame is sent at a time and the sender waits for an acknowledgment before sending the next frame. Implement and verify using [Slip_11_Q2_OptionB.c](Slip_11_Q2_OptionB.c).
 
 ---
 

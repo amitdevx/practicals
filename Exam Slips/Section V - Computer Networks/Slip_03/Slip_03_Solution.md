@@ -6,45 +6,45 @@
 
 ### a) What does the command tracert or traceroute do?
 
-It shows the path taken by packets from the source to the destination and lists each intermediate hop with delay information.
+It shows the path taken by packets from the source to the destination and lists each intermediate hop with delay information. This helps identify where delays or routing problems occur.
 ---
 
 ### b) Differentiate between ip addr and ifconfig commands in Linux.
 
-`ip addr` is the modern command used to view and manage IP addresses and interfaces, while `ifconfig` is an older legacy command.
+`ip addr` is the modern command used to view and manage IP addresses and interfaces, while `ifconfig` is an older legacy command that is still present on some systems.
 ---
 
 ### c) What does nslookup do?
 
-`nslookup` queries DNS servers to resolve domain names to IP addresses or to get reverse DNS information.
+`nslookup` queries DNS servers to resolve domain names to IP addresses or to get reverse DNS information. It is useful for testing DNS name resolution.
 ---
 
 ### d) List two advantages and two disadvantages of dynamic IP configuration.
 
-Advantages: easy automatic setup and efficient IP usage. Disadvantages: IP address may change and troubleshooting can be less predictable.
+Advantages: easy automatic setup and efficient IP usage. Disadvantages: the IP address may change over time and troubleshooting can be less predictable.
 ---
 
 ### f) What is the function of a switch in a computer network?
 
-A switch connects devices in a LAN and forwards frames to the correct port using MAC address information.
+A switch connects devices in a LAN and forwards frames to the correct port using MAC address information. It reduces unnecessary traffic compared to a hub.
 ---
 
 ### g) What is network topology? What are its applications?
 
-Network topology is the arrangement of devices and links in a network. It is used in network design, planning, and troubleshooting.
+Network topology is the arrangement of devices and links in a network. It is used in network design, planning, performance analysis, and troubleshooting.
 ---
 
 ## Q2: Practical Questions (20 Marks)
 
 ### OPTION A: Write a C program to display Bus Topology.
 
-Implement and verify using [Slip_03_Q2_OptionA.c](Slip_03_Q2_OptionA.c).
+The program represents a bus topology by showing all devices connected to a shared backbone. Implement and verify using [Slip_03_Q2_OptionA.c](Slip_03_Q2_OptionA.c).
 
 ---
 
 ### OPTION B: Write a C program to implement even parity error detection.
 
-Implement and verify using [Slip_03_Q2_OptionB.c](Slip_03_Q2_OptionB.c).
+The program generates an even parity bit so that the total number of 1s remains even, allowing simple error detection. Implement and verify using [Slip_03_Q2_OptionB.c](Slip_03_Q2_OptionB.c).
 
 ---
 
@@ -53,6 +53,8 @@ Implement and verify using [Slip_03_Q2_OptionB.c](Slip_03_Q2_OptionB.c).
 1. What is a CIDR value?
 1. List the CIDR values for Class A, Class B, and Class C public IP addresses.
 1. Design and configure a network in Cisco Packet Tracer consisting of two LANs connected through a Router (2911). Assign IP addresses as given and verify connectivity between all PCs using the ping command.
+
+CIDR is a notation that writes the number of network bits after a slash, such as /8, /16, or /24. In classful public addressing, Class A is typically /8, Class B is /16, and Class C is /24.
 
 Network Details:
 

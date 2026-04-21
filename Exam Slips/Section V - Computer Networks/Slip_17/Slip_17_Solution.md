@@ -6,45 +6,45 @@
 
 ### a) What is the primary purpose of a banner MOTD?
 
-A banner MOTD displays a warning or notice to users before login and is used for security and legal awareness.
+A banner MOTD displays a warning or notice to users before login and is used for security and legal awareness. It is commonly used to warn unauthorized users and state acceptable-use terms.
 ---
 
 ### b) What is one benefit of using a simulator like Packet Tracer for learning networking, and what is one limitation compared to actual hardware?
 
-Packet Tracer is safe and low-cost for practice, but it cannot perfectly reproduce every real hardware behavior.
+Packet Tracer is safe and low-cost for practice, but it cannot perfectly reproduce every real hardware behavior. It is excellent for labs, but not a full replacement for physical equipment.
 ---
 
 ### c) Differentiate between Static NAT, Dynamic NAT, and Port Address Translation (PAT).
 
-Static NAT maps one private IP to one fixed public IP, Dynamic NAT maps from a pool of public IPs, and PAT allows many private hosts to share one public IP using ports.
+Static NAT maps one private IP to one fixed public IP, Dynamic NAT maps from a pool of public IPs, and PAT allows many private hosts to share one public IP using ports. PAT is the most space-efficient of the three.
 ---
 
 ### d) List the commands used for Network Address Translation on Cisco’s Packet Tracer.
 
-Common NAT commands include interface configuration, `ip nat inside`, `ip nat outside`, ACL configuration, and `ip nat inside source` rules.
+Common NAT commands include interface configuration, `ip nat inside`, `ip nat outside`, ACL configuration, and `ip nat inside source` rules. These define which interfaces are inside and outside and which addresses should be translated.
 ---
 
 ### f) Use Netstat command to view active connections.
 
-Use `netstat -an` to display active and listening connections.
+Use `netstat -an` to display active and listening connections. It shows TCP and UDP endpoints in numeric form.
 ---
 
 ### g) What is the primary purpose of a banner MOTD?
 
-A banner MOTD displays a warning or notice to users before login and is used for security and legal awareness.
+A banner MOTD displays a warning or notice to users before login and is used for security and legal awareness. The repeated answer is intentional in the source file, but the meaning is the same as in part a.
 ---
 
 ## Q2: Practical Questions (20 Marks)
 
 ### OPTION A: Write a C program for password security with Special Characters that includes special character checks along with uppercase, lowercase, digit, and length rules.
 
-Implement and verify using [Slip_17_Q2_OptionA.c](Slip_17_Q2_OptionA.c).
+The program validates a password against common security rules, including special characters, uppercase, lowercase, digits, and minimum length. Implement and verify using [Slip_17_Q2_OptionA.c](Slip_17_Q2_OptionA.c).
 
 ---
 
 ### OPTION B: Write a C program to convert plain message to cipher message.
 
-Implement and verify using [Slip_17_Q2_OptionB.c](Slip_17_Q2_OptionB.c).
+The program converts plain text into a cipher message using a basic encoding or encryption technique. Implement and verify using [Slip_17_Q2_OptionB.c](Slip_17_Q2_OptionB.c).
 
 ---
 

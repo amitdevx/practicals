@@ -6,12 +6,12 @@
 
 ### a) List and explain all five IP address classes with examples.
 
-Class A: 1.0.0.0 to 126.0.0.0, Class B: 128.0.0.0 to 191.255.0.0, Class C: 192.0.0.0 to 223.255.255.0, Class D: 224.0.0.0 to 239.255.255.255, Class E: 240.0.0.0 to 255.255.255.255.
+Class A: 1.0.0.0 to 126.0.0.0, Class B: 128.0.0.0 to 191.255.0.0, Class C: 192.0.0.0 to 223.255.255.0, Class D: 224.0.0.0 to 239.255.255.255, and Class E: 240.0.0.0 to 255.255.255.255. Class D is used for multicast and Class E is reserved for experimental use.
 ---
 
 ### b) Explain the format and example of an IPv6 address.
 
-IPv6 uses 128 bits written in hexadecimal groups separated by colons, for example `2001:db8::1`.
+IPv6 uses 128 bits written in hexadecimal groups separated by colons, for example `2001:db8::1`. It provides a much larger address space than IPv4.
 ---
 
 ### c) Differentiate between Static NAT, Dynamic NAT, and Port Address Translation (PAT).
@@ -21,30 +21,30 @@ Static NAT maps one private address to one fixed public address, Dynamic NAT map
 
 ### d) Configure Dynamic NAT with a pool of public IP addresses.
 
-Dynamic NAT uses a configured pool of public IP addresses and maps inside hosts to available addresses from that pool.
+Dynamic NAT uses a configured pool of public IP addresses and maps inside hosts to available addresses from that pool. The translation changes as hosts start and end sessions.
 ---
 
 ### f) Define Cyber Security.
 
-Cyber security is the practice of protecting systems, networks, and data from unauthorized access, damage, and attacks.
+Cyber security is the practice of protecting systems, networks, and data from unauthorized access, damage, and attacks. It includes preventive, detective, and corrective controls.
 ---
 
 ### g) Explain Ethical Hacking.
 
-Ethical hacking is authorized security testing performed to find and fix vulnerabilities before attackers exploit them.
+Ethical hacking is authorized security testing performed to find and fix vulnerabilities before attackers exploit them. It should always be done with permission and within a defined scope.
 ---
 
 ## Q2: Practical Questions (20 Marks)
 
 ### OPTION A: Write a program to determine IP address class.
 
-Implement and verify using [Slip_09_Q2_OptionA.c](Slip_09_Q2_OptionA.c).
+The program reads an IPv4 address and identifies whether it belongs to Class A, B, C, D, or E based on its first octet. Implement and verify using [Slip_09_Q2_OptionA.c](Slip_09_Q2_OptionA.c).
 
 ---
 
 ### OPTION B: Write a program to implements Static Routing Simulation.
 
-Implement and verify using [Slip_09_Q2_OptionB.c](Slip_09_Q2_OptionB.c).
+The program simulates static routing by using fixed routes that are manually configured and do not change automatically. Implement and verify using [Slip_09_Q2_OptionB.c](Slip_09_Q2_OptionB.c).
 
 ---
 

@@ -6,45 +6,45 @@
 
 ### a) What is static routing? Gives its features.
 
-Static routing is a manually configured route that does not change automatically. It is simple, secure, and suitable for small networks.
+Static routing is a manually configured route that does not change automatically. It is simple, secure, predictable, and suitable for small networks or fixed topologies.
 ---
 
 ### b) List the commands used for Network Address Translation on Cisco’s Packet Tracer.
 
-Common NAT commands include `ip nat inside`, `ip nat outside`, ACLs, and `ip nat inside source` rules.
+Common NAT commands include `ip nat inside`, `ip nat outside`, ACLs, and `ip nat inside source` rules. These define the inside network and the translation mapping.
 ---
 
 ### c) Write an algorithm to Hash a password using SHA256.
 
-SHA-256 hashes the password input into a fixed-length digest using a secure one-way hash function.
+SHA-256 hashes the password input into a fixed-length digest using a secure one-way hash function. The same input always produces the same digest, but the digest cannot be reversed to recover the original password.
 ---
 
 ### d) Write the Linux commands used to detect hidden Wi-Fi networks.
 
-Use wireless scanning tools and adapter commands such as `iwlist`, `iw`, or NetworkManager utilities to inspect hidden SSIDs.
+Use wireless scanning tools and adapter commands such as `iwlist`, `iw`, or NetworkManager utilities to inspect hidden SSIDs. These tools help identify networks that are not broadcasting a visible name.
 ---
 
 ### f) Explain steps to identify a phishing email.
 
-Check sender details, suspicious links, urgent requests, grammar mistakes, and unexpected attachment behavior.
+Check sender details, suspicious links, urgent requests, grammar mistakes, and unexpected attachment behavior. Confirm the sender through a trusted source before taking any action.
 ---
 
 ### g) List types of Cyber Threats.
 
-Examples include phishing, malware, ransomware, spyware, spoofing, and DDoS attacks.
+Examples include phishing, malware, ransomware, spyware, spoofing, and DDoS attacks. These threats target confidentiality, integrity, or availability.
 ---
 
 ## Q2: Practical Questions (20 Marks)
 
 ### OPTION A: Write a C program for Phishing Simulation.
 
-Implement and verify using [Slip_19_Q2_OptionA.c](Slip_19_Q2_OptionA.c).
+The program demonstrates phishing simulation by showing how deceptive prompts or emails can be used to teach users to recognize attacks. Implement and verify using [Slip_19_Q2_OptionA.c](Slip_19_Q2_OptionA.c).
 
 ---
 
 ### OPTION B: Write a program to verify successful NAT translation using show NAT translation.
 
-Implement and verify using [Slip_19_Q2_OptionB.c](Slip_19_Q2_OptionB.c).
+The program verifies NAT translation by checking that private addresses are mapped correctly to public addresses in the translation table, and the Cisco verification command is `show ip nat translations`. Implement and verify using [Slip_19_Q2_OptionB.c](Slip_19_Q2_OptionB.c).
 
 ---
 

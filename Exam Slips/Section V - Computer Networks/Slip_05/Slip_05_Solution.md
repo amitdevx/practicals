@@ -6,45 +6,45 @@
 
 ### a) What does the ip link set eth0 up command do?
 
-It enables the network interface `eth0` and brings it into the active state.
+It enables the network interface `eth0` and brings it into the active state so it can send and receive traffic.
 ---
 
 ### b) How to detect hidden Wi-Fi networks.
 
-Use Wi-Fi scanning tools or adapter utilities to list nearby SSIDs, then inspect beacon and probe responses to identify hidden networks.
+Use Wi-Fi scanning tools or adapter utilities to list nearby SSIDs, then inspect beacon and probe responses to identify hidden networks. In practice, tools such as `iw`, `iwlist`, or wireless analyzers can help.
 ---
 
 ### c) Write the command sequence to configure a router interface with IP.
 
-Enter interface configuration mode, assign the IP address and subnet mask, and then use `no shutdown` to activate the interface.
+Enter interface configuration mode, assign the IP address and subnet mask, and then use `no shutdown` to activate the interface. Example: `interface g0/0`, `ip address 192.168.1.1 255.255.255.0`, `no shutdown`.
 ---
 
 ### d) What is the purpose of assigning a hostname to a switch?
 
-A hostname helps identify the switch clearly in the network and makes configuration and troubleshooting easier.
+A hostname helps identify the switch clearly in the network and makes configuration and troubleshooting easier. It also improves readability in CLI sessions.
 ---
 
 ### f) What is the ethical hacking?
 
-Ethical hacking is the authorized testing of systems to find and fix security weaknesses before attackers can exploit them.
+Ethical hacking is the authorized testing of systems to find and fix security weaknesses before attackers can exploit them. It is performed with permission and within scope.
 ---
 
 ### g) What does the show running-config command display?
 
-It displays the current active configuration of the device.
+It displays the current active configuration of the device, including interfaces, passwords, routing, and other running settings.
 ---
 
 ## Q2: Practical Questions (20 Marks)
 
 ### OPTION A: Write a C program to display a Ring Topology. /
 
-Implement and verify using [Slip_05_Q2_OptionA.c](Slip_05_Q2_OptionA.c).
+The program models a ring topology by connecting each node to two neighbors in a circular arrangement. Implement and verify using [Slip_05_Q2_OptionA.c](Slip_05_Q2_OptionA.c).
 
 ---
 
 ### OPTION B: Write a program to implement odd parity error detection.
 
-Implement and verify using [Slip_05_Q2_OptionB.c](Slip_05_Q2_OptionB.c).
+The program generates an odd parity bit so the total number of 1s remains odd, which helps detect simple transmission errors. Implement and verify using [Slip_05_Q2_OptionB.c](Slip_05_Q2_OptionB.c).
 
 ---
 
@@ -53,3 +53,5 @@ Implement and verify using [Slip_05_Q2_OptionB.c](Slip_05_Q2_OptionB.c).
 Test Ethernet LAN cables using an NSS-468A LAN Tester and verify network connectivity by checking Straight-Through or Cross-Over RJ-45 cables.
 
 To create and configure a simple network in Cisco Packet Tracer by connecting two PCs through a switch. Assign the IP addresses 10.0.0.1 and 10.0.0.2 with subnet mask 255.0.0.0 to the PCs, and verify network connectivity using the ping command.
+
+Use the same /8 network on both PCs so they can communicate directly through the switch without a router.

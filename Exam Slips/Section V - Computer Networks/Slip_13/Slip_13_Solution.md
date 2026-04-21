@@ -6,45 +6,45 @@
 
 ### a) How do you verify if an interface received an IP dynamically?
 
-Use commands such as `ip addr`, `ifconfig`, or router/switch show commands to confirm that the interface has obtained an IP address.
+Use commands such as `ip addr`, `ifconfig`, or router/switch show commands to confirm that the interface has obtained an IP address. On network devices, `show ip interface brief` is commonly used.
 ---
 
 ### b) Demonstrate assigning IPs and testing connectivity for 3 systems in a LAN.
 
-Assign unique IP addresses in the same subnet to three systems and test connectivity using the ping command.
+Assign unique IP addresses in the same subnet to three systems and test connectivity using the ping command. If each host replies, the local LAN configuration is correct.
 ---
 
 ### c) Explain the role of VLAN1 in a switch’s initial configuration.
 
-VLAN1 is the default management VLAN and is commonly used for initial switch configuration and basic management access.
+VLAN1 is the default management VLAN and is commonly used for initial switch configuration and basic management access. It is often the first interface assigned an IP address for management.
 ---
 
 ### d) What steps are required to configure the default gateway as 192.168.1.1.
 
-Set the default gateway to 192.168.1.1 in the device network settings or routing configuration.
+Set the default gateway to 192.168.1.1 in the device network settings or routing configuration so that traffic for other networks is sent to the router.
 ---
 
 ### f) What steps are required to configure Dynamic NAT with a pool of public IP addresses.
 
-Create a pool of public IP addresses, define inside and outside interfaces, and map inside hosts to available addresses from the pool.
+Create a pool of public IP addresses, define inside and outside interfaces, and map inside hosts to available addresses from the pool. The router assigns addresses only while translation is active.
 ---
 
 ### g) Use debug ip routing or debug ip rip to monitor routing events and updates.
 
-These debug commands display live routing updates and help monitor routing behavior during troubleshooting.
+These debug commands display live routing updates and help monitor routing behavior during troubleshooting. They should be used carefully because they can produce a lot of output.
 ---
 
 ## Q2: Practical Questions (20 Marks)
 
 ### OPTION A: Write a program to displays a Hybrid Topology.
 
-Implement and verify using [Slip_13_Q2_OptionA.c](Slip_13_Q2_OptionA.c).
+The program represents a hybrid topology by combining more than one network layout in a single design. Implement and verify using [Slip_13_Q2_OptionA.c](Slip_13_Q2_OptionA.c).
 
 ---
 
 ### OPTION B: Write a program to version that saves an Initial Switch Configuration into a text file.
 
-Implement and verify using [Slip_13_Q2_OptionB.c](Slip_13_Q2_OptionB.c).
+The program saves the initial switch configuration details into a text file for later reference or backup. Implement and verify using [Slip_13_Q2_OptionB.c](Slip_13_Q2_OptionB.c).
 
 ---
 
