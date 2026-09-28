@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Homepage - Flexbox Layout</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        header { background: #2c3e50; color: white; padding: 20px; text-align: center; }
+        nav { background: #34495e; display: flex; justify-content: center; }
+        nav a { color: white; padding: 14px 20px; text-decoration: none; font-weight: bold; }
+        nav a:hover { background: #1abc9c; }
+        .main-container { display: flex; flex-wrap: wrap; padding: 20px; gap: 20px; min-height: 400px; }
+        .content { flex: 3; background: #ecf0f1; padding: 20px; border-radius: 5px; }
+        .sidebar { flex: 1; background: #bdc3c7; padding: 20px; border-radius: 5px; }
+        footer { background: #2c3e50; color: white; text-align: center; padding: 15px; }
+        @media (max-width: 768px) {
+            .main-container { flex-direction: column; }
+            nav { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Savitribai Phule Pune University Affiliated College</h1>
+        <p>Excellence in Higher Education</p>
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#academics">Academics</a>
+        <a href="#admissions">Admissions</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="main-container">
+        <section class="content">
+            <h2>Welcome to Computer Science Department</h2>
+            <p>Offering specialized undergraduate and postgraduate courses under NEP 2020 curriculum with hands-on lab practicals and cutting edge research.</p>
+        </section>
+        <aside class="sidebar">
+            <h3>Latest Notices</h3>
+            <ul>
+                <li>Sem-V Practical Exam Schedule</li>
+                <li>Campus Placement Drive 2026</li>
+                <li>Annual TechFest Registration</li>
+            </ul>
+        </aside>
+    </div>
+    <footer>
+        <p>&copy; 2026 College Portal. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Responsive Image Gallery with Flexbox</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f8f9fa; padding: 20px; }
+        h1 { text-align: center; color: #2c3e50; }
+        .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        .gallery-item { flex: 1 1 250px; max-width: 300px; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background: white; transition: transform 0.3s, box-shadow 0.3s; }
+        .gallery-item:hover { transform: translateY(-8px); box-shadow: 0 8px 16px rgba(0,0,0,0.2); }
+        .gallery-img { width: 100%; height: 200px; background-color: #3498db; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px; }
+        .gallery-caption { padding: 10px; text-align: center; font-weight: bold; color: #555; }
+    </style>
+</head>
+<body>
+    <h1>Responsive Campus Gallery</h1>
+    <div class="gallery">
+        <div class="gallery-item"><div class="gallery-img" style="background:#e74c3c;">Library</div><div class="gallery-caption">Central Library</div></div>
+        <div class="gallery-item"><div class="gallery-img" style="background:#2ecc71;">Computer Lab</div><div class="gallery-caption">Advanced Computing Lab</div></div>
+        <div class="gallery-item"><div class="gallery-img" style="background:#f39c12;">Auditorium</div><div class="gallery-caption">Seminar Hall</div></div>
+        <div class="gallery-item"><div class="gallery-img" style="background:#9b59b6;">Sports Arena</div><div class="gallery-caption">Indoor Sports Complex</div></div>
+    </div>
+</body>
+</html>

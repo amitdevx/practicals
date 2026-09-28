@@ -1,0 +1,604 @@
+.
+├── README.md
+├── _references
+│   ├── maths slip sem 4.pdf
+│   ├── SEC_251_CS_P_Computer_Networks_Practical_Slips_2026_updated_22.pdf
+│   ├── SYBSc(CS) Slips CS-253 MJP DS II and DBMS II 2025 Sem IV.pdf
+│   └── SYBsc(CS) Slips CS-271-VSC-P Adv. Python Prog 25-26.pdf
+├── Section I - Data Structures-II
+│   ├── DS_topics.md
+│   ├── Slip_01
+│   │   ├── Slip_01_DS_SOLUTION.md
+│   │   ├── Slip_01_DS_SOLUTION.pdf
+│   │   ├── Slip_01_Q1_OptionA.c
+│   │   └── Slip_01_Q1_OptionB.c
+│   ├── Slip_02
+│   │   ├── Slip_02_DS_SOLUTION.md
+│   │   ├── Slip_02_DS_SOLUTION.pdf
+│   │   ├── Slip_02_Q1_OptionA.c
+│   │   └── Slip_02_Q1_OptionB.c
+│   ├── Slip_03
+│   │   ├── Slip_03_DS_SOLUTION.md
+│   │   ├── Slip_03_DS_SOLUTION.pdf
+│   │   ├── Slip_03_Q1_OptionA.c
+│   │   └── Slip_03_Q1_OptionB.c
+│   ├── Slip_04
+│   │   ├── Slip_04_DS_SOLUTION.md
+│   │   ├── Slip_04_DS_SOLUTION.pdf
+│   │   ├── Slip_04_Q1_OptionA.c
+│   │   └── Slip_04_Q1_OptionB.c
+│   ├── Slip_05
+│   │   ├── Slip_05_DS_SOLUTION.md
+│   │   ├── Slip_05_DS_SOLUTION.pdf
+│   │   ├── Slip_05_Q1_OptionA.c
+│   │   └── Slip_05_Q1_OptionB.c
+│   ├── Slip_06
+│   │   ├── Slip_06_DS_SOLUTION.md
+│   │   ├── Slip_06_DS_SOLUTION.pdf
+│   │   ├── Slip_06_Q1_OptionA.c
+│   │   └── Slip_06_Q1_OptionB.c
+│   ├── Slip_07
+│   │   ├── Slip_07_DS_SOLUTION.md
+│   │   ├── Slip_07_DS_SOLUTION.pdf
+│   │   ├── Slip_07_Q1_OptionA.c
+│   │   └── Slip_07_Q1_OptionB.c
+│   ├── Slip_08
+│   │   ├── Slip_08_DS_SOLUTION.md
+│   │   ├── Slip_08_DS_SOLUTION.pdf
+│   │   ├── Slip_08_Q1_OptionA.c
+│   │   └── Slip_08_Q1_OptionB.c
+│   ├── Slip_09
+│   │   ├── Slip_09_DS_SOLUTION.md
+│   │   ├── Slip_09_DS_SOLUTION.pdf
+│   │   ├── Slip_09_Q1_OptionA.c
+│   │   └── Slip_09_Q1_OptionB.c
+│   ├── Slip_10
+│   │   ├── Slip_10_DS_SOLUTION.md
+│   │   ├── Slip_10_DS_SOLUTION.pdf
+│   │   ├── Slip_10_Q1_OptionA.c
+│   │   └── Slip_10_Q1_OptionB.c
+│   ├── Slip_11
+│   │   ├── Slip_11_DS_SOLUTION.md
+│   │   ├── Slip_11_DS_SOLUTION.pdf
+│   │   ├── Slip_11_Q1_OptionA.c
+│   │   └── Slip_11_Q1_OptionB.c
+│   ├── Slip_12
+│   │   ├── Slip_12_DS_SOLUTION.md
+│   │   ├── Slip_12_DS_SOLUTION.pdf
+│   │   ├── Slip_12_Q1_OptionA.c
+│   │   └── Slip_12_Q1_OptionB.c
+│   ├── Slip_13
+│   │   ├── Slip_13_DS_SOLUTION.md
+│   │   ├── Slip_13_DS_SOLUTION.pdf
+│   │   ├── Slip_13_Q1_OptionA.c
+│   │   └── Slip_13_Q1_OptionB.c
+│   ├── Slip_14
+│   │   ├── Slip_14_DS_SOLUTION.md
+│   │   ├── Slip_14_DS_SOLUTION.pdf
+│   │   ├── Slip_14_Q1_OptionA.c
+│   │   └── Slip_14_Q1_OptionB.c
+│   ├── Slip_15
+│   │   ├── Slip_15_DS_SOLUTION.md
+│   │   ├── Slip_15_DS_SOLUTION.pdf
+│   │   ├── Slip_15_Q1_OptionA.c
+│   │   └── Slip_15_Q1_OptionB.c
+│   ├── Slip_16
+│   │   ├── Slip_16_DS_SOLUTION.md
+│   │   ├── Slip_16_DS_SOLUTION.pdf
+│   │   ├── Slip_16_Q1_OptionA.c
+│   │   └── Slip_16_Q1_OptionB.c
+│   ├── Slip_17
+│   │   ├── Slip_17_DS_SOLUTION.md
+│   │   ├── Slip_17_DS_SOLUTION.pdf
+│   │   ├── Slip_17_Q1_OptionA.c
+│   │   └── Slip_17_Q1_OptionB.c
+│   ├── Slip_18
+│   │   ├── Slip_18_DS_SOLUTION.md
+│   │   ├── Slip_18_DS_SOLUTION.pdf
+│   │   ├── Slip_18_Q1_OptionA.c
+│   │   └── Slip_18_Q1_OptionB.c
+│   ├── Slip_19
+│   │   ├── Slip_19_DS_SOLUTION.md
+│   │   ├── Slip_19_DS_SOLUTION.pdf
+│   │   ├── Slip_19_Q1_OptionA.c
+│   │   └── Slip_19_Q1_OptionB.c
+│   ├── Slip_20
+│   │   ├── Slip_20_DS_SOLUTION.md
+│   │   ├── Slip_20_DS_SOLUTION.pdf
+│   │   ├── Slip_20_Q1_OptionA.c
+│   │   └── Slip_20_Q1_OptionB.c
+│   ├── Slip_21
+│   │   ├── Slip_21_DS_SOLUTION.md
+│   │   ├── Slip_21_DS_SOLUTION.pdf
+│   │   ├── Slip_21_Q1_OptionA.c
+│   │   └── Slip_21_Q1_OptionB.c
+│   ├── Slip_22
+│   │   ├── Slip_22_DS_SOLUTION.md
+│   │   ├── Slip_22_DS_SOLUTION.pdf
+│   │   ├── Slip_22_Q1_OptionA.c
+│   │   └── Slip_22_Q1_OptionB.c
+│   ├── Slip_23
+│   │   ├── Slip_23_DS_SOLUTION.md
+│   │   ├── Slip_23_DS_SOLUTION.pdf
+│   │   ├── Slip_23_Q1_OptionA.c
+│   │   └── Slip_23_Q1_OptionB.c
+│   ├── Slip_24
+│   │   ├── Slip_24_DS_SOLUTION.md
+│   │   ├── Slip_24_DS_SOLUTION.pdf
+│   │   ├── Slip_24_Q1_OptionA.c
+│   │   └── Slip_24_Q1_OptionB.c
+│   ├── Slip_25
+│   │   ├── Slip_25_DS_SOLUTION.md
+│   │   ├── Slip_25_DS_SOLUTION.pdf
+│   │   ├── Slip_25_Q1_OptionA.c
+│   │   └── Slip_25_Q1_OptionB.c
+│   ├── Slip_26
+│   │   ├── Slip_26_DS_SOLUTION.md
+│   │   ├── Slip_26_DS_SOLUTION.pdf
+│   │   ├── Slip_26_Q1_OptionA.c
+│   │   └── Slip_26_Q1_OptionB.c
+│   ├── Slip_27
+│   │   ├── Slip_27_DS_SOLUTION.md
+│   │   ├── Slip_27_DS_SOLUTION.pdf
+│   │   ├── Slip_27_Q1_OptionA.c
+│   │   └── Slip_27_Q1_OptionB.c
+│   ├── Slip_28
+│   │   ├── Slip_28_DS_SOLUTION.md
+│   │   ├── Slip_28_DS_SOLUTION.pdf
+│   │   ├── Slip_28_Q1_OptionA.c
+│   │   └── Slip_28_Q1_OptionB.c
+│   ├── Slip_29
+│   │   ├── Slip_29_DS_SOLUTION.md
+│   │   ├── Slip_29_DS_SOLUTION.pdf
+│   │   ├── Slip_29_Q1_OptionA.c
+│   │   └── Slip_29_Q1_OptionB.c
+│   └── Slip_30
+│       ├── Slip_30_DS_SOLUTION.md
+│       ├── Slip_30_DS_SOLUTION.pdf
+│       ├── Slip_30_Q1_OptionA.c
+│       └── Slip_30_Q1_OptionB.c
+├── Section II - Database Management Systems II
+│   ├── DBMS_topics.md
+│   ├── Slip_01
+│   │   ├── Slip_01_DBMS_SOLUTION.md
+│   │   ├── Slip_01_DBMS_SOLUTION.pdf
+│   │   └── Slip_01_DBMS_Solution.sql
+│   ├── Slip_02
+│   │   ├── Slip_02_DBMS_SOLUTION.md
+│   │   ├── Slip_02_DBMS_SOLUTION.pdf
+│   │   └── Slip_02_DBMS_Solution.sql
+│   ├── Slip_03
+│   │   ├── Slip_03_DBMS_SOLUTION.md
+│   │   ├── Slip_03_DBMS_SOLUTION.pdf
+│   │   └── Slip_03_DBMS_Solution.sql
+│   ├── Slip_04
+│   │   ├── Slip_04_DBMS_SOLUTION.md
+│   │   ├── Slip_04_DBMS_SOLUTION.pdf
+│   │   └── Slip_04_DBMS_Solution.sql
+│   ├── Slip_05
+│   │   ├── Slip_05_DBMS_SOLUTION.md
+│   │   ├── Slip_05_DBMS_SOLUTION.pdf
+│   │   └── Slip_05_DBMS_Solution.sql
+│   ├── Slip_06
+│   │   ├── Slip_06_DBMS_SOLUTION.md
+│   │   ├── Slip_06_DBMS_SOLUTION.pdf
+│   │   └── Slip_06_DBMS_Solution.sql
+│   ├── Slip_07
+│   │   ├── Slip_07_DBMS_SOLUTION.md
+│   │   ├── Slip_07_DBMS_SOLUTION.pdf
+│   │   └── Slip_07_DBMS_Solution.sql
+│   ├── Slip_08
+│   │   ├── Slip_08_DBMS_SOLUTION.md
+│   │   ├── Slip_08_DBMS_SOLUTION.pdf
+│   │   └── Slip_08_DBMS_Solution.sql
+│   ├── Slip_09
+│   │   ├── Slip_09_DBMS_SOLUTION.md
+│   │   ├── Slip_09_DBMS_SOLUTION.pdf
+│   │   └── Slip_09_DBMS_Solution.sql
+│   ├── Slip_10
+│   │   ├── Slip_10_DBMS_SOLUTION.md
+│   │   ├── Slip_10_DBMS_SOLUTION.pdf
+│   │   └── Slip_10_DBMS_Solution.sql
+│   ├── Slip_11
+│   │   ├── Slip_11_DBMS_SOLUTION.md
+│   │   ├── Slip_11_DBMS_SOLUTION.pdf
+│   │   └── Slip_11_DBMS_Solution.sql
+│   ├── Slip_12
+│   │   ├── Slip_12_DBMS_SOLUTION.md
+│   │   ├── Slip_12_DBMS_SOLUTION.pdf
+│   │   └── Slip_12_DBMS_Solution.sql
+│   ├── Slip_13
+│   │   ├── Slip_13_DBMS_SOLUTION.md
+│   │   ├── Slip_13_DBMS_SOLUTION.pdf
+│   │   └── Slip_13_DBMS_Solution.sql
+│   ├── Slip_14
+│   │   ├── Slip_14_DBMS_SOLUTION.md
+│   │   ├── Slip_14_DBMS_SOLUTION.pdf
+│   │   └── Slip_14_DBMS_Solution.sql
+│   ├── Slip_15
+│   │   ├── Slip_15_DBMS_SOLUTION.md
+│   │   ├── Slip_15_DBMS_SOLUTION.pdf
+│   │   └── Slip_15_DBMS_Solution.sql
+│   ├── Slip_16
+│   │   ├── Slip_16_DBMS_SOLUTION.md
+│   │   ├── Slip_16_DBMS_SOLUTION.pdf
+│   │   └── Slip_16_DBMS_Solution.sql
+│   ├── Slip_17
+│   │   ├── Slip_17_DBMS_SOLUTION.md
+│   │   ├── Slip_17_DBMS_SOLUTION.pdf
+│   │   └── Slip_17_DBMS_Solution.sql
+│   ├── Slip_18
+│   │   ├── Slip_18_DBMS_SOLUTION.md
+│   │   ├── Slip_18_DBMS_SOLUTION.pdf
+│   │   └── Slip_18_DBMS_Solution.sql
+│   ├── Slip_19
+│   │   ├── Slip_19_DBMS_SOLUTION.md
+│   │   ├── Slip_19_DBMS_SOLUTION.pdf
+│   │   └── Slip_19_DBMS_Solution.sql
+│   ├── Slip_20
+│   │   ├── Slip_20_DBMS_SOLUTION.md
+│   │   ├── Slip_20_DBMS_SOLUTION.pdf
+│   │   └── Slip_20_DBMS_Solution.sql
+│   ├── Slip_21
+│   │   ├── Slip_21_DBMS_SOLUTION.md
+│   │   ├── Slip_21_DBMS_SOLUTION.pdf
+│   │   └── Slip_21_DBMS_Solution.sql
+│   ├── Slip_22
+│   │   ├── Slip_22_DBMS_SOLUTION.md
+│   │   ├── Slip_22_DBMS_SOLUTION.pdf
+│   │   └── Slip_22_DBMS_Solution.sql
+│   ├── Slip_23
+│   │   ├── Slip_23_DBMS_SOLUTION.md
+│   │   ├── Slip_23_DBMS_SOLUTION.pdf
+│   │   └── Slip_23_DBMS_Solution.sql
+│   ├── Slip_24
+│   │   ├── Slip_24_DBMS_SOLUTION.md
+│   │   ├── Slip_24_DBMS_SOLUTION.pdf
+│   │   └── Slip_24_DBMS_Solution.sql
+│   ├── Slip_25
+│   │   ├── Slip_25_DBMS_SOLUTION.md
+│   │   ├── Slip_25_DBMS_SOLUTION.pdf
+│   │   └── Slip_25_DBMS_Solution.sql
+│   ├── Slip_26
+│   │   ├── Slip_26_DBMS_SOLUTION.md
+│   │   ├── Slip_26_DBMS_SOLUTION.pdf
+│   │   └── Slip_26_DBMS_Solution.sql
+│   ├── Slip_27
+│   │   ├── Slip_27_DBMS_SOLUTION.md
+│   │   ├── Slip_27_DBMS_SOLUTION.pdf
+│   │   └── Slip_27_DBMS_Solution.sql
+│   ├── Slip_28
+│   │   ├── Slip_28_DBMS_SOLUTION.md
+│   │   ├── Slip_28_DBMS_SOLUTION.pdf
+│   │   └── Slip_28_DBMS_Solution.sql
+│   ├── Slip_29
+│   │   ├── Slip_29_DBMS_SOLUTION.md
+│   │   ├── Slip_29_DBMS_SOLUTION.pdf
+│   │   └── Slip_29_DBMS_Solution.sql
+│   └── Slip_30
+│       ├── Slip_30_DBMS_SOLUTION.md
+│       ├── Slip_30_DBMS_SOLUTION.pdf
+│       └── Slip_30_DBMS_Solution.sql
+├── Section III - Advanced Python Programming
+│   ├── amit
+│   ├── banking
+│   │   ├── account.py
+│   │   ├── __init__.py
+│   │   └── loan.py
+│   ├── byte_demo.txt
+│   ├── data.csv
+│   ├── education
+│   │   ├── courses
+│   │   │   ├── arts.py
+│   │   │   ├── __init__.py
+│   │   │   └── science.py
+│   │   └── __init__.py
+│   ├── finance_tools
+│   │   ├── currency.py
+│   │   ├── __init__.py
+│   │   └── interest.py
+│   ├── Iris.csv
+│   ├── position_demo.txt
+│   ├── PYTHON_topics.md
+│   ├── Questions
+│   │   ├── Slip_01
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_01_PYTHON.txt
+│   │   ├── Slip_02
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_02_PYTHON.txt
+│   │   ├── Slip_03
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_03_PYTHON.txt
+│   │   ├── Slip_04
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_04_PYTHON.txt
+│   │   ├── Slip_05
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_05_PYTHON.txt
+│   │   ├── Slip_06
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_06_PYTHON.txt
+│   │   ├── Slip_07
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_07_PYTHON.txt
+│   │   ├── Slip_08
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_08_PYTHON.txt
+│   │   ├── Slip_09
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_09_PYTHON.txt
+│   │   ├── Slip_10
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_10_PYTHON.txt
+│   │   ├── Slip_11
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_11_PYTHON.txt
+│   │   ├── Slip_12
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_12_PYTHON.txt
+│   │   ├── Slip_13
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_13_PYTHON.txt
+│   │   ├── Slip_14
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_14_PYTHON.txt
+│   │   ├── Slip_15
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_15_PYTHON.txt
+│   │   ├── Slip_16
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_16_PYTHON.txt
+│   │   ├── Slip_17
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_17_PYTHON.txt
+│   │   ├── Slip_18
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_18_PYTHON.txt
+│   │   ├── Slip_19
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_19_PYTHON.txt
+│   │   ├── Slip_20
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_20_PYTHON.txt
+│   │   ├── Slip_21
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_21_PYTHON.txt
+│   │   ├── Slip_22
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_22_PYTHON.txt
+│   │   ├── Slip_23
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_23_PYTHON.txt
+│   │   ├── Slip_24
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_24_PYTHON.txt
+│   │   ├── Slip_25
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_25_PYTHON.txt
+│   │   ├── Slip_26
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_26_PYTHON.txt
+│   │   ├── Slip_27
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_27_PYTHON.txt
+│   │   ├── Slip_28
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_28_PYTHON.txt
+│   │   ├── Slip_29
+│   │   │   ├── metadata.txt
+│   │   │   └── Slip_29_PYTHON.txt
+│   │   └── Slip_30
+│   │       ├── metadata.txt
+│   │       └── Slip_30_PYTHON.txt
+│   ├── sample_notes.txt
+│   ├── Slip_01_PYTHON_Solution.ipynb
+│   ├── Slip_02_PYTHON_Solution.ipynb
+│   ├── Slip_03_PYTHON_Solution.ipynb
+│   ├── Slip_04_PYTHON_Solution.ipynb
+│   ├── Slip_05_PYTHON_Solution.ipynb
+│   ├── slip_06
+│   │   ├── slip_06_Q1
+│   │   │   ├── Q06_app1.py
+│   │   │   └── templates
+│   │   │       └── index.html
+│   │   └── slip_06_Q2
+│   │       └── Q2
+│   │           ├── Q06_app2.py
+│   │           └── templates
+│   │               └── index.html
+│   ├── Slip_06_PYTHON_Solution.ipynb
+│   ├── slip_07
+│   │   ├── slip_07_Q1
+│   │   │   └── Q1
+│   │   │       ├── Q07_app1.py
+│   │   │       └── templates
+│   │   │           └── index.html
+│   │   └── slip_07_Q2
+│   │       └── Q2
+│   │           ├── Q07_app2.py
+│   │           └── templates
+│   │               └── index.html
+│   ├── Slip_07_PYTHON_Solution.ipynb
+│   ├── slip_08
+│   │   ├── slip_08_Q1
+│   │   │   └── Q1
+│   │   │       ├── Q08_app1.py
+│   │   │       └── templates
+│   │   │           └── index.html
+│   │   └── slip_08_Q2
+│   │       └── Q2
+│   │           ├── Q08_app2.py
+│   │           └── templates
+│   │               └── index.html
+│   ├── Slip_08_PYTHON_Solution.ipynb
+│   ├── Slip_09_PYTHON_Solution.ipynb
+│   ├── Slip_10_PYTHON_Solution.ipynb
+│   ├── slip_11
+│   │   ├── slip_11_Q1
+│   │   │   └── Q1
+│   │   │       ├── Q11_app1.py
+│   │   │       └── templates
+│   │   │           └── index.html
+│   │   └── slip_11_Q2
+│   │       └── Q2
+│   │           ├── Q11_app2.py
+│   │           └── templates
+│   │               └── index.html
+│   ├── Slip_11_PYTHON_Solution.ipynb
+│   ├── Slip_12_PYTHON_Solution.ipynb
+│   ├── Slip_13_PYTHON_Solution.ipynb
+│   ├── Slip_14_PYTHON_Solution.ipynb
+│   ├── slip_15
+│   │   ├── slip_15_Q1
+│   │   │   └── Q1
+│   │   │       ├── Q15_app1.py
+│   │   │       └── templates
+│   │   │           └── index.html
+│   │   └── slip_15_Q2
+│   │       └── Q2
+│   │           ├── Q15_app2.py
+│   │           └── templates
+│   │               └── index.html
+│   ├── Slip_15_PYTHON_Solution.ipynb
+│   ├── Slip_16_PYTHON_Solution.ipynb
+│   ├── Slip_17_PYTHON_Solution.ipynb
+│   ├── Slip_18_PYTHON_Solution.ipynb
+│   ├── Slip_19_PYTHON_Solution.ipynb
+│   ├── Slip_20_PYTHON_Solution.ipynb
+│   ├── Slip_21_PYTHON_Solution.ipynb
+│   ├── Slip_22_PYTHON_Solution.ipynb
+│   ├── Slip_23_PYTHON_Solution.ipynb
+│   ├── slip_24
+│   │   ├── slip_24_Q1
+│   │   │   └── Q1
+│   │   │       ├── Q24_app1.py
+│   │   │       └── templates
+│   │   │           └── index.html
+│   │   └── slip_24_Q2
+│   │       └── Q2
+│   │           ├── Q24_app2.py
+│   │           └── templates
+│   │               └── index.html
+│   ├── Slip_24_PYTHON_Solution.ipynb
+│   ├── Slip_25_PYTHON_Solution.ipynb
+│   ├── Slip_26_PYTHON_Solution.ipynb
+│   ├── Slip_27_PYTHON_Solution.ipynb
+│   ├── Slip_28_PYTHON_Solution.ipynb
+│   ├── Slip_29_PYTHON_Solution.ipynb
+│   ├── Slip_30_PYTHON_Solution.ipynb
+│   ├── story_notes.txt
+│   ├── variables.py
+│   └── vehicle
+│       ├── __init__.py
+│       └── types
+│           ├── bikes.py
+│           ├── cars.py
+│           └── __init__.py
+├── Section IV - Mathematics for Computer Science-II
+│   ├── MATHS_topics.md
+│   ├── Slip_01_MATHS_Solution.ipynb
+│   ├── Slip_02_MATHS_Solution.ipynb
+│   ├── Slip_03_MATHS_Solution.ipynb
+│   ├── Slip_04_MATHS_Solution.ipynb
+│   ├── Slip_05_MATHS_Solution.ipynb
+│   ├── Slip_06_MATHS_Solution.ipynb
+│   ├── Slip_07_MATHS_Solution.ipynb
+│   ├── Slip_08_MATHS_Solution.ipynb
+│   ├── Slip_09_MATHS_Solution.ipynb
+│   ├── Slip_10_MATHS_Solution.ipynb
+│   ├── Slip_11_MATHS_Solution.ipynb
+│   ├── Slip_12_MATHS_Solution.ipynb
+│   ├── Slip_13_MATHS_Solution.ipynb
+│   ├── Slip_14_MATHS_Solution.ipynb
+│   ├── Slip_15_MATHS_Solution.ipynb
+│   ├── Slip_16_MATHS_Solution.ipynb
+│   ├── Slip_17_MATHS_Solution.ipynb
+│   ├── Slip_18_MATHS_Solution.ipynb
+│   ├── Slip_19_MATHS_Solution.ipynb
+│   └── Slip_20_MATHS_Solution.ipynb
+├── Section V - Computer Networks
+│   ├── Slip_01
+│   │   ├── Slip_01_Q2_OptionA.c
+│   │   ├── Slip_01_Q2_OptionB.c
+│   │   └── Slip_01_Solution.md
+│   ├── Slip_02
+│   │   ├── Slip_02_Q2_OptionA.c
+│   │   ├── Slip_02_Q2_OptionB.c
+│   │   └── Slip_02_Solution.md
+│   ├── Slip_03
+│   │   ├── Slip_03_Q2_OptionA.c
+│   │   ├── Slip_03_Q2_OptionB.c
+│   │   └── Slip_03_Solution.md
+│   ├── Slip_04
+│   │   ├── Slip_04_Q2_OptionA.c
+│   │   ├── Slip_04_Q2_OptionB.c
+│   │   └── Slip_04_Solution.md
+│   ├── Slip_05
+│   │   ├── Slip_05_Q2_OptionA.c
+│   │   ├── Slip_05_Q2_OptionB.c
+│   │   └── Slip_05_Solution.md
+│   ├── Slip_06
+│   │   ├── Slip_06_Q2_OptionA.c
+│   │   ├── Slip_06_Q2_OptionB.c
+│   │   └── Slip_06_Solution.md
+│   ├── Slip_07
+│   │   ├── Slip_07_Q2_OptionA.c
+│   │   ├── Slip_07_Q2_OptionB.c
+│   │   └── Slip_07_Solution.md
+│   ├── Slip_08
+│   │   ├── Slip_08_Q2_OptionA.c
+│   │   ├── Slip_08_Q2_OptionB.c
+│   │   └── Slip_08_Solution.md
+│   ├── Slip_09
+│   │   ├── Slip_09_Q2_OptionA.c
+│   │   ├── Slip_09_Q2_OptionB.c
+│   │   └── Slip_09_Solution.md
+│   ├── Slip_10
+│   │   ├── Slip_10_Q2_OptionA.c
+│   │   ├── Slip_10_Q2_OptionB.c
+│   │   └── Slip_10_Solution.md
+│   ├── Slip_11
+│   │   ├── Slip_11_Q2_OptionA.c
+│   │   ├── Slip_11_Q2_OptionB.c
+│   │   └── Slip_11_Solution.md
+│   ├── Slip_12
+│   │   ├── Slip_12_Q2_OptionA.c
+│   │   ├── Slip_12_Q2_OptionB.c
+│   │   └── Slip_12_Solution.md
+│   ├── Slip_13
+│   │   ├── Slip_13_Q2_OptionA.c
+│   │   ├── Slip_13_Q2_OptionB.c
+│   │   └── Slip_13_Solution.md
+│   ├── Slip_14
+│   │   ├── Slip_14_Q2_OptionA.c
+│   │   ├── Slip_14_Q2_OptionB.c
+│   │   └── Slip_14_Solution.md
+│   ├── Slip_15
+│   │   ├── Slip_15_Q2_OptionA.c
+│   │   ├── Slip_15_Q2_OptionB.c
+│   │   └── Slip_15_Solution.md
+│   ├── Slip_16
+│   │   ├── Slip_16_Q2_OptionA.c
+│   │   ├── Slip_16_Q2_OptionB.c
+│   │   └── Slip_16_Solution.md
+│   ├── Slip_17
+│   │   ├── Slip_17_Q2_OptionA.c
+│   │   ├── Slip_17_Q2_OptionB.c
+│   │   └── Slip_17_Solution.md
+│   ├── Slip_18
+│   │   ├── Slip_18_Q2_OptionA.c
+│   │   ├── Slip_18_Q2_OptionB.c
+│   │   └── Slip_18_Solution.md
+│   ├── Slip_19
+│   │   ├── Slip_19_Q2_OptionA.c
+│   │   ├── Slip_19_Q2_OptionB.c
+│   │   └── Slip_19_Solution.md
+│   ├── Slip_20
+│   │   ├── Slip_20_Q2_OptionA.c
+│   │   ├── Slip_20_Q2_OptionB.c
+│   │   └── Slip_20_Solution.md
+│   └── test_14
+└── tree.txt
+
+165 directories, 437 files

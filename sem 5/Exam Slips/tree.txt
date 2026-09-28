@@ -1,0 +1,723 @@
+.
+├── README.md
+├── _references
+│   ├── CS-305 Operating SystemT.Y.B.Sc(CS)Slips 26-27.pdf
+│   ├── CS-306 Core Java and Web Technology_I TYBSc(CS) Slips 26-27.pdf
+│   ├── CS-308 Data Science and Anallytics TYBSc(CS) Slips 26-27.pdf
+│   └── CS-321-VSC-P_Foundation of Artificial Intelligence(AI) and Machine Learning_Slip2026_2027.pdf
+├── scripts
+│   ├── generate_topics_md.py
+│   ├── migrate_to_sem4_structure.py
+│   ├── __pycache__
+│   │   ├── solve_ds_helper.cpython-312.pyc
+│   │   ├── solve_os_helper.cpython-312.pyc
+│   │   ├── templates_ai_2.cpython-312.pyc
+│   │   ├── templates_ai.cpython-312.pyc
+│   │   ├── templates_banker.cpython-312.pyc
+│   │   ├── templates_ds_1.cpython-312.pyc
+│   │   ├── templates_fs_proc.cpython-312.pyc
+│   │   ├── templates_java_1.cpython-312.pyc
+│   │   ├── templates_java_2.cpython-312.pyc
+│   │   ├── templates_java_3.cpython-312.pyc
+│   │   ├── templates_memory.cpython-312.pyc
+│   │   ├── templates_scheduling.cpython-312.pyc
+│   │   └── templates_web.cpython-312.pyc
+│   ├── solve_ai_all.py
+│   ├── solve_ds_all.py
+│   ├── solve_ds_helper.py
+│   ├── solve_java_all.py
+│   ├── solve_os_all.py
+│   ├── solve_os_helper.py
+│   ├── templates_ai_2.py
+│   ├── templates_ai.py
+│   ├── templates_banker.py
+│   ├── templates_ds_1.py
+│   ├── templates_fs_proc.py
+│   ├── templates_java_1.py
+│   ├── templates_java_2.py
+│   ├── templates_java_3.py
+│   ├── templates_memory.py
+│   ├── templates_scheduling.py
+│   └── templates_web.py
+├── Section II - Core Java and Web Technology-I
+│   ├── JAVA_WEB_topics.md
+│   ├── Slip_01
+│   │   ├── Slip_01_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_01_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_01_Q1.java
+│   │   └── Slip_01_Q2.html
+│   ├── Slip_02
+│   │   ├── Slip_02_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_02_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_02_Q1.java
+│   │   └── Slip_02_Q2.html
+│   ├── Slip_03
+│   │   ├── Slip_03_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_03_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_03_Q1.java
+│   │   └── Slip_03_Q2.html
+│   ├── Slip_04
+│   │   ├── Slip_04_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_04_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_04_Q1.java
+│   │   └── Slip_04_Q2.html
+│   ├── Slip_05
+│   │   ├── Slip_05_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_05_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_05_Q1.java
+│   │   └── Slip_05_Q2.html
+│   ├── Slip_06
+│   │   ├── Slip_06_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_06_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_06_Q1.java
+│   │   └── Slip_06_Q2.html
+│   ├── Slip_07
+│   │   ├── Slip_07_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_07_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_07_Q1.java
+│   │   └── Slip_07_Q2.html
+│   ├── Slip_08
+│   │   ├── Slip_08_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_08_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_08_Q1.java
+│   │   └── Slip_08_Q2.html
+│   ├── Slip_09
+│   │   ├── Slip_09_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_09_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_09_Q1.java
+│   │   └── Slip_09_Q2.js
+│   ├── Slip_10
+│   │   ├── Slip_10_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_10_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_10_Q1.java
+│   │   └── Slip_10_Q2.js
+│   ├── Slip_11
+│   │   ├── Slip_11_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_11_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_11_Q1.java
+│   │   └── Slip_11_Q2.js
+│   ├── Slip_12
+│   │   ├── Slip_12_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_12_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_12_Q1.java
+│   │   └── Slip_12_Q2.js
+│   ├── Slip_13
+│   │   ├── Slip_13_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_13_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_13_Q1.java
+│   │   └── Slip_13_Q2.js
+│   ├── Slip_14
+│   │   ├── Slip_14_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_14_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_14_Q1.java
+│   │   └── Slip_14_Q2.js
+│   ├── Slip_15
+│   │   ├── Slip_15_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_15_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_15_Q1.java
+│   │   └── Slip_15_Q2.js
+│   ├── Slip_16
+│   │   ├── Slip_16_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_16_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_16_Q1.java
+│   │   └── Slip_16_Q2.js
+│   ├── Slip_17
+│   │   ├── Slip_17_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_17_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_17_Q1.java
+│   │   └── Slip_17_Q2.js
+│   ├── Slip_18
+│   │   ├── Slip_18_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_18_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_18_Q1.java
+│   │   └── Slip_18_Q2.js
+│   ├── Slip_19
+│   │   ├── Slip_19_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_19_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_19_Q1.java
+│   │   └── Slip_19_Q2.js
+│   ├── Slip_20
+│   │   ├── Slip_20_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_20_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_20_Q1.java
+│   │   └── Slip_20_Q2.js
+│   ├── Slip_21
+│   │   ├── Slip_21_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_21_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_21_Q1.java
+│   │   └── Slip_21_Q2.js
+│   ├── Slip_22
+│   │   ├── Slip_22_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_22_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_22_Q1.java
+│   │   └── Slip_22_Q2.js
+│   ├── Slip_23
+│   │   ├── Slip_23_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_23_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_23_Q1.java
+│   │   └── Slip_23_Q2.js
+│   ├── Slip_24
+│   │   ├── Slip_24_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_24_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_24_Q1.java
+│   │   └── Slip_24_Q2.js
+│   ├── Slip_25
+│   │   ├── Slip_25_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_25_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_25_Q1.java
+│   │   └── Slip_25_Q2.js
+│   ├── Slip_26
+│   │   ├── Slip_26_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_26_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_26_Q1.java
+│   │   └── Slip_26_Q2.js
+│   ├── Slip_27
+│   │   ├── Slip_27_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_27_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_27_Q1.java
+│   │   └── Slip_27_Q2.js
+│   ├── Slip_28
+│   │   ├── Slip_28_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_28_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_28_Q1.java
+│   │   └── Slip_28_Q2.js
+│   ├── Slip_29
+│   │   ├── Slip_29_JAVA_WEB_SOLUTION.md
+│   │   ├── Slip_29_JAVA_WEB_SOLUTION.pdf
+│   │   ├── Slip_29_Q1.java
+│   │   └── Slip_29_Q2.js
+│   └── Slip_30
+│       ├── Slip_30_JAVA_WEB_SOLUTION.md
+│       ├── Slip_30_JAVA_WEB_SOLUTION.pdf
+│       ├── Slip_30_Q1.java
+│       └── Slip_30_Q2.js
+├── Section III - Data Science and Analytics
+│   ├── DS_topics.md
+│   ├── Slip_01
+│   │   ├── ds_slip_01_q1_boxplot.png
+│   │   ├── Loan_application.csv
+│   │   ├── __pycache__
+│   │   ├── Slip_01_DS_SOLUTION.md
+│   │   ├── Slip_01_DS_SOLUTION.pdf
+│   │   ├── Slip_01_Q1.py
+│   │   ├── Slip_01_Q2_OptionA.py
+│   │   └── Slip_01_Q2_OptionB.py
+│   ├── Slip_02
+│   │   ├── ds_slip_02_q1_barchart.png
+│   │   ├── __pycache__
+│   │   ├── Slip_02_DS_SOLUTION.md
+│   │   ├── Slip_02_DS_SOLUTION.pdf
+│   │   ├── Slip_02_Q1.py
+│   │   ├── Slip_02_Q2_OptionA.py
+│   │   └── Slip_02_Q2_OptionB.py
+│   ├── Slip_03
+│   │   ├── ds_slip_03_q1_dendrogram.png
+│   │   ├── __pycache__
+│   │   ├── Slip_03_DS_SOLUTION.md
+│   │   ├── Slip_03_DS_SOLUTION.pdf
+│   │   ├── Slip_03_Q1.py
+│   │   ├── Slip_03_Q2_OptionA.py
+│   │   └── Slip_03_Q2_OptionB.py
+│   ├── Slip_04
+│   │   ├── ds_slip_04_q1_piechart.png
+│   │   ├── __pycache__
+│   │   ├── Slip_04_DS_SOLUTION.md
+│   │   ├── Slip_04_DS_SOLUTION.pdf
+│   │   ├── Slip_04_Q1.py
+│   │   ├── Slip_04_Q2_OptionA.py
+│   │   └── Slip_04_Q2_OptionB.py
+│   ├── Slip_05
+│   │   ├── ds_slip_05_q1_linechart.png
+│   │   ├── ds_slip_05_q2_streaming.png
+│   │   ├── __pycache__
+│   │   ├── Slip_05_DS_SOLUTION.md
+│   │   ├── Slip_05_DS_SOLUTION.pdf
+│   │   ├── Slip_05_Q1.py
+│   │   ├── Slip_05_Q2_OptionA.py
+│   │   └── Slip_05_Q2_OptionB.py
+│   ├── Slip_06
+│   │   ├── ds_slip_06_q1.png
+│   │   ├── __pycache__
+│   │   ├── Slip_06_DS_SOLUTION.md
+│   │   ├── Slip_06_DS_SOLUTION.pdf
+│   │   ├── Slip_06_Q1.py
+│   │   ├── Slip_06_Q2_OptionA.py
+│   │   └── Slip_06_Q2_OptionB.py
+│   ├── Slip_07
+│   │   ├── ds_slip_07_q1.png
+│   │   ├── __pycache__
+│   │   ├── Slip_07_DS_SOLUTION.md
+│   │   ├── Slip_07_DS_SOLUTION.pdf
+│   │   ├── Slip_07_Q1.py
+│   │   ├── Slip_07_Q2_OptionA.py
+│   │   └── Slip_07_Q2_OptionB.py
+│   ├── Slip_08
+│   │   ├── ds_slip_08_q1.png
+│   │   ├── __pycache__
+│   │   ├── Slip_08_DS_SOLUTION.md
+│   │   ├── Slip_08_DS_SOLUTION.pdf
+│   │   ├── Slip_08_Q1.py
+│   │   ├── Slip_08_Q2_OptionA.py
+│   │   └── Slip_08_Q2_OptionB.py
+│   ├── Slip_09
+│   │   ├── __pycache__
+│   │   ├── Slip_09_DS_SOLUTION.md
+│   │   ├── Slip_09_DS_SOLUTION.pdf
+│   │   ├── Slip_09_Q1.py
+│   │   ├── Slip_09_Q2_OptionA.py
+│   │   └── Slip_09_Q2_OptionB.py
+│   ├── Slip_10
+│   │   ├── ds_slip_10_q1.png
+│   │   ├── __pycache__
+│   │   ├── Slip_10_DS_SOLUTION.md
+│   │   ├── Slip_10_DS_SOLUTION.pdf
+│   │   ├── Slip_10_Q1.py
+│   │   ├── Slip_10_Q2_OptionA.py
+│   │   └── Slip_10_Q2_OptionB.py
+│   ├── Slip_11
+│   │   ├── ds_slip_11_q1.png
+│   │   ├── __pycache__
+│   │   ├── Slip_11_DS_SOLUTION.md
+│   │   ├── Slip_11_DS_SOLUTION.pdf
+│   │   ├── Slip_11_Q1.py
+│   │   ├── Slip_11_Q2_OptionA.py
+│   │   └── Slip_11_Q2_OptionB.py
+│   ├── Slip_12
+│   │   ├── ds_slip_12_q1.png
+│   │   ├── __pycache__
+│   │   ├── Slip_12_DS_SOLUTION.md
+│   │   ├── Slip_12_DS_SOLUTION.pdf
+│   │   ├── Slip_12_Q1.py
+│   │   ├── Slip_12_Q2_OptionA.py
+│   │   └── Slip_12_Q2_OptionB.py
+│   ├── Slip_13
+│   │   ├── ds_slip_13_q1.png
+│   │   ├── __pycache__
+│   │   ├── sales.csv
+│   │   ├── Slip_13_DS_SOLUTION.md
+│   │   ├── Slip_13_DS_SOLUTION.pdf
+│   │   ├── Slip_13_Q1.py
+│   │   ├── Slip_13_Q2_OptionA.py
+│   │   └── Slip_13_Q2_OptionB.py
+│   ├── Slip_14
+│   │   ├── ds_slip_14_q1.png
+│   │   ├── __pycache__
+│   │   ├── Slip_14_DS_SOLUTION.md
+│   │   ├── Slip_14_DS_SOLUTION.pdf
+│   │   ├── Slip_14_Q1.py
+│   │   ├── Slip_14_Q2_OptionA.py
+│   │   └── Slip_14_Q2_OptionB.py
+│   ├── Slip_15
+│   │   ├── __pycache__
+│   │   ├── Slip_15_DS_SOLUTION.md
+│   │   ├── Slip_15_DS_SOLUTION.pdf
+│   │   ├── Slip_15_Q1.py
+│   │   ├── Slip_15_Q2_OptionA.py
+│   │   └── Slip_15_Q2_OptionB.py
+│   ├── Slip_16
+│   │   ├── ds_slip_16_q1.png
+│   │   ├── __pycache__
+│   │   ├── Slip_16_DS_SOLUTION.md
+│   │   ├── Slip_16_DS_SOLUTION.pdf
+│   │   ├── Slip_16_Q1.py
+│   │   ├── Slip_16_Q2_OptionA.py
+│   │   └── Slip_16_Q2_OptionB.py
+│   ├── Slip_17
+│   │   ├── __pycache__
+│   │   ├── Slip_17_DS_SOLUTION.md
+│   │   ├── Slip_17_DS_SOLUTION.pdf
+│   │   ├── Slip_17_Q1.py
+│   │   ├── Slip_17_Q2_OptionA.py
+│   │   └── Slip_17_Q2_OptionB.py
+│   ├── Slip_18
+│   │   ├── __pycache__
+│   │   ├── Slip_18_DS_SOLUTION.md
+│   │   ├── Slip_18_DS_SOLUTION.pdf
+│   │   ├── Slip_18_Q1.py
+│   │   ├── Slip_18_Q2_OptionA.py
+│   │   └── Slip_18_Q2_OptionB.py
+│   ├── Slip_19
+│   │   ├── ds_slip_19_q1.png
+│   │   ├── __pycache__
+│   │   ├── Slip_19_DS_SOLUTION.md
+│   │   ├── Slip_19_DS_SOLUTION.pdf
+│   │   ├── Slip_19_Q1.py
+│   │   ├── Slip_19_Q2_OptionA.py
+│   │   └── Slip_19_Q2_OptionB.py
+│   ├── Slip_20
+│   │   ├── __pycache__
+│   │   ├── Slip_20_DS_SOLUTION.md
+│   │   ├── Slip_20_DS_SOLUTION.pdf
+│   │   ├── Slip_20_Q1.py
+│   │   ├── Slip_20_Q2_OptionA.py
+│   │   └── Slip_20_Q2_OptionB.py
+│   ├── Slip_21
+│   │   ├── ds_slip_21_q1.png
+│   │   ├── __pycache__
+│   │   ├── Slip_21_DS_SOLUTION.md
+│   │   ├── Slip_21_DS_SOLUTION.pdf
+│   │   ├── Slip_21_Q1.py
+│   │   ├── Slip_21_Q2_OptionA.py
+│   │   └── Slip_21_Q2_OptionB.py
+│   ├── Slip_22
+│   │   ├── __pycache__
+│   │   ├── Slip_22_DS_SOLUTION.md
+│   │   ├── Slip_22_DS_SOLUTION.pdf
+│   │   ├── Slip_22_Q1.py
+│   │   ├── Slip_22_Q2_OptionA.py
+│   │   └── Slip_22_Q2_OptionB.py
+│   ├── Slip_23
+│   │   ├── ds_slip_23_q1.png
+│   │   ├── __pycache__
+│   │   ├── Slip_23_DS_SOLUTION.md
+│   │   ├── Slip_23_DS_SOLUTION.pdf
+│   │   ├── Slip_23_Q1.py
+│   │   ├── Slip_23_Q2_OptionA.py
+│   │   └── Slip_23_Q2_OptionB.py
+│   ├── Slip_24
+│   │   ├── __pycache__
+│   │   ├── Slip_24_DS_SOLUTION.md
+│   │   ├── Slip_24_DS_SOLUTION.pdf
+│   │   ├── Slip_24_Q1.py
+│   │   ├── Slip_24_Q2_OptionA.py
+│   │   └── Slip_24_Q2_OptionB.py
+│   └── Slip_25
+│       ├── ds_slip_25_q1.png
+│       ├── __pycache__
+│       ├── Slip_25_DS_SOLUTION.md
+│       ├── Slip_25_DS_SOLUTION.pdf
+│       ├── Slip_25_Q1.py
+│       ├── Slip_25_Q2_OptionA.py
+│       └── Slip_25_Q2_OptionB.py
+├── Section I - Operating System-I
+│   ├── OS_topics.md
+│   ├── Slip_01
+│   │   ├── Slip_01_OS_SOLUTION.md
+│   │   ├── Slip_01_OS_SOLUTION.pdf
+│   │   ├── Slip_01_Q1.c
+│   │   └── Slip_01_Q2.c
+│   ├── Slip_02
+│   │   ├── Slip_02_OS_SOLUTION.md
+│   │   ├── Slip_02_OS_SOLUTION.pdf
+│   │   ├── Slip_02_Q1.c
+│   │   └── Slip_02_Q2.c
+│   ├── Slip_03
+│   │   ├── Slip_03_OS_SOLUTION.md
+│   │   ├── Slip_03_OS_SOLUTION.pdf
+│   │   ├── Slip_03_Q1.c
+│   │   └── Slip_03_Q2.c
+│   ├── Slip_04
+│   │   ├── Slip_04_OS_SOLUTION.md
+│   │   ├── Slip_04_OS_SOLUTION.pdf
+│   │   ├── Slip_04_Q1.c
+│   │   └── Slip_04_Q2.c
+│   ├── Slip_05
+│   │   ├── Slip_05_OS_SOLUTION.md
+│   │   ├── Slip_05_OS_SOLUTION.pdf
+│   │   ├── Slip_05_Q1.c
+│   │   └── Slip_05_Q2.c
+│   ├── Slip_06
+│   │   ├── Slip_06_OS_SOLUTION.md
+│   │   ├── Slip_06_OS_SOLUTION.pdf
+│   │   ├── Slip_06_Q1.c
+│   │   └── Slip_06_Q2.c
+│   ├── Slip_07
+│   │   ├── Slip_07_OS_SOLUTION.md
+│   │   ├── Slip_07_OS_SOLUTION.pdf
+│   │   ├── Slip_07_Q1.c
+│   │   └── Slip_07_Q2.c
+│   ├── Slip_08
+│   │   ├── Slip_08_OS_SOLUTION.md
+│   │   ├── Slip_08_OS_SOLUTION.pdf
+│   │   ├── Slip_08_Q1.c
+│   │   └── Slip_08_Q2.c
+│   ├── Slip_09
+│   │   ├── Slip_09_OS_SOLUTION.md
+│   │   ├── Slip_09_OS_SOLUTION.pdf
+│   │   ├── Slip_09_Q1.c
+│   │   └── Slip_09_Q2.c
+│   ├── Slip_10
+│   │   ├── Slip_10_OS_SOLUTION.md
+│   │   ├── Slip_10_OS_SOLUTION.pdf
+│   │   ├── Slip_10_Q1.c
+│   │   └── Slip_10_Q2.c
+│   ├── Slip_11
+│   │   ├── Slip_11_OS_SOLUTION.md
+│   │   ├── Slip_11_OS_SOLUTION.pdf
+│   │   ├── Slip_11_Q1.c
+│   │   └── Slip_11_Q2.c
+│   ├── Slip_12
+│   │   ├── Slip_12_OS_SOLUTION.md
+│   │   ├── Slip_12_OS_SOLUTION.pdf
+│   │   ├── Slip_12_Q1.c
+│   │   └── Slip_12_Q2.c
+│   ├── Slip_13
+│   │   ├── Slip_13_OS_SOLUTION.md
+│   │   ├── Slip_13_OS_SOLUTION.pdf
+│   │   ├── Slip_13_Q1.c
+│   │   └── Slip_13_Q2.c
+│   ├── Slip_14
+│   │   ├── Slip_14_OS_SOLUTION.md
+│   │   ├── Slip_14_OS_SOLUTION.pdf
+│   │   ├── Slip_14_Q1.c
+│   │   └── Slip_14_Q2.c
+│   ├── Slip_15
+│   │   ├── Slip_15_OS_SOLUTION.md
+│   │   ├── Slip_15_OS_SOLUTION.pdf
+│   │   ├── Slip_15_Q1.c
+│   │   └── Slip_15_Q2.c
+│   ├── Slip_16
+│   │   ├── Slip_16_OS_SOLUTION.md
+│   │   ├── Slip_16_OS_SOLUTION.pdf
+│   │   ├── Slip_16_Q1.c
+│   │   └── Slip_16_Q2.c
+│   ├── Slip_17
+│   │   ├── Slip_17_OS_SOLUTION.md
+│   │   ├── Slip_17_OS_SOLUTION.pdf
+│   │   ├── Slip_17_Q1.c
+│   │   └── Slip_17_Q2.c
+│   ├── Slip_18
+│   │   ├── Slip_18_OS_SOLUTION.md
+│   │   ├── Slip_18_OS_SOLUTION.pdf
+│   │   ├── Slip_18_Q1.c
+│   │   └── Slip_18_Q2.c
+│   ├── Slip_19
+│   │   ├── Slip_19_OS_SOLUTION.md
+│   │   ├── Slip_19_OS_SOLUTION.pdf
+│   │   ├── Slip_19_Q1.c
+│   │   └── Slip_19_Q2.c
+│   ├── Slip_20
+│   │   ├── Slip_20_OS_SOLUTION.md
+│   │   ├── Slip_20_OS_SOLUTION.pdf
+│   │   ├── Slip_20_Q1.c
+│   │   └── Slip_20_Q2.c
+│   ├── Slip_21
+│   │   ├── Slip_21_OS_SOLUTION.md
+│   │   ├── Slip_21_OS_SOLUTION.pdf
+│   │   ├── Slip_21_Q1.c
+│   │   └── Slip_21_Q2.c
+│   ├── Slip_22
+│   │   ├── Slip_22_OS_SOLUTION.md
+│   │   ├── Slip_22_OS_SOLUTION.pdf
+│   │   ├── Slip_22_Q1.c
+│   │   └── Slip_22_Q2.c
+│   ├── Slip_23
+│   │   ├── Slip_23_OS_SOLUTION.md
+│   │   ├── Slip_23_OS_SOLUTION.pdf
+│   │   ├── Slip_23_Q1.c
+│   │   └── Slip_23_Q2.c
+│   ├── Slip_24
+│   │   ├── Slip_24_OS_SOLUTION.md
+│   │   ├── Slip_24_OS_SOLUTION.pdf
+│   │   ├── Slip_24_Q1.c
+│   │   └── Slip_24_Q2.c
+│   ├── Slip_25
+│   │   ├── Slip_25_OS_SOLUTION.md
+│   │   ├── Slip_25_OS_SOLUTION.pdf
+│   │   ├── Slip_25_Q1.c
+│   │   └── Slip_25_Q2.c
+│   ├── Slip_26
+│   │   ├── Slip_26_OS_SOLUTION.md
+│   │   ├── Slip_26_OS_SOLUTION.pdf
+│   │   ├── Slip_26_Q1.c
+│   │   └── Slip_26_Q2.c
+│   ├── Slip_27
+│   │   ├── Slip_27_OS_SOLUTION.md
+│   │   ├── Slip_27_OS_SOLUTION.pdf
+│   │   ├── Slip_27_Q1.c
+│   │   └── Slip_27_Q2.c
+│   ├── Slip_28
+│   │   ├── Slip_28_OS_SOLUTION.md
+│   │   ├── Slip_28_OS_SOLUTION.pdf
+│   │   ├── Slip_28_Q1.c
+│   │   └── Slip_28_Q2.c
+│   ├── Slip_29
+│   │   ├── Slip_29_OS_SOLUTION.md
+│   │   ├── Slip_29_OS_SOLUTION.pdf
+│   │   ├── Slip_29_Q1.c
+│   │   └── Slip_29_Q2.c
+│   └── Slip_30
+│       ├── Slip_30_OS_SOLUTION.md
+│       ├── Slip_30_OS_SOLUTION.pdf
+│       ├── Slip_30_Q1.c
+│       └── Slip_30_Q2.c
+├── Section IV - Foundation of Artificial Intelligence and Machine Learning
+│   ├── AI_ML_topics.md
+│   ├── Slip_01
+│   │   ├── __pycache__
+│   │   ├── Slip_01_AI_SOLUTION.md
+│   │   ├── Slip_01_AI_SOLUTION.pdf
+│   │   ├── Slip_01_Q1.py
+│   │   ├── Slip_01_Q2_OptionA.py
+│   │   └── Slip_01_Q2_OptionB.py
+│   ├── Slip_02
+│   │   ├── __pycache__
+│   │   ├── Slip_02_AI_SOLUTION.md
+│   │   ├── Slip_02_AI_SOLUTION.pdf
+│   │   ├── Slip_02_Q1.py
+│   │   ├── Slip_02_Q2_OptionA.py
+│   │   └── Slip_02_Q2_OptionB.py
+│   ├── Slip_03
+│   │   ├── __pycache__
+│   │   ├── Slip_03_AI_SOLUTION.md
+│   │   ├── Slip_03_AI_SOLUTION.pdf
+│   │   ├── Slip_03_Q1.py
+│   │   ├── Slip_03_Q2_OptionA.py
+│   │   └── Slip_03_Q2_OptionB.py
+│   ├── Slip_04
+│   │   ├── __pycache__
+│   │   ├── Slip_04_AI_SOLUTION.md
+│   │   ├── Slip_04_AI_SOLUTION.pdf
+│   │   ├── Slip_04_Q1.py
+│   │   ├── Slip_04_Q2_OptionA.py
+│   │   └── Slip_04_Q2_OptionB.py
+│   ├── Slip_05
+│   │   ├── __pycache__
+│   │   ├── Slip_05_AI_SOLUTION.md
+│   │   ├── Slip_05_AI_SOLUTION.pdf
+│   │   ├── Slip_05_Q1.py
+│   │   ├── Slip_05_Q2_OptionA.py
+│   │   └── Slip_05_Q2_OptionB.py
+│   ├── Slip_06
+│   │   ├── __pycache__
+│   │   ├── Slip_06_AI_SOLUTION.md
+│   │   ├── Slip_06_AI_SOLUTION.pdf
+│   │   ├── Slip_06_Q1.py
+│   │   ├── Slip_06_Q2_OptionA.py
+│   │   └── Slip_06_Q2_OptionB.py
+│   ├── Slip_07
+│   │   ├── __pycache__
+│   │   ├── Slip_07_AI_SOLUTION.md
+│   │   ├── Slip_07_AI_SOLUTION.pdf
+│   │   ├── Slip_07_Q1.py
+│   │   ├── Slip_07_Q2_OptionA.py
+│   │   └── Slip_07_Q2_OptionB.py
+│   ├── Slip_08
+│   │   ├── __pycache__
+│   │   ├── Slip_08_AI_SOLUTION.md
+│   │   ├── Slip_08_AI_SOLUTION.pdf
+│   │   ├── Slip_08_Q1.py
+│   │   ├── Slip_08_Q2_OptionA.py
+│   │   └── Slip_08_Q2_OptionB.py
+│   ├── Slip_09
+│   │   ├── __pycache__
+│   │   ├── Slip_09_AI_SOLUTION.md
+│   │   ├── Slip_09_AI_SOLUTION.pdf
+│   │   ├── Slip_09_Q1.py
+│   │   ├── Slip_09_Q2_OptionA.py
+│   │   └── Slip_09_Q2_OptionB.py
+│   ├── Slip_10
+│   │   ├── __pycache__
+│   │   ├── Slip_10_AI_SOLUTION.md
+│   │   ├── Slip_10_AI_SOLUTION.pdf
+│   │   ├── Slip_10_Q1.py
+│   │   ├── Slip_10_Q2_OptionA.py
+│   │   └── Slip_10_Q2_OptionB.py
+│   ├── Slip_11
+│   │   ├── __pycache__
+│   │   ├── Slip_11_AI_SOLUTION.md
+│   │   ├── Slip_11_AI_SOLUTION.pdf
+│   │   ├── Slip_11_Q1.py
+│   │   ├── Slip_11_Q2_OptionA.py
+│   │   └── Slip_11_Q2_OptionB.py
+│   ├── Slip_12
+│   │   ├── __pycache__
+│   │   ├── Slip_12_AI_SOLUTION.md
+│   │   ├── Slip_12_AI_SOLUTION.pdf
+│   │   ├── Slip_12_Q1.py
+│   │   ├── Slip_12_Q2_OptionA.py
+│   │   └── Slip_12_Q2_OptionB.py
+│   ├── Slip_13
+│   │   ├── __pycache__
+│   │   ├── Slip_13_AI_SOLUTION.md
+│   │   ├── Slip_13_AI_SOLUTION.pdf
+│   │   ├── Slip_13_Q1.py
+│   │   ├── Slip_13_Q2_OptionA.py
+│   │   └── Slip_13_Q2_OptionB.py
+│   ├── Slip_14
+│   │   ├── __pycache__
+│   │   ├── Slip_14_AI_SOLUTION.md
+│   │   ├── Slip_14_AI_SOLUTION.pdf
+│   │   ├── Slip_14_Q1.py
+│   │   ├── Slip_14_Q2_OptionA.py
+│   │   └── Slip_14_Q2_OptionB.py
+│   ├── Slip_15
+│   │   ├── __pycache__
+│   │   ├── Slip_15_AI_SOLUTION.md
+│   │   ├── Slip_15_AI_SOLUTION.pdf
+│   │   ├── Slip_15_Q1.py
+│   │   ├── Slip_15_Q2_OptionA.py
+│   │   └── Slip_15_Q2_OptionB.py
+│   ├── Slip_16
+│   │   ├── __pycache__
+│   │   ├── Slip_16_AI_SOLUTION.md
+│   │   ├── Slip_16_AI_SOLUTION.pdf
+│   │   ├── Slip_16_Q1.py
+│   │   ├── Slip_16_Q2_OptionA.py
+│   │   └── Slip_16_Q2_OptionB.py
+│   ├── Slip_17
+│   │   ├── __pycache__
+│   │   ├── Slip_17_AI_SOLUTION.md
+│   │   ├── Slip_17_AI_SOLUTION.pdf
+│   │   ├── Slip_17_Q1.py
+│   │   ├── Slip_17_Q2_OptionA.py
+│   │   └── Slip_17_Q2_OptionB.py
+│   ├── Slip_18
+│   │   ├── __pycache__
+│   │   ├── Slip_18_AI_SOLUTION.md
+│   │   ├── Slip_18_AI_SOLUTION.pdf
+│   │   ├── Slip_18_Q1.py
+│   │   ├── Slip_18_Q2_OptionA.py
+│   │   └── Slip_18_Q2_OptionB.py
+│   ├── Slip_19
+│   │   ├── __pycache__
+│   │   ├── Slip_19_AI_SOLUTION.md
+│   │   ├── Slip_19_AI_SOLUTION.pdf
+│   │   ├── Slip_19_Q1.py
+│   │   ├── Slip_19_Q2_OptionA.py
+│   │   └── Slip_19_Q2_OptionB.py
+│   ├── Slip_20
+│   │   ├── __pycache__
+│   │   ├── Slip_20_AI_SOLUTION.md
+│   │   ├── Slip_20_AI_SOLUTION.pdf
+│   │   ├── Slip_20_Q1.py
+│   │   ├── Slip_20_Q2_OptionA.py
+│   │   └── Slip_20_Q2_OptionB.py
+│   ├── Slip_21
+│   │   ├── __pycache__
+│   │   ├── Slip_21_AI_SOLUTION.md
+│   │   ├── Slip_21_AI_SOLUTION.pdf
+│   │   ├── Slip_21_Q1.py
+│   │   ├── Slip_21_Q2_OptionA.py
+│   │   └── Slip_21_Q2_OptionB.py
+│   ├── Slip_22
+│   │   ├── __pycache__
+│   │   ├── Slip_22_AI_SOLUTION.md
+│   │   ├── Slip_22_AI_SOLUTION.pdf
+│   │   ├── Slip_22_Q1.py
+│   │   ├── Slip_22_Q2_OptionA.py
+│   │   └── Slip_22_Q2_OptionB.py
+│   ├── Slip_23
+│   │   ├── __pycache__
+│   │   ├── Slip_23_AI_SOLUTION.md
+│   │   ├── Slip_23_AI_SOLUTION.pdf
+│   │   ├── Slip_23_Q1.py
+│   │   ├── Slip_23_Q2_OptionA.py
+│   │   └── Slip_23_Q2_OptionB.py
+│   ├── Slip_24
+│   │   ├── __pycache__
+│   │   ├── Slip_24_AI_SOLUTION.md
+│   │   ├── Slip_24_AI_SOLUTION.pdf
+│   │   ├── Slip_24_Q1.py
+│   │   ├── Slip_24_Q2_OptionA.py
+│   │   └── Slip_24_Q2_OptionB.py
+│   └── Slip_25
+│       ├── __pycache__
+│       ├── Slip_25_AI_SOLUTION.md
+│       ├── Slip_25_AI_SOLUTION.pdf
+│       ├── Slip_25_Q1.py
+│       ├── Slip_25_Q2_OptionA.py
+│       └── Slip_25_Q2_OptionB.py
+└── tree.txt
+
+168 directories, 553 files
