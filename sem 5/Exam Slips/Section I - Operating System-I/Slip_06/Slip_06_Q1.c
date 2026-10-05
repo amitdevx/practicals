@@ -90,7 +90,10 @@ void show_directory() {
 
 int main() {
     printf("Enter total number of disk blocks: ");
-    if (scanf("%d", &total_blocks) != 1 || total_blocks <= 0) total_blocks = 50;
+    if (scanf("%d", &total_blocks) != 1 || total_blocks <= 0 || total_blocks > MAX_BLOCKS) {
+        printf("Invalid input or exceeds MAX_BLOCKS (%d). Setting to default 50.\n", MAX_BLOCKS);
+        total_blocks = 50;
+    }
 
     init_disk();
     int choice;

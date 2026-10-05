@@ -35,7 +35,7 @@ python3 Slip_01_Q2_OptionA.py
 
 ### Output Preview
 ```text
-Optimal Path: S -> A -> C -> G
+Optimal Path: A -> B -> D -> G
 Total Path Cost: 6
 ```
 

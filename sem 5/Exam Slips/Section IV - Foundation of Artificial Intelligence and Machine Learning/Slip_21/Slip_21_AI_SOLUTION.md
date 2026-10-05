@@ -15,7 +15,11 @@ python3 Slip_21_Q1.py
 
 ### Output Preview
 ```text
-Iterative deepening completed: Goal reached.
+=== Iterative Deepening Search (IDS) ===
+Searching with depth limit = 0...
+Searching with depth limit = 1...
+Searching with depth limit = 2...
+Goal reached with path: A -> C -> F
 ```
 
 ---

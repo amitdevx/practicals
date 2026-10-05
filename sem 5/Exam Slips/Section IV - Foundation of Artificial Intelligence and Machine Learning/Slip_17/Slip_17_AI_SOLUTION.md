@@ -15,7 +15,9 @@ python3 Slip_17_Q1.py
 
 ### Output Preview
 ```text
-Search traversal successfully completed.
+=== A* Search Algorithm ===
+Optimal Path: A -> C -> F
+Total Cost: 5
 ```
 
 ---

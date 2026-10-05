@@ -21,11 +21,14 @@ def iterative_deepening(graph, start, target, max_depth=10):
 graph = {
     'A': ['B', 'C'],
     'B': ['D', 'E'],
-    'C': ['F', 'G'],
-    'D': [], 'E': [], 'F': [], 'G': []
+    'C': ['F'],
+    'D': [], 'E': [], 'F': []
 }
 
-target = 'G'
+target = 'F'
 print("=== Iterative Deepening Search (IDS) ===")
 path = iterative_deepening(graph, 'A', target, max_depth=5)
-print("Goal reached with path:", " -> ".join(path))
+if path:
+    print("Goal reached with path:", " -> ".join(path))
+else:
+    print("Goal not found.")

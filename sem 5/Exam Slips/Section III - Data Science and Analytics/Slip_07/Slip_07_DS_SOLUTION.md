@@ -1,12 +1,12 @@
 # Slip 07 — Data Science and Analytics Solution Guide
 
-## Question 1: Department / Course Distribution Bar Chart [10 Marks]
+## Question 1: Feature Scaling & Distribution Plot [10 Marks]
 
 ### Problem Statement
-Create bar chart showing distribution of employees or students among departments/courses.
+Generate random data, apply scaling and plot distributions.
 
 ### Concept & Methodology
-Bar charts compare quantities across discrete organizational categories.
+Demonstrates how StandardScaler or MinMaxScaler changes distribution ranges without changing shape.
 
 ### Execution
 ```bash
@@ -15,18 +15,18 @@ python3 Slip_07_Q1.py
 
 ### Output Preview
 ```text
-Bar chart saved as image.
+[+] Distribution plot saved.
 ```
 
 ---
 
-## Question 2: Machine Learning Model Implementation (Slip 07) [20 Marks]
+## Question 2: Decision Tree Classifier on Iris Dataset [20 Marks]
 
 ### Problem Statement
-Apply predictive modeling / classification on given dataset attributes.
+Train a Decision Tree Classifier on the Iris dataset and output accuracy.
 
 ### Concept & Machine Learning Algorithm
-Supervised machine learning training, validation split, and metric evaluation.
+Decision Tree recursively splits data based on feature conditions to maximize information gain/Gini impurity.
 
 ### Execution
 ```bash
@@ -35,20 +35,22 @@ python3 Slip_07_Q2_OptionA.py
 
 ### Output Preview
 ```text
-Model successfully fitted with high R2 / Accuracy.
+=== Decision Tree Classifier on Iris Dataset ===
+Accuracy: 1.0
+Classification Report: ...
 ```
 
 ---
 
 #### OR
 
-## Question 2 (Alternative): Clustering / Pattern Mining Alternative (Slip 07) [20 Marks]
+## Question 2 (Alternative): Decision Tree Regressor Model [20 Marks]
 
 ### Problem Statement
-Apply alternative clustering or pattern mining algorithm on specified features.
+Apply Decision Tree Regression to predict continuous targets for a non-linear dataset.
 
 ### Concept & Algorithm
-Unsupervised clustering partitioning feature space into coherent groups.
+Regression trees predict continuous variables by splitting the dataset into intervals and outputting the average target value for each interval.
 
 ### Execution
 ```bash
@@ -57,7 +59,9 @@ python3 Slip_07_Q2_OptionB.py
 
 ### Output Preview
 ```text
-Clusters formed and labeled.
+=== Decision Tree Regressor Model ===
+R2 Score: 0.95...
+Mean Squared Error: 0.02...
 ```
 
 ---

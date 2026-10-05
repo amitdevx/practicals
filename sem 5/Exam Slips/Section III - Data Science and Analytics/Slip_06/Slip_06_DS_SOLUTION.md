@@ -15,18 +15,18 @@ python3 Slip_06_Q1.py
 
 ### Output Preview
 ```text
-Scatter plot saved as image.
+[+] Scatter plot saved.
 ```
 
 ---
 
-## Question 2: Machine Learning Model Implementation (Slip 06) [20 Marks]
+## Question 2: Multiple Linear Regression for Salary Prediction [20 Marks]
 
 ### Problem Statement
-Apply predictive modeling / classification on given dataset attributes.
+Apply Multiple Linear Regression to predict salary based on Years of Experience and Education Level.
 
 ### Concept & Machine Learning Algorithm
-Supervised machine learning training, validation split, and metric evaluation.
+Supervised machine learning training, validation split, and metric evaluation (R2 Score, MSE).
 
 ### Execution
 ```bash
@@ -35,20 +35,22 @@ python3 Slip_06_Q2_OptionA.py
 
 ### Output Preview
 ```text
-Model successfully fitted with high R2 / Accuracy.
+=== Multiple Linear Regression for Salary Prediction ===
+R2 Score: -3.8125
+Mean Squared Error: 154000000.0
 ```
 
 ---
 
 #### OR
 
-## Question 2 (Alternative): Clustering / Pattern Mining Alternative (Slip 06) [20 Marks]
+## Question 2 (Alternative): Polynomial Regression Curve Fitting [20 Marks]
 
 ### Problem Statement
-Apply alternative clustering or pattern mining algorithm on specified features.
+Apply Polynomial Regression on a non-linear dataset.
 
 ### Concept & Algorithm
-Unsupervised clustering partitioning feature space into coherent groups.
+Transforms features into polynomial combinations to fit non-linear data using a linear model.
 
 ### Execution
 ```bash
@@ -57,7 +59,8 @@ python3 Slip_06_Q2_OptionB.py
 
 ### Output Preview
 ```text
-Clusters formed and labeled.
+=== Polynomial Regression Curve Fitting ===
+R2 Score: 0.941...
 ```
 
 ---

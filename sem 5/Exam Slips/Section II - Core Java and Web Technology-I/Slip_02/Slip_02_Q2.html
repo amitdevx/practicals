@@ -1,39 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Student Registration Form</title>
-    <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #eef2f7; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .card { background: white; padding: 30px; border-radius: 10px; width: 420px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
-        h2 { color: #1e3a8a; text-align: center; margin-top: 0; }
-        label { display: block; margin: 12px 0 5px; font-weight: 600; color: #374151; }
-        input, select { width: 100%; padding: 10px; border: 1.5px solid #d1d5db; border-radius: 6px; box-sizing: border-box; }
-        input:invalid:focus { border-color: #ef4444; }
-        input:valid:focus { border-color: #10b981; }
-        button { margin-top: 20px; width: 100%; padding: 12px; background: #2563eb; color: white; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; }
-        button:hover { background: #1d4ed8; }
-    </style>
+<title>Student Registration Form</title>
+<style>
+  body {
+    background-color: #ffe4e1;
+    font-family: "Times New Roman", Times, serif;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  table {
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 10px 15px;
+  }
+  td.label {
+    text-align: left;
+    font-size: 16px;
+    width: 150px;
+  }
+  td.input {
+    width: 400px;
+  }
+  input[type="text"], input[type="password"], select, textarea {
+    padding: 3px;
+    box-sizing: border-box;
+  }
+  .full-width {
+    width: 100%;
+  }
+  .inline-input {
+    width: 45%;
+  }
+  .small-input {
+    width: 50px;
+  }
+  .date-input {
+    width: 60px;
+  }
+  .center {
+    text-align: center;
+    margin-top: 20px;
+  }
+</style>
 </head>
 <body>
-    <div class="card">
-        <h2>Student Registration</h2>
-        <form>
-            <label>Student PRN:</label>
-            <input type="text" pattern="[0-9]{10}" placeholder="10-digit PRN" required>
-            <label>Student Name:</label>
-            <input type="text" pattern="[A-Za-z ]{3,}" placeholder="First and Last Name" required>
-            <label>Gender:</label>
-            <select required>
-                <option value="">Select Gender</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-            </select>
-            <label>Marks Percentage (HSC):</label>
-            <input type="number" min="35" max="100" step="0.01" placeholder="e.g. 84.5" required>
-            <button type="submit">Register Student</button>
-        </form>
-    </div>
+
+<h1>Student Registration Form</h1>
+
+<form>
+  <table>
+    <tr>
+      <td class="label">Roll no. :</td>
+      <td class="input"><input type="text" class="full-width"></td>
+    </tr>
+    <tr>
+      <td class="label">Student name :</td>
+      <td class="input">
+        <input type="text" class="inline-input" placeholder="First Name"> - <input type="text" class="inline-input" placeholder="Last Name">
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Father's name :</td>
+      <td class="input"><input type="text" class="full-width"></td>
+    </tr>
+    <tr>
+      <td class="label">Date of birth :</td>
+      <td class="input">
+        <input type="text" class="date-input" placeholder="Day"> - <input type="text" class="date-input" placeholder="Month"> - <input type="text" class="date-input" placeholder="Year"> <i>(DD-MM-YYYY)</i>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Mobile no. :</td>
+      <td class="input">
+        <input type="text" class="small-input" value="+91"> - <input type="text" style="width: 80%;">
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Email id :</td>
+      <td class="input"><input type="text" class="full-width"></td>
+    </tr>
+    <tr>
+      <td class="label">Password :</td>
+      <td class="input"><input type="password" class="full-width"></td>
+    </tr>
+    <tr>
+      <td class="label">Gender :</td>
+      <td class="input">
+        <input type="radio" name="gender" value="Male"> Male 
+        <input type="radio" name="gender" value="Female"> Female
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Department :</td>
+      <td class="input">
+        <input type="checkbox" name="dept" value="CSE"> CSE 
+        <input type="checkbox" name="dept" value="IT"> IT 
+        <input type="checkbox" name="dept" value="ECE"> ECE 
+        <input type="checkbox" name="dept" value="Civil"> Civil 
+        <input type="checkbox" name="dept" value="Mech"> Mech
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Course :</td>
+      <td class="input">
+        <select class="full-width">
+          <option>------------------ Select Current Course's ------------------</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Student photo :</td>
+      <td class="input"><input type="file"></td>
+    </tr>
+    <tr>
+      <td class="label">City :</td>
+      <td class="input"><input type="text" class="full-width"></td>
+    </tr>
+    <tr>
+      <td class="label" style="vertical-align: top;">Address :</td>
+      <td class="input">
+        <textarea rows="4" class="full-width"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="center">
+        <button type="submit" style="padding: 5px 20px;">Register</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
 </body>
 </html>

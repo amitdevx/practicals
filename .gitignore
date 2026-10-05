@@ -5,3 +5,29 @@ __pycache__/
 factorial_module.py
 test_append.txt
 test_backup.txt
+
+# Compiled outputs
+*.class
+*.o
+*.out
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test harness scripts and dummy files
+test_*.py
+test_*.sh
+test.txt
+file1.txt
+dummy.txt
+test_runner.*
+test_harness.*
+
+# OS generated executables (assuming standard output names for C files)
+# Hard to ignore all extension-less files without ignoring directories, 
+# so we rely on cleanup for those, but we can ignore common binary names
+q1
+q2
+Slip_*_Q*
+

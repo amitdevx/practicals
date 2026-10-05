@@ -21,16 +21,17 @@ def a_star_search(graph, heuristics, start, goal):
     return None, float('inf')
 
 graph = {
-    'S': [('A', 1), ('G', 10)],
-    'A': [('B', 2), ('C', 1)],
-    'B': [('D', 5)],
-    'C': [('D', 3), ('G', 4)],
-    'D': [('G', 2)],
+    'A': [('B', 1), ('C', 4)],
+    'B': [('D', 2), ('E', 5)],
+    'C': [('F', 3)],
+    'D': [('G', 3)],
+    'E': [('G', 1)],
+    'F': [('G', 2)],
     'G': []
 }
-heuristics = {'S': 5, 'A': 3, 'B': 4, 'C': 2, 'D': 6, 'G': 0}
+heuristics = {'A': 6, 'B': 5, 'C': 4, 'D': 3, 'E': 2, 'F': 2, 'G': 0}
 
-path, cost = a_star_search(graph, heuristics, 'S', 'G')
+path, cost = a_star_search(graph, heuristics, 'A', 'G')
 print("=== A* Search Algorithm ===")
 print("Optimal Path:", " -> ".join(path))
 print("Total Path Cost:", cost)

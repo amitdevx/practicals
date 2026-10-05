@@ -1,51 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>College Registration Form</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f6f9; display: flex; justify-content: center; padding: 20px; }
-        .form-container { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 450px; }
-        h2 { text-align: center; color: #2c3e50; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; color: #34495e; }
-        input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        input:focus { border-color: #3498db; outline: none; }
-        .btn-submit { background-color: #27ae60; color: white; border: none; padding: 12px; width: 100%; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold; }
-        .btn-submit:hover { background-color: #219150; }
-    </style>
+<title>Student Registration Form</title>
+<style>
+  body {
+    background-color: #ffffe0;
+    font-family: "Times New Roman", Times, serif;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  p.subtitle {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 0;
+  }
+  table {
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 10px 15px;
+  }
+  td.label {
+    text-align: left;
+    font-size: 16px;
+    width: 150px;
+  }
+  td.input {
+    width: 300px;
+  }
+  td.validation {
+    color: red;
+    font-size: 14px;
+  }
+  input[type="text"], input[type="date"], input[type="password"], input[type="email"], input[type="time"], select {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+  }
+  .center {
+    text-align: center;
+    margin-top: 20px;
+  }
+</style>
 </head>
 <body>
-    <div class="form-container">
-        <h2>College Registration Form</h2>
-        <form action="#" method="post">
-            <div class="form-group">
-                <label for="fullname">Full Name:</label>
-                <input type="text" id="fullname" name="fullname" required pattern="[A-Za-z ]{3,50}" placeholder="Enter full name">
-            </div>
-            <div class="form-group">
-                <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email" required placeholder="name@college.edu">
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" placeholder="10-digit mobile number">
-            </div>
-            <div class="form-group">
-                <label for="course">Select Course:</label>
-                <select id="course" name="course" required>
-                    <option value="">-- Choose Course --</option>
-                    <option value="BSc-CS">T.Y. B.Sc. (Computer Science)</option>
-                    <option value="BCA">BCA (Science)</option>
-                    <option value="MSc-CS">M.Sc. (Computer Science)</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="dob">Date of Birth:</label>
-                <input type="date" id="dob" name="dob" required>
-            </div>
-            <button type="submit" class="btn-submit">Submit Registration</button>
-        </form>
-    </div>
+
+<h1>My-Future College / School</h1>
+<p class="subtitle">Please Fill Below Detail In Student Registration Form</p>
+
+<form>
+  <table>
+    <tr>
+      <td class="label">Student name :</td>
+      <td class="input"><input type="text" name="student_name"></td>
+      <td class="validation">Min 3 &amp; Max 10 letter is allow</td>
+    </tr>
+    <tr>
+      <td class="label">Date of birth :</td>
+      <td class="input"><input type="date" name="dob"></td>
+      <td class="validation">Valid Date is allow</td>
+    </tr>
+    <tr>
+      <td class="label">Mobile no. :</td>
+      <td class="input"><input type="text" name="mobile"></td>
+      <td class="validation">Only integer is allow</td>
+    </tr>
+    <tr>
+      <td class="label">Email id :</td>
+      <td class="input"><input type="email" name="email"></td>
+      <td class="validation">Valid Email Id is allow</td>
+    </tr>
+    <tr>
+      <td class="label">Password :</td>
+      <td class="input"><input type="password" name="password"></td>
+      <td class="validation">Min 8 digit is allow</td>
+    </tr>
+    <tr>
+      <td class="label">Gender :</td>
+      <td class="input" colspan="2">
+        <input type="radio" name="gender" value="Male"> Male 
+        <input type="radio" name="gender" value="Female"> Female
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Hobbies :</td>
+      <td class="input" colspan="2">
+        <input type="checkbox" name="hobby" value="Drawing"> Drawing 
+        <input type="checkbox" name="hobby" value="Singing"> Singing 
+        <input type="checkbox" name="hobby" value="Dancing"> Dancing 
+        <input type="checkbox" name="hobby" value="Sketch"> Sketch 
+        <input type="checkbox" name="hobby" value="Sports"> Sports
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Course :</td>
+      <td class="input" colspan="2">
+        <select name="course">
+          <option>------------- Select Admission Course's -------------</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Student photo :</td>
+      <td class="input" colspan="2"><input type="file" name="photo"></td>
+    </tr>
+    <tr>
+      <td class="label">Register Time:</td>
+      <td class="input"><input type="time" name="register_time"></td>
+      <td class="validation"></td>
+    </tr>
+    <tr>
+      <td class="label" style="vertical-align: top;">Address :</td>
+      <td class="input" colspan="2">
+        <textarea name="address" rows="4" style="width: 100%;"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" style="text-align: center; padding-top: 20px;">
+        <input type="checkbox" name="declare"> I hereby declare that above information provided is correct
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" class="center">
+        <button type="submit" style="padding: 5px 20px; margin-right: 20px;">Register</button>
+        <button type="reset" style="padding: 5px 20px;">Reset</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
 </body>
 </html>

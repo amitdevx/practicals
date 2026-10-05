@@ -28,7 +28,7 @@ Sum of Elements: 150
 Design a College/School Registration Form using HTML5 and CSS3 and apply appropriate HTML5 validation.
 
 ### Concept & Design
-Uses semantic HTML5 input types (email, tel, date) and CSS flexbox styling for responsive form display.
+Uses a table-based layout to align the form fields and validation messages exactly as shown in the problem statement image. Incorporates basic HTML input types like text, date, email, password, radio buttons, checkboxes, file input, and time.
 
 ### Execution
 Open `Slip_01_Q2.html` in any standard web browser (Chrome, Firefox, Edge).

@@ -35,7 +35,10 @@ python3 Slip_03_Q2_OptionA.py
 
 ### Output Preview
 ```text
-Pruned subtrees reported. Optimal Root Value: 3
+=== Alpha-Beta Pruning Simulation ===
+[Pruning] Pruned at MIN node
+[Pruning] Pruned at MIN node
+Optimal Game Value at Root: 3
 ```
 
 ---

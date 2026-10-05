@@ -28,7 +28,7 @@ Armstrong numbers between 1 and 500:
 Design a Student Registration Form using HTML5 and CSS3 with validations.
 
 ### Concept & Design
-Uses modern CSS card layout with pattern validation attributes.
+Uses a table-based layout to accurately align the form fields such as Roll no, Student name, Date of birth, and Department checkboxes, specifically mimicking the structure and background color seen in the problem statement image.
 
 ### Execution
 Open `Slip_02_Q2.html` in any standard web browser (Chrome, Firefox, Edge).

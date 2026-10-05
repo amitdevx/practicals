@@ -15,7 +15,9 @@ python3 Slip_25_Q1.py
 
 ### Output Preview
 ```text
-AO* Solution Path Cost: 12
+=== AO* Search Algorithm (AND-OR Graphs) ===
+Evaluating AND-OR graph from root: A
+AO* Solution Path Cost: 5
 ```
 
 ---
