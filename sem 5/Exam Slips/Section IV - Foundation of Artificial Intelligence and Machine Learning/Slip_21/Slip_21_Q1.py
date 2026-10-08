@@ -1,34 +1,17 @@
-def dls_search(graph, node, target, limit, depth=0, path=None):
-    if path is None: path = []
-    path.append(node)
-    if node == target: return True, path
-    if depth >= limit: return False, None
+def dls(graph, node, goal, depth):
+    if depth == 0 and node == goal: return True
+    if depth > 0:
+        for neighbor in graph.get(node, []):
+            if dls(graph, neighbor, goal, depth - 1): return True
+    return False
 
-    for neighbor in graph.get(node, []):
-        if neighbor not in path:
-            found, res_path = dls_search(graph, neighbor, target, limit, depth + 1, list(path))
-            if found: return True, res_path
-    return False, None
-
-def iterative_deepening(graph, start, target, max_depth=10):
+def ids(graph, start, goal, max_depth):
     for depth in range(max_depth):
-        print(f"Searching with depth limit = {depth}...")
-        found, path = dls_search(graph, start, target, depth)
-        if found:
-            return path
-    return None
+        if dls(graph, start, goal, depth):
+            return depth
+    return -1
 
-graph = {
-    'A': ['B', 'C'],
-    'B': ['D', 'E'],
-    'C': ['F'],
-    'D': [], 'E': [], 'F': []
-}
-
-target = 'F'
-print("=== Iterative Deepening Search (IDS) ===")
-path = iterative_deepening(graph, 'A', target, max_depth=5)
-if path:
-    print("Goal reached with path:", " -> ".join(path))
-else:
-    print("Goal not found.")
+graph = {'A': ['B', 'C'], 'B': ['D', 'E'], 'C': ['F'], 'D': [], 'E': [], 'F': []}
+depth_found = ids(graph, 'A', 'E', 5)
+print("\nIterative Deepening Search\n")
+print("Found 'E' at depth:" if depth_found != -1 else "Not found", depth_found)

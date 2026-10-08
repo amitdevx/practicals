@@ -16,30 +16,39 @@ java Slip_04_Q1
 
 ### Sample Output
 ```text
+Matrix A:
+1 2 
+3 4 
+Matrix B:
+5 6 
+7 8 
+
+1. Add Matrices
+2. Multiply Matrices
+3. Transpose of Matrix A
+4. Exit
+Enter choice: 1
 Sum:
 6 8 
 10 12 
-Transpose of A:
-1 3 
-2 4
 ```
 
 ---
 
-## Question 2: DOM Background Color Switcher [15 Marks]
+## Question 2: Change Heading Text [15 Marks]
 
 ### Problem Statement
-Create a webpage containing a heading and a button. When clicked, change the background color.
+Create a webpage containing a heading and a button. When the button is clicked, change the heading text from "Hello! Welcome" to "Text Changed Successfully!".
 
 ### Concept & Design
-Uses JavaScript document.body.style.backgroundColor manipulation on button click event.
+Uses JavaScript document.getElementById('heading').innerText manipulation on button click event to update heading text.
 
 ### Execution
 Open `Slip_04_Q2.html` in any standard web browser (Chrome, Firefox, Edge).
 
 ### Output Preview / Response
 ```text
-[Page background color cycles interactively on clicking the button]
+[Heading text changes from "Hello! Welcome" to "Text Changed Successfully!" on button click]
 ```
 
 ---

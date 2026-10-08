@@ -1,23 +1,31 @@
-def dfs(graph, start, visited=None, traversal=None):
-    if visited is None: visited = set()
-    if traversal is None: traversal = []
+from collections import deque
 
+def bfs(graph, start):
+    visited = set()
+    queue = deque([start])
     visited.add(start)
-    traversal.append(start)
-    for neighbor in sorted(graph.get(start, [])):
-        if neighbor not in visited:
-            dfs(graph, neighbor, visited, traversal)
+    traversal = []
+    
+    while queue:
+        node = queue.popleft()
+        traversal.append(node)
+        
+        for neighbor in sorted(graph.get(node, [])):
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+                
     return traversal
 
 graph = {
-    '1': ['2', '3', '4'],
-    '2': ['1', '5'],
-    '3': ['1', '6'],
-    '4': ['1', '7'],
-    '5': ['2'],
-    '6': ['3'],
-    '7': ['4']
+    'A': ['B', 'C'],
+    'B': ['A', 'D', 'E'],
+    'C': ['A', 'F', 'G'],
+    'D': ['B'],
+    'E': ['B'],
+    'F': ['C'],
+    'G': ['C']
 }
 
-print("=== DFS Graph Traversal ===")
-print("DFS Order starting from 1:", " -> ".join(dfs(graph, '1')))
+print("\nBFS State-Space Search\n")
+print("BFS Order starting from A:", " -> ".join(bfs(graph, 'A')))

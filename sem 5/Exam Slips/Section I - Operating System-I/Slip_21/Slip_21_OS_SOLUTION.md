@@ -1,12 +1,12 @@
 # Slip 21 — Operating System-I Solution Guide
 
-## Question 1: FIFO Page Replacement Simulation [15 Marks]
+## Question 1: MFU Page Replacement Simulation [15 Marks]
 
 ### Problem Statement
-Write simulation program for demand paging using FIFO. Reference string: 3, 4, 5, 6, 3, 4, 7, 3, 4, 5, 6, 7, 2, 4, 6.
+Write simulation program for demand paging using MFU. Reference string: 8, 5, 7, 8, 5, 7, 2, 3, 7, 3, 5, 9, 4, 6, 2. Assume memory of n frames.
 
 ### Concept & Algorithm
-1. Oldest page in memory is replaced first.
+1. Most Frequently Used (MFU) page replacement algorithm replaces the page with the highest reference count in memory.
 
 ### Compilation & Execution
 ```bash
@@ -16,8 +16,8 @@ gcc -Wall -Wextra -o Slip_21_Q1 Slip_21_Q1.c
 
 ### Sample Output
 ```text
-Total Page Faults: 13
-Total Hits: 2
+Total Page Faults: 10
+Total Hits: 5
 ```
 
 ---
@@ -25,10 +25,10 @@ Total Hits: 2
 ## Question 2: Demonstration of nice() System Call [15 Marks]
 
 ### Problem Statement
-Write a program that demonstrates the use of nice() system call. After child process started using fork(), assign priority using nice().
+Write a program that demonstrates the use of nice() system call. After child process started using fork(), assign higher priority using nice().
 
 ### Concept & Algorithm
-1. Changes scheduling priority using nice().
+1. Changes scheduling priority using nice(-5).
 
 ### Compilation & Execution
 ```bash
@@ -38,7 +38,7 @@ gcc -Wall -Wextra -o Slip_21_Q2 Slip_21_Q2.c
 
 ### Sample Output
 ```text
-[Child] After nice(5), Updated Nice Value: 5
+[Child] After nice(-5), Updated Nice Value: -1
 ```
 
 ---

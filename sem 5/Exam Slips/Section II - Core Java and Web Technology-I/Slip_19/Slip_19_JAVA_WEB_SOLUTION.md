@@ -16,6 +16,7 @@ java Slip_19_Q1
 
 ### Sample Output
 ```text
+Enter file name: sample.txt
 Total Characters: 78
 Total Words:      11
 Total Lines:      3

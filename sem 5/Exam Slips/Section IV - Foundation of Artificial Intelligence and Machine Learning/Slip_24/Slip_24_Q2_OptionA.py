@@ -1,19 +1,8 @@
+from sklearn.cluster import KMeans
 import numpy as np
-from sklearn.neural_network import MLPClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
 
-X = np.array([
-    [0, 0], [0, 1], [1, 0], [1, 1],
-    [2, 2], [2, 3], [3, 2], [3, 3]
-])
-y = np.array([0, 0, 0, 0, 1, 1, 1, 1])
-
-ann = MLPClassifier(hidden_layer_sizes=(4, 2), max_iter=1000, activation='relu', random_state=42)
-ann.fit(X, y)
-
-test_data = np.array([[0.5, 0.5], [2.5, 2.5]])
-preds = ann.predict(test_data)
-print("=== Artificial Neural Network (MLP) ===")
-print("Test Input:", test_data.tolist())
-print("Predicted Output:", preds.tolist())
+X = np.array([[1, 2], [1, 4], [1, 0], [10, 2], [10, 4], [10, 0]])
+kmeans = KMeans(n_clusters=2, random_state=0, n_init=10).fit(X)
+print("\nK-Means Clustering\n")
+print("Cluster Centers:", kmeans.cluster_centers_)
+print("Labels:", kmeans.labels_)

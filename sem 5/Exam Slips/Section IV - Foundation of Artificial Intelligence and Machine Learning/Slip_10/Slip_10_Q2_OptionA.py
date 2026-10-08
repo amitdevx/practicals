@@ -16,5 +16,5 @@ rf = RandomForestClassifier(n_estimators=10, random_state=42)
 rf.fit(X, y)
 
 pred = rf.predict([[6, 80, 75]])
-print("=== Random Forest Classifier ===")
+print("\nRandom Forest Classifier\n")
 print("Prediction for [Study:6h, Attend:80%, Score:75]:", pred[0])

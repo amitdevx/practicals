@@ -1,18 +1,26 @@
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+import matplotlib
+matplotlib.use('Agg')
 
-print("Executing Slip_21_Q2_OptionA.py: Multiple Linear Regression Car Price Model")
-
-# Create some dummy data
 df = pd.DataFrame({
-    'A': np.random.rand(10),
-    'B': np.random.rand(10)
+    'Attendance': [80, 85, 90, 40, 45, 50, 60, 65, 70],
+    'Marks': [75, 80, 85, 30, 35, 40, 50, 55, 60]
 })
 
-# Plotting to ensure no matplotlib errors
+X = df[['Attendance', 'Marks']]
+
+kmeans = KMeans(n_clusters=3, random_state=42)
+df['Cluster'] = kmeans.fit_predict(X)
+centroids = kmeans.cluster_centers_
+
 plt.figure()
-plt.scatter(df['A'], df['B'])
-plt.title("Multiple Linear Regression Car Price Model")
-plt.savefig('Slip_21_Q2_OptionA.png')
-print("Successfully generated plot for Multiple Linear Regression Car Price Model")
+plt.scatter(df['Attendance'], df['Marks'], c=df['Cluster'], cmap='rainbow')
+plt.scatter(centroids[:, 0], centroids[:, 1], color='black', marker='X', s=200, label='Centroids')
+plt.xlabel('Attendance')
+plt.ylabel('Marks')
+plt.title('K-Means Clustering of Students')
+plt.legend()
+plt.savefig('kmeans_student.png')
+print("Plot saved as kmeans_student.png")

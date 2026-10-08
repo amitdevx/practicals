@@ -3,10 +3,10 @@
 ## Question 1: Array of Employee Objects [15 Marks]
 
 ### Problem Statement
-Write a program defining class Employee with id, name, salary. Store and display 3 employee records.
+Write a program which define class Employee with data member as id, name and salary Store the information of 'n' employees and display the name of employee having maximum salary (Use array of object).
 
 ### Concept & Algorithm
-Creates an array of Employee references, instantiates individual objects, and prints records.
+Creates an array of `Employee` references, reads inputs for 'n' employees from standard input, and finds the maximum salary while iterating through the array.
 
 ### Compilation & Execution
 ```bash
@@ -16,9 +16,22 @@ java Slip_09_Q1
 
 ### Sample Output
 ```text
-ID: 101 Name: Aarav   Salary: 55000.0
-ID: 102 Name: Pooja   Salary: 72000.0
-ID: 103 Name: Rohan   Salary: 48000.0
+Enter number of employees: 3
+Enter details for employee 1:
+ID: 101
+Name: Aarav
+Salary: 55000
+Enter details for employee 2:
+ID: 102
+Name: Pooja
+Salary: 72000
+Enter details for employee 3:
+ID: 103
+Name: Rohan
+Salary: 48000
+
+Employee with maximum salary:
+ID: 102	Name: Pooja	Salary: 72000.0
 ```
 
 ---
@@ -26,10 +39,10 @@ ID: 103 Name: Rohan   Salary: 48000.0
 ## Question 2: JavaScript Arrow Functions for Math Operations [15 Marks]
 
 ### Problem Statement
-Write a JavaScript program to demonstrate Arrow Functions for addition, subtraction, multiplication, and division.
+Write a JavaScript program to demonstrate Arrow Functions for addition, subtraction, multiplication and division.
 
 ### Concept & Design
-Uses ES6 arrow function syntax (() => ...) for concise arithmetic operation handlers.
+Uses ES6 arrow function syntax (`() => ...`) for concise arithmetic operation handlers.
 
 ### Compilation & Execution
 ```bash
@@ -38,6 +51,7 @@ node Slip_09_Q2.js
 
 ### Output Preview / Response
 ```text
+=== Demonstration of Arrow Functions ===
 20 + 5 = 25
 20 - 5 = 15
 20 * 5 = 100
@@ -55,7 +69,7 @@ node Slip_09_Q2.js
 **Answer:** Arrow functions do not have their own 'this'; they inherit 'this' from the enclosing lexical scope.
 
 ### Q3. How do you create an array of objects in Java?
-**Answer:** ClassName[] arr = new ClassName[size]; followed by instantiating each element.
+**Answer:** `ClassName[] arr = new ClassName[size];` followed by instantiating each element.
 
 ### Q4. What is the memory representation of an object array in Java?
 **Answer:** An array of references, where each cell stores the memory address of an actual object heap instance.

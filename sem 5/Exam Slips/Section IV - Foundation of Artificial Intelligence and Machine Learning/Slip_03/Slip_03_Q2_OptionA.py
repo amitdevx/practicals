@@ -37,6 +37,6 @@ tree = [
     [0, 7]  # C
 ]
 
-print("=== Alpha-Beta Pruning Simulation ===")
+print("\nAlpha-Beta Pruning Simulation\n")
 optimal = alphabeta(tree, 0, True, -math.inf, math.inf)
 print("Optimal Game Value at Root:", optimal)

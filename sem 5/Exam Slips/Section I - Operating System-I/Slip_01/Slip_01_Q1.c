@@ -71,8 +71,7 @@ void display_alloc_max() {
     for (int j = 0; j < num_r; j++) printf("%-4c", 'A' + j);
     printf("     | ");
     for (int j = 0; j < num_r; j++) printf("%-4c", 'A' + j);
-    printf("\n------------------------------------------------------------\n");
-    
+
     for (int i = 0; i < num_p; i++) {
         printf("P%-9d | ", i);
         for (int j = 0; j < num_r; j++) {
@@ -92,8 +91,7 @@ void display_need() {
     printf("\nNeed Matrix (Need = Max - Allocation):\n");
     printf("%-10s | ", "Process");
     for (int j = 0; j < num_r; j++) printf("%-4c", 'A' + j);
-    printf("\n--------------------------------\n");
-    
+
     for (int i = 0; i < num_p; i++) {
         printf("P%-9d | ", i);
         for (int j = 0; j < num_r; j++) {
@@ -116,9 +114,9 @@ int main() {
     calculate_need();
 
     while (1) {
-        printf("\n=============================================\n");
+
         printf("   BANKER'S ALGORITHM - MENU DRIVEN PROGRAM\n");
-        printf("=============================================\n");
+
         printf("1. Accept Available\n");
         printf("2. Display Allocation and Max\n");
         printf("3. Display Contents of Need Matrix\n");

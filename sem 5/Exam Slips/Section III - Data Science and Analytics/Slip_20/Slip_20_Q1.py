@@ -1,18 +1,15 @@
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
 
-print("Executing Slip_20_Q1.py: Heatmap of Covariance Matrix")
-
-# Create some dummy data
 df = pd.DataFrame({
-    'A': np.random.rand(10),
-    'B': np.random.rand(10)
+    'Age': [25, 30, 35, 40, 45],
+    'Salary': [50000, 60000, 70000, 80000, 90000],
+    'Experience': [2, 5, 8, 12, 15],
+    'Working_Hours': [40, 42, 45, 40, 38],
+    'Performance_Score': [3.5, 4.0, 4.2, 4.8, 4.5]
 })
 
-# Plotting to ensure no matplotlib errors
-plt.figure()
-plt.scatter(df['A'], df['B'])
-plt.title("Heatmap of Covariance Matrix")
-plt.savefig('Slip_20_Q1.png')
-print("Successfully generated plot for Heatmap of Covariance Matrix")
+print("Original Data:\n", df)
+scaler = StandardScaler()
+df_std = pd.DataFrame(scaler.fit_transform(df), columns=df.columns)
+print("\nStandardized Data:\n", df_std)

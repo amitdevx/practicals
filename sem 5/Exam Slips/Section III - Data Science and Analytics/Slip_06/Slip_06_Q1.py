@@ -1,17 +1,20 @@
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 data = {
-    'Fuel_Efficiency': [18.5, 22.0, 15.2, 12.0, 25.4, 8.5, 19.0, 21.5],
-    'Engine_Size': [2.0, 1.6, 3.0, 4.0, 1.2, 6.2, 1.8, 1.5],
-    'Engine_Power': [150, 120, 220, 310, 85, 450, 140, 110]
+    'Car_Model': ['M1', 'M2', 'M3', 'M4', 'M5'],
+    'Engine_Size': [1.2, 1.5, 2.0, 1.8, 2.5],
+    'Fuel_Efficiency': [20.5, 18.2, 14.0, 15.5, 12.0]
 }
 df = pd.DataFrame(data)
 
-plt.figure(figsize=(8, 5))
-sns.scatterplot(x='Engine_Size', y='Fuel_Efficiency', data=df, hue='Engine_Power', palette='viridis', s=100)
-plt.title('Vehicle Engine Size vs Fuel Efficiency (Slip 06)')
-plt.tight_layout()
-plt.savefig('ds_slip_06_q1.png')
-print("[+] Scatter plot saved.")
+plt.figure(figsize=(8,6))
+colors = ['red', 'blue', 'green', 'orange', 'purple']
+plt.scatter(df['Engine_Size'], df['Fuel_Efficiency'], c=colors)
+plt.title('Engine Size vs Fuel Efficiency')
+plt.xlabel('Engine Size (Litres)')
+plt.ylabel('Fuel Efficiency (km/L)')
+plt.savefig('scatter_plot.png')
+print("Saved as scatter_plot.png")

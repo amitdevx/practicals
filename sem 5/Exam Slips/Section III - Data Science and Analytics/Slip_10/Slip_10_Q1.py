@@ -1,18 +1,12 @@
-import pandas as pd
-import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-print("Executing Slip_10_Q1.py: Histogram & Density (KDE) Comparison")
+transport = ['Train', 'Bicycle', 'Bike', 'Car', 'Bus']
+employees = [220, 60, 70, 80, 40]
 
-# Create some dummy data
-df = pd.DataFrame({
-    'A': np.random.rand(10),
-    'B': np.random.rand(10)
-})
-
-# Plotting to ensure no matplotlib errors
-plt.figure()
-plt.scatter(df['A'], df['B'])
-plt.title("Histogram & Density (KDE) Comparison")
-plt.savefig('Slip_10_Q1.png')
-print("Successfully generated plot for Histogram & Density (KDE) Comparison")
+plt.figure(figsize=(8,8))
+plt.pie(employees, labels=transport, autopct='%1.1f%%', colors=['#ff9999', '#66b3ff', '#99ff99', '#ffcc99', '#c2c2f0'])
+plt.title('Preferred Mode of Transportation Among Employees')
+plt.savefig('transport_pie.png')
+print("Saved transport_pie.png")

@@ -1,3 +1,3 @@
-# Comparative Analysis / Machine Learning Alternative
-print("=== Comparative Analysis / Alternative Machine Learning Method ===")
-print("Model comparison successfully executed.")
+print("\nComparison of Supervised and Unsupervised Learning\n")
+print("1. Supervised Learning: Uses labeled data. Examples: Classification, Regression.")
+print("2. Unsupervised Learning: Uses unlabeled data. Examples: Clustering, Association.")

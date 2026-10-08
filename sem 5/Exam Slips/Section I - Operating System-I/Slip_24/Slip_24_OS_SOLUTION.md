@@ -22,16 +22,17 @@ Average Waiting Time: 5.67
 
 ---
 
-## Question 2: Process Sorting and Binary Search with Fork [15 Marks]
+## Question 2: Process Sorting and Binary Search with Fork/Execve [15 Marks]
 
 ### Problem Statement
-Implement C program that accepts an integer array. Parent sorts array; child performs binary search.
+Implement C program that accepts an integer array. Parent sorts array; passes to child via execve. Child program performs binary search.
 
 ### Concept & Algorithm
-1. Parent sorts array and coordinates with child searching for target element.
+1. Parent sorts array and uses execve to pass sorted elements to an external child program which searches for the target.
 
 ### Compilation & Execution
 ```bash
+gcc -Wall -Wextra -o Slip_24_Q2_child Slip_24_Q2_child.c
 gcc -Wall -Wextra -o Slip_24_Q2 Slip_24_Q2.c
 ./Slip_24_Q2
 ```

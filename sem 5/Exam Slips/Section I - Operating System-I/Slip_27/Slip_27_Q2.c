@@ -4,7 +4,9 @@
 int main() {
     int ref[] = {3, 5, 7, 2, 5, 1, 2, 3, 1, 3, 5, 3, 1, 6, 2};
     int n = sizeof(ref) / sizeof(ref[0]);
-    int frames_count = 3;
+    int frames_count;
+    printf("Enter number of frames: ");
+    if (scanf("%d", &frames_count) != 1 || frames_count <= 0) frames_count = 3;
 
     printf("LRU (Counter Method) Page Replacement Simulation\n");
     printf("Number of Frames: %d\n", frames_count);
@@ -21,7 +23,6 @@ int main() {
     int timer = 0;
 
     printf("Step\tPage\tFrames\t\tStatus\n");
-    printf("-------------------------------------------------\n");
 
     for (int i = 0; i < n; i++) {
         int page = ref[i];
@@ -71,7 +72,6 @@ int main() {
         }
     }
 
-    printf("-------------------------------------------------\n");
     printf("Total Page Faults: %d\n", page_faults);
     printf("Total Hits: %d\n", n - page_faults);
 

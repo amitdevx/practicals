@@ -1,12 +1,12 @@
 # Slip 04 — Foundation of AI & ML Solution Guide
 
-## Question 1: Depth-First Search (DFS) Traversal [10 Marks]
+## Question 1: BFS Traversal [10 Marks]
 
 ### Problem Statement
-Write a program to implement DFS traversal for a graph.
+Write a program to solve a state-space search problem using BFS. Start Vertex = A
 
 ### Concept & Algorithm
-Explores as deep as possible along each branch before backtracking using a LIFO stack.
+Explores layer by layer using a FIFO queue.
 
 ### Execution
 ```bash
@@ -15,18 +15,19 @@ python3 Slip_04_Q1.py
 
 ### Output Preview
 ```text
-DFS Order: 1 -> 2 -> 5 -> 3 -> 6 -> 4 -> 7
+=== BFS State-Space Search ===
+BFS Order starting from A: A -> B -> C -> D -> E -> F -> G
 ```
 
 ---
 
-## Question 2: Machine Learning Model Implementation (Slip 04) [20 Marks]
+## Question 2: Predicate Logic (Option A) [20 Marks]
 
 ### Problem Statement
-Implement machine learning / neural network model for prediction.
+Write a program to implement Predicate Logic using predicates, variables, and quantifier.
 
 ### Concept & Algorithm
-Supervised learning training and prediction pipeline.
+We define predicates as functions that return a boolean value, and variables over a domain of people. We use `all()` for universal quantifier and `any()` for existential quantifier.
 
 ### Execution
 ```bash
@@ -35,20 +36,22 @@ python3 Slip_04_Q2_OptionA.py
 
 ### Output Preview
 ```text
-Model fitted and output predicted.
+=== Predicate Logic ===
+Universal Quantifier (∀): Do all students love AI? False
+Existential Quantifier (∃): Does any student love AI? True
 ```
 
 ---
 
 #### OR
 
-## Question 2 (Alternative): Comparative Analysis / Alternative ML (Slip 04) [20 Marks]
+## Question 2: Gaussian NB Classifier (Option B) [20 Marks]
 
 ### Problem Statement
-Provide comparative evaluation or alternative machine learning model.
+Write a program to implement Gaussian NB classifier with 3 classes on numeric data, use make_blobs to create a dataset X of 200 sample points in 2D Space, 3 clusters and each cluster spread (SD) over 1.5. For testing (Prediction), use the following values to test the Gaussian NB Classifier. Input (Values) : [-2, 5], [0,0], [6, -0.3] Output : [0 1 1].
 
 ### Concept & Algorithm
-Evaluates architectural trade-offs between machine learning paradigms.
+Generates dummy data using `make_blobs` and trains a Gaussian Naive Bayes classifier from `sklearn`. Predicts on given input and prints accuracy.
 
 ### Execution
 ```bash
@@ -57,7 +60,13 @@ python3 Slip_04_Q2_OptionB.py
 
 ### Output Preview
 ```text
-Evaluation completed.
+=== Gaussian NB Classifier ===
+Input Values:
+ [[-2.   5. ]
+ [ 0.   0. ]
+ [ 6.  -0.3]]
+Predicted Output: [0 1 1]
+Accuracy Score: 0.9850
 ```
 
 ---

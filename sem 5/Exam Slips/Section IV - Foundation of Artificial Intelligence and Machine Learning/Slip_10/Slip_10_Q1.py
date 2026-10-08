@@ -1,40 +1,38 @@
 # Means-End Analysis (Goal-driven state operator reduction)
-class MeansEndSolver:
-    def __init__(self, current_state, goal_state, operators):
-        self.current = set(current_state)
-        self.goal = set(goal_state)
-        self.operators = operators
 
-    def solve(self):
-        print("Initial State:", self.current)
-        print("Goal State:   ", self.goal)
-        steps = []
+def apply_operator(op_name, preconds, add_effects, state, operators, plan):
+    for p in preconds:
+        if p not in state:
+            print(f"Subgoal needed: {p}")
+            solve_goal(p, state, operators, plan)
+    
+    print(f"[Applied Operator] {op_name}")
+    state.update(add_effects)
+    plan.append(op_name)
 
-        while self.current != self.goal:
-            diff = self.goal - self.current
-            if not diff:
-                break
-            target_fact = next(iter(diff))
-            # Find operator that yields target_fact
-            chosen_op = None
-            for op_name, (preconds, add_effects) in self.operators.items():
-                if target_fact in add_effects:
-                    chosen_op = (op_name, preconds, add_effects)
-                    break
+def solve_goal(goal, state, operators, plan):
+    if goal in state:
+        return True
+    
+    for op_name, (preconds, add_effects) in operators.items():
+        if goal in add_effects:
+            apply_operator(op_name, preconds, add_effects, state, operators, plan)
+            return True
+            
+    print(f"[-] No operator available to resolve {goal}!")
+    return False
 
-            if chosen_op:
-                op_name, preconds, add_effects = chosen_op
-                # Satisfy preconditions
-                for p in preconds:
-                    self.current.add(p)
-                for a in add_effects:
-                    self.current.add(a)
-                steps.append(op_name)
-                print(f"[Applied Operator] {op_name} -> Current State: {self.current}")
-            else:
-                print("[-] No operator available to resolve difference!")
-                break
-        return steps
+def solve_mea(initial_state, goal_state, operators):
+    state = set(initial_state)
+    plan = []
+    print("Initial State:", state)
+    print("Goal State:   ", goal_state)
+    
+    for g in goal_state:
+        solve_goal(g, state, operators, plan)
+        
+    print("Current State:", state)
+    return plan
 
 operators = {
     'Drive_Car': ({'Has_Car', 'Has_Fuel'}, {'At_Destination'}),
@@ -43,6 +41,6 @@ operators = {
     'Buy_Car': ({'Has_Money'}, {'Has_Car'})
 }
 
-solver = MeansEndSolver(current_state={'Has_Money'}, goal_state={'At_Destination'}, operators=operators)
-steps = solver.solve()
-print("Solution Plan:", " -> ".join(steps))
+if __name__ == "__main__":
+    plan = solve_mea(initial_state={'Has_Money'}, goal_state={'At_Destination'}, operators=operators)
+    print("Solution Plan:", " -> ".join(plan))

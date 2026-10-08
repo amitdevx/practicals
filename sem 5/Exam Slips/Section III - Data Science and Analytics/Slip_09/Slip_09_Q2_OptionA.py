@@ -1,18 +1,25 @@
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, f1_score, confusion_matrix
 
-print("Executing Slip_09_Q2_OptionA.py: Logistic Regression on Customer Churn")
+data = {
+    'RAM': [4, 6, 8, 12, 4, 8, 12, 16, 6, 8],
+    'Storage': [64, 128, 256, 512, 64, 128, 256, 512, 128, 256],
+    'Battery': [3000, 4000, 4500, 5000, 3500, 4200, 4800, 5500, 4000, 4500],
+    'Camera': [12, 48, 64, 108, 16, 48, 64, 108, 32, 64],
+    'Price_Category': ['Low', 'Medium', 'High', 'Premium', 'Low', 'Medium', 'High', 'Premium', 'Medium', 'High']
+}
+df = pd.DataFrame(data)
+X = df[['RAM', 'Storage', 'Battery', 'Camera']]
+y = df['Price_Category']
 
-# Create some dummy data
-df = pd.DataFrame({
-    'A': np.random.rand(10),
-    'B': np.random.rand(10)
-})
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-# Plotting to ensure no matplotlib errors
-plt.figure()
-plt.scatter(df['A'], df['B'])
-plt.title("Logistic Regression on Customer Churn")
-plt.savefig('Slip_09_Q2_OptionA.png')
-print("Successfully generated plot for Logistic Regression on Customer Churn")
+model = LogisticRegression(max_iter=500)
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("F1 Score (macro):", f1_score(y_test, y_pred, average='macro'))
+print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))

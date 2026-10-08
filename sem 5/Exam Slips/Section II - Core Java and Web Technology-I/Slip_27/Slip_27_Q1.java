@@ -22,7 +22,7 @@ class Person {
             new Person("Nikhil Deshmukh", "5678-9012-3456", "EFGHI5678J")
         };
 
-        System.out.println("--- Person Details (Demonstrating 'this' keyword) ---");
+        System.out.println("\nPerson Details (Demonstrating 'this' keyword)\n");
         for (Person p : people) {
             p.display();
         }

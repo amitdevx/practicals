@@ -6,7 +6,7 @@
 Write a program to implement Depth Limited Search (DLS).
 
 ### Concept & Algorithm
-DFS executed with a predefined depth cutoff limit to avoid infinite paths.
+Depth Limited Search (DLS) is a variant of Depth-First Search (DFS) that limits the maximum depth of the search to a specified cutoff limit. It prevents DFS from wandering down infinite paths.
 
 ### Execution
 ```bash
@@ -15,18 +15,20 @@ python3 Slip_05_Q1.py
 
 ### Output Preview
 ```text
-Target found within limit or depth boundary respected.
+=== Depth Limited Search (DLS) (Limit: 2, Target: 8) ===
+Target '8' NOT found within depth limit 2.
 ```
 
 ---
 
-## Question 2: Machine Learning Model Implementation (Slip 05) [20 Marks]
+## Question 2: Bernoulli NB Classifier [20 Marks]
 
 ### Problem Statement
-Implement machine learning / neural network model for prediction.
+Write a program to implement Bernoulli NB classifier with 2 classes on numeric data, use make_classification to create a dataset X of 300 sample points in 2D space with the following parameters : n_features=2, n_informative=2, n_redundant=0, n_classes=2. For testing (Prediction), use the following values to test the Bernoulli NB Classifier.
+Input (Values) : [[0, 0], [0, 1], [1, 0], [1, 1]]
 
 ### Concept & Algorithm
-Supervised learning training and prediction pipeline.
+Bernoulli Naive Bayes algorithm. Uses `make_classification` to generate a binary dataset of 300 points, trains a `BernoulliNB` model from `sklearn.naive_bayes`, and then predicts the class for a given set of test inputs.
 
 ### Execution
 ```bash
@@ -35,20 +37,21 @@ python3 Slip_05_Q2_OptionA.py
 
 ### Output Preview
 ```text
-Model fitted and output predicted.
+Test Inputs: [[0, 0], [0, 1], [1, 0], [1, 1]]
+Predicted Output: [0, 0, 1, 1]
 ```
 
 ---
 
 #### OR
 
-## Question 2 (Alternative): Comparative Analysis / Alternative ML (Slip 05) [20 Marks]
+## Question 2 (Alternative): Support Vector Machine (SVM) [20 Marks]
 
 ### Problem Statement
-Provide comparative evaluation or alternative machine learning model.
+Write a program to implement a Support Vector Machine (SVM) classifier on the Iris dataset. With a given subset of X and y arrays and specific X_test values.
 
 ### Concept & Algorithm
-Evaluates architectural trade-offs between machine learning paradigms.
+Support Vector Machine (SVM). Trains a standard `SVC` model from `sklearn.svm` on the given input arrays, mapping the multi-class dataset, and generates predictions for the requested `X_test` data points.
 
 ### Execution
 ```bash
@@ -57,7 +60,8 @@ python3 Slip_05_Q2_OptionB.py
 
 ### Output Preview
 ```text
-Evaluation completed.
+Test Inputs: [[5.2, 3.4, 1.5, 0.2], [6.5, 3.0, 4.6, 1.5], [6.2, 3.0, 5.2, 2.0]]
+SVM Predictions: [0, 1, 1]
 ```
 
 ---

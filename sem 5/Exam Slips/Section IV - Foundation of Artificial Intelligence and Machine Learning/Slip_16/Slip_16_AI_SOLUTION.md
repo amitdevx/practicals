@@ -6,7 +6,7 @@
 Write a program to implement Depth Limited Search (DLS).
 
 ### Concept & Algorithm
-DFS executed with a predefined depth cutoff limit to avoid infinite paths.
+DLS is a modification of DFS that places a limit on the depth of the search to prevent infinite loops.
 
 ### Execution
 ```bash
@@ -15,18 +15,19 @@ python3 Slip_16_Q1.py
 
 ### Output Preview
 ```text
-Target found within limit or depth boundary respected.
+=== Depth Limited Search (DLS) (Limit: 2, Target: 8) ===
+Target '8' NOT found within depth limit 2.
 ```
 
 ---
 
-## Question 2: Backward Chaining Inference Engine [20 Marks]
+## Question 2: Backward Chaining [20 Marks]
 
 ### Problem Statement
-Write a program to implement Backward Chaining inference mechanism.
+Write a program to implement the Backward Chaining inference mechanism.
 
 ### Concept & Algorithm
-Goal-driven inference establishing subgoals to prove the target hypothesis.
+Backward chaining starts with a goal and works backward to see if the available facts support it using logical rules.
 
 ### Execution
 ```bash
@@ -35,20 +36,25 @@ python3 Slip_16_Q2_OptionA.py
 
 ### Output Preview
 ```text
-Subgoals investigated and target goal proven.
+=== Backward Chaining Inference ===
+Known Facts: {'F', 'A', 'B'}
+[Investigating Goal] E
+[Investigating Goal] D
+...
+Goal 'E' Proven: True
 ```
 
 ---
 
 #### OR
 
-## Question 2 (Alternative): Comparative Analysis / Alternative ML (Slip 16) [20 Marks]
+## Question 2 (Alternative): K-Means Clustering on Country Data [20 Marks]
 
 ### Problem Statement
-Provide comparative evaluation or alternative machine learning model.
+Write a program to implement the K-Means Clustering Algorithm. Use `country_data.csv`. Normalize using StandardScaler(). Apply KMeans (k=3) and use Elbow method to find ideal 'k'.
 
 ### Concept & Algorithm
-Evaluates architectural trade-offs between machine learning paradigms.
+K-Means groups data into K clusters. Standardizing scales the features to mean 0, variance 1. The elbow method plots WCSS vs K to find the "elbow" point.
 
 ### Execution
 ```bash
@@ -57,24 +63,21 @@ python3 Slip_16_Q2_OptionB.py
 
 ### Output Preview
 ```text
-Evaluation completed.
+=== K-Means Clustering on Country Data ===
+Clusters assigned with k=3:
+...
+Elbow curve saved as 'elbow_curve.png'.
 ```
 
 ---
 
 ## Question 3: Oral / Viva Questions & Answers [5 Marks]
 
-### Q1. What is the difference between informed and uninformed search?
-**Answer:** Uninformed search (BFS, DFS) has no knowledge of how close a state is to the goal; Informed search (A*, Best-First) uses heuristic functions to guide search.
+### Q1. What is DLS?
+**Answer:** Depth Limited Search is DFS with a predetermined depth limit to prevent it from going infinitely deep.
 
-### Q2. What is the difference between Forward Chaining and Backward Chaining?
-**Answer:** Forward Chaining is data-driven, starting from known facts to infer new conclusions; Backward Chaining is goal-driven, starting from a goal to verify supporting facts.
+### Q2. How does Backward Chaining differ from Forward Chaining?
+**Answer:** Backward chaining works backwards from the goal to facts (goal-driven), while forward chaining works from facts to conclusions (data-driven).
 
-### Q3. What is a Support Vector Machine (SVM)?
-**Answer:** A supervised algorithm that finds the optimal hyperplane that maximizes the margin between classes.
-
-### Q4. What is the Kernel Trick in SVM?
-**Answer:** A method of mapping input data into higher-dimensional feature spaces to make non-linearly separable data linearly separable without computing explicit coordinates.
-
-### Q5. What is an activation function in Neural Networks?
-**Answer:** A mathematical function (e.g. ReLU, Sigmoid, Tanh) applied to a neuron's weighted sum to introduce non-linearity into the network.
+### Q3. Why use StandardScaler before K-Means?
+**Answer:** K-Means uses distance (like Euclidean) to cluster points. Scaling ensures that features with larger numeric ranges don't dominate the distance calculations.

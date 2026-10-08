@@ -8,10 +8,19 @@
         h2 { color: #2c3e50; }
         ul.prog-list { list-style: none; padding: 0; width: 350px; }
         ul.prog-list li { background: white; margin-bottom: 10px; padding: 12px 20px; border-left: 6px solid #3498db; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.06); transition: all 0.2s ease; }
-        ul.prog-list li:nth-child(1) { border-color: #f39c12; }
-        ul.prog-list li:nth-child(2) { border-color: #27ae60; }
-        ul.prog-list li:nth-child(3) { border-color: #8e44ad; }
-        ul.prog-list li:nth-child(4) { border-color: #e74c3c; }
+        
+        ul.prog-list li:first-child { 
+            border-color: #f39c12; 
+            font-weight: bold;
+            color: #f39c12;
+        }
+        
+        ul.prog-list li:last-child { 
+            border-color: #e74c3c; 
+            font-style: italic;
+            color: #e74c3c;
+        }
+        
         ul.prog-list li:hover { transform: translateX(8px); background: #f0f7fb; }
     </style>
 </head>

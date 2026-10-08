@@ -10,7 +10,7 @@ Implements player list encapsulation across indoor and outdoor sports classes.
 
 ### Compilation & Execution
 ```bash
-javac Slip_12_Q1.java
+javac game/*.java Slip_12_Q1.java
 java Slip_12_Q1
 ```
 

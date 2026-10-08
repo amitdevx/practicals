@@ -6,13 +6,25 @@ int compare(const void* a, const void* b) {
 }
 
 int main() {
-    int req[] = {86, 147, 91, 177, 45, 12, 130};
-    int n = sizeof(req) / sizeof(req[0]);
-    int head = 60;
+    int total_blocks, n, head;
+    printf("Enter total number of disk blocks: ");
+    if (scanf("%d", &total_blocks) != 1) return 1;
+
+    printf("Enter number of requests: ");
+    if (scanf("%d", &n) != 1) return 1;
+
+    int *req = malloc(n * sizeof(int));
+    printf("Enter disk request string: ");
+    for (int i = 0; i < n; i++) {
+        if (scanf("%d", &req[i]) != 1) return 1;
+    }
+
+    printf("Enter current head position: ");
+    if (scanf("%d", &head) != 1) return 1;
 
     qsort(req, n, sizeof(int), compare);
 
-    printf("LOOK Disk Scheduling Simulation (Direction: Right)\n");
+    printf("\nLOOK Disk Scheduling Simulation (Direction: Right)\n");
     printf("Starting Head Position: %d\n", head);
 
     int total_head_movements = 0;
@@ -38,5 +50,6 @@ int main() {
     }
 
     printf("\n\nTotal Head Movements: %d cylinders\n", total_head_movements);
+    free(req);
     return 0;
 }

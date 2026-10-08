@@ -23,7 +23,7 @@ def backward_chain(goal, visited=None):
     return True
 
 target_goal = 'E'
-print("=== Backward Chaining Inference ===")
+print("\nBackward Chaining Inference\n")
 print("Known Facts:", facts)
 result = backward_chain(target_goal)
 print(f"Goal '{target_goal}' Proven:", result)

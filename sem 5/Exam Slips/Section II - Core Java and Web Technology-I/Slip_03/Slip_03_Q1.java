@@ -1,15 +1,5 @@
-// Package StringOp demo
-class Con {
-    public String concatenate(String s1, String s2) {
-        return s1 + s2;
-    }
-}
-
-class Comp {
-    public boolean compare(String s1, String s2) {
-        return s1.equals(s2);
-    }
-}
+import stringop.Con;
+import stringop.Comp;
 
 public class Slip_03_Q1 {
     public static void main(String[] args) {
@@ -18,10 +8,13 @@ public class Slip_03_Q1 {
 
         String str1 = "Pune";
         String str2 = "University";
+        String str3 = "Pune";
 
         System.out.println("String 1: " + str1);
         System.out.println("String 2: " + str2);
-        System.out.println("Concatenation: " + con.concatenate(str1, str2));
-        System.out.println("Comparison (str1 == str2): " + comp.compare(str1, str2));
+        System.out.println("String 3: " + str3);
+        System.out.println("Concatenation of String 1 and 2: " + con.concatenate(str1, str2));
+        System.out.println("Comparison of String 1 and 2: " + comp.compare(str1, str2));
+        System.out.println("Comparison of String 1 and 3: " + comp.compare(str1, str3));
     }
 }

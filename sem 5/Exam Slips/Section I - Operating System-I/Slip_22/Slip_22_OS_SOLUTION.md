@@ -3,7 +3,7 @@
 ## Question 1: Linked File Allocation Simulation [15 Marks]
 
 ### Problem Statement
-Write a program to simulate Linked file allocation method. Assume disk with n blocks. Randomly mark allocated, maintain free list, menu: Show Bit Vector, Create New File, Show Directory, Exit.
+Write a program to simulate Linked file allocation method. Assume disk with n blocks. Randomly mark allocated, maintain free list, menu: Show Bit Vector, Create New File, Show Directory, Delete File, Exit.
 
 ### Concept & Algorithm
 1. Simulates linked list disk blocks allocation.

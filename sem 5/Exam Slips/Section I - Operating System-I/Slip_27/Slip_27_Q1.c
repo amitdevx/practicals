@@ -3,10 +3,28 @@
 #include <stdbool.h>
 
 int main() {
-    int req[] = {30, 10, 60, 95, 120, 150, 175};
-    int n = sizeof(req) / sizeof(req[0]);
+    int n, head, total_blocks;
+    printf("Enter total number of disk blocks: ");
+    if (scanf("%d", &total_blocks) != 1) total_blocks = 200;
+    
+    printf("Enter number of requests: ");
+    if (scanf("%d", &n) != 1 || n <= 0) n = 7;
+    
+    int req[50];
+    printf("Enter disk request string: ");
+    for (int i = 0; i < n; i++) {
+        if (scanf("%d", &req[i]) != 1) {
+            int default_req[] = {30, 10, 60, 95, 120, 150, 175};
+            for (int j = 0; j < 7; j++) req[j] = default_req[j];
+            n = 7;
+            break;
+        }
+    }
+    
+    printf("Enter starting head position: ");
+    if (scanf("%d", &head) != 1) head = 50;
+
     bool visited[50] = {false};
-    int head = 50;
 
     printf("SSTF Disk Scheduling Simulation\n");
     printf("Starting Head Position: %d\n", head);

@@ -77,15 +77,15 @@ void create_file() {
 }
 
 void show_directory() {
-    printf("\n--- Directory (Sequential Allocation) ---\n");
+    printf("\nDirectory (Sequential Allocation)\n");
     printf("File Name\tStart Block\tLength\tBlocks Occupied\n");
-    printf("----------------------------------------------------------\n");
+
     for (int i = 0; i < file_count; i++) {
         printf("%s\t\t%d\t\t%d\t%d to %d\n",
                directory[i].name, directory[i].start_block, directory[i].length,
                directory[i].start_block, directory[i].start_block + directory[i].length - 1);
     }
-    printf("----------------------------------------------------------\n");
+
 }
 
 int main() {
@@ -98,7 +98,7 @@ int main() {
     init_disk();
     int choice;
     do {
-        printf("\n=== SEQUENTIAL (CONTIGUOUS) FILE ALLOCATION MENU ===\n");
+        printf("\nSEQUENTIAL (CONTIGUOUS) FILE ALLOCATION MENU\n");
         printf("1. Show Bit Vector\n");
         printf("2. Create New File\n");
         printf("3. Show Directory\n");

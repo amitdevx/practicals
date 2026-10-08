@@ -16,6 +16,6 @@ scores = [3, 5, 2, 9, 12, 5, 23, 23]
 height = int(math.log2(len(scores)))
 
 optimal_val = minimax(0, 0, True, scores, height)
-print("=== Minimax Algorithm for Two-Player Game ===")
+print("\nMinimax Algorithm for Two-Player Game\n")
 print("Terminal Node Scores:", scores)
 print("Optimal Value at Root (MAX):", optimal_val)

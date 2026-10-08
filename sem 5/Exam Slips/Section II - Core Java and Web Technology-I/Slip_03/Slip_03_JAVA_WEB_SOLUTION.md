@@ -10,16 +10,18 @@ Con implements string concatenation; Comp implements string equality comparison.
 
 ### Compilation & Execution
 ```bash
-javac Slip_03_Q1.java
-java Slip_03_Q1
+javac Slip_03/stringop/*.java Slip_03/Slip_03_Q1.java
+java -cp Slip_03 Slip_03_Q1
 ```
 
 ### Sample Output
 ```text
 String 1: Pune
 String 2: University
-Concatenation: PuneUniversity
-Comparison (str1 == str2): false
+String 3: Pune
+Concatenation of String 1 and 2: PuneUniversity
+Comparison of String 1 and 2: false
+Comparison of String 1 and 3: true
 ```
 
 ---

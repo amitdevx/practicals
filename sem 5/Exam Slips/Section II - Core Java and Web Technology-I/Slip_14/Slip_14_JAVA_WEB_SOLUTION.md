@@ -10,8 +10,8 @@ Uses Java Swing JFrame, GridLayout, ActionListener, and prime testing logic.
 
 ### Compilation & Execution
 ```bash
-javac Slip_14_Q1.java
-java Slip_14_Q1
+javac --module-path /path/to/javafx/lib --add-modules javafx.controls Slip_14_Q1.java
+java --module-path /path/to/javafx/lib --add-modules javafx.controls Slip_14_Q1
 ```
 
 ### Sample Output

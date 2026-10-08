@@ -15,20 +15,23 @@ python3 Slip_02_Q1.py
 
 ### Output Preview
 ```text
+=== Water Jug Problem (4L, 3L -> Target 2L) ===
 Step 0: Jug A = 0L, Jug B = 0L
-Step 1: Jug A = 4L, Jug B = 0L
-... Target reached!
+Step 1: Jug A = 0L, Jug B = 3L
+Step 2: Jug A = 3L, Jug B = 0L
+Step 3: Jug A = 3L, Jug B = 3L
+Step 4: Jug A = 4L, Jug B = 2L
 ```
 
 ---
 
-## Question 2: Naive Bayes Classification [20 Marks]
+## Question 2: Backtracking Algorithm for CSP [20 Marks]
 
 ### Problem Statement
-Write a program to implement the Naive Bayes Classifier.
+Write a program to implement the Backtracking Algorithm for solving a constraint satisfaction problem.
 
 ### Concept & Algorithm
-Applies Bayes Theorem with the naive assumption of conditional feature independence given class label.
+Uses depth-first search with backtracking to assign values (colors) to variables (nodes) ensuring no constraints (adjacent nodes having the same color) are violated.
 
 ### Execution
 ```bash
@@ -37,20 +40,28 @@ python3 Slip_02_Q2_OptionA.py
 
 ### Output Preview
 ```text
-Accuracy: 0.9778
+=== Constraint Satisfaction Problem (Graph Coloring) ===
+Solution found:
+WA: Red
+NT: Green
+SA: Blue
+Q: Red
+NSW: Green
+V: Red
+T: Red
 ```
 
 ---
 
 #### OR
 
-## Question 2 (Alternative): Minimax Algorithm for Two-Player Game [20 Marks]
+## Question 2 (Alternative): Game Tree Representation (Minimax) [20 Marks]
 
 ### Problem Statement
-Write a program to implement a Game Tree using Minimax Algorithm.
+Write a program to implement a Game Tree Representation for a two-player game.
 
 ### Concept & Algorithm
-Recursive adversarial search maximizing payoff for MAX player and minimizing payoff for MIN opponent.
+Recursive adversarial search (Minimax) maximizing payoff for the MAX player and minimizing payoff for the MIN opponent traversing the game tree.
 
 ### Execution
 ```bash
@@ -59,23 +70,25 @@ python3 Slip_02_Q2_OptionB.py
 
 ### Output Preview
 ```text
-Optimal Value at Root (MAX): 5
+=== Minimax Algorithm for Two-Player Game ===
+Terminal Node Scores: [3, 5, 2, 9, 12, 5, 23, 23]
+Optimal Value at Root (MAX): 12
 ```
 
 ---
 
 ## Question 3: Oral / Viva Questions & Answers [5 Marks]
 
-### Q1. What is Bayes' Theorem?
-**Answer:** P(A|B) = P(B|A) * P(A) / P(B).
+### Q1. What is a Constraint Satisfaction Problem (CSP)?
+**Answer:** A problem defined by a set of variables, domains for the variables, and constraints specifying allowable combinations of values.
 
-### Q2. Why is Naive Bayes called 'naive'?
-**Answer:** Because it assumes that all input features are mutually independent given the class label.
+### Q2. What is backtracking in CSP?
+**Answer:** A systematic way to iterate through possible assignments by assigning a value, checking constraints, and undoing the assignment (backtracking) if a violation occurs.
 
-### Q3. What is the zero-frequency problem in Naive Bayes and how is it resolved?
-**Answer:** If a category never appears with a class, its probability becomes zero; resolved using Laplace smoothing (+1).
+### Q3. What is the Minimax algorithm?
+**Answer:** A decision rule used in artificial intelligence for minimizing the possible loss for a worst-case scenario.
 
-### Q4. What is the state space in Water Jug problem?
+### Q4. What is the state space in the Water Jug problem?
 **Answer:** Pairs of integers (x, y) representing current water volumes in Jug A and Jug B.
 
 ### Q5. What is a zero-sum game?

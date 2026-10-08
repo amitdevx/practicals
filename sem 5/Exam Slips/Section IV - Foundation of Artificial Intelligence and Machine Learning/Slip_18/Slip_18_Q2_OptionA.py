@@ -1,19 +1,16 @@
 import numpy as np
-from sklearn.neural_network import MLPClassifier
+from sklearn.neural_network import MLPRegressor
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import mean_squared_error
 
-X = np.array([
-    [0, 0], [0, 1], [1, 0], [1, 1],
-    [2, 2], [2, 3], [3, 2], [3, 3]
-])
-y = np.array([0, 0, 0, 0, 1, 1, 1, 1])
+X = np.array([[1], [2], [3], [4], [5]])
+y = np.array([2, 4, 6, 8, 10]) # y = 2x
 
-ann = MLPClassifier(hidden_layer_sizes=(4, 2), max_iter=1000, activation='relu', random_state=42)
-ann.fit(X, y)
+model = MLPRegressor(hidden_layer_sizes=(10,), max_iter=1000, random_state=42)
+model.fit(X, y)
 
-test_data = np.array([[0.5, 0.5], [2.5, 2.5]])
-preds = ann.predict(test_data)
-print("=== Artificial Neural Network (MLP) ===")
-print("Test Input:", test_data.tolist())
+test_X = np.array([[6], [7]])
+preds = model.predict(test_X)
+print("\nANN for Linear Regression\n")
+print("Test Input:", test_X.flatten().tolist())
 print("Predicted Output:", preds.tolist())

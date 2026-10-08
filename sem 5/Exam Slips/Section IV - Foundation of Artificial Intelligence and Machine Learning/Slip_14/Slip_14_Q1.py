@@ -23,5 +23,5 @@ graph = {
     'V5': ['V1', 'V4']
 }
 
-print("=== BFS Graph Traversal ===")
+print("\nBFS Graph Traversal\n")
 print("BFS Order starting from V1:", " -> ".join(bfs(graph, 'V1')))

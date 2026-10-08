@@ -58,9 +58,9 @@ int main() {
     calculateNeed();
     int choice;
     do {
-        printf("\n=============================================\n");
+
         printf("   BANKER'S ALGORITHM - MENU DRIVEN PROGRAM\n");
-        printf("=============================================\n");
+
         printf("1. Accept Available\n");
         printf("2. Display Allocation and Max\n");
         printf("3. Display Contents of Need Matrix\n");

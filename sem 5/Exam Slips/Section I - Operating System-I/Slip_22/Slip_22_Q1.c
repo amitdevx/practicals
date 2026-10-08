@@ -78,9 +78,9 @@ void create_file() {
 }
 
 void show_directory() {
-    printf("\n--- File Directory (Linked Allocation) ---\n");
+    printf("\nFile Directory (Linked Allocation)\n");
     printf("File Name\tStart Block\tLength\tLinked Blocks\n");
-    printf("-----------------------------------------------------------------\n");
+
     for (int i = 0; i < file_count; i++) {
         printf("%s\t\t%d\t\t%d\t", directory[i].name, directory[i].start_block, directory[i].length);
         for (int j = 0; j < directory[i].length; j++) {
@@ -89,7 +89,37 @@ void show_directory() {
         }
         printf("\n");
     }
-    printf("-----------------------------------------------------------------\n");
+
+}
+
+void delete_file() {
+    char fname[30];
+    printf("Enter file name to delete: ");
+    scanf("%s", fname);
+    
+    int found = -1;
+    for (int i = 0; i < file_count; i++) {
+        if (strcmp(directory[i].name, fname) == 0) {
+            found = i;
+            break;
+        }
+    }
+    
+    if (found == -1) {
+        printf("[-] File '%s' not found.\n", fname);
+        return;
+    }
+    
+    for (int i = 0; i < directory[found].length; i++) {
+        bit_vector[directory[found].blocks[i]] = 0;
+    }
+    
+    for (int i = found; i < file_count - 1; i++) {
+        directory[i] = directory[i + 1];
+    }
+    file_count--;
+    
+    printf("[+] File '%s' deleted successfully.\n", fname);
 }
 
 int main() {
@@ -102,22 +132,24 @@ int main() {
     init_disk();
     int choice;
     do {
-        printf("\n=== LINKED FILE ALLOCATION MENU ===\n");
+        printf("\nLINKED FILE ALLOCATION MENU\n");
         printf("1. Show Bit Vector\n");
         printf("2. Create New File\n");
         printf("3. Show Directory\n");
-        printf("4. Exit\n");
-        printf("Enter your choice (1-4): ");
+        printf("4. Delete File\n");
+        printf("5. Exit\n");
+        printf("Enter your choice (1-5): ");
         if (scanf("%d", &choice) != 1) break;
 
         switch (choice) {
             case 1: show_bit_vector(); break;
             case 2: create_file(); break;
             case 3: show_directory(); break;
-            case 4: printf("Exiting.\n"); break;
-            default: printf("Invalid choice! Enter 1-4.\n");
+            case 4: delete_file(); break;
+            case 5: printf("Exiting.\n"); break;
+            default: printf("Invalid choice! Enter 1-5.\n");
         }
-    } while (choice != 4);
+    } while (choice != 5);
 
     return 0;
 }

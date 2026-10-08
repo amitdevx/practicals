@@ -78,9 +78,9 @@ void create_file() {
 }
 
 void show_directory() {
-    printf("\n--- File Directory (Linked Allocation) ---\n");
+    printf("\nFile Directory (Linked Allocation)\n");
     printf("File Name\tStart Block\tLength\tLinked Blocks\n");
-    printf("-----------------------------------------------------------------\n");
+
     for (int i = 0; i < file_count; i++) {
         printf("%s\t\t%d\t\t%d\t", directory[i].name, directory[i].start_block, directory[i].length);
         for (int j = 0; j < directory[i].length; j++) {
@@ -89,7 +89,7 @@ void show_directory() {
         }
         printf("\n");
     }
-    printf("-----------------------------------------------------------------\n");
+
 }
 
 int main() {
@@ -102,7 +102,7 @@ int main() {
     init_disk();
     int choice;
     do {
-        printf("\n=== LINKED FILE ALLOCATION MENU ===\n");
+        printf("\nLINKED FILE ALLOCATION MENU\n");
         printf("1. Show Bit Vector\n");
         printf("2. Create New File\n");
         printf("3. Show Directory\n");

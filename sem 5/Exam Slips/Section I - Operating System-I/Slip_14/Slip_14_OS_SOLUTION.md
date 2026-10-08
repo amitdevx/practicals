@@ -1,66 +1,51 @@
-# Slip 14 — Operating System-I Solution Guide
+# Slip 14 - Operating System-I
 
-## Question 1: Process Forking and Array Binary Search [15 Marks]
+## Question 1: Binary Search with execve()
 
-### Problem Statement
-Implement C program that accepts an integer array. Main function forks child process. Parent sorts array; child performs binary search.
+**Algorithm:**
+1. Parent process accepts an array and a key to search.
+2. Parent process sorts the array using Bubble Sort.
+3. Parent process forks a child.
+4. Child process uses `execve()` to replace its image with `Slip_14_Q1_child`, passing the sorted array and key as command-line arguments.
+5. Child process performs a Binary Search and prints the result.
+6. Parent waits for the child to finish.
 
-### Concept & Algorithm
-1. Parent sorts array using sorting algorithm.
-2. Child performs binary search on the sorted data.
-
-### Compilation & Execution
+**Compilation:**
 ```bash
-gcc -Wall -Wextra -o Slip_14_Q1 Slip_14_Q1.c
-./Slip_14_Q1
+gcc Slip_14_Q1.c -o Slip_14_Q1
+gcc Slip_14_Q1_child.c -o Slip_14_Q1_child
 ```
 
-### Sample Output
-```text
-[Parent] Original Array: 45 12 89 23 7 
-[Parent] Sorted Array: 7 12 23 45 89 
-[Child PID: 12350] Binary Searching for 23 in sorted array...
-[Child] Element 23 found at index 2!
-[Parent] Child search operation completed.
+**Output:**
+```
+$ ./Slip_14_Q1
+Enter number of elements: 5
+Enter array elements: 40 10 30 20 50
+Enter element to search: 30
+Sorted array: 10 20 30 40 50 
+Child received sorted array: 10 20 30 40 50 
+Element 30 found at position 3
+Parent process completed.
 ```
 
 ---
 
-## Question 2: FIFO Page Replacement Simulation [15 Marks]
+## Question 2: Demand Paging (FIFO)
 
-### Problem Statement
-Write simulation program for demand paging and show page scheduling and total page faults using FIFO. String: 3, 4, 5, 6, 3, 4, 7, 3, 4, 5, 6, 7, 2, 4, 6.
+**Algorithm:**
+1. Maintain a queue (`frames` array) for frames.
+2. For each page in the reference string, check if it's already in the frames (Hit).
+3. If not found (Fault), replace the oldest page in the frames (First In First Out) using a round-robin index `(replace_idx = (replace_idx + 1) % n)`.
+4. Calculate and display total Page Faults.
 
-### Concept & Algorithm
-1. Replaces the oldest page present in the frame queue when a page fault occurs.
-
-### Compilation & Execution
+**Compilation:**
 ```bash
-gcc -Wall -Wextra -o Slip_14_Q2 Slip_14_Q2.c
-./Slip_14_Q2
-```
-
-### Sample Output
-```text
-Total Page Faults: 13
-Total Hits: 2
+gcc Slip_14_Q2.c -o Slip_14_Q2
 ```
 
 ---
 
-## Question 3: Oral / Viva Questions & Answers [5 Marks]
-
-### Q1. What is binary search and its time complexity?
-**Answer:** Binary search is an efficient search algorithm on sorted arrays that divides the search interval in half each time; its time complexity is O(log n).
-
-### Q2. What is execve() system call?
-**Answer:** execve() executes the program referred to by pathname, replacing the current process image with a new process image.
-
-### Q3. What happens to open file descriptors upon fork()?
-**Answer:** Child inherits duplicates of all open file descriptors from the parent, pointing to the same file table entries.
-
-### Q4. What is the replacement victim in FIFO?
-**Answer:** The page that entered memory earliest (at the front of the queue).
-
-### Q5. What is virtual memory?
-**Answer:** Virtual memory is a memory management capability that provides an idealized abstraction of storage resources, allowing execution of processes larger than physical RAM.
+## Question 3: Viva
+- **What is `execve()`?** `execve` replaces the current process image with a new process image loaded from an executable file.
+- **Why do we need `wait()`?** `wait()` is used by the parent process to suspend execution until a child process terminates, preventing zombie processes.
+- **What is FIFO page replacement?** A page replacement algorithm that replaces the oldest page in memory, i.e., the page that was brought in first.

@@ -1,18 +1,21 @@
 import pandas as pd
-import numpy as np
+import seaborn as sns
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')
 
-print("Executing Slip_16_Q1.py: Cumulative Distribution Function Plot")
-
-# Create some dummy data
 df = pd.DataFrame({
-    'A': np.random.rand(10),
-    'B': np.random.rand(10)
+    'Study Hours': [2, 4, 5, 8],
+    'Attendance': [70, 80, 85, 95],
+    'Assignment Score': [15, 20, 22, 28],
+    'Exam Score': [50, 60, 75, 90]
 })
 
-# Plotting to ensure no matplotlib errors
+corr = df.corr()
+print("Correlation Matrix:\n", corr)
+
 plt.figure()
-plt.scatter(df['A'], df['B'])
-plt.title("Cumulative Distribution Function Plot")
-plt.savefig('Slip_16_Q1.png')
-print("Successfully generated plot for Cumulative Distribution Function Plot")
+sns.heatmap(corr, annot=True, cmap='coolwarm')
+plt.title("Student Performance Correlation Heatmap")
+plt.savefig('heatmap.png')
+print("Plot saved as heatmap.png")

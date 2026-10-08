@@ -1,22 +1,37 @@
+import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import matplotlib.patches as patches
+from matplotlib_venn import venn2
 
-# Venn diagram / Overlap of Netflix and Amazon Prime users
-fig, ax = plt.subplots(figsize=(7, 5))
-circle1 = plt.Circle((0.4, 0.5), 0.3, color='#e50914', alpha=0.5, label='Netflix Users (450)')
-circle2 = plt.Circle((0.6, 0.5), 0.3, color='#00a8e1', alpha=0.5, label='Amazon Prime Users (300)')
+# Simulate data
+data = {
+    'Customer_ID': range(1, 101),
+    'Uses_Netflix': [1]*60 + [0]*40,
+    'Uses_Amazon': [1]*30 + [0]*30 + [1]*20 + [0]*20
+}
+df = pd.DataFrame(data)
 
-ax.add_patch(circle1)
-ax.add_patch(circle2)
-ax.set_xlim(0, 1)
-ax.set_ylim(0, 1)
-ax.set_aspect('equal')
-plt.text(0.28, 0.5, "Netflix Only\n300", fontsize=11, fontweight='bold', color='white', ha='center')
-plt.text(0.5, 0.5, "Both\n150", fontsize=11, fontweight='bold', color='black', ha='center')
-plt.text(0.72, 0.5, "Prime Only\n150", fontsize=11, fontweight='bold', color='white', ha='center')
-plt.title('Subscriber Distribution (Netflix vs Amazon Prime)', fontsize=14, fontweight='bold')
-plt.axis('off')
-plt.legend(loc='lower center')
+# Count overlaps
+only_netflix = len(df[(df['Uses_Netflix'] == 1) & (df['Uses_Amazon'] == 0)])
+only_amazon = len(df[(df['Uses_Netflix'] == 0) & (df['Uses_Amazon'] == 1)])
+both = len(df[(df['Uses_Netflix'] == 1) & (df['Uses_Amazon'] == 1)])
+
+# Plot Venn Diagram
+plt.figure(figsize=(12, 5))
+
+plt.subplot(1, 2, 1)
+venn2(subsets=(only_netflix, only_amazon, both), set_labels=('Netflix', 'Amazon Prime'))
+plt.title('Streaming Service Users (Venn Diagram)')
+
+# Plot Pie Chart
+plt.subplot(1, 2, 2)
+labels = ['Only Netflix', 'Only Amazon Prime', 'Both']
+sizes = [only_netflix, only_amazon, both]
+colors = ['#ff9999', '#66b3ff', '#99ff99']
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140, colors=colors)
+plt.title('Streaming Service Users (Pie Chart)')
+
 plt.tight_layout()
-plt.savefig('ds_slip_05_q2_streaming.png')
-print("[+] Native Venn overlap chart saved as ds_slip_05_q2_streaming.png")
+plt.savefig('streaming_services.png')
+print("Plots saved as streaming_services.png")

@@ -15,6 +15,6 @@ def expert_system_diagnose(symptoms):
     return diagnoses if diagnoses else ["General Fatigue / Consultation Required"]
 
 patient_symptoms = {'fever', 'cough', 'fatigue'}
-print("=== Rule-Based Expert System ===")
+print("\nRule-Based Expert System\n")
 print("Patient Symptoms:", patient_symptoms)
 print("Diagnosis:", expert_system_diagnose(patient_symptoms))

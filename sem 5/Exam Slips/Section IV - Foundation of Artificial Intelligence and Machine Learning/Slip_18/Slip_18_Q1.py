@@ -31,6 +31,6 @@ graph = {
 heuristics = {'S': 5, 'A': 3, 'B': 4, 'C': 2, 'D': 6, 'G': 0}
 
 path, cost = a_star_search(graph, heuristics, 'S', 'G')
-print("=== A* Search Algorithm ===")
+print("\nA* Search Algorithm\n")
 print("Optimal Path:", " -> ".join(path))
 print("Total Path Cost:", cost)

@@ -3,15 +3,15 @@
 ## Question 1: Key Combination Background Color Switcher [15 Marks]
 
 ### Problem Statement
-Write a GUI application that changes background color based on combination of keys pressed (e.g. Ctrl+Alt+O for orange).
+Write a JavaFX application that changes background color based on combination of keys pressed (e.g. Ctrl+Alt+O for orange).
 
 ### Concept & Algorithm
 Implements KeyListener interface and checks KeyEvent modifiers (isControlDown(), isAltDown()).
 
 ### Compilation & Execution
 ```bash
-javac Slip_17_Q1.java
-java Slip_17_Q1
+javac --module-path $PATH_TO_FX --add-modules javafx.controls Slip_17_Q1.java
+java --module-path $PATH_TO_FX --add-modules javafx.controls Slip_17_Q1
 ```
 
 ### Sample Output

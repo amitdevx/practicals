@@ -31,6 +31,6 @@ nodes = list(graph.keys())
 colors = ['Red', 'Green', 'Blue']
 
 coloring = solve_csp(nodes, colors, {}, graph)
-print("=== Map Coloring CSP Solution ===")
+print("\nMap Coloring CSP Solution\n")
 for region, color in coloring.items():
     print(f"{region}: {color}")

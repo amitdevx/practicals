@@ -1,18 +1,23 @@
 import pandas as pd
-import numpy as np
+import seaborn as sns
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')
 
-print("Executing Slip_21_Q1.py: GroupBy Aggregations & Barplot")
-
-# Create some dummy data
+# weather.csv creation
 df = pd.DataFrame({
-    'A': np.random.rand(10),
-    'B': np.random.rand(10)
+    'Temperature': [30, 32, 28, 35],
+    'Humidity': [70, 60, 80, 50],
+    'Rainfall': [10, 0, 20, 0],
+    'Wind Speed': [15, 10, 20, 12]
 })
+df.to_csv('weather.csv', index=False)
 
-# Plotting to ensure no matplotlib errors
+df_read = pd.read_csv('weather.csv')
+corr = df_read.corr()
+
 plt.figure()
-plt.scatter(df['A'], df['B'])
-plt.title("GroupBy Aggregations & Barplot")
-plt.savefig('Slip_21_Q1.png')
-print("Successfully generated plot for GroupBy Aggregations & Barplot")
+sns.heatmap(corr, annot=True, cmap='viridis')
+plt.title("Weather Correlation Heatmap")
+plt.savefig('weather_heatmap.png')
+print("Plot saved as weather_heatmap.png")

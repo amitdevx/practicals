@@ -16,9 +16,8 @@ java Slip_29_Q1
 
 ### Sample Output
 ```text
-Testing number 17: 17 is a Prime Number.
-Testing number 0: Exception: Number is 0
-Testing number 24: 24 is NOT a Prime Number.
+Enter a number: 17
+17 is a Prime Number.
 ```
 
 ---

@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class ZeroNumberException extends Exception {
     public ZeroNumberException(String msg) {
         super(msg);
@@ -25,10 +27,11 @@ public class Slip_29_Q1 {
     }
 
     public static void main(String[] args) {
-        int[] testNumbers = {17, 0, 24};
-        for (int num : testNumbers) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        if (scanner.hasNextInt()) {
+            int num = scanner.nextInt();
             try {
-                System.out.print("Testing number " + num + ": ");
                 checkNumber(num);
             } catch (ZeroNumberException e) {
                 System.out.println("Exception: " + e.getMessage());

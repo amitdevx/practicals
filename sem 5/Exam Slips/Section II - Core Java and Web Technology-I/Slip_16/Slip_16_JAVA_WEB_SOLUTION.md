@@ -3,15 +3,15 @@
 ## Question 1: Shopping Cart Simulator GUI [15 Marks]
 
 ### Problem Statement
-Write a GUI application that simulates a shopping cart with item buttons and running total.
+Write a JavaFX application that simulates a shopping cart with item buttons and running total.
 
 ### Concept & Algorithm
-Uses DefaultListModel, JList, and action listeners to add items and update cumulative bill total.
+Uses JavaFX ListView, and action listeners to add items and update cumulative bill total.
 
 ### Compilation & Execution
 ```bash
-javac Slip_16_Q1.java
-java Slip_16_Q1
+javac --module-path $PATH_TO_FX --add-modules javafx.controls Slip_16_Q1.java
+java --module-path $PATH_TO_FX --add-modules javafx.controls Slip_16_Q1
 ```
 
 ### Sample Output

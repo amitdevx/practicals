@@ -1,24 +1,29 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
-public class Slip_15_Q1 extends JFrame implements ActionListener {
-    JTextField display;
-    double num1 = 0, num2 = 0;
-    char operator = ' ';
+public class Slip_15_Q1 extends Application {
+    
+    private TextField display;
+    private double num1 = 0, num2 = 0;
+    private char operator = ' ';
+    private boolean startNew = true;
 
-    public Slip_15_Q1() {
-        setTitle("Simple Calculator");
-        setSize(300, 400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
-
-        display = new JTextField();
-        display.setFont(new Font("Arial", Font.BOLD, 20));
+    @Override
+    public void start(Stage primaryStage) {
+        display = new TextField();
         display.setEditable(false);
-        add(display, BorderLayout.NORTH);
+        display.setStyle("-fx-font-size: 20px;");
 
-        JPanel panel = new JPanel(new GridLayout(4, 4, 5, 5));
+        GridPane grid = new GridPane();
+        grid.setHgap(5);
+        grid.setVgap(5);
+
         String[] buttons = {
             "7", "8", "9", "/",
             "4", "5", "6", "*",
@@ -26,41 +31,66 @@ public class Slip_15_Q1 extends JFrame implements ActionListener {
             "0", "C", "=", "+"
         };
 
+        int row = 0, col = 0;
         for (String text : buttons) {
-            JButton btn = new JButton(text);
-            btn.setFont(new Font("Arial", Font.BOLD, 16));
-            btn.addActionListener(this);
-            panel.add(btn);
+            Button btn = new Button(text);
+            btn.setMinSize(50, 50);
+            btn.setStyle("-fx-font-size: 16px;");
+            btn.setOnAction(e -> handleButton(text));
+            grid.add(btn, col, row);
+            col++;
+            if (col == 4) {
+                col = 0;
+                row++;
+            }
         }
-        add(panel, BorderLayout.CENTER);
+
+        VBox layout = new VBox(10, display, grid);
+        layout.setPadding(new Insets(10));
+        
+        Scene scene = new Scene(layout, 250, 320);
+        primaryStage.setTitle("Simple Calculator");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
-    public void actionPerformed(ActionEvent e) {
-        String cmd = e.getActionCommand();
-        if (cmd.charAt(0) >= '0' && cmd.charAt(0) <= '9') {
-            display.setText(display.getText() + cmd);
-        } else if (cmd.equals("C")) {
+    private void handleButton(String text) {
+        if (text.matches("[0-9]")) {
+            if (startNew) {
+                display.setText(text);
+                startNew = false;
+            } else {
+                display.setText(display.getText() + text);
+            }
+        } else if (text.equals("C")) {
             display.setText("");
             num1 = num2 = 0;
             operator = ' ';
-        } else if (cmd.equals("=")) {
-            num2 = Double.parseDouble(display.getText());
-            double res = 0;
-            switch (operator) {
-                case '+': res = num1 + num2; break;
-                case '-': res = num1 - num2; break;
-                case '*': res = num1 * num2; break;
-                case '/': res = num2 != 0 ? num1 / num2 : 0; break;
+            startNew = true;
+        } else if (text.equals("=")) {
+            if (!startNew && operator != ' ') {
+                num2 = Double.parseDouble(display.getText());
+                double res = 0;
+                switch (operator) {
+                    case '+': res = num1 + num2; break;
+                    case '-': res = num1 - num2; break;
+                    case '*': res = num1 * num2; break;
+                    case '/': res = num2 != 0 ? num1 / num2 : 0; break;
+                }
+                display.setText(String.valueOf(res));
+                startNew = true;
+                operator = ' ';
             }
-            display.setText(String.valueOf(res));
-        } else {
-            num1 = Double.parseDouble(display.getText());
-            operator = cmd.charAt(0);
-            display.setText("");
+        } else { // Operator
+            if (!display.getText().isEmpty()) {
+                num1 = Double.parseDouble(display.getText());
+                operator = text.charAt(0);
+                startNew = true;
+            }
         }
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new Slip_15_Q1().setVisible(true));
+        launch(args);
     }
 }

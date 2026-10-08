@@ -38,7 +38,7 @@ gcc -Wall -Wextra -o Slip_19_Q2 Slip_19_Q2.c
 
 ### Sample Output
 ```text
-[Child] After nice(5), Updated Nice Value: 5
+[Child] After nice(-5), Updated Nice Value: -1
 ```
 
 ---

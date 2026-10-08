@@ -1,18 +1,14 @@
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')
 
-print("Executing Slip_25_Q1.py: Correlation Matrix Ranking & Filter")
+courses = ["BCA", "BBA", "B.Com", "B.Sc", "BA"]
+students = [60, 45, 75, 50, 35]
 
-# Create some dummy data
-df = pd.DataFrame({
-    'A': np.random.rand(10),
-    'B': np.random.rand(10)
-})
-
-# Plotting to ensure no matplotlib errors
 plt.figure()
-plt.scatter(df['A'], df['B'])
-plt.title("Correlation Matrix Ranking & Filter")
-plt.savefig('Slip_25_Q1.png')
-print("Successfully generated plot for Correlation Matrix Ranking & Filter")
+plt.bar(courses, students, color=['red', 'blue', 'green', 'orange', 'purple'])
+plt.title("Number of Students Enrolled per Course")
+plt.xlabel("Courses")
+plt.ylabel("Number of Students")
+plt.savefig('course_bar.png')
+print("Plot saved as course_bar.png")

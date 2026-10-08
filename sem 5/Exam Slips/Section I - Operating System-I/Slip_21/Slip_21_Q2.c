@@ -16,9 +16,12 @@ int main() {
         int old_nice = getpriority(PRIO_PROCESS, 0);
         printf("[Child] Initial Nice Value: %d\n", old_nice);
 
-        // Assign nice value: lower priority (+5) or higher priority
-        int new_nice = nice(5);
-        printf("[Child] After nice(5), Updated Nice Value: %d\n", new_nice);
+        // Assign nice value: higher priority (-5)
+        int new_nice = nice(-5);
+        if (new_nice == -1) {
+            perror("nice failed (may need root for higher priority)");
+        }
+        printf("[Child] After nice(-5), Updated Nice Value: %d\n", new_nice);
 
         printf("[Child] Doing task and finishing...\n");
         exit(0);

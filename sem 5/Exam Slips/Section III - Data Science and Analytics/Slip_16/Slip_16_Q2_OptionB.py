@@ -1,18 +1,27 @@
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
+from mlxtend.preprocessing import TransactionEncoder
+from mlxtend.frequent_patterns import apriori, association_rules
 
-print("Executing Slip_16_Q2_OptionB.py: Pruned Decision Tree vs Unpruned")
+data = [
+    ['Library', 'Seminar'],
+    ['Workshop', 'Project'],
+    ['Library', 'Assignment'],
+    ['Seminar', 'Workshop'],
+    ['Assignment', 'Seminar'],
+    ['Workshop', 'Assignment'],
+    ['Project', 'Library'],
+    ['Library', 'Seminar', 'Project'],
+    ['Library', 'Seminar', 'Workshop']
+]
 
-# Create some dummy data
-df = pd.DataFrame({
-    'A': np.random.rand(10),
-    'B': np.random.rand(10)
-})
+te = TransactionEncoder()
+te_ary = te.fit(data).transform(data)
+df = pd.DataFrame(te_ary, columns=te.columns_)
 
-# Plotting to ensure no matplotlib errors
-plt.figure()
-plt.scatter(df['A'], df['B'])
-plt.title("Pruned Decision Tree vs Unpruned")
-plt.savefig('Slip_16_Q2_OptionB.png')
-print("Successfully generated plot for Pruned Decision Tree vs Unpruned")
+for min_sup in [0.2, 0.3]:
+    print(f"\n--- Analysis with min_support={min_sup} ---")
+    freq_items = apriori(df, min_support=min_sup, use_colnames=True)
+    print("Frequent Itemsets:\n", freq_items)
+    if not freq_items.empty:
+        rules = association_rules(freq_items, metric="confidence", min_threshold=0.5)
+        print("Association Rules:\n", rules)

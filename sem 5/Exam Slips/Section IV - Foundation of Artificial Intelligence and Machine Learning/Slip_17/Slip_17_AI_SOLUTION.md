@@ -1,12 +1,12 @@
 # Slip 17 — Foundation of AI & ML Solution Guide
 
-## Question 1: Search Algorithm Implementation (Slip 17) [10 Marks]
+## Question 1: Best First Search [10 Marks]
 
 ### Problem Statement
-Write program to implement search algorithm for state-space problem.
+Write a program to implement the Best First Search Algorithm using heuristic values to find a path from a start node to a goal node.
 
 ### Concept & Algorithm
-Systematic graph search exploring node connectivity.
+Best First Search is an informed search algorithm that uses an evaluation function \( f(n) = h(n) \), expanding the most promising node chosen according to the heuristic function.
 
 ### Execution
 ```bash
@@ -15,20 +15,19 @@ python3 Slip_17_Q1.py
 
 ### Output Preview
 ```text
-=== A* Search Algorithm ===
-Optimal Path: A -> C -> F
-Total Cost: 5
+=== Best First Search Algorithm ===
+Path found: S -> B -> E -> G
 ```
 
 ---
 
-## Question 2: Machine Learning Model Implementation (Slip 17) [20 Marks]
+## Question 2: Propositional Logic [20 Marks]
 
 ### Problem Statement
-Implement machine learning / neural network model for prediction.
+Write a program to implement Propositional Logic and evaluate logical expressions using operators such as AND, OR, and IMPLIES.
 
 ### Concept & Algorithm
-Supervised learning training and prediction pipeline.
+Logical operators map boolean inputs to boolean outputs. The IMPLIES operator (P -> Q) is logically equivalent to (NOT P OR Q).
 
 ### Execution
 ```bash
@@ -37,20 +36,25 @@ python3 Slip_17_Q2_OptionA.py
 
 ### Output Preview
 ```text
-Model fitted and output predicted.
+=== Propositional Logic Evaluation ===
+P: True, Q: False
+P AND Q: False
+P OR Q: True
+P IMPLIES Q: False
+...
 ```
 
 ---
 
 #### OR
 
-## Question 2 (Alternative): Euclidean Distance Calculation [20 Marks]
+## Question 2 (Alternative): Euclidean Distance [20 Marks]
 
 ### Problem Statement
-Write program to calculate Euclidean Distance between data points in Machine Learning.
+Write a program to calculate and demonstrate the Euclidean Distance between two data points. Inputs: `2 3 4` and `5 7 6`.
 
 ### Concept & Algorithm
-Straight-line geometric distance between two multidimensional feature vectors.
+The Euclidean distance between two points in Euclidean space is the length of the line segment between them, computed using the Pythagorean formula.
 
 ### Execution
 ```bash
@@ -59,24 +63,25 @@ python3 Slip_17_Q2_OptionB.py
 
 ### Output Preview
 ```text
-Distance: 1.3964
+Input :
+Data Point: 2 3 4
+Data Point: 5 7 6
+
+Output :
+Data Point : [2, 3, 4]
+Data Point : [5, 7, 6]
+Euclidean Distance = 5.099
 ```
 
 ---
 
 ## Question 3: Oral / Viva Questions & Answers [5 Marks]
 
-### Q1. What is the difference between informed and uninformed search?
-**Answer:** Uninformed search (BFS, DFS) has no knowledge of how close a state is to the goal; Informed search (A*, Best-First) uses heuristic functions to guide search.
+### Q1. What is Best First Search?
+**Answer:** It is an informed search algorithm that expands the node that is closest to the goal, as estimated by a heuristic function \( h(n) \).
 
-### Q2. What is the difference between Forward Chaining and Backward Chaining?
-**Answer:** Forward Chaining is data-driven, starting from known facts to infer new conclusions; Backward Chaining is goal-driven, starting from a goal to verify supporting facts.
+### Q2. How is IMPLIES implemented in propositional logic?
+**Answer:** The implication \( P \implies Q \) is logically equivalent to \( \neg P \lor Q \).
 
-### Q3. What is a Support Vector Machine (SVM)?
-**Answer:** A supervised algorithm that finds the optimal hyperplane that maximizes the margin between classes.
-
-### Q4. What is the Kernel Trick in SVM?
-**Answer:** A method of mapping input data into higher-dimensional feature spaces to make non-linearly separable data linearly separable without computing explicit coordinates.
-
-### Q5. What is an activation function in Neural Networks?
-**Answer:** A mathematical function (e.g. ReLU, Sigmoid, Tanh) applied to a neuron's weighted sum to introduce non-linearity into the network.
+### Q3. What is the formula for Euclidean Distance in 3D?
+**Answer:** \( \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2} \)

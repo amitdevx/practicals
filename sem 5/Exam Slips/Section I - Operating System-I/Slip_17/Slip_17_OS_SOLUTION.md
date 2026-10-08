@@ -25,7 +25,7 @@ Average Waiting Time: 2.33
 ## Question 2: Sequential File Allocation Simulation [15 Marks]
 
 ### Problem Statement
-Write program to simulate Sequential (Contiguous) file allocation. Assume disk with n blocks. Randomly mark allocated, maintain free list, menu: Show Bit Vector, Create New File, Show Directory, Exit.
+Write program to simulate Sequential (Contiguous) file allocation. Assume disk with n blocks. Randomly mark allocated, maintain free list, menu: Show Bit Vector, Create New File, Show Directory, Delete File, Exit.
 
 ### Concept & Algorithm
 1. Finds contiguous free blocks for file allocation.

@@ -2,7 +2,6 @@ from sklearn.datasets import load_iris
 from sklearn.ensemble import VotingClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
@@ -12,14 +11,13 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_
 
 clf1 = LogisticRegression(max_iter=200)
 clf2 = DecisionTreeClassifier(random_state=42)
-clf3 = KNeighborsClassifier(n_neighbors=3)
 
 ensemble = VotingClassifier(
-    estimators=[('lr', clf1), ('dt', clf2), ('knn', clf3)],
+    estimators=[('lr', clf1), ('dt', clf2)],
     voting='hard'
 )
 ensemble.fit(X_train, y_train)
 
 y_pred = ensemble.predict(X_test)
-print("=== Voting Classifier Ensemble ===")
+print("\nVoting Classifier Ensemble\n")
 print("Ensemble Accuracy:", accuracy_score(y_test, y_pred))

@@ -1,15 +1,14 @@
-# Propositional Logic Truth Table Evaluator
+# Propositional Logic Evaluator
 def evaluate_expression():
-    print("=== Propositional Logic Truth Table ===")
-    print("P\tQ\tP AND Q\tP OR Q\tP -> Q\tP <-> Q")
-    print("---------------------------------------------------------")
+    print("\nPropositional Logic Evaluator\n")
+    print("P\tQ\tNOT P\tP AND Q\tP OR Q")
 
     for P in [True, False]:
         for Q in [True, False]:
+            not_p = not P
             p_and_q = P and Q
             p_or_q = P or Q
-            p_implies_q = (not P) or Q
-            p_iff_q = P == Q
-            print(f"{P}\t{Q}\t{p_and_q}\t{p_or_q}\t{p_implies_q}\t{p_iff_q}")
+            print(f"{P}\t{Q}\t{not_p}\t{p_and_q}\t{p_or_q}")
 
-evaluate_expression()
+if __name__ == "__main__":
+    evaluate_expression()

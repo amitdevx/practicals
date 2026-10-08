@@ -42,13 +42,13 @@ Rules fired and goal proven.
 
 #### OR
 
-## Question 2 (Alternative): Comparative Analysis / Alternative ML (Slip 09) [20 Marks]
+## Question 2 (Alternative): Decision Tree Classifier (Slip 09) [20 Marks]
 
 ### Problem Statement
-Provide comparative evaluation or alternative machine learning model.
+Write a program to implement the Decision Tree Classifier for a classification problem using the provided Diabetes dataset. Split the dataset into 70:30 (train:test). Evaluate using accuracy_score() and optimize by tuning criterion (entropy) and max_depth (2, 3, 4).
 
 ### Concept & Algorithm
-Evaluates architectural trade-offs between machine learning paradigms.
+A supervised learning method that splits data based on feature conditions to maximize information gain (entropy) or minimize Gini impurity, creating a tree-like model of decisions.
 
 ### Execution
 ```bash
@@ -57,7 +57,10 @@ python3 Slip_09_Q2_OptionB.py
 
 ### Output Preview
 ```text
-Evaluation completed.
+Accuracy (Default): 1.0000
+Accuracy (Entropy, max_depth=2): 1.0000
+Accuracy (Entropy, max_depth=3): 1.0000
+Accuracy (Entropy, max_depth=4): 1.0000
 ```
 
 ---

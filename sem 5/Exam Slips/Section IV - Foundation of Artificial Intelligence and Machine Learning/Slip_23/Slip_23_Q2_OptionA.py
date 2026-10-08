@@ -1,36 +1,27 @@
-def is_safe(node, color, assignment, graph):
-    for neighbor in graph[node]:
-        if neighbor in assignment and assignment[neighbor] == color:
+# Same as Slip 21 Q2B
+def is_safe(node, color, graph, colors):
+    for neighbor in graph.get(node, []):
+        if colors.get(neighbor) == color:
             return False
     return True
 
-def solve_csp(nodes, colors, assignment, graph):
-    if len(assignment) == len(nodes):
-        return assignment
+def graph_coloring(graph, m, colors, nodes, idx):
+    if idx == len(nodes):
+        return True
+    
+    node = nodes[idx]
+    for c in range(1, m + 1):
+        if is_safe(node, c, graph, colors):
+            colors[node] = c
+            if graph_coloring(graph, m, colors, nodes, idx + 1):
+                return True
+            colors[node] = 0
+    return False
 
-    unassigned = [n for n in nodes if n not in assignment][0]
-    for color in colors:
-        if is_safe(unassigned, color, assignment, graph):
-            assignment[unassigned] = color
-            result = solve_csp(nodes, colors, assignment, graph)
-            if result:
-                return result
-            del assignment[unassigned]
-    return None
-
-graph = {
-    'WA': ['NT', 'SA'],
-    'NT': ['WA', 'SA', 'Q'],
-    'SA': ['WA', 'NT', 'Q', 'NSW', 'V'],
-    'Q': ['NT', 'SA', 'NSW'],
-    'NSW': ['Q', 'SA', 'V'],
-    'V': ['SA', 'NSW'],
-    'T': []
-}
-nodes = list(graph.keys())
-colors = ['Red', 'Green', 'Blue']
-
-coloring = solve_csp(nodes, colors, {}, graph)
-print("=== Map Coloring CSP Solution ===")
-for region, color in coloring.items():
-    print(f"{region}: {color}")
+graph = {'A': ['B', 'C', 'D'], 'B': ['A', 'C'], 'C': ['A', 'B', 'D'], 'D': ['A', 'C']}
+colors = {node: 0 for node in graph}
+print("\nMap Colouring (CSP)\n")
+if graph_coloring(graph, 3, colors, list(graph.keys()), 0):
+    print("Colors assigned:", colors)
+else:
+    print("No solution")

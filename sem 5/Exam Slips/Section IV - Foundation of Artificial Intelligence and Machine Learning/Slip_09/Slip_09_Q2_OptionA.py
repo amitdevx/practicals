@@ -22,7 +22,7 @@ def forward_chaining(facts, rules, goal):
                     return True
     return False
 
-print("=== Forward Chaining Inference ===")
+print("\nForward Chaining Inference\n")
 print("Initial Facts:", facts)
 success = forward_chaining(facts, rules, 'Goal_Reached')
 print("Goal Achieved:", success)

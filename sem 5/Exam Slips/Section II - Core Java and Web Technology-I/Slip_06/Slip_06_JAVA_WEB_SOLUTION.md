@@ -16,8 +16,13 @@ java Slip_06_Q1
 
 ### Sample Output
 ```text
-Customer Name: Default Customer, Account No: 10000001
-Customer Name: Rahul Sharma, Account No: 9876543210
+Customer Details:
+Customer Name: Rahul Sharma
+Account No: 9876543210
+Saving Balance: 50000.0
+Minimum Balance: 1000.0
+Deposit Amount: 5000.0
+Withdrawal Amount: 2000.0
 ```
 
 ---

@@ -21,6 +21,6 @@ def hill_climbing(start_x, step_size=0.1, max_iter=100):
     return current_x, current_val
 
 opt_x, opt_val = hill_climbing(start_x=0.0)
-print("=== Hill Climbing Algorithm ===")
+print("\nHill Climbing Algorithm\n")
 print("Objective Function: F(x) = -x^2 + 4x")
 print(f"Maximum found at x = {opt_x:.4f} with value F(x) = {opt_val:.4f}")

@@ -32,14 +32,14 @@ int main() {
         }
     }
 
-    printf("\n--- Need Matrix ---\n");
+    printf("\nNeed Matrix\n");
     for (int i = 0; i < n; i++) {
         printf("P%d: ", i);
         for (int j = 0; j < m; j++) printf("%d ", need[i][j]);
         printf("\n");
     }
 
-    printf("\n--- Available Vector ---\n");
+    printf("\nAvailable Vector\n");
     for (int j = 0; j < m; j++) printf("%d ", avail[j]);
     printf("\n");
 

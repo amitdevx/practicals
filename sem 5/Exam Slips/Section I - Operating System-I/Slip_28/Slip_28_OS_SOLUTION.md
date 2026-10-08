@@ -3,7 +3,7 @@
 ## Question 1: SCAN Disk Scheduling Simulation [15 Marks]
 
 ### Problem Statement
-Write simulation program for disk scheduling using SCAN algorithm. Request: 82, 170, 43, 140, 24, 16, 190, 65; Start Head: 50; Direction: Left.
+Write simulation program for disk scheduling using SCAN algorithm. Request: 10, 25, 75, 90, 130, 145, 180, 55; Start Head: 80; Direction: Left.
 
 ### Concept & Algorithm
 1. Head moves leftwards to 0, then reverses to service higher requests.
@@ -16,9 +16,16 @@ gcc -Wall -Wextra -o Slip_28_Q1 Slip_28_Q1.c
 
 ### Sample Output
 ```text
+Enter total number of disk blocks: 200
+Enter number of requests: 8
+Enter disk request string: 10 25 75 90 130 145 180 55
+Enter current head position: 80
+SCAN Disk Scheduling Simulation (Direction: Left)
+
 Order of Request Service:
-50 -> 43 -> 24 -> 16 -> 0 -> 65 -> 82 -> 140 -> 170 -> 190
-Total Head Movements: 240 cylinders
+80 -> 75 -> 55 -> 25 -> 10 -> 0 -> 90 -> 130 -> 145 -> 180
+
+Total Head Movements: 260 cylinders
 ```
 
 ---

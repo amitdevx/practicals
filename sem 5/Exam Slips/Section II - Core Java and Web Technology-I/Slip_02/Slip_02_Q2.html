@@ -54,43 +54,43 @@
   <table>
     <tr>
       <td class="label">Roll no. :</td>
-      <td class="input"><input type="text" class="full-width"></td>
+      <td class="input"><input type="number" name="rollno" class="full-width" required min="1"></td>
     </tr>
     <tr>
       <td class="label">Student name :</td>
       <td class="input">
-        <input type="text" class="inline-input" placeholder="First Name"> - <input type="text" class="inline-input" placeholder="Last Name">
+        <input type="text" name="fname" class="inline-input" placeholder="First Name" required pattern="[A-Za-z]+"> - <input type="text" name="lname" class="inline-input" placeholder="Last Name" required pattern="[A-Za-z]+">
       </td>
     </tr>
     <tr>
       <td class="label">Father's name :</td>
-      <td class="input"><input type="text" class="full-width"></td>
+      <td class="input"><input type="text" name="fathername" class="full-width" required></td>
     </tr>
     <tr>
       <td class="label">Date of birth :</td>
       <td class="input">
-        <input type="text" class="date-input" placeholder="Day"> - <input type="text" class="date-input" placeholder="Month"> - <input type="text" class="date-input" placeholder="Year"> <i>(DD-MM-YYYY)</i>
+        <input type="date" name="dob" class="full-width" required>
       </td>
     </tr>
     <tr>
       <td class="label">Mobile no. :</td>
       <td class="input">
-        <input type="text" class="small-input" value="+91"> - <input type="text" style="width: 80%;">
+        <input type="text" class="small-input" value="+91" readonly> - <input type="tel" name="mobile" pattern="[0-9]{10}" required style="width: 80%;">
       </td>
     </tr>
     <tr>
       <td class="label">Email id :</td>
-      <td class="input"><input type="text" class="full-width"></td>
+      <td class="input"><input type="email" name="email" class="full-width" required></td>
     </tr>
     <tr>
       <td class="label">Password :</td>
-      <td class="input"><input type="password" class="full-width"></td>
+      <td class="input"><input type="password" name="password" class="full-width" required minlength="6"></td>
     </tr>
     <tr>
       <td class="label">Gender :</td>
       <td class="input">
-        <input type="radio" name="gender" value="Male"> Male 
-        <input type="radio" name="gender" value="Female"> Female
+        <input type="radio" name="gender" value="Male" required> Male 
+        <input type="radio" name="gender" value="Female" required> Female
       </td>
     </tr>
     <tr>
@@ -106,23 +106,25 @@
     <tr>
       <td class="label">Course :</td>
       <td class="input">
-        <select class="full-width">
-          <option>------------------ Select Current Course's ------------------</option>
+        <select name="course" class="full-width" required>
+          <option value="">------------------ Select Current Course's ------------------</option>
+          <option value="BSc">B.Sc.</option>
+          <option value="BCA">BCA</option>
         </select>
       </td>
     </tr>
     <tr>
       <td class="label">Student photo :</td>
-      <td class="input"><input type="file"></td>
+      <td class="input"><input type="file" name="photo" accept="image/*" required></td>
     </tr>
     <tr>
       <td class="label">City :</td>
-      <td class="input"><input type="text" class="full-width"></td>
+      <td class="input"><input type="text" name="city" class="full-width" required></td>
     </tr>
     <tr>
       <td class="label" style="vertical-align: top;">Address :</td>
       <td class="input">
-        <textarea rows="4" class="full-width"></textarea>
+        <textarea name="address" rows="4" class="full-width" required></textarea>
       </td>
     </tr>
     <tr>

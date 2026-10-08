@@ -1,38 +1,35 @@
 import heapq
 
-def a_star_search(graph, heuristics, start, goal):
-    pq = [(heuristics[start], 0, start, [start])]
-    visited = {}
+def best_first_search(graph, heuristics, start, goal):
+    pq = [(heuristics[start], start, [start])]
+    visited = set()
 
     while pq:
-        f, g, current, path = heapq.heappop(pq)
+        _, current, path = heapq.heappop(pq)
+        
         if current == goal:
-            return path, g
-
-        if current in visited and visited[current] <= g:
+            return path
+            
+        if current in visited:
             continue
-        visited[current] = g
-
-        for neighbor, weight in graph.get(current, []):
-            cost = g + weight
-            est_total = cost + heuristics.get(neighbor, 0)
-            heapq.heappush(pq, (est_total, cost, neighbor, path + [neighbor]))
-    return None, float('inf')
+        visited.add(current)
+        
+        for neighbor in graph.get(current, []):
+            if neighbor not in visited:
+                heapq.heappush(pq, (heuristics.get(neighbor, 0), neighbor, path + [neighbor]))
+    return None
 
 graph = {
-    'A': [('B', 2), ('C', 4)],
-    'B': [('A', 2), ('D', 3), ('E', 5)],
-    'C': [('A', 4), ('F', 1)],
-    'D': [('B', 3), ('F', 2)],
-    'E': [('B', 5), ('F', 1)],
-    'F': [('C', 1), ('D', 2), ('E', 1)]
+    'S': ['A', 'B'],
+    'A': ['C', 'D'],
+    'B': ['E', 'F'],
+    'C': [], 'D': [], 'E': ['G'], 'F': [], 'G': []
 }
-heuristics = {'A': 6, 'B': 5, 'C': 3, 'D': 2, 'E': 1, 'F': 0}
+heuristics = {'S': 10, 'A': 5, 'B': 4, 'C': 4, 'D': 3, 'E': 2, 'F': 6, 'G': 0}
 
-print("=== A* Search Algorithm ===")
-path, cost = a_star_search(graph, heuristics, 'A', 'F')
+print("\nBest First Search Algorithm\n")
+path = best_first_search(graph, heuristics, 'S', 'G')
 if path:
-    print("Optimal Path:", " -> ".join(path))
-    print("Total Cost:", cost)
+    print("Path found:", " -> ".join(path))
 else:
     print("Goal not found.")

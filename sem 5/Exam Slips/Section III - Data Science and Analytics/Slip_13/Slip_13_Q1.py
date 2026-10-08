@@ -1,18 +1,20 @@
 import pandas as pd
-import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import seaborn as sns
 
-print("Executing Slip_13_Q1.py: Sales Dataset EDA & Bar Chart")
+data = {
+    'Day': list(range(1, 31)),
+    'Sales': [100, 150, 130, 170, 160, 180, 140, 190, 200, 150, 
+              160, 170, 140, 130, 800, 150, 160, 175, 185, 145, 
+              155, 165, 170, 150, 140, 160, 180, 190, 150, 160] # 800 is an outlier
+}
+df = pd.DataFrame(data)
 
-# Create some dummy data
-df = pd.DataFrame({
-    'A': np.random.rand(10),
-    'B': np.random.rand(10)
-})
-
-# Plotting to ensure no matplotlib errors
-plt.figure()
-plt.scatter(df['A'], df['B'])
-plt.title("Sales Dataset EDA & Bar Chart")
-plt.savefig('Slip_13_Q1.png')
-print("Successfully generated plot for Sales Dataset EDA & Bar Chart")
+plt.figure(figsize=(8,6))
+sns.boxplot(y=df['Sales'], color='orange')
+plt.title('Daily Sales Distribution (Outlier Detection)')
+plt.ylabel('Sales Volume')
+plt.savefig('sales_boxplot.png')
+print("Saved sales_boxplot.png")

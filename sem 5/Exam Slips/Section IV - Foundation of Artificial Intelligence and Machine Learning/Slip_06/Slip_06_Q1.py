@@ -1,27 +1,21 @@
-from collections import deque
-
-def bfs(graph, start):
-    visited = set()
-    queue = deque([start])
-    visited.add(start)
-    traversal = []
-
-    while queue:
-        vertex = queue.popleft()
-        traversal.append(vertex)
-        for neighbor in sorted(graph.get(vertex, [])):
-            if neighbor not in visited:
-                visited.add(neighbor)
-                queue.append(neighbor)
-    return traversal
+def dfs(graph, node, visited=None):
+    if visited is None:
+        visited = set()
+    if node not in visited:
+        print(node, end=' ')
+        visited.add(node)
+        for neighbor in graph.get(node, []):
+            dfs(graph, neighbor, visited)
 
 graph = {
-    'V1': ['V2', 'V3', 'V5'],
-    'V2': ['V1', 'V4'],
-    'V3': ['V1', 'V4'],
-    'V4': ['V2', 'V3', 'V5'],
-    'V5': ['V1', 'V4']
+    'A': ['B', 'C'],
+    'B': ['A', 'D', 'E'],
+    'C': ['A', 'F'],
+    'D': ['B'],
+    'E': ['B', 'F'],
+    'F': ['C', 'E']
 }
 
-print("=== BFS Graph Traversal ===")
-print("BFS Order starting from V1:", " -> ".join(bfs(graph, 'V1')))
+print("DFS Traversal starting from A:")
+dfs(graph, 'A')
+print()

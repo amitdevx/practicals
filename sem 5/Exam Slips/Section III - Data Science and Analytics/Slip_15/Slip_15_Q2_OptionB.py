@@ -1,18 +1,25 @@
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
+from mlxtend.preprocessing import TransactionEncoder
+from mlxtend.frequent_patterns import apriori, association_rules
 
-print("Executing Slip_15_Q2_OptionB.py: Stratified K-Fold Cross Validation")
+data = [
+    ['Basmati Rice', 'Toor Dal', 'Turmeric Powder', 'Cooking Oil'],
+    ['Atta', 'Sugar', 'Tea', 'Milk'],
+    ['Rice', 'Moong Dal', 'Salt', 'Cooking Oil'],
+    ['Wheat Flour', 'Chickpeas', 'Turmeric Powder', 'Cumin Seeds'],
+    ['Poha', 'Peanuts', 'Onions', 'Cooking Oil'],
+    ['Basmati Rice', 'Paneer', 'Garam Masala', 'Tomatoes'],
+    ['Atta', 'Potatoes', 'Onions', 'Cooking Oil']
+]
 
-# Create some dummy data
-df = pd.DataFrame({
-    'A': np.random.rand(10),
-    'B': np.random.rand(10)
-})
+te = TransactionEncoder()
+te_ary = te.fit(data).transform(data)
+df = pd.DataFrame(te_ary, columns=te.columns_)
 
-# Plotting to ensure no matplotlib errors
-plt.figure()
-plt.scatter(df['A'], df['B'])
-plt.title("Stratified K-Fold Cross Validation")
-plt.savefig('Slip_15_Q2_OptionB.png')
-print("Successfully generated plot for Stratified K-Fold Cross Validation")
+for min_sup in [0.3, 0.4]:
+    print(f"\n--- Analysis with min_support={min_sup} ---")
+    freq_items = apriori(df, min_support=min_sup, use_colnames=True)
+    print("Frequent Itemsets:\n", freq_items)
+    if not freq_items.empty:
+        rules = association_rules(freq_items, metric="confidence", min_threshold=0.5)
+        print("Association Rules:\n", rules)

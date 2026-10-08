@@ -6,17 +6,23 @@ int compare(const void* a, const void* b) {
 }
 
 int main() {
-    int req[] = {82, 170, 43, 140, 24, 16, 190, 65};
-    int n = sizeof(req) / sizeof(req[0]);
-    int head = 50;
-    int total_blocks = 200;
+    int n, head, total_blocks;
+    printf("Enter total number of disk blocks: ");
+    scanf("%d", &total_blocks);
+    printf("Enter number of requests: ");
+    scanf("%d", &n);
+    int req[n];
+    printf("Enter disk request string: ");
+    for(int i=0; i<n; i++) {
+        scanf("%d", &req[i]);
+    }
+    printf("Enter current head position: ");
+    scanf("%d", &head);
 
     // Sort requests
     qsort(req, n, sizeof(int), compare);
 
     printf("SCAN Disk Scheduling Simulation (Direction: Left)\n");
-    printf("Total Disk Blocks: %d\n", total_blocks);
-    printf("Starting Head Position: %d\n", head);
 
     int total_head_movements = 0;
     int current_head = head;

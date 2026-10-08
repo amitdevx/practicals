@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class Vehicle {
     String company;
     double price;
@@ -5,6 +7,10 @@ class Vehicle {
     public Vehicle(String company, double price) {
         this.company = company;
         this.price = price;
+    }
+    
+    public void display() {
+        System.out.print("Company: " + company + ", Price: ₹" + price);
     }
 }
 
@@ -17,7 +23,9 @@ class LightMotorVehicle extends Vehicle {
     }
 
     public void display() {
-        System.out.println("LMV -> Company: " + company + ", Price: ₹" + price + ", Mileage: " + mileage + " km/l");
+        System.out.print("LMV -> ");
+        super.display();
+        System.out.println(", Mileage: " + mileage + " km/l");
     }
 }
 
@@ -30,17 +38,51 @@ class HeavyMotorVehicle extends Vehicle {
     }
 
     public void display() {
-        System.out.println("HMV -> Company: " + company + ", Price: ₹" + price + ", Capacity: " + capacity_in_tons + " tons");
+        System.out.print("HMV -> ");
+        super.display();
+        System.out.println(", Capacity: " + capacity_in_tons + " tons");
     }
 }
 
 public class Slip_11_Q1 {
     public static void main(String[] args) {
-        LightMotorVehicle car = new LightMotorVehicle("Maruti Suzuki", 750000, 22.5);
-        HeavyMotorVehicle truck = new HeavyMotorVehicle("Tata Motors", 2800000, 16.0);
-
-        System.out.println("--- Vehicle Information ---");
-        car.display();
-        truck.display();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of vehicles (n): ");
+        if (!sc.hasNextInt()) return;
+        int n = sc.nextInt();
+        
+        Vehicle[] vehicles = new Vehicle[n];
+        
+        for (int i = 0; i < n; i++) {
+            System.out.println("Select Vehicle Type for Vehicle " + (i + 1) + ": (1) Light Motor Vehicle (2) Heavy Motor Vehicle");
+            int type = sc.nextInt();
+            sc.nextLine(); 
+            
+            System.out.print("Enter Company: ");
+            String company = sc.nextLine();
+            System.out.print("Enter Price: ");
+            double price = sc.nextDouble();
+            
+            if (type == 1) {
+                System.out.print("Enter Mileage: ");
+                double mileage = sc.nextDouble();
+                vehicles[i] = new LightMotorVehicle(company, price, mileage);
+            } else if (type == 2) {
+                System.out.print("Enter Capacity in Tons: ");
+                double capacity = sc.nextDouble();
+                vehicles[i] = new HeavyMotorVehicle(company, price, capacity);
+            } else {
+                System.out.println("Invalid type. Defaulting to empty vehicle.");
+            }
+        }
+        
+        System.out.println("\nVehicle Information\n");
+        for (Vehicle v : vehicles) {
+            if (v != null) {
+                v.display();
+            }
+        }
+        
+        sc.close();
     }
 }

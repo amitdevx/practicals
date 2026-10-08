@@ -1,28 +1,36 @@
-import numpy as np
 import pandas as pd
+import numpy as np
 from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, r2_score
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 
-# YouTube Dataset: Views, Likes, Comments -> Revenue/Engagement
-np.random.seed(42)
-n = 100
-views = np.random.randint(1000, 500000, n)
-likes = (views * np.random.uniform(0.04, 0.08)).astype(int)
-comments = (views * np.random.uniform(0.005, 0.015)).astype(int)
-revenue = views * 0.002 + likes * 0.01 + np.random.normal(0, 20, n)
+# Create YouTube Video dataset
+data = {
+    'Subscribers': [1000, 2500, 5000, 8000, 12000, 15000, 20000, 25000, 30000, 40000],
+    'Video_Views': [5000, 12000, 26000, 41000, 62000, 76000, 105000, 128000, 152000, 205000]
+}
+df = pd.DataFrame(data)
 
-df = pd.DataFrame({'Views': views, 'Likes': likes, 'Comments': comments, 'Revenue': revenue})
+# Reshape data
+X = df[['Subscribers']] # Predictor
+y = df['Video_Views'] # Target
 
-X = df[['Views', 'Likes', 'Comments']]
-y = df['Revenue']
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
+# Apply Linear Regression
 model = LinearRegression()
-model.fit(X_train, y_train)
+model.fit(X, y)
+y_pred = model.predict(X)
 
-y_pred = model.predict(X_test)
-print("=== YouTube Multiple Linear Regression ===")
-print("R2 Score:", r2_score(y_test, y_pred))
-print("MSE:", mean_squared_error(y_test, y_pred))
+print("Intercept:", model.intercept_)
+print("Coefficient:", model.coef_[0])
+
+# Visualize the relationship
+plt.figure(figsize=(8, 6))
+plt.scatter(X, y, color='blue', label='Actual Data')
+plt.plot(X, y_pred, color='red', label='Regression Line')
+plt.title('YouTube Subscribers vs Video Views')
+plt.xlabel('Subscribers')
+plt.ylabel('Video Views')
+plt.legend()
+plt.savefig('youtube_regression.png')
+print("Plot saved as youtube_regression.png")

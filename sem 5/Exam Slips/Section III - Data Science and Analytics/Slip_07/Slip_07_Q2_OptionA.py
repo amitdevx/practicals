@@ -1,19 +1,23 @@
 import pandas as pd
-from sklearn.datasets import load_iris
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import accuracy_score, classification_report
+from sklearn.metrics import accuracy_score, confusion_matrix
 
-iris = load_iris()
-X = iris.data
-y = iris.target
+data = {
+    'StudyHours': [2, 3, 4, 5, 6, 7, 8, 9, 1, 10],
+    'Attendance': [80, 85, 90, 88, 92, 95, 96, 98, 75, 99],
+    'Category': ['Low', 'Low', 'Medium', 'Medium', 'Medium', 'High', 'High', 'High', 'Low', 'High']
+}
+df = pd.DataFrame(data)
+
+X = df[['StudyHours', 'Attendance']]
+y = df['Category']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-clf = DecisionTreeClassifier(random_state=42)
-clf.fit(X_train, y_train)
+knn = KNeighborsClassifier(n_neighbors=3)
+knn.fit(X_train, y_train)
+y_pred = knn.predict(X_test)
 
-y_pred = clf.predict(X_test)
-print("=== Decision Tree Classifier on Iris Dataset ===")
 print("Accuracy:", accuracy_score(y_test, y_pred))
-print("\nClassification Report:\n", classification_report(y_test, y_pred, target_names=iris.target_names))
+print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))

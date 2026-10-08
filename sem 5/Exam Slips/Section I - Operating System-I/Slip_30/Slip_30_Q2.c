@@ -4,7 +4,9 @@
 int main() {
     int ref[] = {2, 5, 2, 8, 5, 4, 1, 2, 3, 2, 6, 1, 2, 5, 9, 8};
     int n = sizeof(ref) / sizeof(ref[0]);
-    int frames_count = 3;
+    int frames_count;
+    printf("Enter number of frames: ");
+    scanf("%d", &frames_count);
 
     printf("MFU (Most Frequently Used) Page Replacement Simulation\n");
     printf("Number of Frames: %d\n", frames_count);
@@ -20,7 +22,6 @@ int main() {
     int page_faults = 0;
 
     printf("Step\tPage\tFrames\t\tStatus\n");
-    printf("-------------------------------------------------\n");
 
     for (int i = 0; i < n; i++) {
         int page = ref[i];
@@ -74,7 +75,6 @@ int main() {
         }
     }
 
-    printf("-------------------------------------------------\n");
     printf("Total Page Faults: %d\n", page_faults);
     printf("Total Hits: %d\n", n - page_faults);
 

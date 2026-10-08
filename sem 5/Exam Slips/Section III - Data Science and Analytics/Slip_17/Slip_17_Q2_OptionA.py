@@ -1,18 +1,31 @@
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
+import squarify
+import matplotlib
+matplotlib.use('Agg')
 
-print("Executing Slip_17_Q2_OptionA.py: KNN Classification with Cross Validation")
-
-# Create some dummy data
 df = pd.DataFrame({
-    'A': np.random.rand(10),
-    'B': np.random.rand(10)
+    'City': ['Pune', 'Mumbai', 'Delhi', 'Bangalore'],
+    'Area': [331, 603, 1484, 709],
+    'Average_Temperature': [25, 28, 30, 24],
+    'Rainfall': [722, 2000, 700, 900],
+    'Population_Density': [5600, 20000, 11000, 4300]
 })
 
-# Plotting to ensure no matplotlib errors
+# Treemap
 plt.figure()
-plt.scatter(df['A'], df['B'])
-plt.title("KNN Classification with Cross Validation")
-plt.savefig('Slip_17_Q2_OptionA.png')
-print("Successfully generated plot for KNN Classification with Cross Validation")
+squarify.plot(sizes=df['Population_Density'], label=df['City'], alpha=0.8)
+plt.title("Treemap of Population Density")
+plt.axis('off')
+plt.savefig('treemap.png')
+
+# 3D Scatter
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.scatter(df['Area'], df['Average_Temperature'], df['Rainfall'], c='r', marker='o')
+ax.set_xlabel('Area (sq. km)')
+ax.set_ylabel('Avg Temperature (C)')
+ax.set_zlabel('Rainfall (mm)')
+plt.title("3D Scatter Plot of Cities")
+plt.savefig('3d_scatter.png')
+print("Plots saved.")

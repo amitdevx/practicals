@@ -1,7 +1,6 @@
 import heapq
 
 def a_star_search(graph, heuristics, start, goal):
-    # priority queue stores (f_score, current_cost, current_node, path)
     pq = [(heuristics[start], 0, start, [start])]
     visited = {}
 
@@ -20,17 +19,8 @@ def a_star_search(graph, heuristics, start, goal):
             heapq.heappush(pq, (est_total, cost, neighbor, path + [neighbor]))
     return None, float('inf')
 
-graph = {
-    'S': [('A', 1), ('G', 10)],
-    'A': [('B', 2), ('C', 1)],
-    'B': [('D', 5)],
-    'C': [('D', 3), ('G', 4)],
-    'D': [('G', 2)],
-    'G': []
-}
-heuristics = {'S': 5, 'A': 3, 'B': 4, 'C': 2, 'D': 6, 'G': 0}
-
-path, cost = a_star_search(graph, heuristics, 'S', 'G')
-print("=== A* Search Algorithm ===")
-print("Optimal Path:", " -> ".join(path))
-print("Total Path Cost:", cost)
+graph = {'A': [('B', 1)], 'B': [('C', 2)], 'C': []}
+heuristics = {'A': 2, 'B': 1, 'C': 0}
+print("\nA* Search Algorithm\n")
+path, cost = a_star_search(graph, heuristics, 'A', 'C')
+print("Path:", path, "Cost:", cost)

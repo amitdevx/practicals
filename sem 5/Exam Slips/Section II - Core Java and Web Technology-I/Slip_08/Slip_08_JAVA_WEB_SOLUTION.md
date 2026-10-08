@@ -3,10 +3,10 @@
 ## Question 1: Abstract Class Shape Hierarchy [15 Marks]
 
 ### Problem Statement
-Write a program to create an abstract class Shape (dim1, dim2). Derive Rectangle, Triangle, Circle.
+Write a program to create an abstract class Shape that contains two integers and an empty method named printArea(). Provide three classes named Rectangle, Triangle and Circle such that each one of the classes extends the class Shape. Each one of the classes contain only the method printArea() that prints the area of the given shape. (use method overriding).
 
 ### Concept & Algorithm
-Demonstrates abstraction and polymorphism: base abstract class declares abstract printArea(), overridden in subclasses.
+Demonstrates abstraction and polymorphism: base abstract class declares abstract `printArea()`, overridden in subclasses.
 
 ### Compilation & Execution
 ```bash
@@ -26,17 +26,17 @@ Area of Circle (radius 7): 153.93804002589985
 ## Question 2: DOM Image and Button Interaction [15 Marks]
 
 ### Problem Statement
-Create webpage using JavaScript DOM manipulation and event handling with image and button.
+Create a webpage using JavaScript DOM manipulation and event handling with an image and a button. When the button is clicked, replace the displayed image with another image.
 
 ### Concept & Design
-Toggles element color and text state on button click via document.getElementById().
+Toggles an `<img>` tag's `src` attribute state on button click via `document.getElementById()`.
 
 ### Execution
 Open `Slip_08_Q2.html` in any standard web browser (Chrome, Firefox, Edge).
 
 ### Output Preview / Response
 ```text
-[Card toggles smoothly between State 1 and State 2 upon button click]
+[Image element swaps to a different picture upon button click]
 ```
 
 ---

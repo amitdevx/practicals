@@ -1,18 +1,16 @@
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
+from sklearn.preprocessing import normalize
 
-print("Executing Slip_22_Q1.py: IQR Filtering & Trimmed Mean")
-
-# Create some dummy data
 df = pd.DataFrame({
-    'A': np.random.rand(10),
-    'B': np.random.rand(10)
+    'City': ['Pune', 'Mumbai', 'Delhi'],
+    'House_Type': ['Apt', 'Villa', 'Apt'],
+    'House_Area': [1000, 2500, 1200],
+    'Number_of_Rooms': [3, 5, 3],
+    'Monthly_Rent': [20000, 80000, 25000]
 })
 
-# Plotting to ensure no matplotlib errors
-plt.figure()
-plt.scatter(df['A'], df['B'])
-plt.title("IQR Filtering & Trimmed Mean")
-plt.savefig('Slip_22_Q1.png')
-print("Successfully generated plot for IQR Filtering & Trimmed Mean")
+print("Original Data:\n", df)
+num_cols = ['House_Area', 'Number_of_Rooms', 'Monthly_Rent']
+df_norm = df.copy()
+df_norm[num_cols] = normalize(df[num_cols])
+print("\nNormalized Data:\n", df_norm)

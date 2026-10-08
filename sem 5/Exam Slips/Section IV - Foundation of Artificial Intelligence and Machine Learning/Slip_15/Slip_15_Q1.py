@@ -19,5 +19,5 @@ graph = {
     '7': ['4']
 }
 
-print("=== DFS Graph Traversal ===")
+print("\nDFS Graph Traversal\n")
 print("DFS Order starting from 1:", " -> ".join(dfs(graph, '1')))

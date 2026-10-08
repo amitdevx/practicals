@@ -10,8 +10,8 @@ Implements interactive calculator GUI with BorderLayout and GridLayout button ke
 
 ### Compilation & Execution
 ```bash
-javac Slip_15_Q1.java
-java Slip_15_Q1
+javac --module-path /path/to/javafx/lib --add-modules javafx.controls Slip_15_Q1.java
+java --module-path /path/to/javafx/lib --add-modules javafx.controls Slip_15_Q1
 ```
 
 ### Sample Output

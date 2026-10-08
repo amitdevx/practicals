@@ -16,10 +16,9 @@ java Slip_05_Q1
 
 ### Sample Output
 ```text
-Original File Content:
-Hello World from Java File Handling
-Reversed Content:
-gnildnaH eliF avaJ morf dlroW olleH
+Enter filename: sample.txt
+Reversed and Case Changed Content:
+DLROw OLLEh
 ```
 
 ---

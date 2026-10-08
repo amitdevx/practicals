@@ -1,12 +1,12 @@
 # Slip 15 — Foundation of AI & ML Solution Guide
 
-## Question 1: Depth-First Search (DFS) Traversal [10 Marks]
+## Question 1: DFS for State-Space Search [10 Marks]
 
 ### Problem Statement
-Write a program to implement DFS traversal for a graph.
+Write a program to solve a state-space search problem using DFS. Start vertex - 1
 
 ### Concept & Algorithm
-Explores as deep as possible along each branch before backtracking using a LIFO stack.
+Depth-First Search (DFS) explores as far as possible along each branch before backtracking.
 
 ### Execution
 ```bash
@@ -15,18 +15,19 @@ python3 Slip_15_Q1.py
 
 ### Output Preview
 ```text
-DFS Order: 1 -> 2 -> 5 -> 3 -> 6 -> 4 -> 7
+=== DFS Graph Traversal ===
+DFS Order starting from 1: 1 -> 2 -> 5 -> 3 -> 6 -> 4 -> 7
 ```
 
 ---
 
-## Question 2: Machine Learning Model Implementation (Slip 15) [20 Marks]
+## Question 2: Clustering Objective Functions [20 Marks]
 
 ### Problem Statement
-Implement machine learning / neural network model for prediction.
+Write Python program to demonstrate objective functions (K-Means Inertia & Silhouette Coefficient) and plot the curves.
 
 ### Concept & Algorithm
-Supervised learning training and prediction pipeline.
+Uses scikit-learn to cluster data and evaluate the clustering quality via WCSS and Silhouette Score, plotting them with matplotlib.
 
 ### Execution
 ```bash
@@ -35,20 +36,21 @@ python3 Slip_15_Q2_OptionA.py
 
 ### Output Preview
 ```text
-Model fitted and output predicted.
+=== Clustering Objective Functions ===
+Generated 'clustering_metrics.png' showing Elbow curve and Silhouette scores.
 ```
 
 ---
 
 #### OR
 
-## Question 2 (Alternative): Comparative Analysis / Alternative ML (Slip 15) [20 Marks]
+## Question 2 (Alternative): Knowledge Base [20 Marks]
 
 ### Problem Statement
-Provide comparative evaluation or alternative machine learning model.
+Write a program to build a Knowledge Base using logical rules and facts.
 
 ### Concept & Algorithm
-Evaluates architectural trade-offs between machine learning paradigms.
+A simple knowledge base can be built using dictionaries for facts and functions for rules that infer new information based on the facts.
 
 ### Execution
 ```bash
@@ -57,24 +59,20 @@ python3 Slip_15_Q2_OptionB.py
 
 ### Output Preview
 ```text
-Evaluation completed.
+=== Simple Knowledge Base ===
+Facts: {'is_raining': True, 'has_umbrella': False}
+Inference 1: You will get wet.
 ```
 
 ---
 
 ## Question 3: Oral / Viva Questions & Answers [5 Marks]
 
-### Q1. What is the difference between informed and uninformed search?
-**Answer:** Uninformed search (BFS, DFS) has no knowledge of how close a state is to the goal; Informed search (A*, Best-First) uses heuristic functions to guide search.
+### Q1. What is DFS?
+**Answer:** Depth-First Search is an algorithm that explores a graph by going as deep as possible before backtracking.
 
-### Q2. What is the difference between Forward Chaining and Backward Chaining?
-**Answer:** Forward Chaining is data-driven, starting from known facts to infer new conclusions; Backward Chaining is goal-driven, starting from a goal to verify supporting facts.
+### Q2. What is K-Means Inertia (WCSS)?
+**Answer:** WCSS is the sum of squared distances between each data point and its assigned cluster centroid.
 
-### Q3. What is a Support Vector Machine (SVM)?
-**Answer:** A supervised algorithm that finds the optimal hyperplane that maximizes the margin between classes.
-
-### Q4. What is the Kernel Trick in SVM?
-**Answer:** A method of mapping input data into higher-dimensional feature spaces to make non-linearly separable data linearly separable without computing explicit coordinates.
-
-### Q5. What is an activation function in Neural Networks?
-**Answer:** A mathematical function (e.g. ReLU, Sigmoid, Tanh) applied to a neuron's weighted sum to introduce non-linearity into the network.
+### Q3. What is the Silhouette Score?
+**Answer:** A metric to calculate the goodness of a clustering technique. It ranges from -1 to 1, where 1 means clusters are well apart.

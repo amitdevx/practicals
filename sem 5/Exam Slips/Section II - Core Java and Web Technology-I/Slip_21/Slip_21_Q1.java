@@ -32,7 +32,7 @@ class Department extends College {
 public class Slip_21_Q1 {
     public static void main(String[] args) {
         Department dept = new Department(101, "Modern College", "Shivajinagar, Pune", 1, "Computer Science");
-        System.out.println("--- College & Department Details ---");
+        System.out.println("\nCollege & Department Details\n");
         dept.display();
     }
 }

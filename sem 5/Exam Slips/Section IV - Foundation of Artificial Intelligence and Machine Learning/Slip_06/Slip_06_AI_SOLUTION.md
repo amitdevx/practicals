@@ -1,12 +1,12 @@
 # Slip 06 — Foundation of AI & ML Solution Guide
 
-## Question 1: Search Algorithm Implementation (Slip 06) [10 Marks]
+## Question 1: DFS Traversal for a graph (Slip 06) [10 Marks]
 
 ### Problem Statement
-Write program to implement search algorithm for state-space problem.
+Write a program to implement DFS traversal for a graph.
 
 ### Concept & Algorithm
-Systematic graph search exploring node connectivity.
+Depth-First Search (DFS) algorithm exploring node connectivity systematically until exhaustion, typically using recursion (call stack).
 
 ### Execution
 ```bash
@@ -15,18 +15,22 @@ python3 Slip_06_Q1.py
 
 ### Output Preview
 ```text
-Search traversal successfully completed.
+DFS Traversal starting from A:
+A B D E F C 
 ```
 
 ---
 
-## Question 2: Machine Learning Model Implementation (Slip 06) [20 Marks]
+## Question 2: Non-Linear Support Vector Machine (SVM) (Slip 06) [20 Marks]
 
 ### Problem Statement
-Implement machine learning / neural network model for prediction.
+Write a program to implement a Non-Linear Support Vector Machine (SVM) using the Radial Basis Function (RBF) Kernel.
+Input Data : X = [ [1, 2], [2, 3],[5, 5] ] 
+Class Labels : y = [0, 0, 1] 
+Test Input : [4, 4]
 
 ### Concept & Algorithm
-Supervised learning training and prediction pipeline.
+SVM classifier training with non-linear RBF kernel to handle complex datasets boundaries.
 
 ### Execution
 ```bash
@@ -35,20 +39,25 @@ python3 Slip_06_Q2_OptionA.py
 
 ### Output Preview
 ```text
-Model fitted and output predicted.
+Input Data (X): [[1, 2], [2, 3], [5, 5]]
+Class Labels (y): [0, 0, 1]
+Test Input: [[4, 4]]
+Predicted Class: 1
 ```
 
 ---
 
 #### OR
 
-## Question 2 (Alternative): Comparative Analysis / Alternative ML (Slip 06) [20 Marks]
+## Question 2 (Alternative): Basic Artificial Neural Network (ANN) (Slip 06) [20 Marks]
 
 ### Problem Statement
-Provide comparative evaluation or alternative machine learning model.
+Write a program to implement a Basic Artificial Neural Network (ANN) for predicting outputs from input data as given below. Use different values for the hyperparameters for the learning rate and number of epochs. Find the ideal value for learning rate and # of epochs.
+Learning rate: 0.1, and number of epoch = 20 (initially).
+Input_vectors = [ [3, 1.5], [2, 1], [4, 1.5], [3, 4], [3.5, 0.5], [2, 0.5], [5.5, 1], [1, 1] ] and targets = [0, 1, 0, 1, 0, 1, 1, 0]
 
 ### Concept & Algorithm
-Evaluates architectural trade-offs between machine learning paradigms.
+Trains a multi-layer perceptron (ANN) over provided inputs, systematically evaluating over varying hyperparameters (epochs, learning rates).
 
 ### Execution
 ```bash
@@ -57,7 +66,15 @@ python3 Slip_06_Q2_OptionB.py
 
 ### Output Preview
 ```text
-Evaluation completed.
+Evaluating Basic ANN with different hyperparameters:
+
+LR: 0.01, Epochs: 20   -> Accuracy: 0.50
+LR: 0.01, Epochs: 100  -> Accuracy: 0.75
+LR: 0.01, Epochs: 500  -> Accuracy: 0.75
+...
+Ideal Hyperparameters found:
+Learning Rate: 0.01, Epochs: 100
+Best Accuracy: 0.75
 ```
 
 ---

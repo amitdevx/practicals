@@ -5,28 +5,26 @@
     <title>DOM Image Switcher</title>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #fdfefe; }
-        .img-box { width: 300px; height: 200px; line-height: 200px; margin: 20px auto; border-radius: 8px; color: white; font-weight: bold; font-size: 24px; transition: background 0.3s; }
         button { padding: 12px 24px; font-size: 16px; background: #2c3e50; color: white; border: none; border-radius: 4px; cursor: pointer; }
         button:hover { background: #1a252f; }
+        img { border: 2px solid #ccc; border-radius: 8px; margin-bottom: 20px;}
     </style>
 </head>
 <body>
     <h2>JavaScript DOM Manipulation & Event Handling</h2>
-    <div id="imgBox" class="imgBox" style="background:#3498db;">State 1 (Blue)</div>
-    <button onclick="toggleImage()">Toggle Image State</button>
+    <img id="myImage" src="https://via.placeholder.com/300x200?text=Image+1" alt="Image 1"><br>
+    <button onclick="toggleImage()">Switch Image</button>
 
     <script>
-        let isAlt = false;
         function toggleImage() {
-            const box = document.getElementById('imgBox');
-            if (!isAlt) {
-                box.style.backgroundColor = '#e67e22';
-                box.innerText = 'State 2 (Orange)';
+            var img = document.getElementById('myImage');
+            if (img.src.includes('Image+1')) {
+                img.src = 'https://via.placeholder.com/300x200/e67e22/ffffff?text=Image+2';
+                img.alt = 'Image 2';
             } else {
-                box.style.backgroundColor = '#3498db';
-                box.innerText = 'State 1 (Blue)';
+                img.src = 'https://via.placeholder.com/300x200?text=Image+1';
+                img.alt = 'Image 1';
             }
-            isAlt = !isAlt;
         }
     </script>
 </body>

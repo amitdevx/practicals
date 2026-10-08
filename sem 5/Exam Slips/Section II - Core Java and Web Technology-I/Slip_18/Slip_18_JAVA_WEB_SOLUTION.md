@@ -10,8 +10,8 @@ Uses JButtons with ActionListeners to modify content pane background color and p
 
 ### Compilation & Execution
 ```bash
-javac Slip_18_Q1.java
-java Slip_18_Q1
+javac --module-path $PATH_TO_FX --add-modules javafx.controls Slip_18_Q1.java
+java --module-path $PATH_TO_FX --add-modules javafx.controls Slip_18_Q1
 ```
 
 ### Sample Output

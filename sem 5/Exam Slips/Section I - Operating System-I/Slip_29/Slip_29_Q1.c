@@ -18,12 +18,16 @@ void sort_array(int arr[], int n) {
 }
 
 int main() {
-    int n = 5;
-    int arr[] = {45, 12, 89, 23, 7};
-
-    printf("[Parent] Original Array: ");
-    for (int i = 0; i < n; i++) printf("%d ", arr[i]);
-    printf("\n");
+    int n, target;
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+    int arr[n];
+    printf("Enter %d elements: ", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    printf("Enter target element to search: ");
+    scanf("%d", &target);
 
     sort_array(arr, n);
     printf("[Parent] Sorted Array: ");
@@ -36,27 +40,22 @@ int main() {
         perror("fork");
         exit(1);
     } else if (pid == 0) {
-        // Child process performs binary search
-        int target = 23;
-        int low = 0, high = n - 1, found = -1;
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-            if (arr[mid] == target) {
-                found = mid;
-                break;
-            } else if (arr[mid] < target) {
-                low = mid + 1;
-            } else {
-                high = mid - 1;
-            }
+        char *args[n + 3];
+        args[0] = "./Slip_29_Q1_binary_search";
+        char target_str[20];
+        sprintf(target_str, "%d", target);
+        args[1] = target_str;
+
+        for (int i = 0; i < n; i++) {
+            args[i + 2] = malloc(20);
+            sprintf(args[i + 2], "%d", arr[i]);
         }
-        printf("[Child PID: %d] Binary Searching for %d in sorted array...\n", getpid(), target);
-        if (found != -1) {
-            printf("[Child] Element %d found at index %d!\n", target, found);
-        } else {
-            printf("[Child] Element %d not found.\n", target);
-        }
-        exit(0);
+        args[n + 2] = NULL;
+        
+        char *envp[] = {NULL};
+        execve(args[0], args, envp);
+        perror("execve");
+        exit(1);
     } else {
         wait(NULL);
         printf("[Parent] Child search operation completed.\n");

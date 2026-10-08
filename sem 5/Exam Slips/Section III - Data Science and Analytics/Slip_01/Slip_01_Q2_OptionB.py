@@ -1,19 +1,33 @@
-import pandas as pd
 from sklearn.datasets import load_iris
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report, accuracy_score
+from sklearn.cluster import KMeans
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import pandas as pd
 
+# Load Iris dataset
 iris = load_iris()
 X = iris.data
-y = iris.target
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+# Apply K-Means clustering
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
+y_kmeans = kmeans.fit_predict(X)
 
-model = LogisticRegression(max_iter=200)
-model.fit(X_train, y_train)
+# Display cluster centroids
+print("Cluster Centroids:\n", kmeans.cluster_centers_)
 
-y_pred = model.predict(X_test)
-print("=== Logistic Regression on Iris Dataset ===")
-print("Accuracy:", accuracy_score(y_test, y_pred))
-print("\nClassification Report:\n", classification_report(y_test, y_pred, target_names=iris.target_names))
+# Plot the datapoints and visualize clusters
+plt.figure(figsize=(8, 6))
+plt.scatter(X[y_kmeans == 0, 0], X[y_kmeans == 0, 1], s=50, c='red', label='Cluster 1')
+plt.scatter(X[y_kmeans == 1, 0], X[y_kmeans == 1, 1], s=50, c='blue', label='Cluster 2')
+plt.scatter(X[y_kmeans == 2, 0], X[y_kmeans == 2, 1], s=50, c='green', label='Cluster 3')
+
+# Plot the centroids
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s=200, c='yellow', marker='*', label='Centroids')
+
+plt.title('K-Means Clustering on Iris Dataset')
+plt.xlabel(iris.feature_names[0])
+plt.ylabel(iris.feature_names[1])
+plt.legend()
+plt.savefig('kmeans_clusters.png')
+print("Plot saved as kmeans_clusters.png")

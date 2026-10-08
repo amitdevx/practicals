@@ -1,18 +1,27 @@
 import pandas as pd
-import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import seaborn as sns
 
-print("Executing Slip_12_Q1.py: Violin Plot & Distribution Comparison")
+data = {
+    'Pclass': [1, 3, 3, 1, 2, 3, 1, 3, 2, 2],
+    'Survived': [1, 0, 1, 1, 0, 0, 0, 1, 1, 0]
+}
+df = pd.DataFrame(data)
 
-# Create some dummy data
-df = pd.DataFrame({
-    'A': np.random.rand(10),
-    'B': np.random.rand(10)
-})
+plt.figure(figsize=(10, 5))
 
-# Plotting to ensure no matplotlib errors
-plt.figure()
-plt.scatter(df['A'], df['B'])
-plt.title("Violin Plot & Distribution Comparison")
-plt.savefig('Slip_12_Q1.png')
-print("Successfully generated plot for Violin Plot & Distribution Comparison")
+plt.subplot(1, 2, 1)
+sns.histplot(df['Pclass'], bins=3, kde=False)
+plt.title('Passenger Class Histogram')
+plt.xticks([1, 2, 3])
+
+plt.subplot(1, 2, 2)
+survived_counts = df['Survived'].value_counts()
+plt.pie(survived_counts, labels=['Died', 'Survived'], autopct='%1.1f%%', colors=['red', 'green'])
+plt.title('Survival Distribution')
+
+plt.tight_layout()
+plt.savefig('titanic_plots.png')
+print("Saved titanic_plots.png")

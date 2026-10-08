@@ -1,18 +1,20 @@
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
+from sklearn.datasets import load_wine
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
-print("Executing Slip_13_Q2_OptionA.py: K-Means Customer Segmentation")
+wine = load_wine()
+X = wine.data
+y = wine.target
 
-# Create some dummy data
-df = pd.DataFrame({
-    'A': np.random.rand(10),
-    'B': np.random.rand(10)
-})
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-# Plotting to ensure no matplotlib errors
-plt.figure()
-plt.scatter(df['A'], df['B'])
-plt.title("K-Means Customer Segmentation")
-plt.savefig('Slip_13_Q2_OptionA.png')
-print("Successfully generated plot for K-Means Customer Segmentation")
+knn = KNeighborsClassifier(n_neighbors=5)
+knn.fit(X_train, y_train)
+y_pred = knn.predict(X_test)
+
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("Precision (macro):", precision_score(y_test, y_pred, average='macro'))
+print("Recall (macro):", recall_score(y_test, y_pred, average='macro'))
+print("F1 Score (macro):", f1_score(y_test, y_pred, average='macro'))

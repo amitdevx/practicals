@@ -1,23 +1,31 @@
 # Slip 29 — Operating System-I Solution Guide
 
-## Question 1: Process Sorting and Binary Search with Fork [15 Marks]
+## Question 1: Process Sorting and Binary Search with Execve [15 Marks]
 
 ### Problem Statement
-Implement C program that accepts an integer array. Parent sorts array; child performs binary search.
+Implement C program that accepts an integer array. Parent sorts array, passes to child via command line arguments of execve(). Child loads new program to perform binary search.
 
 ### Concept & Algorithm
-1. Multiprocess coordination with sorting in parent and binary search in child.
+1. Parent sorts the array.
+2. Parent forks a child.
+3. Child uses `execve()` to load a secondary binary search program, passing the sorted array and target as command line arguments.
 
 ### Compilation & Execution
 ```bash
 gcc -Wall -Wextra -o Slip_29_Q1 Slip_29_Q1.c
+gcc -Wall -Wextra -o Slip_29_Q1_binary_search Slip_29_Q1_binary_search.c
 ./Slip_29_Q1
 ```
 
 ### Sample Output
 ```text
+Enter number of elements: 5
+Enter 5 elements: 45 12 89 23 7
+Enter target element to search: 23
 [Parent] Sorted Array: 7 12 23 45 89 
+[Child PID: 15015] Binary Searching for 23 in sorted array...
 [Child] Element 23 found at index 2!
+[Parent] Child search operation completed.
 ```
 
 ---

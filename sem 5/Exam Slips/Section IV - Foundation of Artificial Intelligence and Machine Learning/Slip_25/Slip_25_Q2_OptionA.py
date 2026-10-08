@@ -1,28 +1,17 @@
-# Forward Chaining Inference Engine
-facts = {'A', 'B'}
-rules = [
-    ({'A', 'B'}, 'C'),
-    ({'C', 'D'}, 'E'),
-    ({'C'}, 'F'),
-    ({'F'}, 'Goal_Reached')
-]
+import math
 
-def forward_chaining(facts, rules, goal):
-    inferred = set(facts)
-    new_inferred = True
+def minimax(curDepth, nodeIndex, maxTurn, scores, targetDepth):
+    if curDepth == targetDepth:
+        return scores[nodeIndex]
+    
+    if maxTurn:
+        return max(minimax(curDepth + 1, nodeIndex * 2, False, scores, targetDepth),
+                   minimax(curDepth + 1, nodeIndex * 2 + 1, False, scores, targetDepth))
+    else:
+        return min(minimax(curDepth + 1, nodeIndex * 2, True, scores, targetDepth),
+                   minimax(curDepth + 1, nodeIndex * 2 + 1, True, scores, targetDepth))
 
-    while new_inferred:
-        new_inferred = False
-        for premises, conclusion in rules:
-            if premises.issubset(inferred) and conclusion not in inferred:
-                inferred.add(conclusion)
-                print(f"[Rule Fired] {premises} -> {conclusion}")
-                new_inferred = True
-                if conclusion == goal:
-                    return True
-    return False
-
-print("=== Forward Chaining Inference ===")
-print("Initial Facts:", facts)
-success = forward_chaining(facts, rules, 'Goal_Reached')
-print("Goal Achieved:", success)
+scores = [3, 5, 2, 9, 12, 5, 23, 23]
+treeDepth = math.log2(len(scores))
+print("\nMinimax Algorithm\n")
+print("Optimal value is:", minimax(0, 0, True, scores, int(treeDepth)))

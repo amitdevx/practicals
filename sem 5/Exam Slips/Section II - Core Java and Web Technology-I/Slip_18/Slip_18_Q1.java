@@ -1,43 +1,35 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
-public class Slip_18_Q1 extends JFrame implements ActionListener {
-    JButton redBtn, greenBtn, blueBtn;
+public class Slip_18_Q1 extends Application {
+    @Override
+    public void start(Stage primaryStage) {
+        StackPane root = new StackPane();
+        HBox buttons = new HBox(10);
+        buttons.setAlignment(Pos.CENTER);
 
-    public Slip_18_Q1() {
-        setTitle("Color Button App");
-        setSize(350, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new FlowLayout());
+        Button redBtn = new Button("Red");
+        Button greenBtn = new Button("Green");
+        Button blueBtn = new Button("Blue");
 
-        redBtn = new JButton("Red");
-        greenBtn = new JButton("Green");
-        blueBtn = new JButton("Blue");
+        redBtn.setOnAction(e -> { root.setStyle("-fx-background-color: red;"); System.out.println("RED"); });
+        greenBtn.setOnAction(e -> { root.setStyle("-fx-background-color: green;"); System.out.println("GREEN"); });
+        blueBtn.setOnAction(e -> { root.setStyle("-fx-background-color: blue;"); System.out.println("BLUE"); });
 
-        redBtn.addActionListener(this);
-        greenBtn.addActionListener(this);
-        blueBtn.addActionListener(this);
+        buttons.getChildren().addAll(redBtn, greenBtn, blueBtn);
+        root.getChildren().add(buttons);
 
-        add(redBtn);
-        add(greenBtn);
-        add(blueBtn);
-    }
-
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == redBtn) {
-            getContentPane().setBackground(Color.RED);
-            System.out.println("Selected Color: RED");
-        } else if (e.getSource() == greenBtn) {
-            getContentPane().setBackground(Color.GREEN);
-            System.out.println("Selected Color: GREEN");
-        } else if (e.getSource() == blueBtn) {
-            getContentPane().setBackground(Color.BLUE);
-            System.out.println("Selected Color: BLUE");
-        }
+        primaryStage.setScene(new Scene(root, 350, 200));
+        primaryStage.setTitle("Color Button App");
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new Slip_18_Q1().setVisible(true));
+        launch(args);
     }
 }

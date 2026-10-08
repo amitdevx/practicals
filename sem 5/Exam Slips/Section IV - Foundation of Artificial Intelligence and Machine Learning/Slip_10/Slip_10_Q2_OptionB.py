@@ -20,5 +20,5 @@ svm_pipe = Pipeline([
 svm_pipe.fit(X_train, y_train)
 y_pred = svm_pipe.predict(X_test)
 
-print("=== SVM Pipeline on Iris Dataset ===")
+print("\nSVM Pipeline on Iris Dataset\n")
 print(classification_report(y_test, y_pred, target_names=iris.target_names))

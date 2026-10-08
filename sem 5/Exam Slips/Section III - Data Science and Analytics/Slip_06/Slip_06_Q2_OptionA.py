@@ -1,26 +1,29 @@
-import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import r2_score
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 
-# Salary Prediction Dataset
 data = {
-    'Years_Experience': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    'Education_Level': [1, 1, 2, 2, 3, 2, 3, 3, 4, 4], # 1:Bachelors, 2:Masters etc.
-    'Salary': [45000, 50000, 60000, 65000, 75000, 70000, 85000, 90000, 105000, 110000]
+    'Training_Hours': [5, 10, 15, 20, 25, 30, 35, 40],
+    'Performance_Score': [50, 55, 65, 70, 75, 85, 90, 95]
 }
 df = pd.DataFrame(data)
-
-X = df[['Years_Experience', 'Education_Level']]
-y = df['Salary']
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X = df[['Training_Hours']]
+y = df['Performance_Score']
 
 model = LinearRegression()
-model.fit(X_train, y_train)
+model.fit(X, y)
+y_pred = model.predict(X)
 
-y_pred = model.predict(X_test)
-print("=== Multiple Linear Regression for Salary Prediction ===")
-print("R2 Score:", r2_score(y_test, y_pred))
-print("Mean Squared Error:", mean_squared_error(y_test, y_pred))
+print("R2 Score:", r2_score(y, y_pred))
+
+plt.figure(figsize=(8, 6))
+plt.scatter(X, y, color='blue', label='Actual')
+plt.plot(X, y_pred, color='red', label='Regression Line')
+plt.title('Sports Performance Prediction')
+plt.xlabel('Training Hours Per Week')
+plt.ylabel('Performance Score')
+plt.legend()
+plt.savefig('performance_regression.png')

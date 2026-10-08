@@ -15,7 +15,8 @@ python3 Slip_03_Q1.py
 
 ### Output Preview
 ```text
-BFS Order: V1 -> V2 -> V3 -> V5 -> V4
+=== BFS Graph Traversal ===
+BFS Order starting from V1: V1 -> V2 -> V3 -> V5 -> V4
 ```
 
 ---
@@ -23,7 +24,7 @@ BFS Order: V1 -> V2 -> V3 -> V5 -> V4
 ## Question 2: Alpha-Beta Pruning Algorithm [20 Marks]
 
 ### Problem Statement
-Write a program to implement Alpha-Beta Pruning for adversarial search.
+Write a program to implement Alpha-Beta Pruning for optimizing the Minimax search process.
 
 ### Concept & Algorithm
 Prunes subtrees that cannot influence the final minimax decision (when beta <= alpha).
@@ -48,10 +49,10 @@ Optimal Game Value at Root: 3
 ## Question 2 (Alternative): Propositional Logic Truth Table [20 Marks]
 
 ### Problem Statement
-Write a program to implement Propositional Logic and evaluate operators (AND, OR, IMPLIES, IFF).
+Write a program to implement Propositional Logic and evaluate logical expressions using operators such as AND, OR, and NOT.
 
 ### Concept & Algorithm
-Constructs truth tables for logical connectives: conjunction, disjunction, material implication, and equivalence.
+Constructs truth tables for logical connectives: conjunction (AND), disjunction (OR), and negation (NOT).
 
 ### Execution
 ```bash
@@ -60,7 +61,13 @@ python3 Slip_03_Q2_OptionB.py
 
 ### Output Preview
 ```text
-Truth Table printed with all evaluations.
+=== Propositional Logic Evaluator ===
+P	Q	NOT P	P AND Q	P OR Q
+-------------------------------------------------------
+True	True	False	True	True
+True	False	False	False	True
+False	True	True	False	True
+False	False	True	False	False
 ```
 
 ---

@@ -6,7 +6,7 @@
 Write a program to solve the Water Jug Problem using BFS.
 
 ### Concept & Algorithm
-Explores state transitions using breadth-first queue.
+Explores state transitions using breadth-first search queue.
 
 ### Execution
 ```bash
@@ -15,7 +15,12 @@ python3 Slip_13_Q1.py
 
 ### Output Preview
 ```text
-Step 0 to final step reaching 2 liters.
+=== Water Jug Problem (4L, 3L -> Target 2L) ===
+Step 0: Jug A = 0L, Jug B = 0L
+Step 1: Jug A = 0L, Jug B = 3L
+Step 2: Jug A = 3L, Jug B = 0L
+Step 3: Jug A = 3L, Jug B = 3L
+Step 4: Jug A = 4L, Jug B = 2L
 ```
 
 ---
@@ -23,10 +28,10 @@ Step 0 to final step reaching 2 liters.
 ## Question 2: Voting Classifier Ensemble [20 Marks]
 
 ### Problem Statement
-Write a program to implement Voting Classifier combining multiple ML models.
+Write a program to implement a Voting Classifier by combining multiple machine learning models such as Logistic Regression and Decision Tree.
 
 ### Concept & Algorithm
-Combines Logistic Regression, Decision Tree, and KNN via majority voting.
+Combines Logistic Regression and Decision Tree via hard voting classifier.
 
 ### Execution
 ```bash
@@ -35,20 +40,21 @@ python3 Slip_13_Q2_OptionA.py
 
 ### Output Preview
 ```text
-Ensemble Accuracy: 1.00
+=== Voting Classifier Ensemble ===
+Ensemble Accuracy: 1.0
 ```
 
 ---
 
 #### OR
 
-## Question 2 (Alternative): Comparative Analysis / Alternative ML (Slip 13) [20 Marks]
+## Question 2 (Alternative): Knowledge Graph [20 Marks]
 
 ### Problem Statement
-Provide comparative evaluation or alternative machine learning model.
+Write a program to develop a simple Knowledge Graph representing relationships among entities.
 
 ### Concept & Algorithm
-Evaluates architectural trade-offs between machine learning paradigms.
+Represents entities and relationships using a dictionary-based graph structure.
 
 ### Execution
 ```bash
@@ -57,7 +63,11 @@ python3 Slip_13_Q2_OptionB.py
 
 ### Output Preview
 ```text
-Evaluation completed.
+=== Simple Knowledge Graph ===
+Alice --[knows]--> Bob
+Alice --[is interested in]--> Artificial Intelligence
+Bob --[studies]--> Computer Science
+Computer Science --[includes]--> Artificial Intelligence
 ```
 
 ---

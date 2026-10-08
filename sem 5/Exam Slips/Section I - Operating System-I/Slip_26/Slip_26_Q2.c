@@ -4,7 +4,9 @@
 int main() {
     int ref[] = {3, 4, 5, 6, 3, 4, 7, 3, 4, 5, 6, 7, 2, 4, 6};
     int n = sizeof(ref) / sizeof(ref[0]);
-    int frames_count = 3;
+    int frames_count;
+    printf("Enter number of frames: ");
+    if (scanf("%d", &frames_count) != 1 || frames_count <= 0) frames_count = 3;
 
     printf("FIFO Page Replacement Simulation\n");
     printf("Number of Frames: %d\n", frames_count);
@@ -17,7 +19,6 @@ int main() {
     int next_replace_idx = 0;
 
     printf("Step\tPage\tFrames\t\tStatus\n");
-    printf("-------------------------------------------------\n");
 
     for (int i = 0; i < n; i++) {
         int page = ref[i];
@@ -50,7 +51,6 @@ int main() {
         }
     }
 
-    printf("-------------------------------------------------\n");
     printf("Total Page Faults: %d\n", page_faults);
     printf("Total Hits: %d\n", n - page_faults);
 

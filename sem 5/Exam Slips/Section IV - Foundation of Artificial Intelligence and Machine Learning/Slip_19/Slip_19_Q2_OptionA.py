@@ -1,19 +1,12 @@
-import numpy as np
-from sklearn.neural_network import MLPClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-
-X = np.array([
-    [0, 0], [0, 1], [1, 0], [1, 1],
-    [2, 2], [2, 3], [3, 2], [3, 3]
-])
-y = np.array([0, 0, 0, 0, 1, 1, 1, 1])
-
-ann = MLPClassifier(hidden_layer_sizes=(4, 2), max_iter=1000, activation='relu', random_state=42)
-ann.fit(X, y)
-
-test_data = np.array([[0.5, 0.5], [2.5, 2.5]])
-preds = ann.predict(test_data)
-print("=== Artificial Neural Network (MLP) ===")
-print("Test Input:", test_data.tolist())
-print("Predicted Output:", preds.tolist())
+print("\nCNN for Image Recognition (Orange vs Apple)\n")
+print("import tensorflow as tf")
+print("from tensorflow.keras import layers, models")
+print("model = models.Sequential([")
+print("    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(64, 64, 3)),")
+print("    layers.MaxPooling2D((2, 2)),")
+print("    layers.Flatten(),")
+print("    layers.Dense(64, activation='relu'),")
+print("    layers.Dense(1, activation='sigmoid') # Binary classification")
+print("])")
+print("model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])")
+print("print('CNN model constructed successfully.')")

@@ -1,18 +1,23 @@
 import pandas as pd
-import matplotlib.pyplot as plt
+from sklearn.preprocessing import LabelEncoder
 
-sales_data = {
-    'Month': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-    'Sales_Units': [1200, 1350, 1100, 1600, 1850, 2100]
+# Create customer DataFrame
+data = {
+    'Customer_ID': [1, 2, 3, 4, 5],
+    'Gender': ['Male', 'Female', 'Female', 'Male', 'Female'],
+    'City': ['Pune', 'Mumbai', 'Pune', 'Delhi', 'Mumbai'],
+    'Membership_Type': ['Gold', 'Silver', 'Bronze', 'Gold', 'Silver']
 }
-df = pd.DataFrame(sales_data)
+df = pd.DataFrame(data)
 
-plt.figure(figsize=(8, 4.5))
-plt.plot(df['Month'], df['Sales_Units'], marker='o', color='#2980b9', linewidth=2.5, markersize=7)
-plt.title('Monthly Sales Trend', fontsize=14, fontweight='bold')
-plt.xlabel('Month', fontsize=12)
-plt.ylabel('Sales (Units)', fontsize=12)
-plt.grid(True, linestyle='--', alpha=0.6)
-plt.tight_layout()
-plt.savefig('ds_slip_05_q1_linechart.png')
-print("[+] Line chart saved as ds_slip_05_q1_linechart.png")
+print("\nDataFrame Before Encoding\n")
+print(df)
+
+# Perform label encoding on categorical attributes
+label_encoder = LabelEncoder()
+df['Gender'] = label_encoder.fit_transform(df['Gender'])
+df['City'] = label_encoder.fit_transform(df['City'])
+df['Membership_Type'] = label_encoder.fit_transform(df['Membership_Type'])
+
+print("\nDataFrame After Encoding\n")
+print(df)

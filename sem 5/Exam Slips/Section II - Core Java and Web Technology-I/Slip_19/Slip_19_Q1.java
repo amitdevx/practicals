@@ -3,13 +3,9 @@ import java.util.Scanner;
 
 public class Slip_19_Q1 {
     public static void main(String[] args) {
-        String filename = "sample.txt";
-        // Create demo file
-        try (FileWriter fw = new FileWriter(filename)) {
-            fw.write("Java practical examination.\nSem V computer science.\nWeb technology practicals.");
-        } catch (IOException e) {
-            System.out.println("Error initializing file.");
-        }
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter file name: ");
+        String filename = scanner.nextLine();
 
         int charCount = 0, wordCount = 0, lineCount = 0;
 

@@ -1,12 +1,12 @@
 # Slip 30 — Operating System-I Solution Guide
 
-## Question 1: Round Robin (RR) CPU Scheduling [15 Marks]
+## Question 1: Round Robin (RR) CPU Scheduling with I/O [15 Marks]
 
 ### Problem Statement
-Write program to simulate Round Robin (RR) CPU-scheduling. Arrival time and burst time input, time quantum. Output Gantt chart, TAT, WT, avg TAT & WT.
+Write program to simulate Round Robin (RR) CPU-scheduling. Arrival time and 1st burst time input, time quantum. Assume fixed IO waiting time (2 units). Generate next CPU-burst randomly. Output Gantt chart, TAT, WT, avg TAT & WT.
 
 ### Concept & Algorithm
-1. Time-sharing scheduling algorithm with fixed time quantum.
+1. Time-sharing scheduling algorithm with fixed time quantum. Processes undergo a CPU burst, an I/O burst, and a final CPU burst.
 
 ### Compilation & Execution
 ```bash
@@ -16,10 +16,17 @@ gcc -Wall -Wextra -o Slip_30_Q1 Slip_30_Q1.c
 
 ### Sample Output
 ```text
+Enter number of processes: 3
+Enter Time Quantum: 2
+Process P1 - Enter Arrival Time and 1st Burst Time: 0 4
+Process P2 - Enter Arrival Time and 1st Burst Time: 1 5
+Process P3 - Enter Arrival Time and 1st Burst Time: 2 2
 --- Gantt Chart ---
- | P1 | P2 | P3 | P2 | P3 | P3 |
-Average Turnaround Time: 11.67
-Average Waiting Time: 5.67
+| P1 | P2 | P3 | P1 | P2 | P3 | P1 | P2 | P3 | P2 | P3 | P2 |
+Total Time: 21
+
+Average Turnaround Time: 17.33
+Average Waiting Time: 8.33
 ```
 
 ---

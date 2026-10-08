@@ -1,13 +1,14 @@
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-categories = ['HR', 'Finance', 'IT', 'Sales', 'Marketing']
-counts = [45, 60, 140, 95, 50]
+courses = ["BCA", "BBA", "B.Com", "B.Sc", "BA"]
+students = [60, 45, 75, 50, 35]
 
-plt.figure(figsize=(8, 4.5))
-plt.bar(categories, counts, color=['#3498db', '#e67e22', '#2ecc71', '#9b59b6', '#f1c40f'])
-plt.title('Department Employee Distribution (Slip 07)')
-plt.xlabel('Department')
-plt.ylabel('Employees')
-plt.tight_layout()
-plt.savefig('ds_slip_07_q1.png')
-print("[+] Bar chart saved.")
+plt.figure(figsize=(8,6))
+plt.bar(courses, students, color=['blue', 'green', 'red', 'purple', 'orange'])
+plt.title('Number of Students Enrolled in Different Courses')
+plt.xlabel('Courses')
+plt.ylabel('Number of Students')
+plt.savefig('courses_bar.png')
+print("Plot saved as courses_bar.png")

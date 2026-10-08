@@ -17,7 +17,6 @@ int main() {
     int next_replace_idx = 0;
 
     printf("Step\tPage\tFrames\t\tStatus\n");
-    printf("-------------------------------------------------\n");
 
     for (int i = 0; i < n; i++) {
         int page = ref[i];
@@ -50,7 +49,6 @@ int main() {
         }
     }
 
-    printf("-------------------------------------------------\n");
     printf("Total Page Faults: %d\n", page_faults);
     printf("Total Hits: %d\n", n - page_faults);
 

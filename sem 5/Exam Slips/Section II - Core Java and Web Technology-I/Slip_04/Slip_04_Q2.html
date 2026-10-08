@@ -2,25 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DOM Background Color Switcher</title>
+    <title>Change Heading Text</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding-top: 100px; transition: background 0.4s; }
+        body { font-family: Arial, sans-serif; text-align: center; padding-top: 100px; }
         h1 { color: #333; }
         button { padding: 12px 24px; font-size: 16px; font-weight: bold; background: #3498db; color: white; border: none; border-radius: 6px; cursor: pointer; }
         button:hover { background: #2980b9; }
     </style>
 </head>
 <body>
-    <h1 id="heading">Click Button to Change Background Color</h1>
-    <button onclick="changeBackground()">Change Color</button>
+    <h1 id="heading">Hello! Welcome</h1>
+    <button onclick="changeText()">Change Text</button>
 
     <script>
-        const colors = ['#f1c40f', '#e74c3c', '#2ecc71', '#9b59b6', '#34495e', '#1abc9c'];
-        let idx = 0;
-        function changeBackground() {
-            document.body.style.backgroundColor = colors[idx];
-            document.getElementById('heading').innerText = "Current Background: " + colors[idx];
-            idx = (idx + 1) % colors.length;
+        function changeText() {
+            document.getElementById('heading').innerText = "Text Changed Successfully!";
         }
     </script>
 </body>

@@ -1,26 +1,16 @@
-def objective(x):
-    # F(x) = -x^2 + 4x
+def objective_function(x):
     return -x**2 + 4*x
 
-def hill_climbing(start_x, step_size=0.1, max_iter=100):
+def hill_climbing(start_x, step_size=0.1, max_iters=1000):
     current_x = start_x
-    current_val = objective(current_x)
+    for _ in range(max_iters):
+        neighbors = [current_x - step_size, current_x + step_size]
+        best_neighbor = max(neighbors, key=objective_function)
+        if objective_function(best_neighbor) <= objective_function(current_x):
+            break
+        current_x = best_neighbor
+    return current_x
 
-    for i in range(max_iter):
-        next_left = current_x - step_size
-        next_right = current_x + step_size
-        val_left = objective(next_left)
-        val_right = objective(next_right)
-
-        if val_right > current_val and val_right >= val_left:
-            current_x, current_val = next_right, val_right
-        elif val_left > current_val:
-            current_x, current_val = next_left, val_left
-        else:
-            break # Local maximum reached
-    return current_x, current_val
-
-opt_x, opt_val = hill_climbing(start_x=0.0)
-print("=== Hill Climbing Algorithm ===")
-print("Objective Function: F(x) = -x^2 + 4x")
-print(f"Maximum found at x = {opt_x:.4f} with value F(x) = {opt_val:.4f}")
+res = hill_climbing(0)
+print("\nHill Climbing Algorithm\n")
+print(f"Maximum found at x = {res:.2f}, f(x) = {objective_function(res):.2f}")

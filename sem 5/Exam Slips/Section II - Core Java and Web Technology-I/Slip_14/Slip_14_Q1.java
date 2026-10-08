@@ -1,32 +1,14 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
-public class Slip_14_Q1 extends JFrame implements ActionListener {
-    JTextField inputField, outputField;
-    JButton processButton;
-
-    public Slip_14_Q1() {
-        setTitle("Prime Number Checker");
-        setSize(360, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new GridLayout(3, 2, 10, 10));
-
-        add(new JLabel("Enter Number:"));
-        inputField = new JTextField();
-        add(inputField);
-
-        add(new JLabel("Result:"));
-        outputField = new JTextField();
-        outputField.setEditable(false);
-        add(outputField);
-
-        processButton = new JButton("Process");
-        processButton.addActionListener(this);
-        add(new JLabel(""));
-        add(processButton);
-    }
-
+public class Slip_14_Q1 extends Application {
+    
     public boolean isPrime(int n) {
         if (n <= 1) return false;
         for (int i = 2; i <= Math.sqrt(n); i++) {
@@ -35,20 +17,38 @@ public class Slip_14_Q1 extends JFrame implements ActionListener {
         return true;
     }
 
-    public void actionPerformed(ActionEvent e) {
-        try {
-            int num = Integer.parseInt(inputField.getText().trim());
-            if (isPrime(num)) {
-                outputField.setText(num + " is a Prime Number");
-            } else {
-                outputField.setText(num + " is NOT a Prime Number");
+    @Override
+    public void start(Stage primaryStage) {
+        TextField inputField = new TextField();
+        inputField.setPromptText("Enter a number");
+
+        Button processButton = new Button("Process");
+        Label resultLabel = new Label("Result:");
+
+        processButton.setOnAction(e -> {
+            try {
+                int num = Integer.parseInt(inputField.getText().trim());
+                if (isPrime(num)) {
+                    resultLabel.setText(num + " is a Prime Number");
+                } else {
+                    resultLabel.setText(num + " is NOT a Prime Number");
+                }
+            } catch (NumberFormatException ex) {
+                resultLabel.setText("Invalid Integer!");
             }
-        } catch (NumberFormatException ex) {
-            outputField.setText("Invalid Integer!");
-        }
+        });
+
+        VBox layout = new VBox(10);
+        layout.setAlignment(Pos.CENTER);
+        layout.getChildren().addAll(new Label("Enter Number:"), inputField, processButton, resultLabel);
+
+        Scene scene = new Scene(layout, 300, 200);
+        primaryStage.setTitle("Prime Number Checker");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new Slip_14_Q1().setVisible(true));
+        launch(args);
     }
 }

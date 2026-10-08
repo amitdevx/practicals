@@ -1,19 +1,20 @@
-import numpy as np
-from sklearn.neural_network import MLPClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+# Domain (Variables)
+people = ["Alice", "Bob", "Charlie", "David"]
 
-X = np.array([
-    [0, 0], [0, 1], [1, 0], [1, 1],
-    [2, 2], [2, 3], [3, 2], [3, 3]
-])
-y = np.array([0, 0, 0, 0, 1, 1, 1, 1])
+# Predicates
+students = {"Alice", "Bob"}
+def is_student(person):
+    return person in students
 
-ann = MLPClassifier(hidden_layer_sizes=(4, 2), max_iter=1000, activation='relu', random_state=42)
-ann.fit(X, y)
+loves_ai_set = {"Alice", "Bob", "Charlie"}
+def loves_ai(person):
+    return person in loves_ai_set
 
-test_data = np.array([[0.5, 0.5], [2.5, 2.5]])
-preds = ann.predict(test_data)
-print("=== Artificial Neural Network (MLP) ===")
-print("Test Input:", test_data.tolist())
-print("Predicted Output:", preds.tolist())
+print("\nPredicate Logic\n")
+# Universal Quantifier (∀): For All x, if is_student(x) then loves_ai(x)
+all_students_love_ai = all(loves_ai(p) for p in people if is_student(p))
+print(f"Universal Quantifier (∀): Do all students love AI? {all_students_love_ai}")
+
+# Existential Quantifier (∃): There Exists x, such that is_student(x) and loves_ai(x)
+some_student_loves_ai = any(is_student(p) and loves_ai(p) for p in people)
+print(f"Existential Quantifier (∃): Does any student love AI? {some_student_loves_ai}")
