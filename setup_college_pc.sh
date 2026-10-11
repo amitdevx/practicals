@@ -86,12 +86,14 @@ install_sys_pkg "vim" "Vim Editor"
 install_sys_pkg "unzip" "Unzip"
 install_sys_pkg "build-essential" "GCC/G++ (C/C++ Compiler)"
 install_sys_pkg "default-jdk" "Java Development Kit (Javac/Java)"
+install_sys_pkg "openjfx" "JavaFX / OpenJFX"
+install_sys_pkg "libopenjfx-java" "JavaFX Libraries"
 install_sys_pkg "nodejs" "Node.js (JavaScript Runtime)"
 install_sys_pkg "npm" "NPM (Node Package Manager)"
 install_sys_pkg "python3" "Python 3"
 install_sys_pkg "python3-pip" "Python 3 PIP"
 
-PY_LIBS=("numpy" "pandas" "scikit-learn" "matplotlib" "seaborn" "nltk" "mlxtend" "textblob" "scipy" "beautifulsoup4")
+PY_LIBS=("numpy" "pandas" "scikit-learn" "matplotlib" "seaborn" "nltk" "mlxtend" "textblob" "scipy" "beautifulsoup4" "squarify" "matplotlib-venn" "wordcloud")
 install_py_pkg "${PY_LIBS[@]}"
 
 # Download NLTK data commonly used
@@ -135,7 +137,27 @@ else
 fi
 rm -f TestJava.java TestJava.class
 
-# 3. Test Node.js
+# 3. Test JavaFX (OpenJFX)
+echo -ne "Testing JavaFX (OpenJFX)... "
+JAVAFX_LIB="/usr/share/openjfx/lib"
+if [ -d "$JAVAFX_LIB" ] && [ -f "$JAVAFX_LIB/javafx.controls.jar" ]; then
+cat << 'EOF' > TestFX.java
+public class TestFX {
+    public static void main(String[] args) { System.out.println("SUCCESS"); }
+}
+EOF
+    if run_silent javac --module-path "$JAVAFX_LIB" --add-modules javafx.controls TestFX.java && \
+       java --module-path "$JAVAFX_LIB" --add-modules javafx.controls TestFX 2>/dev/null | grep -q "SUCCESS"; then
+        echo -e "\r${CHECK} JavaFX (OpenJFX) working perfectly.         "
+    else
+        echo -e "\r${CROSS} JavaFX (OpenJFX) execution failed.         "
+    fi
+    rm -f TestFX.java TestFX.class
+else
+    echo -e "\r${CROSS} JavaFX libraries not found at $JAVAFX_LIB. Run 'sudo apt install -y openjfx' "
+fi
+
+# 4. Test Node.js
 echo -ne "Testing Node.js... "
 cat << 'EOF' > test_node.js
 console.log("SUCCESS");
@@ -147,7 +169,7 @@ else
 fi
 rm -f test_node.js
 
-# 4. Test Python & Libraries
+# 5. Test Python & Libraries
 echo -ne "Testing Python & Libraries... "
 cat << 'EOF' > test_py.py
 try:
@@ -161,6 +183,9 @@ try:
     import textblob
     import scipy
     import bs4
+    import squarify
+    import matplotlib_venn
+    import wordcloud
     print("SUCCESS")
 except Exception as e:
     print("FAILED:", str(e))
@@ -198,16 +223,32 @@ else
         rm -f "${file%.c}.out"
     done
 
-    # Java
+    # Java & JavaFX
     echo -e "\n[Testing Java/Web - Java Files]"
-    find "$TARGET_DIR/Section II - Core Java and Web Technology-I" -type f -name "*.java" | while read -r file; do
-        javac "$file" 2>/dev/null
+    JAVAFX_LIB="/usr/share/openjfx/lib"
+    find "$TARGET_DIR/Section II - Core Java and Web Technology-I" -type f -name "*.java" | sort | while read -r file; do
+        if grep -q "javafx\." "$file" && [ -d "$JAVAFX_LIB" ]; then
+            javac --module-path "$JAVAFX_LIB" --add-modules javafx.controls,javafx.fxml -cp "$(dirname "$file"):." "$file" 2>/dev/null
+        else
+            javac -cp "$(dirname "$file"):." "$file" 2>/dev/null
+        fi
         if [ $? -eq 0 ]; then
             echo -e "${CHECK} Compiled: $(basename "$file")"
         else
             echo -e "${CROSS} Failed to compile: $(basename "$file")"
         fi
-        rm -f "${file%.java}.class"
+        rm -f "$(dirname "$file")"/*.class 2>/dev/null
+    done
+
+    # JavaScript / Node.js
+    echo -e "\n[Testing Java/Web - JavaScript Files]"
+    find "$TARGET_DIR/Section II - Core Java and Web Technology-I" -type f -name "*.js" | sort | while read -r file; do
+        node -c "$file" 2>/dev/null
+        if [ $? -eq 0 ]; then
+            echo -e "${CHECK} Syntax OK: $(basename "$file")"
+        else
+            echo -e "${CROSS} Syntax Error: $(basename "$file")"
+        fi
     done
 
     # Data Science & AI (Syntax Check)
