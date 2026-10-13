@@ -1,20 +1,25 @@
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.cluster.hierarchy import dendrogram, linkage
 import matplotlib
 matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from scipy.cluster.hierarchy import dendrogram, linkage
 
+# Create a dataframe containing product information
 df = pd.DataFrame({
-    'Product_name': ['A', 'B', 'C', 'D', 'E'],
-    'Price': [100, 150, 120, 300, 320],
-    'Rating': [4.5, 4.0, 4.2, 4.8, 4.9],
-    'Number_of_Sales': [500, 400, 450, 150, 100]
+    'Product': ['Laptop', 'Smartphone', 'Tablet', 'Headphones', 'Camera'],
+    'Price': [60000, 40000, 25000, 8000, 45000],
+    'Rating': [4.5, 4.2, 4.0, 4.3, 4.7],
+    'Number_of_Sales': [1200, 3500, 1800, 5000, 900]
 })
+
+print("Products DataFrame:")
 print(df)
+
+# Generate Dendrogram
 Z = linkage(df[['Price', 'Rating', 'Number_of_Sales']], method='ward')
-plt.figure()
-dendrogram(Z, labels=df['Product_name'].values)
+
+plt.figure(figsize=(8, 5))
+dendrogram(Z, labels=df['Product'].values)
 plt.title("Dendrogram of Products")
 plt.xlabel("Products")
 plt.ylabel("Distance")
